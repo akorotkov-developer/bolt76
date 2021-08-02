@@ -1,0 +1,4438 @@
+<categories>
+    <category>
+        <PorNomer>10</PorNomer>
+        <price_id>1</price_id>
+        <ID>15796</ID>
+        <name>1. Крепеж</name>
+        <childs>
+            <category>
+                <PorNomer>10</PorNomer>
+                <ID>17287</ID>
+                <name>1.1 Саморезы, шурупы</name>
+                <image>19642</image>
+                <childs>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3569</ID>
+                        <name>1.1.01 Саморез острый ГКЛ-металл</name>
+                        <image>4999</image>
+                        <desc>
+                            Саморез для крепления гипсокартонных плит. Потайная головка, крестообразный шлиц Philips №2, острый наконечник с частым шагом, оксидированный.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17304</ID>
+                        <name>1.1.02 Саморез острый ГКЛ-дерево</name>
+                        <image>19693</image>
+                        <desc>
+                            Саморез для крепления гипсокартонных плит. Потайная головка, крестообразный шлиц Philihs №2, острый наконечник с крупным шагом, оксидированный.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3566</ID>
+                        <name>1.1.03 Саморезы для гипсоволоконных плит</name>
+                        <image>4993</image>
+                        <desc>
+                            Саморез для крепления ГВЛ к металлическим профилям.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>7532</ID>
+                        <name>1.1.04 Саморез с напрессованной шайбой /острый</name>
+                        <image>11554</image>
+                        <desc>
+                            Саморезы стальные, оцинкованные, полусферическая головка, с крестообразным шлицем "Phillips" №2, прессшайбой, острый наконечник, частая резьба.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>7525</ID>
+                        <name>1.1.05 Саморез с напрессованной шайбой /со сверлом</name>
+                        <image>11533</image>
+                        <desc>
+                            Саморезы стальные, оцинкованные, полусферическая головка, с крестообразным шлицем "Phillips" №2, прессшайбой, наконечник со сверлом, частая резьба.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>1402</ID>
+                        <name>1.1.06 Саморез для листового металла (клопп)</name>
+                        <image>589</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3789</ID>
+                        <name>1.1.07 Саморез универсальный желтый цинк</name>
+                        <image>5041</image>
+                        <desc>
+                            Универсальные шурупы по дереву, ДСП , ДВП. Потайная головка, крестообразный шлиц POZI, острый наконечник, крупная резьба, желтопассивированные.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18163</ID>
+                        <name>
+                            1.1.07 Саморезы для крепления металлических профилей, потайная головка, наконечник - сверло
+                        </name>
+                        <image>21976</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3536</ID>
+                        <name>1.1.08 Саморез универсальный белый цинк</name>
+                        <image>4945</image>
+                        <desc>
+                            Универсальные шурупы по дереву, ДСП , ДВП. Потайная головка, крестообразный шлиц POZI, острый наконечник, крупная резьба, белый цинк.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18752</ID>
+                        <name>1.1.09 Саморез din 7976 ш/г острый оц.</name>
+                        <image>23680</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>7046</ID>
+                        <name>1.1.10 Саморез din 7981 п/сф острый оц.</name>
+                        <image>11110</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>227</ID>
+                        <name>
+                            1.1.11 Саморез кровельный ш/г со сверлом оцинкованный
+                        </name>
+                        <image>58</image>
+                        <desc>
+                            Кровельные саморезы для монтажа металлочерепицы и профнастила к деревянным, а также к металлическим конструкциям.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3307</ID>
+                        <name>
+                            1.1.12 Саморез кровельный ш/г со сверлом цвета по RAL
+                        </name>
+                        <image>4420</image>
+                        <desc>
+                            Кровельные саморезы для монтажа металлочерепицы и профнастила к деревянным, а также к металлическим конструкциям окрашеные в цвета RAL.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>7579</ID>
+                        <name>
+                            1.1.13 Саморез кровельный с увеличенным сверлом PT-5 15мм, гарантированное сверление металла до 12мм!
+                        </name>
+                        <image>11686</image>
+                        <desc>
+                            Саморезы с EPDM шайбой для крепления профилированных листов к металлоконструкциям до 12,5 мм.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>15646</ID>
+                        <name>
+                            1.1.14 Пластиковый колпачек для кровельных саморезов
+                        </name>
+                        <image>15721</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>7103</ID>
+                        <name>1.1.15 Саморез для сэндвич панелей</name>
+                        <image>11233</image>
+                        <desc>
+                            Саморез для сэндвич-панелей используется при необходимости прямого монтажа сэндвич-панели на конструкцию из стали.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>15797</ID>
+                        <name>
+                            1.1.16 Шуруп для крепления деревянных лаг и реек DIN 571
+                        </name>
+                        <image>16096</image>
+                        <desc>
+                            Шуруп для крепления деревянных лаг и реек. Шестигранная головка, крупная резьба, острый наконечник, оцинкованный.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17298</ID>
+                        <name>
+                            1.1.17 Саморез оконный острый WS-SP головка потай крест ph2 белый цинк
+                        </name>
+                        <image>19675</image>
+                        <desc>
+                            Саморезы оконные, лазерная калибровка, для автоматической и ручной сборки, желтый/ белый цинк
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>2356</ID>
+                        <name>
+                            1.1.18 Саморез оконный с буром WS-SD головка потай крест ph2 белый цинк
+                        </name>
+                        <image>2734</image>
+                        <desc>
+                            Саморезы оконные с насечками на конусной части головки, лазерная калибровка, для автоматической и ручной сборки, желтый/ белый цинк
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>4380</ID>
+                        <name>1.1.19 Шуруп по бетону</name>
+                        <image>6454</image>
+                        <desc>
+                            Потайная головка с насечками для раззенковки, шлиц Torx № 30, двухзаходная резьба с поперечным сечением острый наконечник, желтопассивированный.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>15820</ID>
+                        <name>1.1.20 Шуруп костыль</name>
+                        <image>16144</image>
+                        <desc>Шуруп костыль</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18287</ID>
+                        <name>1.1.21 Шуруп полукольцо</name>
+                        <image>22321</image>
+                        <desc>Шуруп полукольцо.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>13020</ID>
+                        <name>1.1.22 Шуруп-шпилька</name>
+                        <image>12991</image>
+                        <desc>Шуруп шпилька</desc>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>10</PorNomer>
+                <ID>15677</ID>
+                <name>1.2 Анкерная техника</name>
+                <image>15802</image>
+                <childs>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>1142</ID>
+                        <name>1.2. 1 Рамный дюбель</name>
+                        <image>373</image>
+                        <desc>Рамный металлический дюбель. Оцинкованный.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>2966</ID>
+                        <name>1.2. 2 Анкерный болт</name>
+                        <image>3757</image>
+                        <desc>Анкерный болт с шестигранной головкой</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>1119</ID>
+                        <name>1.2. 3 Анкерный болт с гайкой</name>
+                        <image>367</image>
+                        <desc>Анкерный болт с шестигранной гайкой</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>7062</ID>
+                        <name>1.2. 4 Анкерный болт с гайкой 2-х распорный</name>
+                        <image>11134</image>
+                        <desc>Анкерный болт с шестигранной гайкой двухраспорный</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>2982</ID>
+                        <name>1.2. 5 Анкер клиновой</name>
+                        <image>3802</image>
+                        <desc>Клиновой анкер</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18465</ID>
+                        <name>1.2. 6 Анкерный болт с ударным распором</name>
+                        <image>22834</image>
+                        <desc>Анкерный болт с ударным распором</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>2999</ID>
+                        <name>1.2. 7 Анкерный болт с кольцом</name>
+                        <image>3853</image>
+                        <desc>Анкерный болт с кольцом</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>1121</ID>
+                        <name>1.2. 8 Анкерный болт с крюком</name>
+                        <image>370</image>
+                        <desc>Анкерный болт с крюком</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3014</ID>
+                        <name>1.2. 9 Анкер потолочный</name>
+                        <image>3883</image>
+                        <desc>Анкер потолочный</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>2975</ID>
+                        <name>1.2.10 Анкер забивной</name>
+                        <image>3781</image>
+                        <desc>
+                            Анкер с внутренней резьбой и конусообразным клином для крепления материалов и оборудования к бетону, естественному камню, полнотелому кирпичу.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18229</ID>
+                        <name>1.2.12 Анкер цанга латунная</name>
+                        <image>22159</image>
+                        <desc>Анкер-цанга латунный</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>7554</ID>
+                        <name>1.2.13 Анкер клин</name>
+                        <image>11620</image>
+                        <desc>Анкер клин</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>1165</ID>
+                        <name>1.2.14 Забиваемый металлический дюбель-гвоздь</name>
+                        <image>400</image>
+                        <desc>Металлический дюбель-гвоздь.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18518</ID>
+                        <name>1.2.15 Химические анкера</name>
+                        <image>22987</image>
+                        <childs>
+                            <category>
+                                <PorNomer>10</PorNomer>
+                                <ID>18749</ID>
+                                <name>1. Химические составы</name>
+                                <image>23671</image>
+                            </category>
+                            <category>
+                                <PorNomer>10</PorNomer>
+                                <ID>18750</ID>
+                                <name>2. Сетчатая нейлоновая гильза</name>
+                                <image>23674</image>
+                            </category>
+                        </childs>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>10</PorNomer>
+                <ID>17860</ID>
+                <name>1.3 Анкерная техника Hilti</name>
+                <image>21118</image>
+                <childs>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>15709</ID>
+                        <name>1. Анкер высоких нагрузок HSL-3 Hilti</name>
+                        <image>15862</image>
+                        <desc>
+                            Распорный анкер Hilti для высоких нагрузок с возможностью использования в растянутой зоне бетона и в бетоне с трещинами.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3471</ID>
+                        <name>2. Анкер высоких нагрузок HSL-3-В Hilti</name>
+                        <image>4852</image>
+                        <desc>
+                            Распорный анкер для высоких нагрузок со специальной головкой, позволяющей закрутить анкер с необходимым моментом затяжки без использования динамометрического ключа. Возможность применения в растянутой зоне бетона и в бетоне с трещинами (Оцинковка).
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>15702</ID>
+                        <name>3. Анкер высоких нагрузок HSL-3-G Hilti</name>
+                        <image>15850</image>
+                        <desc>
+                            Распорный анкер для высоких нагрузок с возможностью использования в растянутой зоне бетона и в бетоне с трещинами. (Шпилечная версия, оцинковка)
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3915</ID>
+                        <name>4. Анкер-шпилька HST Hilti</name>
+                        <image>5266</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>10</PorNomer>
+                <ID>15678</ID>
+                <name>1.4 Дюбельная техника и пластиковый крепеж</name>
+                <image>15805</image>
+                <childs>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17259</ID>
+                        <name>1.3. 1 Дюбель гвоздевой (потай)</name>
+                        <image>19582</image>
+                        <desc>Дюбель гвоздевой потайной бортик.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17266</ID>
+                        <name>1.3. 2 Дюбель гвоздевой (с бортиком)</name>
+                        <image>19600</image>
+                        <desc>Дюбель гвоздевой цилиндрический бортик.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>4868</ID>
+                        <name>1.3. 3 Дюбель д/изоляции с пласт стержнем</name>
+                        <image>6994</image>
+                        <desc>Дюбель для крепления термоизоляционных материалов.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3153</ID>
+                        <name>1.3. 4 Дюбель с прямым крюком</name>
+                        <image>4165</image>
+                        <desc>
+                            Полипропиленовый распорный дюбель со стальным оцинкованным крюком для плотных материалов.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>15798</ID>
+                        <name>1.3. 5 Дюбель с полукольцом</name>
+                        <image>16099</image>
+                        <desc>
+                            Полипропиленовый распорный дюбель со стальным оцинкованным полукольцом для плотных материалов.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>16132</ID>
+                        <name>1.3. 6 Дюбель распорный Tchappai</name>
+                        <image>16951</image>
+                        <desc>Дюбель Tchappai.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3135</ID>
+                        <name>1.3. 7 Дюбель распорный ёж усиленный</name>
+                        <image>4111</image>
+                        <desc>Дюбель усиленный "ЕЖ"</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>8895</ID>
+                        <name>1.3. 8 Дюбель распорный с усом тип S</name>
+                        <image>12568</image>
+                        <desc>Дюбель распорный "УС"</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>6108</ID>
+                        <name>1.3. 9 Дюбель универсальный ZUM</name>
+                        <image>8869</image>
+                        <desc>Дюбель универсальный ZUM</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3130</ID>
+                        <name>1.3.10 Дюбель "Бабочка"</name>
+                        <image>4096</image>
+                        <desc>Дюбель бабочка.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3127</ID>
+                        <name>1.3.11 Дюбель Driva</name>
+                        <image>4087</image>
+                        <desc>Дюбель для крепления в гипсокартонных стенах.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>6051</ID>
+                        <name>
+                            1.3.12 Дюбель фасадный для пустотелых мат. с шестигранной гол.
+                        </name>
+                        <image>8710</image>
+                        <desc>
+                            Полиаидный (нейлоновый) распорный дюбель для пустотелых (полых) материалов. Стальной оцинкованный шуруп с шестигранной головкой.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18551</ID>
+                        <name>
+                            1.3.14 Металлический дюбель Molli для пустотелых конструкций
+                        </name>
+                        <image>23080</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18162</ID>
+                        <name>1.3.15 Дюбель для газобетона (металл)</name>
+                        <image>21973</image>
+                        <desc>Металлический дюбель для газобетона.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>12912</ID>
+                        <name>1.3.16 Дюбель для газобетона (нейлон)</name>
+                        <image>12793</image>
+                        <desc>Специальный дюбель для применения в газобетоне.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18517</ID>
+                        <name>
+                            1.3.17 Дюбель для крепления к изоляционным материалам KEW
+                        </name>
+                        <image>22984</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>12910</ID>
+                        <name>1.3.18 Дюбель складной пружинный с крючком</name>
+                        <image>12787</image>
+                        <desc>Складной пружинный дюбель.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>289</ID>
+                        <name>1.3.19 Дюбель для хомута</name>
+                        <image>136</image>
+                        <desc>Дюбель для хомута</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3164</ID>
+                        <name>1.3.20 Дюбель хомут</name>
+                        <image>4183</image>
+                        <desc>Дюбель хомут</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17289</ID>
+                        <name>1.3.21 Дюбель хомут ДХП</name>
+                        <image>19648</image>
+                        <desc>Дюбель хомут ДХП</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>312</ID>
+                        <name>1.3.22 Дюбель пистон</name>
+                        <image>157</image>
+                        <desc>Дюбель пистон</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>15666</ID>
+                        <name>1.3.23 Дюбель для трубной клипсы</name>
+                        <image>15775</image>
+                        <desc>Дюбель для трубной клипсы</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3171</ID>
+                        <name>1.3.24 Клипса для крепления труб</name>
+                        <image>4195</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>15853</ID>
+                        <name>1.3.25 Скоба электромонтажная</name>
+                        <image>16192</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>197</ID>
+                        <name>1.3.26 Подвес для крепления кабеля к тросу</name>
+                        <image>55</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>8358</ID>
+                        <name>1.3.27 Крестики д/плитки</name>
+                        <image>12508</image>
+                        <desc>Крестики для укладки плитки</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>12919</ID>
+                        <name>1.3.28 Крепеж д/сантехники</name>
+                        <image>12814</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3430</ID>
+                        <name>1.3.29 Заглушка декоративная под рамный дюбель</name>
+                        <image>4735</image>
+                        <desc>Заглушка декоративная под рамный дюбель</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3217</ID>
+                        <name>1.3.30 Заглушка под крест ph2</name>
+                        <image>4264</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3209</ID>
+                        <name>1.3.31 Заглушка под конфирмат</name>
+                        <image>4243</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3230</ID>
+                        <name>1.3.32 Заглушка под отверстие</name>
+                        <image>4303</image>
+                        <desc>Заглушка под отверстие</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>15967</ID>
+                        <name>1.3.33 Заглушка декоративная (составная)</name>
+                        <image>16501</image>
+                        <desc>Заглушка декоративная составная</desc>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>10</PorNomer>
+                <ID>16859</ID>
+                <name>1.5 Гвозди, скобы, проволока</name>
+                <image>18523</image>
+                <childs>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17272</ID>
+                        <name>1.4. 1 Гвозди строительные ГОСТ 4028-63</name>
+                        <image>19615</image>
+                        <desc>Гвоздь строительнвй ГОСТ 4028-63</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17321</ID>
+                        <name>1.4. 2 Гвозди строительные оц.</name>
+                        <image>19744</image>
+                        <desc>Гвоздь строительный ГОСТ 4028-63 оцинкованный</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18215</ID>
+                        <name>1.4. 3 Гвози винтовые (ГОСТ 7335)</name>
+                        <image>22123</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>4461</ID>
+                        <name>1.4. 4 Гвозди винтовые оц.</name>
+                        <image>6643</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>4476</ID>
+                        <name>1.4. 5 Гвозди ершеные оц.</name>
+                        <image>6673</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17338</ID>
+                        <name>1.4. 6 Гвоздь толевые гост 4028-63</name>
+                        <image>19795</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>16873</ID>
+                        <name>
+                            1.4. 7 Гвозди шиферные с завальцованной шляпкой ТУ 208-81
+                        </name>
+                        <image>18565</image>
+                        <desc>Гвозди шиферные с завальцованной шляпкой ТУ 208-81</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17184</ID>
+                        <name>1.4. 8 Гвоздь финишный оц.</name>
+                        <image>19366</image>
+                        <desc>
+                            Гвозди финишные с уменьшенной цилиндрической головкой (оцинкованные) DIN 1152
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17185</ID>
+                        <name>1.4. 9 Гвозди финишные (латунь/бронза/медь)</name>
+                        <image>19369</image>
+                        <desc>
+                            Гвоздь финишный с уменьшенной цилиндрической головкой и декоративным покрытием
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>5152</ID>
+                        <name>1.4.10 Дюбель-гвоздь пистолетный (ПЦ 84)</name>
+                        <image>7666</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18425</ID>
+                        <name>
+                            1.4.11 Проволока стальная термообработанная гост 3282
+                        </name>
+                        <image>22717</image>
+                        <desc>Проволока териооюработанная ГОСТ 3282</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>893</ID>
+                        <name>1.4.12 Скоба строительная кованая</name>
+                        <image>319</image>
+                        <desc>Cкоба строительная кованная</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>16885</ID>
+                        <name>Гвозди строительные ГОСТ 4028-80</name>
+                        <image>18601</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>16995</ID>
+                        <name>Гвозди строительные ГОСТ 4028-80 цинк</name>
+                        <image>18862</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>10</PorNomer>
+                <ID>3325</ID>
+                <name>1.6 Метрический крепеж</name>
+                <image>4438</image>
+                <childs>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3326</ID>
+                        <name>1.5. 1 Болт din 933 класс пр. 5.8 и 8.8 оц.</name>
+                        <image>4441</image>
+                        <desc>Болт DIN 933 оцинкованный, полная резьба.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18305</ID>
+                        <name>1.5. 2 Болт din 931 класс пр. 8.8 оц.</name>
+                        <image>22369</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18297</ID>
+                        <name>1.5. 3 Болт din 603 класс пр. 8.8 оц.</name>
+                        <image>22351</image>
+                        <desc>
+                            Болт мебельный DIN 603 с метрической резьбой, увеличенной полукруглой головкой и квадратным подголовником.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17995</ID>
+                        <name>
+                            1.5. 4 Винт din 7985 п/сф гол. крест ph кл. 8.8 оц.
+                        </name>
+                        <image>21499</image>
+                        <desc>
+                            Винт головка полусфера крест, полная резьба DIN 7985.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17072</ID>
+                        <name>
+                            1.5. 5 Винт din 965 потай гол. крест ph кл. 8.8 оц.
+                        </name>
+                        <image>19066</image>
+                        <desc>Винт с потайной головкой DIN 965 (полная резьба).</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>9269</ID>
+                        <name>1.5. 6 Винт din 967 с прессшайбой крест ph/pz оц.</name>
+                        <image>12703</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3379</ID>
+                        <name>
+                            1.5. 7 Винт din 912 п/сф гол. вн. шестигранник кл. 8.8 оц.
+                        </name>
+                        <image>4591</image>
+                        <desc>
+                            Винт с цилиндрической головкой и внутренним шестигранником, полная резьба, оцинкованный. DIN 912
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18275</ID>
+                        <name>
+                            1.5. 8 Винт гост 17473-80 п/кр гол. прямой шлиц оц.
+                        </name>
+                        <image>22285</image>
+                        <desc>
+                            Винт полукруглая головка не полная резьба, шлиц, оцинкованный. ГОСТ 14743-80
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18110</ID>
+                        <name>1.5. 9 Гайка din 934 кл. 8 оц.</name>
+                        <image>21829</image>
+                        <desc>Гайка шестигранная цинк. DIN 934.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3424</ID>
+                        <name>1.5.10 Гайка din 985 со стопорным кольцом оц.</name>
+                        <image>4717</image>
+                        <desc>Гайка со стопорным кольцом DIN 985, оцинкованная.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>16838</ID>
+                        <name>1.5.11 Гайка din 6923 с фланцем оц.</name>
+                        <image>18460</image>
+                        <desc>Гайка с фланцем din 6923 цинк</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17663</ID>
+                        <name>1.5.12 Гайка din 6334 соединительная оц.</name>
+                        <image>20566</image>
+                        <desc>Гайка сединительная DIN 6334, оцинкованная.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3416</ID>
+                        <name>1.5.13 Гайка din 1587 колпачковая оц.</name>
+                        <image>4693</image>
+                        <desc>Гайка колпачковая DIN 1587, оцинкованная.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3412</ID>
+                        <name>1.5.14 Гайка din 315 барашек оц.</name>
+                        <image>4681</image>
+                        <desc>Гайка барашек DIN 315, оцинкованная.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>1352</ID>
+                        <name>1.5.15 Гайка din 1624 носковая оц.</name>
+                        <image>559</image>
+                        <desc>DIN 1624</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18739</ID>
+                        <name>1.5.16 Гайка низкая DIN 439 оц.</name>
+                        <image>23641</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>16902</ID>
+                        <name>1.5.17 Шайба din 125 плоская оц.</name>
+                        <image>18622</image>
+                        <desc>Шайба плоская DIN 125, оцинкованная.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17682</ID>
+                        <name>1.5.18 Шайба din 9021 плоская усиленная оц.</name>
+                        <image>20617</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>16897</ID>
+                        <name>1.5.19 Шайба din 127 пружинная оц.</name>
+                        <image>18607</image>
+                        <desc>Шайба DIN 127 пружинная (гровер), оцинкованная.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3490</ID>
+                        <name>1.5.20 Шпилька резьбовая</name>
+                        <image>4888</image>
+                        <desc>Шпилька резьбовая, оцинкованная.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18462</ID>
+                        <name>1.5.21 Пресс-масленки</name>
+                        <image>22825</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18357</ID>
+                        <name>1.5.22 Шплинты</name>
+                        <image>22525</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>72</ID>
+                        <name>
+                            1.5.23 Стопорные кольца на вал гост 13942 / din 471
+                        </name>
+                        <image>34</image>
+                        <desc>гост 13942-86 на вал, наружные</desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>514</ID>
+                        <name>
+                            1.5.24 Стопорные кольца в отверстие гост 13943 / din 472
+                        </name>
+                        <image>262</image>
+                        <desc>гост 13943-86 в отверстие</desc>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>10</PorNomer>
+                <ID>4838</ID>
+                <name>1.7 Заклепки</name>
+                <image>6907</image>
+                <childs>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3255</ID>
+                        <name>1.6.1 Заклепка тяговая Al/St ст. буртик</name>
+                        <image>4372</image>
+                        <desc>
+                            Заклёпки вытяжные (алюминий-сталь) для крепления тонколистового металла и других твёрдых материалов, доступных для монтажа только с одной стороны.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>7751</ID>
+                        <name>1.6.2 Заклепка тяговая St/St</name>
+                        <image>12172</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18452</ID>
+                        <name>
+                            1.6.3 Резьбовая заклепка-гайка цилиндрический фланец с рифлением
+                        </name>
+                        <image>22795</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18451</ID>
+                        <name>
+                            1.6.4 Резьбовая заклепка-гайка потайной фланец с рифлением
+                        </name>
+                        <image>22792</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18453</ID>
+                        <name>
+                            1.6.5 Резьбовая заклепка-гайка малый фланец с рифлением
+                        </name>
+                        <image>22798</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>10</PorNomer>
+                <ID>7738</ID>
+                <name>1.8 Мебельный крепеж</name>
+                <image>12145</image>
+                <childs>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>73</ID>
+                        <name>1.7.1 Винт-конфирмат</name>
+                        <image>37</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>3903</ID>
+                        <name>1.7.2 Шуруп мебельный</name>
+                        <image>5233</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>4111</ID>
+                        <name>1.7.3 Полкодержатель</name>
+                        <image>5776</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>17986</ID>
+                        <name>1.7.4 Шкант мебельный</name>
+                        <image>21475</image>
+                    </category>
+                    <category>
+                        <PorNomer>10</PorNomer>
+                        <ID>18244</ID>
+                        <name>1.7.5 Стяжка межсекционная</name>
+                        <image>22195</image>
+                    </category>
+                </childs>
+            </category>
+        </childs>
+    </category>
+    <category>
+        <PorNomer>20</PorNomer>
+        <price_id>2</price_id>
+        <ID>15813</ID>
+        <name>
+            2. Перфорированный крепеж для брусового домостроения
+        </name>
+        <childs>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>15810</ID>
+                <name>2. 1 Лента перфорированная (прямая) LP_V</name>
+                <image>16114</image>
+                <desc>Лента перфорированная (прямая) LPV</desc>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>18158</ID>
+                <name>2. 2 Лента перфорированная для теплого пола LPTP</name>
+                <image>21961</image>
+                <desc>Лента перфорированная для теплого пола LPTP</desc>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>7632</ID>
+                <name>2. 4 Лента перфорированная монтажная LM</name>
+                <image>11839</image>
+                <desc>Лента перфорированная монтажная LM</desc>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>18157</ID>
+                <name>2. 5 Лента тарная перфорированная LP_TAR</name>
+                <image>21958</image>
+                <desc>Лента перфорированная тарная LP_TAR</desc>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>18169</ID>
+                <name>2. 6 Лента тарная неперфорированная LP_UP</name>
+                <image>21994</image>
+                <desc>Лента упаковочная неперфорированная LP_UP</desc>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>7634</ID>
+                <name>2. 7 Крепежный уголок KU</name>
+                <image>11845</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>18159</ID>
+                <name>2. 8 Крепежный уголок усиленный KUU</name>
+                <image>21964</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>4869</ID>
+                <name>2. 9 Крепежный уголок равносторонний KUR</name>
+                <image>6997</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>7078</ID>
+                <name>2.10 Крепежный уголок анкерный KUL</name>
+                <image>11179</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>5128</ID>
+                <name>2.11 Крепежный уголок ассиметричный KUAS</name>
+                <image>7603</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>18161</ID>
+                <name>2.12 Крепежный уголок 135 градусов KUS</name>
+                <image>21970</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>18160</ID>
+                <name>2.13 Крепежный уголок Z-образный KUZ</name>
+                <image>21967</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>462</ID>
+                <name>2.14 Крепежный уголок скользящий. KUC</name>
+                <image>235</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>5247</ID>
+                <name>2.15 Скользящая опора для стропил KUCIS</name>
+                <image>7756</image>
+                <desc>Скользящая опора для стропил KUCIS</desc>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>18422</ID>
+                <name>2.16 Опора балки</name>
+                <image>22708</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>1418</ID>
+                <name>2.17 Держатель балки DB</name>
+                <image>622</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>15681</ID>
+                <name>2.18 Универсальная опора балки</name>
+                <image>15814</image>
+                <childs>
+                    <category>
+                        <PorNomer>20</PorNomer>
+                        <ID>3248</ID>
+                        <name>Заглушка под рамник</name>
+                        <image>4351</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>5120</ID>
+                <name>2.19 Опора бруса открытая OBR R</name>
+                <image>7579</image>
+                <desc>Опора бруса открытая OBR R</desc>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>2520</ID>
+                <name>2.20 Опора бруса закрытая OBR Z</name>
+                <image>3154</image>
+                <desc>Опора бруса закрытая OBRZ</desc>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>1426</ID>
+                <name>2.22 Анкер регулируемый по высоте ARH</name>
+                <image>634</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>16879</ID>
+                <name>2.23 Угловой соединитель US</name>
+                <image>18583</image>
+                <desc>Угловой соединитель US</desc>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>7603</ID>
+                <name>2.24 Держатель столба DSU</name>
+                <image>11758</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>18296</ID>
+                <name>2.25 Пластина соелинительная PS</name>
+                <image>22348</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>6920</ID>
+                <name>2.26 Пластина крепежная KP</name>
+                <image>10789</image>
+                <desc>Пластина крепежная KP</desc>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>1456</ID>
+                <name>2.27 Монтажные пластины оконные</name>
+                <image>712</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>85</ID>
+                <name>2.28 Подвес прямой РР</name>
+                <image>40</image>
+                <desc>Подвес прямой РР</desc>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>5616</ID>
+                <name>2.29 Пластина гвоздевая</name>
+                <image>8056</image>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>17385</ID>
+                <name>2.30 Застежка универсальная ZU</name>
+                <image>19873</image>
+                <desc>
+                    Универсальные стальные оцинкованные саморезы для крепления различных конструкций к дереву, фанере, ДСП. При использовании дюбеля применяется к плотным материалам.
+                </desc>
+            </category>
+            <category>
+                <PorNomer>20</PorNomer>
+                <ID>15768</ID>
+                <name>2.31 Кляймер</name>
+                <image>16021</image>
+            </category>
+        </childs>
+    </category>
+    <category>
+        <PorNomer>30</PorNomer>
+        <price_id>3</price_id>
+        <ID>1200</ID>
+        <name>3. Такелаж</name>
+        <childs>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>18111</ID>
+                <name>3. 1 Трос стальной 6х7 din 3055</name>
+                <image>21832</image>
+                <desc>DIN 3055</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>7651</ID>
+                <name>3. 2 Цепь сварная короткозвенная din 766</name>
+                <image>11896</image>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>15747</ID>
+                <name>3. 3 Цепь сварная длиннозвенная din 763</name>
+                <image>15961</image>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>18114</ID>
+                <name>3. 4 Талреп крюк-крюк DIN 1480</name>
+                <image>21841</image>
+                <desc>DIN 1480</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>18116</ID>
+                <name>3. 5 Талреп крюк-кольцо DIN 1480</name>
+                <image>21847</image>
+                <desc>DIN 1480</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>7653</ID>
+                <name>3. 6 Коуш д/ст. канатов din 6899</name>
+                <image>11902</image>
+                <desc>DIN 6899</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>16069</ID>
+                <name>3. 7 Зажим д/ст. канатов алюминиевый</name>
+                <image>16780</image>
+                <desc>Зажим для стальных канатов алюминиевый</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>18115</ID>
+                <name>3. 8 Зажим д/ст. канатов din 741</name>
+                <image>21844</image>
+                <desc>DIN 741</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>7560</ID>
+                <name>3. 9 Зажим д/ст. канатов SIMPLEX</name>
+                <image>11635</image>
+                <desc>Зажим для стальных канатов одинарный (SIMPLEX)</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>4967</ID>
+                <name>3.10 Зажим д/ст. канатов DUPLEX</name>
+                <image>7144</image>
+                <desc>
+                    Зажим для стальных канатов двойной (Duplex), оцинкованный
+                </desc>
+                <childs>
+                    <category>
+                        <PorNomer>30</PorNomer>
+                        <ID>4968</ID>
+                        <name>Плинтус ПВХ кабель-канал</name>
+                        <image>7147</image>
+                    </category>
+                    <category>
+                        <PorNomer>30</PorNomer>
+                        <ID>5000</ID>
+                        <name>Решетки радиаторные</name>
+                        <image>7243</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>1723</ID>
+                <name>3.12 Рым гайка din 582</name>
+                <image>991</image>
+                <desc>Рым гайка DIN 582</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>5073</ID>
+                <name>3.13 Скоба такелажная</name>
+                <image>7453</image>
+                <desc>Скоба такелажная прямой тип, оцинкованная.</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>7693</ID>
+                <name>3.14 Карабин пожарный din 5299C</name>
+                <image>12019</image>
+                <desc>Карабин оцинкованный DIN 5299C</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>18243</ID>
+                <name>3.15 Карабин с фиксатором din 5299D</name>
+                <image>22192</image>
+                <desc>Карабин с фиксатором, оцинкованный DIN 5299D</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>5095</ID>
+                <name>3.17 Соединитель цепей</name>
+                <image>7510</image>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>7652</ID>
+                <name>3.18 Крюк S</name>
+                <image>11899</image>
+                <desc>Крюк S</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>18112</ID>
+                <name>3.19 Крюк такелажный</name>
+                <image>21835</image>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>18113</ID>
+                <name>3.20 Вертлюг П - П</name>
+                <image>21838</image>
+                <desc>Вертлюг.</desc>
+            </category>
+            <category>
+                <PorNomer>30</PorNomer>
+                <ID>18466</ID>
+                <name>3.21 Блок одинарный и двойной</name>
+                <image>22837</image>
+            </category>
+        </childs>
+    </category>
+    <category>
+        <PorNomer>40</PorNomer>
+        <price_id>4</price_id>
+        <ID>7524</ID>
+        <name>4. Хомуты</name>
+        <childs>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>7612</ID>
+                <name>4. 1 Хомут червячный 9 / 12мм w1 / w2</name>
+                <image>11785</image>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>17146</ID>
+                <name>4. 2 Хомут червячный 9мм w2</name>
+                <image>19279</image>
+                <desc>Хомут червячный /нержавеющая сталь марки 430SS</desc>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>17257</ID>
+                <name>4. 3 Хомут червячный 9мм бабочка w2</name>
+                <image>19576</image>
+                <desc>
+                    Хомут червячный бабочка/нержавеющая сталь марки 430SS
+                </desc>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>1264</ID>
+                <name>4. 4 Хомут шарнирный (силовой) w1/w2</name>
+                <image>514</image>
+                <desc>Хомут силовой</desc>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>15704</ID>
+                <name>4. 5 Хомут глушителя тип U</name>
+                <image>15853</image>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>18647</ID>
+                <name>4. 6 Хомут пыльника ШРУСа w2</name>
+                <image>23368</image>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>7162</ID>
+                <name>4. 7 Хомут трубный</name>
+                <image>11347</image>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>18469</ID>
+                <name>4. 8 Скоба крепежная одно/двух лапковая</name>
+                <image>22846</image>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>15821</ID>
+                <name>4. 9 Стяжка кабельная белая</name>
+                <image>16147</image>
+                <desc>
+                    Кабельная стяжка неразъемная, одноразового использования Материал: Нейлон 6.6, без содержания галогенов. Огнестойкость согласно UL94V2 - самозатухающий Температура эксплуатации: от -400С до +850С Цвет: белый
+                </desc>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>7295</ID>
+                <name>4.10 Стяжка кабельная черная</name>
+                <image>11431</image>
+                <desc>
+                    Кабельная стяжка неразъемная, одноразового использования Материал: Нейлон 6.6, без содержания галогенов. Огнестойкость согласно UL94V2 - самозатухающий Температура эксплуатации: от -400С до +850С Цвет: черный
+                </desc>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>15766</ID>
+                <name>4.11 Стяжка кабельная усиленная</name>
+                <image>16015</image>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>16997</ID>
+                <name>4.12 Клипса кабельная КЛ</name>
+                <image>18865</image>
+                <desc>Гвоздь строительный оцинкованный ГОСТ 4028-80</desc>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>15764</ID>
+                <name>4.13 Подвес трубный</name>
+                <image>16009</image>
+            </category>
+            <category>
+                <PorNomer>40</PorNomer>
+                <ID>18751</ID>
+                <name>4.14 Скоба для стяжки фланцев</name>
+                <image>23677</image>
+            </category>
+        </childs>
+    </category>
+    <category>
+        <PorNomer>50</PorNomer>
+        <price_id>5</price_id>
+        <ID>16777</ID>
+        <name>5. Крепеж из нержавеющей стали и латуни</name>
+        <childs>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>1240</ID>
+                <name>5. 1 Болт din 933 A2</name>
+                <image>502</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>18315</ID>
+                <name>5. 2 Болт din 933 латунь</name>
+                <image>22399</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>18402</ID>
+                <name>5. 3 Винт din 7991 А2</name>
+                <image>22660</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>7706</ID>
+                <name>5. 4 Винт полукр/гл крест/шл ДИН 7985 А2</name>
+                <image>12058</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>18303</ID>
+                <name>5. 5 Винт din 912 А2</name>
+                <image>22363</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>15962</ID>
+                <name>5. 6 Гайка din 934 А2/А4</name>
+                <image>16489</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>18382</ID>
+                <name>5. 7 Гайка din 934 латунь</name>
+                <image>22600</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>2480</ID>
+                <name>5. 8 Шайба плоская din 125 А2/А4</name>
+                <image>3034</image>
+                <desc>Шайба плоская, обычная DIN 125</desc>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>4943</ID>
+                <name>5. 9 Шайба плоская din 125 латунь</name>
+                <image>7075</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>18170</ID>
+                <name>5.10 Шайба кузовная увеличен. din 9021 А2/А4</name>
+                <image>21997</image>
+                <desc>
+                    Шайба плоская «кузовная», с увеличенным внешним диаметром DIN 9021.
+                </desc>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>2495</ID>
+                <name>5.11 Шайба-гровер din 127 А2/А4</name>
+                <image>3079</image>
+                <desc>
+                    Шайба пружинная (гровер), форма В – притуплённые кромки, стандартная DIN 127B
+                </desc>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>473</ID>
+                <name>5.12 Саморез din 7981 А2</name>
+                <image>241</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>1002</ID>
+                <name>5.13 Саморез din 7982 А2</name>
+                <image>358</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>18748</ID>
+                <name>5.14 Саморез арт. 9999 А2</name>
+                <image>23668</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>18084</ID>
+                <name>5.15 Саморез потай/гл крест/шл для ДСП АРТ 9050 А2</name>
+                <image>21766</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>7045</ID>
+                <name>5.16 Винт самонарезной антивандальный A2/A4</name>
+                <image>11107</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>18398</ID>
+                <name>5.17 Заклепка тяговая А2/А2</name>
+                <image>22648</image>
+            </category>
+            <category>
+                <PorNomer>50</PorNomer>
+                <ID>15782</ID>
+                <name>5.18 Такелаж</name>
+                <image>16060</image>
+            </category>
+        </childs>
+    </category>
+    <category>
+        <PorNomer>60</PorNomer>
+        <price_id>6</price_id>
+        <ID>15685</ID>
+        <name>6. Фасованный крепеж</name>
+        <childs>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>17286</ID>
+                <name>6. 1 Саморезы</name>
+                <image>19639</image>
+                <childs>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>15708</ID>
+                        <name>
+                            6.1. 1 Саморез черный крупная, мелкая резьба (пакеты)
+                        </name>
+                        <image>15859</image>
+                        <desc>
+                            Стальные фосфатированные саморезы с мелкой и крупной резьбой.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>17834</ID>
+                        <name>
+                            6.1. 2 Саморез черный крупная, мелкая резьба (кор. №2)
+                        </name>
+                        <image>21046</image>
+                        <desc>
+                            Стальные фосфатированные саморезы с мелкой и крупной резьбой.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>16039</ID>
+                        <name>
+                            6.1. 3 Саморез черный крупная, мелкая резьба (кор. №4)
+                        </name>
+                        <image>16693</image>
+                        <desc>
+                            Стальные фосфатированные саморезы с мелкой и крупной резьбой.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>17871</ID>
+                        <name>
+                            6.1. 4 Саморез черный крупная, мелкая резьба (кор. №6)
+                        </name>
+                        <image>21151</image>
+                        <desc>
+                            Стальные фосфатированные саморезы с мелкой и крупной резьбой.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>15707</ID>
+                        <name>
+                            6.1. 5 Саморез с прессшайбой острый, сверло (пакеты)
+                        </name>
+                        <image>15856</image>
+                        <desc>
+                            Стальной оцинкованный с прессшайбой для крепления листового металла.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>17785</ID>
+                        <name>6.1. 6 Саморез с прессшайбой (кор. №2)</name>
+                        <image>20899</image>
+                        <desc>
+                            Стальной оцинкованный саморез с прессшайбой для крепления листового металла.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>16412</ID>
+                        <name>6.1. 7 Саморез с прессшайбой (кор. №4)</name>
+                        <image>17677</image>
+                        <desc>
+                            Стальной оцинкованный саморез с прессшайбой для крепления листового металла.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>17809</ID>
+                        <name>6.1. 8 Саморез с прессшайбой (кор. №6)</name>
+                        <image>20971</image>
+                        <desc>
+                            Стальной оцинкованный саморез с прессшайбой для крепления листового металла.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>17285</ID>
+                        <name>6.1. 9 Саморез универсальный желтый (пакет)</name>
+                        <image>19636</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>17918</ID>
+                        <name>6.1.10 Саморез универсальный желтый (кор. №2)</name>
+                        <image>21277</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>4255</ID>
+                        <name>6.1.12 Саморез универсальный белый (пакеты)</name>
+                        <image>6184</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>15773</ID>
+                        <name>6.1.13 Саморез для мет. профилей клопп</name>
+                        <image>16033</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>1098</ID>
+                        <name>
+                            6.1.14 Саморез для крепления деревянных лаг и реек (пакеты)
+                        </name>
+                        <image>364</image>
+                        <desc>Шуруп для крепления деревянных лаг и</desc>
+                        <childs>
+                            <category>
+                                <PorNomer>60</PorNomer>
+                                <ID>15384</ID>
+                                <name>пакеты</name>
+                                <image>15151</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>4270</ID>
+                        <name>6.1.15 Саморез для оконного профиля (пакеты)</name>
+                        <image>6193</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>4275</ID>
+                        <name>6.1.16 Саморез кровельный</name>
+                        <image>6208</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>15771</ID>
+                <name>6. 2 Дюбеля</name>
+                <image>16027</image>
+                <childs>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>3968</ID>
+                        <name>6.2. 1 Дюбель гвоздь (пакеты)</name>
+                        <image>5380</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>16724</ID>
+                        <name>6.2. 2 Дюбель гвоздь (кор 4)</name>
+                        <image>18127</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>5905</ID>
+                        <name>6.2. 3 Дюбель распорный полипропилен (кор.1)</name>
+                        <image>8485</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>3938</ID>
+                        <name>6.2. 3 Дюбель распорный полипропилен (пакеты)</name>
+                        <image>5293</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>15696</ID>
+                        <name>6.2. 6 Дюбель-бабочка</name>
+                        <image>15832</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>15699</ID>
+                        <name>6.2. 7 Дюбель-DRIVA</name>
+                        <image>15841</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>15385</ID>
+                        <name>6.2. 8 Дюбель костыль (пакеты)</name>
+                        <image>15154</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>17973</ID>
+                        <name>6.2. 9 Дюбель полукольцо (пакеты)</name>
+                        <image>21442</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>16520</ID>
+                        <name>6.2.10 Дюбель Molly (пакеты)</name>
+                        <image>17941</image>
+                        <childs>
+                            <category>
+                                <PorNomer>60</PorNomer>
+                                <ID>17705</ID>
+                                <name>Кор.2</name>
+                                <image>20680</image>
+                            </category>
+                            <category>
+                                <PorNomer>60</PorNomer>
+                                <ID>17707</ID>
+                                <name>Кор.3</name>
+                                <image>20686</image>
+                            </category>
+                            <category>
+                                <PorNomer>60</PorNomer>
+                                <ID>17706</ID>
+                                <name>Кор.5</name>
+                                <image>20683</image>
+                            </category>
+                            <category>
+                                <PorNomer>60</PorNomer>
+                                <ID>17704</ID>
+                                <name>Пакеты</name>
+                                <image>20677</image>
+                            </category>
+                        </childs>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>18079</ID>
+                <name>6. 3 Набор дюбель с шурупом (пакеты)</name>
+                <image>21751</image>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>16963</ID>
+                <name>6. 4 Гвозди</name>
+                <image>18781</image>
+                <childs>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>16746</ID>
+                        <name>6. 1 Гвоздь строительный (кор.2)</name>
+                        <image>18190</image>
+                        <desc>Гвоздь строительный ГОСТ 4028-63, фасовка кор.2</desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>16762</ID>
+                        <name>6. 2 Гвоздь строительный (кор.3)</name>
+                        <image>18238</image>
+                        <desc>Гвоздь строительный ГОСТ 4028-63, фасовка кор.3</desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>17305</ID>
+                        <name>6. 3 Гвоздь строительный (кор.6 х 1кг)</name>
+                        <image>19696</image>
+                        <desc>Гвоздь строительный ГОСТ 4028-80 1кг.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>4536</ID>
+                        <name>6. 4 Гвоздь финишный</name>
+                        <image>6802</image>
+                        <childs>
+                            <category>
+                                <PorNomer>60</PorNomer>
+                                <ID>15780</ID>
+                                <name>Гвоздь финишный оцинкованный</name>
+                                <image>16054</image>
+                                <desc>
+                                    Гвозди финишные с уменьшенной цилиндрической головкой (оцинкованные) DIN 1152
+                                </desc>
+                            </category>
+                            <category>
+                                <PorNomer>60</PorNomer>
+                                <ID>15778</ID>
+                                <name>Гвоздь финишный латунированный</name>
+                                <image>16048</image>
+                                <desc>
+                                    Гвозди финишные с уменьшенной цилиндрической головкой латунированные
+                                </desc>
+                            </category>
+                            <category>
+                                <PorNomer>60</PorNomer>
+                                <ID>15779</ID>
+                                <name>Гвоздь финишный омедненный</name>
+                                <image>16051</image>
+                                <desc>
+                                    Гвозди финишные с уменьшенной цилиндрической головкой омедненные
+                                </desc>
+                            </category>
+                            <category>
+                                <PorNomer>60</PorNomer>
+                                <ID>15777</ID>
+                                <name>Гвоздь финишный покрытие бронза</name>
+                                <image>16045</image>
+                                <desc>
+                                    Гвозди финишные с уменьшенной цилиндрической головкой бронзовое покритие
+                                </desc>
+                            </category>
+                            <category>
+                                <PorNomer>60</PorNomer>
+                                <ID>17990</ID>
+                                <name>Пакеты</name>
+                                <image>21487</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>16969</ID>
+                        <name>6. 5 Гвозди строительные ГОСТ 4028-63 оц. (кор.2)</name>
+                        <image>18799</image>
+                        <desc>
+                            Гвоздь строительный ГОСТ 4028-80 оцинкованный, фасовка кор.2
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>16978</ID>
+                        <name>6. 6 Гвозди строительные ГОСТ 4028-63 оц. (кор.3)</name>
+                        <image>18817</image>
+                        <desc>Гвоздь строительный ГОСТ 4028-80 оцинкованный</desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>17322</ID>
+                        <name>
+                            6. 7 Гвозди строительные ГОСТ 4028-63 оц. (кор.6х1кг)
+                        </name>
+                        <image>19747</image>
+                        <desc>
+                            Гвоздь строительный ГОСТ 4028-80 оцинкованный фасовка 1 кг.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>17339</ID>
+                        <name>6. 7 Гвозди толевые</name>
+                        <image>19798</image>
+                        <desc>
+                            Гвоздь толевый с увеличенной плоской головкой ГОСТ 4029-80 фасовка 1кг
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>17143</ID>
+                        <name>6. 8 Гвозди шиферные ТУ 208-81</name>
+                        <image>19270</image>
+                        <desc>Гвозди шиферные с завальцованной шляпкой ТУ 208-81</desc>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>18673</ID>
+                        <name>6.9 Гвозди винтовые ГОСТ 7335 (кор.6 х 1кг)</name>
+                        <image>23446</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>4040</ID>
+                <name>6. 6 Заклёпка вытяжная Al/St (пакеты)</name>
+                <image>5590</image>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>17273</ID>
+                <name>6. 7 Кляймер</name>
+                <image>19618</image>
+                <desc>
+                    Кляймеры применяются для монтажа стеновых панелей пластиковых, МДФ) и деревянной вагонки.
+                </desc>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>15383</ID>
+                <name>6. 8 Крепеж д/сантехники</name>
+                <image>15148</image>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>13119</ID>
+                <name>6. 9 Скоба электромонтажная полукруглая (пакеты)</name>
+                <image>13270</image>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>15653</ID>
+                <name>6.10 Скоба электромонтажная прямоугольная (пакеты)</name>
+                <image>15736</image>
+                <childs>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>15788</ID>
+                        <name>пакет</name>
+                        <image>16078</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>4217</ID>
+                <name>6.11 Крестики и клинья для плитки</name>
+                <image>6091</image>
+                <childs>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>15786</ID>
+                        <name>пакет</name>
+                        <image>16072</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>3984</ID>
+                <name>6.12 Евровинт</name>
+                <image>5428</image>
+                <childs>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>15787</ID>
+                        <name>пакет</name>
+                        <image>16075</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>7580</ID>
+                <name>6.13 Стяжка мебельная межсекционная</name>
+                <image>11689</image>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>3987</ID>
+                <name>6.14 Полкодержатель</name>
+                <image>5437</image>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>15053</ID>
+                <name>6.15 Шкант мебельный</name>
+                <image>14917</image>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>15781</ID>
+                <name>6.16 Заглушка ph2 (пакеты)</name>
+                <image>16057</image>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>15784</ID>
+                <name>6.17 Заглушка п/конфирмат (пакеты)</name>
+                <image>16066</image>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>15785</ID>
+                <name>6.18 Заглушка п/отверстие (пакеты)</name>
+                <image>16069</image>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>15783</ID>
+                <name>6.19 Заглушка п/рамник (пакеты)</name>
+                <image>16063</image>
+            </category>
+            <category>
+                <PorNomer>60</PorNomer>
+                <ID>15772</ID>
+                <name>6.20 Метрический крепеж</name>
+                <image>16030</image>
+                <childs>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>13029</ID>
+                        <name>6.20. 1 Набор болт , гайка, шайба оц. (пакеты)</name>
+                        <image>13006</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>18057</ID>
+                        <name>6.20. 2 Винт полусферический din 7985 оц. (пакеты)</name>
+                        <image>21685</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>13076</ID>
+                        <name>6.20. 3 Винт потай din 965 оц. (пакеты)</name>
+                        <image>13147</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>13133</ID>
+                        <name>6.20. 4 Гайка ш/г din 934 оц. (пакеты)</name>
+                        <image>13303</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>13165</ID>
+                        <name>6.20. 5 Болт din 933 оц. (кор.6 х 1кг)</name>
+                        <image>13381</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>15714</ID>
+                        <name>6.20. 6 Болт din 603 оц. (кор.6 х 1кг)</name>
+                        <image>15871</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>18470</ID>
+                        <name>6.20. 7 Гайка ш/г din 934 оц. (кор.6 х 1кг)</name>
+                        <image>22849</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>13124</ID>
+                        <name>
+                            6.20. 8 Гайка ш/г с нейлоновым колцом din 985 оц. (пакеты)
+                        </name>
+                        <image>13285</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>13111</ID>
+                        <name>6.20. 9 Гайка колпачковая din 1587 оц. (пакеты)</name>
+                        <image>13252</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>13107</ID>
+                        <name>6.20.10 Гайка барашковая din 315 оц. (пакеты)</name>
+                        <image>13240</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>13156</ID>
+                        <name>6.20.11 Шайба плоская din 125 оц. (пакеты)</name>
+                        <image>13354</image>
+                    </category>
+                    <category>
+                        <PorNomer>60</PorNomer>
+                        <ID>13145</ID>
+                        <name>6.20.12 Шайба гроверная din 127 оц. (пакеты)</name>
+                        <image>13327</image>
+                    </category>
+                </childs>
+            </category>
+        </childs>
+    </category>
+    <category>
+        <PorNomer>70</PorNomer>
+        <price_id>7</price_id>
+        <ID>1664</ID>
+        <name>7. Инструмент</name>
+        <childs>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2112</ID>
+                <name>7. 1 Режущий инструмент</name>
+                <image>2035</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>16022</ID>
+                        <name>
+                            7.1. 1 Сверла по мет. средняя серия правое HSS / Р6М5
+                        </name>
+                        <image>16642</image>
+                        <desc>Сверла с ц.х. средняя серия P6M5/HSS</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>4928</ID>
+                        <name>
+                            7.1. 2 Сверла по мет. HSS Super-Prо DIN. 338 heller
+                        </name>
+                        <image>7036</image>
+                        <desc>
+                            ТОЧНАЯ ШЛИФОВКА ДЛЯ РАБОТЫ ПО МЕТАЛЛУ Идеально для сверления легированной и нелегированной стали Прецизионная шлифовка в соответствии с DIN 338 RN для идеальной точности сверления Угол крестовой заточки сверла 135° для оптимального центрирования при засверлении Высокая точность вращения в соответствии с DIN 1414
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>7770</ID>
+                        <name>7.1. 3 Сверла по мет. длинная серия Р9М3</name>
+                        <image>12223</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>7719</ID>
+                        <name>7.1. 4 Сверла по мет. длинная серия Р6М5 / HSS-G</name>
+                        <image>12097</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>2965</ID>
+                        <name>7.1. 5 Сверла по мет. длинные 300мм HSS</name>
+                        <image>3754</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>5110</ID>
+                        <name>
+                            7.1. 6 Сверло по мет. центровочное БПК тип А ГОСТ 14952, Р6М5:
+                        </name>
+                        <image>7552</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18167</ID>
+                        <name>7.1. 7 Сверла по мет. 6-гр/х TiN</name>
+                        <image>21988</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>5092</ID>
+                        <name>7.1. 8 Сверла ступенчатые</name>
+                        <image>7504</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>7337</ID>
+                        <name>7.1. 9 Наборы сверл по металлу</name>
+                        <image>11518</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>2180</ID>
+                        <name>7.1.10 Буры SDS plus</name>
+                        <image>2230</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>17288</ID>
+                        <name>7.1.11 Буры SDS-plus Bionic Heller</name>
+                        <image>19645</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18175</ID>
+                        <name>7.1.13 Буровые коронки, хвостовики SDS plus</name>
+                        <image>22012</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18176</ID>
+                        <name>7.1.14 Сверла по бетону ц.х.</name>
+                        <image>22015</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>3511</ID>
+                        <name>7.1.15 Корончатые сверла с твердоспл. крошкой</name>
+                        <image>4912</image>
+                        <desc>Саморез для крепления листового металла.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18285</ID>
+                        <name>
+                            7.1.16 Сверло по дереву с цилиндрическим хвостовиком
+                        </name>
+                        <image>22315</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18272</ID>
+                        <name>7.1.17 Сверло п/дереву перьевое</name>
+                        <image>22276</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18273</ID>
+                        <name>7.1.18 Сверло п/дереву спиральное</name>
+                        <image>22279</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>16708</ID>
+                        <name>7.1.19 Зенковки, стопперы</name>
+                        <image>18082</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18227</ID>
+                        <name>7.1.20 Сверло-фреза</name>
+                        <image>22153</image>
+                        <desc>Фрезеровальное универсальное сверло</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>2479</ID>
+                        <name>7.1.21 Конформат</name>
+                        <image>3031</image>
+                        <desc>Конформат (мебельное сверло)</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18513</ID>
+                        <name>7.1.22 Фрезы по дереву</name>
+                        <image>22972</image>
+                        <childs>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>4532</ID>
+                                <name>Фреза пазовая без подшибника</name>
+                                <image>6793</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>5739</ID>
+                        <name>7.1.23 Наборы кольцевых пил по дереву</name>
+                        <image>8146</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18168</ID>
+                        <name>7.1.24 Коронки bi-metal</name>
+                        <image>21991</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18171</ID>
+                        <name>7.1.25 Сверла Форстнера твердосплавные</name>
+                        <image>22000</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>2220</ID>
+                        <name>7.1.26 Сверло по стеклу и кафелю коническое</name>
+                        <image>2332</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>17419</ID>
+                        <name>7.1.27 Сверло по стеклу и кафелю трубчатое</name>
+                        <image>19954</image>
+                        <desc>Рамный дюбель Wkret-met</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>7259</ID>
+                        <name>7.1.28 Ножи для электрорубанка</name>
+                        <image>11416</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2107</ID>
+                <name>7. 2 Резьбонарезной</name>
+                <image>2020</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>2246</ID>
+                        <name>
+                            1. Метчики правосторонние метрические 9ХС / Р6М5 ГОСТ 3266-81
+                        </name>
+                        <image>2404</image>
+                        <desc>
+                            Метчики ручные 2-комплектные, для сквозных и глухих отверстий. Инструментальная сталь 9ХС.
+                        </desc>
+                        <childs>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15871</ID>
+                                <name>Зубила и Керны</name>
+                                <image>16243</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15909</ID>
+                                <name>Керны Зубила Добойники</name>
+                                <image>16351</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15872</ID>
+                                <name>Ножницы</name>
+                                <image>16246</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15910</ID>
+                                <name>Ножницы</name>
+                                <image>16354</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15870</ID>
+                                <name>Пистолеты</name>
+                                <image>16240</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15908</ID>
+                                <name>Пистолеты</name>
+                                <image>16348</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18742</ID>
+                        <name>
+                            2. Метчик машинно-ручной левосторонний ГОСТ 3266-81
+                        </name>
+                        <image>23650</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18740</ID>
+                        <name>3. Воротки для метчиков</name>
+                        <image>23644</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18747</ID>
+                        <name>5, Воротки для метчиков реверсивные</name>
+                        <image>23665</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>1843</ID>
+                        <name>5. Плашки круглые метрические 9ХС ГОСТ 9740-71</name>
+                        <image>1243</image>
+                        <desc>Плашки круглые для нарезания метрической резьбы.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18741</ID>
+                        <name>6. Плашкодержатели</name>
+                        <image>23647</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>4356</ID>
+                        <name>7. Клупп трубный</name>
+                        <image>6382</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>1665</ID>
+                <name>7. 3 Абразивы</name>
+                <image>832</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15897</ID>
+                        <name>1 Круги отрезные по металлу / Луга</name>
+                        <image>16315</image>
+                        <desc>Круги отрезные по металлу 14А</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>2113</ID>
+                        <name>2 Круги отрезные по металлу / Tsunami</name>
+                        <image>2038</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15713</ID>
+                        <name>3 Круги абразивные Hilti</name>
+                        <image>15868</image>
+                        <desc>AC-D UP / AC-D UP Inox</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15898</ID>
+                        <name>4 Круги отрезные по камню / Луга</name>
+                        <image>16318</image>
+                        <desc>Круги отрезные по камнюю. 54С</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15899</ID>
+                        <name>5 Круги зачистные по металлу / Луга</name>
+                        <image>16321</image>
+                        <desc>Круги зачистные по металлу 14А</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15900</ID>
+                        <name>6 Диск отрезной алмазный</name>
+                        <image>16324</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>2453</ID>
+                        <name>7 Круги лепестковые торцевые</name>
+                        <image>2956</image>
+                        <desc>Круг лепестковый торцевой</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>1739</ID>
+                        <name>8 Круг абразивный на ворсовой подложке под липучку</name>
+                        <image>1039</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18588</ID>
+                        <name>
+                            9 Круг абразивный с перфорацией на ворсовой подложке под липучку
+                        </name>
+                        <image>23191</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>1758</ID>
+                        <name>10 Шлиф-листы</name>
+                        <image>1096</image>
+                        <desc>Шлифлист на тканевой основе 240х170мм водостойкий.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>1712</ID>
+                        <name>11 Лента абразивная бесконечная</name>
+                        <image>958</image>
+                        <desc>
+                            Применяется для зачистки поверхностей и чистовой доводки. Используется для обработки поверхностей из древесин всех пород, ДСП, фанеры, стали, цветные металлов, кожи, стекла
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>1672</ID>
+                        <name>Круги отрезные</name>
+                        <image>853</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>1798</ID>
+                        <name>Щетки мет д\болгар\дрели</name>
+                        <image>1165</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>18245</ID>
+                <name>7. 4 Шлифовальный инструмент</name>
+                <image>22198</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>2267</ID>
+                        <name>
+                            1 Щетка торцевые д/УШМ "Чашка" крученая мет. проволока
+                        </name>
+                        <image>2467</image>
+                        <childs>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15883</ID>
+                                <name>Киянки</name>
+                                <image>16276</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15924</ID>
+                                <name>Киянки</name>
+                                <image>16387</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15884</ID>
+                                <name>Кувалды</name>
+                                <image>16279</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15925</ID>
+                                <name>Кувалды</name>
+                                <image>16390</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15885</ID>
+                                <name>Молотки</name>
+                                <image>16282</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15926</ID>
+                                <name>Молотки</name>
+                                <image>16393</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15682</ID>
+                        <name>2 Щетка радиальные д/УШМ крученая мет. проволока</name>
+                        <image>15817</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>16860</ID>
+                        <name>
+                            3 Щетка торцевая д/УШМ "Чашка" витая латунированная проволока
+                        </name>
+                        <image>18526</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>6933</ID>
+                        <name>4 Шлиф круг для УШМ с липучкой</name>
+                        <image>10828</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18454</ID>
+                        <name>5 Щетка стальная проволока пласт. ручка</name>
+                        <image>22801</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>1812</ID>
+                <name>7. 5 Измерительный</name>
+                <image>1207</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>3549</ID>
+                        <name>Лазерный инструмент</name>
+                        <image>4981</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>3482</ID>
+                        <name>Линейки</name>
+                        <image>4864</image>
+                        <desc>Линейка стальная.</desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>1813</ID>
+                        <name>Рулетки</name>
+                        <image>1210</image>
+                        <desc>Рулетка обрезиненный корпус с двойной фиксацией</desc>
+                        <childs>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>18640</ID>
+                                <name>Рулетки Gross</name>
+                                <image>23347</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>18639</ID>
+                                <name>Рулетки Jobi</name>
+                                <image>23344</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>1389</ID>
+                                <name>
+                                    Рулетки двойная фиксация обрез. корпус "Практик" D3
+                                </name>
+                                <image>577</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>6927</ID>
+                        <name>Угольник алюминиевый литой</name>
+                        <image>10810</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18440</ID>
+                        <name>Угольник металлический столярный</name>
+                        <image>22759</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18642</ID>
+                        <name>Угольник цельнометаллический</name>
+                        <image>23353</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18526</ID>
+                        <name>Уровнь алюминиевый рельс</name>
+                        <image>23005</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18277</ID>
+                        <name>Штангельциркули, микрометры</name>
+                        <image>22291</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>15775</ID>
+                <name>7. 6 Молотки</name>
+                <image>16039</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18652</ID>
+                        <name>
+                            7.2. 1 Молоток немецкого типа деревянная ручка (квадратный боек)
+                        </name>
+                        <image>23383</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>3439</ID>
+                        <name>7.2. 2 Молоток слесарный фиберглас. ручка Практик</name>
+                        <image>4762</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18648</ID>
+                        <name>7.2. 3 Кувалда фиберглас ручка /matrix</name>
+                        <image>23371</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18743</ID>
+                        <name>7.2. 4 Киянка резиновая с фиберглассовой ручкой</name>
+                        <image>23653</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2432</ID>
+                <name>7. 7 Гвоздодеры</name>
+                <image>2893</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18636</ID>
+                        <name>7.7.1 Гвоздодер шестигранный окрашенный /Sparta</name>
+                        <image>23335</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15791</ID>
+                        <name>7.7.2 Гвоздодеры Россия</name>
+                        <image>16081</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2247</ID>
+                <name>7. 8 Губцевый</name>
+                <image>2407</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18552</ID>
+                        <name>1 Плоскогубцы комбинированные Практик Профи</name>
+                        <image>23083</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18556</ID>
+                        <name>2 Плоскогуьцы удлиненные Практик</name>
+                        <image>23095</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18557</ID>
+                        <name>3 Плоскогубцы удлиненные изогнутые Практик Профи</name>
+                        <image>23098</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18555</ID>
+                        <name>4 Бокорезы</name>
+                        <image>23092</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18553</ID>
+                        <name>5 Бокорезы Практик Профи</name>
+                        <image>23086</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18554</ID>
+                        <name>6 Кусачки торцевые Практик Профи</name>
+                        <image>23089</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2312</ID>
+                <name>7. 9 Отвертки</name>
+                <image>2602</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>17186</ID>
+                        <name>1 Отвертки WhirlPower крест</name>
+                        <image>19372</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>4748</ID>
+                        <name>2 Отвертки WhirlPower шлиц</name>
+                        <image>6865</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15928</ID>
+                        <name>Биты</name>
+                        <image>16396</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15930</ID>
+                        <name>Отвертки в наборах</name>
+                        <image>16402</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15931</ID>
+                        <name>Отвертки пробники</name>
+                        <image>16405</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>15793</ID>
+                <name>7.10 Насадки и биты</name>
+                <image>16084</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18172</ID>
+                        <name>1 Биты WhirlPower для больших нагрузок</name>
+                        <image>22003</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18609</ID>
+                        <name>2 Биты WhirlPower с ограничителем</name>
+                        <image>23254</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18569</ID>
+                        <name>3 Биты WhirlPower с резьбовым хвостовиком</name>
+                        <image>23134</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>1458</ID>
+                        <name>4 Биты Torx-Hole (звезда с отверстием)</name>
+                        <image>718</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18174</ID>
+                        <name>5 Биты</name>
+                        <image>22009</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>5637</ID>
+                        <name>6 Адаптеры для бит</name>
+                        <image>8086</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18568</ID>
+                        <name>7 Адаптеры для бит гибкие</name>
+                        <image>23131</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18173</ID>
+                        <name>8 Головка торцевая магнитная</name>
+                        <image>22006</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>7258</ID>
+                        <name>8. Адаптеры для бит спеециальные</name>
+                        <image>11413</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>2441</ID>
+                        <name>9 Биты Wera Germany</name>
+                        <image>2920</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>1866</ID>
+                <name>7.11 Ключи</name>
+                <image>1300</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18565</ID>
+                        <name>Адаптеры для торцевых головок</name>
+                        <image>23122</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18567</ID>
+                        <name>Адаптеры для торцевых головок гибкие</name>
+                        <image>23128</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18558</ID>
+                        <name>
+                            Головки торцевые 1/2 whirlpower Cr-V,super lock, с ребристым кольцом
+                        </name>
+                        <image>23101</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18559</ID>
+                        <name>
+                            Головки торцевые 1/4 whirlpower Cr-V,super lock, с ребристым кольцом
+                        </name>
+                        <image>23104</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15875</ID>
+                        <name>Ключи авто</name>
+                        <image>16252</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>6085</ID>
+                        <name>Ключи имбусовые</name>
+                        <image>8800</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18195</ID>
+                        <name>Ключи комбинированные CrV, Satin /Eastman</name>
+                        <image>22066</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18561</ID>
+                        <name>Ключи комбинированные кованые</name>
+                        <image>23110</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18563</ID>
+                        <name>Ключи комбинированные трещеточные</name>
+                        <image>23116</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15876</ID>
+                        <name>Ключи наборные</name>
+                        <image>16255</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15903</ID>
+                        <name>Ключи наборные</name>
+                        <image>16333</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15874</ID>
+                        <name>Ключи разводные</name>
+                        <image>16249</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15902</ID>
+                        <name>Ключи разводные</name>
+                        <image>16330</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>5510</ID>
+                        <name>Ключи разводные Практик профи</name>
+                        <image>7894</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>3046</ID>
+                        <name>Ключи рожковые Eastman Cr-V, satin/Eastman</name>
+                        <image>3967</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>16954</ID>
+                        <name>Ключи трубные прямые губки</name>
+                        <image>18757</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15901</ID>
+                        <name>Наборы ключей</name>
+                        <image>16327</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18610</ID>
+                        <name>Трещетки для торцевых головок "Практик"</name>
+                        <image>23257</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>6930</ID>
+                        <name>Удлинители для головок whirlpower</name>
+                        <image>10819</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2295</ID>
+                <name>7.12 Напильники, надфили</name>
+                <image>2551</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>1443</ID>
+                        <name>Напильник круглый ГОСТ 1465-80, У12</name>
+                        <image>682</image>
+                        <childs>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>1446</ID>
+                                <name>С- 2</name>
+                                <image>688</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>1463</ID>
+                                <name>С-10 (Волна)</name>
+                                <image>727</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>1465</ID>
+                                <name>С-12</name>
+                                <image>733</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>7521</ID>
+                        <name>Напильник плоский ГОСТ 1465-80, У12</name>
+                        <image>11521</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18738</ID>
+                        <name>Напильник трехгранный ГОСТ 1465-80, У12</name>
+                        <image>23638</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2431</ID>
+                <name>7.13 Ножницы по металлу</name>
+                <image>2890</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>17187</ID>
+                        <name>Ножницы по металлу Santool</name>
+                        <image>19375</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2056</ID>
+                <name>7.14 Ножи, сменные лезвия</name>
+                <image>1870</image>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2075</ID>
+                <name>7.15 Ножовки, полотна, стусла</name>
+                <image>1927</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18560</ID>
+                        <name>Ножовка по дереву с линейкой Практик</name>
+                        <image>23107</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15867</ID>
+                        <name>Ножовки дерево</name>
+                        <image>16231</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15904</ID>
+                        <name>Ножовки дерево</name>
+                        <image>16336</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15866</ID>
+                        <name>Ножовки метал</name>
+                        <image>16228</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15906</ID>
+                        <name>Ножовки метал</name>
+                        <image>16342</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18620</ID>
+                        <name>Ножовки по металлу</name>
+                        <image>23287</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15868</ID>
+                        <name>Пилки для лобзиков</name>
+                        <image>16234</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15905</ID>
+                        <name>Пилки для электро лобзиков</name>
+                        <image>16339</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18621</ID>
+                        <name>Полотна для ножовок, лобзиков</name>
+                        <image>23290</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18562</ID>
+                        <name>
+                            Полотна по дереву для электро лобзика Matrix PROFESSIONAL
+                        </name>
+                        <image>23113</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>17020</ID>
+                        <name>
+                            Полотна по металлу для электро лобзика Matrix PROFESSIONAL
+                        </name>
+                        <image>18934</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15907</ID>
+                        <name>Стусла</name>
+                        <image>16345</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15869</ID>
+                        <name>Стусла и лобзики</name>
+                        <image>16237</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>18228</ID>
+                <name>7.16 Патроны и адаптеры</name>
+                <image>22156</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18649</ID>
+                        <name>Адаптер SDS plus / патрон</name>
+                        <image>23374</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18650</ID>
+                        <name>Патрон д/дрели с ключем</name>
+                        <image>23377</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18651</ID>
+                        <name>Патрон д/дрели самозажимной</name>
+                        <image>23380</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>15668</ID>
+                <name>7.17 Зубила, керны, бородки</name>
+                <image>15778</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18637</ID>
+                        <name>Бородок добойник Stayer</name>
+                        <image>23338</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18638</ID>
+                        <name>Зубило утяжеленное тип 2</name>
+                        <image>23341</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>6150</ID>
+                <name>7.18 Струбцины</name>
+                <image>8941</image>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2373</ID>
+                <name>7.19 Стэплеры, скобы</name>
+                <image>2782</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15882</ID>
+                        <name>Скобы д/степлера</name>
+                        <image>16273</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>15881</ID>
+                        <name>Степлеры</name>
+                        <image>16270</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>15929</ID>
+                <name>7.20 Малярный</name>
+                <image>16399</image>
+                <childs>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>1885</ID>
+                        <name>Валики/шубки</name>
+                        <image>1357</image>
+                        <childs>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>18643</ID>
+                                <name>Бюгель для валика</name>
+                                <image>23356</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>4791</ID>
+                                <name>Валик полиамид</name>
+                                <image>6883</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>1891</ID>
+                                <name>Валик велюр</name>
+                                <image>1375</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>1893</ID>
+                                <name>Валик велюр\поли\акр\амид</name>
+                                <image>1381</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>1903</ID>
+                                <name>Валик мех</name>
+                                <image>1411</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>18644</ID>
+                                <name>Валик меховой натуральный</name>
+                                <image>23359</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>18645</ID>
+                                <name>Валик полиакриловый</name>
+                                <image>23362</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>1915</ID>
+                                <name>Валик поролон</name>
+                                <image>1447</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>2578</ID>
+                                <name>Валик прижимной</name>
+                                <image>3283</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>1925</ID>
+                                <name>Валик прижимной\игольчатый</name>
+                                <image>1477</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>1946</ID>
+                        <name>Ванночка малярная</name>
+                        <image>1540</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>491</ID>
+                        <name>Кисть плоская Эксперт (натуральная щетина)</name>
+                        <image>244</image>
+                        <desc>
+                            Кисть плоская, натуральная щетина, крашенная деревянная ручка.
+                        </desc>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>1886</ID>
+                        <name>Миксер</name>
+                        <image>1360</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>18646</ID>
+                        <name>Шпатель нерж. пласт. ручка /eurotex</name>
+                        <image>23365</image>
+                    </category>
+                    <category>
+                        <PorNomer>70</PorNomer>
+                        <ID>2004</ID>
+                        <name>Шпатель пвх</name>
+                        <image>1714</image>
+                        <childs>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15921</ID>
+                                <name>Гладилки</name>
+                                <image>16378</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15923</ID>
+                                <name>Шпатель ПВХ</name>
+                                <image>16384</image>
+                            </category>
+                            <category>
+                                <PorNomer>70</PorNomer>
+                                <ID>15922</ID>
+                                <name>Шпатель нерж</name>
+                                <image>16381</image>
+                            </category>
+                        </childs>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>16103</ID>
+                <name>7.21 Пистолеты для герметиков и пены</name>
+                <image>16870</image>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>7315</ID>
+                <name>7.22 Пистолет термоклеевой</name>
+                <image>11452</image>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2262</ID>
+                <name>7.24 Заклепочники</name>
+                <image>2452</image>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2365</ID>
+                <name>7.25 Стеклорез</name>
+                <image>2761</image>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>15801</ID>
+                <name>7.26 Лопаты</name>
+                <image>16108</image>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2468</ID>
+                <name>Стремянки</name>
+                <image>3001</image>
+            </category>
+            <category>
+                <PorNomer>70</PorNomer>
+                <ID>2476</ID>
+                <name>Строительный</name>
+                <image>3022</image>
+            </category>
+        </childs>
+    </category>
+    <category>
+        <PorNomer>80</PorNomer>
+        <price_id>8</price_id>
+        <ID>15890</ID>
+        <name>8. Скобяные изделия</name>
+        <childs>
+            <category>
+                <PorNomer>80</PorNomer>
+                <ID>5695</ID>
+                <name>8.1 Замки навесные</name>
+                <image>8104</image>
+                <childs>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>5717</ID>
+                        <name>Замки серии HG глянценвый</name>
+                        <image>8128</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>17783</ID>
+                        <name>Замки серия Extra HD</name>
+                        <image>20893</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>2148</ID>
+                        <name>Замки серия NBX Soller</name>
+                        <image>2134</image>
+                        <childs>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>15965</ID>
+                                <name>Сверла с ц.х правые</name>
+                                <image>16495</image>
+                            </category>
+                        </childs>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>80</PorNomer>
+                <ID>15724</ID>
+                <name>8.2 Петли</name>
+                <image>15892</image>
+                <childs>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6157</ID>
+                        <name>1. Петли оцинкованные</name>
+                        <image>8962</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>18737</ID>
+                        <name>2. Петля дверная без врезки (бабочка)</name>
+                        <image>23635</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6833</ID>
+                        <name>3. Петля универсальная Soller</name>
+                        <image>10597</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>7718</ID>
+                        <name>4. Петли рояльные</name>
+                        <image>12094</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6166</ID>
+                        <name>5. Петли карточные</name>
+                        <image>8989</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>18635</ID>
+                        <name>6. Петли ПД</name>
+                        <image>23332</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>17141</ID>
+                        <name>7. Петли ПНВ</name>
+                        <image>19264</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6171</ID>
+                        <name>8. Петли стрела</name>
+                        <image>9004</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6084</ID>
+                        <name>9. Петли гаражные с шаром</name>
+                        <image>8797</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>18237</ID>
+                        <name>10. Петли каплевидные для стальных дверей</name>
+                        <image>22174</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>15966</ID>
+                        <name>ПВ</name>
+                        <image>16498</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>16734</ID>
+                        <name>Универсальные</name>
+                        <image>18157</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>80</PorNomer>
+                <ID>15889</ID>
+                <name>8.3 Дверная фурнитура</name>
+                <image>16294</image>
+                <childs>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>16307</ID>
+                        <name>8.3. 1 Проушины</name>
+                        <image>17395</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6658</ID>
+                        <name>8.3. 2 Накладки дверные</name>
+                        <image>10282</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>18289</ID>
+                        <name>8.3. 3 Задвижки дверные</name>
+                        <image>22327</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>18624</ID>
+                        <name>8.3. 4 Шпингалет ЗТ</name>
+                        <image>23299</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>18625</ID>
+                        <name>8.3. 5 Шпингалет 807С</name>
+                        <image>23302</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>18626</ID>
+                        <name>8.3. 6 Шпингалет 808С</name>
+                        <image>23305</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>18290</ID>
+                        <name>8.3. 7 Крючки дверные</name>
+                        <image>22330</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6883</ID>
+                        <name>8.3. 8 Фиксатор дверной</name>
+                        <image>10681</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>5525</ID>
+                        <name>8.3. 9 Ручки дверные</name>
+                        <image>7909</image>
+                        <childs>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>3204</ID>
+                                <name>Ручка-скоба РС 68</name>
+                                <image>4237</image>
+                            </category>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>18618</ID>
+                                <name>Ручка-скоба РС 80/100 литая</name>
+                                <image>23281</image>
+                            </category>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>18627</ID>
+                                <name>Ручка-скоба РС 90 цельнотянутая</name>
+                                <image>23308</image>
+                            </category>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>4104</ID>
+                                <name>Ручка-скоба РС 100-4 ГОСТ 5087</name>
+                                <image>5758</image>
+                            </category>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>16671</ID>
+                                <name>Ручки кнопки</name>
+                                <image>18022</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>4097</ID>
+                        <name>8.3.10 Ручки откидные, замок накидной</name>
+                        <image>5737</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>894</ID>
+                        <name>8.3.11 Номерки пластиковые</name>
+                        <image>322</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>5543</ID>
+                        <name>8.3.12 Упор дверной</name>
+                        <image>7951</image>
+                        <childs>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>18622</ID>
+                                <name>Упор дверной 833</name>
+                                <image>23293</image>
+                            </category>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>18623</ID>
+                                <name>Упор дверной 908</name>
+                                <image>23296</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6026</ID>
+                        <name>8.3.13 Личины</name>
+                        <image>8680</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>5990</ID>
+                        <name>8.3.14 Личины для стальных китайских дверей</name>
+                        <image>8617</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>80</PorNomer>
+                <ID>911</ID>
+                <name>8.4 Оконная фурнитура</name>
+                <image>355</image>
+                <childs>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>18292</ID>
+                        <name>8.4. 1 Петли ввертные ПВВ-1</name>
+                        <image>22336</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>3459</ID>
+                        <name>8.4. 2 Петли ввертные ПВВ-2</name>
+                        <image>4816</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6050</ID>
+                        <name>8.4. 3 Завертка оконная ЗР-2</name>
+                        <image>8707</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>17726</ID>
+                        <name>8.4. 4 Завертка оконная ЗР-3</name>
+                        <image>20737</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>15721</ID>
+                        <name>8.4. 6 Ручка завертки врезной Р1</name>
+                        <image>15883</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>18515</ID>
+                        <name>8.4. 7 Накладка с лепестком</name>
+                        <image>22978</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>1444</ID>
+                        <name>8.4. 8 Зафертка форточная ЗФ</name>
+                        <image>685</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>2959</ID>
+                        <name>8.4. 9 Зафертка форточная 909</name>
+                        <image>3745</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6081</ID>
+                        <name>8.4.10 Уголки рамные</name>
+                        <image>8788</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>80</PorNomer>
+                <ID>5761</ID>
+                <name>Защелки</name>
+                <image>8155</image>
+                <childs>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>5764</ID>
+                        <name>INKU</name>
+                        <image>8158</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>5794</ID>
+                        <name>Nora-M</name>
+                        <image>8221</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>16162</ID>
+                        <name>Защелки м/к SOLLER</name>
+                        <image>17038</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>80</PorNomer>
+                <ID>6182</ID>
+                <name>Пороги Нора-М</name>
+                <image>9025</image>
+            </category>
+            <category>
+                <PorNomer>80</PorNomer>
+                <ID>6224</ID>
+                <name>Ручки</name>
+                <image>9151</image>
+                <childs>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6279</ID>
+                        <name>NORA-M</name>
+                        <image>9154</image>
+                        <childs>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>6280</ID>
+                                <name>Серия PREMIUM</name>
+                                <image>9157</image>
+                            </category>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>6359</ID>
+                                <name>Серия Эконом</name>
+                                <image>9391</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6440</ID>
+                        <name>Palladium</name>
+                        <image>9634</image>
+                        <childs>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>6441</ID>
+                                <name>Серия Classic</name>
+                                <image>9637</image>
+                                <childs>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6442</ID>
+                                        <name>Накладка Classic CL BK фиксатор</name>
+                                        <image>9640</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6449</ID>
+                                        <name>Накладка Classic CL ET под цилиндр</name>
+                                        <image>9661</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6456</ID>
+                                        <name>Накладка Classic CL KT под ключ</name>
+                                        <image>9682</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6463</ID>
+                                        <name>Ручки Helen</name>
+                                        <image>9703</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6470</ID>
+                                        <name>Ручки Maria</name>
+                                        <image>9724</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6477</ID>
+                                        <name>Ручки Natali</name>
+                                        <image>9745</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6484</ID>
+                                        <name>Ручки Portu</name>
+                                        <image>9766</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6491</ID>
+                                        <name>Ручки Vita</name>
+                                        <image>9787</image>
+                                    </category>
+                                </childs>
+                            </category>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>6498</ID>
+                                <name>Серия Future</name>
+                                <image>9808</image>
+                                <childs>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6499</ID>
+                                        <name>Накладки Future</name>
+                                        <image>9811</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6506</ID>
+                                        <name>Ручка 007</name>
+                                        <image>9832</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6510</ID>
+                                        <name>Ручка Bliss</name>
+                                        <image>9844</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6514</ID>
+                                        <name>Ручка Bono</name>
+                                        <image>9856</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6518</ID>
+                                        <name>Ручка Camertone</name>
+                                        <image>9868</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6521</ID>
+                                        <name>Ручка Eterno</name>
+                                        <image>9877</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6525</ID>
+                                        <name>Ручка Magnum</name>
+                                        <image>9889</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6529</ID>
+                                        <name>Ручка Sting</name>
+                                        <image>9901</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6533</ID>
+                                        <name>Ручка West</name>
+                                        <image>9913</image>
+                                    </category>
+                                </childs>
+                            </category>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>6537</ID>
+                                <name>Серия Style</name>
+                                <image>9925</image>
+                                <childs>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6538</ID>
+                                        <name>Накладка Style S BK фиксатор</name>
+                                        <image>9928</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6545</ID>
+                                        <name>Накладка Style S ET под цилиндр</name>
+                                        <image>9949</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6552</ID>
+                                        <name>Накладка Style S KT под ключ</name>
+                                        <image>9970</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6559</ID>
+                                        <name>Ручки 01</name>
+                                        <image>9991</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6566</ID>
+                                        <name>Ручки Aquatic</name>
+                                        <image>10012</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6573</ID>
+                                        <name>Ручки Bravo</name>
+                                        <image>10033</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6577</ID>
+                                        <name>Ручки Drops</name>
+                                        <image>10045</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6584</ID>
+                                        <name>Ручки Life</name>
+                                        <image>10066</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6591</ID>
+                                        <name>Ручки Mia</name>
+                                        <image>10087</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6598</ID>
+                                        <name>Ручки Nicole</name>
+                                        <image>10108</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6605</ID>
+                                        <name>Ручки Smile</name>
+                                        <image>10129</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6612</ID>
+                                        <name>Ручки Strada</name>
+                                        <image>10150</image>
+                                    </category>
+                                    <category>
+                                        <PorNomer>80</PorNomer>
+                                        <ID>6616</ID>
+                                        <name>Ручки Twist</name>
+                                        <image>10162</image>
+                                    </category>
+                                </childs>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6625</ID>
+                        <name>Virgola</name>
+                        <image>10189</image>
+                        <childs>
+                            <category>
+                                <PorNomer>80</PorNomer>
+                                <ID>6626</ID>
+                                <name>VIOLA ручки на розетке 50мм, резьба</name>
+                                <image>10192</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6633</ID>
+                        <name>ИТАРОС</name>
+                        <image>10213</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>16311</ID>
+                        <name>Оптим</name>
+                        <image>17407</image>
+                    </category>
+                    <category>
+                        <PorNomer>80</PorNomer>
+                        <ID>6670</ID>
+                        <name>Ручки дверные</name>
+                        <image>10315</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>80</PorNomer>
+                <ID>6682</ID>
+                <name>Уголки д/полок</name>
+                <image>10348</image>
+            </category>
+        </childs>
+    </category>
+    <category>
+        <PorNomer>90</PorNomer>
+        <price_id>9</price_id>
+        <ID>5863</ID>
+        <name>9. Мебельная фурнитура</name>
+        <childs>
+            <category>
+                <PorNomer>90</PorNomer>
+                <ID>5849</ID>
+                <name>9. 1 Крючки мебельные</name>
+                <image>8320</image>
+                <childs>
+                    <category>
+                        <PorNomer>90</PorNomer>
+                        <ID>18293</ID>
+                        <name>Вешалка №709-3</name>
+                        <image>22339</image>
+                    </category>
+                    <category>
+                        <PorNomer>90</PorNomer>
+                        <ID>15802</ID>
+                        <name>Крючок 002</name>
+                        <image>16111</image>
+                    </category>
+                    <category>
+                        <PorNomer>90</PorNomer>
+                        <ID>6712</ID>
+                        <name>Крючок 003</name>
+                        <image>10405</image>
+                    </category>
+                    <category>
+                        <PorNomer>90</PorNomer>
+                        <ID>5591</ID>
+                        <name>Крючок 1016</name>
+                        <image>8047</image>
+                    </category>
+                    <category>
+                        <PorNomer>90</PorNomer>
+                        <ID>5684</ID>
+                        <name>Крючок 303</name>
+                        <image>8098</image>
+                    </category>
+                    <category>
+                        <PorNomer>90</PorNomer>
+                        <ID>18629</ID>
+                        <name>Крючок 703А</name>
+                        <image>23314</image>
+                    </category>
+                    <category>
+                        <PorNomer>90</PorNomer>
+                        <ID>6687</ID>
+                        <name>Крючок 827</name>
+                        <image>10363</image>
+                    </category>
+                    <category>
+                        <PorNomer>90</PorNomer>
+                        <ID>18630</ID>
+                        <name>Крючок 843 В</name>
+                        <image>23317</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>90</PorNomer>
+                <ID>5914</ID>
+                <name>9. 4 Ручки мебельные 819 d-28мм</name>
+                <image>8512</image>
+            </category>
+            <category>
+                <PorNomer>90</PorNomer>
+                <ID>5901</ID>
+                <name>9. 5 Петли мебельные</name>
+                <image>8473</image>
+            </category>
+            <category>
+                <PorNomer>90</PorNomer>
+                <ID>190</ID>
+                <name>9. 6 Опора колесная с площадкой</name>
+                <image>46</image>
+            </category>
+            <category>
+                <PorNomer>90</PorNomer>
+                <ID>18633</ID>
+                <name>9. 7 Опора колесная со штырем</name>
+                <image>23326</image>
+            </category>
+            <category>
+                <PorNomer>90</PorNomer>
+                <ID>5875</ID>
+                <name>9. 8 Магнит мебельный</name>
+                <image>8398</image>
+            </category>
+            <category>
+                <PorNomer>90</PorNomer>
+                <ID>5882</ID>
+                <name>9. 9 Мебельный уголок</name>
+                <image>8419</image>
+                <childs>
+                    <category>
+                        <PorNomer>90</PorNomer>
+                        <ID>18631</ID>
+                        <name>Мебельный уголок ПВХ</name>
+                        <image>23320</image>
+                    </category>
+                    <category>
+                        <PorNomer>90</PorNomer>
+                        <ID>5590</ID>
+                        <name>Стяжка мебельная угловая</name>
+                        <image>8044</image>
+                        <childs>
+                            <category>
+                                <PorNomer>90</PorNomer>
+                                <ID>5669</ID>
+                                <name>Герион</name>
+                                <image>8092</image>
+                            </category>
+                            <category>
+                                <PorNomer>90</PorNomer>
+                                <ID>5726</ID>
+                                <name>Замки разные</name>
+                                <image>8134</image>
+                            </category>
+                            <category>
+                                <PorNomer>90</PorNomer>
+                                <ID>5729</ID>
+                                <name>КЭМЗ-Калуга</name>
+                                <image>8140</image>
+                            </category>
+                            <category>
+                                <PorNomer>90</PorNomer>
+                                <ID>16309</ID>
+                                <name>Оптим</name>
+                                <image>17401</image>
+                            </category>
+                        </childs>
+                    </category>
+                    <category>
+                        <PorNomer>90</PorNomer>
+                        <ID>18632</ID>
+                        <name>Уголок мебельный МК</name>
+                        <image>23323</image>
+                    </category>
+                    <category>
+                        <PorNomer>90</PorNomer>
+                        <ID>15765</ID>
+                        <name>Уголок мебельный УМ</name>
+                        <image>16012</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>90</PorNomer>
+                <ID>17006</ID>
+                <name>9.10 Подвеска мебельная</name>
+                <image>18892</image>
+            </category>
+            <category>
+                <PorNomer>90</PorNomer>
+                <ID>6135</ID>
+                <name>9.11 Навеска мебельная</name>
+                <image>8911</image>
+            </category>
+            <category>
+                <PorNomer>90</PorNomer>
+                <ID>6141</ID>
+                <name>9.13 Крепеж для зеркал Soller №101 d=17мм</name>
+                <image>8914</image>
+            </category>
+            <category>
+                <PorNomer>90</PorNomer>
+                <ID>15687</ID>
+                <name>9.14 Гвозди мебельные декоративные</name>
+                <image>15823</image>
+            </category>
+            <category>
+                <PorNomer>90</PorNomer>
+                <ID>5864</ID>
+                <name>Замки мебельные</name>
+                <image>8365</image>
+            </category>
+        </childs>
+    </category>
+    <category>
+        <PorNomer>100</PorNomer>
+        <price_id>10</price_id>
+        <ID>6739</ID>
+        <name>10. Технические ленты</name>
+        <childs>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>16768</ID>
+                <name>10. 1 Скотч / Стрейч</name>
+                <image>18256</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>16153</ID>
+                <name>10. 2 Лента малярная</name>
+                <image>17011</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>3447</ID>
+                <name>10. 3 Ленты двухсторонние</name>
+                <image>4780</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>5218</ID>
+                <name>10. 4 Изолента ПВХ</name>
+                <image>7726</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>5153</ID>
+                <name>10. 5 Изолента Х/Б</name>
+                <image>7669</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>854</ID>
+                <name>10. 6 Лента алюминиевая</name>
+                <image>286</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>18744</ID>
+                <name>10. 7 Лента метализированная</name>
+                <image>23656</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>18745</ID>
+                <name>10. 8 Лента армированная ТПЛ</name>
+                <image>23659</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>18746</ID>
+                <name>10. 9 Лента сигнальная</name>
+                <image>23662</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>5456</ID>
+                <name>10.10 Лента фум</name>
+                <image>7768</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>17725</ID>
+                <name>10.12 Уплотнитель самоклеющийся</name>
+                <image>20734</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>18439</ID>
+                <name>10.12 Шнур комбинированный ПП + ПЭ</name>
+                <image>22756</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>7541</ID>
+                <name>10.13 Трос буксировочный</name>
+                <image>11581</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>7209</ID>
+                <name>10.14 Ремень стяжной</name>
+                <image>11410</image>
+            </category>
+            <category>
+                <PorNomer>100</PorNomer>
+                <ID>4348</ID>
+                <name>10.15 Резинки багажные</name>
+                <image>6358</image>
+            </category>
+        </childs>
+    </category>
+    <category>
+        <PorNomer>110</PorNomer>
+        <price_id>11</price_id>
+        <ID>2415</ID>
+        <name>11. Спецодежда</name>
+    </category>
+    <category>
+        <PorNomer>120</PorNomer>
+        <price_id>12</price_id>
+        <ID>6832</ID>
+        <name>12. Строительная химия</name>
+        <childs>
+            <category>
+                <PorNomer>120</PorNomer>
+                <ID>7011</ID>
+                <name>12.1 Пена монтажная</name>
+                <image>11032</image>
+            </category>
+            <category>
+                <PorNomer>120</PorNomer>
+                <ID>6845</ID>
+                <name>12.2 Герметики</name>
+                <image>10624</image>
+            </category>
+            <category>
+                <PorNomer>120</PorNomer>
+                <ID>6902</ID>
+                <name>12.3 Жидкие гвозди</name>
+                <image>10738</image>
+            </category>
+            <category>
+                <PorNomer>120</PorNomer>
+                <ID>464</ID>
+                <name>12.4 Клей</name>
+                <image>238</image>
+            </category>
+            <category>
+                <PorNomer>120</PorNomer>
+                <ID>4496</ID>
+                <name>12.5 Клей холодная сварка</name>
+                <image>6712</image>
+                <desc>Клей холодная сварка</desc>
+            </category>
+            <category>
+                <PorNomer>120</PorNomer>
+                <ID>7093</ID>
+                <name>12.6 WD-40</name>
+                <image>11212</image>
+                <childs>
+                    <category>
+                        <PorNomer>120</PorNomer>
+                        <ID>7094</ID>
+                        <name>Шпатлёвка готовая</name>
+                        <image>11215</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>120</PorNomer>
+                <ID>18467</ID>
+                <name>12.7 Растворители</name>
+                <image>22840</image>
+            </category>
+            <category>
+                <PorNomer>120</PorNomer>
+                <ID>6919</ID>
+                <name>Клея</name>
+                <image>10786</image>
+                <childs>
+                    <category>
+                        <PorNomer>120</PorNomer>
+                        <ID>6955</ID>
+                        <name>ПВА, БУСТИЛАТ</name>
+                        <image>10891</image>
+                    </category>
+                </childs>
+            </category>
+            <category>
+                <PorNomer>120</PorNomer>
+                <ID>7006</ID>
+                <name>Мастики</name>
+                <image>11026</image>
+            </category>
+            <category>
+                <PorNomer>120</PorNomer>
+                <ID>7032</ID>
+                <name>Растворители</name>
+                <image>11071</image>
+            </category>
+        </childs>
+    </category>
+</categories>

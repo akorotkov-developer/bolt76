@@ -1,0 +1,7394 @@
+ACCOUNTS
+LiczoUchetnieZapis UINTEGER
+
+Imya VARCHAR
+
+SMTPPort INTEGER
+
+POP3Port INTEGER
+
+IshKodirovka UTINYINT
+
+Flagi UTINYINT
+
+UchetnayaZapis UINTEGER
+
+SMTPServer LONGVARCHAR
+
+POP3Server LONGVARCHAR
+
+NazvanieGruppi LONGVARCHAR
+
+Login LONGVARCHAR
+
+Parol LONGVARCHAR
+
+ElPochta LONGVARCHAR
+
+ObrAdres LONGVARCHAR
+
+LoginSMTP LONGVARCHAR
+
+ParolSMTP LONGVARCHAR
+
+Podpis LONGVARBINARY
+
+ModemnoeSoedinen LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+ACCZONE
+PorNomer INTEGER
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Tip UTINYINT
+
+PriznakInstal UTINYINT
+
+Sozdal USMALLINT
+
+Izmenil USMALLINT
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+Kommentariy LONGVARCHAR
+
+PolnoeNazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+ACTIVITIES
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Liczo_ UINTEGER
+
+Imya VARCHAR
+
+CZvet USMALLINT
+
+Sozdal USMALLINT
+
+Izmenil USMALLINT
+
+PriznakInstal UTINYINT
+
+Priznaki UINTEGER
+
+UpravUchet UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+ADJUST_ACC
+NashaOrganizacziyaN UINTEGER
+
+Data DATE
+
+Flagi UINTEGER
+
+USNObekt UTINYINT
+
+USNStavka DOUBLE
+
+NDSNalPeriod UTINYINT
+
+PribilEjemesPla UTINYINT
+
+FlagiZP UINTEGER
+
+ProczentAvansa UTINYINT
+
+ESNSOCZ2Stavka DOUBLE
+
+ESNStavkaDobrFSS DOUBLE
+
+RayonKoef DOUBLE
+
+ESNVidStavok UTINYINT
+
+FlagiNalogov UINTEGER
+
+FlagiKalend UINTEGER
+
+FlagiZemNaloga UTINYINT
+
+FlagiAkczizov UTINYINT
+
+DataAkcziza UTINYINT
+
+FlagiProchihNalog UINTEGER
+
+OSLimitSpisBU DOUBLE
+
+FlagiOS UINTEGER
+
+OSLimitSpisNU DOUBLE
+
+OSLimitSpisNU30 DOUBLE
+
+USNDataPerehoda DATE
+
+NDSMomentVozmeshO UTINYINT
+
+LimitKassi DOUBLE
+
+Primechanie LONGVARCHAR
+
+TerUsl LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+AMORTIZATION
+Imya VARCHAR
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+TipNachislAmort UTINYINT
+
+FlagiFiltra UTINYINT
+
+Flagi UTINYINT
+
+MesyacziNachislAmor USMALLINT
+
+Nazvanie LONGVARCHAR
+
+IshodniyTekst LONGVARBINARY
+
+Virajenie LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+ANALIT
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Liczo_ UINTEGER
+
+Tema VARCHAR
+
+CZvet USMALLINT
+
+Sozdal USMALLINT
+
+Izmenil USMALLINT
+
+PriznakInstal UTINYINT
+
+Priznaki UINTEGER
+
+__Priznaki USMALLINT
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+__Parametr1 LONGVARCHAR
+
+__Parametr2 LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+ANOTHERGO
+Tip UTINYINT
+
+Kod VARCHAR
+
+DopKod INTEGER
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Flagi UTINYINT
+
+Organizacziya_ UINTEGER
+
+ROWID IDENTITY
+
+
+
+ATRBLIST
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Kod VARCHAR
+
+Flagi UTINYINT
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+ATRBVALS
+HarakteristikaZn UINTEGER
+
+Kod LONGVARCHAR
+
+Znachenie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+ATTRIBS
+ZnachenieParametr UINTEGER
+
+NomenklaturaPara UINTEGER
+
+Flagi UTINYINT
+
+ROWID IDENTITY
+
+
+
+AUTOEXCH
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Periodicheskie_so UINTEGER
+
+Tip UTINYINT
+
+PeriodichnostObm UTINYINT
+
+Flagi UTINYINT
+
+FlagiObshie UTINYINT
+
+PeriodichnostPov INTEGER
+
+CHisloPovtorov INTEGER
+
+SpisokBazParamet UINTEGER
+
+CZvetObmena USMALLINT
+
+SotrudnikaParame UINTEGER
+
+PeriodDokumenta INTEGER
+
+Imya LONGVARCHAR
+
+ImyaKonfiguracziiO LONGVARCHAR
+
+Dannie LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+BANK
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+GolovnoyBank UINTEGER
+
+BIK VARCHAR
+
+NazvanieBanka LONGVARCHAR
+
+KorrSchet LONGVARCHAR
+
+AdresBanka LONGVARCHAR
+
+Gorod LONGVARCHAR
+
+KodAdresa LONGVARCHAR
+
+KodFaktAdresa LONGVARCHAR
+
+Telefon LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+BILLA
+DokumentNaimenov UINTEGER
+
+DataVremya TIMESTAMP
+
+PorNomer USMALLINT
+
+NaimenovaniyaGeog UINTEGER
+
+Kol_vo DOUBLE
+
+SummaCZen DOUBLE
+
+SummaSebest DOUBLE
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+BazovayaCZena DOUBLE
+
+SummaSebestBezND DOUBLE
+
+_SummaCZen DOUBLE
+
+SummaCZenBezNDS DOUBLE
+
+SkladNaimenovani UINTEGER
+
+Kurs DOUBLE
+
+PrihodNaimenovan UINTEGER
+
+KodUpakovki UTINYINT
+
+Priznaki UINTEGER
+
+NomerOsnovaniya USMALLINT
+
+PorNomerOsnovani USMALLINT
+
+Kommentariy LONGVARCHAR
+
+Dopolnenie LONGVARCHAR
+
+NTD LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+BPROCESS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Flagi UTINYINT
+
+TipDeystviya UTINYINT
+
+KolVoKopiy INTEGER
+
+Kartinka UINTEGER
+
+PorNomer INTEGER
+
+Dokument_ UINTEGER
+
+Nazvanie LONGVARCHAR
+
+Zadacha LONGVARCHAR
+
+Virajenie LONGVARBINARY
+
+ImyaTabliczi LONGVARCHAR
+
+ImyaGruppi LONGVARCHAR
+
+NazvanieOtcheta LONGVARCHAR
+
+VidDokumenta LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+BPROCESS_
+linkrec UINTEGER
+
+data LONGVARBINARY
+
+ROWID IDENTITY
+
+TAIL
+
+
+
+BUDCLASS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Flagi UTINYINT
+
+Kod2 INTEGER
+
+DataNachala DATE
+
+DataOkonchaniya DATE
+
+Kod LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+SHablon LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ImyaDialoga LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+BUSINESSMANE
+Pol UTINYINT
+
+Organizacziya_ UINTEGER
+
+KogdaVidan DATE
+
+DokumentDataVida DATE
+
+DataRojdeniya DATE
+
+VidDokumenta UTINYINT
+
+KolDneyRF INTEGER
+
+DataPribitiya DATE
+
+Svidetelstvo LONGVARCHAR
+
+DomashniyTelefon LONGVARCHAR
+
+DokumentSeriya LONGVARCHAR
+
+DokumentNomer LONGVARCHAR
+
+DokumentKemVidan LONGVARCHAR
+
+DokumentKodPodra LONGVARCHAR
+
+StranaRojdeniya LONGVARCHAR
+
+KodMestaRojdeniya LONGVARCHAR
+
+StranaRez LONGVARCHAR
+
+AdrMJRez LONGVARCHAR
+
+MestoRojdeniya LONGVARCHAR
+
+NomStrSvid LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+CADRDOC
+Dokument_ UINTEGER
+
+VidOtpuska UTINYINT
+
+NeispDni INTEGER
+
+Otpusk_ UINTEGER
+
+MesyaczRascheta DATE
+
+TipOtpuskKDokume UINTEGER
+
+TipGrafika UTINYINT
+
+DataNachala DATE
+
+DataOkonchaniya DATE
+
+OsnovanieOtpuska LONGVARCHAR
+
+TipOtpuska LONGVARCHAR
+
+Primechanie1 LONGVARCHAR
+
+Primechanie2 LONGVARCHAR
+
+Primechanie3 LONGVARCHAR
+
+Opisanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+CALCS
+Tip UTINYINT
+
+Raschet_ UINTEGER
+
+Raschet__f UTINYINT
+
+PodrazdelenieRas UINTEGER
+
+DataRascheta DATE
+
+Rascheti UINTEGER
+
+LiczoRascheti UINTEGER
+
+DokumentRascheti UINTEGER
+
+DataNachisleniya DATE
+
+KodNasheyOrganiza UTINYINT
+
+SotrudnikRascheti UINTEGER
+
+Podtip UTINYINT
+
+Summa DOUBLE
+
+Sostoyanie UTINYINT
+
+_Avtor UINTEGER
+
+CZvet USMALLINT
+
+VidNURascheti UINTEGER
+
+SHPZ LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+CAPITAL
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+CZvet INTEGER
+
+Liczo_ UINTEGER
+
+RasshirenieOS UINTEGER
+
+NomenklaturaOsnS UINTEGER
+
+NachModernOstStoi DOUBLE
+
+NachModernOstSt0 DOUBLE
+
+NachOstStoimN DOUBLE
+
+CZenaOS DOUBLE
+
+NachModernOstSrok DOUBLE
+
+NachModernOstSr0 DOUBLE
+
+DataGosReg DATE
+
+DataVvoda DATE
+
+DataOplati DATE
+
+Priznaki UTINYINT
+
+Kod UTINYINT
+
+NomerInvKarti VARCHAR
+
+TipDannih UTINYINT
+
+TipImushPrav UTINYINT
+
+TekKol_vo INTEGER
+
+InvNomer VARCHAR
+
+ZvdNomer VARCHAR
+
+Pasport VARCHAR
+
+OKOF VARCHAR
+
+Naimenovanie LONGVARCHAR
+
+Izgotovitel LONGVARCHAR
+
+DataVipuska LONGVARCHAR
+
+NomerGosReg LONGVARCHAR
+
+Dopolnenie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+Opisanie LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+Cards
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+DatNach DATE
+
+DatKncz DATE
+
+Sostoyanie UTINYINT
+
+Tip UTINYINT
+
+PorNomer INTEGER
+
+Liczo_ UINTEGER
+
+TipZapisi UTINYINT
+
+CZvet USMALLINT
+
+Pometki UTINYINT
+
+VidOplati UTINYINT
+
+Nomer LONGVARCHAR
+
+NomerPo LONGVARCHAR
+
+Naimenovanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+CATEG
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Kod VARCHAR
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+CELLS
+PoVertikali UTINYINT
+
+PoGorizontali UTINYINT
+
+SkladYAcheyki UINTEGER
+
+Ostatok DOUBLE
+
+OstatokObem DOUBLE
+
+Flagi UTINYINT
+
+StellajYAcheyki UINTEGER
+
+UliczaYAcheyki UINTEGER
+
+NomerZoniSklada USMALLINT
+
+Nomer VARCHAR
+
+ROWID IDENTITY
+
+
+
+CERTS
+LiczoSertifikati UINTEGER
+
+SvyaziLiczSertifik UINTEGER
+
+Tip UTINYINT
+
+PodTip UTINYINT
+
+Flagi UTINYINT
+
+DataVremyaOkonchan TIMESTAMP
+
+DataVremyaNachalaD TIMESTAMP
+
+Otpechatok VARCHAR
+
+Vladelecz LONGVARCHAR
+
+Konteyner LONGVARCHAR
+
+Sertifikat LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+CFG_OPLAT
+Kod UTINYINT
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Flagi UTINYINT
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+CFG_PRINT
+RabochieMestaNast UINTEGER
+
+Flagi UTINYINT
+
+NazvanieOtcheta VARCHAR
+
+SHirina INTEGER
+
+PDKolStrok INTEGER
+
+UstroystvoVivoda LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+CHECKS
+Tip UTINYINT
+
+Data TIMESTAMP
+
+TorgovayaOperacziya UTINYINT
+
+KodOplatiKKM INTEGER
+
+VidOplatiSBIS INTEGER
+
+NomerOtdela INTEGER
+
+Summa DOUBLE
+
+UstroystvaCHeki UINTEGER
+
+SkladskieDokumen UINTEGER
+
+ZotchetCHeki UINTEGER
+
+ROWID IDENTITY
+
+
+
+CLASS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Kod LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+CLASSLNK
+SotrudnikKlassif UINTEGER
+
+KlassifikatorSvya UINTEGER
+
+Data DATE
+
+DataOkonchaniya DATE
+
+Kod LONGVARCHAR
+
+KodKlassifikator LONGVARCHAR
+
+KodKlassifikat0 LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+COMMENT
+LiczoPrimechaniya UINTEGER
+
+Sozdal USMALLINT
+
+Izmenil USMALLINT
+
+DatNach DATE
+
+DatKncz DATE
+
+Tekst LONGVARCHAR
+
+Tip LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+COMPHIST
+VhoditV UINTEGER
+
+NaborIstoriya UINTEGER
+
+Proczent DOUBLE
+
+DokumentIstoriyaK UINTEGER
+
+Kol_vo DOUBLE
+
+Summa DOUBLE
+
+Priznaki UTINYINT
+
+Data DATE
+
+ROWID IDENTITY
+
+
+
+CONST_OU
+Raschet_ UINTEGER
+
+LiczoPostNU UINTEGER
+
+Proczent DOUBLE
+
+Kol_vo DOUBLE
+
+PostNUIzmeneniya UINTEGER
+
+DoljnostIzmenen UINTEGER
+
+StarayaData DATE
+
+PNU_ UINTEGER
+
+TipPostNU UTINYINT
+
+Primechanie LONGVARCHAR
+
+Razryad LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+CONTCLASS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+SpisokLicz UINTEGER
+
+PorNomer INTEGER
+
+DataNapominaniya INTEGER
+
+RezultatKontakt UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+CONTRACTS
+DogSostoyanie UTINYINT
+
+SummaBezNDS DOUBLE
+
+Tema VARCHAR
+
+RSchetDogovori UINTEGER
+
+Prodoljitelnost DOUBLE
+
+SrokOkonchaniya DATE
+
+Dokument_ UINTEGER
+
+DatNach DATE
+
+DatKncz DATE
+
+Opisanie LONGVARBINARY
+
+TekusheeSostoyanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+COSTS
+NomenklaturaCZeni UINTEGER
+
+KodUpakovki UTINYINT
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Data DATE
+
+Prays UTINYINT
+
+Tip UTINYINT
+
+PorNomer USMALLINT
+
+Vremya TIME
+
+LiczoCZeni UINTEGER
+
+CZena1 DOUBLE
+
+CZena2 DOUBLE
+
+CZena3 DOUBLE
+
+PlanSebest DOUBLE
+
+Priznaki UTINYINT
+
+VidCZeniCZeni UINTEGER
+
+CZvet USMALLINT
+
+Sozdal INTEGER
+
+Izmenil INTEGER
+
+Kommentariy LONGVARCHAR
+
+Kod LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+CURNAME
+Sokrashenie VARCHAR
+
+ImyaValyuti VARCHAR
+
+Kod VARCHAR
+
+ValyutaPoUmolchani UTINYINT
+
+NaimenovanieValyu LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+CURRATE
+Data DATE
+
+ValyutaKursi UINTEGER
+
+Kurs DOUBLE
+
+ROWID IDENTITY
+
+
+
+DB_LIST
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+KodBD INTEGER
+
+SposobPeredachiDa UTINYINT
+
+Flagi UTINYINT
+
+ImyaBazi LONGVARCHAR
+
+AdresObmena LONGVARCHAR
+
+MestoRaspolojeni LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+Prefiks LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+DBFRMT
+ImyaFayla VARCHAR
+
+Nazvanie LONGVARCHAR
+
+Zagolovok LONGVARBINARY
+
+Format LONGVARBINARY
+
+Versiya LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+DEPRECIA
+TehoperacziyaSpisa UINTEGER
+
+Kol_vo DOUBLE
+
+RabotaPlanaSpisa UINTEGER
+
+NaborSpisaniya UINTEGER
+
+NaimenovanieSpis UINTEGER
+
+ROWID IDENTITY
+
+
+
+DESCRCELL
+PoGorizontali UTINYINT
+
+Visota DOUBLE
+
+SHirina DOUBLE
+
+Glubina DOUBLE
+
+MaksNagruzka DOUBLE
+
+MaksObem DOUBLE
+
+Flagi UTINYINT
+
+PoVertikali UTINYINT
+
+Nomer VARCHAR
+
+TipStellajaYAcheyk UINTEGER
+
+ROWID IDENTITY
+
+
+
+DEVICES
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+RabochieMestaUstr UINTEGER
+
+Svoystva UTINYINT
+
+Izobrajenie UINTEGER
+
+Nazvanie LONGVARCHAR
+
+Dialog LONGVARCHAR
+
+DialogPodklyucheni LONGVARCHAR
+
+Parametri LONGVARBINARY
+
+Virajenie LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+DEVICES_
+linkrec UINTEGER
+
+data LONGVARBINARY
+
+ROWID IDENTITY
+
+TAIL
+
+
+
+DEVICESEXT
+Kod UTINYINT
+
+Nomer UTINYINT
+
+VidiOplatRasshire UINTEGER
+
+RasshirenieUstroy UINTEGER
+
+Virajenie LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+DIRECTIONS
+DatNach DATE
+
+DatKncz DATE
+
+SleduyushayaData DATE
+
+DataAktualnosti DATE
+
+Dokument_ UINTEGER
+
+NastroykiUchetaRa UINTEGER
+
+ROWID IDENTITY
+
+
+
+DLG_CONFIGS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Kategoriya VARCHAR
+
+Imya VARCHAR
+
+Dannie LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+DOC
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+KlassDokumenta UTINYINT
+
+Dokument_ UINTEGER
+
+Dokument__f UTINYINT
+
+TipDokumenta VARCHAR
+
+Data DATE
+
+Vremya TIME
+
+GruppaNumeraczii USMALLINT
+
+Nomer UINTEGER
+
+Liczo1 UINTEGER
+
+Liczo2 UINTEGER
+
+Liczo3 UINTEGER
+
+PraviloDokumenti UINTEGER
+
+Sozdal USMALLINT
+
+Izmenil USMALLINT
+
+KodNasheyOrganiza UTINYINT
+
+Sostoyanie UINTEGER
+
+FlagiDok UINTEGER
+
+Flagi3Dok UINTEGER
+
+CZvet INTEGER
+
+Pometki UTINYINT
+
+Liczo_ UINTEGER
+
+Kurs DOUBLE
+
+ImyaValyuti VARCHAR
+
+Summa DOUBLE
+
+_Summa DOUBLE
+
+Summa2 DOUBLE
+
+Oplatit DOUBLE
+
+Oplacheno DOUBLE
+
+_Oplatit DOUBLE
+
+_Oplacheno DOUBLE
+
+PodTip VARCHAR
+
+VneshniyDokument_ UINTEGER
+
+RezultatKS UTINYINT
+
+RezultatFLK UTINYINT
+
+Tema LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+AktivnayaFaza LONGVARCHAR
+
+Parametri LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+DOC_TYPES
+FlagiEDO UTINYINT
+
+FlagiBuh UTINYINT
+
+Flagi UTINYINT
+
+TipDokumenta VARCHAR
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+PriznakInstal UTINYINT
+
+PorNomer INTEGER
+
+PodTip VARCHAR
+
+NachalniyRejimPo UTINYINT
+
+Versiya INTEGER
+
+BazoviyTip VARCHAR
+
+GUID VARCHAR
+
+NazvanieKratkoe VARCHAR
+
+XSLTFayl UINTEGER
+
+FiltrOtpravitel UTINYINT
+
+FiltrPoluchatel UTINYINT
+
+VneshniyDokument_ UINTEGER
+
+GUIDReglamenta VARCHAR
+
+TipFormi UTINYINT
+
+GUIDKlassa VARCHAR
+
+DataZaprosaNAEDO INTEGER
+
+SHablon LONGVARCHAR
+
+Opisanie LONGVARBINARY
+
+NaimenovaniyaDoku LONGVARBINARY
+
+NazvaniePapki LONGVARCHAR
+
+NazvanieOtcheta LONGVARCHAR
+
+NazvanieOkna LONGVARCHAR
+
+NazvanieViborki LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+Ikonka LONGVARCHAR
+
+Zavisimosti_tipo LONGVARBINARY
+
+Metodi LONGVARBINARY
+
+KomandiSpiska LONGVARCHAR
+
+KomandiOtcheta LONGVARCHAR
+
+DialogKonfiguracz LONGVARCHAR
+
+NazvanieMenyu LONGVARCHAR
+
+NastroykiPreobra LONGVARBINARY
+
+NastroykiPredsta LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+DOC_TYPES_
+linkrec UINTEGER
+
+data LONGVARBINARY
+
+ROWID IDENTITY
+
+TAIL
+
+
+
+DOCEXT
+PapkaRSchet UINTEGER
+
+Dokument_ UINTEGER
+
+ZakrivatKak UTINYINT
+
+KolvoKopiy INTEGER
+
+SHablonNomera LONGVARCHAR
+
+OtchetPapki LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+DOCFACE
+DokumentLiczo UINTEGER
+
+LiczoDokument UINTEGER
+
+VidSvyazi UTINYINT
+
+Data DATE
+
+Summa DOUBLE
+
+_Summa DOUBLE
+
+Kurs DOUBLE
+
+Rezultat UTINYINT
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+PodTip UTINYINT
+
+Kommentariy LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+DOCGRPS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Flagi UTINYINT
+
+PorNomer USMALLINT
+
+DokumentPodborki UINTEGER
+
+DataVstavki DATE
+
+Kommentariy LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+DOCIMG
+Obraz UINTEGER
+
+NomerDokumenta UINTEGER
+
+DataVremya TIMESTAMP
+
+VremyaDokumenta TIME
+
+DataDokumenta DATE
+
+TipDokumenta VARCHAR
+
+TemaDokumenta LONGVARCHAR
+
+Fayl LONGVARCHAR
+
+Kompyuter LONGVARCHAR
+
+Polzovatel LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+DOCIMG_
+linkrec UINTEGER
+
+data LONGVARBINARY
+
+ROWID IDENTITY
+
+TAIL
+
+
+
+DOCOS
+DopPriznaki UTINYINT
+
+StepenIspolzov UTINYINT
+
+Tip UTINYINT
+
+SummaN DOUBLE
+
+SummaBalans DOUBLE
+
+SummaBalansN DOUBLE
+
+SummaOst DOUBLE
+
+SummaOstN DOUBLE
+
+SkladskoyDokumen UINTEGER
+
+MOLStaroe UINTEGER
+
+MOLNovoe UINTEGER
+
+MestoStaroe UINTEGER
+
+MestoNovoe UINTEGER
+
+Kol_vo USMALLINT
+
+ROWID IDENTITY
+
+
+
+EDO_FOLDERS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+PorNomer INTEGER
+
+SotrudnikPapkiDo UINTEGER
+
+ElPochtaPapki UINTEGER
+
+CZvet INTEGER
+
+Flagi UTINYINT
+
+Kolichestvo INTEGER
+
+Nazvanie LONGVARCHAR
+
+TipDokumenta LONGVARCHAR
+
+PodTip LONGVARCHAR
+
+NazvanieRazdela LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+EDO_LINKS
+PapkiDokumentovS UINTEGER
+
+DokumentSvyaziPap UINTEGER
+
+SobitieSvyaziPapo UINTEGER
+
+LiczaSvyaziPapok UINTEGER
+
+Status UTINYINT
+
+Nachalo TIMESTAMP
+
+Fiksacziya TIMESTAMP
+
+ElektronnayaPochta UINTEGER
+
+CZvet INTEGER
+
+Flagi UTINYINT
+
+Signal TIMESTAMP
+
+Periodichnost UTINYINT
+
+PorNomer INTEGER
+
+ROWID IDENTITY
+
+
+
+EDS
+DataVremya TIMESTAMP
+
+Podpis UINTEGER
+
+Tip UTINYINT
+
+PerehodECZP UINTEGER
+
+VneshnieDokumenti UINTEGER
+
+VersiyaPodpisi INTEGER
+
+Flagi UTINYINT
+
+HeshKod LONGVARCHAR
+
+ImyaFayla LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+EDS_
+linkrec UINTEGER
+
+data LONGVARBINARY
+
+ROWID IDENTITY
+
+TAIL
+
+
+
+EDUCATE
+Tip UTINYINT
+
+DataNachala DATE
+
+DokumentObrazova UINTEGER
+
+SotrudnikObrazov UINTEGER
+
+OrganizacziyaObraz UINTEGER
+
+DataOkonchaniya DATE
+
+DataVidachiDiplom DATE
+
+SredniyBall DOUBLE
+
+Summa DOUBLE
+
+DataDogovora DATE
+
+VidObrazovaniya LONGVARCHAR
+
+FormaObucheniya LONGVARCHAR
+
+Speczialnost LONGVARCHAR
+
+Kvalifikacziya LONGVARCHAR
+
+NomerDiploma LONGVARCHAR
+
+Fakultet LONGVARCHAR
+
+Professiya LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+NaimenovanieDoku LONGVARCHAR
+
+SeriyaDokumenta LONGVARCHAR
+
+Organizacziya LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+EMLFILES
+Dokument UINTEGER
+
+PochtaFayli UINTEGER
+
+ImyaFayla LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+EMLFILES_
+linkrec UINTEGER
+
+data LONGVARBINARY
+
+ROWID IDENTITY
+
+TAIL
+
+
+
+ENGSOL
+DatNach DATE
+
+Dokument_ UINTEGER
+
+ROWID IDENTITY
+
+
+
+ERRLOG
+Data TIMESTAMP
+
+Adres UINTEGER
+
+Polzovatel LONGVARCHAR
+
+Kommentariy LONGVARCHAR
+
+Tablicza LONGVARCHAR
+
+Dannie LONGVARBINARY
+
+GUID LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+EVENTLNK
+IzSobitiya UINTEGER
+
+VSobitie UINTEGER
+
+PerehodSvyazi UINTEGER
+
+ROWID IDENTITY
+
+
+
+EVENTS
+PodtverjdayushiyDo UINTEGER
+
+FlagiSobitiya UTINYINT
+
+Razdel UINTEGER
+
+FazaSobitiya UINTEGER
+
+DokumentSobitiya UINTEGER
+
+SotrudnikSobitiya UINTEGER
+
+AvtorSoobsheniya UINTEGER
+
+Perehod UINTEGER
+
+FPapka UINTEGER
+
+FunkcziyaSobitiya UINTEGER
+
+PorNomer INTEGER
+
+Nachalo TIMESTAMP
+
+Fiksacziya TIMESTAMP
+
+Konecz TIMESTAMP
+
+Prodoljitelnost TIME
+
+PeriodNach DATE
+
+PeriodKncz DATE
+
+DeystvieNach DATE
+
+Polucheno TIMESTAMP
+
+KodSobitiya VARCHAR
+
+Primechanie LONGVARBINARY
+
+Otvet LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+EXCH_FACT
+Tip UTINYINT
+
+KodBD INTEGER
+
+ParametriAvtoobm UINTEGER
+
+Nomer INTEGER
+
+Flagi UTINYINT
+
+DataVremya TIMESTAMP
+
+Fayli UINTEGER
+
+Informacziya UINTEGER
+
+PodtverjdenieObm UINTEGER
+
+JurnalSoobsheniy UINTEGER
+
+ImyaBazi LONGVARCHAR
+
+AdresObmena LONGVARCHAR
+
+MestoRaspolojeni LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+EXCH_FACT_
+linkrec UINTEGER
+
+data LONGVARBINARY
+
+ROWID IDENTITY
+
+TAIL
+
+
+
+EXPENSES
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Liczo_ UINTEGER
+
+Imya VARCHAR
+
+CZvet USMALLINT
+
+Sozdal USMALLINT
+
+Izmenil USMALLINT
+
+Priznaki UINTEGER
+
+PriznakInstal UTINYINT
+
+UpravUchet UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+EXTBOOKS
+NachSaldo DOUBLE
+
+_NachSaldo DOUBLE
+
+DOborot DOUBLE
+
+_DOborot DOUBLE
+
+KOborot DOUBLE
+
+_KOborot DOUBLE
+
+DataNach DATE
+
+DataKncz DATE
+
+DokumentovNaList INTEGER
+
+PosledniyList INTEGER
+
+Dokument_ UINTEGER
+
+RSchetaRasshirenie UINTEGER
+
+ROWID IDENTITY
+
+
+
+EXTCLASS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+PriznakInstal UTINYINT
+
+Flagi UTINYINT
+
+DataIzmeneniya DATE
+
+PolniyKod LONGVARCHAR
+
+Kod LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+EXTDOCS
+Avtor INTEGER
+
+Dokument UINTEGER
+
+Format UTINYINT
+
+DokumentVneshnieD UINTEGER
+
+Versiya INTEGER
+
+Flagi USMALLINT
+
+IdVD INTEGER
+
+Sleduyushiy UINTEGER
+
+Deystvie UTINYINT
+
+Zanyat INTEGER
+
+Sostoyanie UTINYINT
+
+DokumentBP UINTEGER
+
+LiczoVneshnieDokum UINTEGER
+
+DokKod INTEGER
+
+IdDokumentov VARCHAR
+
+SobitieVneshnieDo UINTEGER
+
+Kod INTEGER
+
+DataVremya TIMESTAMP
+
+DataPolucheniya TIMESTAMP
+
+TipFazi UTINYINT
+
+TipKartochkiDokum VARCHAR
+
+GUIDFormatteraZa VARCHAR
+
+GUIDFormatteraHr VARCHAR
+
+TipDokumenta VARCHAR
+
+Nazvanie LONGVARCHAR
+
+Kommentariy LONGVARBINARY
+
+ImyaFayla LONGVARCHAR
+
+ImyaFaylaKopii LONGVARCHAR
+
+ImyaKompyuteraKop LONGVARCHAR
+
+AdresPoluchatelya LONGVARCHAR
+
+ImyaObrazaDokumen LONGVARCHAR
+
+NomerDokumenta LONGVARCHAR
+
+Preobrazovatel LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+EXTDOCS_
+linkrec UINTEGER
+
+data LONGVARBINARY
+
+ROWID IDENTITY
+
+TAIL
+
+
+
+EXTDOCSLINKS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+VneshniyDokument_ UINTEGER
+
+VneshniyDokument__f UTINYINT
+
+IdVD INTEGER
+
+Nazvanie LONGVARCHAR
+
+ImyaFayla LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+FACE
+Liczo_ UINTEGER
+
+Liczo__f UTINYINT
+
+VneshniyDokument_ UINTEGER
+
+KodLicza LONGVARCHAR
+
+Subschet LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+Parametri LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+FACEFILE
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+TipDose UINTEGER
+
+LiczoDose UINTEGER
+
+Data DATE
+
+Nazvanie LONGVARCHAR
+
+Znachenie LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+FACEFILETYPE
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+PorNomer INTEGER
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+FAMILY
+Kto UTINYINT
+
+SotrudnikSemya UINTEGER
+
+CHLiczoSemya UINTEGER
+
+ROWID IDENTITY
+
+
+
+FORMCONTR
+DataIzmeneniya DATE
+
+Operator UTINYINT
+
+Priznaki UTINYINT
+
+PorNomer INTEGER
+
+KodRazdela VARCHAR
+
+KodRekvizita VARCHAR
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Tochnost INTEGER
+
+Kod LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+Virajenie LONGVARBINARY
+
+Kommentariy LONGVARBINARY
+
+SsilkaPomosh LONGVARCHAR
+
+VozmojnoeNarushen LONGVARBINARY
+
+DeystviyaInspekto LONGVARBINARY
+
+SvyazannieFormi LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+FORMOTCH
+DataIzmeneniya DATE
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Tip UTINYINT
+
+Priznaki UTINYINT
+
+PeriodPredstavle UTINYINT
+
+LiczoPredstavleni UTINYINT
+
+PorNomer INTEGER
+
+IdentifikatoriDa UINTEGER
+
+IdentifikatoriDa_f UTINYINT
+
+Kod VARCHAR
+
+KodRazdela LONGVARCHAR
+
+Format LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+Struktura LONGVARCHAR
+
+Klassifikator LONGVARCHAR
+
+UP LONGVARCHAR
+
+DT LONGVARCHAR
+
+NazvanieGruppiFo LONGVARCHAR
+
+Pomosh LONGVARCHAR
+
+StatKod LONGVARCHAR
+
+StatOperaczionniy LONGVARCHAR
+
+StatNazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+FUNCS_HIST
+DatNach DATE
+
+DatKncz DATE
+
+Deystvie UTINYINT
+
+FunkcziyaIstoriya UINTEGER
+
+SotrudnikIstoriya UINTEGER
+
+RasporyajenieIsto UINTEGER
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+GEO
+Kod VARCHAR
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+GETOA
+DokumentPrihodi UINTEGER
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+PorNomer USMALLINT
+
+VidSobstvennosti USMALLINT
+
+SkladPrihodi UINTEGER
+
+DataVremya TIMESTAMP
+
+DopPriznaki UTINYINT
+
+Prihod_ UINTEGER
+
+Prihod__f UTINYINT
+
+Priznaki UINTEGER
+
+Kol_vo DOUBLE
+
+KodUpakovki UTINYINT
+
+SummaSebest DOUBLE
+
+SummaSebestBezND DOUBLE
+
+LiczoPrihodi UINTEGER
+
+SummaCZen DOUBLE
+
+Kurs DOUBLE
+
+NomerOsnovaniya USMALLINT
+
+PorNomerOsnovani USMALLINT
+
+PartiyaPrihodi UINTEGER
+
+Kommentariy LONGVARCHAR
+
+Dopolnenie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+GETODOCS
+SkladskoyDokumen UINTEGER
+
+SummaUslugBezNDS DOUBLE
+
+_SummaUslug DOUBLE
+
+SummaUslug DOUBLE
+
+Kol_vo DOUBLE
+
+ROWID IDENTITY
+
+
+
+GIVEA
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Kol_vo DOUBLE
+
+LiczoRashodi UINTEGER
+
+VidSobstvennosti USMALLINT
+
+DokumentRashodi UINTEGER
+
+PorNomer USMALLINT
+
+DataVremya TIMESTAMP
+
+Priznaki UINTEGER
+
+KodUpakovki UTINYINT
+
+PartiyaRashodi UINTEGER
+
+NomerOsnovaniya USMALLINT
+
+PorNomerOsnovani USMALLINT
+
+Prihod_ UINTEGER
+
+KodPartii VARCHAR
+
+SummaCZen DOUBLE
+
+SummaCZenBezNDS DOUBLE
+
+BazovayaCZena DOUBLE
+
+SummaSebest DOUBLE
+
+SummaSebestBezND DOUBLE
+
+_SummaSebest DOUBLE
+
+_SummaCZen DOUBLE
+
+Kurs DOUBLE
+
+SkladRashodi UINTEGER
+
+Flagi UTINYINT
+
+CZvet INTEGER
+
+KolTSD DOUBLE
+
+Kommentariy LONGVARCHAR
+
+Dopolnenie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+GUIDLinks
+GUID VARCHAR
+
+KontrolnayaSumma INTEGER
+
+Flagi USMALLINT
+
+DokumentSvyaziGUI UINTEGER
+
+LiczaSvyaziGUID UINTEGER
+
+ROWID IDENTITY
+
+
+
+HISTORYSHIFTS
+Nachalo TIMESTAMP
+
+Okonchanie TIMESTAMP
+
+ROWID IDENTITY
+
+
+
+HISTSPARE
+Data DATE
+
+MinZapas DOUBLE
+
+MaksZapas DOUBLE
+
+MinPost DOUBLE
+
+ProdajZaMes DOUBLE
+
+ProdajZaDen DOUBLE
+
+LogGruppaOborot UTINYINT
+
+LogGruppaStabil UTINYINT
+
+TipRascheta UTINYINT
+
+TipZapasa UTINYINT
+
+TipNelikvida UTINYINT
+
+SkladIstoriyaZapa UINTEGER
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+HOLIDAYS
+DatNach DATE
+
+DatNachRejim DATE
+
+DniCHasi UTINYINT
+
+SummirovanniyUche UTINYINT
+
+DatKncz DATE
+
+GrafikOtpuska UINTEGER
+
+Raschet_ UINTEGER
+
+PropDni DOUBLE
+
+PropCHasi DOUBLE
+
+PropDniPredpr DOUBLE
+
+PropCHasiPredpr DOUBLE
+
+SummaDop DOUBLE
+
+Proczent DOUBLE
+
+Otpusk_ UINTEGER
+
+Otpusk__f UTINYINT
+
+DoljnostOtpuska UINTEGER
+
+Srednee DOUBLE
+
+FlagiOB UTINYINT
+
+Metka LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+HOLYTYPES
+VidiNUTipiOtpusk UINTEGER
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+VidOtpuska UTINYINT
+
+VOTipiOtpuskov UINTEGER
+
+Flagi UTINYINT
+
+DokumentZarplati UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Metka LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+IN_TBL
+VhoditV UINTEGER
+
+ObshayaSummaIz UINTEGER
+
+Koefficzient DOUBLE
+
+ROWID IDENTITY
+
+
+
+INCOMPLETE
+Sostav UINTEGER
+
+Sostav_f UTINYINT
+
+Kurs DOUBLE
+
+NomenklaturaNZP UINTEGER
+
+DokumentNZP UINTEGER
+
+PorNomer USMALLINT
+
+NomerOsnovaniya USMALLINT
+
+PorNomerOsnovani USMALLINT
+
+Data DATE
+
+TipNaimenovaniya UTINYINT
+
+Kol_vo DOUBLE
+
+KodUpakovki UTINYINT
+
+SummaSebest DOUBLE
+
+SummaCZen DOUBLE
+
+SummaFakt DOUBLE
+
+MatZatrati DOUBLE
+
+PryamayaZpl DOUBLE
+
+Priznaki UTINYINT
+
+KomponentNZP UINTEGER
+
+NomerOperaczii LONGVARCHAR
+
+Kommentariy LONGVARCHAR
+
+Dopolnenie LONGVARCHAR
+
+Parametri LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+INST_MOD
+Data DATE
+
+Nazvanie LONGVARCHAR
+
+Versiya LONGVARCHAR
+
+Tabliczi LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+INVALID
+SotrudnikInvalid UINTEGER
+
+Vid UTINYINT
+
+Stepen UTINYINT
+
+GruppaInvalidnos UTINYINT
+
+DataNachala DATE
+
+DataOkonchaniya DATE
+
+MSEData DATE
+
+Prichina LONGVARCHAR
+
+MSESeriya LONGVARCHAR
+
+MSENomer LONGVARCHAR
+
+MSEZaklyuchenie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+INVDOCS
+SkladskoyDokumen UINTEGER
+
+SummaOstatka DOUBLE
+
+SummaNedostachi DOUBLE
+
+SummaIzlishka DOUBLE
+
+_SummaOstatka DOUBLE
+
+_SummaNedostachi DOUBLE
+
+_SummaIzlishka DOUBLE
+
+TipPrihoda UTINYINT
+
+FlagiZapolneniya UTINYINT
+
+SummaOstatkaBezN DOUBLE
+
+SummaNedostachiBe DOUBLE
+
+SummaIzlishkaBezN DOUBLE
+
+ROWID IDENTITY
+
+
+
+ITEMS
+Artikul UINTEGER
+
+NomenklaturaGeog UINTEGER
+
+Ispolzovanie UTINYINT
+
+Foto UINTEGER
+
+FotoMaloe UINTEGER
+
+CZena1 DOUBLE
+
+PlanSebest DOUBLE
+
+CZena2 DOUBLE
+
+CZena3 DOUBLE
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Ves DOUBLE
+
+Dlina DOUBLE
+
+SHirina DOUBLE
+
+Visota DOUBLE
+
+Obem DOUBLE
+
+SostavNa DOUBLE
+
+FlagiNomenklatur USMALLINT
+
+Pometki UTINYINT
+
+Identifikator INTEGER
+
+KodUpakovki UTINYINT
+
+CZvet USMALLINT
+
+NomNomer VARCHAR
+
+Garantiya DOUBLE
+
+KodOKEI VARCHAR
+
+Sozdal USMALLINT
+
+Izmenil INTEGER
+
+KratnostOtpuska DOUBLE
+
+NormaPererashoda DOUBLE
+
+NormaOtkloneniya DOUBLE
+
+Liczo_ UINTEGER
+
+Opisaniya UINTEGER
+
+Opisaniya_f UTINYINT
+
+KoefSezonnosti1 DOUBLE
+
+KoefSezonnosti2 DOUBLE
+
+KoefSezonnosti3 DOUBLE
+
+KoefSezonnosti4 DOUBLE
+
+Opisanie UINTEGER
+
+TipiNomenklaturi UINTEGER
+
+NomerYAcheykiVesov UINTEGER
+
+FlagiOborudovani UTINYINT
+
+KodIdentifikaczii INTEGER
+
+Naimenovanie LONGVARCHAR
+
+EdIzmereniya LONGVARCHAR
+
+OKDP LONGVARCHAR
+
+Svertka LONGVARCHAR
+
+SvertkaHarakteri LONGVARCHAR
+
+Dialog LONGVARCHAR
+
+NTD LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+ITEMS_
+linkrec UINTEGER
+
+data LONGVARBINARY
+
+ROWID IDENTITY
+
+TAIL
+
+
+
+JOBDOCS
+Dokument_ UINTEGER
+
+DoljnostDpD UINTEGER
+
+DoljnostV UINTEGER
+
+DoljnostIz UINTEGER
+
+PostNUV UINTEGER
+
+DataUhoda DATE
+
+TipUvolneniya UTINYINT
+
+IspitatelniySro INTEGER
+
+NeispDni DOUBLE
+
+RazdelDpD UINTEGER
+
+RazdelDpD_f UTINYINT
+
+StariyOklad DOUBLE
+
+Uslovie_ UINTEGER
+
+Prichina LONGVARCHAR
+
+Osnovanie LONGVARCHAR
+
+Motiv LONGVARCHAR
+
+Metka LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+JOBS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+LiczoDoljnosti UINTEGER
+
+GrafikDoljnosti UINTEGER
+
+Kod INTEGER
+
+DataNachala DATE
+
+DataKoncza DATE
+
+Flagi UTINYINT
+
+VidNUDoljnosti UINTEGER
+
+Nazvanie LONGVARCHAR
+
+KratkoeNazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+SHPZ LONGVARCHAR
+
+OKPDTR LONGVARCHAR
+
+OsobUslTruda LONGVARCHAR
+
+KodPozicziiSpiska LONGVARCHAR
+
+StajOsnovanie LONGVARCHAR
+
+VislugaOsnovanie LONGVARCHAR
+
+DoljnostnieObyaza LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+KEYWORDS
+Kol_vo INTEGER
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+KEYWORDSDOC
+Kol_vo INTEGER
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+KEYWORDSEXT
+Kol_vo INTEGER
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+KINDS_ACCESS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+CZvet INTEGER
+
+NazvanieDostupa LONGVARCHAR
+
+Opisanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+KINDS_RESOURCES
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+DostupResursi UINTEGER
+
+NazvanieResursa LONGVARCHAR
+
+Opisanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+KLADR
+Kod VARCHAR
+
+Indeks VARCHAR
+
+NaimKod LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+Sokrashenie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+KRM
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+KodKRM VARCHAR
+
+CZvet USMALLINT
+
+Sozdal USMALLINT
+
+Izmenil USMALLINT
+
+Priznaki UTINYINT
+
+Liczo_ UINTEGER
+
+Naimenovanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+KVOU
+CZvet INTEGER
+
+Flagi UTINYINT
+
+FlagSred UTINYINT
+
+Utochnenie VARCHAR
+
+Tip UTINYINT
+
+Sozdal INTEGER
+
+Sleduyushiy UINTEGER
+
+RasshirenieVidaNU UINTEGER
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+PriznakInstal UTINYINT
+
+Priznak UTINYINT
+
+PraviloVidi UINTEGER
+
+PorNomer INTEGER
+
+Metka VARCHAR
+
+LiczoVidiNU UINTEGER
+
+Kod VARCHAR
+
+Imya VARCHAR
+
+Izmenil INTEGER
+
+DeystvuetS DATE
+
+DeystvuetDo DATE
+
+DataVremya TIMESTAMP
+
+GrafikVidiNU UINTEGER
+
+Nazvanie LONGVARCHAR
+
+SHPZ LONGVARCHAR
+
+Pravilo LONGVARBINARY
+
+Opisanie LONGVARBINARY
+
+Versiya LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+KVOUEXT
+RasshirenieVidaNU UINTEGER
+
+Ishodnik LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+LINKALGORITHM
+SostavnoyVidCZeni UINTEGER
+
+Algoritm UINTEGER
+
+DatNach DATE
+
+DatKncz DATE
+
+Tip UTINYINT
+
+Flagi UTINYINT
+
+ROWID IDENTITY
+
+
+
+LINKDOC
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+PorNomer USMALLINT
+
+DokOsnovanie UINTEGER
+
+DokSledstvPie UINTEGER
+
+Flagi USMALLINT
+
+VidSvyazi UTINYINT
+
+Kod VARCHAR
+
+Summa DOUBLE
+
+Nomer INTEGER
+
+TipSvyazi UTINYINT
+
+_Summa DOUBLE
+
+Kurs DOUBLE
+
+Vremya TIME
+
+Data DATE
+
+PlanSobitieSvyazi UINTEGER
+
+TipJurnala LONGVARCHAR
+
+Kommentariy LONGVARCHAR
+
+Parametri LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+LINKFACE
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+LiczoOsnovanie UINTEGER
+
+LiczoSledstvie UINTEGER
+
+TipiDoseSvyazi UINTEGER
+
+PorNomer USMALLINT
+
+Priznaki UTINYINT
+
+Tip UTINYINT
+
+Summa DOUBLE
+
+Data DATE
+
+CZvet INTEGER
+
+PodTip UTINYINT
+
+PriznakInstal UTINYINT
+
+DataAktivaczii DATE
+
+KodLiczenzii VARCHAR
+
+TipLiczenzii UTINYINT
+
+DataNachala DATE
+
+Kod LONGVARCHAR
+
+Imya LONGVARCHAR
+
+Kommentariy LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+LINKKRM
+SvyazKRM UINTEGER
+
+DatNach DATE
+
+DatKncz DATE
+
+SHtatSvyazKRM UINTEGER
+
+ROWID IDENTITY
+
+
+
+LINKMARK
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+DokumentSvyazi UINTEGER
+
+VidCZeniSvyazi UINTEGER
+
+PlanSvyazi UINTEGER
+
+KartaSvyazi UINTEGER
+
+Flagi UTINYINT
+
+Tip UTINYINT
+
+Operacziya UTINYINT
+
+PorNomer USMALLINT
+
+Summa DOUBLE
+
+SummaSkidki DOUBLE
+
+SummaPremii DOUBLE
+
+DataVremya TIMESTAMP
+
+ProczentSkidki DOUBLE
+
+ROWID IDENTITY
+
+
+
+LOCATION
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+SHPZ VARCHAR
+
+LiczoMesta UINTEGER
+
+SotrudnikMesta UINTEGER
+
+Liczo_ UINTEGER
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+LOCK
+ROWID IDENTITY
+
+
+
+LOG
+Data TIMESTAMP
+
+Adres UINTEGER
+
+Polzovatel LONGVARCHAR
+
+Kommentariy LONGVARCHAR
+
+Tablicza LONGVARCHAR
+
+GUID LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+LogRSHK
+Tip VARCHAR
+
+DataVremya TIMESTAMP
+
+PolzovatelRabo VARCHAR
+
+CZvet USMALLINT
+
+Soobshenie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+MAIL
+LiczoElektronnayaP UINTEGER
+
+Dokument_ UINTEGER
+
+SHifrovanie UTINYINT
+
+PorNomer INTEGER
+
+TipSertifikata UTINYINT
+
+TipPisma UTINYINT
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+DataVremya TIMESTAMP
+
+UchetnayaZapis UINTEGER
+
+Sostoyanie UTINYINT
+
+SobitiePochta UINTEGER
+
+TipPismaEDO UTINYINT
+
+ContentType UTINYINT
+
+ContentSpec UTINYINT
+
+FlagiElPochti USMALLINT
+
+Vajnost UTINYINT
+
+VneshniyDokument_ UINTEGER
+
+Virajenie LONGVARBINARY
+
+Nazvanie LONGVARCHAR
+
+Informacziya LONGVARBINARY
+
+Adres LONGVARCHAR
+
+Zagolovok LONGVARBINARY
+
+Tema LONGVARCHAR
+
+DispositionNotif LONGVARCHAR
+
+Original LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+MAN
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Liczo_ UINTEGER
+
+TabNomer UINTEGER
+
+Prinyat DATE
+
+Uvolen DATE
+
+CZvet USMALLINT
+
+Sozdal USMALLINT
+
+Izmenil USMALLINT
+
+KodNasheyOrganiza UTINYINT
+
+Pometki UTINYINT
+
+Priznaki USMALLINT
+
+RasshirenieSotrud UINTEGER
+
+LiczoSotrudniki UINTEGER
+
+PorNomer INTEGER
+
+DataTrudDog DATE
+
+SotrudnikVoinski UINTEGER
+
+VCard UTINYINT
+
+FIO LONGVARCHAR
+
+SHPZ LONGVARCHAR
+
+NomerTrudDog LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+MAN_JOBS
+DoljnostSotrudn UINTEGER
+
+Priznak UTINYINT
+
+KategoriyaDoljnos UINTEGER
+
+HarakterRaboti UTINYINT
+
+Predidushaya UINTEGER
+
+Raschet_ UINTEGER
+
+GrafikDoljnostiS UINTEGER
+
+Tarif DOUBLE
+
+Koefficzient DOUBLE
+
+SHtat DOUBLE
+
+Proczent DOUBLE
+
+PriznakProhodnoy UTINYINT
+
+VidUchetaProhodno UTINYINT
+
+Razryad LONGVARCHAR
+
+DoljnostnieObyaza LONGVARBINARY
+
+FaktNazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+MANEXT
+RasshirenieSotrud UINTEGER
+
+DokumentDataVida DATE
+
+DataRojdeniya DATE
+
+DatNachProfStaj DATE
+
+DatNachSeverStaj DATE
+
+DatNachNeprStaj DATE
+
+DatNachObshStaj DATE
+
+DataPribitiya DATE
+
+NaPensiyu DATE
+
+VidDokumenta UTINYINT
+
+HarakterRaboti UTINYINT
+
+VidPensii UTINYINT
+
+Profsoyuz UTINYINT
+
+TipVedomosti UTINYINT
+
+Pol UTINYINT
+
+NeprerivniyStaj INTEGER
+
+StrahovoyStaj INTEGER
+
+SeverniyStaj INTEGER
+
+ObshiyStaj INTEGER
+
+ProfStaj INTEGER
+
+INN VARCHAR
+
+FotoMaloe UINTEGER
+
+Foto UINTEGER
+
+KolDneyRF INTEGER
+
+SvBuhData DATE
+
+AnketaData DATE
+
+MinZrpl INTEGER
+
+JelZrpl INTEGER
+
+NomerStrahovogoS LONGVARCHAR
+
+KodAdresaPredost LONGVARCHAR
+
+AdresPredost LONGVARCHAR
+
+StranaPredost LONGVARCHAR
+
+Professiya LONGVARBINARY
+
+Dose LONGVARBINARY
+
+KodMestaJitelst LONGVARCHAR
+
+VoditelskiePrav LONGVARCHAR
+
+StranaJitelstva LONGVARCHAR
+
+StranaProjivaniya LONGVARCHAR
+
+KodMestaRojdeniya LONGVARCHAR
+
+DokumentKemVidan LONGVARCHAR
+
+MobilniyTelefon LONGVARCHAR
+
+MestoJitelstva LONGVARCHAR
+
+StranaRojdeniya LONGVARCHAR
+
+Naczionalnost LONGVARCHAR
+
+RabochiyTelefon LONGVARCHAR
+
+OKATORojdeniya LONGVARCHAR
+
+DokumentSeriya LONGVARCHAR
+
+DokumentNomer LONGVARCHAR
+
+DokumentKodPodra LONGVARCHAR
+
+MestoRojdeniya LONGVARCHAR
+
+DopKontakti LONGVARCHAR
+
+Grajdanstvo LONGVARCHAR
+
+RodnoyYAzik LONGVARCHAR
+
+StrahSeriya LONGVARCHAR
+
+StrahNomer LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+KodAdresa LONGVARCHAR
+
+Telefon LONGVARCHAR
+
+Strana LONGVARCHAR
+
+email LONGVARCHAR
+
+Adres LONGVARCHAR
+
+SvBuhNomer LONGVARCHAR
+
+AdrMJRez LONGVARCHAR
+
+StranaRez LONGVARCHAR
+
+Rezyume LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+MANEXT_
+linkrec UINTEGER
+
+data LONGVARBINARY
+
+ROWID IDENTITY
+
+TAIL
+
+
+
+MANUAL_LINKS
+DatNach DATE
+
+DatKncz DATE
+
+InstrukcziyaSvyazi UINTEGER
+
+FunkcziyaSvyazi UINTEGER
+
+ROWID IDENTITY
+
+
+
+MANUALS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Informacziya LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+MEDICALEX
+SotrudnikaMedosm UINTEGER
+
+Data DATE
+
+Kommentariy LONGVARCHAR
+
+VidiMedosmotrov LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+MILITARY
+SotrudnikVoinski UINTEGER
+
+Rayvoenkomat UINTEGER
+
+DataSnyatiya DATE
+
+DataBroni DATE
+
+Flagi UTINYINT
+
+OtnoshenieKSlujbe LONGVARCHAR
+
+GodnostKSlujbe LONGVARCHAR
+
+SnyatSUcheta LONGVARCHAR
+
+Zvanie LONGVARCHAR
+
+GruppaUcheta LONGVARCHAR
+
+KategoriyaZapasa LONGVARCHAR
+
+VUS LONGVARCHAR
+
+Speczuchet LONGVARCHAR
+
+Profil LONGVARCHAR
+
+MobilizaczionnoeP LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+MODULE
+Razmer INTEGER
+
+Flagi USMALLINT
+
+DataSozdaniya TIMESTAMP
+
+ImyaFayla LONGVARCHAR
+
+HeshKod LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+NABOR
+Liczo_ UINTEGER
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+SostoitIz UINTEGER
+
+PorNomer USMALLINT
+
+Priznaki UTINYINT
+
+NazvanieRazdela LONGVARCHAR
+
+Primenyaemost LONGVARBINARY
+
+DopPrimenyaemost LONGVARBINARY
+
+HarakteristikiKo LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+OKEI
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Kod VARCHAR
+
+KoeffSI DOUBLE
+
+Ispolzuemie UINTEGER
+
+Ispolzuemie_f UTINYINT
+
+Nazvanie LONGVARCHAR
+
+UONacz LONGVARCHAR
+
+UOMejd LONGVARCHAR
+
+KBONacz LONGVARCHAR
+
+KBOMejd LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+OKOF
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Flagi UTINYINT
+
+CZvet INTEGER
+
+Kod VARCHAR
+
+GruppaAmort UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+ONCE_OU
+Raschet_ UINTEGER
+
+Proczent DOUBLE
+
+Vidano UTINYINT
+
+Kol_vo DOUBLE
+
+CZena DOUBLE
+
+CHasi DOUBLE
+
+Dni DOUBLE
+
+DoljnostRazovie UINTEGER
+
+Razryad LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+OPERATNS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+VidTehoperaczii UINTEGER
+
+NomenklaturaTeho UINTEGER
+
+NomerOperaczii LONGVARCHAR
+
+Primenyaemost LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+OperCommunication
+Flagi UTINYINT
+
+Identifikator VARCHAR
+
+IdentifikatorGPR VARCHAR
+
+IdentifikatorDUCZ VARCHAR
+
+Sozdal INTEGER
+
+Liczo_ UINTEGER
+
+Izmenil INTEGER
+
+INN VARCHAR
+
+KPP VARCHAR
+
+CZvet USMALLINT
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Naimenovanie LONGVARCHAR
+
+PFRegNom LONGVARCHAR
+
+email LONGVARCHAR
+
+www LONGVARCHAR
+
+Adres LONGVARCHAR
+
+OKPO LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+Telefon LONGVARCHAR
+
+Strana LONGVARCHAR
+
+KodFaktAdresa LONGVARCHAR
+
+IdentifikatorPFR LONGVARCHAR
+
+SaytPomoshi LONGVARCHAR
+
+AdresServisa LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+ORDERHST
+Plan UINTEGER
+
+Zakaz UINTEGER
+
+Kol_vo DOUBLE
+
+Data DATE
+
+ROWID IDENTITY
+
+
+
+ORDERS
+VremyaNach TIME
+
+VremyaKncz TIME
+
+Dokument_ UINTEGER
+
+CHasi DOUBLE
+
+Kol_vo DOUBLE
+
+SHPZ LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+ORGANIZ
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Liczo_ UINTEGER
+
+Organizacziya_ UINTEGER
+
+Organizacziya__f UTINYINT
+
+RayonOrganizaczii UINTEGER
+
+NashaOrganizacziya UINTEGER
+
+Vid UTINYINT
+
+Pometki UTINYINT
+
+Priznaki UTINYINT
+
+Izmenil USMALLINT
+
+Sozdal USMALLINT
+
+CZvet USMALLINT
+
+KodKaznacheystva VARCHAR
+
+KPP VARCHAR
+
+INN VARCHAR
+
+PFRegNom VARCHAR
+
+FSSRegNom VARCHAR
+
+OGRN VARCHAR
+
+FOMSRegNom VARCHAR
+
+FSSDopKod VARCHAR
+
+RegNomerIP VARCHAR
+
+KodNI VARCHAR
+
+DataVremyaRegistr TIMESTAMP
+
+PochtaCHerezKatalo UTINYINT
+
+IdentifikatorOpe VARCHAR
+
+KodAvtorizaczii VARCHAR
+
+Identifikator VARCHAR
+
+OKPO VARCHAR
+
+KodFiliala VARCHAR
+
+DataZaprosaNAEDO INTEGER
+
+Nazvanie LONGVARCHAR
+
+KodFaktAdresa LONGVARCHAR
+
+Naimenovanie LONGVARCHAR
+
+RejimRaboti LONGVARCHAR
+
+FaktStrana LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+FaktAdres LONGVARCHAR
+
+KodAdresa LONGVARCHAR
+
+Telefon LONGVARCHAR
+
+Strana LONGVARCHAR
+
+Dialog LONGVARCHAR
+
+email LONGVARCHAR
+
+Adres LONGVARCHAR
+
+www LONGVARCHAR
+
+TerrOrganFSS LONGVARCHAR
+
+VhodyashiyKatalog LONGVARCHAR
+
+IshodyashiyKatalog LONGVARCHAR
+
+SaytPomoshi LONGVARCHAR
+
+AdresServisa LONGVARCHAR
+
+emailEDO LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+ORGANIZA
+LiczoRScheta UINTEGER
+
+BankRScheta UINTEGER
+
+PorNomer UTINYINT
+
+Flagi UTINYINT
+
+ValyutRaschetnieSch UINTEGER
+
+TipScheta UTINYINT
+
+LiczevoySchetVOFK VARCHAR
+
+KaznacheystvoLSche UINTEGER
+
+TipIstochnikaSred UTINYINT
+
+DataOtkritiya DATE
+
+DataZakritiya DATE
+
+SummaRScheta DOUBLE
+
+PlanSchetovRScheta UINTEGER
+
+DataPereschetaOst DATE
+
+RSchet LONGVARCHAR
+
+Kommentariy LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+OTHERDOC
+Dokument_ UINTEGER
+
+Summa1 DOUBLE
+
+Summa3 DOUBLE
+
+Srok DATE
+
+Data2 DATE
+
+Vremya TIME
+
+Data3 DATE
+
+ObemRabot DOUBLE
+
+SposobDostavki UTINYINT
+
+DataVnesh DATE
+
+Informacziya LONGVARBINARY
+
+DopNomer LONGVARCHAR
+
+NomerVnesh LONGVARCHAR
+
+Sostav LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+OUR_ORGS
+NashaOrganizacziya UINTEGER
+
+Kod UTINYINT
+
+Flagi UTINYINT
+
+CZvet INTEGER
+
+OKATO VARCHAR
+
+KodTerritorii VARCHAR
+
+OKOPF VARCHAR
+
+OKFS VARCHAR
+
+OKDP VARCHAR
+
+KatNP UTINYINT
+
+DataSozdaniya DATE
+
+SvidData DATE
+
+BIK VARCHAR
+
+BankBlankNomerTe INTEGER
+
+BankBlankNomerMi INTEGER
+
+BankBlankNomerMa INTEGER
+
+DataAkkred DATE
+
+NomerAkkred VARCHAR
+
+BankRegNomer VARCHAR
+
+BankPorNomerFili VARCHAR
+
+FormSobstv LONGVARCHAR
+
+OrgPravForma LONGVARCHAR
+
+VidDeyat LONGVARCHAR
+
+NaimOIV LONGVARCHAR
+
+SvidKemVidano LONGVARCHAR
+
+SvidNomer LONGVARCHAR
+
+SvidKemVidanoKod LONGVARCHAR
+
+PolnoeNaimenovan LONGVARCHAR
+
+OKVED LONGVARCHAR
+
+PFNaimenovaniePo LONGVARCHAR
+
+KodDeyatVmen LONGVARCHAR
+
+PFNaimenovanie LONGVARCHAR
+
+BankBlankSeriya LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+PACKAGES
+NomenklaturaUpak UINTEGER
+
+Kod UTINYINT
+
+VUpakovke DOUBLE
+
+VesUpakovki DOUBLE
+
+SHtrihKod LONGVARCHAR
+
+VidUpakovki LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+PAPKI
+FlagiPapki UTINYINT
+
+Periodichnost UTINYINT
+
+PriznakPapki UTINYINT
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Etap UINTEGER
+
+Etap_f UTINYINT
+
+SobitiePapka UINTEGER
+
+SotrudnikPapki UINTEGER
+
+PorNomer USMALLINT
+
+PorNomer2 USMALLINT
+
+CZvet INTEGER
+
+Signal TIMESTAMP
+
+Plan TIMESTAMP
+
+Nazvanie LONGVARCHAR
+
+SHrift LONGVARCHAR
+
+Virajenie LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+PARAM
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Kod USMALLINT
+
+Imya VARCHAR
+
+Tip UTINYINT
+
+Flagi UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Znachenie LONGVARCHAR
+
+Modul LONGVARCHAR
+
+Znacheniya LONGVARBINARY
+
+Kommentariy LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+PARAMHST
+ParametrIstoriya UINTEGER
+
+LiczoIstoriya UINTEGER
+
+Data DATE
+
+Znachenie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+PARCEL
+LiczoPartii UINTEGER
+
+DataVremya TIMESTAMP
+
+Godnost DATE
+
+VidSobstvennosti USMALLINT
+
+KodPartii VARCHAR
+
+PartiiGeografiya UINTEGER
+
+TehoperacziyaParti UINTEGER
+
+Garantiya DOUBLE
+
+Kurs DOUBLE
+
+DataIzgotovleniya DATE
+
+KodUpakovki UTINYINT
+
+SertifVid UTINYINT
+
+SertifDataKncz DATE
+
+SertifDataNach DATE
+
+Tema LONGVARCHAR
+
+NTD LONGVARCHAR
+
+Parametri LONGVARBINARY
+
+SertifOboznacheni LONGVARCHAR
+
+SertifOrganVidach LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+PARTICIPANT
+VidCZeniUchastniki UINTEGER
+
+Kol_vo DOUBLE
+
+Kol_voDo DOUBLE
+
+Summa DOUBLE
+
+SummaDo DOUBLE
+
+Tip UTINYINT
+
+LiczaUchastniki UINTEGER
+
+ROWID IDENTITY
+
+
+
+PASSES
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Tip UTINYINT
+
+TipZapisi UTINYINT
+
+Liczo_ UINTEGER
+
+CZvet USMALLINT
+
+Pometki UTINYINT
+
+Nomer LONGVARCHAR
+
+NomerPo LONGVARCHAR
+
+Naimenovanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+PASSOPER
+Dokument_ UINTEGER
+
+DataPo DATE
+
+VremyaPo TIME
+
+TipOperaczii UTINYINT
+
+GrafikOperaczii UINTEGER
+
+ROWID IDENTITY
+
+
+
+PAYGETO
+Dokument_ UINTEGER
+
+VariantRaschetaNa UTINYINT
+
+RSchetKassa UINTEGER
+
+NashRSchetKassa UINTEGER
+
+Otgrujeno DOUBLE
+
+_Otgrujeno DOUBLE
+
+SostoyanieDvijeni UTINYINT
+
+Prilojenie LONGVARCHAR
+
+StrokaNDS LONGVARCHAR
+
+Vidat LONGVARCHAR
+
+PoDokumentu LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+PAYMENT
+Srok DATE
+
+SrokDlyaAkczepta INTEGER
+
+DataOtsilkiDok DATE
+
+Ocherednost USMALLINT
+
+VidPlateja UTINYINT
+
+Summa1 DOUBLE
+
+_Summa1 DOUBLE
+
+OsnovaniePlateja VARCHAR
+
+DataDokOsnovaniya DATE
+
+TipPlateja VARCHAR
+
+VariantRaschetaNa UTINYINT
+
+VhodData DATE
+
+RSchetPlateji UINTEGER
+
+NashRSchetPlateji UINTEGER
+
+Dokument_ UINTEGER
+
+NalogPlateji UINTEGER
+
+Otgrujeno DOUBLE
+
+_Otgrujeno DOUBLE
+
+NalogoviyPeriod LONGVARCHAR
+
+NomerDokOsnovani LONGVARCHAR
+
+Prilojenie LONGVARCHAR
+
+StrokaNDS LONGVARCHAR
+
+VhodNomer LONGVARCHAR
+
+OKATO LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+PBILL
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+NomerPlana USMALLINT
+
+PorNomer USMALLINT
+
+Priznaki USMALLINT
+
+Flagi UTINYINT
+
+PriznakiPlana UTINYINT
+
+PriznakInstal UTINYINT
+
+BalansoviyPrizna UTINYINT
+
+Liczo_ UINTEGER
+
+SostoyanieAnaliti USMALLINT
+
+CZvet UINTEGER
+
+NomerScheta LONGVARCHAR
+
+NazvanieScheta LONGVARCHAR
+
+Opisanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+PensionFunds
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+DataIzmeneniya DATE
+
+Liczo_ UINTEGER
+
+KodPF VARCHAR
+
+INN VARCHAR
+
+KPP VARCHAR
+
+Pometki UTINYINT
+
+Priznaki UTINYINT
+
+Sozdal INTEGER
+
+Izmenil INTEGER
+
+NomerUchastka INTEGER
+
+CZvet USMALLINT
+
+Flagi UINTEGER
+
+PochtaCHerezKatalo UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Naimenovanie LONGVARCHAR
+
+KodAdresa LONGVARCHAR
+
+KodFaktAdresa LONGVARCHAR
+
+Adres LONGVARCHAR
+
+email LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+Strana LONGVARCHAR
+
+Telefon LONGVARCHAR
+
+VhodyashiyKatalog LONGVARCHAR
+
+IshodyashiyKatalog LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+PERECEN
+NachKol_vo DOUBLE
+
+SSummaSebest DOUBLE
+
+SSummaSebestBezN DOUBLE
+
+SSummaCZen DOUBLE
+
+_SSummaSebest DOUBLE
+
+SDop DOUBLE
+
+OtklSverhNormi DOUBLE
+
+Prihod_ UINTEGER
+
+Parametri LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+PERIODE
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+VidPeriodichnosti UTINYINT
+
+Periodichnost INTEGER
+
+PosledniyRaz TIMESTAMP
+
+SleduyushiyRaz TIMESTAMP
+
+Komanda VARCHAR
+
+Periodicheskie_so UINTEGER
+
+Periodicheskie_so_f UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Virajenie LONGVARBINARY
+
+ImyaPolzovatelya LONGVARCHAR
+
+RabocheeMesto LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+PERIODWORKS
+Rabota_ UINTEGER
+
+KnczPovt DATE
+
+CHisloPovt INTEGER
+
+Okonchanie UTINYINT
+
+Periodichnost UTINYINT
+
+Periodichnost2 UTINYINT
+
+CHastota INTEGER
+
+Dni INTEGER
+
+DenMesyacza INTEGER
+
+Dannie LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+PHASE
+TipFazi UTINYINT
+
+TipLicza UTINYINT
+
+TipVhoda UTINYINT
+
+TipVihoda UTINYINT
+
+Flagi USMALLINT
+
+Udalena UTINYINT
+
+ProveryatSrabati UTINYINT
+
+KudaOtsilat UTINYINT
+
+OtKogoOtsilat UTINYINT
+
+TipPisma UTINYINT
+
+Periodichnost UTINYINT
+
+DataNachalaDeystv DATE
+
+DataOkonchaniyaDey DATE
+
+LiczoFazi UINTEGER
+
+VidFazi UINTEGER
+
+PapkiZadaniyFazi UINTEGER
+
+DokumentFazi UINTEGER
+
+FunkcziyaFazi UINTEGER
+
+CZvet INTEGER
+
+Dlitelnost INTEGER
+
+Prodoljitelnost TIME
+
+x INTEGER
+
+y INTEGER
+
+StartovayaData DATE
+
+KonechnayaData DATE
+
+PeriodOtcheta UTINYINT
+
+ZapretPerioda UINTEGER
+
+TipFormi UTINYINT
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+GUID VARCHAR
+
+PraviloFazi UINTEGER
+
+DokumentTip UTINYINT
+
+TipVneshnegoLicza UTINYINT
+
+PorNomer USMALLINT
+
+OgranichenieFaza UINTEGER
+
+MomentSrabativan UTINYINT
+
+GUIDRole VARCHAR
+
+PapkiDokumentovF UINTEGER
+
+KND LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+Dialog LONGVARCHAR
+
+Ikonka LONGVARCHAR
+
+VPapku LONGVARCHAR
+
+Instrukcziya LONGVARBINARY
+
+IshodniyTekst LONGVARBINARY
+
+Virajenie LONGVARBINARY
+
+VariantiOtvetov LONGVARBINARY
+
+NazvanieDialoga LONGVARCHAR
+
+TabliczaFazi LONGVARCHAR
+
+TabliczaKvitanczii LONGVARCHAR
+
+NazvanieZakonchen LONGVARCHAR
+
+Dannie LONGVARBINARY
+
+DanniePoSHablonam LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+PLAN
+DatNach DATE
+
+DatKncz DATE
+
+Dokument_ UINTEGER
+
+TipPlana UTINYINT
+
+VidPlana UTINYINT
+
+Priznaki UINTEGER
+
+Ves DOUBLE
+
+Obem DOUBLE
+
+ROWID IDENTITY
+
+
+
+PlanEvn
+DatNach DATE
+
+DatKncz DATE
+
+Periodichnost UTINYINT
+
+TipSobitiya UTINYINT
+
+Summa DOUBLE
+
+RabotaPlanSobiti UINTEGER
+
+DogovorSobitiya UINTEGER
+
+ROWID IDENTITY
+
+
+
+PLANNAME
+Garantiya UTINYINT
+
+Kurs DOUBLE
+
+PlanNaimenovaniya UINTEGER
+
+NomenklaturaNaim UINTEGER
+
+LiczoNaimenovaniya UINTEGER
+
+PorNomer USMALLINT
+
+Sostav UINTEGER
+
+Sostav_f UTINYINT
+
+NomerOsnovaniya USMALLINT
+
+PorNomerOsnovani USMALLINT
+
+VidPlana UTINYINT
+
+Data DATE
+
+TipNaimenovaniya UTINYINT
+
+Kol_vo DOUBLE
+
+KodUpakovki UTINYINT
+
+SummaSebest DOUBLE
+
+SummaCZen DOUBLE
+
+SummaFakt DOUBLE
+
+MatZatrati DOUBLE
+
+PryamayaZpl DOUBLE
+
+BazovayaCZena DOUBLE
+
+Priznaki UTINYINT
+
+VCZehe DOUBLE
+
+Kol_vo2 DOUBLE
+
+Komponent UINTEGER
+
+DataZakaza DATE
+
+DataPostavki DATE
+
+Rasczehovka UINTEGER
+
+Kommentariy LONGVARCHAR
+
+Dopolnenie LONGVARCHAR
+
+Parametri LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+PLANWORK
+NaimenovanieRabo UINTEGER
+
+NZPRabotiPlana UINTEGER
+
+VidRabotiPlana UINTEGER
+
+Priznaki UTINYINT
+
+Koefficzient DOUBLE
+
+CZena2 DOUBLE
+
+CZena1 DOUBLE
+
+Norma DOUBLE
+
+Razryad LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+PLNK
+Flagi UTINYINT
+
+PravilaOperacziyP UINTEGER
+
+IzFazi UINTEGER
+
+VFazu UINTEGER
+
+PorNomer USMALLINT
+
+CZvet INTEGER
+
+GUID VARCHAR
+
+TipPerehoda UTINYINT
+
+SHablonDokumenta UINTEGER
+
+IdVdSHablonaDokum INTEGER
+
+VidPerehoda UTINYINT
+
+Dannie LONGVARBINARY
+
+Nazvanie LONGVARCHAR
+
+DanniePoSHablonam LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+PMAN
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+INN VARCHAR
+
+KodFiliala VARCHAR
+
+Pol UTINYINT
+
+Liczo_ UINTEGER
+
+DataRojdeniya DATE
+
+CZvet USMALLINT
+
+Sozdal USMALLINT
+
+Izmenil USMALLINT
+
+Pometki UTINYINT
+
+KogdaVidan DATE
+
+Nomer INTEGER
+
+VidDokumenta UTINYINT
+
+DokumentDataVida DATE
+
+DataPribitiya DATE
+
+RayonCHastnieLicza UINTEGER
+
+VCard UTINYINT
+
+FIO LONGVARCHAR
+
+FaktStrana LONGVARCHAR
+
+Strana LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+Adres LONGVARCHAR
+
+KodAdresa LONGVARCHAR
+
+Telefon LONGVARCHAR
+
+Svidetelstvo LONGVARCHAR
+
+OKPO LONGVARCHAR
+
+email LONGVARCHAR
+
+www LONGVARCHAR
+
+FaktAdres LONGVARCHAR
+
+DokumentKemVidan LONGVARCHAR
+
+DokumentSeriya LONGVARCHAR
+
+DokumentNomer LONGVARCHAR
+
+DokumentKodPodra LONGVARCHAR
+
+KodFaktAdresa LONGVARCHAR
+
+DomashniyTelefon LONGVARCHAR
+
+DopKontakti LONGVARCHAR
+
+Grajdanstvo LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+PROVOD
+Kod UTINYINT
+
+LiczoDebet UINTEGER
+
+LiczoKredit UINTEGER
+
+2LiczoDebet UINTEGER
+
+2LiczoKredit UINTEGER
+
+3LiczoDebet UINTEGER
+
+3LiczoKredit UINTEGER
+
+4LiczoDebet UINTEGER
+
+4LiczoKredit UINTEGER
+
+DokumentProvodki UINTEGER
+
+Data DATE
+
+Tip UTINYINT
+
+Priznaki UTINYINT
+
+Summa DOUBLE
+
+_Summa DOUBLE
+
+Kurs DOUBLE
+
+Debet UINTEGER
+
+Kredit UINTEGER
+
+Kommentariy LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+REAS_REM
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Imya LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+reason
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Tekst LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+REGISTER
+OsnSredstvoReest UINTEGER
+
+MestoOS UINTEGER
+
+LiczoOS UINTEGER
+
+AnalitikaOS UINTEGER
+
+DokumentReestriO UINTEGER
+
+SposobAmort UINTEGER
+
+SposobAmortN UINTEGER
+
+ModernData DATE
+
+RazdelReestra UINTEGER
+
+RazdelReestra_f UTINYINT
+
+PorNomer USMALLINT
+
+DataVremya TIMESTAMP
+
+Nomer USMALLINT
+
+Balans DOUBLE
+
+GruppaAmort UTINYINT
+
+BalansN DOUBLE
+
+Amort DOUBLE
+
+AmortN DOUBLE
+
+SpisnBalansN DOUBLE
+
+KoefAmort DOUBLE
+
+KoefAmortN DOUBLE
+
+Srok DOUBLE
+
+SrokN DOUBLE
+
+Probeg DOUBLE
+
+StepenIspolzov UTINYINT
+
+Flagi UTINYINT
+
+TipDokumenta VARCHAR
+
+RasshirenieOS UINTEGER
+
+NormaAmort DOUBLE
+
+SHPZ LONGVARCHAR
+
+Kommentariy LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+REGLAMENT_LINKS
+PravilaOperacziyS UINTEGER
+
+SvyaziReglamentov UINTEGER
+
+TipSvyazi UTINYINT
+
+PorNomer INTEGER
+
+Nachalo DATE
+
+Konecz DATE
+
+SvyaziReglament0 UINTEGER
+
+TipiDokumentovSv UINTEGER
+
+NastroykiPreobra LONGVARBINARY
+
+NastroykiPreob0 LONGVARBINARY
+
+NastroykiOtobraj LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+REGSALES
+FlagiUstroystv UTINYINT
+
+DokumentProdaji UINTEGER
+
+Sozdal INTEGER
+
+Izmenil INTEGER
+
+PorNomer USMALLINT
+
+DataVremya TIMESTAMP
+
+CZena DOUBLE
+
+SummaCZen DOUBLE
+
+SummaCZenBezNDS DOUBLE
+
+BazovayaCZena DOUBLE
+
+Kurs DOUBLE
+
+KodUpakovki UTINYINT
+
+NomerOsnovaniya USMALLINT
+
+PorNomerOsnovani USMALLINT
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Priznaki UINTEGER
+
+Spisanie UTINYINT
+
+Kol_vo DOUBLE
+
+Kartochka UINTEGER
+
+Kommentariy LONGVARCHAR
+
+Dopolnenie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+REP_PLAN
+Data DATE
+
+KonPeriodOtch DATE
+
+Periodichnost UTINYINT
+
+Kod LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+REPFORMS
+Dokument_ UINTEGER
+
+Data0 DATE
+
+Dannie UINTEGER
+
+ParametriOtcheta UINTEGER
+
+VersiyaRealizaczii INTEGER
+
+DopData DATE
+
+DopSumma1 DOUBLE
+
+DopSumma2 DOUBLE
+
+DopSumma3 DOUBLE
+
+PrizDok UTINYINT
+
+Vigrujen UTINYINT
+
+TipFormi UTINYINT
+
+NomerFayla INTEGER
+
+KodForm VARCHAR
+
+VersForm VARCHAR
+
+DopSumma5 DOUBLE
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+NomerPachki INTEGER
+
+Flagi USMALLINT
+
+KoneczOtchPerioda DATE
+
+SkladskoyDokumen UINTEGER
+
+Nazvanie LONGVARCHAR
+
+DopTipDokumenta LONGVARCHAR
+
+TipInf LONGVARCHAR
+
+ImyaFayla LONGVARCHAR
+
+IzmDannie LONGVARCHAR
+
+VidKorr LONGVARCHAR
+
+Oshibki LONGVARCHAR
+
+NazvanieLicza LONGVARCHAR
+
+Adres LONGVARCHAR
+
+PFStrahNomer LONGVARCHAR
+
+UdLichnSeriya LONGVARCHAR
+
+UdLichnNomer LONGVARCHAR
+
+DopPriznak1 LONGVARCHAR
+
+DopPriznak2 LONGVARCHAR
+
+DopPriznak3 LONGVARCHAR
+
+DopPriznak4 LONGVARCHAR
+
+DopPriznak5 LONGVARCHAR
+
+KUplate LONGVARCHAR
+
+KodKategorii LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+REPFORMS_
+linkrec UINTEGER
+
+data LONGVARBINARY
+
+ROWID IDENTITY
+
+TAIL
+
+
+
+REPOBJS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+LiczoObekti UINTEGER
+
+NomenklaturaObe UINTEGER
+
+Liczo_ UINTEGER
+
+PorNomer UINTEGER
+
+RayonObekti UINTEGER
+
+FlagiObektov UTINYINT
+
+Pometki UTINYINT
+
+CZvet USMALLINT
+
+SerNomer LONGVARCHAR
+
+Parametri LONGVARBINARY
+
+Primechanie LONGVARCHAR
+
+Adres LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+RESERVE
+SkladRezervi UINTEGER
+
+DataVremya TIMESTAMP
+
+DokumentRezervi UINTEGER
+
+PartiyaRezerv UINTEGER
+
+PorNomer USMALLINT
+
+Priznaki UTINYINT
+
+Rezerv DOUBLE
+
+Sozdal USMALLINT
+
+Izmenil USMALLINT
+
+ROWID IDENTITY
+
+
+
+RESOURCES
+TehoperacziyaResur UINTEGER
+
+Data DATE
+
+LiczoResursi UINTEGER
+
+Kol_vo DOUBLE
+
+Priznaki UTINYINT
+
+Tip UTINYINT
+
+ROWID IDENTITY
+
+
+
+RESTBL
+Tip UTINYINT
+
+Izmenen TIMESTAMP
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+VersiyaResursa INTEGER
+
+CZvet INTEGER
+
+Imya VARCHAR
+
+NazvanieRabochego VARCHAR
+
+Hozyain LONGVARCHAR
+
+RabocheeMesto LONGVARCHAR
+
+Zadacha LONGVARCHAR
+
+Polzovatel LONGVARCHAR
+
+Dannie LONGVARBINARY
+
+Kommentarii LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+REWARD_PENALTY
+Raschet_ UINTEGER
+
+Proczent DOUBLE
+
+Primechanie LONGVARCHAR
+
+Motiv LONGVARCHAR
+
+Vid LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+RIGHTS
+PolzovatelPrav UINTEGER
+
+PorNomer INTEGER
+
+Dostup UTINYINT
+
+Razdeli UINTEGER
+
+ZonaPrava UINTEGER
+
+TipNazvaniya UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Zadacha LONGVARCHAR
+
+Viborka LONGVARCHAR
+
+Polya LONGVARBINARY
+
+Komandi LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+RIGHTS_RESOURCES
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+DataDokumenta DATE
+
+ResursiPrava UINTEGER
+
+DostupPrava UINTEGER
+
+DokumentiPrava UINTEGER
+
+SotrudnikPrava UINTEGER
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+RULE
+DataIzmeneniya TIMESTAMP
+
+DeystvuetDo DATE
+
+DeystvuetS DATE
+
+Zakrivat UTINYINT
+
+Izmenil USMALLINT
+
+Imya VARCHAR
+
+Oplachivat UTINYINT
+
+PorNomer INTEGER
+
+PraviloKod UINTEGER
+
+PraviloTekst UINTEGER
+
+Priznak UTINYINT
+
+PriznakInstal UTINYINT
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Sozdal USMALLINT
+
+TipDokumenta VARCHAR
+
+FlagiPravila UTINYINT
+
+CZvet INTEGER
+
+GUID VARCHAR
+
+VneshniyDokument_ UINTEGER
+
+Operacziya LONGVARCHAR
+
+Versiya LONGVARCHAR
+
+Konfiguracziya LONGVARCHAR
+
+Modul LONGVARCHAR
+
+Utochnenie LONGVARCHAR
+
+Kommentariy LONGVARCHAR
+
+Konteyner LONGVARCHAR
+
+Dannie LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+RULE_COD
+PraviloKod UINTEGER
+
+Virajenie LONGVARBINARY
+
+LiczaOgranichenie LONGVARBINARY
+
+DokumentiOgranich LONGVARBINARY
+
+DokSledstvieOgra LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+RULE_COND
+PraviloOgranichen UINTEGER
+
+Nomer INTEGER
+
+Tip UTINYINT
+
+Obyazatelnost UTINYINT
+
+Flagi UINTEGER
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+PorNomer INTEGER
+
+OgranichenieLiczo UINTEGER
+
+TipLicza UTINYINT
+
+TipVneshnegoLicza UTINYINT
+
+PapkiZadaniyFazi UINTEGER
+
+GUID VARCHAR
+
+PapkiOgranicheniya UINTEGER
+
+Nazvanie LONGVARCHAR
+
+NazvanieSpravochn LONGVARCHAR
+
+RazdelSpravochnik LONGVARCHAR
+
+PunktMenyu LONGVARCHAR
+
+Metka LONGVARCHAR
+
+ZnacheniePoUmolcha LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+RULE_EXT
+PraviloTekst UINTEGER
+
+IshodniyTekst LONGVARBINARY
+
+Podskazka LONGVARBINARY
+
+Podpisi LONGVARBINARY
+
+KatalogZagruzki LONGVARCHAR
+
+KatalogSohraneni LONGVARCHAR
+
+KatalogVigruzki LONGVARCHAR
+
+MaskiZagruzki LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+SAL_HIST
+Data DATE
+
+DoljnostiIstoriya UINTEGER
+
+Oklad DOUBLE
+
+Tarif DOUBLE
+
+Proczent DOUBLE
+
+ROWID IDENTITY
+
+
+
+SECURITIES
+DataKoncza DATE
+
+Flagi UINTEGER
+
+DataNachala DATE
+
+Dokument_ UINTEGER
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Seriya LONGVARCHAR
+
+Nomer LONGVARCHAR
+
+SchetUcheta LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+SENTREP
+Dokument_ UINTEGER
+
+TipPisma UTINYINT
+
+Identifikator INTEGER
+
+DataOtpravki DATE
+
+Versiya VARCHAR
+
+NomerGruppiZapro INTEGER
+
+email LONGVARCHAR
+
+ParametriPisma LONGVARBINARY
+
+TemaPisma LONGVARCHAR
+
+NomerGruppiOtvet LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+SERNOSALES
+Kol_vo DOUBLE
+
+SerNomeraProdaja UINTEGER
+
+SerNomer LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+SERNUMBERS
+RashodSerNomera UINTEGER
+
+PrihodSerNomera UINTEGER
+
+Kol_vo DOUBLE
+
+SkladSerNomera UINTEGER
+
+DataVremya TIMESTAMP
+
+Vid UTINYINT
+
+Flagi UTINYINT
+
+YAcheykaOtpravitel UINTEGER
+
+YAcheykaPoluchatel UINTEGER
+
+PartiyaSerNomera UINTEGER
+
+KodUpakovki UTINYINT
+
+SerNomer LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+ServArea
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+SERVEXCH
+KodRegiona VARCHAR
+
+Liczo_ UINTEGER
+
+Nazvanie LONGVARCHAR
+
+email LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+SERVTYPE
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+SHEMECTRL
+TipNomenklaturiS UINTEGER
+
+ShemaUcheta UINTEGER
+
+VidSobstvennosti USMALLINT
+
+SchetUcheta LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+SHEMESCTRL
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+SKLAD
+PorNomer UTINYINT
+
+NomerSklada USMALLINT
+
+NomenklaturaSkla UINTEGER
+
+TipZapasa UTINYINT
+
+Priznaki USMALLINT
+
+DopPriznaki USMALLINT
+
+DopPriznaki2 USMALLINT
+
+PodborPartiy UTINYINT
+
+Ispolzovanie UTINYINT
+
+SummaSebest DOUBLE
+
+SummaSebestBezND DOUBLE
+
+VRezerve DOUBLE
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Ostatok DOUBLE
+
+MinZapas DOUBLE
+
+MaksZapas DOUBLE
+
+CZenaU DOUBLE
+
+Pometki UTINYINT
+
+CZvet USMALLINT
+
+Sozdal USMALLINT
+
+Izmenil INTEGER
+
+MinAssortiment DOUBLE
+
+TipNelikvida UTINYINT
+
+NaVitrine DOUBLE
+
+Naimenovanie LONGVARCHAR
+
+SHablonKodaPartii LONGVARCHAR
+
+MestoHraneniya LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+SP_WRK_CNDS
+CHisloLgot INTEGER
+
+TU_Koefficzient DOUBLE
+
+Uslovie_ UINTEGER
+
+Uslovie__f UTINYINT
+
+VL_DolyaStavki DOUBLE
+
+pNom INTEGER
+
+DekretDeti UTINYINT
+
+IS_VirabotkaTip UTINYINT
+
+VL_VirabotkaTip UTINYINT
+
+DataKonczaPerioda DATE
+
+DataNachalaPeriod DATE
+
+TU_OsnovanieTU LONGVARCHAR
+
+OUT_OsnovanieOUT LONGVARCHAR
+
+OUT_PozicziyaSpisk LONGVARCHAR
+
+IS_OsnovanieIS LONGVARCHAR
+
+IS_VirabotkaCHasi LONGVARCHAR
+
+IS_VirabotkaMinu LONGVARCHAR
+
+IS_VirabotkaGodi LONGVARCHAR
+
+IS_VirabotkaMesya LONGVARCHAR
+
+IS_VirabotkaDni LONGVARCHAR
+
+VL_OsnovanieVL LONGVARCHAR
+
+VL_VirabotkaCHasi LONGVARCHAR
+
+VL_VirabotkaMinu LONGVARCHAR
+
+VL_VirabotkaGodi LONGVARCHAR
+
+VL_VirabotkaMesya LONGVARCHAR
+
+VL_VirabotkaDni LONGVARCHAR
+
+VL_KodIschisleniya LONGVARCHAR
+
+ProfessiyaDoljnos LONGVARCHAR
+
+OtmetkaOczenshika LONGVARCHAR
+
+oLgot LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+SRCHCND
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Tip UTINYINT
+
+Deystvie UTINYINT
+
+I_ILI UTINYINT
+
+KakIskat UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Dannie LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+STAFFHIST
+IstoriyaDoljnosti UINTEGER
+
+Razdel UINTEGER
+
+Tip UTINYINT
+
+PostoyannieNUIsto UINTEGER
+
+Data DATE
+
+OkladOt DOUBLE
+
+OkladDo DOUBLE
+
+PNU_ UINTEGER
+
+DokumentIstoriyaD UINTEGER
+
+SHtat DOUBLE
+
+Tarif DOUBLE
+
+Flagi UTINYINT
+
+GrafikIstoriyaSHta UINTEGER
+
+ROWID IDENTITY
+
+
+
+STAFFJOBS
+Raschet_ UINTEGER
+
+DoljnostSHtata UINTEGER
+
+Proczent DOUBLE
+
+SHtat DOUBLE
+
+Razryad VARCHAR
+
+OkladOt DOUBLE
+
+OkladDo DOUBLE
+
+GrafikSHtatnoyDol UINTEGER
+
+KategoriyaSHtatnoy UINTEGER
+
+Tarif DOUBLE
+
+PorNomer INTEGER
+
+Kod VARCHAR
+
+Priznak UTINYINT
+
+VidUchetaProhodno UTINYINT
+
+DoljnostnieObyaza LONGVARBINARY
+
+Opisanie LONGVARCHAR
+
+OsobUslTruda LONGVARCHAR
+
+KodPozicziiSpiska LONGVARCHAR
+
+StajOsnovanie LONGVARCHAR
+
+VislugaOsnovanie LONGVARCHAR
+
+OKPDTR LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+StateOrgStat
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Liczo_ UINTEGER
+
+OKPO VARCHAR
+
+INN VARCHAR
+
+KPP VARCHAR
+
+KodOGS VARCHAR
+
+Aktivnost DATE
+
+Priznaki UTINYINT
+
+Pometki UTINYINT
+
+RazreshennayaOtchet UTINYINT
+
+Sozdal INTEGER
+
+Izmenil INTEGER
+
+CZvet USMALLINT
+
+CHastotaPriema INTEGER
+
+Flagi UINTEGER
+
+PochtaCHerezKatalo UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Naimenovanie LONGVARCHAR
+
+KodAdresa LONGVARCHAR
+
+KodFaktAdresa LONGVARCHAR
+
+Adres LONGVARCHAR
+
+email LONGVARCHAR
+
+Strana LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+Telefon LONGVARCHAR
+
+www LONGVARCHAR
+
+VhodyashiyKatalog LONGVARCHAR
+
+IshodyashiyKatalog LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+STD_FUNCS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+FunkczionalnayaPa UINTEGER
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+STELLAGES
+Nomer VARCHAR
+
+TipStellajaStell UINTEGER
+
+UliczaStellaji UINTEGER
+
+ROWID IDENTITY
+
+
+
+STREETS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Nomer VARCHAR
+
+PorNomer INTEGER
+
+PodborYAcheekNaKom UTINYINT
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+SYSPARAM
+NashiOrganizacziiP UINTEGER
+
+Tip UTINYINT
+
+DataSohraneniyaPa TIMESTAMP
+
+Imya LONGVARCHAR
+
+Dannie LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+TARIFFS
+TehoperacziyaTarif UINTEGER
+
+Data DATE
+
+Norma DOUBLE
+
+CZena1 DOUBLE
+
+CZena2 DOUBLE
+
+Koefficzient DOUBLE
+
+Priznaki UTINYINT
+
+Razryad LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+TAXES
+Poluchatel UINTEGER
+
+StatusSostavitel VARCHAR
+
+Imya VARCHAR
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+LiczoPoluchatel UINTEGER
+
+Naimenovanie LONGVARCHAR
+
+KBK LONGVARCHAR
+
+Subschet LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+TaxInsp
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+DataIzmeneniya DATE
+
+Aktivnost DATE
+
+Liczo_ UINTEGER
+
+KodNI VARCHAR
+
+DopKod INTEGER
+
+INN VARCHAR
+
+KPP VARCHAR
+
+Priznaki UTINYINT
+
+Pometki UTINYINT
+
+RazreshennayaOtchet UTINYINT
+
+Sozdal INTEGER
+
+Izmenil INTEGER
+
+CZvet USMALLINT
+
+Flagi UINTEGER
+
+PochtaCHerezKatalo UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Naimenovanie LONGVARCHAR
+
+Adres LONGVARCHAR
+
+KodFaktAdresa LONGVARCHAR
+
+KodAdresa LONGVARCHAR
+
+email LONGVARCHAR
+
+Strana LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+Telefon LONGVARCHAR
+
+www LONGVARCHAR
+
+AdresGPR LONGVARCHAR
+
+VhodyashiyKatalog LONGVARCHAR
+
+IshodyashiyKatalog LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+TECHPER
+VidTehperehodi UINTEGER
+
+TehoperacziyaTehpe UINTEGER
+
+Norma DOUBLE
+
+NomerPerehoda LONGVARCHAR
+
+Opisanie LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+TEST
+INTEGER INTEGER
+
+DOUBLE DOUBLE
+
+MONEY DOUBLE
+
+TEXT VARCHAR
+
+DATE DATE
+
+TIME TIME
+
+STRING LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+TIMBOARD
+Tarif DOUBLE
+
+FaktCHasi DOUBLE
+
+Raschet_ UINTEGER
+
+PlanCHasi DOUBLE
+
+Proczent DOUBLE
+
+Oklad DOUBLE
+
+CZvet INTEGER
+
+Pometki UTINYINT
+
+Sozdal INTEGER
+
+Izmenil INTEGER
+
+FaktDni DOUBLE
+
+PlanDni DOUBLE
+
+Otrabotano LONGVARBINARY
+
+DniCHasi LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+TNDOCS
+FlagiTranspNakl UTINYINT
+
+DataPutList DATE
+
+DataVigruzki DATE
+
+DataPogruzki DATE
+
+DataSpeczRazr DATE
+
+SrokSpeczRazr DATE
+
+Massa DOUBLE
+
+Obem DOUBLE
+
+KolichestvoMest DOUBLE
+
+VmestimTranspSre DOUBLE
+
+GruzopodTranspSr DOUBLE
+
+UkazaniyaVmestimT DOUBLE
+
+UkazaniyaGruzopod DOUBLE
+
+VremyaVigruzki TIME
+
+VremyaPogruzki TIME
+
+SHtrafZaNevivoz DOUBLE
+
+SummaTamojSborov DOUBLE
+
+SHtrafZaOpozdanie DOUBLE
+
+SHtrafZaProsrochku DOUBLE
+
+StoimostPromivk DOUBLE
+
+PlatejiZaOpasnGr DOUBLE
+
+StoimostPogrRaz DOUBLE
+
+StoimostPlatnih DOUBLE
+
+SHtrafZaNepredyav DOUBLE
+
+SHtrafZaZaderjkuV DOUBLE
+
+SHtrafZaZaderjkuP DOUBLE
+
+PlataZaHranenieV DOUBLE
+
+SHtrafZaProstoyKo DOUBLE
+
+SHtrafZaProstoySp DOUBLE
+
+Dokument_ UINTEGER
+
+Razmeri LONGVARCHAR
+
+Voditel LONGVARCHAR
+
+Ukazaniya LONGVARCHAR
+
+Upakovka LONGVARCHAR
+
+Sertifikati LONGVARCHAR
+
+SrokiUtrati LONGVARCHAR
+
+TelVoditelya LONGVARCHAR
+
+DopInfOGruze LONGVARCHAR
+
+NomerPutList LONGVARCHAR
+
+PoryadokRabot LONGVARCHAR
+
+Rekomendaczii LONGVARCHAR
+
+SrokVigruzki LONGVARCHAR
+
+SrokPogruzki LONGVARCHAR
+
+AdresVigruzki LONGVARCHAR
+
+AdresPogruzki LONGVARCHAR
+
+NomerSpeczRazr LONGVARCHAR
+
+InfObOpasnGruze LONGVARCHAR
+
+MarshrutPerevozki LONGVARCHAR
+
+NaimenovanieGruz LONGVARCHAR
+
+TipTranspSredstv LONGVARCHAR
+
+OtvLiczoPerevozchi LONGVARCHAR
+
+RejimTrudaVodite LONGVARCHAR
+
+SvedeniyaObOplomb LONGVARCHAR
+
+MarkaTranspSreds LONGVARCHAR
+
+PoryadokRaschetaPl LONGVARCHAR
+
+SoprovoditDokume LONGVARCHAR
+
+UkazaniyaTipTrans LONGVARCHAR
+
+RegNomTranspSred LONGVARCHAR
+
+PoryadokOpredPros LONGVARCHAR
+
+TelOtvLiczaPerevo LONGVARCHAR
+
+UkazaniyaMarkaTra LONGVARCHAR
+
+FormaUvedomlObEk LONGVARCHAR
+
+SrokHraneniyaVTer LONGVARCHAR
+
+OtvLiczoGruzopolu LONGVARCHAR
+
+SposobOpredeleni LONGVARCHAR
+
+OtvLiczoGruzootpr LONGVARCHAR
+
+PredostavleniePr LONGVARCHAR
+
+TelOtvLiczaGruzop LONGVARCHAR
+
+TelOtvLiczaGruzoo LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+TYPECALCS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Liczo_ UINTEGER
+
+Tema VARCHAR
+
+Sozdal USMALLINT
+
+Izmenil USMALLINT
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+TYPECOSTS
+UsloviePoroga UTINYINT
+
+TipPoroga UTINYINT
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Proczent DOUBLE
+
+Premiya DOUBLE
+
+Primenenie UTINYINT
+
+Porog DOUBLE
+
+PorogDo DOUBLE
+
+Obedinenie UTINYINT
+
+CZena UTINYINT
+
+Imya VARCHAR
+
+Dokument_ UINTEGER
+
+DniNedeli UTINYINT
+
+DniMesyacza UINTEGER
+
+DatNach DATE
+
+DatKncz DATE
+
+VremyaNach TIME
+
+VremyaKncz TIME
+
+ValyutaVidiCZen UINTEGER
+
+VidDialoga UTINYINT
+
+FlagiVidovCZen UINTEGER
+
+Tip UTINYINT
+
+CZvet USMALLINT
+
+Pometki UTINYINT
+
+NomerNach LONGVARCHAR
+
+Soobshenie LONGVARCHAR
+
+NomerKncz LONGVARCHAR
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+KodVirajeniya LONGVARBINARY
+
+Virajenie LONGVARBINARY
+
+DopDannie LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+TYPEGG
+VidOtgruzki UTINYINT
+
+Flagi USMALLINT
+
+VidSobstvennosti USMALLINT
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Tema LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+TYPEITEMS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+PorNomer USMALLINT
+
+Uchet UTINYINT
+
+Flagi UTINYINT
+
+VidTMCZ UTINYINT
+
+NazvanieVR VARCHAR
+
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+TYPEPROP
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+VidSobstvennosti USMALLINT
+
+Liczo_ UINTEGER
+
+Nazvanie LONGVARCHAR
+
+Primechanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+TYPESTELLAGE
+Nazvanie LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+USERLINK
+Vhodit UINTEGER
+
+Soderjit UINTEGER
+
+PorNomer USMALLINT
+
+Parametri LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+USERS
+SotrudnikPolzov UINTEGER
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Tip UTINYINT
+
+Kod USMALLINT
+
+Dannie INTEGER
+
+VersiyaDannih INTEGER
+
+CZvet INTEGER
+
+PriznakInstal UTINYINT
+
+Pometki UTINYINT
+
+Sozdal USMALLINT
+
+Izmenil USMALLINT
+
+IdentifikatorSer VARCHAR
+
+ImyaKonteyneraKlyu VARCHAR
+
+Identifikator VARCHAR
+
+Imya LONGVARCHAR
+
+Parol LONGVARBINARY
+
+Obshie LONGVARBINARY
+
+Kommentariy LONGVARBINARY
+
+SpisokRazreshenni LONGVARBINARY
+
+ObshieDannie LONGVARBINARY
+
+ParolPoSertifik LONGVARBINARY
+
+KeyID LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+VACANCY_REQUEST
+VakantnayaDoljnos UINTEGER
+
+DataAktualnosti DATE
+
+DataZakritie DATE
+
+Dokument_ UINTEGER
+
+ObsheeKolichestvo USMALLINT
+
+SostoyanieZayavki UTINYINT
+
+KolNaProsmotre INTEGER
+
+KolPretendentov INTEGER
+
+ZrplOt INTEGER
+
+ZrplDo INTEGER
+
+OpisanieZayavki LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+VEDOM
+KVidache DOUBLE
+
+Kol_vo DOUBLE
+
+Srok DATE
+
+Dokument_ UINTEGER
+
+Kol_vo2 DOUBLE
+
+Kol_vo3 DOUBLE
+
+Kol_vo4 DOUBLE
+
+SHPZ LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+VEDOMN
+PorNomer USMALLINT
+
+VedomostSpisok UINTEGER
+
+Summa DOUBLE
+
+Summa2 DOUBLE
+
+Vidano UTINYINT
+
+LiczoSpiski UINTEGER
+
+LiczoZaKogo UINTEGER
+
+ROWID IDENTITY
+
+
+
+WCONTACT
+Rabota_ UINTEGER
+
+TemaKontakta UINTEGER
+
+ItogKontakta UINTEGER
+
+VidKontakta UINTEGER
+
+Predstavitel UINTEGER
+
+ZapisRazgovora UINTEGER
+
+TipZapisiKontakt UTINYINT
+
+LiczoKontakti UINTEGER
+
+DataVremya TIMESTAMP
+
+ROWID IDENTITY
+
+
+
+WCONTACT_
+linkrec UINTEGER
+
+data LONGVARBINARY
+
+ROWID IDENTITY
+
+TAIL
+
+
+
+WHDOCS
+Master1 UINTEGER
+
+Master2 UINTEGER
+
+Master3 UINTEGER
+
+Ves DOUBLE
+
+Obem DOUBLE
+
+SrokOplati DATE
+
+VidSobstvennosti USMALLINT
+
+SkladPoluchatel UINTEGER
+
+BazovayaSummaCZen DOUBLE
+
+SummaBezNDS DOUBLE
+
+VidOtgruzki UTINYINT
+
+SkladOtpravitel UINTEGER
+
+Flagi UINTEGER
+
+Flagi1 UINTEGER
+
+VhodData DATE
+
+DataRegistraczii DATE
+
+Dokument_ UINTEGER
+
+VremyaPo TIME
+
+SkladskoyDokumen UINTEGER
+
+SkladskoyDokumen_f UTINYINT
+
+Gruzootpravitel UINTEGER
+
+RaspredelenieZat UTINYINT
+
+DataIspr DATE
+
+NomerIspr UINTEGER
+
+TorgovayaOperacziya UTINYINT
+
+VidOplati UINTEGER
+
+VremyaNach TIME
+
+VremyaKncz TIME
+
+AdresGruzopolucha LONGVARCHAR
+
+Doverennost LONGVARCHAR
+
+VhodNomer LONGVARCHAR
+
+SHPZ LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+WHProps
+SkladSvoystva UINTEGER
+
+RazdelSkladaSvoy UINTEGER
+
+Tip UTINYINT
+
+Data DATE
+
+Znachenie LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+WORDLIST
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+SlovoNabori UINTEGER
+
+Nomer INTEGER
+
+PorNomer INTEGER
+
+LiczoNabori UINTEGER
+
+Priznaki UTINYINT
+
+TipNabora UTINYINT
+
+ROWID IDENTITY
+
+
+
+WORDLISTDOC
+TipNabora UTINYINT
+
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Nomer INTEGER
+
+PorNomer INTEGER
+
+Priznaki UTINYINT
+
+DokumentNabori UINTEGER
+
+SlovoNabori UINTEGER
+
+ROWID IDENTITY
+
+
+
+WORDLISTEXT
+Kol_vo INTEGER
+
+IdVD INTEGER
+
+SlovoNabori UINTEGER
+
+ROWID IDENTITY
+
+
+
+WORK_ACT
+DataNachala DATE
+
+DataOkonchaniya DATE
+
+Summa DOUBLE
+
+SotrudnikMestaRa UINTEGER
+
+MestoRaboti UINTEGER
+
+VidDeyatelnosti UTINYINT
+
+VidNeprStaj UTINYINT
+
+KoefNeprStaj UTINYINT
+
+Speczialnost LONGVARCHAR
+
+PrichinaUvolneni LONGVARCHAR
+
+Organizacziya LONGVARCHAR
+
+Primechanie LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+WORK_PLACES
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Identifikator VARCHAR
+
+Kod INTEGER
+
+Flagi UTINYINT
+
+Nazvanie LONGVARCHAR
+
+Nastroyki LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+WorkOrdr
+PlanDataVipolnen DATE
+
+PlanVremyaVipolne TIME
+
+DataZakritiyaNarya DATE
+
+ObektNaryadZakaz UINTEGER
+
+PlanovayaSumma DOUBLE
+
+SummaRabot DOUBLE
+
+SummaMaterialov DOUBLE
+
+VidObslujivaniyaN UINTEGER
+
+Srochnost UTINYINT
+
+DataProdaji DATE
+
+SkladskoyDokumen UINTEGER
+
+Liczo4 UINTEGER
+
+ZayavlenieZakazchi LONGVARBINARY
+
+RezultatiOsmotr LONGVARBINARY
+
+KontaktnayaInform LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+WORKS
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+SotrudnikRaboti UINTEGER
+
+DokumentRaboti UINTEGER
+
+VremyaNach TIME
+
+VremyaKncz TIME
+
+Data DATE
+
+Tip UTINYINT
+
+Flagi USMALLINT
+
+PorNomer USMALLINT
+
+PlanovayaData DATE
+
+PlanSobitieRabot UINTEGER
+
+TehoperacziyaRabot UINTEGER
+
+LiczoRaboti UINTEGER
+
+SummaBezNDS DOUBLE
+
+PorNomerOsnovani USMALLINT
+
+NomerOsnovaniya USMALLINT
+
+SobitieRaboti UINTEGER
+
+Summa DOUBLE
+
+Kol_vo DOUBLE
+
+Proczent DOUBLE
+
+Vipolneno DOUBLE
+
+SummaZP DOUBLE
+
+Kurs DOUBLE
+
+_Summa DOUBLE
+
+CZena DOUBLE
+
+CZvet INTEGER
+
+Vajnost UTINYINT
+
+Napominanie UTINYINT
+
+Rabota_ UINTEGER
+
+Rabota__f UTINYINT
+
+Primechanie LONGVARBINARY
+
+SHPZ LONGVARCHAR
+
+Brigada LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+WORKSHIFTS
+Metka VARCHAR
+
+PorNomer UTINYINT
+
+Nachalo TIME
+
+Dlitelnost TIME
+
+IstoriyaRaspisani UINTEGER
+
+ROWID IDENTITY
+
+
+
+WORKTYPE
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+PorNomer USMALLINT
+
+Kod VARCHAR
+
+Priznaki UTINYINT
+
+Edinicza_normirov DOUBLE
+
+NomenklaturaRabo UINTEGER
+
+CZvet INTEGER
+
+Dlitelnost INTEGER
+
+Nazvanie LONGVARCHAR
+
+CZeha LONGVARBINARY
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+WTG
+Razdel UINTEGER
+
+Razdel_f UTINYINT
+
+Svyaz UINTEGER
+
+Den TIME
+
+Nedelya UTINYINT
+
+Liczo_ UINTEGER
+
+CZvet USMALLINT
+
+ObedVremyaS TIME
+
+ObedVremyaPo TIME
+
+RabotaVremyaS TIME
+
+RabotaVremyaPo TIME
+
+RejimRaboti UTINYINT
+
+UchetNochnogoVreme UTINYINT
+
+RabotaVremyaS2 TIME
+
+RabotaVremyaPo2 TIME
+
+ObedVremyaS2 TIME
+
+ObedVremyaPo2 TIME
+
+OtmetkiIzKonfigu UTINYINT
+
+NachaloVecherneySm TIME
+
+NachaloDnevnoySme TIME
+
+NachaloNochnoySmen TIME
+
+Nazvanie LONGVARCHAR
+
+SHablon LONGVARBINARY
+
+Smena LONGVARCHAR
+
+Opisanie LONGVARBINARY
+
+RaschetNachalaSmen LONGVARCHAR
+
+SHablon_s_perioda LONGVARBINARY
+
+Den_tabelya LONGVARBINARY
+
+MetkaDnya2 LONGVARCHAR
+
+MetkaDnya LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+WTG_TIMES
+GrafikPeriodi UINTEGER
+
+Mesyacz DATE
+
+NochnieDni UTINYINT
+
+VechernieDni UTINYINT
+
+NochnieCHasi DOUBLE
+
+VechernieCHasi DOUBLE
+
+Grafik LONGVARBINARY
+
+ROWID IDENTITY
+
+
+
+WTGPeriods
+DataNachalaPeriod DATE
+
+DataRealnaya DATE
+
+VremyaS TIME
+
+VremyaPo TIME
+
+Tip UTINYINT
+
+GrafikGrafikiSPe UINTEGER
+
+MetkaDnya LONGVARCHAR
+
+MetkaDnya2 LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+X$Attrib
+Xa$Id USMALLINT
+
+Xa$Type CHAR
+
+Xa$ASize USMALLINT
+
+Xa$Attrs LONGVARCHAR
+
+
+
+X$Field
+Xe$Id USMALLINT
+
+Xe$File USMALLINT
+
+Xe$Name CHAR
+
+Xe$DataType UTINYINT
+
+Xe$Offset USMALLINT
+
+Xe$Size USMALLINT
+
+Xe$Dec UTINYINT
+
+Xe$Flags USMALLINT
+
+
+
+X$File
+Xf$Id USMALLINT
+
+Xf$Name CHAR
+
+Xf$Loc CHAR
+
+Xf$Flags UTINYINT
+
+Xf$Reserved CHAR
+
+
+
+X$Index
+Xi$File USMALLINT
+
+Xi$Field USMALLINT
+
+Xi$Number USMALLINT
+
+Xi$Part USMALLINT
+
+Xi$Flags USMALLINT
+
+
+
+X$Occurs
+Xo$FileId USMALLINT
+
+Xo$ParentId USMALLINT
+
+Xo$Length USMALLINT
+
+Xo$Offset USMALLINT
+
+Xo$Count USMALLINT
+
+Xo$MappingIndex USMALLINT
+
+Xo$Flags USMALLINT
+
+
+
+X$Proc
+Xp$Name CHAR
+
+Xp$Ver UTINYINT
+
+Xp$Id USMALLINT
+
+Xp$Flags UTINYINT
+
+Xp$Misc LONGVARCHAR
+
+
+
+X$Relate
+Xr$PId USMALLINT
+
+Xr$Index USMALLINT
+
+Xr$FId USMALLINT
+
+Xr$FIndex USMALLINT
+
+Xr$Name CHAR
+
+Xr$UpdateRule UTINYINT
+
+Xr$DeleteRule UTINYINT
+
+Xr$Reserved CHAR
+
+
+
+X$Rights
+Xr$User USMALLINT
+
+Xr$Table USMALLINT
+
+Xr$Column USMALLINT
+
+Xr$Rights UTINYINT
+
+
+
+X$Trigger
+Xt$Name CHAR
+
+Xt$Version UTINYINT
+
+Xt$File USMALLINT
+
+Xt$Event UTINYINT
+
+Xt$ActionTime UTINYINT
+
+Xt$ForEach UTINYINT
+
+Xt$Order USMALLINT
+
+Xt$Sequence USMALLINT
+
+Xt$Misc LONGVARCHAR
+
+
+
+X$User
+Xu$Id USMALLINT
+
+Xu$Name CHAR
+
+Xu$Password CHAR
+
+Xu$Flags USMALLINT
+
+
+
+X$Variant
+Xvar$FileId USMALLINT
+
+Xvar$Pdf CHAR
+
+
+
+X$View
+Xv$Name CHAR
+
+Xv$Version UTINYINT
+
+Xv$Id UTINYINT
+
+Xv$Misc LONGVARCHAR
+
+
+
+ZONELIST
+PorNomer USMALLINT
+
+Soderjit UINTEGER
+
+Vhodit UINTEGER
+
+Nazvanie LONGVARCHAR
+
+Viborka LONGVARCHAR
+
+ROWID IDENTITY
+
+VARSTRING CHAR
+
+
+
+ZPL_DOCS
+VidDokumenta UTINYINT
+
+Priznaki USMALLINT
+
+Tip UTINYINT
+
+Poluchatel UTINYINT
+
+VidNUDokumenti UINTEGER
+
+GrafikDokumenta UINTEGER
+
+RSchetZarplata UINTEGER
+
+DataVremyaNach TIMESTAMP
+
+DataVremyaKncz TIMESTAMP
+
+DataNachisleniya DATE
+
+Otpusk_ UINTEGER
+
+Dokument_ UINTEGER
+
+DokProczent DOUBLE
+
+Diapazoni LONGVARBINARY
+
+SHPZ LONGVARCHAR
+
+Stroka1 LONGVARCHAR
+
+Stroka2 LONGVARCHAR
+
+ROWID IDENTITY
+
+
+
+ZPL_PERIODS
+DataOkonchaniya DATE
+
+SotrudnikPeriodi UINTEGER
+
+Sostoyanie UTINYINT
+
+ROWID IDENTITY
+
+
+
+ZREPORTS
+Dokument_ UINTEGER
+
+SummaKKM DOUBLE
+
+PerviyCHek TIMESTAMP
+
+PosledniyCHek TIMESTAMP
+
+UstroystvaZOtchet UINTEGER
+
+ROWID IDENTITY
