@@ -20,7 +20,7 @@ final class Feature
 	private static $bitrix24Included = null;
 
 	/** @var array features hit cache */
-	private static $featureList = [];
+    private static $featureList = ['catalog_multi_price_types' => 'CatMultiPrice'];
 
 	/** @var array map of compliance with tariff and edition restrictions */
 	private static $tranferList = [
