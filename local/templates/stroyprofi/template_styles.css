@@ -51,7 +51,7 @@
 .top .contacts, .top .address{
     padding: 5px 20px 10px;
     background: url('/img/semitrans.png');
-    height: 45px;
+    height: 60px;
     position: absolute;
     top:5px;
 }

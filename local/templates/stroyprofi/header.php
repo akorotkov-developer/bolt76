@@ -52,19 +52,25 @@
 				);?></div>
                 <div class="cart">
                     <div class="inner">
-                        <div class="caption"><a href="/cart/">Ваша корзина</a></div>
-                        <div class="cart_info_holder">
-							<?if(isset($_COOKIE["cart"])){
-							$cartInfo = json_decode($_COOKIE["cart"], true);
-							if($cartInfo["PRICE"]>0 && $cartInfo["COUNT"]>0){?>
-								<?=$cartInfo["COUNT"]?> <?=sklon($cartInfo["COUNT"], Array("товар","товара","товаров"))?> на сумму<br><?=$cartInfo["PRICE"]?> руб
-								<?}else{?>
-                                <br/>Сейчас пуста
-								<?}
-						}else{?>
-                            <br/>Сейчас пуста
-							<?}?>
-                        </div>
+                        <?php
+                        $APPLICATION->IncludeComponent(
+                            "bitrix:sale.basket.basket.line",
+                            "",
+                            array(
+                                "PATH_TO_BASKET" => SITE_DIR."personal/cart/",
+                                "PATH_TO_PERSONAL" => SITE_DIR."personal/",
+                                "SHOW_PERSONAL_LINK" => "N",
+                                "SHOW_NUM_PRODUCTS" => "N",
+                                "SHOW_TOTAL_PRICE" => "Y",
+                                "SHOW_PRODUCTS" => "N",
+                                "POSITION_FIXED" =>"N",
+                                "SHOW_AUTHOR" => "Y",
+                                "PATH_TO_REGISTER" => SITE_DIR."login/",
+                                "PATH_TO_PROFILE" => SITE_DIR."personal/"
+                            ),
+                            false,
+                            array()
+                        );?>
                     </div>
                 </div>
                 <div class="clear"></div>
