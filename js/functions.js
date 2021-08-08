@@ -148,14 +148,16 @@ $(function () {
         e.preventDefault();
         el = $(this);
         $.post("/cart/add_to_cart.php", $(el).closest('tr').find('.buy .input_holder input').serialize(), function (data) {
-            $('.cart_info_holder').html(data);
-            $(el).closest('tr').find('.buy .input_holder input').val('');
-            recountForm();
-            if ($(el).closest(".fancybox-overlay").length > 0) {
-                $(".fancybox-close").click();
+            if ($.trim(data) != '') {
+                $('.cart_info_holder').html(data);
+                $(el).closest('tr').find('.buy .input_holder input').val('');
+                recountForm();
+                if ($(el).closest(".fancybox-overlay").length > 0) {
+                    $(".fancybox-close").click();
+                }
+                $("#notification").css("top", "0");
+                $("#notification").animate({"top": "0"}, 400).delay(2000).animate({"top": "-70px"}, 400);
             }
-            $("#notification").css("top", "0");
-            $("#notification").animate({"top": "0"}, 400).delay(2000).animate({"top": "-70px"}, 400);
         })
     });
 

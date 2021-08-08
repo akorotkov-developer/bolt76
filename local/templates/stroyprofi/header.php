@@ -12,7 +12,7 @@
     <link rel="icon" href="/favicon.ico?1" type="image/ico">
 </head>
 <body>
-<div class="notification" id="notification">Товар добавлен<br/>в <a href="/cart/">корзину</a></div>
+<div class="notification" id="notification">Товар добавлен<br/>в <a href="/personal/cart/">корзину</a></div>
 <?$APPLICATION->ShowPanel();?>
 <div class="wrapper">
     <div class="width_wrapper">

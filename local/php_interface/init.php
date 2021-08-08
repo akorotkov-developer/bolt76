@@ -204,3 +204,47 @@ function sklon($n, $forms)
 {
     return $n % 10 == 1 && $n % 100 != 11 ? $forms[0] : ($n % 10 >= 2 && $n % 10 <= 4 && ($n % 100 < 10 || $n % 100 >= 20) ? $forms[1] : $forms[2]);
 }
+
+function getBasketInfo() {
+    $arBasketItems = array();
+
+    $dbBasketItems = CSaleBasket::GetList(
+        array(
+            "NAME" => "ASC",
+            "ID" => "ASC"
+        ),
+        array(
+            "FUSER_ID" => CSaleBasket::GetBasketUserID(),
+            "LID" => SITE_ID,
+            "ORDER_ID" => "NULL"
+        ),
+        false,
+        false,
+        array("ID", "CALLBACK_FUNC", "MODULE",
+            "PRODUCT_ID", "QUANTITY", "DELAY",
+            "CAN_BUY", "PRICE", "WEIGHT")
+    );
+    while ($arItems = $dbBasketItems->Fetch()) {
+        if (strlen($arItems["CALLBACK_FUNC"]) > 0) {
+            CSaleBasket::UpdatePrice($arItems["ID"],
+                $arItems["CALLBACK_FUNC"],
+                $arItems["MODULE"],
+                $arItems["PRODUCT_ID"],
+                $arItems["QUANTITY"]);
+            $arItems = CSaleBasket::GetByID($arItems["ID"]);
+        }
+
+        $arBasketItems[] = $arItems;
+    }
+
+    $iProductCounts = count($arBasketItems);
+    $iTotalPrice = 0;
+
+    foreach ($arBasketItems as $basketItem) {
+        $iTotalPrice += $basketItem['PRICE'] * $basketItem['QUANTITY'];
+    }
+
+    $sResult = $iProductCounts . ' ' . sklon($iProductCounts, Array("товар", "товара", "товаров")) . ' на сумму<br> ' . $iTotalPrice . ' руб.';
+
+    return $sResult;
+}

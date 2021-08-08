@@ -1,48 +1,54 @@
-<?
-require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
-CModule::IncludeModule("iblock");
-$cartInfo = Array();
-if (isset($_COOKIE["cart"])) {
-	$cartInfo = json_decode($_COOKIE["cart"], true);
-}
+<?php require_once ($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");?>
 
-if ($_REQUEST['articul']) {
-	$arSelect = Array("ID", "NAME", "IBLOCK_ID", "PROPERTY_PRICE");
-	$arFilter = Array("IBLOCK_ID" => 1, "PROPERTY_ARTICUL" => trim($_REQUEST['articul']));
-	$res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
-	while ($ob = $res->GetNext()) {
-		$_POST["ITEM"][$ob['ID']] = 1;
-	}
-}
+<?php
+if (CModule::IncludeModule("sale"))
+{
+    $iProductId = key($_REQUEST['ITEM']);
+    $iQuantity = $_REQUEST['ITEM'][$iProductId];
 
-foreach ($_POST["ITEM"] as $id => $count) {
-	$count = str_replace(",", ".", $count);
-	if ((float)$count > 0) {
-		$cartInfo["ELEMENTS"][$id] += $count;
-	}
-}
+    if (!$iQuantity) {
+        return false;
+    }
 
-$price = 0;
-$count = 0;
+    //Получаем продукт
+    $dbRez = CCatalogProduct::GetList(
+        [],
+        ['PRODUCT_ID' => $iProductId]
+    );
 
-if (sizeof($cartInfo["ELEMENTS"]) > 0) {
-	$arSelect = Array("ID", "NAME", "IBLOCK_ID", "PROPERTY_PRICE");
-	$arFilter = Array("IBLOCK_ID" => 1, "ID" => array_keys($cartInfo["ELEMENTS"]));
-	$res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
-	while ($ob = $res->GetNext()) {
-		$price += $ob["PROPERTY_PRICE_VALUE"] * (float)$cartInfo["ELEMENTS"][$ob["ID"]];
-		$count++;//= $cartInfo["ELEMENTS"][$ob["ID"]];
-	}
-	$cartInfo["PRICE"] = $price;
-	$cartInfo["COUNT"] = $count;
+    $arProducts = [];
+    while($arRez = $dbRez->Fetch()) {
+        $arProducts = $arRez;
+    }
+    $productName = $arProducts['NAME'];
 
-	setcookie("cart", json_encode($cartInfo), strtotime("+1 month"), "/");
-	if ($_REQUEST['articul']) {
-		LocalRedirect("/cart/");
-	}
-	echo $count . ' ' . sklon($count, Array("товар", "товара", "товаров")) . ' на сумму<br> ' . $price . ' руб.';
-} else {
-	setcookie("cart", "", time() - 10, "/");
-	echo 'Сейчас пуста';
+    $dbRez = CPrice::GetList(
+        [],
+        ['PRODUCT_ID' => $iProductId]
+    );
+    $arPricesItems = [];
+
+    if ($arRez = $dbRez->Fetch())
+    {
+        $arPricesItems = $arRez;
+    }
+
+    $arFields = array(
+        "PRODUCT_ID" => $iProductId,
+        "PRODUCT_PRICE_ID" => $arPricesItems['ID'],
+        "PRICE" => $arPricesItems['PRICE'],
+        "CURRENCY" => "RUB",
+        "QUANTITY" => $iQuantity,
+        "LID" => LANG,
+        "DELAY" => "N",
+        "CAN_BUY" => "Y",
+        "NAME" => $productName,
+    );
+
+    $isAdded = CSaleBasket::Add($arFields);
+
+    if ($isAdded) {
+        echo getBasketInfo();
+    }
 }
 ?>

@@ -1,7 +1,6 @@
 <?
 define("HIDE_SIDEBAR", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Корзина");
 ?>
 
 <h1>Моя корзина</h1>
@@ -51,7 +50,7 @@ $APPLICATION->SetTitle("Корзина");
 		"PRICE_VAT_SHOW_VALUE" => "Y",
 		"PRODUCT_BLOCKS_ORDER" => "props,sku,columns",
 		"QUANTITY_FLOAT" => "N",
-		"SET_TITLE" => "Y",
+		"SET_TITLE" => "N",
 		"SHOW_DISCOUNT_PERCENT" => "Y",
 		"SHOW_FILTER" => "Y",
 		"SHOW_RESTORE" => "Y",

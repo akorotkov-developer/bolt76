@@ -30,7 +30,7 @@
 }
 
 .top{
-    height: 70px;
+    height: 100px;
     position: relative;
 }
 
@@ -1084,4 +1084,9 @@ td .buy_helper_holder{
 	font-family: Georgia;
 	font-style: italic;
 	font-size: 20px;
+}
+
+.cart_info_holder {
+    font-weight: bold;
+    margin-left: 20px;
 }
