@@ -33,6 +33,7 @@ $APPLICATION->SetTitle("Каталог");
 		"SHOW_PRICE_COUNT" => "1",
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRICE_VAT_SHOW_VALUE" => "N",
+        "DETAIL_ADD_TO_BASKET_ACTION" => array("ADD"),
 		"USE_PRODUCT_QUANTITY" => "N",
 		"SHOW_TOP_ELEMENTS" => "N",
 		"SECTION_COUNT_ELEMENTS" => "N",
@@ -128,7 +129,7 @@ $APPLICATION->SetTitle("Каталог");
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
 			"section" => "#SECTION_ID#-#SECTION_CODE#/",
-			"element" => "#SECTION_CODE#/#ELEMENT_ID#/",
+			"element" => "#SECTION_CODE#/#ELEMENT_CODE#/",
 			"compare" => "compare.php?action=#ACTION_CODE#",
 			"smart_filter" => "#SECTION_ID#-#SECTION_CODE#/filter/#SMART_FILTER_PATH#/apply/",
 		),
