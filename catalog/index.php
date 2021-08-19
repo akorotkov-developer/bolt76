@@ -53,8 +53,10 @@ $APPLICATION->SetTitle("Каталог");
 		"LIST_META_DESCRIPTION" => "-",
 		"LIST_BROWSER_TITLE" => "-",
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
+			0 => "ARTICUL",
+			1 => "UNITS",
+            2 => "UPAKOVKA",
+            3 => "VES",
 		),
 		"DETAIL_META_KEYWORDS" => "-",
 		"DETAIL_META_DESCRIPTION" => "-",
@@ -129,7 +131,7 @@ $APPLICATION->SetTitle("Каталог");
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
 			"section" => "#SECTION_ID#-#SECTION_CODE#/",
-			"element" => "#SECTION_CODE#/#ELEMENT_CODE#/",
+			"element" => "#SECTION_CODE#/#ELEMENT_CODE#",
 			"compare" => "compare.php?action=#ACTION_CODE#",
 			"smart_filter" => "#SECTION_ID#-#SECTION_CODE#/filter/#SMART_FILTER_PATH#/apply/",
 		),

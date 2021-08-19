@@ -160,6 +160,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 	}
 }
 ?>
+
 <div class="bx-catalog-element bx-<?=$arParams['TEMPLATE_THEME']?>" id="<?=$itemIds['ID']?>"
 	itemscope itemtype="http://schema.org/Product">
 	<div class="container-fluid">
