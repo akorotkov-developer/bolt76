@@ -54,14 +54,16 @@ if(sizeof($arResult["ITEMS"])>0){
                 <td class="pic no-back-hover">
 					<?if($arElement["PREVIEW_PICTURE"]){?>
 					<?$file = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], array('width' => 100, 'height' => 50), BX_RESIZE_IMAGE_PROPORTIONAL, true);?>
-                    <a href="#" class="fancybox_detailed" data-id="detailed_<?=$arElement["ID"]?>"><img src="<?=$file["src"]?>" alt="<?=$arElement["NAME"]?>"></a>
+                    <a href="<?= $arElement['CODE']?>" class=""><img src="<?=$file["src"]?>" alt="<?=$arElement["NAME"]?>"></a>
 
 					<?}?>
 
                 </td>
                 <td class="art">
-                    <div class="name-holder fancybox_detailed" data-id="detailed_<?=$arElement["ID"]?>">
-                        <span><?=$arElement["DISPLAY_PROPERTIES"]["ARTICUL"]["VALUE"]?></span>
+                    <div class="name-holder">
+                        <a href="<?= $arElement['CODE']?>" class="no_underline">
+                            <span><?=$arElement["DISPLAY_PROPERTIES"]["ARTICUL"]["VALUE"]?></span>
+                        </a>
                     </div>
                 </td>
                 <?
@@ -91,95 +93,97 @@ if(sizeof($arResult["ITEMS"])>0){
                             <img src="/images/i.png" alt="Информация"/></a><?}?>
                 </td>
                 <td class="name">
-                    <div class="name_wrapper">
-                        <div class="name-holder fancybox_detailed" data-id="detailed_<?=$arElement["ID"]?>">
-                            <span><?=$arElement["NAME"]?></span>
-                        </div>
-                        <div class="description_holder" id="detailed_<?=$arElement["ID"]?>">
-                            <h3><?=$arElement["PROPERTIES"]["NAIMENOVANIE"]["VALUE"]?></h3>
-                            <table class="full">
-                                <tr>
-									<?if($arElement["PREVIEW_PICTURE"]){?>
-                                    <td class="picture">
-										<?
-										$file = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], array('width' => 250, 'height' => 250), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-										$file_big = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], array('width' => 900, 'height' => 600), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-										?>
-                                        <a href="<?=$file_big["src"]?>" class="fancybox"><img src="<?=$file["src"]?>" alt="<?=$arElement["NAME"]?>"></a>
-                                    </td>
-									<?}?>
-                                    <td class="properties">
-                                        <div class="buy">
-                                            <div class="buy_helper_holder">
-                                                <div class="buy_helper">
-                                                    <?if($ves){?><div class="vesHelperHolder"><div class="vesHelper" data-val='<?=$k_val;?>' data-k="<?=$k;?>">0 шт</div></div><?}?>
-                                                    <div class="input_holder"><input type="text" name="ITEM[<?=$arElement["ID"]?>]" data-price="<?=$arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]?>"></div>
-	                                                <?if(count($countTips)){?>
-                                                    <div class="help_values">
-		                                                <?foreach($countTips as $c){?>
-                                                        <a href="#" data-val="<?=$c?>">+<span><?=$c?></span></a>
-		                                                <?}?>
-                                                        <div class="clear"></div>
-                                                    </div>
-	                                                <?}?>
-                                                </div><a href="#" class="add_to_cart_one one"><img src="/img/cart_buttton.png" alt=""></a>
+                    <a href="<?=$arElement['CODE'] ?>" class="no_underline">
+                        <div class="name_wrapper">
+                            <div class="name-holder">
+                                <span><?=$arElement["NAME"]?></span>
+                            </div>
+                            <div class="description_holder" id="detailed_<?=$arElement["ID"]?>">
+                                <h3><?=$arElement["PROPERTIES"]["NAIMENOVANIE"]["VALUE"]?></h3>
+                                <table class="full">
+                                    <tr>
+                                        <?if($arElement["PREVIEW_PICTURE"]){?>
+                                        <td class="picture">
+                                            <?
+                                            $file = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], array('width' => 250, 'height' => 250), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                            $file_big = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], array('width' => 900, 'height' => 600), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                            ?>
+                                            <a href="<?=$file_big["src"]?>" class="fancybox"><img src="<?=$file["src"]?>" alt="<?=$arElement["NAME"]?>"></a>
+                                        </td>
+                                        <?}?>
+                                        <td class="properties">
+                                            <div class="buy">
+                                                <div class="buy_helper_holder">
+                                                    <div class="buy_helper">
+                                                        <?if($ves){?><div class="vesHelperHolder"><div class="vesHelper" data-val='<?=$k_val;?>' data-k="<?=$k;?>">0 шт</div></div><?}?>
+                                                        <div class="input_holder"><input type="text" name="ITEM[<?=$arElement["ID"]?>]" data-price="<?=$arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]?>"></div>
+                                                        <?if(count($countTips)){?>
+                                                        <div class="help_values">
+                                                            <?foreach($countTips as $c){?>
+                                                            <a href="#" data-val="<?=$c?>">+<span><?=$c?></span></a>
+                                                            <?}?>
+                                                            <div class="clear"></div>
+                                                        </div>
+                                                        <?}?>
+                                                    </div><a href="#" class="add_to_cart_one one"><img src="/img/cart_buttton.png" alt=""></a>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <table class="full">
-                                            <tr>
-                                                <td class="prop_name">Артикул:</td>
-                                                <td class="prop_value"><?=$arElement["PROPERTIES"]["ARTICUL"]["VALUE"]?></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="prop_name">Единицы:</td>
-                                                <td class="prop_value"><?=$arElement["PROPERTIES"]["UNITS"]["VALUE"]?></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="prop_name">Наличие:</td>
-                                                <td class="prop_value"><?=(float)$arElement["PROPERTIES"]["OSTATOK"]["VALUE"]?></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="prop_name">Розничная цена:</td>
-                                                <td class="prop_value"><?=$arElement["PROPERTIES"]["PRICE"]["VALUE"]?></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="prop_name">Оптовая цена:</td>
-                                                <td class="prop_value"><?=$arElement["PROPERTIES"]["PRICE_OPT"]["VALUE"]?></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="prop_name">В упаковке:</td>
-                                                <td class="prop_value"><?=$up1;?><?=($up2?'/'.$up2:'')?></td>
-                                            </tr>
-                                            <?if($arElement["PROPERTIES"]["VES"]["VALUE"]){?>
-                                            <tr>
-                                                <td class="prop_name">Вес 1000 шт.:</td>
-                                                <td class="prop_value"><?=$arElement["PROPERTIES"]["VES"]["VALUE"];?> кг.</td>
-                                            </tr>
+                                            <table class="full">
+                                                <tr>
+                                                    <td class="prop_name">Артикул:</td>
+                                                    <td class="prop_value"><?=$arElement["PROPERTIES"]["ARTICUL"]["VALUE"]?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="prop_name">Единицы:</td>
+                                                    <td class="prop_value"><?=$arElement["PROPERTIES"]["UNITS"]["VALUE"]?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="prop_name">Наличие:</td>
+                                                    <td class="prop_value"><?=(float)$arElement["PROPERTIES"]["OSTATOK"]["VALUE"]?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="prop_name">Розничная цена:</td>
+                                                    <td class="prop_value"><?=$arElement["PROPERTIES"]["PRICE"]["VALUE"]?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="prop_name">Оптовая цена:</td>
+                                                    <td class="prop_value"><?=$arElement["PROPERTIES"]["PRICE_OPT"]["VALUE"]?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="prop_name">В упаковке:</td>
+                                                    <td class="prop_value"><?=$up1;?><?=($up2?'/'.$up2:'')?></td>
+                                                </tr>
+                                                <?if($arElement["PROPERTIES"]["VES"]["VALUE"]){?>
+                                                <tr>
+                                                    <td class="prop_name">Вес 1000 шт.:</td>
+                                                    <td class="prop_value"><?=$arElement["PROPERTIES"]["VES"]["VALUE"];?> кг.</td>
+                                                </tr>
+                                                <?}?>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="text">
+                                                <?if($arElement["PREVIEW_TEXT"]!=''){?>
+                                                <?=($arElement["PREVIEW_TEXT"])?>
+                                                <?}elseif($arResult["DESCRIPTION"]!=''){?>
+                                                <!--noindex--> <?=($arResult["DESCRIPTION"])?><!--/noindex-->
+                                                <?}?>
+                                            </div>
+                                            <?if($arElement['DETAIL_TEXT']){?>
+                                                <div class="detail_link"><a href="#" class="fancybox_detailed" data-id="detailed_text_<?=$arElement["ID"]?>">подробнее</a></div>
+                                                <div class="description_holder" id="detailed_text_<?=$arElement["ID"]?>">
+                                                    <?=$arElement['DETAIL_TEXT'];?>
+                                                </div>
                                             <?}?>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="text">
-											<?if($arElement["PREVIEW_TEXT"]!=''){?>
-											<?=($arElement["PREVIEW_TEXT"])?>
-											<?}elseif($arResult["DESCRIPTION"]!=''){?>
-                                            <!--noindex--> <?=($arResult["DESCRIPTION"])?><!--/noindex-->
-											<?}?>
-                                        </div>
-	                                    <?if($arElement['DETAIL_TEXT']){?>
-		                                    <div class="detail_link"><a href="#" class="fancybox_detailed" data-id="detailed_text_<?=$arElement["ID"]?>">подробнее</a></div>
-	                                        <div class="description_holder" id="detailed_text_<?=$arElement["ID"]?>">
-		                                        <?=$arElement['DETAIL_TEXT'];?>
-		                                    </div>
-	                                    <?}?>
-                                    </td>
-                                </tr>
-                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </td>
                 <td class="opt">
                     <div class="buy_helper_holder price">
