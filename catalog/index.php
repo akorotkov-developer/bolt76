@@ -107,7 +107,7 @@ $APPLICATION->SetTitle("Каталог");
 		"USER_CONSENT_IS_CHECKED" => "Y",
 		"USER_CONSENT_IS_LOADED" => "N",
 		"CONVERT_CURRENCY" => "N",
-		"USE_ALSO_BUY" => "N",
+		"USE_ALSO_BUY" => "Y",
 		"USE_GIFTS_DETAIL" => "Y",
 		"USE_GIFTS_SECTION" => "Y",
 		"USE_GIFTS_MAIN_PR_SECTION_LIST" => "Y",

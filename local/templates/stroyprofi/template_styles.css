@@ -1090,3 +1090,24 @@ td .buy_helper_holder{
     font-weight: bold;
     margin-left: 20px;
 }
+.related_products {
+    margin: 0 20px 0 20px;
+}
+.bx_catalog_list_home .bx_bt_blue {
+    background: #FF7920;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwYTJkZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDZmY2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FF7920), color-stop(100%,#FF7920));
+    background: -webkit-linear-gradient(top, #FF7920 0%,#FF7920 100%);
+    background: -moz-linear-gradient(top, #FF7920 0%,#FF7920 100%);
+    background: -ms-linear-gradient(top, #FF7920 0%,#FF7920 100%);
+    background: -o-linear-gradient(top, #FF7920 0%,#FF7920 100%);
+    background: linear-gradient(to bottom, #FF7920 0%,#FF7920 100%);
+    color: #fff;
+    text-shadow: 0 1px 0 #FF7920;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF7920', endColorstr='#FF7920',GradientType=0 );
+    border-radius: 0px;
+}
+.bx_catalog_list_home .bx_bt_blue:hover {
+    background-color: #FF7920;
+    border-color: #FF7920;
+}
