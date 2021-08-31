@@ -10,7 +10,7 @@ $arParams = $component->applyTemplateModifications();
 
 $arFields = [
     'IBLOCK_ID' => $arResult['IBLOCK_ID'],
-    'ID' => $arResult['IBLOCK_SECTION_ID']
+    'ID' => $arResult['ORIGINAL_PARAMETERS']['SECTION_ID']
 ];
 $obSections = CIBlockSection::GetList(
     ['SORT' => 'ASC'],
@@ -31,3 +31,4 @@ if ($arSection['PICTURE']) {
     $arResult['MORE_PHOTO_PICTURE']['WIDTH'] = 150;
     $arResult['MORE_PHOTO_PICTURE']['HEIGHT'] = 150;
 }
+

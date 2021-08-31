@@ -317,23 +317,23 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                         <div class="product-item-detail-tabs-container">
                                             <ul class="product-item-detail-tabs-list">
                                                 <?
-                                                if ($showDescription)
+                                                if (!empty($arResult['DISPLAY_PROPERTIES']) || $arResult['SHOW_OFFERS_PROPS'])
                                                 {
                                                     ?>
-                                                    <li class="product-item-detail-tab active" data-entity="tab" data-value="description">
+                                                    <li class="product-item-detail-tab active" data-entity="tab" data-value="properties">
                                                         <a href="javascript:void(0);" class="product-item-detail-tab-link">
-                                                            <span><?=$arParams['MESS_DESCRIPTION_TAB']?></span>
+                                                            <span><?=$arParams['MESS_PROPERTIES_TAB']?></span>
                                                         </a>
                                                     </li>
                                                     <?
                                                 }
 
-                                                if (!empty($arResult['DISPLAY_PROPERTIES']) || $arResult['SHOW_OFFERS_PROPS'])
+                                                if ($showDescription)
                                                 {
                                                     ?>
-                                                    <li class="product-item-detail-tab" data-entity="tab" data-value="properties">
+                                                    <li class="product-item-detail-tab" data-entity="tab" data-value="description">
                                                         <a href="javascript:void(0);" class="product-item-detail-tab-link">
-                                                            <span><?=$arParams['MESS_PROPERTIES_TAB']?></span>
+                                                            <span><?=$arParams['MESS_DESCRIPTION_TAB']?></span>
                                                         </a>
                                                     </li>
                                                     <?
@@ -392,11 +392,24 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                 {
                                                     ?>
                                                     <dl class="product-item-detail-properties">
-                                                        <?
+                                                        <?php
                                                         foreach ($arResult['DISPLAY_PROPERTIES'] as $property)
                                                         {
                                                             if ($property['CODE'] == 'ARTICUL') {continue;}
-                                                            ?>
+
+                                                            if ($property['CODE'] == 'UPAKOVKA2') {continue;}
+
+                                                            if ($property['CODE'] == 'UPAKOVKA') {?>
+                                                                <div class="prop-item">
+                                                                    <dt class="prop-item-title"><?=$property['NAME']?></dt>
+                                                                    <dd><?=(
+                                                                        is_array($property['DISPLAY_VALUE'])
+                                                                            ? implode(' / ', $property['DISPLAY_VALUE'])
+                                                                            : $property['DISPLAY_VALUE']
+                                                                        )?> / <?=$arResult['DISPLAY_PROPERTIES']['UPAKOVKA2']['VALUE']?>
+                                                                    </dd>
+                                                                </div>
+                                                            <?php } ?>
                                                             <div class="prop-item">
                                                                 <dt class="prop-item-title"><?=$property['NAME']?></dt>
                                                                 <dd><?=(
@@ -1286,28 +1299,28 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 	<!--Top tabs-->
 	<div class="product-item-detail-tabs-container-fixed hidden-xs" id="<?=$itemIds['TABS_PANEL_ID']?>">
 		<ul class="product-item-detail-tabs-list">
-			<?
-			if ($showDescription)
-			{
-				?>
-				<li class="product-item-detail-tab active" data-entity="tab" data-value="description">
-					<a href="javascript:void(0);" class="product-item-detail-tab-link">
-						<span><?=$arParams['MESS_DESCRIPTION_TAB']?></span>
-					</a>
-				</li>
-				<?
-			}
-
+			<?php
 			if (!empty($arResult['DISPLAY_PROPERTIES']) || $arResult['SHOW_OFFERS_PROPS'])
 			{
 				?>
-				<li class="product-item-detail-tab" data-entity="tab" data-value="properties">
+				<li class="product-item-detail-tab active" data-entity="tab" data-value="properties">
 					<a href="javascript:void(0);" class="product-item-detail-tab-link">
 						<span><?=$arParams['MESS_PROPERTIES_TAB']?></span>
 					</a>
 				</li>
 				<?
 			}
+
+            if ($showDescription)
+            {
+                ?>
+                <li class="product-item-detail-tab " data-entity="tab" data-value="description">
+                    <a href="javascript:void(0);" class="product-item-detail-tab-link">
+                        <span><?=$arParams['MESS_DESCRIPTION_TAB']?></span>
+                    </a>
+                </li>
+                <?
+            }
 
 			if ($arParams['USE_COMMENTS'] === 'Y')
 			{
