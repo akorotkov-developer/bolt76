@@ -77,7 +77,7 @@
 
 
 <div class="related_products">
-    <h4>Сопутствующие товары: </h4>
+    <h4>Рекомендуем посмотреть: </h4>
     <?$APPLICATION->IncludeComponent(
         "bitrix:catalog.section",
         "visual",
