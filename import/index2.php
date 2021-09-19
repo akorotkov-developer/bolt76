@@ -89,7 +89,7 @@ e("Импорт начат ".date("d.m.Y H:i:s"));
 //НЕ функция для загрузки файлов из csv в память
 {
 	e('loading items from file to memory');
-	$lines = file('catalog.txt');
+	$lines = file('catalog_new.txt');
 	$items = [];
 	$i = 0;
 
@@ -100,10 +100,15 @@ e("Импорт начат ".date("d.m.Y H:i:s"));
 	else
 	{
 	    $iTempLineCount = 0;
+
+
+
 		foreach($lines as $line)
 		{
+
 				$line = iconv("windows-1251","utf-8",$line);
 				$a = explode(';',$line);
+
 				//старый бесполезный механизм для 21 столбца
 				if(false) //-выключенф
 				if(count($a)>=21)
@@ -208,12 +213,22 @@ foreach($tempArray as $i=>$a)
     $items[$a[2]][$i]['show_in_price'] = $a[17];
 	$items[$a[2]][$i]['desc'] = str_replace('<br>',"\n",str_replace('<br><br>',"\n",$a[19]));
 
+    $items[$a[2]][$i]['TipKrepeja'] = $a[21];
+    $items[$a[2]][$i]['Standart'] = $a[22];
+    $items[$a[2]][$i]['KlassProcnosti'] = $a[23];
+    $items[$a[2]][$i]['Pokritie'] = $a[24];
+    $items[$a[2]][$i]['Diametr'] = $a[25];
+    $items[$a[2]][$i]['Dlina'] = $a[26];
+    $items[$a[2]][$i]['DlinaPolki'] = $a[27];
+    $items[$a[2]][$i]['Shirina'] = $a[28];
+    $items[$a[2]][$i]['Tolshina'] = $a[29];
+
 	//Если забыли заполнить свёртку - пусть там будет наименование
 	if($items[$a[2]][$i]['Svertka']=='') $items[$a[2]][$i]['Svertka'] = trim(strval($items[$a[2]][$i]['Naimenovanie']));
 	if (strlen($items[$a[2]][$i]['desc'])<4) $items[$a[2]][$i]['desc'] = '';
 	
 }
-	
+
 //var_dump($tempArray);	
 
 
@@ -411,6 +426,7 @@ function sectionWalker($xml, $top)
 	$present = Array();
 	foreach ($xml->category as $topContent)
 	{
+
 		$image = $topContent->sID;
 		if (sizeof($topContent->childs->category) > 0) {
 			e("sectionWalker: $topContent->ID got childs, section-walking it");
@@ -467,7 +483,17 @@ function addUpdateElement($item, $siteCatID)
 			"NomenklaturaGeog" => $item['NomenklaturaGeog'],
 			"V_REZERVE" => $item['VRezerve'],
             "SHOW_IN_PRICE" => ($item['show_in_price'] > 0) ? 1: 0,
-            "SORT_IN_PRICE" => $item['show_in_price']
+            "SORT_IN_PRICE" => $item['show_in_price'],
+
+            "TIP_KREPEJA" => $item['TipKrepeja'],
+            "STANDART" => $item['Standart'],
+            "KLAS_PROCHNOSTI" => $item['KlassProcnosti'],
+            "POKRITIE" => $item['Pokritie'],
+            "DIAMETR" => $item['Diametr'],
+            "DLINA" => $item['Dlina'],
+            "DLINA_POLKI" => $item['DlinaPolki'],
+            "SHIRINA" => $item['Shirina'],
+            "TOLSHINA" => $item['Tolshina'],
 		);
 		$arUpdate = Array(
 			"NAME" => trim(strval($item['Svertka'])),
@@ -589,7 +615,17 @@ function addUpdateElement($item, $siteCatID)
 				"OSTATOK" => $item['Ostatok'],
 				"V_REZERVE" => $item['VRezerve'],
                 "SHOW_IN_PRICE" => ($item['show_in_price'] > 0) ? 1: 0,
-                "SORT_IN_PRICE" => $item['show_in_price']
+                "SORT_IN_PRICE" => $item['show_in_price'],
+
+                "TIP_KREPEJA" => $item['TipKrepeja'],
+                "STANDART" => $item['Standart'],
+                "KLAS_PROCHNOSTI" => $item['KlassProcnosti'],
+                "POKRITIE" => $item['Pokritie'],
+                "DIAMETR" => $item['Diametr'],
+                "DLINA" => $item['Dlina'],
+                "DLINA_POLKI" => $item['DlinaPolki'],
+                "SHIRINA" => $item['Shirina'],
+                "TOLSHINA" => $item['Tolshina'],
 			),
 		);
 
@@ -684,3 +720,9 @@ if (sizeof($xml->category))
 }
 
 e("Импорт завершен ".date("d.m.Y H:i:s"));
+
+//После импорта запускаем запись символьных кодов
+require_once('/update_catalog_items_codes.php');
+
+//После импорта запускаем создание товаров
+require_once('/update_products_params.php');
