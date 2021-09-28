@@ -1,9 +1,10 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");
-?><?$APPLICATION->IncludeComponent(
+?><?
+$APPLICATION->IncludeComponent(
 	"bitrix:catalog", 
-	"cat", 
+	"cat",
 	array(
 		"IBLOCK_TYPE" => "content",
 		"IBLOCK_ID" => "1",
@@ -24,7 +25,8 @@ $APPLICATION->SetTitle("Каталог");
 		"CACHE_GROUPS" => "Y",
 		"SET_TITLE" => "Y",
 		"SET_STATUS_404" => "N",
-		"USE_FILTER" => "N",
+		"USE_FILTER" => "Y",
+		"FILTER_NAME" => "arrFilter",
 		"USE_COMPARE" => "N",
 		"PRICE_CODE" => array(
 			0 => "BASE",

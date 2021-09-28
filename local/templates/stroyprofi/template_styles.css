@@ -992,12 +992,12 @@ td .buy_helper_holder{
 .section-tabs a {
     display: block;
     float: left;
-    padding: 7px 14px;
+    padding: 11px 14px;
     background: #F0EEEE;
     border: solid 1px #888;
     font-size: 14px;
     line-height: 14px;
-    height: 14px;
+    height: 33px;
     border-radius: 5px 5px 0 0;
     text-decoration: none;
 }
@@ -1110,4 +1110,18 @@ td .buy_helper_holder{
 .bx_catalog_list_home .bx_bt_blue:hover {
     background-color: #FF7920;
     border-color: #FF7920;
+}
+
+.main_block .bx-filter.bx-blue .bx-filter-section {
+    background: #fff;
+    border: 1px solid #cccccc;
+}
+.bx-filter .bx-filter-parameters-box-title span {
+    color: #FF7920!important;
+}
+.bx-filter.bx-blue .bx-ui-slider-pricebar-v {
+    color: #FF7920!important;
+}
+.bx-filter.bx-blue .bx-ui-slider-pricebar-v {
+    color: #FF7920!important;
 }
