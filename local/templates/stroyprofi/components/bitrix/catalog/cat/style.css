@@ -1,0 +1,10 @@
+.section-pane.b-product-items {
+    display: flex!important;
+    flex-flow: wrap;
+}
+.b-product-filter {
+    order: 2;
+}
+.b-product-ctalogsection {
+    order: 1;
+}
