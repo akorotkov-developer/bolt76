@@ -1,5 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-<?$ElementID=$APPLICATION->IncludeComponent(
+<?
+$ElementID=$APPLICATION->IncludeComponent(
 	"bitrix:catalog.element",
 	"",
 	Array(
@@ -47,7 +48,8 @@
 	),
 	$component
 );?>
-<?if($arParams["USE_REVIEW"]=="Y" && IsModuleInstalled("forum") && $ElementID):?>
+<?
+if($arParams["USE_REVIEW"]=="Y" && IsModuleInstalled("forum") && $ElementID):?>
 <br />
 <?$APPLICATION->IncludeComponent(
 	"bitrix:forum.topic.reviews",
@@ -181,7 +183,7 @@
             "SET_META_DESCRIPTION" => "Y",
             "SET_META_KEYWORDS" => "Y",
             "SET_STATUS_404" => "N",
-            "SET_TITLE" => "Y",
+            "SET_TITLE" => "N",
             "SHOW_404" => "N",
             "SHOW_ALL_WO_SECTION" => "N",
             "SHOW_CLOSE_POPUP" => "N",
