@@ -12,7 +12,6 @@ use \Bitrix\Main\Localization\Loc;
  * @var string $componentPath
  * @var string $templateFolder
  */
-
 $this->setFrameMode(true);
 $this->addExternalCss('/bitrix/css/main/bootstrap.css');
 
@@ -106,8 +105,6 @@ else
 	$showSliderControls = $arResult['MORE_PHOTO_COUNT'] > 1;
 }
 
-\Bitrix\Main\Diag\Debug::dumpToFile(['fields1' => $actualItem['MORE_PHOTO']], '', 'log.txt');
-
 if ($arResult['MORE_PHOTO_PICTURE']) {
     if ($actualItem['MORE_PHOTO'][0]['ID'] == 0) {
         unset($actualItem['MORE_PHOTO'][0]);
@@ -116,11 +113,6 @@ if ($arResult['MORE_PHOTO_PICTURE']) {
         $actualItem['MORE_PHOTO'][] = $arResult['MORE_PHOTO_PICTURE'];
     }
 }
-
-\Bitrix\Main\Diag\Debug::dumpToFile(['fields1' => $actualItem['MORE_PHOTO']], '', 'log.txt');
-
-
-
 
 //Сделать кнопку добавить в корзину
 $arParams['ADD_TO_BASKET_ACTION'] = ['ADD'];
@@ -175,6 +167,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 		$labelPositionClass .= isset($positionClassMap[$pos]) ? ' '.$positionClassMap[$pos] : '';
 	}
 }
+
 ?>
 
 <div class="bx-catalog-element bx-<?=$arParams['TEMPLATE_THEME']?>" id="<?=$itemIds['ID']?>"

@@ -122,8 +122,9 @@
     height: 20px;
     outline: none;
     border:#ccc 1px solid;
-position: relative;
-z-index:5;
+    position: relative;
+    z-index:5;
+    color: #000;
 }
 
 .header .search .search_close{
