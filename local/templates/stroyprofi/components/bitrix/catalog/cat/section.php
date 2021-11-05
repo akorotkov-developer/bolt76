@@ -277,12 +277,12 @@ if ($ar_result = $db_list->GetNext()) {
                 <div class="col-xs-12" data-entity="parent-container">
                     <div class="catalog-block-header" data-entity="header" data-showed="false"
                          style="display: none; opacity: 0;">
-                         Персональные рекомендации
+                        <b>Персональные рекомендации: </b>
                     </div>
                     <?
                     $APPLICATION->IncludeComponent(
                         "bitrix:catalog.section",
-                        "",
+                        "personal_recomended",
                         array(
                             "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                             "IBLOCK_ID" => $arParams["IBLOCK_ID"],
