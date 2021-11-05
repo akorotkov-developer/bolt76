@@ -1,8 +1,5 @@
-<?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetPageProperty("title", "Компания СтройПрофи. О компании");
-$APPLICATION->SetTitle("СтройПрофи");
-
+<?php
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 
 use \Bitrix\Main\Loader;
 
@@ -136,8 +133,4 @@ foreach ($arItems as $arItem) {
         ['QUANTITY' => $arItem['PROPERTY_OSTATOK_VALUE']]
     );
 }
-?>
-
-<?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");
 ?>

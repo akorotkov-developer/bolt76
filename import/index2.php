@@ -350,7 +350,7 @@ function getSectionID($name, $internal, $parent, $photo, $sort, $price_id, $desc
     #$arFilter = Array('IBLOCK_ID' => $iblock, 'UF_ORIGINAL_NAME' => $name);
     ###############33
     $db_list = CIBlockSection::GetList(array(), $arFilter, false, array("UF_*"));
-    $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photo . '. jpg';
+    $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photo . '.jpg';
     if ($ar_result = $db_list->GetNext()) {
         e('getSectionID: section found, updating');
 
@@ -369,8 +369,7 @@ function getSectionID($name, $internal, $parent, $photo, $sort, $price_id, $desc
         $arUpdate["PICTURE"] = false;
         $arUpdate["UF_TEMPLATE"] = 0;
 
-
-        if ($photo != 0)
+        if ($photo != 0) {
             if (testphile($picfile)) {
                 e('getSectionID: loading a picture with addr..  ' . $picfile . ' existance = ' . testphile($picfile));
                 $pic = CFile::MakeFileArray($picfile);
@@ -379,7 +378,7 @@ function getSectionID($name, $internal, $parent, $photo, $sort, $price_id, $desc
                     $arUpdate["UF_TEMPLATE"] = 1;
                 }
             } else e('getSectionID: pic with addr ' . $picfile . ' not found');
-
+        }
         $sc->Update($ID, $arUpdate);
     } else {
         e('getSectionID: section not found, creating');
@@ -777,7 +776,7 @@ if (sizeof($xml->category)) {
 e("Импорт завершен " . date("d.m.Y H:i:s"));
 
 //После импорта запускаем запись символьных кодов
-require_once('/update_catalog_items_codes.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/update_catalog_items_codes.php');
 
 //После импорта запускаем создание товаров
-require_once('/update_products_params.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/update_products_params.php');

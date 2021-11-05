@@ -1,5 +1,5 @@
-.section-pane.b-product-items {
-    display: flex!important;
+.main_block .section-pane.b-product-items {
+    display: flex;
     flex-flow: wrap;
 }
 .b-product-filter {

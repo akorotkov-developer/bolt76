@@ -228,6 +228,23 @@ if ($isTabs) {
         </div>
     </div>
 
+    <? if ($isTabs) { ?><?
+        foreach ($tabs as $tab) {
+            ?>
+            <div class="section-pane">
+            <div class="section-pane-inner"><?
+                print $tab['PREVIEW_TEXT'];
+                if ($tab['PROPERTY_PDF_VALUE']) {
+                    $pdf = CFile::GetPath($tab['PROPERTY_PDF_VALUE']);
+                    ?>
+                <iframe
+                        src="https://docs.google.com/viewer?embedded=true&amp;url=strprofi.ru<?= urlencode($pdf); ?>"
+                        width="830" height="1150" style="border: none;"></iframe><?
+                }
+                ?></div></div><?
+        }
+    } ?>
+
     <?php if (ModuleManager::isModuleInstalled("sale")) {
         $arRecomData = array();
         $recomCacheID = array('IBLOCK_ID' => $arParams['IBLOCK_ID']);
@@ -376,19 +393,4 @@ if ($isTabs) {
     } ?>
 
 
-    <? if ($isTabs) { ?><?
-        foreach ($tabs as $tab) {
-            ?>
-            <div class="section-pane">
-            <div class="section-pane-inner"><?
-                print $tab['PREVIEW_TEXT'];
-                if ($tab['PROPERTY_PDF_VALUE']) {
-                    $pdf = CFile::GetPath($tab['PROPERTY_PDF_VALUE']);
-                    ?>
-                    <iframe
-                    src="https://docs.google.com/viewer?embedded=true&amp;url=strprofi.ru<?= urlencode($pdf); ?>"
-                    width="830" height="1150" style="border: none;"></iframe><?
-                }
-                ?></div></div><?
-        }
-    } ?>
+
