@@ -347,6 +347,13 @@
 </category>
 </childs>
 </category>
+<category>
+<PorNomer>115</PorNomer>
+<ID>5764</ID>
+<sID>49197</sID>
+<name>Болт БСР болт самоанкерующийся распорный ГОСТ 28778-90</name>
+<desc></desc>
+</category>
 </childs>
 </category>
 <category>
@@ -458,7 +465,7 @@
 <PorNomer>115</PorNomer>
 <ID>6108</ID>
 <sID>42408</sID>
-<name>16 Дюбель универсальный  ZUM</name>
+<name>16 Дюбель универсальный  ZUM / U</name>
 <desc>Дюбель универсальный ZUM</desc>
 </category>
 <category>
@@ -812,7 +819,7 @@
 <PorNomer>107</PorNomer>
 <ID>17072</ID>
 <sID>39075</sID>
-<name> 7 Винт din 965 потай гол. крест ph кл. 8.8 оц.</name>
+<name> 7 Винт din 965 потай гол. крест ph кл. 5.8 / 8.8 оц.</name>
 <desc>Винт с потайной головкой DIN 965 (полная резьба).</desc>
 </category>
 <category>
@@ -1124,7 +1131,7 @@
 <PorNomer>109</PorNomer>
 <ID>19868</ID>
 <sID>44857</sID>
-<name>10 Винт VM с плоской головкой и внутр. шестигранником, оц</name>
+<name>10 Винт din 7420 с плоской головкой и внутр. шестигранником, оц</name>
 <desc></desc>
 </category>
 <category>
@@ -1389,79 +1396,79 @@
 </category>
 <category>
 <PorNomer>216</PorNomer>
-<ID>18844</ID>
-<sID>43793</sID>
-<name>17 Скользящая опора для стропил KUCIS-Z, закрытая усиленная</name>
-<desc></desc>
-</category>
-<category>
-<PorNomer>217</PorNomer>
 <ID>1418</ID>
 <sID>42116</sID>
 <name>18 Держатель балки DB</name>
 <desc></desc>
 </category>
 <category>
-<PorNomer>218</PorNomer>
+<PorNomer>217</PorNomer>
 <ID>15763</ID>
 <sID>36103</sID>
 <name>19 Уголок универсальный LU</name>
 <desc></desc>
 </category>
 <category>
-<PorNomer>219</PorNomer>
+<PorNomer>218</PorNomer>
 <ID>18422</ID>
 <sID>43033</sID>
 <name>20 Опора балки</name>
 <desc></desc>
 </category>
 <category>
-<PorNomer>220</PorNomer>
+<PorNomer>219</PorNomer>
 <ID>5120</ID>
 <sID>42760</sID>
 <name>22 Опора бруса открытая OBR R</name>
 <desc></desc>
 </category>
 <category>
-<PorNomer>221</PorNomer>
+<PorNomer>220</PorNomer>
 <ID>2520</ID>
 <sID>18819</sID>
 <name>23 Опора бруса закрытая OBR Z</name>
 <desc></desc>
 </category>
 <category>
-<PorNomer>222</PorNomer>
+<PorNomer>221</PorNomer>
 <ID>1426</ID>
 <sID>42121</sID>
 <name>25 Анкер регулируемый по высоте ARH</name>
 <desc></desc>
 </category>
 <category>
-<PorNomer>223</PorNomer>
+<PorNomer>222</PorNomer>
 <ID>16879</ID>
 <sID>38785</sID>
 <name>26 Угловой соединитель US</name>
 <desc></desc>
 </category>
 <category>
+<PorNomer>223</PorNomer>
+<ID>23390</ID>
+<sID>49221</sID>
+<name>27 Т - образное крепление</name>
+<desc></desc>
+</category>
+<category>
 <PorNomer>224</PorNomer>
 <ID>1456</ID>
 <sID>42161</sID>
-<name>27 Монтажные пластины оконные</name>
+<name>28 Монтажные пластины оконные</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>225</PorNomer>
 <ID>85</ID>
 <sID>42114</sID>
-<name>28 Подвес прямой РР</name>
+<name>29 Подвес прямой РР</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>226</PorNomer>
 <ID>5616</ID>
 <sID>40131</sID>
-<name>29 Пластина гвоздевая</name>
+<name>30 Пластина гвоздевая</name>
 <desc></desc>
 </category>
 <category>
@@ -1469,6 +1476,13 @@
 <ID>4270</ID>
 <sID>20666</sID>
 <name>31 Крепеж для забора</name>
+<desc></desc>
+</category>
+<category>
+<PorNomer>228</PorNomer>
+<ID>1952</ID>
+<sID>49325</sID>
+<name>32 Крепление стеновое (для фасадных систем)</name>
 <desc></desc>
 </category>
 </childs>
@@ -2031,140 +2045,140 @@
 <PorNomer>719</PorNomer>
 <ID>23330</ID>
 <sID>48931</sID>
-<name>18 Гайка din 6923 с фланцем нержавеющая сталь А2/А4</name>
+<name>19 Гайка din 6923 с фланцем нержавеющая сталь А2/А4</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>720</PorNomer>
 <ID>23323</ID>
 <sID>48924</sID>
-<name>19 Гайка антивандальная Арт. 9150 А2</name>
+<name>20 Гайка антивандальная Арт. 9150 А2</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>721</PorNomer>
 <ID>2480</ID>
 <sID>18689</sID>
-<name>19 Шайба din125 плоская нержавеющая сталь А2/А4</name>
+<name>21 Шайба din125 плоская нержавеющая сталь А2/А4</name>
 <desc>Шайба плоская, обычная DIN 125</desc>
 </category>
 <category>
 <PorNomer>722</PorNomer>
 <ID>4943</ID>
 <sID>42686</sID>
-<name>20 Шайба din125 плоская латунь</name>
+<name>22 Шайба din125 плоская латунь</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>723</PorNomer>
 <ID>18170</ID>
 <sID>41881</sID>
-<name>21 Шайба din 9021 кузовная увеличен. нержавеющая сталь А2/А4</name>
+<name>23 Шайба din 9021 кузовная увеличен. нержавеющая сталь А2/А4</name>
 <desc>Шайба плоская «кузовная», с увеличенным [BR][BR]внешним диаметром DIN 9021.</desc>
 </category>
 <category>
 <PorNomer>724</PorNomer>
 <ID>2495</ID>
 <sID>41572</sID>
-<name>22 Шайба din 127 пружинная нержавеющая сталь А2/А4</name>
+<name>24 Шайба din 127 пружинная нержавеющая сталь А2/А4</name>
 <desc>Шайба пружинная (гровер), форма В – притуплённые [BR][BR]кромки, стандартная DIN 127B </desc>
 </category>
 <category>
 <PorNomer>725</PorNomer>
 <ID>21410</ID>
 <sID>46396</sID>
-<name>23 Саморез din 7504 К сверлок.шестигр/гл с пресшайбой для алюминия А2</name>
+<name>25 Саморез din 7504 К сверлок.шестигр/гл с пресшайбой для алюминия А2</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>726</PorNomer>
 <ID>21022</ID>
 <sID>46009</sID>
-<name>24 Саморез din 7504 O А2 потай/гл. крест, для алюминия</name>
+<name>26 Саморез din 7504 O А2 потай/гл. крест, для алюминия</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>727</PorNomer>
 <ID>20120</ID>
 <sID>45108</sID>
-<name>25 Саморез din 7976 А2 шестигр/гл нержавеющая сталь А2</name>
+<name>27 Саморез din 7976 А2 шестигр/гл нержавеющая сталь А2</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>728</PorNomer>
 <ID>473</ID>
 <sID>42227</sID>
-<name>26 Саморез din 7981 полукр/гл. крест/шл А2</name>
+<name>28 Саморез din 7981 полукр/гл. крест/шл А2</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>729</PorNomer>
 <ID>1002</ID>
 <sID>42223</sID>
-<name>27 Саморез din 7982 потай/гл крест/шл А2</name>
+<name>29 Саморез din 7982 потай/гл крест/шл А2</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>730</PorNomer>
 <ID>21579</ID>
 <sID>46565</sID>
-<name>28 Саморез din 7983 А2 полупотайная гл. крестовой шлиц сталь А2</name>
+<name>30 Саморез din 7983 А2 полупотайная гл. крестовой шлиц сталь А2</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>731</PorNomer>
 <ID>3069</ID>
 <sID>19392</sID>
-<name>29 Саморез арт.9998 прессшайба сверло нерж.сталь А2</name>
+<name>31 Саморез арт.9998 прессшайба сверло нерж.сталь А2</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>732</PorNomer>
 <ID>18748</ID>
 <sID>43584</sID>
-<name>30 Саморез арт.9999 прессшайба острая нерж.сталь А2</name>
+<name>32 Саморез арт.9999 прессшайба острая нерж.сталь А2</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>733</PorNomer>
-<ID>18084</ID>
-<sID>41799</sID>
-<name>31 Саморез арт.9050 потай/гл pz шлиц неполная резьба для ДСП нерж.сталь А2</name>
+<ID>23332</ID>
+<sID>48933</sID>
+<name>33 Саморез арт.9057 фасадные остроконечные с шестигранной головкой и EPDM-шайбой O16mm, тип А</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>734</PorNomer>
-<ID>23332</ID>
-<sID>48933</sID>
-<name>31 Саморез арт.9057 фасадные остроконечные с шестигранной головкой и EPDM-шайбой O16mm, тип А</name>
+<ID>18084</ID>
+<sID>41799</sID>
+<name>34 Саморез арт.9050 потай/гл pz шлиц неполная резьба для ДСП нерж.сталь А2</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>735</PorNomer>
 <ID>18398</ID>
 <sID>43010</sID>
-<name>32 Заклепка тяговая нержавеющая сталь А2/А2</name>
+<name>35 Заклепка тяговая нержавеющая сталь А2/А2</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>736</PorNomer>
 <ID>4122</ID>
 <sID>20369</sID>
-<name>33 Заклёпка-гайка А2</name>
+<name>36 Заклёпка-гайка А2</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>737</PorNomer>
 <ID>15782</ID>
 <sID>36540</sID>
-<name>34 Такелаж нержавеющая сталь А2/А4</name>
+<name>37 Такелаж нержавеющая сталь А2/А4</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>738</PorNomer>
 <ID>19949</ID>
 <sID>44938</sID>
-<name>35 Клиновой анкер арт.9370</name>
+<name>38 Клиновой анкер арт.9370</name>
 <desc></desc>
 </category>
 </childs>
@@ -2241,107 +2255,114 @@
 </category>
 <category>
 <PorNomer>610</PorNomer>
-<ID>18872</ID>
-<sID>43821</sID>
-<name>10 V-крепеж для профнастила</name>
+<ID>15681</ID>
+<sID>36016</sID>
+<name>10 Кронштейн для кондиционера</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>611</PorNomer>
-<ID>19682</ID>
-<sID>44671</sID>
-<name>11 Z, V -крепеж с виброгасителем для монтажа воздуховодов</name>
+<ID>18872</ID>
+<sID>43821</sID>
+<name>11 V-крепеж для профнастила</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>612</PorNomer>
-<ID>19133</ID>
-<sID>44084</sID>
-<name>12 Лучевой зажим (струбцина монтажная)</name>
+<ID>19682</ID>
+<sID>44671</sID>
+<name>12 L, Z, V -крепеж с виброгасителем для монтажа воздуховодов</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>613</PorNomer>
-<ID>19679</ID>
-<sID>44630</sID>
-<name>13 Пластина с гайкой</name>
+<ID>19133</ID>
+<sID>44084</sID>
+<name>13 Лучевой зажим (струбцина монтажная)</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>614</PorNomer>
-<ID>2179</ID>
-<sID>36416</sID>
-<name>14 Шина монтажная оцинкованная</name>
+<ID>19679</ID>
+<sID>44630</sID>
+<name>14 Пластина с гайкой</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>615</PorNomer>
-<ID>1666</ID>
-<sID>39865</sID>
-<name>15 Углолок оцинкованный для сборки воздуховодов</name>
+<ID>2179</ID>
+<sID>36416</sID>
+<name>15 Шина монтажная оцинкованная</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>616</PorNomer>
-<ID>18751</ID>
-<sID>43587</sID>
-<name>16.Скоба для стяжки фланцев</name>
+<ID>1666</ID>
+<sID>39865</sID>
+<name>16 Углолок оцинкованный для сборки воздуховодов</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>617</PorNomer>
-<ID>6789</ID>
-<sID>44646</sID>
-<name>17 Лента уплотнительная межфланцевая самоклеющаяся</name>
+<ID>18751</ID>
+<sID>43587</sID>
+<name>17.Скоба для стяжки фланцев</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>618</PorNomer>
-<ID>18869</ID>
-<sID>43818</sID>
-<name>18 Гибкая вставка</name>
+<ID>6789</ID>
+<sID>44646</sID>
+<name>18 Лента уплотнительная межфланцевая самоклеющаяся</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>619</PorNomer>
-<ID>18845</ID>
-<sID>43794</sID>
-<name>19 Пенофол-Магнофлекс Вспененный полиэтилен + стеклосетка + полированная алюминиевая фольга + липкий слой (водоустойчивый клей)</name>
+<ID>18869</ID>
+<sID>43818</sID>
+<name>19 Гибкая вставка</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>620</PorNomer>
-<ID>22095</ID>
-<sID>47073</sID>
-<name>20 Огнезащитный материал</name>
+<ID>18845</ID>
+<sID>43794</sID>
+<name>20 Пенофол-Магнофлекс Вспененный полиэтилен + стеклосетка + полированная алюминиевая фольга + липкий слой (водоустойчивый клей)</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>621</PorNomer>
-<ID>19134</ID>
-<sID>44085</sID>
-<name>21 Хомут спринклерный ( подвесной ) цинк для инженерных систем</name>
+<ID>22095</ID>
+<sID>47073</sID>
+<name>21 Огнезащитный материал</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>622</PorNomer>
-<ID>18169</ID>
-<sID>41880</sID>
-<name>22 Скоба U - образная оц.</name>
+<ID>19134</ID>
+<sID>44085</sID>
+<name>22 Хомут спринклерный ( подвесной ) цинк для инженерных систем</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>623</PorNomer>
-<ID>20492</ID>
-<sID>45480</sID>
-<name>23 Хомут трубный высокой  нагрузки</name>
+<ID>18169</ID>
+<sID>41880</sID>
+<name>23 Скоба U - образная оц.</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>624</PorNomer>
+<ID>20492</ID>
+<sID>45480</sID>
+<name>24 Хомут трубный высокой  нагрузки</name>
+<desc></desc>
+</category>
+<category>
+<PorNomer>625</PorNomer>
 <ID>22407</ID>
 <sID>47389</sID>
-<name>24 Сектор упарвления</name>
+<name>25 Сектор упарвления</name>
 <desc></desc>
 </category>
 </childs>
@@ -2432,20 +2453,13 @@
 </category>
 <category>
 <PorNomer>811</PorNomer>
-<ID>15773</ID>
-<sID>36314</sID>
-<name>14 Саморез для мет. профилей клопп</name>
-<desc></desc>
-</category>
-<category>
-<PorNomer>812</PorNomer>
 <ID>1098</ID>
 <sID>19399</sID>
 <name>15 Саморез для крепления деревянных лаг и реек (пакеты)</name>
 <desc>Шуруп для крепления деревянных  лаг и </desc>
 </category>
 <category>
-<PorNomer>813</PorNomer>
+<PorNomer>812</PorNomer>
 <ID>4275</ID>
 <sID>20671</sID>
 <name>16 Саморез кровельный </name>
@@ -2817,147 +2831,147 @@
 <PorNomer>902</PorNomer>
 <ID>22947</ID>
 <sID>47923</sID>
-<name> 1 Сверло по металлу HSS фрезерованное с шаговой заточкой</name>
+<name> 2 Сверло по металлу HSS фрезерованное с шаговой заточкой</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>903</PorNomer>
 <ID>17727</ID>
 <sID>41080</sID>
-<name> 2 Сверла по мет. сред. серия ц.х. Р6М5К5 кл.А ГОСТ 10902</name>
+<name> 3 Сверла по мет. сред. серия ц.х. Р6М5К5 кл.А ГОСТ 10902</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>904</PorNomer>
 <ID>4928</ID>
 <sID>42673</sID>
-<name> 3 Сверла по мет. сред. серия HSS Super-Prо DIN. 338 heller</name>
+<name> 4 Сверла по мет. сред. серия HSS Super-Prо DIN. 338 heller</name>
 <desc>ТОЧНАЯ ШЛИФОВКА ДЛЯ РАБОТЫ ПО МЕТАЛЛУ[BR][BR]Идеально для сверления легированной и нелегированной стали[BR][BR]Прецизионная шлифовка в соответствии с DIN 338 RN для идеальной точности сверления[BR][BR]Угол крестовой заточки сверла 135°[BR][BR]для оптимального центрирования при засверлении[BR][BR]Высокая точность вращения в соответствии с DIN 1414</desc>
 </category>
 <category>
 <PorNomer>905</PorNomer>
 <ID>21488</ID>
 <sID>46474</sID>
-<name> 4 Сверло по мет. сред. серия Р6М5 с коническим хвостовиком кл.В,  ГОСТ 10903</name>
+<name> 5 Сверло по мет. сред. серия Р6М5 с коническим хвостовиком кл.В,  ГОСТ 10903</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>906</PorNomer>
 <ID>7770</ID>
 <sID>39685</sID>
-<name> 5 Сверла по мет. длинная серия ГОСТ 886 Р6М5</name>
+<name> 6 Сверла по мет. длинная серия ГОСТ 886 Р6М5</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>907</PorNomer>
 <ID>7719</ID>
 <sID>39653</sID>
-<name> 6 Сверла по мет. длинная серия HSS-G din 340 heller</name>
+<name> 7 Сверла по мет. длинная серия HSS-G din 340 heller</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>908</PorNomer>
 <ID>2965</ID>
 <sID>42282</sID>
-<name> 7 Сверла по мет. длинные 300мм HSS</name>
+<name> 8 Сверла по мет. длинные 300мм HSS</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>909</PorNomer>
 <ID>5110</ID>
 <sID>42734</sID>
-<name> 8 Сверло по мет. центровочное БПК тип А ГОСТ 14952, Р6М5:</name>
+<name> 9 Сверло по мет. центровочное БПК тип А ГОСТ 14952, Р6М5:</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>910</PorNomer>
 <ID>18768</ID>
 <sID>43720</sID>
-<name> 9 Сверла монолитные К30 ц/х</name>
+<name>10 Сверла монолитные К30 ц/х</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>911</PorNomer>
 <ID>16069</ID>
 <sID>39508</sID>
-<name>10 Сверло Ц/Х твердосплавное цельное ВК8, ГОСТ 17275:</name>
+<name>11 Сверло Ц/Х твердосплавное цельное ВК8, ГОСТ 17275:</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>912</PorNomer>
 <ID>18167</ID>
 <sID>41878</sID>
-<name>11 Сверла по мет. 6-гр/х Р6М5</name>
+<name>12 Сверла по мет. 6-гр/х Р6М5</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>913</PorNomer>
 <ID>5092</ID>
 <sID>42732</sID>
-<name>12 Сверла ступенчатые</name>
+<name>13 Сверла ступенчатые</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>914</PorNomer>
 <ID>7337</ID>
 <sID>36630</sID>
-<name>13 Наборы сверл по металлу</name>
+<name>14 Наборы сверл по металлу</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>915</PorNomer>
 <ID>2180</ID>
 <sID>39394</sID>
-<name>14 Буры SDS plus</name>
+<name>15 Буры SDS plus</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>916</PorNomer>
 <ID>17288</ID>
 <sID>39448</sID>
-<name>15 Буры SDS-plus Heller</name>
+<name>16 Буры SDS-plus Heller</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>917</PorNomer>
 <ID>18175</ID>
 <sID>41886</sID>
-<name>16 Буровые коронки, хвостовики SDS</name>
+<name>17 Буровые коронки, хвостовики SDS</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>918</PorNomer>
 <ID>18856</ID>
 <sID>43805</sID>
-<name>17 Буры SDS-MAX</name>
+<name>18 Буры SDS-MAX</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>919</PorNomer>
 <ID>19126</ID>
 <sID>44077</sID>
-<name>18 Проломные буры SDS MAX</name>
+<name>19 Проломные буры SDS MAX</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>920</PorNomer>
 <ID>18176</ID>
 <sID>41887</sID>
-<name>19 Сверла по бетону</name>
+<name>20 Сверла по бетону</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>921</PorNomer>
 <ID>3511</ID>
 <sID>19850</sID>
-<name>20 Корончатые сверла с твердоспл. крошкой</name>
+<name>21 Корончатые сверла с твердоспл. крошкой</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>922</PorNomer>
 <ID>2546</ID>
 <sID>44631</sID>
-<name>21 Коронки алмазные</name>
+<name>22 Коронки алмазные</name>
 <desc></desc>
 <childs>
 <category>
@@ -2981,48 +2995,55 @@
 <name>Коронка алмазная универсальная для УШМ сухой рез</name>
 <desc></desc>
 </category>
+<category>
+<PorNomer>904</PorNomer>
+<ID>18883</ID>
+<sID>43831</sID>
+<name>Коронка серия Hilberg Laser 1 1/4 UNC для буровых установок</name>
+<desc></desc>
+</category>
 </childs>
 </category>
 <category>
 <PorNomer>923</PorNomer>
 <ID>18285</ID>
 <sID>42091</sID>
-<name>22 Сверло по дереву с ц/х и подрезателем</name>
+<name>23 Сверло по дереву с ц/х и подрезателем</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>924</PorNomer>
 <ID>18272</ID>
 <sID>42078</sID>
-<name>23 Сверло п/дереву перьевое</name>
+<name>24 Сверло п/дереву перьевое</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>925</PorNomer>
 <ID>18273</ID>
 <sID>42079</sID>
-<name>24 Сверло п/дереву спиральное</name>
+<name>25 Сверло п/дереву спиральное</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>926</PorNomer>
 <ID>16708</ID>
 <sID>38597</sID>
-<name>25 Зенковки</name>
+<name>26 Зенковки</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>927</PorNomer>
 <ID>21101</ID>
 <sID>46087</sID>
-<name>26 Фреза концевая ц/х  цельная твердоспл.</name>
+<name>27 Фреза концевая ц/х  цельная твердоспл.</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>928</PorNomer>
 <ID>18513</ID>
 <sID>43240</sID>
-<name>27 Фрезы по дереву</name>
+<name>28 Фрезы по дереву</name>
 <desc></desc>
 <childs>
 <category>
@@ -3087,35 +3108,35 @@
 <PorNomer>929</PorNomer>
 <ID>2479</ID>
 <sID>36434</sID>
-<name>28 Конформат (мебельное сверло)</name>
+<name>29 Конформат (мебельное сверло)</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>930</PorNomer>
 <ID>5739</ID>
 <sID>41668</sID>
-<name>29 Наборы кольцевых пил по дереву</name>
+<name>30 Наборы кольцевых пил по дереву</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>931</PorNomer>
 <ID>18772</ID>
 <sID>43723</sID>
-<name>30 Коронки Bi-metal</name>
+<name>31 Коронки Bi-metal</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>932</PorNomer>
 <ID>19919</ID>
 <sID>44908</sID>
-<name>31 Коронка по металлу</name>
+<name>32 Коронка по металлу</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>933</PorNomer>
 <ID>18878</ID>
 <sID>43827</sID>
-<name>32 Сверла по стеклу и кафелю</name>
+<name>33 Сверла по стеклу и кафелю</name>
 <desc></desc>
 <childs>
 <category>
@@ -3138,35 +3159,70 @@
 <PorNomer>934</PorNomer>
 <ID>7259</ID>
 <sID>43447</sID>
-<name>33 Ножи для электрорубанка</name>
+<name>34 Ножи для электрорубанка</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>935</PorNomer>
 <ID>19642</ID>
 <sID>44593</sID>
-<name>34 Цепи и шины для бензопил</name>
+<name>35 Цепи и шины для бензопил</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>936</PorNomer>
-<ID>21169</ID>
-<sID>46155</sID>
-<name>35 Диск пильный серия Multi Material / ламинат, алюминий, ДСП, дерево.</name>
+<ID>21864</ID>
+<sID>46845</sID>
+<name>36 Диск пильный по дереву для УШМ</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>937</PorNomer>
 <ID>21168</ID>
 <sID>46154</sID>
-<name>36 Диск пильный дерево, дсп, фанера / Форест</name>
+<name>37 Диск пильный дерево, дсп, фанера / Форест</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>938</PorNomer>
-<ID>21864</ID>
-<sID>46845</sID>
-<name>37 Диск пильный по дереву для УШМ</name>
+<ID>23392</ID>
+<sID>49223</sID>
+<name>38 Диск пильный серия Hilberg Industrial Дерево</name>
+<desc></desc>
+</category>
+<category>
+<PorNomer>939</PorNomer>
+<ID>23391</ID>
+<sID>49222</sID>
+<name>39 Диск пильный серия Hilberg Industrial Дерево Тонкий Рез</name>
+<desc></desc>
+</category>
+<category>
+<PorNomer>940</PorNomer>
+<ID>21169</ID>
+<sID>46155</sID>
+<name>40 Диск пильный серия Multi Material / ламинат, алюминий, ДСП, дерево.</name>
+<desc></desc>
+</category>
+<category>
+<PorNomer>941</PorNomer>
+<ID>20255</ID>
+<sID>45243</sID>
+<name>41 Диск пильный серия Industrial Ламинат Hilberg </name>
+<desc></desc>
+</category>
+<category>
+<PorNomer>942</PorNomer>
+<ID>20453</ID>
+<sID>45441</sID>
+<name>42 Диск пильный серия Industrial Алюминий Hilberg </name>
+<desc></desc>
+</category>
+<category>
+<PorNomer>943</PorNomer>
+<ID>20013</ID>
+<sID>45001</sID>
+<name>43 Кольца переходные</name>
 <desc></desc>
 </category>
 </childs>
@@ -4821,56 +4877,63 @@
 <PorNomer>1101</PorNomer>
 <ID>7011</ID>
 <sID>23345</sID>
-<name>1 Пена монтажная</name>
+<name> 1 Пена монтажная</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>1102</PorNomer>
-<ID>6845</ID>
-<sID>23185</sID>
-<name>2 Герметики</name>
+<ID>15773</ID>
+<sID>36314</sID>
+<name> 2 Полиуретановый напыляемый утеплитель</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>1103</PorNomer>
-<ID>18764</ID>
-<sID>43716</sID>
-<name>3 Герметик фиксатор резьбы</name>
+<ID>6845</ID>
+<sID>23185</sID>
+<name> 3 Герметики</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>1104</PorNomer>
-<ID>6902</ID>
-<sID>36527</sID>
-<name>4 Жидкие гвозди</name>
+<ID>18764</ID>
+<sID>43716</sID>
+<name> 4 Герметик фиксатор резьбы</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>1105</PorNomer>
-<ID>18555</ID>
-<sID>43290</sID>
-<name>6 Клей</name>
+<ID>6902</ID>
+<sID>36527</sID>
+<name> 5 Жидкие гвозди</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>1106</PorNomer>
-<ID>4496</ID>
-<sID>20899</sID>
-<name>7 Клей холодная сварка</name>
+<ID>18555</ID>
+<sID>43290</sID>
+<name> 6 Клей</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>1107</PorNomer>
-<ID>7093</ID>
-<sID>36538</sID>
-<name>8 Смазки</name>
+<ID>4496</ID>
+<sID>20899</sID>
+<name> 7 Клей холодная сварка</name>
 <desc></desc>
 </category>
 <category>
 <PorNomer>1108</PorNomer>
+<ID>7093</ID>
+<sID>36538</sID>
+<name> 8 Смазки</name>
+<desc></desc>
+</category>
+<category>
+<PorNomer>1109</PorNomer>
 <ID>18467</ID>
 <sID>43198</sID>
-<name>9 Растворители</name>
+<name> 9 Растворители</name>
 <desc></desc>
 </category>
 </childs>
@@ -5529,7 +5592,7 @@
 <PorNomer>1506</PorNomer>
 <ID>18610</ID>
 <sID>43345</sID>
-<name> 7 Кронштейн стальной усиленный (плоский) WSWP</name>
+<name> 7 Кронштейн стальной усиленный</name>
 <desc></desc>
 </category>
 <category>
@@ -5647,16 +5710,7 @@
 <sID>39888</sID>
 <name>Штукатурный</name>
 <desc></desc>
-<childs>
-<category>
-<PorNomer>1</PorNomer>
-<ID>19322</ID>
-<sID>44273</sID>
-<name>2 Плоскогубцы комбинированные CR-V SAMURAI WP</name>
-<desc></desc>
 <!-- final stage -->
-</category>
-</childs>
 </category>
 </childs>
 </category>

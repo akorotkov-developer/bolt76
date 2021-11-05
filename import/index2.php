@@ -205,7 +205,7 @@ foreach($tempArray as $i=>$a)
 	$items[$a[2]][$i]['Artikul'] = $a[5];
 	$items[$a[2]][$i]['Svertka'] = $a[4];
 	$items[$a[2]][$i]['Naimenovanie'] = $a[3];
-	$items[$a[2]][$i]['Foto'] = $a[18]; #$host.'/import/img/'.$a[18].'.jpg';
+	$items[$a[2]][$i]['Foto'] = explode(',', trim($a[18])); #$host.'/import/img/'.$a[18].'.jpg';
 	$items[$a[2]][$i]['CZena1'] = $a[9];
 	$items[$a[2]][$i]['CZena2'] = $a[10];
 	$items[$a[2]][$i]['CZena3'] = $a[11];
@@ -222,6 +222,28 @@ foreach($tempArray as $i=>$a)
     $items[$a[2]][$i]['DlinaPolki'] = $a[27];
     $items[$a[2]][$i]['Shirina'] = $a[28];
     $items[$a[2]][$i]['Tolshina'] = $a[29];
+
+    // Свободные характеристики
+    $items[$a[2]][$i]['NAME_PARAM_1'] = $a[30];
+    $items[$a[2]][$i]['VALUE_PARAM_1'] = $a[31];
+    $items[$a[2]][$i]['NAME_PARAM_2'] = $a[32];
+    $items[$a[2]][$i]['VALUE_PARAM_2'] = $a[33];
+    $items[$a[2]][$i]['NAME_PARAM_3'] = $a[34];
+    $items[$a[2]][$i]['VALUE_PARAM_3'] = $a[35];
+    $items[$a[2]][$i]['NAME_PARAM_4'] = $a[36];
+    $items[$a[2]][$i]['VALUE_PARAM_4'] = $a[37];
+    $items[$a[2]][$i]['NAME_PARAM_5'] = $a[38];
+    $items[$a[2]][$i]['VALUE_PARAM_5'] = $a[39];
+    $items[$a[2]][$i]['NAME_PARAM_6'] = $a[40];
+    $items[$a[2]][$i]['VALUE_PARAM_6'] = $a[41];
+    $items[$a[2]][$i]['NAME_PARAM_7'] = $a[42];
+    $items[$a[2]][$i]['VALUE_PARAM_7'] = $a[43];
+    $items[$a[2]][$i]['NAME_PARAM_8'] = $a[44];
+    $items[$a[2]][$i]['VALUE_PARAM_8'] = $a[45];
+    $items[$a[2]][$i]['NAME_PARAM_9'] = $a[46];
+    $items[$a[2]][$i]['VALUE_PARAM_9'] = $a[47];
+    $items[$a[2]][$i]['NAME_PARAM_10'] = $a[48];
+    $items[$a[2]][$i]['VALUE_PARAM_10'] = $a[49];
 
 	//Если забыли заполнить свёртку - пусть там будет наименование
 	if($items[$a[2]][$i]['Svertka']=='') $items[$a[2]][$i]['Svertka'] = trim(strval($items[$a[2]][$i]['Naimenovanie']));
@@ -250,24 +272,31 @@ foreach($tempArray as $i=>$a)
 die;*/
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 	
 e($i.' items loaded from catalog.txt lines: good='.$good.' bad='.$bad);
 
-echo ('badlines');
-foreach($items as $item) { 
 
-/*echo '<pre>';
-var_dump($item);
-echo '</pre>';*/
-}
-
-
-//die;
-
-function testphile($url){
+function testphile($url)  {
 //функция для проверки наличия файла на сервере по адресу $url
-	$Headers = @get_headers($url);
+/*    if ($_SERVER['HTTPS'] == 'on') {
+        $sCutString = 'https://' . $_SERVER['SERVER_NAME'];
+    } else {
+        $sCutString = 'http://' . $_SERVER['SERVER_NAME'];
+    }
+
+    $url = $_SERVER['DOCUMENT_ROOT'] . str_replace($sCutString, "", $url);*/
+
+    if(@fopen($url, "r")) {
+        echo 'true';
+        return true;
+    } else {
+        echo 'false';
+        return false;
+    }
+
+    // Старый метод определения существования файла
+    // на bolt76.ru не срабатывал, возможно из-за большого количества запросов
+/*	$Headers = @get_headers($url);
 	// проверяем ли ответ от сервера с кодом 200 - ОК
 	//echo $Headers[0];
 	//echo (preg_match("|200|", $Headers[0]));
@@ -279,9 +308,7 @@ function testphile($url){
 	} else {
 		echo 'false';
 		return false;
-	}
-
-
+	}*/
 }
 
 
@@ -333,7 +360,7 @@ function getSectionID($name, $internal, $parent, $photo, $sort, $price_id, $desc
 	#$arFilter = Array('IBLOCK_ID' => $iblock, 'UF_ORIGINAL_NAME' => $name);
 	###############33
 	$db_list = CIBlockSection::GetList(Array(), $arFilter, false, Array("UF_*"));
-  $picfile = $host.'import/img/'.$photo.'.jpg';
+  $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photo . '. jpg';
 	if ($ar_result = $db_list->GetNext())
 	{
 		e('getSectionID: section found, updating');
@@ -363,7 +390,7 @@ function getSectionID($name, $internal, $parent, $photo, $sort, $price_id, $desc
                     $arUpdate["PICTURE"] = $pic;
                     $arUpdate["UF_TEMPLATE"] = 1;
                 }
-  }
+    }
 	else e('getSectionID: pic with addr '.$picfile.' not found');
 
 		$sc->Update($ID, $arUpdate);
@@ -454,11 +481,6 @@ function addUpdateElement($item, $siteCatID)
 	$id_var = $item['ID'];
 	$id_name = $item['Svertka'];
 	e("addUpdateElement started with $id_var ($id_name) siteCatID = $siteCatID");
-	//echo('<pre>');
-	//var_dump($item);
-	//echo('</pre>');
-
-	//var_dump($item);
 
 	global $iblock, $url, $host;
 	$el = new CIBlockElement;
@@ -494,6 +516,28 @@ function addUpdateElement($item, $siteCatID)
             "DLINA_POLKI" => $item['DlinaPolki'],
             "SHIRINA" => $item['Shirina'],
             "TOLSHINA" => $item['Tolshina'],
+
+            "NAME_PARAM_1" => $item['NAME_PARAM_1'],
+            "VALUE_PARAM_1" => $item['VALUE_PARAM_1'],
+            "NAME_PARAM_2" => $item['NAME_PARAM_2'],
+            "VALUE_PARAM_2" => $item['VALUE_PARAM_2'],
+            "NAME_PARAM_3" => $item['NAME_PARAM_3'],
+            "VALUE_PARAM_3" => $item['VALUE_PARAM_3'],
+            "NAME_PARAM_4" => $item['NAME_PARAM_4'],
+            "VALUE_PARAM_4" => $item['VALUE_PARAM_4'],
+            "NAME_PARAM_5" => $item['NAME_PARAM_5'],
+            "VALUE_PARAM_5" => $item['VALUE_PARAM_5'],
+            "NAME_PARAM_6" => $item['NAME_PARAM_6'],
+            "VALUE_PARAM_6" => $item['VALUE_PARAM_6'],
+            "NAME_PARAM_7" => $item['NAME_PARAM_7'],
+            "VALUE_PARAM_7" => $item['VALUE_PARAM_7'],
+            "NAME_PARAM_8" => $item['NAME_PARAM_8'],
+            "VALUE_PARAM_8" => $item['VALUE_PARAM_8'],
+            "NAME_PARAM_9" => $item['NAME_PARAM_9'],
+            "VALUE_PARAM_9" => $item['VALUE_PARAM_9'],
+            "NAME_PARAM_10" => $item['NAME_PARAM_10'],
+            "VALUE_PARAM_10" => $item['VALUE_PARAM_10'],
+
 		);
 		$arUpdate = Array(
 			"NAME" => trim(strval($item['Svertka'])),
@@ -522,59 +566,63 @@ function addUpdateElement($item, $siteCatID)
 		//var_dump($ob);
 		//echo ('<br>');
 		
-        $rsFile = CFile::GetByID($ob["PREVIEW_PICTURE"]);
-		//var_dump($rsFile);
-		//echo '<br>';
-		
 		//var_dump($item['Foto']);
 		//echo ('<br>');		
 		//var_dump($photo);
 		//echo ('<br>');		
 		//echo 'xxxxxxxxxxxxxxxxx<br>';
-
 		
-		$photo = $item['Foto'];
+		$photo = $item['Foto'][0];
+		e('Фото для загрузки:');
+		e($photo);
 		
-		
-		$picfile = $host.'import/img/'.$photo.'.jpg';
+		$picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photo . '.jpg';
 
 		$flag_update_pic = false;
-		if ($ob["PROPERTY_PHOTO_ID_VALUE"] != $item['Foto']) $flag_update_pic = true;
+		if ($ob["PROPERTY_PHOTO_ID_VALUE"] != $item['Foto'][0]) $flag_update_pic = true;
 		if ($ob["PREVIEW_PICTURE"] == NULL)	$flag_update_pic = true;
 		if (testphile($picfile)) $flag_update_pic = true;
 		
 		e('addUpdateElement: i want to update photo with $flag_update_pic='.$flag_update_pic.' and item photo = "'.testphile($picfile).'"');
-		
+
+		e('Посмотреть значение флага');
+		e('$flag_update_pic');
+		e($flag_update_pic);
 		if(($flag_update_pic) && (testphile($picfile)))
 		{
 			e('addUpdateElement: tryin to update pic');
-			$photo = $item['Foto'];
-
+			$photo = $item['Foto'][0];
 			
 			//		echo '<br> pic file exists ('.$picfile.')? :'.(file_exists($picfile) );
 			//		if (file_exists($picfile))
 
 			//echo '$picfile='.$picfile.' '.testphile($picfile).'<br>';
 			//var_dump(testphile($picfile));
-			
 
-			//if($upload_pix)
-			{
-				//e('addUpdateElement: $upload_pix = true');
-				if($photo != 0)
-				{
-					e('addUpdateElement: $photo!=0');
-					{						
-						e('addUpdateElement: testphile($picfile)');
-						$propsToUpdate["PHOTO_ID"] = $item['Foto'];
-						$pic = CFile::MakeFileArray($picfile);
-						if ($pic["size"] > 0) {
-							e('addUpdateElement: picsize>0, updating');
-							$arUpdate['PREVIEW_PICTURE'] = $pic;
-						}
-					}
-				}
-			}
+            if($photo != 0)
+            {
+                e('addUpdateElement: $photo!=0');
+                {
+                    $propsToUpdate["PHOTO_ID"] = $item['Foto'][0];
+                    $pic = CFile::MakeFileArray($picfile);
+                    if ($pic["size"] > 0) {
+                        e('addUpdateElement: picsize>0, updating');
+                        $arUpdate['PREVIEW_PICTURE'] = $pic;
+                    }
+                }
+            }
+
+            // Если у нас несколько фото, то добавим их в свойство фотографии (PROPERTY_PHOTOS)
+            if (count($item['Foto']) > 1) {
+                array_shift($item['Foto']);
+
+                foreach($item['Foto'] as $photoItem) {
+                    $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photoItem . '.jpg';
+                    if (testphile($picfile)) {
+                        $propsToUpdate['PHOTOS'][] = \CFile::MakeFileArray($picfile);
+                    }
+                }
+            }
 		}
 		else 
 		{
@@ -605,7 +653,7 @@ function addUpdateElement($item, $siteCatID)
 				"PRICE_OPT" => (float)str_replace(",", ".", $item['CZena2']),
 				"PRICE_OPT2" => (float)str_replace(",", ".", $item['CZena3']),
 				"NAIMENOVANIE" => trim(strval($item['Naimenovanie'])),
-				"PHOTO_ID" => $item['Foto'],
+				"PHOTO_ID" => $item['Foto'][0],
 				"VES" => $item['Ves'],
 				"NOMNOMER" => trim(strval($item['NomNomer'])),
 				"UNITS" => $item['EdIzmereniya'],
@@ -626,11 +674,32 @@ function addUpdateElement($item, $siteCatID)
                 "DLINA_POLKI" => $item['DlinaPolki'],
                 "SHIRINA" => $item['Shirina'],
                 "TOLSHINA" => $item['Tolshina'],
+
+                "NAME_PARAM_1" => $item['NAME_PARAM_1'],
+                "VALUE_PARAM_1" => $item['VALUE_PARAM_1'],
+                "NAME_PARAM_2" => $item['NAME_PARAM_2'],
+                "VALUE_PARAM_2" => $item['VALUE_PARAM_2'],
+                "NAME_PARAM_3" => $item['NAME_PARAM_3'],
+                "VALUE_PARAM_3" => $item['VALUE_PARAM_3'],
+                "NAME_PARAM_4" => $item['NAME_PARAM_4'],
+                "VALUE_PARAM_4" => $item['VALUE_PARAM_4'],
+                "NAME_PARAM_5" => $item['NAME_PARAM_5'],
+                "VALUE_PARAM_5" => $item['VALUE_PARAM_5'],
+                "NAME_PARAM_6" => $item['NAME_PARAM_6'],
+                "VALUE_PARAM_6" => $item['VALUE_PARAM_6'],
+                "NAME_PARAM_7" => $item['NAME_PARAM_7'],
+                "VALUE_PARAM_7" => $item['VALUE_PARAM_7'],
+                "NAME_PARAM_8" => $item['NAME_PARAM_8'],
+                "VALUE_PARAM_8" => $item['VALUE_PARAM_8'],
+                "NAME_PARAM_9" => $item['NAME_PARAM_9'],
+                "VALUE_PARAM_9" => $item['VALUE_PARAM_9'],
+                "NAME_PARAM_10" => $item['NAME_PARAM_10'],
+                "VALUE_PARAM_10" => $item['VALUE_PARAM_10'],
 			),
 		);
 
-		$photo = $item['Foto'];
-		$picfile = $host.'import/img/'.$photo.'.jpg';
+		$photo = $item['Foto'][0];
+		$picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' .  $photo . '.jpg';
 		
 		e("addUpdateElement: lurking for a picfile $picfile");		
 		//	echo 'testphile:'+testphile($picfile);die;
@@ -649,7 +718,20 @@ function addUpdateElement($item, $siteCatID)
 			if ($pic["size"] > 0) {
 				$arLoad["PREVIEW_PICTURE"] = $pic;
 			}
-		}		
+		}
+
+        // Если у нас несколько фото, то добавим их в свойство фотографии (PROPERTY_PHOTOS)
+        if (count($item['Foto']) > 1) {
+            array_shift($item['Foto']);
+
+            foreach($item['Foto'] as $photoItem) {
+                $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photoItem . '.jpg';
+                if (testphile($picfile)) {
+                    $arLoad['PROPERTY_VALUES']['PHOTOS'][] = \CFile::MakeFileArray($picfile);
+                }
+            }
+        }
+
 		$ID = $el->Add($arLoad);
 		echo('****');
 		if((isset($el->LAST_ERROR))) echo($el->LAST_ERROR);
