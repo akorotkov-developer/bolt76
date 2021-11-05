@@ -1,7 +1,23 @@
-<?
+<?php
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");
-?><?
+?>
+
+<?php
+// Показываем товары из подразделов в случае если применен фильтр, в противном случае показываем только списко разделов
+// Если фильтр очищен (clear/apply), то также показываем только список разделов, а свойство INCLUDE_SUBSECTIONS присваиваем N
+/*clear/apply/*/
+$arPageElement = explode('/', $APPLICATION->GetCurPage());
+
+$isApplyFilter = false;
+foreach ($arPageElement as $key => $element) {
+    if ($element == 'apply' && $arPageElement[$key - 1] != 'clear') {
+        $isApplyFilter = true;
+    }
+}
+?>
+
+<?php
 $APPLICATION->IncludeComponent(
 	"bitrix:catalog", 
 	"cat",
@@ -50,7 +66,8 @@ $APPLICATION->IncludeComponent(
 			3 => "PRICE",
 			4 => "",
 		),
-		"INCLUDE_SUBSECTIONS" => "N",
+		"INCLUDE_SUBSECTIONS" => $isApplyFilter ? 'Y' : 'N',
+		"IS_APPLY_FILTER" => $isApplyFilter ? 'Y' : 'N',
 		"LIST_META_KEYWORDS" => "-",
 		"LIST_META_DESCRIPTION" => "-",
 		"LIST_BROWSER_TITLE" => "-",

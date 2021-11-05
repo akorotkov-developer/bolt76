@@ -8,3 +8,10 @@
 .b-product-ctalogsection {
     order: 1;
 }
+.main_block .b-container-top {
+    display: flex;
+    flex-flow: wrap;
+}
+.main_block .catalog_element {
+    width: 100%;
+}
