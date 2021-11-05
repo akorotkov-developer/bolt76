@@ -6,7 +6,6 @@ $APPLICATION->SetTitle("Каталог");
 <?php
 // Показываем товары из подразделов в случае если применен фильтр, в противном случае показываем только списко разделов
 // Если фильтр очищен (clear/apply), то также показываем только список разделов, а свойство INCLUDE_SUBSECTIONS присваиваем N
-/*clear/apply/*/
 $arPageElement = explode('/', $APPLICATION->GetCurPage());
 
 $isApplyFilter = false;
