@@ -72,7 +72,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                 </td><? } ?>
             <td class="art">
                 <div class="name-holder">
-                    <a href="<?= $arElement['CODE']?>" class="no_underline">
+                    <a href="<?= $arElement['DETAIL_PAGE_URL']?>" class="no_underline">
                         <span><?= $arElement["DISPLAY_PROPERTIES"]["ARTICUL"]["VALUE"] ?></span>
                     </a>
                 </div>
@@ -103,7 +103,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                         <img src="/images/i.png" alt="Информация"/></a><? } ?>
             </td>
             <td class="name">
-                <a href="<?=$arElement['CODE'] ?>" class="no_underline">
+                <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
                     <div class="name_wrapper">
 
                         <div class="name-holder">
@@ -201,7 +201,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                             <? } ?>
                                         </div>
                                         <? if ($arElement['DETAIL_TEXT']) { ?>
-                                            <div class="detail_link"><a href="<?= $arElement['CODE']?>">подробнее</a>
+                                            <div class="detail_link"><a href="<?= $arElement['DETAIL_PAGE_URL']?>">подробнее</a>
                                             </div>
                                             <div class="description_holder" id="detailed_text_<?= $arElement["ID"] ?>">
                                                 <?= $arElement['DETAIL_TEXT']; ?>

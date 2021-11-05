@@ -54,14 +54,14 @@ if(sizeof($arResult["ITEMS"])>0){
                 <td class="pic no-back-hover">
 					<?if($arElement["PREVIEW_PICTURE"]){?>
 					<?$file = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], array('width' => 100, 'height' => 50), BX_RESIZE_IMAGE_PROPORTIONAL, true);?>
-                    <a href="<?= $arElement['CODE']?>" class=""><img src="<?=$file["src"]?>" alt="<?=$arElement["NAME"]?>"></a>
+                    <a href="<?= $arElement['DETAIL_PAGE_URL']?>" class=""><img src="<?=$file["src"]?>" alt="<?=$arElement["NAME"]?>"></a>
 
 					<?}?>
 
                 </td>
                 <td class="art">
                     <div class="name-holder">
-                        <a href="<?= $arElement['CODE']?>" class="no_underline">
+                        <a href="<?= $arElement['DETAIL_PAGE_URL']?>" class="no_underline">
                             <span><?=$arElement["DISPLAY_PROPERTIES"]["ARTICUL"]["VALUE"]?></span>
                         </a>
                     </div>
@@ -93,7 +93,7 @@ if(sizeof($arResult["ITEMS"])>0){
                             <img src="/images/i.png" alt="Информация"/></a><?}?>
                 </td>
                 <td class="name">
-                    <a href="<?=$arElement['CODE'] ?>" class="no_underline">
+                    <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
                         <div class="name_wrapper">
                             <div class="name-holder">
                                 <span><?=$arElement["NAME"]?></span>
