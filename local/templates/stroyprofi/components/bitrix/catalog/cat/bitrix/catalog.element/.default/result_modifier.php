@@ -32,3 +32,7 @@ if ($arSection['PICTURE']) {
     $arResult['MORE_PHOTO_PICTURE']['HEIGHT'] = 150;
 }
 
+// Установка заголовка
+echo 'Установка заголовка';
+global $APPLICATION;
+$APPLICATION->SetTitle(($arResult['PROPERTIES']['NAIMENOVANIE']['VALUE'] != '') ? $arResult['PROPERTIES']['NAIMENOVANIE']['VALUE'] : $arResult['NAME']);
