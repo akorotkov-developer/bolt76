@@ -1,3 +1,8 @@
+.wrapper .bx-blue .btn.btn-default {
+    background-color: #FF7920;
+    border-color: #FF7920;
+}
+
 .bx-soa { padding-bottom:20px;}
 .bx-soa-section {
     border-radius: 2px;
@@ -8,7 +13,7 @@
     transition: border-color .3s ease;
     border: 1px solid #e8e9eb;
 }
-.bx-soa-section.bx-step-completed {border: 1px solid #83CB1B;}
+.bx-soa-section.bx-step-completed {border: 1px solid #e8e9eb;}
 /*.bx-soa-section.bx-step-completed .bx-soa-section-title:before {*/
     /*content: " ";*/
     /*display: inline-block;*/
@@ -75,7 +80,7 @@
 /*.bx-soa-section.bx-step-error .bx-soa-section-title:before {background: url(images/sprite.png) no-repeat center -18px;}*/
 
 
-.bx-soa-section.bx-selected {border: 1px solid #91cedc;}
+.bx-soa-section.bx-selected {border: 1px solid #FF7920;}
 
 .bx-soa-section-title-container {
     overflow: hidden;
