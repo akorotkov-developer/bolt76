@@ -16,6 +16,7 @@ use \Bitrix\Main\Page\Asset;
 
     <script type="text/javascript" src='<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick.js'></script>
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick.css">
+    <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick-theme.css">
 </head>
 <body>
 <div class="notification" id="notification">Товар добавлен<br/>в <a href="/personal/cart/">корзину</a></div>

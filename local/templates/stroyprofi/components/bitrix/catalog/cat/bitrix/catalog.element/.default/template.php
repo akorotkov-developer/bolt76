@@ -167,7 +167,6 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 		$labelPositionClass .= isset($positionClassMap[$pos]) ? ' '.$positionClassMap[$pos] : '';
 	}
 }
-
 ?>
 
 <div class="bx-catalog-element bx-<?=$arParams['TEMPLATE_THEME']?>" id="<?=$itemIds['ID']?>"
@@ -225,7 +224,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                     }
                                 }
                                 ?>
-                                <div  data-entity="images-container">
+                                <div data-entity="images-container" <?= (count($arResult['PHOTOS']) > 0) ? 'class="b-image-slider-main"' : ''?>>
                                     <?
                                     if (!empty($actualItem['MORE_PHOTO']))
                                     {
@@ -239,6 +238,14 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                         }
                                     }
 
+                                    if (count($arResult['PHOTOS']) > 0) {
+                                        foreach ($arResult['PHOTOS'] as $photoSrc) {?>
+                                            <div>
+                                                <img class="detail_image" src="<?= $photoSrc?>" >
+                                            </div>
+                                        <?php }
+                                    }
+
                                     if ($arParams['SLIDER_PROGRESS'] === 'Y')
                                     {
                                         ?>
@@ -247,6 +254,22 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                     }
                                     ?>
                                 </div>
+
+                                <?php if (count($arResult['PHOTOS']) > 0) {?>
+                                    <div class="b-image-slider-nav">
+                                        <?php foreach ($actualItem['MORE_PHOTO'] as $key => $photo) {?>
+                                            <div class="slider-image-item-nav">
+                                                <img class="detail_image" src="<?= $photo['SRC']?>">
+                                            </div>
+                                        <?php }?>
+
+                                        <?php foreach ($arResult['PHOTOS'] as $photoSrc) {?>
+                                            <div class="slider-image-item-nav">
+                                                <img class="detail_image" src="<?= $photoSrc?>">
+                                            </div>
+                                        <?php }?>
+                                    </div>
+                                <?php }?>
 
                             <?
                             if ($showSliderControls)

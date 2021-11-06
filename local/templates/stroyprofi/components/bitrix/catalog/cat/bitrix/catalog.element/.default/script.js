@@ -3511,4 +3511,26 @@
 			}
 		}
 	}
+
+
 })(window);
+
+$( document ).ready(function() {
+	// Подключние slickSlider
+	$('.b-image-slider-main').slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: false,
+		fade: true,
+		asNavFor: '.b-image-slider-nav'
+	});
+	$('.b-image-slider-nav').slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		asNavFor: '.b-image-slider-main',
+		arrows: true,
+		centerMode: true,
+		focusOnSelect: true,
+		infinite: true,
+	});
+});

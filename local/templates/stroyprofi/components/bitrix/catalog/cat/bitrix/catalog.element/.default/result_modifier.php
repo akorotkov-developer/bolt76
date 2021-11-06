@@ -33,6 +33,15 @@ if ($arSection['PICTURE']) {
 }
 
 // Установка заголовка
-echo 'Установка заголовка';
 global $APPLICATION;
 $APPLICATION->SetTitle(($arResult['PROPERTIES']['NAIMENOVANIE']['VALUE'] != '') ? $arResult['PROPERTIES']['NAIMENOVANIE']['VALUE'] : $arResult['NAME']);
+
+// Добавим фото если есть дополнительные фото в товаре
+if (count($arResult['PROPERTIES']['PHOTOS']['VALUE']) > 0) {
+    $arPhotos = [];
+    foreach ($arResult['PROPERTIES']['PHOTOS']['VALUE'] as $photoId) {
+        $arPhotos[] = \CFile::GetFileArray($photoId)['SRC'];
+    }
+}
+
+$arResult['PHOTOS'] = $arPhotos;
