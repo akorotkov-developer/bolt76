@@ -60,7 +60,7 @@ if ($arParams["SET_TITLE"] == "Y")
 								<tr>
 									<td class="ps_logo">
 										<div class="pay_name"><?=Loc::getMessage("SOA_PAY") ?></div>
-										<?=CFile::ShowImage($arPaySystem["LOGOTIP"], 100, 100, "border=0\" style=\"width:100px\"", "", false) ?>
+										<?=CFile::ShowImage($arPaySystem["LOGOTIP"], 100, 100, "border=0\"", "", false) ?>
 										<div class="paysystem_name"><?=$arPaySystem["NAME"] ?></div>
 										<br/>
 									</td>
