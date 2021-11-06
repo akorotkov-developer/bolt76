@@ -244,7 +244,7 @@ function getBasketInfo() {
         $iTotalPrice += $basketItem['PRICE'] * $basketItem['QUANTITY'];
     }
 
-    $sResult = $iProductCounts . ' ' . sklon($iProductCounts, Array("товар", "товара", "товаров")) . ' на сумму<br> ' . $iTotalPrice . ' руб.';
+    $sResult = '<a href="/personal/cart/">' . $iProductCounts . ' ' . sklon($iProductCounts, Array("товар", "товара", "товаров")) . ' на сумму<br> ' . $iTotalPrice . ' руб. </a>';
 
     return $sResult;
 }

@@ -390,7 +390,9 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                         {
                                                             if ($property['CODE'] == 'ARTICUL') {continue;}
 
-                                                            if ($property['CODE'] == 'UPAKOVKA2') {continue;}
+                                                            if ($property['CODE'] == 'UPAKOVKA2') {
+                                                                continue;
+                                                            }
 
                                                             if ($property['CODE'] == 'UPAKOVKA') {?>
                                                                 <div class="prop-item">
@@ -402,16 +404,18 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                         )?> / <?=$arResult['DISPLAY_PROPERTIES']['UPAKOVKA2']['VALUE']?>
                                                                     </dd>
                                                                 </div>
-                                                            <?php } ?>
-                                                            <div class="prop-item">
-                                                                <dt class="prop-item-title"><?=$property['NAME']?></dt>
-                                                                <dd><?=(
-                                                                    is_array($property['DISPLAY_VALUE'])
-                                                                        ? implode(' / ', $property['DISPLAY_VALUE'])
-                                                                        : $property['DISPLAY_VALUE']
-                                                                    )?>
-                                                                </dd>
-                                                            </div>
+                                                            <?php } else {?>
+                                                                <div class="prop-item">
+                                                                    <dt class="prop-item-title"><?=$property['NAME']?></dt>
+                                                                    <dd><?=(
+                                                                        is_array($property['DISPLAY_VALUE'])
+                                                                            ? implode(' / ', $property['DISPLAY_VALUE'])
+                                                                            : $property['DISPLAY_VALUE']
+                                                                        )?>
+                                                                    </dd>
+                                                                </div>
+
+                                                            <?php }?>
                                                             <?
                                                         }
                                                         unset($property);

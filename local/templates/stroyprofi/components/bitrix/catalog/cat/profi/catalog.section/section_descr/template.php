@@ -273,10 +273,10 @@ if (sizeof($arResult["ITEMS"]) > 0) {
     </table>
 
     <div class="order">
-        <div class="order_button">
+        <!--<div class="order_button">
             <a href="/personal/cart/" onclick="$(this).closest('form').submit(); return false; " class="link_like_button">В
                 корзину</a>
-        </div>
+        </div>-->
         <div class="order_precount"></div>
         <div class="clear"></div>
     </div>
