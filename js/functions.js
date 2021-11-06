@@ -156,7 +156,7 @@ $(function () {
                     $(".fancybox-close").click();
                 }
                 $("#notification").css("top", "0");
-                $("#notification").animate({"top": "0"}, 400).delay(2000).animate({"top": "-70px"}, 400);
+                $("#notification").animate({"top": "0"}, 400).delay(2000).animate({"top": "-80px"}, 400);
             }
         })
     });

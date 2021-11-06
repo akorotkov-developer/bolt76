@@ -88,3 +88,8 @@
 .row::before {
 	display: initial;
 }
+
+.main_block .bx-blue .btn.btn-default {
+	background-color: #FF7920;
+	border-color: #FF7920;
+}
