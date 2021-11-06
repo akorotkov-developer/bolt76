@@ -1014,7 +1014,7 @@ td .buy_helper_holder{
 
 .notification {
     position: fixed;
-    top: -80px;
+    top: -90px;
     right: 30px;
     background: #fff url('/img/cart.png') no-repeat 10px 10px;
     box-shadow: 0 0 10px #666;
