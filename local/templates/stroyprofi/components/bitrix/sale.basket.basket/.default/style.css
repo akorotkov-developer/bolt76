@@ -2223,3 +2223,16 @@ body.bx-theme-blue .catalog-block-header{border-color:#006cc0;}
 body.bx-theme-green .catalog-block-header{border-color:#63aa28;}
 body.bx-theme-red .catalog-block-header{border-color:#da3737;}
 body.bx-theme-yellow .catalog-block-header{border-color:#f4b236;}
+
+.main_block div.bx-blue .btn.btn-default {
+	outline: 0;
+	border-color: #FF7920;
+	background-color: #FF7920;
+	color: #fff;
+}
+.main_block div.bx-blue .btn.btn-default:hover {
+	outline: 0;
+	border-color: #FF7920;
+	background-color: #FF7920;
+	color: #fff;
+}

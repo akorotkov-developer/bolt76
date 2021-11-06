@@ -18,6 +18,7 @@ $mobileColumns = array_fill_keys($mobileColumns, true);
 
 $result['BASKET_ITEM_RENDER_DATA'] = array();
 
+// Определим картинки для товавров без картинок, путем поиска картинки для раздела
 foreach ($this->basketItems as $row)
 {
 	$rowData = array(
@@ -91,16 +92,71 @@ foreach ($this->basketItems as $row)
 	$rowData['SHOW_PRICE_FOR'] = (float)$rowData['QUANTITY'] !== (float)$rowData['MEASURE_RATIO'];
 
 	$hideDetailPicture = false;
+	$bNoImage = false;
 
-	if (!empty($row['PREVIEW_PICTURE_SRC']))
-	{
+	if (!empty($row['PREVIEW_PICTURE_SRC'])) {
 		$rowData['IMAGE_URL'] = $row['PREVIEW_PICTURE_SRC'];
-	}
-	elseif (!empty($row['DETAIL_PICTURE_SRC']))
-	{
+	} elseif (!empty($row['DETAIL_PICTURE_SRC'])) {
 		$hideDetailPicture = true;
 		$rowData['IMAGE_URL'] = $row['DETAIL_PICTURE_SRC'];
-	}
+	} else {
+	    $bNoImage = true;
+    }
+
+	if ($bNoImage || $rowData['NAME'] == '') {
+        // Поиск картинки для товара
+        $dbResult = \CIBlockElement::GetList(
+            [],
+            [
+                'IBLOCK_ID' => '1',
+                '=ID' => $row['PRODUCT_ID'],
+            ],
+            false, false,
+            [
+                'ID', 'NAME', 'IBLOCK_SECTION_ID', 'PROPERTY_NAIMENOVANIE'
+            ]
+        );
+
+        $sName = '';
+        $iSectionId = '';
+        if ($arRes = $dbResult->Fetch()) {
+            // Если у эелемента нет названия, то добавим его
+            if ($rowData['NAME'] == '') {
+                if ($arRes['PROPERTY_NAIMENOVANIE_VALUE'] != '') {
+                    $sName = $arRes['PROPERTY_NAIMENOVANIE_VALUE'];
+                } else {
+                    $sName = $arRes['NAME'];
+                }
+
+                $rowData['NAME'] = $sName;
+            }
+
+            if ($bNoImage) {
+                $iSectionId = $arRes['IBLOCK_SECTION_ID'];
+            }
+        }
+
+        // Получаем картинку раздела
+        if ($iSectionId != '' && $bNoImage) {
+            $dbResult = CIBlockSection::GetList(
+                array(),
+                ['IBLOCK_ID' => 1, '=ID' => $iSectionId],
+                false,
+                ['ID', 'PICTURE']
+            );
+
+            $sPictureSrc = '';
+            while ($arRes = $dbResult->Fetch()) {
+                if ($arRes['PICTURE'] != '') {
+                    $sPictureSrc = \CFile::GetFileArray($arRes['PICTURE'])['SRC'];
+                }
+            }
+        }
+
+        if ($sPictureSrc != '') {
+            $rowData['IMAGE_URL'] = $sPictureSrc;
+        }
+    }
 
 	if (!empty($row['SKU_DATA']))
 	{
