@@ -330,7 +330,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 								foreach ($rowItems as $item)
 								{
 									?>
-									<div class="col-xs-6 col-md-3">
+									<div class="col-xs-6 col-md-2">
 										<?
 										$APPLICATION->IncludeComponent(
 											'bitrix:catalog.item',
