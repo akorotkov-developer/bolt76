@@ -160,7 +160,21 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 					<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-parameters-box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>bx-active<?endif?>">
 						<span class="bx-filter-container-modef"></span>
 						<div class="bx-filter-parameters-box-title" onclick="smartFilter.hideFilterProps(this)">
-							<span class="bx-filter-parameters-box-hint"><?=$arItem["NAME"]?>
+							<span class="bx-filter-parameters-box-hint">
+                                <?php
+                                // Определим название поля для фильтра, если код поля входит в массив динамических свойств
+                                // то определяем его имя согласно массиву полученных данных в файле result_modifier.php
+                                $sParamName = '';
+                                if (in_array($arItem['CODE'], $arResult['ARR_DYNAMIC_PROPERTIES_NAMES'])) {
+                                   $sParamName = getParamTitle($arItem['CODE'], $arResult['DYNAMIC_PROPERTIES_MAP']);
+                                }
+
+                                if ($sParamName != '') {
+                                    echo $sParamName;
+                                } else {
+                                    echo $arItem["NAME"];
+                                }
+                                ?>
 								<?if ($arItem["FILTER_HINT"] <> ""):?>
 									<i id="item_title_hint_<?echo $arItem["ID"]?>" class="fa fa-question-circle"></i>
 									<script type="text/javascript">
