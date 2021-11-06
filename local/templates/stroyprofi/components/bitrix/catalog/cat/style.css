@@ -15,3 +15,14 @@
 .main_block .catalog_element {
     width: 100%;
 }
+.b-container-recomended-products {
+    margin-bottom: 170px;
+}
+.b-container-recomended-products .bx-blue .btn.btn-default:hover {
+    background-color: #FF7920;
+    border-color: #FF7920;
+}
+.b-container-recomended-products .bx-blue .btn.btn-default {
+    background-color: #FF7920;
+    border-color: #FF7920;
+}

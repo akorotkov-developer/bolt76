@@ -274,7 +274,7 @@ if ($ar_result = $db_list->GetNext()) {
         if (!empty($arRecomData)) {
             if (!isset($arParams['USE_BIG_DATA']) || $arParams['USE_BIG_DATA'] != 'N') {
                 ?>
-                <div class="col-xs-12" data-entity="parent-container">
+                <div class="col-xs-12 b-container-recomended-products" data-entity="parent-container">
                     <div class="catalog-block-header" data-entity="header" data-showed="false"
                          style="display: none; opacity: 0;">
                         <b>Персональные рекомендации: </b>
