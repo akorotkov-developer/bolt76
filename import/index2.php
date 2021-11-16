@@ -194,6 +194,7 @@ foreach ($tempArray as $i => $a) {
     $items[$a[2]][$i]['Svertka'] = $a[4];
     $items[$a[2]][$i]['Naimenovanie'] = $a[3];
     $items[$a[2]][$i]['Foto'] = explode(',', trim($a[18])); #$host.'/import/img/'.$a[18].'.jpg';
+
     $items[$a[2]][$i]['CZena1'] = $a[9];
     $items[$a[2]][$i]['CZena2'] = $a[10];
     $items[$a[2]][$i]['CZena3'] = $a[11];
@@ -201,55 +202,44 @@ foreach ($tempArray as $i => $a) {
     $items[$a[2]][$i]['show_in_price'] = $a[17];
     $items[$a[2]][$i]['desc'] = str_replace('<br>', "\n", str_replace('<br><br>', "\n", $a[19]));
 
-    $items[$a[2]][$i]['TipKrepeja'] = $a[21];
-    $items[$a[2]][$i]['Standart'] = $a[22];
-    $items[$a[2]][$i]['KlassProcnosti'] = $a[23];
-    $items[$a[2]][$i]['Pokritie'] = $a[24];
-    $items[$a[2]][$i]['Diametr'] = $a[25];
-    $items[$a[2]][$i]['Dlina'] = $a[26];
-    $items[$a[2]][$i]['DlinaPolki'] = $a[27];
-    $items[$a[2]][$i]['Shirina'] = $a[28];
-    $items[$a[2]][$i]['Tolshina'] = $a[29];
-
     // Свободные характеристики
-    $items[$a[2]][$i]['NAME_PARAM_1'] = $a[30];
-    $items[$a[2]][$i]['VALUE_PARAM_1'] = $a[31];
-    $items[$a[2]][$i]['NAME_PARAM_2'] = $a[32];
-    $items[$a[2]][$i]['VALUE_PARAM_2'] = $a[33];
-    $items[$a[2]][$i]['NAME_PARAM_3'] = $a[34];
-    $items[$a[2]][$i]['VALUE_PARAM_3'] = $a[35];
-    $items[$a[2]][$i]['NAME_PARAM_4'] = $a[36];
-    $items[$a[2]][$i]['VALUE_PARAM_4'] = $a[37];
-    $items[$a[2]][$i]['NAME_PARAM_5'] = $a[38];
-    $items[$a[2]][$i]['VALUE_PARAM_5'] = $a[39];
-    $items[$a[2]][$i]['NAME_PARAM_6'] = $a[40];
-    $items[$a[2]][$i]['VALUE_PARAM_6'] = $a[41];
-    $items[$a[2]][$i]['NAME_PARAM_7'] = $a[42];
-    $items[$a[2]][$i]['VALUE_PARAM_7'] = $a[43];
-    $items[$a[2]][$i]['NAME_PARAM_8'] = $a[44];
-    $items[$a[2]][$i]['VALUE_PARAM_8'] = $a[45];
-    $items[$a[2]][$i]['NAME_PARAM_9'] = $a[46];
-    $items[$a[2]][$i]['VALUE_PARAM_9'] = $a[47];
-    $items[$a[2]][$i]['NAME_PARAM_10'] = $a[48];
-    $items[$a[2]][$i]['VALUE_PARAM_10'] = $a[49];
+    $items[$a[2]][$i]['NAME_PARAM_1'] = $a[20];
+    $items[$a[2]][$i]['VALUE_PARAM_1'] = $a[21];
+    $items[$a[2]][$i]['NAME_PARAM_2'] = $a[22];
+    $items[$a[2]][$i]['VALUE_PARAM_2'] = $a[23];
+    $items[$a[2]][$i]['NAME_PARAM_3'] = $a[24];
+    $items[$a[2]][$i]['VALUE_PARAM_3'] = $a[25];
+    $items[$a[2]][$i]['NAME_PARAM_4'] = $a[26];
+    $items[$a[2]][$i]['VALUE_PARAM_4'] = $a[27];
+    $items[$a[2]][$i]['NAME_PARAM_5'] = $a[28];
+    $items[$a[2]][$i]['VALUE_PARAM_5'] = $a[29];
+    $items[$a[2]][$i]['NAME_PARAM_6'] = $a[30];
+    $items[$a[2]][$i]['VALUE_PARAM_6'] = $a[31];
+    $items[$a[2]][$i]['NAME_PARAM_7'] = $a[32];
+    $items[$a[2]][$i]['VALUE_PARAM_7'] = $a[33];
+    $items[$a[2]][$i]['NAME_PARAM_8'] = $a[34];
+    $items[$a[2]][$i]['VALUE_PARAM_8'] = $a[35];
+    $items[$a[2]][$i]['NAME_PARAM_9'] = $a[36];
+    $items[$a[2]][$i]['VALUE_PARAM_9'] = $a[37];
+    $items[$a[2]][$i]['NAME_PARAM_10'] = $a[38];
+    $items[$a[2]][$i]['VALUE_PARAM_10'] = $a[39];
 
     //Если забыли заполнить свёртку - пусть там будет наименование
     if ($items[$a[2]][$i]['Svertka'] == '') $items[$a[2]][$i]['Svertka'] = trim(strval($items[$a[2]][$i]['Naimenovanie']));
     if (strlen($items[$a[2]][$i]['desc']) < 4) $items[$a[2]][$i]['desc'] = '';
 
 }
-
-//var_dump($tempArray);	
+//var_dump($tempArray);
 
 
 //++++++++++++ POST - LOAD ITEMS DEBUG ++++++++++++++++++
 
-/*foreach($items as $item) { 
+/*foreach($items as $item) {
 
 	echo('<pre>');
 	var_dump($item);
 	echo('</pre>');
-	
+
 	if ($item[5] == '11479') {
 		echo '<pre>';
 		var_dump($item);
@@ -488,16 +478,6 @@ function addUpdateElement($item, $siteCatID)
             "SHOW_IN_PRICE" => ($item['show_in_price'] > 0) ? 1 : 0,
             "SORT_IN_PRICE" => $item['show_in_price'],
 
-            "TIP_KREPEJA" => $item['TipKrepeja'],
-            "STANDART" => $item['Standart'],
-            "KLAS_PROCHNOSTI" => $item['KlassProcnosti'],
-            "POKRITIE" => $item['Pokritie'],
-            "DIAMETR" => $item['Diametr'],
-            "DLINA" => $item['Dlina'],
-            "DLINA_POLKI" => $item['DlinaPolki'],
-            "SHIRINA" => $item['Shirina'],
-            "TOLSHINA" => $item['Tolshina'],
-
             "NAME_PARAM_1" => $item['NAME_PARAM_1'],
             "VALUE_PARAM_1" => $item['VALUE_PARAM_1'],
             "NAME_PARAM_2" => $item['NAME_PARAM_2'],
@@ -639,16 +619,6 @@ function addUpdateElement($item, $siteCatID)
                 "V_REZERVE" => $item['VRezerve'],
                 "SHOW_IN_PRICE" => ($item['show_in_price'] > 0) ? 1 : 0,
                 "SORT_IN_PRICE" => $item['show_in_price'],
-
-                "TIP_KREPEJA" => $item['TipKrepeja'],
-                "STANDART" => $item['Standart'],
-                "KLAS_PROCHNOSTI" => $item['KlassProcnosti'],
-                "POKRITIE" => $item['Pokritie'],
-                "DIAMETR" => $item['Diametr'],
-                "DLINA" => $item['Dlina'],
-                "DLINA_POLKI" => $item['DlinaPolki'],
-                "SHIRINA" => $item['Shirina'],
-                "TOLSHINA" => $item['Tolshina'],
 
                 "NAME_PARAM_1" => $item['NAME_PARAM_1'],
                 "VALUE_PARAM_1" => $item['VALUE_PARAM_1'],
