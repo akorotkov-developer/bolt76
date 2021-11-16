@@ -299,6 +299,12 @@ if (empty($arResult['ERROR_MESSAGE']))
 			templateFolder: '<?=CUtil::JSEscape($templateFolder)?>'
 		});
 	</script>
+
+
+    <script type="text/javascript">
+        var basketJSParams = <?=CUtil::PhpToJSObject($arParams);?>
+    </script>
+
 	<?
 	if ($arParams['USE_GIFTS'] === 'Y' && $arParams['GIFTS_PLACE'] === 'BOTTOM')
 	{

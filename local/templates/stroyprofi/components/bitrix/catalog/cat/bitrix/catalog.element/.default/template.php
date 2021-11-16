@@ -228,13 +228,15 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                     <?
                                     if (!empty($actualItem['MORE_PHOTO']))
                                     {
-                                        foreach ($actualItem['MORE_PHOTO'] as $key => $photo)
-                                        {
-                                            ?>
-                                            <div class="<?=($key == 0 ? ' active' : '')?>" data-entity="image" data-id="<?=$photo['ID']?>">
-                                                <img class="detail_image" src="<?=$photo['SRC']?>" alt="<?=$alt?>" title="<?=$title?>"<?=($key == 0 ? ' itemprop="image"' : '')?> >
-                                            </div>
-                                            <?
+                                        if (count($arResult['PHOTOS']) == 0) {
+                                            foreach ($actualItem['MORE_PHOTO'] as $key => $photo)
+                                            {
+                                                ?>
+                                                <div class="<?=($key == 0 ? ' active' : '')?>" data-entity="image" data-id="<?=$photo['ID']?>">
+                                                    <img class="detail_image" src="<?=$photo['SRC']?>" alt="<?=$alt?>" title="<?=$title?>"<?=($key == 0 ? ' itemprop="image"' : '')?> >
+                                                </div>
+                                                <?
+                                            }
                                         }
                                     }
 
@@ -257,14 +259,17 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 
                                 <?php if (count($arResult['PHOTOS']) > 0) {?>
                                     <div class="b-image-slider-nav">
-                                        <?php foreach ($actualItem['MORE_PHOTO'] as $key => $photo) {?>
-                                            <div class="slider-image-item-nav">
-                                                <img class="detail_image" src="<?= $photo['SRC']?>">
-                                            </div>
-                                        <?php }?>
+                                        <?php
+                                        if (count($arResult['PHOTOS']) == 0) {
+                                            foreach ($actualItem['MORE_PHOTO'] as $key => $photo) {?>
+                                                <div class="slider-image-item-nav 1">
+                                                    <img class="detail_image" src="<?= $photo['SRC']?>">
+                                                </div>
+                                            <?php }
+                                        }?>
 
                                         <?php foreach ($arResult['PHOTOS'] as $photoSrc) {?>
-                                            <div class="slider-image-item-nav">
+                                            <div class="slider-image-item-nav 2">
                                                 <img class="detail_image" src="<?= $photoSrc?>">
                                             </div>
                                         <?php }?>

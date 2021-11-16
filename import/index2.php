@@ -82,7 +82,6 @@ e("d sbis 2 bitrix import ");
 e("version 302");
 e("Импорт начат " . date("d.m.Y H:i:s"));
 
-
 //function loaditems()
 //НЕ функция для загрузки файлов из csv в память
 {
@@ -251,7 +250,7 @@ die;*/
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-e($i . ' items loaded from catalog.txt lines: good=' . $good . ' bad=' . $bad);
+e($i . ' items loaded from catalog_new.txt lines: good=' . $good . ' bad=' . $bad);
 
 
 function testphile($url)
@@ -688,7 +687,6 @@ function addUpdateElement($item, $siteCatID)
 function parseSection($strCatID, $siteCatID, $price_id, $depth, $items)
 //функция для удаления пустых разделов или что-то такое
 {
-
     $total = 0;
 
     e("parseSection: started within params: $strCatID, $siteCatID, $price_id, $depth");
@@ -699,17 +697,15 @@ function parseSection($strCatID, $siteCatID, $price_id, $depth, $items)
 
     e("parseSection: searching for id ... $strCatID");
 
-    if (isset($items[$strCatID]))
+    if (isset($items[$strCatID])) {
         foreach ($items[$strCatID] as $item) {
-
-            //var_dump($item);die;
-
             e("parseSection: items for $strCatID found, loading item " + $item[5]);
             $ID = addUpdateElement($item, $siteCatID);
             e("parseSection: addUpdateElement returned $ID");
             $present[] = $ID;
             $total++;
         }
+    }
 
     e("parseSection: ended with count $total");
 
@@ -731,7 +727,7 @@ function parseSection($strCatID, $siteCatID, $price_id, $depth, $items)
 +++++++++++++++++++++++++++++++++
 */
 
-$xml = simplexml_load_file("./cat.xml");
+$xml = simplexml_load_file("./cat_new.xml");
 
 if (sizeof($xml->category)) {
     sectionWalker($xml, 0);
