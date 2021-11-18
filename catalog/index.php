@@ -14,6 +14,26 @@ foreach ($arPageElement as $key => $element) {
         $isApplyFilter = true;
     }
 }
+
+// Получим все свойства для отображения
+// TODO надо закешировать этот метод
+$dbResult = CIBlockProperty::GetList(
+    [],
+    [
+        'IBLOCK_ID' => 1
+    ]
+);
+
+// Получаем все текущие свойства инфоблока каталог
+$arAvailableProps = [];
+$arExcludedProps = [
+    'PRICE_OPT', 'PRICE_OPT2', 'PRICE', 'SHOW_IN_PRICE', 'SORT_IN_PRICE', 'ROW_ID', 'PHOTO_ID', 'OSTATOK',
+    'V_REZERVE', 'NAIMENOVANIE', 'ROWID', 'FOTOHASH', 'NOMNOMER', 'NomenklaturaGeog', 'PHOTOS'];
+while($arResult = $dbResult->Fetch()) {
+    if (!in_array($arResult['CODE'], $arExcludedProps)) {
+        $arAvailableProps[] = $arResult['CODE'];
+    }
+}
 ?>
 
 <?php
@@ -70,22 +90,24 @@ $APPLICATION->IncludeComponent(
 		"LIST_META_KEYWORDS" => "-",
 		"LIST_META_DESCRIPTION" => "-",
 		"LIST_BROWSER_TITLE" => "-",
-		"DETAIL_PROPERTY_CODE" => array(
-			0 => "ARTICUL",
-			1 => "UNITS",
-            2 => "UPAKOVKA",
-            3 => "UPAKOVKA2",
-            4 => "VES",
-            5 => "TIP_KREPEJA",
-            6 => "STANDART",
-            7 => "KLAS_PROCHNOSTI",
-            8 => "DIAMETR",
-            9 => "DLINA",
-            10 => "DLINA_POLKI",
-            11 => "SHIRINA",
-            12 => "TOLSHINA",
-            13 => "POKRITIE",
-		),
+		"DETAIL_PROPERTY_CODE" => $arAvailableProps,
+		/*"DETAIL_PROPERTY_CODE" => array(
+			0 => 'ARTICUL',
+			1 => 'UNITS',
+            2 => 'UPAKOVKA',
+            3 => 'UPAKOVKA2',
+            4 => 'VES',
+            5 => 'TIP_KREPEJA',
+            6 => 'STANDART',
+            7 => 'KLAS_PROCHNOSTI',
+            8 => 'DIAMETR',
+            9 => 'DLINA',
+            10 => 'DLINA_POLKI',
+            11 => 'SHIRINA',
+            12 => 'TOLSHINA',
+            13 => 'POKRITIE',
+            14 => 'DIAMETER'
+		),*/
 		"DETAIL_META_KEYWORDS" => "-",
 		"DETAIL_META_DESCRIPTION" => "-",
 		"DETAIL_BROWSER_TITLE" => "-",

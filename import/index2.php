@@ -149,6 +149,17 @@ e("Импорт начат " . date("d.m.Y H:i:s"));
                     $tempArray[$a[0]][$a[1]] = getDesc($a[2]);
                 }
                 $good++;
+            } else if (count($a) > 3 && $a[1] > 19) {
+                $acount = 0;
+                $sValue = '';
+                foreach ($a as $akey => $arRes) {
+                    if ($acount > 1) {
+                        $sValue .= $arRes . ';';
+                    }
+                    $acount++;
+                }
+
+                $tempArray[$a[0]][$a[1]] = getLine(trim($sValue, ';'));
             } else {
                 $acount = 0;
                 foreach ($a as $akey => $arRes) {
@@ -174,6 +185,8 @@ e("Импорт начат " . date("d.m.Y H:i:s"));
         }
     }
 }
+
+$arDynamicPropsMap = [];
 
 //приведение массивов
 foreach ($tempArray as $i => $a) {
@@ -201,35 +214,80 @@ foreach ($tempArray as $i => $a) {
     $items[$a[2]][$i]['show_in_price'] = $a[17];
     $items[$a[2]][$i]['desc'] = str_replace('<br>', "\n", str_replace('<br><br>', "\n", $a[19]));
 
-    // Свободные характеристики
-    $items[$a[2]][$i]['NAME_PARAM_1'] = $a[20];
-    $items[$a[2]][$i]['VALUE_PARAM_1'] = $a[21];
-    $items[$a[2]][$i]['NAME_PARAM_2'] = $a[22];
-    $items[$a[2]][$i]['VALUE_PARAM_2'] = $a[23];
-    $items[$a[2]][$i]['NAME_PARAM_3'] = $a[24];
-    $items[$a[2]][$i]['VALUE_PARAM_3'] = $a[25];
-    $items[$a[2]][$i]['NAME_PARAM_4'] = $a[26];
-    $items[$a[2]][$i]['VALUE_PARAM_4'] = $a[27];
-    $items[$a[2]][$i]['NAME_PARAM_5'] = $a[28];
-    $items[$a[2]][$i]['VALUE_PARAM_5'] = $a[29];
-    $items[$a[2]][$i]['NAME_PARAM_6'] = $a[30];
-    $items[$a[2]][$i]['VALUE_PARAM_6'] = $a[31];
-    $items[$a[2]][$i]['NAME_PARAM_7'] = $a[32];
-    $items[$a[2]][$i]['VALUE_PARAM_7'] = $a[33];
-    $items[$a[2]][$i]['NAME_PARAM_8'] = $a[34];
-    $items[$a[2]][$i]['VALUE_PARAM_8'] = $a[35];
-    $items[$a[2]][$i]['NAME_PARAM_9'] = $a[36];
-    $items[$a[2]][$i]['VALUE_PARAM_9'] = $a[37];
-    $items[$a[2]][$i]['NAME_PARAM_10'] = $a[38];
-    $items[$a[2]][$i]['VALUE_PARAM_10'] = $a[39];
+    // Динамические характеристики
+    for ($k = 20; $k <= count($a) - 1; $k++) {
+        if ($a[$k] != '') {
+            $arPropParams = explode(';', $a[$k]);
+            $items[$a[2]][$i][$arPropParams[0]] = $arPropParams[2];
+
+            // Добавим свойство в карту динамических свойств
+            if (!in_array($arPropParams[0], $arDynamicPropsMap)) {
+                $arDynamicPropsMap[$arPropParams[0]] = $arPropParams[1];
+            }
+        }
+    }
 
     //Если забыли заполнить свёртку - пусть там будет наименование
     if ($items[$a[2]][$i]['Svertka'] == '') $items[$a[2]][$i]['Svertka'] = trim(strval($items[$a[2]][$i]['Naimenovanie']));
     if (strlen($items[$a[2]][$i]['desc']) < 4) $items[$a[2]][$i]['desc'] = '';
-
 }
-//var_dump($tempArray);
 
+// Проверим есть ли все динамические свойства в инфоблоке, если нет то добавим эти свойств
+if (!function_exists('checkDynamicProps')) {
+    echo 'Здесь';
+    /**
+     * Функция для проверки и установки динамических свойств для инфоблока
+     * @param $arDynamicPropsMap
+     */
+    function checkDynamicProps($arDynamicPropsMap) {
+        $dbResult = CIBlockProperty::GetList(
+            [],
+            [
+                'IBLOCK_ID' => 1
+            ]
+        );
+
+        // Получаем все текущие свойства инфоблока каталог
+        $arAvailableProps = [];
+        while($arResult = $dbResult->Fetch()) {
+            $arAvailableProps[] = $arResult['CODE'];
+        }
+
+        // Переберём все динамические свойства инфблока, и если какого-то свойства не хватает, то создадим его
+        $arKeysDynamicProps = array_keys($arDynamicPropsMap);
+        foreach ($arKeysDynamicProps as $propCode) {
+            if (!in_array($propCode, $arAvailableProps)) {
+                $arPropFields =[
+                    'NAME' => $arDynamicPropsMap[$propCode],
+                    'ACTIVE' => 'Y',
+                    'SORT' => '1000',
+                    'CODE' => $propCode,
+                    'PROPERTY_TYPE' => 'S',
+                    'IBLOCK_ID' => 1
+                ];
+
+                // Создаем свойство
+                $obCIBlockProperty = new CIBlockProperty;
+                $iPropId = $obCIBlockProperty->Add($arPropFields);
+
+                // Добавляем его в умный фильтр
+                if ($iPropId > 0) {
+                    $obCIBlockProperty->Update(
+                        $iPropId,
+                        [
+                            'SMART_FILTER' => 'Y',
+                            'IBLOCK_ID' => 1
+                        ]
+                    );
+                }
+            }
+        }
+    }
+}
+
+if (count($arDynamicPropsMap) > 0) {
+    checkDynamicProps($arDynamicPropsMap);
+}
 
 //++++++++++++ POST - LOAD ITEMS DEBUG ++++++++++++++++++
 
@@ -446,7 +504,7 @@ function sectionWalker($xml, $top)
     removeSection($top, $present);
 }
 
-function addUpdateElement($item, $siteCatID)
+function addUpdateElement($item, $siteCatID, $arDynamicPropsMap)
 //функция для добавления $item в раздел $siteCatId (товаров в раздел)
 {
     $id_var = $item['ID'];
@@ -476,29 +534,16 @@ function addUpdateElement($item, $siteCatID)
             "V_REZERVE" => $item['VRezerve'],
             "SHOW_IN_PRICE" => ($item['show_in_price'] > 0) ? 1 : 0,
             "SORT_IN_PRICE" => $item['show_in_price'],
-
-            "NAME_PARAM_1" => $item['NAME_PARAM_1'],
-            "VALUE_PARAM_1" => $item['VALUE_PARAM_1'],
-            "NAME_PARAM_2" => $item['NAME_PARAM_2'],
-            "VALUE_PARAM_2" => $item['VALUE_PARAM_2'],
-            "NAME_PARAM_3" => $item['NAME_PARAM_3'],
-            "VALUE_PARAM_3" => $item['VALUE_PARAM_3'],
-            "NAME_PARAM_4" => $item['NAME_PARAM_4'],
-            "VALUE_PARAM_4" => $item['VALUE_PARAM_4'],
-            "NAME_PARAM_5" => $item['NAME_PARAM_5'],
-            "VALUE_PARAM_5" => $item['VALUE_PARAM_5'],
-            "NAME_PARAM_6" => $item['NAME_PARAM_6'],
-            "VALUE_PARAM_6" => $item['VALUE_PARAM_6'],
-            "NAME_PARAM_7" => $item['NAME_PARAM_7'],
-            "VALUE_PARAM_7" => $item['VALUE_PARAM_7'],
-            "NAME_PARAM_8" => $item['NAME_PARAM_8'],
-            "VALUE_PARAM_8" => $item['VALUE_PARAM_8'],
-            "NAME_PARAM_9" => $item['NAME_PARAM_9'],
-            "VALUE_PARAM_9" => $item['VALUE_PARAM_9'],
-            "NAME_PARAM_10" => $item['NAME_PARAM_10'],
-            "VALUE_PARAM_10" => $item['VALUE_PARAM_10'],
-
         );
+
+        // Добавим значения динамических свойств в товар
+        $arDynamicPropsKeys = array_keys($arDynamicPropsMap);
+        foreach ($arDynamicPropsKeys as $sPropCode) {
+            if ($item[$sPropCode] != '') {
+                $propsToUpdate[$sPropCode] = $item[$sPropCode];
+            }
+        }
+
         $arUpdate = array(
             "NAME" => trim(strval($item['Svertka'])),
             "PREVIEW_TEXT" => trim(strval($item['desc'])),
@@ -618,29 +663,16 @@ function addUpdateElement($item, $siteCatID)
                 "V_REZERVE" => $item['VRezerve'],
                 "SHOW_IN_PRICE" => ($item['show_in_price'] > 0) ? 1 : 0,
                 "SORT_IN_PRICE" => $item['show_in_price'],
-
-                "NAME_PARAM_1" => $item['NAME_PARAM_1'],
-                "VALUE_PARAM_1" => $item['VALUE_PARAM_1'],
-                "NAME_PARAM_2" => $item['NAME_PARAM_2'],
-                "VALUE_PARAM_2" => $item['VALUE_PARAM_2'],
-                "NAME_PARAM_3" => $item['NAME_PARAM_3'],
-                "VALUE_PARAM_3" => $item['VALUE_PARAM_3'],
-                "NAME_PARAM_4" => $item['NAME_PARAM_4'],
-                "VALUE_PARAM_4" => $item['VALUE_PARAM_4'],
-                "NAME_PARAM_5" => $item['NAME_PARAM_5'],
-                "VALUE_PARAM_5" => $item['VALUE_PARAM_5'],
-                "NAME_PARAM_6" => $item['NAME_PARAM_6'],
-                "VALUE_PARAM_6" => $item['VALUE_PARAM_6'],
-                "NAME_PARAM_7" => $item['NAME_PARAM_7'],
-                "VALUE_PARAM_7" => $item['VALUE_PARAM_7'],
-                "NAME_PARAM_8" => $item['NAME_PARAM_8'],
-                "VALUE_PARAM_8" => $item['VALUE_PARAM_8'],
-                "NAME_PARAM_9" => $item['NAME_PARAM_9'],
-                "VALUE_PARAM_9" => $item['VALUE_PARAM_9'],
-                "NAME_PARAM_10" => $item['NAME_PARAM_10'],
-                "VALUE_PARAM_10" => $item['VALUE_PARAM_10'],
             ),
         );
+
+        // Добавим значения динамических свойств в товар
+        $arDynamicPropsKeys = array_keys($arDynamicPropsMap);
+        foreach ($arDynamicPropsKeys as $sPropCode) {
+            if ($item[$sPropCode] != '') {
+                $arLoad['PROPERTY_VALUES'][$sPropCode] = $item[$sPropCode];
+            }
+        }
 
         $photo = $item['Foto'][0];
         $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photo . '.jpg';
@@ -684,7 +716,7 @@ function addUpdateElement($item, $siteCatID)
 }
 
 
-function parseSection($strCatID, $siteCatID, $price_id, $depth, $items)
+function parseSection($strCatID, $siteCatID, $price_id, $depth, $items, $arDynamicPropsMap)
 //функция для удаления пустых разделов или что-то такое
 {
     $total = 0;
@@ -700,7 +732,7 @@ function parseSection($strCatID, $siteCatID, $price_id, $depth, $items)
     if (isset($items[$strCatID])) {
         foreach ($items[$strCatID] as $item) {
             e("parseSection: items for $strCatID found, loading item " + $item[5]);
-            $ID = addUpdateElement($item, $siteCatID);
+            $ID = addUpdateElement($item, $siteCatID, $arDynamicPropsMap);
             e("parseSection: addUpdateElement returned $ID");
             $present[] = $ID;
             $total++;
@@ -734,7 +766,7 @@ if (sizeof($xml->category)) {
     $arFilter = array('IBLOCK_ID' => $iblock, 'ID' => array_keys($productSections));
     $db_list = CIBlockSection::GetList(array(), $arFilter, false, array("UF_PRICE_ID"));
     while ($ar_result = $db_list->GetNext()) {
-        parseSection($productSections[$ar_result["ID"]], $ar_result["ID"], (int)$ar_result["UF_PRICE_ID"], $ar_result["DEPTH_LEVEL"], $items);
+        parseSection($productSections[$ar_result["ID"]], $ar_result["ID"], (int)$ar_result["UF_PRICE_ID"], $ar_result["DEPTH_LEVEL"], $items, $arDynamicPropsMap);
     }
     $finishTime = date("d.m.Y H:i:s");
 }
