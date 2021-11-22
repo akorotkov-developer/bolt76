@@ -1058,3 +1058,7 @@ h1 {
 .b-image-slider-nav .slick-slide .detail_image {
 	cursor: pointer;
 }
+.b-image-slider-nav .slick-list .slick-track {
+	display: flex;
+	align-items: center;
+}

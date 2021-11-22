@@ -6,3 +6,7 @@
 !/bitrix/gadgets/
 local/include/vendor/*
 local/include/vendor/dompdf_cirillic/*
+import/cat.xml
+import/cat_new.xml
+import/catalog.txt
+import/catalog_new.txt

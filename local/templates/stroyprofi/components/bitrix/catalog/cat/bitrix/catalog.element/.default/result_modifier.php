@@ -24,7 +24,12 @@ if ($arRez = $obSections->Fetch()) {
     $arSection = $arRez;
 }
 
-if ($arSection['PICTURE']) {
+if (!empty($arResult['PREVIEW_PICTURE']['SRC'])) {
+    $arResult['MORE_PHOTO_PICTURE']['ID'] = (int) $arResult['PREVIEW_PICTURE']['ID'];
+    $arResult['MORE_PHOTO_PICTURE']['SRC'] =  $arResult['PREVIEW_PICTURE']['SRC'];
+    $arResult['MORE_PHOTO_PICTURE']['WIDTH'] = 150;
+    $arResult['MORE_PHOTO_PICTURE']['HEIGHT'] = 150;
+} else if ($arSection['PICTURE']) {
     $arSection['PICTURE'] = CFile::GetFileArray($arSection['PICTURE']);
     $arResult['MORE_PHOTO_PICTURE']['ID'] = (int)$arSection['PICTURE']['ID'];
     $arResult['MORE_PHOTO_PICTURE']['SRC'] = $arSection['PICTURE']['SRC'];
@@ -37,8 +42,12 @@ global $APPLICATION;
 $APPLICATION->SetTitle(($arResult['PROPERTIES']['NAIMENOVANIE']['VALUE'] != '') ? $arResult['PROPERTIES']['NAIMENOVANIE']['VALUE'] : $arResult['NAME']);
 
 // Добавим фото если есть дополнительные фото в товаре
-if (count($arResult['PROPERTIES']['PHOTOS']['VALUE']) > 0) {
+if (count($arResult['PROPERTIES']['PHOTOS']['VALUE']) > 0 && $arResult['PROPERTIES']['PHOTOS']['VALUE'] !== false) {
     $arPhotos = [];
+    if (!empty($arResult['PREVIEW_PICTURE']['SRC'])) {
+        $arPhotos[] = $arResult['PREVIEW_PICTURE']['SRC'];
+    }
+
     foreach ($arResult['PROPERTIES']['PHOTOS']['VALUE'] as $photoId) {
         $arPhotos[] = \CFile::GetFileArray($photoId)['SRC'];
     }

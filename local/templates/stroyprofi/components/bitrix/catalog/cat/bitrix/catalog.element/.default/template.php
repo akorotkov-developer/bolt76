@@ -171,7 +171,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 
 <div class="bx-catalog-element bx-<?=$arParams['TEMPLATE_THEME']?>" id="<?=$itemIds['ID']?>"
 	itemscope itemtype="http://schema.org/Product">
-	<div class="container-fluid"
+	<div class="container-fluid">
 
 		<div class="row">
 			<div class="col-md-9 col-sm-12">
@@ -179,56 +179,55 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                     <div class="b-article">Артикул: <b><?= $arResult['PROPERTIES']['ARTICUL']['VALUE']?></b></div>
                 <?php } ?>
 
-				<div class="row">
-                    <div class="col-md-3">
-                        <div id="<?=$itemIds['BIG_SLIDER_ID']?>">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div id="<?=$itemIds['BIG_SLIDER_ID']?>">
 
-                                <div class="product-item-label-text <?=$labelPositionClass?>" id="<?=$itemIds['STICKER_ID']?>"
-                                    <?=(!$arResult['LABEL'] ? 'style="display: none;"' : '' )?>>
-                                    <?
-                                    if ($arResult['LABEL'] && !empty($arResult['LABEL_ARRAY_VALUE']))
-                                    {
-                                        foreach ($arResult['LABEL_ARRAY_VALUE'] as $code => $value)
-                                        {
-                                            ?>
-                                            <div<?=(!isset($arParams['LABEL_PROP_MOBILE'][$code]) ? ' class="hidden-xs"' : '')?>>
-                                                <span title="<?=$value?>"><?=$value?></span>
-                                            </div>
-                                            <?
-                                        }
-                                    }
-                                    ?>
-                                </div>
-                                <?
-                                if ($arParams['SHOW_DISCOUNT_PERCENT'] === 'Y')
-                                {
-                                    if ($haveOffers)
-                                    {
-                                        ?>
-                                        <div class="product-item-label-ring <?=$discountPositionClass?>" id="<?=$itemIds['DISCOUNT_PERCENT_ID']?>"
-                                            style="display: none;">
-                                        </div>
+                                    <div class="product-item-label-text <?=$labelPositionClass?>" id="<?=$itemIds['STICKER_ID']?>"
+                                        <?=(!$arResult['LABEL'] ? 'style="display: none;"' : '' )?>>
                                         <?
-                                    }
-                                    else
+                                        if ($arResult['LABEL'] && !empty($arResult['LABEL_ARRAY_VALUE']))
+                                        {
+                                            foreach ($arResult['LABEL_ARRAY_VALUE'] as $code => $value)
+                                            {
+                                                ?>
+                                                <div<?=(!isset($arParams['LABEL_PROP_MOBILE'][$code]) ? ' class="hidden-xs"' : '')?>>
+                                                    <span title="<?=$value?>"><?=$value?></span>
+                                                </div>
+                                                <?
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                    <?
+                                    if ($arParams['SHOW_DISCOUNT_PERCENT'] === 'Y')
                                     {
-                                        if ($price['DISCOUNT'] > 0)
+                                        if ($haveOffers)
                                         {
                                             ?>
                                             <div class="product-item-label-ring <?=$discountPositionClass?>" id="<?=$itemIds['DISCOUNT_PERCENT_ID']?>"
-                                                title="<?=-$price['PERCENT']?>%">
-                                                <span><?=-$price['PERCENT']?>%</span>
+                                                style="display: none;">
                                             </div>
                                             <?
                                         }
+                                        else
+                                        {
+                                            if ($price['DISCOUNT'] > 0)
+                                            {
+                                                ?>
+                                                <div class="product-item-label-ring <?=$discountPositionClass?>" id="<?=$itemIds['DISCOUNT_PERCENT_ID']?>"
+                                                    title="<?=-$price['PERCENT']?>%">
+                                                    <span><?=-$price['PERCENT']?>%</span>
+                                                </div>
+                                                <?
+                                            }
+                                        }
                                     }
-                                }
-                                ?>
-                                <div data-entity="images-container" <?= (count($arResult['PHOTOS']) > 0) ? 'class="b-image-slider-main"' : ''?>>
-                                    <?
-                                    if (!empty($actualItem['MORE_PHOTO']))
-                                    {
-                                        if (count($arResult['PHOTOS']) == 0) {
+                                    ?>
+                                    <div data-entity="images-container" <?= (count($arResult['PHOTOS']) > 0) ? 'class="b-image-slider-main"' : ''?>>
+                                        <?php
+                                        if (count($arResult['PHOTOS']) == 0 && !empty($actualItem['MORE_PHOTO'])) {
                                             foreach ($actualItem['MORE_PHOTO'] as $key => $photo)
                                             {
                                                 ?>
@@ -238,314 +237,314 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                 <?
                                             }
                                         }
-                                    }
 
-                                    if (count($arResult['PHOTOS']) > 0) {
-                                        foreach ($arResult['PHOTOS'] as $photoSrc) {?>
-                                            <div>
-                                                <img class="detail_image" src="<?= $photoSrc?>" >
-                                            </div>
-                                        <?php }
-                                    }
-
-                                    if ($arParams['SLIDER_PROGRESS'] === 'Y')
-                                    {
-                                        ?>
-                                        <div class="product-item-detail-slider-progress-bar" data-entity="slider-progress-bar" style="width: 0;"></div>
-                                        <?
-                                    }
-                                    ?>
-                                </div>
-
-                                <?php if (count($arResult['PHOTOS']) > 0) {?>
-                                    <div class="b-image-slider-nav">
-                                        <?php
-                                        if (count($arResult['PHOTOS']) == 0) {
-                                            foreach ($actualItem['MORE_PHOTO'] as $key => $photo) {?>
-                                                <div class="slider-image-item-nav 1">
-                                                    <img class="detail_image" src="<?= $photo['SRC']?>">
+                                        if (count($arResult['PHOTOS']) > 0) {
+                                            foreach ($arResult['PHOTOS'] as $photoSrc) {?>
+                                                <div>
+                                                    <img class="detail_image" src="<?= $photoSrc?>" >
                                                 </div>
                                             <?php }
-                                        }?>
+                                        }
 
-                                        <?php foreach ($arResult['PHOTOS'] as $photoSrc) {?>
-                                            <div class="slider-image-item-nav 2">
-                                                <img class="detail_image" src="<?= $photoSrc?>">
-                                            </div>
-                                        <?php }?>
-                                    </div>
-                                <?php }?>
-
-                            <?
-                            if ($showSliderControls)
-                            {
-                                if ($haveOffers)
-                                {
-                                    foreach ($arResult['OFFERS'] as $keyOffer => $offer)
-                                    {
-                                        if (!isset($offer['MORE_PHOTO_COUNT']) || $offer['MORE_PHOTO_COUNT'] <= 0)
-                                            continue;
-
-                                        $strVisible = $arResult['OFFERS_SELECTED'] == $keyOffer ? '' : 'none';
-                                        ?>
-                                        <div class="product-item-detail-slider-controls-block" id="<?=$itemIds['SLIDER_CONT_OF_ID'].$offer['ID']?>" style="display: <?=$strVisible?>;">
+                                        if ($arParams['SLIDER_PROGRESS'] === 'Y')
+                                        {
+                                            ?>
+                                            <div class="product-item-detail-slider-progress-bar" data-entity="slider-progress-bar" style="width: 0;"></div>
                                             <?
-                                            foreach ($offer['MORE_PHOTO'] as $keyPhoto => $photo)
-                                            {
-                                                ?>
-                                                <div class="product-item-detail-slider-controls-image<?=($keyPhoto == 0 ? ' active' : '')?>"
-                                                    data-entity="slider-control" data-value="<?=$offer['ID'].'_'.$photo['ID']?>">
-                                                    <img src="<?=$photo['SRC']?>">
+                                        }
+                                        ?>
+                                    </div>
+
+                                    <?php if (count($arResult['PHOTOS']) > 0) {?>
+                                        <div class="b-image-slider-nav">
+                                            <?php
+                                            if (count($arResult['PHOTOS']) == 0) {
+                                                foreach ($actualItem['MORE_PHOTO'] as $key => $photo) {?>
+                                                    <div class="slider-image-item-nav 1">
+                                                        <img class="detail_image" src="<?= $photo['SRC']?>">
+                                                    </div>
+                                                <?php }
+                                            }?>
+
+                                            <?php foreach ($arResult['PHOTOS'] as $photoSrc) {?>
+                                                <div class="slider-image-item-nav 2">
+                                                    <img class="detail_image" src="<?= $photoSrc?>">
                                                 </div>
+                                            <?php }?>
+                                        </div>
+                                    <?php }?>
+
+                                <?
+                                if ($showSliderControls)
+                                {
+                                    if ($haveOffers)
+                                    {
+                                        foreach ($arResult['OFFERS'] as $keyOffer => $offer)
+                                        {
+                                            if (!isset($offer['MORE_PHOTO_COUNT']) || $offer['MORE_PHOTO_COUNT'] <= 0)
+                                                continue;
+
+                                            $strVisible = $arResult['OFFERS_SELECTED'] == $keyOffer ? '' : 'none';
+                                            ?>
+                                            <div class="product-item-detail-slider-controls-block" id="<?=$itemIds['SLIDER_CONT_OF_ID'].$offer['ID']?>" style="display: <?=$strVisible?>;">
                                                 <?
+                                                foreach ($offer['MORE_PHOTO'] as $keyPhoto => $photo)
+                                                {
+                                                    ?>
+                                                    <div class="product-item-detail-slider-controls-image<?=($keyPhoto == 0 ? ' active' : '')?>"
+                                                        data-entity="slider-control" data-value="<?=$offer['ID'].'_'.$photo['ID']?>">
+                                                        <img src="<?=$photo['SRC']?>">
+                                                    </div>
+                                                    <?
+                                                }
+                                                ?>
+                                            </div>
+                                            <?
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ?>
+                                        <div class="product-item-detail-slider-controls-block" id="<?=$itemIds['SLIDER_CONT_ID']?>">
+                                            <?
+                                            if (!empty($actualItem['MORE_PHOTO']))
+                                            {
+                                                foreach ($actualItem['MORE_PHOTO'] as $key => $photo)
+                                                {
+                                                    ?>
+                                                    <div class="product-item-detail-slider-controls-image<?=($key == 0 ? ' active' : '')?>"
+                                                        data-entity="slider-control" data-value="<?=$photo['ID']?>">
+                                                        <img src="<?=$photo['SRC']?>">
+                                                    </div>
+                                                    <?
+                                                }
                                             }
                                             ?>
                                         </div>
                                         <?
                                     }
                                 }
-                                else
-                                {
-                                    ?>
-                                    <div class="product-item-detail-slider-controls-block" id="<?=$itemIds['SLIDER_CONT_ID']?>">
-                                        <?
-                                        if (!empty($actualItem['MORE_PHOTO']))
-                                        {
-                                            foreach ($actualItem['MORE_PHOTO'] as $key => $photo)
+                                ?>
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-9">
+                                    <div class="row" id="<?=$itemIds['TABS_ID']?>">
+                                        <div class="col-xs-12">
+                                            <div class="product-item-detail-tabs-container">
+                                                <ul class="product-item-detail-tabs-list">
+                                                    <?
+                                                    if (!empty($arResult['DISPLAY_PROPERTIES']) || $arResult['SHOW_OFFERS_PROPS'])
+                                                    {
+                                                        ?>
+                                                        <li class="product-item-detail-tab active" data-entity="tab" data-value="properties">
+                                                            <a href="javascript:void(0);" class="product-item-detail-tab-link">
+                                                                <span><?=$arParams['MESS_PROPERTIES_TAB']?></span>
+                                                            </a>
+                                                        </li>
+                                                        <?
+                                                    }
+
+                                                    if ($showDescription)
+                                                    {
+                                                        ?>
+                                                        <li class="product-item-detail-tab" data-entity="tab" data-value="description">
+                                                            <a href="javascript:void(0);" class="product-item-detail-tab-link">
+                                                                <span><?=$arParams['MESS_DESCRIPTION_TAB']?></span>
+                                                            </a>
+                                                        </li>
+                                                        <?
+                                                    }
+
+                                                    if ($arParams['USE_COMMENTS'] === 'Y')
+                                                    {
+                                                        ?>
+                                                        <li class="product-item-detail-tab" data-entity="tab" data-value="comments">
+                                                            <a href="javascript:void(0);" class="product-item-detail-tab-link">
+                                                                <span><?=$arParams['MESS_COMMENTS_TAB']?></span>
+                                                            </a>
+                                                        </li>
+                                                        <?
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="<?=$itemIds['TAB_CONTAINERS_ID']?>">
+                                        <div class="col-xs-12">
+                                            <?
+                                            if ($showDescription)
                                             {
                                                 ?>
-                                                <div class="product-item-detail-slider-controls-image<?=($key == 0 ? ' active' : '')?>"
-                                                    data-entity="slider-control" data-value="<?=$photo['ID']?>">
-                                                    <img src="<?=$photo['SRC']?>">
+                                                <div class="product-item-detail-tab-content active" data-entity="tab-container" data-value="description"
+                                                     itemprop="description">
+                                                    <?
+                                                    if (
+                                                        $arResult['PREVIEW_TEXT'] != ''
+                                                        && (
+                                                            $arParams['DISPLAY_PREVIEW_TEXT_MODE'] === 'S'
+                                                            || ($arParams['DISPLAY_PREVIEW_TEXT_MODE'] === 'E' && $arResult['DETAIL_TEXT'] == '')
+                                                        )
+                                                    )
+                                                    {
+                                                        echo $arResult['PREVIEW_TEXT_TYPE'] === 'html' ? $arResult['PREVIEW_TEXT'] : '<p>'.$arResult['PREVIEW_TEXT'].'</p>';
+                                                    }
+
+                                                    if ($arResult['DETAIL_TEXT'] != '')
+                                                    {
+                                                        echo $arResult['DETAIL_TEXT_TYPE'] === 'html' ? $arResult['DETAIL_TEXT'] : '<p>'.$arResult['DETAIL_TEXT'].'</p>';
+                                                    }
+                                                    ?>
                                                 </div>
                                                 <?
                                             }
-                                        }
-                                        ?>
-                                    </div>
-                                    <?
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
 
-                    <div class="col-md-9">
-                        <div class="row">
-                            <div class="col-sm-8 col-md-9">
-                                <div class="row" id="<?=$itemIds['TABS_ID']?>">
-                                    <div class="col-xs-12">
-                                        <div class="product-item-detail-tabs-container">
-                                            <ul class="product-item-detail-tabs-list">
-                                                <?
-                                                if (!empty($arResult['DISPLAY_PROPERTIES']) || $arResult['SHOW_OFFERS_PROPS'])
-                                                {
-                                                    ?>
-                                                    <li class="product-item-detail-tab active" data-entity="tab" data-value="properties">
-                                                        <a href="javascript:void(0);" class="product-item-detail-tab-link">
-                                                            <span><?=$arParams['MESS_PROPERTIES_TAB']?></span>
-                                                        </a>
-                                                    </li>
-                                                    <?
-                                                }
-
-                                                if ($showDescription)
-                                                {
-                                                    ?>
-                                                    <li class="product-item-detail-tab" data-entity="tab" data-value="description">
-                                                        <a href="javascript:void(0);" class="product-item-detail-tab-link">
-                                                            <span><?=$arParams['MESS_DESCRIPTION_TAB']?></span>
-                                                        </a>
-                                                    </li>
-                                                    <?
-                                                }
-
-                                                if ($arParams['USE_COMMENTS'] === 'Y')
-                                                {
-                                                    ?>
-                                                    <li class="product-item-detail-tab" data-entity="tab" data-value="comments">
-                                                        <a href="javascript:void(0);" class="product-item-detail-tab-link">
-                                                            <span><?=$arParams['MESS_COMMENTS_TAB']?></span>
-                                                        </a>
-                                                    </li>
-                                                    <?
-                                                }
+                                            if (!empty($arResult['DISPLAY_PROPERTIES']) || $arResult['SHOW_OFFERS_PROPS'])
+                                            {
                                                 ?>
-                                            </ul>
+                                                <div class="product-item-detail-tab-content" data-entity="tab-container" data-value="properties">
+                                                    <?
+                                                    if (!empty($arResult['DISPLAY_PROPERTIES']))
+                                                    {
+                                                        ?>
+                                                        <dl class="product-item-detail-properties">
+                                                            <?php
+                                                            foreach ($arResult['DISPLAY_PROPERTIES'] as $property)
+                                                            {
+                                                                if ($property['CODE'] == 'ARTICUL') {continue;}
+
+                                                                if ($property['CODE'] == 'UPAKOVKA2') {
+                                                                    continue;
+                                                                }
+
+                                                                if ($property['CODE'] == 'UPAKOVKA') {?>
+                                                                    <div class="prop-item">
+                                                                        <dt class="prop-item-title"><?=$property['NAME']?></dt>
+                                                                        <dd><?=(
+                                                                            is_array($property['DISPLAY_VALUE'])
+                                                                                ? implode(' / ', $property['DISPLAY_VALUE'])
+                                                                                : $property['DISPLAY_VALUE']
+                                                                            )?> / <?=$arResult['DISPLAY_PROPERTIES']['UPAKOVKA2']['VALUE']?>
+                                                                        </dd>
+                                                                    </div>
+                                                                <?php } else {?>
+                                                                    <div class="prop-item">
+                                                                        <dt class="prop-item-title"><?=$property['NAME']?></dt>
+                                                                        <dd><?=(
+                                                                            is_array($property['DISPLAY_VALUE'])
+                                                                                ? implode(' / ', $property['DISPLAY_VALUE'])
+                                                                                : $property['DISPLAY_VALUE']
+                                                                            )?>
+                                                                        </dd>
+                                                                    </div>
+
+                                                                <?php }?>
+                                                                <?
+                                                            }
+                                                            unset($property);
+                                                            ?>
+                                                        </dl>
+                                                        <?
+                                                    }
+
+                                                    if ($arResult['SHOW_OFFERS_PROPS'])
+                                                    {
+                                                        ?>
+                                                        <dl class="product-item-detail-properties" id="<?=$itemIds['DISPLAY_PROP_DIV']?>"></dl>
+                                                        <?
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <?
+                                            }
+
+                                            if ($arParams['USE_COMMENTS'] === 'Y')
+                                            {
+                                                ?>
+                                                <div class="product-item-detail-tab-content" data-entity="tab-container" data-value="comments" style="display: none;">
+                                                    <?
+                                                    $componentCommentsParams = array(
+                                                        'ELEMENT_ID' => $arResult['ID'],
+                                                        'ELEMENT_CODE' => '',
+                                                        'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+                                                        'SHOW_DEACTIVATED' => $arParams['SHOW_DEACTIVATED'],
+                                                        'URL_TO_COMMENT' => '',
+                                                        'WIDTH' => '',
+                                                        'COMMENTS_COUNT' => '5',
+                                                        'BLOG_USE' => $arParams['BLOG_USE'],
+                                                        'FB_USE' => $arParams['FB_USE'],
+                                                        'FB_APP_ID' => $arParams['FB_APP_ID'],
+                                                        'VK_USE' => $arParams['VK_USE'],
+                                                        'VK_API_ID' => $arParams['VK_API_ID'],
+                                                        'CACHE_TYPE' => $arParams['CACHE_TYPE'],
+                                                        'CACHE_TIME' => $arParams['CACHE_TIME'],
+                                                        'CACHE_GROUPS' => $arParams['CACHE_GROUPS'],
+                                                        'BLOG_TITLE' => '',
+                                                        'BLOG_URL' => $arParams['BLOG_URL'],
+                                                        'PATH_TO_SMILE' => '',
+                                                        'EMAIL_NOTIFY' => $arParams['BLOG_EMAIL_NOTIFY'],
+                                                        'AJAX_POST' => 'Y',
+                                                        'SHOW_SPAM' => 'Y',
+                                                        'SHOW_RATING' => 'N',
+                                                        'FB_TITLE' => '',
+                                                        'FB_USER_ADMIN_ID' => '',
+                                                        'FB_COLORSCHEME' => 'light',
+                                                        'FB_ORDER_BY' => 'reverse_time',
+                                                        'VK_TITLE' => '',
+                                                        'TEMPLATE_THEME' => $arParams['~TEMPLATE_THEME']
+                                                    );
+                                                    if(isset($arParams["USER_CONSENT"]))
+                                                        $componentCommentsParams["USER_CONSENT"] = $arParams["USER_CONSENT"];
+                                                    if(isset($arParams["USER_CONSENT_ID"]))
+                                                        $componentCommentsParams["USER_CONSENT_ID"] = $arParams["USER_CONSENT_ID"];
+                                                    if(isset($arParams["USER_CONSENT_IS_CHECKED"]))
+                                                        $componentCommentsParams["USER_CONSENT_IS_CHECKED"] = $arParams["USER_CONSENT_IS_CHECKED"];
+                                                    if(isset($arParams["USER_CONSENT_IS_LOADED"]))
+                                                        $componentCommentsParams["USER_CONSENT_IS_LOADED"] = $arParams["USER_CONSENT_IS_LOADED"];
+                                                    $APPLICATION->IncludeComponent(
+                                                        'bitrix:catalog.comments',
+                                                        '',
+                                                        $componentCommentsParams,
+                                                        $component,
+                                                        array('HIDE_ICONS' => 'Y')
+                                                    );
+                                                    ?>
+                                                </div>
+                                                <?
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" id="<?=$itemIds['TAB_CONTAINERS_ID']?>">
-                                    <div class="col-xs-12">
+                                <div class="col-sm-4 col-md-3">
+                                    <div>
                                         <?
-                                        if ($showDescription)
+                                        if ($arParams['BRAND_USE'] === 'Y')
                                         {
-                                            ?>
-                                            <div class="product-item-detail-tab-content active" data-entity="tab-container" data-value="description"
-                                                 itemprop="description">
-                                                <?
-                                                if (
-                                                    $arResult['PREVIEW_TEXT'] != ''
-                                                    && (
-                                                        $arParams['DISPLAY_PREVIEW_TEXT_MODE'] === 'S'
-                                                        || ($arParams['DISPLAY_PREVIEW_TEXT_MODE'] === 'E' && $arResult['DETAIL_TEXT'] == '')
-                                                    )
-                                                )
-                                                {
-                                                    echo $arResult['PREVIEW_TEXT_TYPE'] === 'html' ? $arResult['PREVIEW_TEXT'] : '<p>'.$arResult['PREVIEW_TEXT'].'</p>';
-                                                }
-
-                                                if ($arResult['DETAIL_TEXT'] != '')
-                                                {
-                                                    echo $arResult['DETAIL_TEXT_TYPE'] === 'html' ? $arResult['DETAIL_TEXT'] : '<p>'.$arResult['DETAIL_TEXT'].'</p>';
-                                                }
-                                                ?>
-                                            </div>
-                                            <?
-                                        }
-
-                                        if (!empty($arResult['DISPLAY_PROPERTIES']) || $arResult['SHOW_OFFERS_PROPS'])
-                                        {
-                                            ?>
-                                            <div class="product-item-detail-tab-content" data-entity="tab-container" data-value="properties">
-                                                <?
-                                                if (!empty($arResult['DISPLAY_PROPERTIES']))
-                                                {
-                                                    ?>
-                                                    <dl class="product-item-detail-properties">
-                                                        <?php
-                                                        foreach ($arResult['DISPLAY_PROPERTIES'] as $property)
-                                                        {
-                                                            if ($property['CODE'] == 'ARTICUL') {continue;}
-
-                                                            if ($property['CODE'] == 'UPAKOVKA2') {
-                                                                continue;
-                                                            }
-
-                                                            if ($property['CODE'] == 'UPAKOVKA') {?>
-                                                                <div class="prop-item">
-                                                                    <dt class="prop-item-title"><?=$property['NAME']?></dt>
-                                                                    <dd><?=(
-                                                                        is_array($property['DISPLAY_VALUE'])
-                                                                            ? implode(' / ', $property['DISPLAY_VALUE'])
-                                                                            : $property['DISPLAY_VALUE']
-                                                                        )?> / <?=$arResult['DISPLAY_PROPERTIES']['UPAKOVKA2']['VALUE']?>
-                                                                    </dd>
-                                                                </div>
-                                                            <?php } else {?>
-                                                                <div class="prop-item">
-                                                                    <dt class="prop-item-title"><?=$property['NAME']?></dt>
-                                                                    <dd><?=(
-                                                                        is_array($property['DISPLAY_VALUE'])
-                                                                            ? implode(' / ', $property['DISPLAY_VALUE'])
-                                                                            : $property['DISPLAY_VALUE']
-                                                                        )?>
-                                                                    </dd>
-                                                                </div>
-
-                                                            <?php }?>
-                                                            <?
-                                                        }
-                                                        unset($property);
-                                                        ?>
-                                                    </dl>
-                                                    <?
-                                                }
-
-                                                if ($arResult['SHOW_OFFERS_PROPS'])
-                                                {
-                                                    ?>
-                                                    <dl class="product-item-detail-properties" id="<?=$itemIds['DISPLAY_PROP_DIV']?>"></dl>
-                                                    <?
-                                                }
-                                                ?>
-                                            </div>
-                                            <?
-                                        }
-
-                                        if ($arParams['USE_COMMENTS'] === 'Y')
-                                        {
-                                            ?>
-                                            <div class="product-item-detail-tab-content" data-entity="tab-container" data-value="comments" style="display: none;">
-                                                <?
-                                                $componentCommentsParams = array(
+                                            $APPLICATION->IncludeComponent(
+                                                'bitrix:catalog.brandblock',
+                                                '.default',
+                                                array(
+                                                    'IBLOCK_TYPE' => $arParams['IBLOCK_TYPE'],
+                                                    'IBLOCK_ID' => $arParams['IBLOCK_ID'],
                                                     'ELEMENT_ID' => $arResult['ID'],
                                                     'ELEMENT_CODE' => '',
-                                                    'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-                                                    'SHOW_DEACTIVATED' => $arParams['SHOW_DEACTIVATED'],
-                                                    'URL_TO_COMMENT' => '',
-                                                    'WIDTH' => '',
-                                                    'COMMENTS_COUNT' => '5',
-                                                    'BLOG_USE' => $arParams['BLOG_USE'],
-                                                    'FB_USE' => $arParams['FB_USE'],
-                                                    'FB_APP_ID' => $arParams['FB_APP_ID'],
-                                                    'VK_USE' => $arParams['VK_USE'],
-                                                    'VK_API_ID' => $arParams['VK_API_ID'],
+                                                    'PROP_CODE' => $arParams['BRAND_PROP_CODE'],
                                                     'CACHE_TYPE' => $arParams['CACHE_TYPE'],
                                                     'CACHE_TIME' => $arParams['CACHE_TIME'],
                                                     'CACHE_GROUPS' => $arParams['CACHE_GROUPS'],
-                                                    'BLOG_TITLE' => '',
-                                                    'BLOG_URL' => $arParams['BLOG_URL'],
-                                                    'PATH_TO_SMILE' => '',
-                                                    'EMAIL_NOTIFY' => $arParams['BLOG_EMAIL_NOTIFY'],
-                                                    'AJAX_POST' => 'Y',
-                                                    'SHOW_SPAM' => 'Y',
-                                                    'SHOW_RATING' => 'N',
-                                                    'FB_TITLE' => '',
-                                                    'FB_USER_ADMIN_ID' => '',
-                                                    'FB_COLORSCHEME' => 'light',
-                                                    'FB_ORDER_BY' => 'reverse_time',
-                                                    'VK_TITLE' => '',
-                                                    'TEMPLATE_THEME' => $arParams['~TEMPLATE_THEME']
-                                                );
-                                                if(isset($arParams["USER_CONSENT"]))
-                                                    $componentCommentsParams["USER_CONSENT"] = $arParams["USER_CONSENT"];
-                                                if(isset($arParams["USER_CONSENT_ID"]))
-                                                    $componentCommentsParams["USER_CONSENT_ID"] = $arParams["USER_CONSENT_ID"];
-                                                if(isset($arParams["USER_CONSENT_IS_CHECKED"]))
-                                                    $componentCommentsParams["USER_CONSENT_IS_CHECKED"] = $arParams["USER_CONSENT_IS_CHECKED"];
-                                                if(isset($arParams["USER_CONSENT_IS_LOADED"]))
-                                                    $componentCommentsParams["USER_CONSENT_IS_LOADED"] = $arParams["USER_CONSENT_IS_LOADED"];
-                                                $APPLICATION->IncludeComponent(
-                                                    'bitrix:catalog.comments',
-                                                    '',
-                                                    $componentCommentsParams,
-                                                    $component,
-                                                    array('HIDE_ICONS' => 'Y')
-                                                );
-                                                ?>
-                                            </div>
-                                            <?
+                                                    'WIDTH' => '',
+                                                    'HEIGHT' => ''
+                                                ),
+                                                $component,
+                                                array('HIDE_ICONS' => 'Y')
+                                            );
                                         }
                                         ?>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4 col-md-3">
-                                <div>
-                                    <?
-                                    if ($arParams['BRAND_USE'] === 'Y')
-                                    {
-                                        $APPLICATION->IncludeComponent(
-                                            'bitrix:catalog.brandblock',
-                                            '.default',
-                                            array(
-                                                'IBLOCK_TYPE' => $arParams['IBLOCK_TYPE'],
-                                                'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-                                                'ELEMENT_ID' => $arResult['ID'],
-                                                'ELEMENT_CODE' => '',
-                                                'PROP_CODE' => $arParams['BRAND_PROP_CODE'],
-                                                'CACHE_TYPE' => $arParams['CACHE_TYPE'],
-                                                'CACHE_TIME' => $arParams['CACHE_TIME'],
-                                                'CACHE_GROUPS' => $arParams['CACHE_GROUPS'],
-                                                'WIDTH' => '',
-                                                'HEIGHT' => ''
-                                            ),
-                                            $component,
-                                            array('HIDE_ICONS' => 'Y')
-                                        );
-                                    }
-                                    ?>
                                 </div>
                             </div>
                         </div>
