@@ -242,7 +242,7 @@ if ($ar_result = $db_list->GetNext()) {
                             ?>
 
                         <iframe id="pdfFrame"
-                                src="https://docs.google.com/viewer?embedded=true&amp;url=https://strprofi.ru<?= urlencode($pdf); ?>"
+                                src="https://strprofi.ru<?= $pdf; ?>"
                                 width="830" height="1150" style="border: none;"></iframe>
 
                             <?
