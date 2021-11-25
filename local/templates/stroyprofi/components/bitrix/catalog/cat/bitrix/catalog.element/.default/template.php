@@ -174,15 +174,15 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 	<div class="container-fluid">
 
 		<div class="row">
-			<div class="col-md-9 col-sm-12">
+			<div class="col-md-10 col-sm-12">
                 <?php if ($arResult['PROPERTIES']['ARTICUL']['VALUE']) {?>
                     <div class="b-article">Артикул: <b><?= $arResult['PROPERTIES']['ARTICUL']['VALUE']?></b></div>
                 <?php } ?>
 
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div id="<?=$itemIds['BIG_SLIDER_ID']?>">
+                        <div class="col-md-5">
+                            <div id="<?=$itemIds['BIG_SLIDER_ID']?>" class="b-slidercontainer">
 
                                     <div class="product-item-label-text <?=$labelPositionClass?>" id="<?=$itemIds['STICKER_ID']?>"
                                         <?=(!$arResult['LABEL'] ? 'style="display: none;"' : '' )?>>
@@ -240,9 +240,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 
                                         if (count($arResult['PHOTOS']) > 0) {
                                             foreach ($arResult['PHOTOS'] as $photoSrc) {?>
-                                                <div>
-                                                    <img class="detail_image" src="<?= $photoSrc?>" >
-                                                </div>
+                                                <img class="detail_image" src="<?= $photoSrc?>" >
                                             <?php }
                                         }
 
@@ -328,9 +326,9 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                             </div>
                         </div>
 
-                        <div class="col-md-9">
+                        <div class="col-md-7">
                             <div class="row">
-                                <div class="col-sm-8 col-md-9">
+                                <div class="col-sm-8 col-md-10">
                                     <div class="row" id="<?=$itemIds['TABS_ID']?>">
                                         <div class="col-xs-12">
                                             <div class="product-item-detail-tabs-container">
@@ -519,7 +517,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-4 col-md-3">
+                                <div class="col-sm-4 col-md-2">
                                     <div>
                                         <?
                                         if ($arParams['BRAND_USE'] === 'Y')
@@ -551,7 +549,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                     </div>
                 </div>
 			</div>
-			<div class="col-md-3 col-sm-12">
+			<div class="col-md-2 col-sm-12">
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="product-item-detail-pay-block">

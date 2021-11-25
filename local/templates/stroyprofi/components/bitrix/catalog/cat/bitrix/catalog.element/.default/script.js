@@ -3511,12 +3511,9 @@
 			}
 		}
 	}
-
-
 })(window);
 
-$( document ).ready(function() {
-	// Подключние slickSlider
+BX.ready(function() {
 	$('.b-image-slider-main').slick({
 		slidesToShow: 1,
 		slidesToScroll: 1,

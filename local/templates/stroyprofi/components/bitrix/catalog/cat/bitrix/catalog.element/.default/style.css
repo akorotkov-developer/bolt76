@@ -1062,3 +1062,6 @@ h1 {
 	display: flex;
 	align-items: center;
 }
+.b-slidercontainer {
+	max-width: 515px;
+}
