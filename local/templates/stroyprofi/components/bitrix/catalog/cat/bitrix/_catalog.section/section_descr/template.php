@@ -227,5 +227,6 @@ if(sizeof($arResult["ITEMS"])>0){
 		);?><?}?>
 <div class="clear"></div>
 <?}?>
-<?if($arParams["DISPLAY_BOTTOM_PAGER"]):?><?=$arResult["NAV_STRING"]?><br /><br />
+<?php
+if($arParams["DISPLAY_BOTTOM_PAGER"]):?><?=$arResult["NAV_STRING"]?><br /><br />
 <?endif;?>

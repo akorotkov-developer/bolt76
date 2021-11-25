@@ -54,7 +54,7 @@ if (mb_strlen($q) >= 1) {
 				<? }?></table><?
 		}
 	}
-	$arSelect = Array("ID", "NAME", "IBLOCK_SECTION_ID", "PREVIEW_PICTURE", "PROPERTY_PRICE_OPT", "PROPERTY_PRICE");
+	$arSelect = Array("ID", "NAME", "IBLOCK_SECTION_ID", "PREVIEW_PICTURE", "PROPERTY_PRICE_OPT", "PROPERTY_PRICE", "DETAIL_PAGE_URL");
 	$arFilter = Array("IBLOCK_ID" => 1, "ACTIVE" => "Y");
 
     $arFilter = [
@@ -98,15 +98,15 @@ if (mb_strlen($q) >= 1) {
 					if ($file) {
 						$file = CFile::ResizeImageGet($file, array('width' => 50, 'height' => 50), BX_RESIZE_IMAGE_PROPORTIONAL, true);
 						?>
-                        <a href="<?=$sectionInfo[$arElement["IBLOCK_SECTION_ID"]]["SECTION_PAGE_URL"]?>"><img
+                        <a href="<?= $arElement['DETAIL_PAGE_URL']?>"><img
                                 src="<?=$file["src"]?>" alt="<?=$arElement["NAME"]?>"></a>
 						<? }?></td>
                 <td class="product">
                     <div class="section_name">
-                        <a href="<?=$sectionInfo[$arElement["IBLOCK_SECTION_ID"]]["SECTION_PAGE_URL"]?>"><?=$arElement["NAME"]?></a>
+                        <a href="<?=$arElement['DETAIL_PAGE_URL']?>"><?=$arElement["NAME"]?></a>
                     </div>
                     <div class="name">
-                        <a href="<?=$sectionInfo[$arElement["IBLOCK_SECTION_ID"]]["SECTION_PAGE_URL"]?>"><?=$sectionInfo[$arElement["IBLOCK_SECTION_ID"]]["NAME"]?></a>
+                        <a href="<?=$arElement['DETAIL_PAGE_URL']?>"><?=$sectionInfo[$arElement["IBLOCK_SECTION_ID"]]["NAME"]?></a>
                     </div>
                     <div class="price">
                         от

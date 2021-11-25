@@ -553,7 +553,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="product-item-detail-pay-block">
-							<?
+                            <?
 							foreach ($arParams['PRODUCT_PAY_BLOCK_ORDER'] as $blockName)
 							{
 								switch ($blockName)
@@ -623,6 +623,24 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 												<?
 											}
 											?>
+
+                                            <div class="b-default-props">
+                                                <?php if ($arResult['PROPERTIES']['OSTATOK']['VALUE'] != '') {?>
+                                                    <div class="b-default-props_item">
+                                                        <b>Наличие:</b> <?= $arResult['PROPERTIES']['OSTATOK']['VALUE']?>
+                                                    </div>
+                                                <?php }?>
+                                                <?php if ($arResult['PROPERTIES']['PRICE_OPT2']['VALUE'] != '') {?>
+                                                    <div class="b-default-props_item">
+                                                        <b>Оптовая цена:</b> <?= $arResult['PROPERTIES']['PRICE_OPT2']['VALUE']?>
+                                                    </div>
+                                                <?php }?>
+                                                <?php if ($arResult['PROPERTIES']['PRICE']['VALUE'] != '') {?>
+                                                    <div class="b-default-props_item">
+                                                        <b>Розничная цена:</b> <?= $arResult['PROPERTIES']['PRICE']['VALUE']?>
+                                                    </div>
+                                                <?php }?>
+                                            </div>
 										</div>
 										<?
 										break;
