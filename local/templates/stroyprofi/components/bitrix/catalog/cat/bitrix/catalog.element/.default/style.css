@@ -1007,11 +1007,6 @@ input::-webkit-inner-spin-button { -webkit-appearance: none; }
 .b-article {
 	text-align: right;
 }
-
-.detail_image {
-	width: 100%;
-	border: 1px solid #cccccc;
-}
 .prop-item {
 	display: flex;
 }
@@ -1068,4 +1063,16 @@ h1 {
 .b-default-props {
 	padding-left: 0px;
 	margin-top: 20px;
+}
+
+.b-image-slider-nav {
+	max-height: 100px;
+}
+.b-image-slider-nav .detail_image {
+	max-height: 100px;
+	border: 1px solid #cccccc;
+}
+.b-image-slider-nav .slider-image-item-nav {
+	display: flex!important;
+	justify-content: center;
 }

@@ -174,14 +174,10 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 	<div class="container-fluid">
 
 		<div class="row">
-			<div class="col-md-10 col-sm-12">
-                <?php if ($arResult['PROPERTIES']['ARTICUL']['VALUE']) {?>
-                    <div class="b-article">Артикул: <b><?= $arResult['PROPERTIES']['ARTICUL']['VALUE']?></b></div>
-                <?php } ?>
-
+			<div class="col-md-9 col-sm-12">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <div id="<?=$itemIds['BIG_SLIDER_ID']?>" class="b-slidercontainer">
 
                                     <div class="product-item-label-text <?=$labelPositionClass?>" id="<?=$itemIds['STICKER_ID']?>"
@@ -326,9 +322,9 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                             </div>
                         </div>
 
-                        <div class="col-md-7">
+                        <div class="col-md-8">
                             <div class="row">
-                                <div class="col-sm-8 col-md-10">
+                                <div class="col-sm-12 col-md-12">
                                     <div class="row" id="<?=$itemIds['TABS_ID']?>">
                                         <div class="col-xs-12">
                                             <div class="product-item-detail-tabs-container">
@@ -410,35 +406,55 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                         ?>
                                                         <dl class="product-item-detail-properties">
                                                             <?php
-                                                            foreach ($arResult['DISPLAY_PROPERTIES'] as $property)
+                                                            $arExcludedProps = [
+                                                                    'PRICE_OPT', 'PHOTO_ID', 'V_REZERVE', 'NAIMENOVANIE',
+                                                                    'ROWID', 'NOMNOMER', 'SHOW_IN_PRICE', 'SORT_IN_PRICE', 'PHOTOS'
+                                                                ];
+                                                            foreach ($arResult['PROPERTIES'] as $property)
                                                             {
-                                                                if ($property['CODE'] == 'ARTICUL') {continue;}
-
                                                                 if ($property['CODE'] == 'UPAKOVKA2') {
                                                                     continue;
                                                                 }
 
-                                                                if ($property['CODE'] == 'UPAKOVKA') {?>
-                                                                    <div class="prop-item">
-                                                                        <dt class="prop-item-title"><?=$property['NAME']?></dt>
-                                                                        <dd><?=(
-                                                                            is_array($property['DISPLAY_VALUE'])
-                                                                                ? implode(' / ', $property['DISPLAY_VALUE'])
-                                                                                : $property['DISPLAY_VALUE']
-                                                                            )?> / <?=$arResult['DISPLAY_PROPERTIES']['UPAKOVKA2']['VALUE']?>
-                                                                        </dd>
-                                                                    </div>
-                                                                <?php } else {?>
-                                                                    <div class="prop-item">
-                                                                        <dt class="prop-item-title"><?=$property['NAME']?></dt>
-                                                                        <dd><?=(
-                                                                            is_array($property['DISPLAY_VALUE'])
-                                                                                ? implode(' / ', $property['DISPLAY_VALUE'])
-                                                                                : $property['DISPLAY_VALUE']
-                                                                            )?>
-                                                                        </dd>
-                                                                    </div>
+                                                                if (in_array($property['CODE'], $arExcludedProps)) {
+                                                                    continue;
+                                                                }
 
+                                                                if ($property['VALUE'] == 0) {
+                                                                    continue;
+                                                                }
+
+                                                                if ($property['NAME'] == 'Оптовая цена 2') {
+                                                                    $property['NAME'] = 'Оптовая цена';
+                                                                }
+
+                                                                if ($property['NAME'] == 'Остаток') {
+                                                                    $property['NAME'] = 'Наличие';
+                                                                }
+
+                                                                if ($property['CODE'] == 'UPAKOVKA' && $property['VALUE'] != '') {?>
+                                                                    <div class="prop-item">
+                                                                        <dt class="prop-item-title"><?=$property['NAME']?></dt>
+                                                                        <dd><?=(
+                                                                            is_array($property['VALUE'])
+                                                                                ? implode(' / ', $property['VALUE'])
+                                                                                : $property['VALUE']
+                                                                            )?> / <?=$arResult['PROPERTIES']['UPAKOVKA2']['VALUE']?>
+                                                                        </dd>
+                                                                    </div>
+                                                                <?php } else {
+                                                                    if ($property['VALUE'] != '') {
+                                                                    ?>
+                                                                        <div class="prop-item">
+                                                                            <dt class="prop-item-title"><?=$property['NAME']?></dt>
+                                                                            <dd><?=(
+                                                                                is_array($property['VALUE'])
+                                                                                    ? implode(' / ', $property['VALUE'])
+                                                                                    : $property['VALUE']
+                                                                                )?>
+                                                                            </dd>
+                                                                        </div>
+                                                                    <?php }?>
                                                                 <?php }?>
                                                                 <?
                                                             }
@@ -517,39 +533,12 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-4 col-md-2">
-                                    <div>
-                                        <?
-                                        if ($arParams['BRAND_USE'] === 'Y')
-                                        {
-                                            $APPLICATION->IncludeComponent(
-                                                'bitrix:catalog.brandblock',
-                                                '.default',
-                                                array(
-                                                    'IBLOCK_TYPE' => $arParams['IBLOCK_TYPE'],
-                                                    'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-                                                    'ELEMENT_ID' => $arResult['ID'],
-                                                    'ELEMENT_CODE' => '',
-                                                    'PROP_CODE' => $arParams['BRAND_PROP_CODE'],
-                                                    'CACHE_TYPE' => $arParams['CACHE_TYPE'],
-                                                    'CACHE_TIME' => $arParams['CACHE_TIME'],
-                                                    'CACHE_GROUPS' => $arParams['CACHE_GROUPS'],
-                                                    'WIDTH' => '',
-                                                    'HEIGHT' => ''
-                                                ),
-                                                $component,
-                                                array('HIDE_ICONS' => 'Y')
-                                            );
-                                        }
-                                        ?>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 			</div>
-			<div class="col-md-2 col-sm-12">
+			<div class="col-md-3 col-sm-12">
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="product-item-detail-pay-block">
@@ -623,24 +612,6 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 												<?
 											}
 											?>
-
-                                            <div class="b-default-props">
-                                                <?php if ($arResult['PROPERTIES']['OSTATOK']['VALUE'] != '') {?>
-                                                    <div class="b-default-props_item">
-                                                        <b>Наличие:</b> <?= $arResult['PROPERTIES']['OSTATOK']['VALUE']?>
-                                                    </div>
-                                                <?php }?>
-                                                <?php if ($arResult['PROPERTIES']['PRICE_OPT2']['VALUE'] != '') {?>
-                                                    <div class="b-default-props_item">
-                                                        <b>Оптовая цена:</b> <?= $arResult['PROPERTIES']['PRICE_OPT2']['VALUE']?>
-                                                    </div>
-                                                <?php }?>
-                                                <?php if ($arResult['PROPERTIES']['PRICE']['VALUE'] != '') {?>
-                                                    <div class="b-default-props_item">
-                                                        <b>Розничная цена:</b> <?= $arResult['PROPERTIES']['PRICE']['VALUE']?>
-                                                    </div>
-                                                <?php }?>
-                                            </div>
 										</div>
 										<?
 										break;
