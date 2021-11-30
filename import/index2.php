@@ -540,7 +540,11 @@ function addUpdateElement($item, $siteCatID, $arDynamicPropsMap)
         $arDynamicPropsKeys = array_keys($arDynamicPropsMap);
         foreach ($arDynamicPropsKeys as $sPropCode) {
             if ($item[$sPropCode] != '') {
-                $propsToUpdate[$sPropCode] = ($item[$sPropCode] == 0) ? '' : $item[$sPropCode];
+                if ($item[$sPropCode] !== 0 && $item[$sPropCode] !== '0') {
+                    $propsToUpdate[$sPropCode] = $item[$sPropCode];
+                } else {
+                    $propsToUpdate[$sPropCode] = '';
+                }
             }
         }
 
@@ -670,7 +674,11 @@ function addUpdateElement($item, $siteCatID, $arDynamicPropsMap)
         $arDynamicPropsKeys = array_keys($arDynamicPropsMap);
         foreach ($arDynamicPropsKeys as $sPropCode) {
             if ($item[$sPropCode] != '') {
-                $arLoad['PROPERTY_VALUES'][$sPropCode] = ($item[$sPropCode] == 0) ? '' : $item[$sPropCode];
+                if ($item[$sPropCode] !== 0 && $item[$sPropCode] !== '0') {
+                    $arLoad['PROPERTY_VALUES'][$sPropCode] = $item[$sPropCode];
+                } else {
+                    $propsToUpdate[$sPropCode] = '';
+                }
             }
         }
 
