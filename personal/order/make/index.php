@@ -8,7 +8,7 @@ $APPLICATION->SetTitle("Заказы");
 	"COUNT_DISCOUNT_4_ALL_QUANTITY" => "N",
 	"ONLY_FULL_PAY_FROM_ACCOUNT" => "N",
 	"ALLOW_AUTO_REGISTER" => "Y",
-	"SEND_NEW_USER_NOTIFY" => "Y",
+	"SEND_NEW_USER_NOTIFY" => "N",
 	"DELIVERY_NO_AJAX" => "N",
 	"TEMPLATE_LOCATION" => "popup",
 	"PROP_1" => array(

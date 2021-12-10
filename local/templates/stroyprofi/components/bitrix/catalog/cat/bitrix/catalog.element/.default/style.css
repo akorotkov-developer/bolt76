@@ -1076,3 +1076,6 @@ h1 {
 	display: flex!important;
 	justify-content: center;
 }
+.detail_image {
+	width: 100%;
+}
