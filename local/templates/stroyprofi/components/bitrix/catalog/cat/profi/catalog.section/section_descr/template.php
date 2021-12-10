@@ -10,7 +10,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
     <table class="full element_table">
     <thead>
     <tr>
-        <td></td>
+        <td class="first-td"></td>
         <td class="art">Арт</td>
         <td class="nopadding-i"></td>
         <td class="name">Наименование</td>

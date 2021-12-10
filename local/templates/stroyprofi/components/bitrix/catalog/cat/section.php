@@ -55,7 +55,7 @@ if ($ar_result = $db_list->GetNext()) {
 ?>
 
 <div class="b-container-top">
-    <div class="col-md-3 b-product-filter <?= (isset($arParams['FILTER_HIDE_ON_MOBILE']) && $arParams['FILTER_HIDE_ON_MOBILE'] === 'Y' ? ' hidden-xs' : '') ?>">
+    <div class="col-lg-3 b-product-filter <?= (isset($arParams['FILTER_HIDE_ON_MOBILE']) && $arParams['FILTER_HIDE_ON_MOBILE'] === 'Y' ? ' hidden-xs' : '') ?>">
 
         <div class="bx-sidebar-block">
             <?
@@ -109,7 +109,7 @@ if ($ar_result = $db_list->GetNext()) {
         </div>
     </div>
 
-    <div class="col-md-9 b-product-ctalogsection">
+    <div class="col-md-12 col-lg-9 b-product-ctalogsection">
 
         <?php if ($arParams['IS_APPLY_FILTER'] != 'Y') {?>
 

@@ -26,3 +26,35 @@
     background-color: #FF7920;
     border-color: #FF7920;
 }
+@media (max-width: 1360px) {
+    .element_table thead tr td.first-td {
+        display: none;
+    }
+    .element_table tbody tr td.section_description {
+        display: none;
+    }
+    .element_table thead tr td.pic {
+        display: none;
+    }
+    .element_table tbody tr td.pic {
+        display: none;
+    }
+}
+@media (max-width: 1217px) {
+    .element_table thead tr td.avail {
+        display: none;
+    }
+    .element_table tbody tr td.avail {
+        display: none;
+    }
+}
+@media (max-width: 1180px) {
+    .bx-filter {
+        min-width: 190px;
+    }
+}
+@media (max-width: 1070px) {
+    .bx-filter {
+        min-width: 190px;
+    }
+}
