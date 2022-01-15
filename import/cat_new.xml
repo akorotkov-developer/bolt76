@@ -544,60 +544,69 @@
                     </category>
                     <category>
                         <PorNomer>106</PorNomer>
-                        <ID>22945</ID>
-                        <sID>47921</sID>
+                        <ID>23450</ID>
+                        <sID>49387</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>6 Анкер-шуруп для газобетона</name>
+                        <name>6 Дюбель для термо изоляции с метал. стержнем и термоголовкой</name>
                         <desc></desc>
                     </category>
                     <category>
                         <PorNomer>107</PorNomer>
-                        <ID>22494</ID>
-                        <sID>47474</sID>
+                        <ID>22945</ID>
+                        <sID>47921</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>7 Дюбель кровельный винтовой</name>
+                        <name>7 Анкер-шуруп для газобетона</name>
                         <desc></desc>
                     </category>
                     <category>
                         <PorNomer>108</PorNomer>
-                        <ID>20405</ID>
-                        <sID>45392</sID>
+                        <ID>22494</ID>
+                        <sID>47474</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>8 Тарельчатый дюбель для крепления теплоизоляции к металлочерепице</name>
+                        <name>8 Дюбель кровельный винтовой</name>
                         <desc></desc>
                     </category>
                     <category>
                         <PorNomer>109</PorNomer>
-                        <ID>20053</ID>
-                        <sID>45041</sID>
+                        <ID>20405</ID>
+                        <sID>45392</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>9 Держатель для изоляции РОНДОЛЬ</name>
+                        <name>9 Тарельчатый дюбель для крепления теплоизоляции к металлочерепице</name>
                         <desc></desc>
                     </category>
                     <category>
                         <PorNomer>110</PorNomer>
-                        <ID>15798</ID>
-                        <sID>36623</sID>
+                        <ID>20053</ID>
+                        <sID>45041</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>10 Дюбель с полукольцом</name>
+                        <name>10 Держатель для изоляции РОНДОЛЬ</name>
                         <desc></desc>
                     </category>
                     <category>
                         <PorNomer>111</PorNomer>
-                        <ID>3153</ID>
-                        <sID>19484</sID>
+                        <ID>15798</ID>
+                        <sID>36623</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>11 Дюбель с прямым крюком</name>
+                        <name>11 Дюбель с полукольцом</name>
                         <desc></desc>
                     </category>
                     <category>
                         <PorNomer>112</PorNomer>
+                        <ID>3153</ID>
+                        <sID>19484</sID>
+                        <viewTemplate></viewTemplate>
+                        <showFilter></showFilter>
+                        <name>12 Дюбель с прямым крюком</name>
+                        <desc></desc>
+                    </category>
+                    <category>
+                        <PorNomer>113</PorNomer>
                         <ID>16132</ID>
                         <sID>37934</sID>
                         <viewTemplate></viewTemplate>
@@ -606,7 +615,7 @@
                         <desc>Дюбель Tchappai.</desc>
                     </category>
                     <category>
-                        <PorNomer>113</PorNomer>
+                        <PorNomer>114</PorNomer>
                         <ID>3135</ID>
                         <sID>19455</sID>
                         <viewTemplate></viewTemplate>
@@ -615,7 +624,7 @@
                         <desc>Дюбель усиленный "ЕЖ"</desc>
                     </category>
                     <category>
-                        <PorNomer>114</PorNomer>
+                        <PorNomer>115</PorNomer>
                         <ID>8895</ID>
                         <sID>19473</sID>
                         <viewTemplate></viewTemplate>
@@ -624,7 +633,7 @@
                         <desc>Дюбель распорный "УС"</desc>
                     </category>
                     <category>
-                        <PorNomer>115</PorNomer>
+                        <PorNomer>116</PorNomer>
                         <ID>6108</ID>
                         <sID>42408</sID>
                         <viewTemplate></viewTemplate>
@@ -637,7 +646,7 @@
                         </desc>
                     </category>
                     <category>
-                        <PorNomer>116</PorNomer>
+                        <PorNomer>117</PorNomer>
                         <ID>3130</ID>
                         <sID>19452</sID>
                         <viewTemplate></viewTemplate>
@@ -646,7 +655,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>117</PorNomer>
+                        <PorNomer>118</PorNomer>
                         <ID>3127</ID>
                         <sID>19449</sID>
                         <viewTemplate></viewTemplate>
@@ -655,7 +664,7 @@
                         <desc>Дюбель для крепления в гипсокартонных стенах.</desc>
                     </category>
                     <category>
-                        <PorNomer>118</PorNomer>
+                        <PorNomer>119</PorNomer>
                         <ID>20035</ID>
                         <sID>45023</sID>
                         <viewTemplate></viewTemplate>
@@ -664,7 +673,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>119</PorNomer>
+                        <PorNomer>120</PorNomer>
                         <ID>6051</ID>
                         <sID>40157</sID>
                         <viewTemplate></viewTemplate>
@@ -673,7 +682,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>120</PorNomer>
+                        <PorNomer>121</PorNomer>
                         <ID>18551</ID>
                         <sID>43286</sID>
                         <viewTemplate></viewTemplate>
@@ -682,7 +691,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>121</PorNomer>
+                        <PorNomer>122</PorNomer>
                         <ID>18162</ID>
                         <sID>41873</sID>
                         <viewTemplate></viewTemplate>
@@ -691,7 +700,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>122</PorNomer>
+                        <PorNomer>123</PorNomer>
                         <ID>12912</ID>
                         <sID>19497</sID>
                         <viewTemplate></viewTemplate>
@@ -700,7 +709,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>123</PorNomer>
+                        <PorNomer>124</PorNomer>
                         <ID>12910</ID>
                         <sID>19495</sID>
                         <viewTemplate></viewTemplate>
@@ -709,7 +718,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>124</PorNomer>
+                        <PorNomer>125</PorNomer>
                         <ID>289</ID>
                         <sID>13949</sID>
                         <viewTemplate></viewTemplate>
@@ -718,7 +727,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>125</PorNomer>
+                        <PorNomer>126</PorNomer>
                         <ID>3164</ID>
                         <sID>19504</sID>
                         <viewTemplate></viewTemplate>
@@ -727,7 +736,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>126</PorNomer>
+                        <PorNomer>127</PorNomer>
                         <ID>17289</ID>
                         <sID>39449</sID>
                         <viewTemplate></viewTemplate>
@@ -736,7 +745,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>127</PorNomer>
+                        <PorNomer>128</PorNomer>
                         <ID>312</ID>
                         <sID>36299</sID>
                         <viewTemplate></viewTemplate>
@@ -745,7 +754,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>128</PorNomer>
+                        <PorNomer>129</PorNomer>
                         <ID>15666</ID>
                         <sID>36001</sID>
                         <viewTemplate></viewTemplate>
@@ -754,7 +763,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>129</PorNomer>
+                        <PorNomer>130</PorNomer>
                         <ID>3171</ID>
                         <sID>19508</sID>
                         <viewTemplate></viewTemplate>
@@ -763,7 +772,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>130</PorNomer>
+                        <PorNomer>131</PorNomer>
                         <ID>15853</ID>
                         <sID>36680</sID>
                         <viewTemplate></viewTemplate>
@@ -772,7 +781,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>131</PorNomer>
+                        <PorNomer>132</PorNomer>
                         <ID>197</ID>
                         <sID>36298</sID>
                         <viewTemplate></viewTemplate>
@@ -781,7 +790,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>132</PorNomer>
+                        <PorNomer>133</PorNomer>
                         <ID>18820</ID>
                         <sID>43770</sID>
                         <viewTemplate></viewTemplate>
@@ -790,7 +799,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>133</PorNomer>
+                        <PorNomer>134</PorNomer>
                         <ID>8358</ID>
                         <sID>19630</sID>
                         <viewTemplate></viewTemplate>
@@ -799,7 +808,7 @@
                         <desc>Крестики для укладки плитки</desc>
                     </category>
                     <category>
-                        <PorNomer>134</PorNomer>
+                        <PorNomer>135</PorNomer>
                         <ID>3430</ID>
                         <sID>42912</sID>
                         <viewTemplate></viewTemplate>
@@ -808,7 +817,7 @@
                         <desc>Заглушка декоративная под рамный дюбель</desc>
                     </category>
                     <category>
-                        <PorNomer>135</PorNomer>
+                        <PorNomer>136</PorNomer>
                         <ID>3217</ID>
                         <sID>19557</sID>
                         <viewTemplate></viewTemplate>
@@ -817,7 +826,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>136</PorNomer>
+                        <PorNomer>137</PorNomer>
                         <ID>3209</ID>
                         <sID>19549</sID>
                         <viewTemplate></viewTemplate>
@@ -826,7 +835,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>137</PorNomer>
+                        <PorNomer>138</PorNomer>
                         <ID>3230</ID>
                         <sID>19584</sID>
                         <viewTemplate></viewTemplate>
@@ -835,7 +844,7 @@
                         <desc>Заглушка под отверстие</desc>
                     </category>
                     <category>
-                        <PorNomer>138</PorNomer>
+                        <PorNomer>139</PorNomer>
                         <ID>15967</ID>
                         <sID>37304</sID>
                         <viewTemplate></viewTemplate>
@@ -844,7 +853,7 @@
                         <desc>Заглушка декоративная составная</desc>
                     </category>
                     <category>
-                        <PorNomer>139</PorNomer>
+                        <PorNomer>140</PorNomer>
                         <ID>19826</ID>
                         <sID>44815</sID>
                         <viewTemplate></viewTemplate>
@@ -853,7 +862,7 @@
                         <desc></desc>
                     </category>
                     <category>
-                        <PorNomer>140</PorNomer>
+                        <PorNomer>141</PorNomer>
                         <ID>21431</ID>
                         <sID>46417</sID>
                         <viewTemplate></viewTemplate>
@@ -1063,7 +1072,7 @@
                         <sID>48952</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>3 Болт din 607</name>
+                        <name>4 Болт din 607 мебельный с усом</name>
                         <desc></desc>
                     </category>
                     <category>
@@ -1264,7 +1273,7 @@
                         <sID>40686</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>25 Шайба din 9021 / гост 6958-78 плоская усиленная оц.</name>
+                        <name>26 Шайба din 9021 / гост 6958-78 плоская усиленная оц.</name>
                         <desc></desc>
                     </category>
                     <category>
@@ -1273,7 +1282,7 @@
                         <sID>38806</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>26 Шайба din 127 ГОСТ 6402-70 пружинная оц.</name>
+                        <name>27 Шайба din 127 ГОСТ 6402-70 пружинная оц.</name>
                         <desc>Шайба DIN 127 пружинная (гровер), оцинкованная.</desc>
                     </category>
                     <category>
@@ -1282,7 +1291,7 @@
                         <sID>43746</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>27 Шайбы высокопрочные ГОСТ Р 52646 - 2006</name>
+                        <name>28 Шайбы высокопрочные ГОСТ Р 52646 - 2006</name>
                         <desc></desc>
                     </category>
                     <category>
@@ -1291,7 +1300,7 @@
                         <sID>46777</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>28 Шайба стопорная быстросъемная DIN 6799 ГОСТ 11648-75</name>
+                        <name>29 Шайба стопорная быстросъемная DIN 6799 ГОСТ 11648-75</name>
                         <desc></desc>
                     </category>
                     <category>
@@ -1300,7 +1309,7 @@
                         <sID>19829</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>28 Шпилька резьбовая</name>
+                        <name>30 Шпилька резьбовая</name>
                         <desc>Шпилька резьбовая, оцинкованная.</desc>
                     </category>
                     <category>
@@ -1309,7 +1318,7 @@
                         <sID>43074</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>30 Пресс-масленки</name>
+                        <name>31 Пресс-масленки</name>
                         <desc></desc>
                     </category>
                     <category>
@@ -1318,7 +1327,7 @@
                         <sID>42969</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>31 Шплинты din 94 оц.</name>
+                        <name>32 Шплинты din 94 оц.</name>
                         <desc></desc>
                     </category>
                     <category>
@@ -1327,7 +1336,7 @@
                         <sID>36142</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>32 Стопорные кольца на вал гост 13942 / din 471</name>
+                        <name>33 Стопорные кольца на вал гост 13942 / din 471</name>
                         <desc>гост 13942-86 на вал, наружные</desc>
                     </category>
                     <category>
@@ -1336,7 +1345,7 @@
                         <sID>42228</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>33 Стопорные кольца в отверстие гост 13943 / din 472</name>
+                        <name>34 Стопорные кольца в отверстие гост 13943 / din 472</name>
                         <desc>гост 13943-86 в отверстие</desc>
                     </category>
                     <category>
@@ -1345,7 +1354,7 @@
                         <sID>43726</sID>
                         <viewTemplate></viewTemplate>
                         <showFilter></showFilter>
-                        <name>34 Шайба полиамидная din 125 / 9021</name>
+                        <name>35 Шайба полиамидная din 125 / 9021</name>
                         <desc></desc>
                     </category>
                 </childs>
@@ -3283,15 +3292,6 @@
                         <name>9 Дюбель полукольцо (пакеты)</name>
                         <desc></desc>
                     </category>
-                    <category>
-                        <PorNomer>805</PorNomer>
-                        <ID>16520</ID>
-                        <sID>38347</sID>
-                        <viewTemplate></viewTemplate>
-                        <showFilter></showFilter>
-                        <name>10 Дюбель Molly (пакеты)</name>
-                        <desc></desc>
-                    </category>
                 </childs>
             </category>
             <category>
@@ -3884,7 +3884,7 @@
                                 <sID>43296</sID>
                                 <viewTemplate></viewTemplate>
                                 <showFilter></showFilter>
-                                <name>Коронка алмазная по бетону. Серебряная пайка</name>
+                                <name>Коронка алмазная по бетону для подрозетников и установочных коробок.</name>
                                 <desc></desc>
                             </category>
                             <category>
