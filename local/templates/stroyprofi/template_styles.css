@@ -1126,3 +1126,6 @@ td .buy_helper_holder{
 .bx-filter.bx-blue .bx-ui-slider-pricebar-v {
     color: #FF7920!important;
 }
+#calc_result {
+    font-size: 18px;font-weight: bold;
+}
