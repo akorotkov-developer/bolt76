@@ -3514,7 +3514,7 @@
 })(window);
 
 BX.ready(function() {
-	$('.b-image-slider-main').slick({
+/*	$('.b-image-slider-main').slick({
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		arrows: false,
@@ -3529,5 +3529,20 @@ BX.ready(function() {
 		centerMode: true,
 		focusOnSelect: true,
 		infinite: true,
+	});*/
+
+	$('.b-image-slider-main').slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		fade: true,
+		asNavFor: '.b-image-slider-nav'
+	});
+
+	$('.b-image-slider-nav').slick({
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		asNavFor: '.b-image-slider-main',
+		focusOnSelect: true,
+		arrows: true,
 	});
 });

@@ -4,6 +4,8 @@
 !/bitrix/components/prominado/
 !/bitrix/php_interface/
 !/bitrix/gadgets/
+/bitrix/backup/*
+/upload/*
 local/include/vendor/*
 local/include/vendor/dompdf_cirillic/*
 import/cat.xml

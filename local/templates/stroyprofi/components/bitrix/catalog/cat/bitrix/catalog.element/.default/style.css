@@ -1071,12 +1071,16 @@ h1 {
 .b-image-slider-nav .detail_image {
 	max-height: 100px;
 	border: 1px solid #cccccc;
+	max-width: 100%;
 }
 .b-image-slider-nav .slider-image-item-nav {
 	display: flex!important;
 	justify-content: center;
 }
-/*
+
 .detail_image {
 	width: 100%;
-}*/
+}
+.b-image-slider-main img {
+	width: 100%;
+}

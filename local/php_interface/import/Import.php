@@ -603,7 +603,7 @@ class Import
 
                     foreach ($item['Foto'] as $photoItem) {
                         $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photoItem . '.jpg';
-                        if (testphile($picfile)) {
+                        if ($this->testphile($picfile)) {
                             $propsToUpdate['PHOTOS'][] = \CFile::MakeFileArray($picfile);
                         }
                     }

@@ -80,7 +80,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
             </td>
             <?
             $mera = $arElement["DISPLAY_PROPERTIES"]["UNITS"]["VALUE"];
-            $ves = (float)$arElement["PROPERTIES"]["VES"]["VALUE"];
+            $ves = (float)$arElement["PROPERTIES"]["VES1000PS"]["VALUE"];
             if ($mera == "кг") {
                 $k = round(1000 / $ves, 5);
                 $k_val = "шт";
