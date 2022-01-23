@@ -56,7 +56,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
         $arElement["NAME"] = ($arElement["NAME"] == "-" ? $arElement["PROPERTIES"]["NAIMENOVANIE"]["VALUE"] : $arElement["NAME"]);
         ?>
         <tr id="<?= $this->GetEditAreaId($arElement['ID']); ?>"
-            class="<?= ((float)$arElement["PROPERTIES"]["OSTATOK"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
+            class="<?= ((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
             <? if ($cell == 0) { ?>
             <td rowspan="<?= (sizeof($arResult["ITEMS"]) + 1) ?>" class="section_description">
                 <?if ($arResult["PICTURE"]["ID"]) {
@@ -168,7 +168,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                             </tr>
                                             <tr>
                                                 <td class="prop_name">Наличие:</td>
-                                                <td class="prop_value"><?=(float)$arElement["PROPERTIES"]["OSTATOK"]["VALUE"]?></td>
+                                                <td class="prop_value"><?=(float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"]?></td>
                                             </tr>
                                             <tr>
                                                 <td class="prop_name">Розничная цена:</td>
@@ -231,7 +231,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                     <? } ?>
                 <?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]) ?></td>
             <td class="upak"><?= $up1; ?><?= ($up2 ? '/' . $up2 : '') ?></td>
-            <td class="avail"><?if((float)$arElement["PROPERTIES"]["OSTATOK"]["VALUE"] > 0) {
+            <td class="avail"><?if((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0) {
                     echo 'В наличии';
                 } else {
                     if ($arElement["PROPERTIES"]["NomenklaturaGeog"]["VALUE"] == 3) {

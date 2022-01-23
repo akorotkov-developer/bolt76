@@ -100,7 +100,7 @@ class Import
             $arFilter,
             false,
             false,
-            ['ID', 'PROPERTY_PRICE_OPT', 'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE', 'PROPERTY_OSTATOK']
+            ['ID', 'PROPERTY_PRICE_OPT', 'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE', 'PROPERTY_Ostatok']
         );
 
         $arItems = [];
@@ -213,7 +213,7 @@ class Import
             //Записываем доступное количество товара
             CCatalogProduct::Update(
                 $arItem['ID'],
-                ['QUANTITY' => $arItem['PROPERTY_OSTATOK_VALUE']]
+                ['QUANTITY' => $arItem['PROPERTY_Ostatok_VALUE']]
             );
         }
     }
@@ -544,13 +544,14 @@ class Import
                     'PRICE' => (float)str_replace(",", ".", $item['CZena1']),
                     'PRICE_OPT' => (float)str_replace(",", ".", $item['CZena2']),
                     'PRICE_OPT2' => (float)str_replace(",", ".", $item['CZena3']),
-                    'NAIMENOVANIE' => trim(strval($item['Naimenovanie'])),
+                    'Naimenovanie' => trim(strval($item['Naimenovanie'])),
+                    'Svertka' => trim(strval($item['Svertka'])),
                     'PHOTO_ID' => $item['Foto'][0],
                     'VES' => $item['Ves'],
                     'UNITS' => $item['EdIzmereniya'],
                     'UPAKOVKA' => $item['VUpakovke'],
                     'UPAKOVKA2' => $item['VUpakovke2'],
-                    'OSTATOK' => $item['Ostatok'],
+                    'Ostatok' => $item['Ostatok'],
                     'SHOW_IN_PRICE' => ($item['show_in_price'] > 0) ? 1 : 0,
                     'SORT_IN_PRICE' => $item['show_in_price'],
                 ]
@@ -629,13 +630,14 @@ class Import
                     'PRICE' => (float)str_replace(",", ".", $item['CZena1']),
                     'PRICE_OPT' => (float)str_replace(",", ".", $item['CZena2']),
                     'PRICE_OPT2' => (float)str_replace(",", ".", $item['CZena3']),
-                    'NAIMENOVANIE' => trim(strval($item['Naimenovanie'])),
+                    'Naimenovanie' => trim(strval($item['Naimenovanie'])),
+                    'Svertka' => trim(strval($item['Svertka'])),
                     'PHOTO_ID' => $item['Foto'][0],
                     'VES' => $item['Ves'],
                     'UNITS' => $item['EdIzmereniya'],
                     'UPAKOVKA' => $item['VUpakovke'],
                     'UPAKOVKA2' => $item['VUpakovke2'],
-                    'OSTATOK' => $item['Ostatok'],
+                    'Ostatok' => $item['Ostatok'],
                     'SHOW_IN_PRICE' => ($item['show_in_price'] > 0) ? 1 : 0,
                     'SORT_IN_PRICE' => $item['show_in_price'],
                 ],

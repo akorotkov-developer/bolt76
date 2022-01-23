@@ -408,7 +408,10 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                             <?php
                                                             $arExcludedProps = [
                                                                     'PRICE_OPT', 'PHOTO_ID', 'V_REZERVE', 'NAIMENOVANIE',
-                                                                    'ROWID', 'NOMNOMER', 'SHOW_IN_PRICE', 'SORT_IN_PRICE', 'PHOTOS'
+                                                                    'ROWID', 'NOMNOMER', 'SHOW_IN_PRICE', 'SORT_IN_PRICE', 'PHOTOS',
+                                                                    'VES1000PS', 'MaksZapas', 'MinZapas', 'Otobrajat_v_prayse',
+                                                                    'Svertka', 'SHOW_IN_PRICE', 'Otobrajat_na_sayte',
+                                                                    'Svobodno'
                                                                 ];
                                                             foreach ($arResult['PROPERTIES'] as $property)
                                                             {

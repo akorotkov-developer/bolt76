@@ -140,7 +140,7 @@ if(sizeof($arResult["ITEMS"])>0){
                                                 </tr>
                                                 <tr>
                                                     <td class="prop_name">Наличие:</td>
-                                                    <td class="prop_value"><?=(float)$arElement["PROPERTIES"]["OSTATOK"]["VALUE"]?></td>
+                                                    <td class="prop_value"><?=(float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"]?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="prop_name">Розничная цена:</td>
@@ -202,7 +202,7 @@ if(sizeof($arResult["ITEMS"])>0){
                         <? } ?>
                     <?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]) ?></td>
                 <td class="upak"><?=$up1;?><?=($up2?'/'.$up2:'')?></td>
-                <td class="avail"><?if((float)$arElement["PROPERTIES"]["OSTATOK"]["VALUE"] > 0) {
+                <td class="avail"><?if((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0) {
                         echo 'В наличии';
                     } else {
                         if ($arElement["PROPERTIES"]["NomenklaturaGeog"]["VALUE"] == 3) {
