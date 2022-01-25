@@ -28,7 +28,7 @@ foreach ($obGridRow as $key => $arItem) {
             ],
             false, false,
             [
-                'ID', 'NAME', 'IBLOCK_SECTION_ID', 'PROPERTY_NAIMENOVANIE'
+                'ID', 'NAME', 'IBLOCK_SECTION_ID', 'PROPERTY_Naimenovanie'
             ]
         );
 
@@ -37,8 +37,8 @@ foreach ($obGridRow as $key => $arItem) {
         if ($arRes = $dbResult->Fetch()) {
             // Если у эелемента нет названия, то добавим его
             if ($bNoName) {
-                if ($arRes['PROPERTY_NAIMENOVANIE_VALUE'] != '') {
-                    $sName = $arRes['PROPERTY_NAIMENOVANIE_VALUE'];
+                if ($arRes['PROPERTY_Naimenovanie_VALUE'] != '') {
+                    $sName = $arRes['PROPERTY_Naimenovanie_VALUE'];
                 } else {
                     $sName = $arRes['NAME'];
                 }

@@ -3377,9 +3377,6 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			{
 				if (this.result.GRID.ROWS.hasOwnProperty(i))
 				{
-					console.log('this.result.GRID.ROWS[i]:');
-					console.log(this.result.GRID.ROWS[i]);
-
 					this.createBasketItem(basketItemsNode, this.result.GRID.ROWS[i], index++, !!active);
 				}
 			}

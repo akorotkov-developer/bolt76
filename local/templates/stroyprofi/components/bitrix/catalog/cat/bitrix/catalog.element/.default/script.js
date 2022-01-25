@@ -3545,4 +3545,19 @@ BX.ready(function() {
 		focusOnSelect: true,
 		arrows: true,
 	});
+
+	// Кастомное добавление товара в корзину
+	$('.product-item-detail-buy-button').click(function () {
+		const iProductId = $(this).attr('data-id');
+		const iQuantity = $(this).parent().parent().parent().siblings('.product-item-detail-info-container').find('.product-item-amount-field').val();
+
+		$.post("/cart/add_to_cart.php", {'ITEM': {[iProductId]: iQuantity}}, function (data) {
+			$('.cart_info_holder').html(data);
+			$('.order_button a').text('Добавлено. Перейти в корзину').removeAttr('onclick');
+			$('.order .order_precount').html('');
+
+			$("#notification").css("top", "0");
+			$("#notification").animate({"top": "0"}, 400).delay(2000).animate({"top": "-100px"}, 400);
+		});
+	});
 });

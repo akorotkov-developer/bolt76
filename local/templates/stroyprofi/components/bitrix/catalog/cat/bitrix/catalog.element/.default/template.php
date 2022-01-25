@@ -783,21 +783,9 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 												{
 													?>
 													<div class="product-item-detail-info-container">
-														<a class="btn <?=$showButtonClassName?> product-item-detail-buy-button" id="<?=$itemIds['ADD_BASKET_LINK']?>"
+														<a class="btn <?=$showButtonClassName?> product-item-detail-buy-button" data-id="<?= $arResult['ID']?>"
 															href="javascript:void(0);">
 															<span><?=$arParams['MESS_BTN_ADD_TO_BASKET']?></span>
-														</a>
-													</div>
-													<?
-												}
-
-												if ($showBuyBtn)
-												{
-													?>
-													<div class="product-item-detail-info-container">
-														<a class="btn <?=$buyButtonClassName?> product-item-detail-buy-button" id="<?=$itemIds['BUY_LINK']?>"
-															href="javascript:void(0);">
-															<span><?=$arParams['MESS_BTN_BUY']?></span>
 														</a>
 													</div>
 													<?

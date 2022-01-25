@@ -1,6 +1,8 @@
 <?php require_once ($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");?>
 
 <?php
+/** Старый метод добавления товара в корзину */
+/*
 if (CModule::IncludeModule("sale"))
 {
     $iProductId = key($_REQUEST['ITEM']);
@@ -50,5 +52,49 @@ if (CModule::IncludeModule("sale"))
     if ($isAdded) {
         echo getBasketInfo();
     }
+}*/
+
+/** Новый метод добавления товара в корзину*/
+Bitrix\Main\Loader::includeModule("catalog");
+
+$iProductId = key($_REQUEST['ITEM']);
+$iQuantity = $_REQUEST['ITEM'][$iProductId];
+
+if (!$iQuantity) {
+    return false;
+}
+
+// Получаем артикул товара для добавления в корзину
+$arFilter = Array(
+    'IBLOCK_ID' => 1,
+    '=ID' => $iProductId,
+);
+
+$dbResult = CIBlockElement::GetList(
+    [],
+    $arFilter,
+    false,
+    false,
+    ['PROPERTY_ARTICUL']
+
+);
+
+$sArticul = '';
+while($arResult = $dbResult->Fetch()) {
+    $sArticul = $arResult['PROPERTY_ARTICUL_VALUE'];
+}
+
+$fields = [
+    'PRODUCT_ID' => $iProductId, // ID товара, обязательно
+    'QUANTITY' => $iQuantity, // количество, обязательно
+    'PROPS' => [
+        ['NAME' => 'Артикуль', 'CODE' => 'ARTICUL', 'VALUE' => $sArticul],
+    ],
+
+];
+$isAdded = Bitrix\Catalog\Product\Basket::addProduct($fields);
+
+if ($isAdded->isSuccess()) {
+    echo getBasketInfo();
 }
 ?>
