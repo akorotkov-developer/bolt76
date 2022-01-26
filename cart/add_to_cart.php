@@ -88,7 +88,7 @@ $fields = [
     'PRODUCT_ID' => $iProductId, // ID товара, обязательно
     'QUANTITY' => $iQuantity, // количество, обязательно
     'PROPS' => [
-        ['NAME' => 'Артикуль', 'CODE' => 'ARTICUL', 'VALUE' => $sArticul],
+        ['NAME' => 'Артикул', 'CODE' => 'ARTICUL', 'VALUE' => $sArticul],
     ],
 
 ];
