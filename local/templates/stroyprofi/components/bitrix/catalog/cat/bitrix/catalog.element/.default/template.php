@@ -433,6 +433,8 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 
                                                                 if ($property['NAME'] == 'Остаток') {
                                                                     $property['NAME'] = 'Наличие';
+
+                                                                    $property['VALUE'] = ($arResult['PROPERTIES']['Svobodno']['VALUE'] > 0) ? $arResult['PROPERTIES']['Svobodno']['VALUE'] : '0';
                                                                 }
 
                                                                 if ($property['CODE'] == 'UPAKOVKA' && $property['VALUE'] != '') {?>

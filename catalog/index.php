@@ -37,14 +37,9 @@ while($arResult = $dbResult->Fetch()) {
 ?>
 
 <?php
-if ($_GET['tst'] == 'tst') {
-    $sTemplate = '';
-} else {
-    $sTemplate = 'cat';
-}
 $APPLICATION->IncludeComponent(
 	"bitrix:catalog",
-    $sTemplate,
+    'cat',
 	array(
 		"IBLOCK_TYPE" => "content",
 		"IBLOCK_ID" => "1",
