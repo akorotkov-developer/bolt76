@@ -231,7 +231,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                     <? } ?>
                 <?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]) ?></td>
             <td class="upak"><?= $up1; ?><?= ($up2 ? '/' . $up2 : '') ?></td>
-            <td class="avail"><?if((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0) {
+            <td class="avail"><?if((float)$arElement["PROPERTIES"]["Svobodno"]["VALUE"] > 0) {
                     echo 'В наличии';
                 } else {
                     if ($arElement["PROPERTIES"]["NomenklaturaGeog"]["VALUE"] == 3) {
