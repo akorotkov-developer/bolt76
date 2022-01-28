@@ -248,3 +248,48 @@ function getBasketInfo() {
 
     return $sResult;
 }
+
+AddEventHandler("catalog", "OnGetOptimalPrice", "MyGetOptimalPrice");
+function MyGetOptimalPrice($productID, $quantity = 1, $arUserGroups = array(), $renewal = "N", $arPrices = array(), $siteID = false, $arDiscountCoupons = false)
+{
+    global $LocalPrice;
+    if($LocalPrice <= 0)
+    {
+        // Выведем актуальную корзину для текущего пользователя
+        $dbBasketItems = CSaleBasket::GetList(false,
+            array(
+                "FUSER_ID" => CSaleBasket::GetBasketUserID(),
+                "LID" => SITE_ID,
+                "ORDER_ID" => "NULL"
+            ),
+            false,
+            false,
+            array("ID", "MODULE", "PRODUCT_ID", "CALLBACK_FUNC", "QUANTITY", "DELAY", "CAN_BUY", "PRICE")
+        );
+        while ($arItem = $dbBasketItems->Fetch())
+        {
+            if($arItem['DELAY'] == 'N' && $arItem['CAN_BUY'] == 'Y')
+            {
+                $LocalPrice += $arItem['PRICE']*$arItem['QUANTITY'];
+            }
+        }
+    }
+
+    // получаем все типы цен, возможные для данного товара
+    $arOptPrices = CCatalogProduct::GetByIDEx($productID);
+    $price = $arOptPrices['PRICES'][1]['PRICE'];
+
+    return array(
+        'PRICE' => array(
+            "ID" => $productID,
+            'PRICE' => $price,
+            'CURRENCY' => "RUB",
+            'ELEMENT_IBLOCK_ID' => $productID,
+            'VAT_INCLUDED' => "Y",
+        ),
+        'DISCOUNT' => array(
+            'VALUE' => $discount,
+            'CURRENCY' => "RUB",
+        ),
+    );
+}

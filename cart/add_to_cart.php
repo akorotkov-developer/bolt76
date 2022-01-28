@@ -90,7 +90,6 @@ $fields = [
     'PROPS' => [
         ['NAME' => 'Артикул', 'CODE' => 'ARTICUL', 'VALUE' => $sArticul],
     ],
-
 ];
 $isAdded = Bitrix\Catalog\Product\Basket::addProduct($fields);
 

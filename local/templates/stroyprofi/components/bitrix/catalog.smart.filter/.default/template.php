@@ -616,7 +616,7 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 										<?foreach($arItem["VALUES"] as $val => $ar):?>
 											<div class="checkbox">
 												<label data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label <? echo $ar["DISABLED"] ? 'disabled': '' ?>" for="<? echo $ar["CONTROL_ID"] ?>">
-													<span class="bx-filter-input-checkbox">
+													<span class="bx-filter-input-checkbox dfgdfgdf">
 														<input
 															type="checkbox"
 															value="<? echo $ar["HTML_VALUE"] ?>"

@@ -205,7 +205,8 @@ if(sizeof($arResult["ITEMS"])>0){
                 <td class="avail"><?if((float)$arElement["PROPERTIES"]["Svobodno"]["VALUE"] > 0) {
                         echo 'В наличии';
                     } else {
-                        if ($arElement["PROPERTIES"]["NomenklaturaGeog"]["VALUE"] == 3) {
+                        if ($arElement["PROPERTIES"]["TipSkladskogoZapasa"]["VALUE"] == 'Обязательный ассортимент' &&
+                            (float)$arElement["PROPERTIES"]["Svobodno"]["VALUE"] <= 0) {
                             echo 'Временно отсутствует';
                         } else {
                             echo 'Под заказ';
