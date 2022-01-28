@@ -100,7 +100,7 @@ class Import
             $arFilter,
             false,
             false,
-            ['ID', 'PROPERTY_PRICE_OPT', 'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE', 'PROPERTY_Ostatok']
+            ['ID', 'PROPERTY_PRICE_OPT', 'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE', 'PROPERTY_Ostatok', 'PROPERTY_UNITS']
         );
 
         $arItems = [];
@@ -211,9 +211,30 @@ class Import
             }
 
             //Записываем доступное количество товара
+            switch ($arItem['PROPERTY_UNITS_VALUE']) {
+                case 'тыс. шт':
+                    $iMeasure = 6;
+                    break;
+                case 'упак':
+                    $iMeasure = 7;
+                    break;
+                case 'кг':
+                    $iMeasure = 4;
+                    break;
+                case 'м2':
+                    $iMeasure = 8;
+                    break;
+                default:
+                    $iMeasure = 5;
+                    break;
+            }
+
             CCatalogProduct::Update(
                 $arItem['ID'],
-                ['QUANTITY' => $arItem['PROPERTY_Ostatok_VALUE']]
+                [
+                    'QUANTITY' => $arItem['PROPERTY_Ostatok_VALUE'],
+                    'MEASURE' => $iMeasure
+                ]
             );
         }
     }
