@@ -52,13 +52,13 @@ $APPLICATION->SetTitle("Персональный раздел");
                 "SHOW_ACCOUNT_PAGE" => "Y",
                 "SHOW_ACCOUNT_PAY_COMPONENT" => "N",
                 "SHOW_BASKET_PAGE" => "Y",
-                "SHOW_CONTACT_PAGE" => "Y",
+                "SHOW_CONTACT_PAGE" => "N",
                 "SHOW_ORDER_PAGE" => "Y",
                 "SHOW_PRIVATE_PAGE" => "Y",
-                "SHOW_PROFILE_PAGE" => "Y",
+                "SHOW_PROFILE_PAGE" => "N",
                 "ALLOW_INNER" => "N",
                 "ONLY_INNER_FULL" => "N",
-                "SHOW_SUBSCRIBE_PAGE" => "Y",
+                "SHOW_SUBSCRIBE_PAGE" => "N",
                 "USER_PROPERTY_PRIVATE" => array(),
                 "USE_AJAX_LOCATIONS_PROFILE" => "N"
             )
