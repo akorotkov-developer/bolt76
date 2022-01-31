@@ -210,9 +210,6 @@ class OrderXml
 
         $j = 1;
         foreach ($this->arOrderParams as $arItem) {
-            echo '<pre>';
-            var_dump($arItem);
-            echo '</pre>';
             $text .= '<tr style="' . $styles["tr" . ($i++ % 2)] . '">
 						<td style="' . $styles["td"] . $styles["td20"] . '">' . ($j++) . '.</td>
 						<td style="' . $styles["td"] . $styles["td100"] . '">' . $arItem["PROPERTY_ARTICUL_VALUE"] . '</td>
