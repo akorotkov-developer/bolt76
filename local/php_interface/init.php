@@ -8,6 +8,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/phpmailer/SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use \Bitrix\Main\Mail\Event;
+use \Bitrix\Main\IO;
 /**************************/
 
 function deleteDir($path)
@@ -292,4 +294,41 @@ function MyGetOptimalPrice($productID, $quantity = 1, $arUserGroups = array(), $
             'CURRENCY' => "RUB",
         ),
     );
+}
+
+require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/ordertoxml/OrderXml.php';
+
+AddEventHandler('main', 'OnBeforeEventAdd', ["Events", "OnBeforeEventAddHandler"]);
+class Events
+{
+    function OnBeforeEventAddHandler(&$event, &$lid, &$arFields)
+    {
+        if ($event == 'SALE_NEW_ORDER') {
+            $obOrderXml = new OrderXml($arFields['ORDER_ID']);
+            $isCreated = $obOrderXml->createXml($arFields['ORDER_ID']);
+            $sText = $obOrderXml->getMailText($arFields['ORDER_ID']);
+            $sFilePath = $_SERVER["DOCUMENT_ROOT"] . "/cart/Исходящие счета.xml";
+
+            if ($isCreated) {
+                $arFields['FILE'] = [
+                    IO\Path::ConvertLogicalToPhysical($sFilePath)
+                ];
+
+                // Отпарвляем дополнительное письмо с заказом и файлом СБИС++ для Василия
+                Event::send([
+                    "EVENT_NAME" => "ORDER_INFO",
+                    "LID" => "s1",
+                    "C_FIELDS" => [
+                        'ORDER_ID' => $arFields['ORDER_ID'],
+                        'MAIL_TEXT' => $sText
+                    ],
+                    "FILE" => [
+                        IO\Path::ConvertLogicalToPhysical($sFilePath),
+                    ]
+                ]);
+
+                unlink($_SERVER["DOCUMENT_ROOT"] . "/cart/Исходящие счета.xml");
+            }
+        }
+    }
 }
