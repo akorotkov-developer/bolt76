@@ -99,73 +99,20 @@ $arResult['ARR_DYNAMIC_PROPERTIES_NAMES'] = ['VALUE_PARAM_1', 'VALUE_PARAM_2', '
 
 /** Правильная сортировка цифр в фильтре */
 /* Sort values */
-
-if ($_GET['tst'] == 'tst') {
-
-    $properties = CIBlockProperty::GetList(
-        [],
-        [
-            'ACTIVE' => 'Y',
-            'IBLOCK_ID' => 1
-        ]
-    );
-
-    while ($prop_fields = $properties->GetNext())
+if (!function_exists('compareFilterValues')) {
+    function compareFilterValues($a, $b)
     {
-        echo $prop_fields["ID"]." - ".$prop_fields["NAME"]."<br>";
-    }
-
-
-    foreach($arResult["ITEMS"] as $key => $arItem)
-    {
-
-    }
-
-    foreach ($arResult["ITEMS"] as $key => $arValue) {
-        if (!(isset($arValue["PRICE"])) && count($arValue["VALUES"])) {
-            $arValues = array();                  // For new values
-            $arResValues = array();                  // For new values in arResult
-            $bSort = true;                     // Sort or not sort
-            $iValuesCount = count($arValue["VALUES"]);   // Num of elements
-            $sUnit = false;                  // Last of unit
-
-            foreach ($arValue["VALUES"] as $keyVal => $value) {
-                $arMatches = array();
-                preg_match("/([\d\,\.]+)\s*([А-яA-z\d\-\_]*)/", $value["VALUE"], $arMatches);
-
-                if ($arMatches[1] && $arMatches[2]) {
-                    if ($sUnit && $sUnit <> $arMatches[2]) {
-                        $bSort = false;
-                        break;
-                    } else {
-                        $sUnit = $arMatches[2];
-                    }
-                } else {
-                    $bSort = false;
-                    break;
-                }
-
-                if ($bSort) {
-                    $arMatches["key"] = $keyVal;
-                    $arValues[] = $arMatches;
-                }
-            }
-
-            if ($bSort) {
-                usort($arValues, "compare");
-
-                foreach ($arValues as $arVal) {
-                    $arResValues[$arVal["key"]] = $arValue["VALUES"][$arVal["key"]];
-                }
-
-                $arResult["ITEMS"][$key]["VALUES"] = $arResValues;
-            }
+        if ((float)$a['VALUE'] == (float)$b['VALUE']) {
+            return 0;
         }
+        return ((float)$a['VALUE'] < (float)$b['VALUE']) ? -1 : 1;
     }
+}
 
-        function compare($v1, $v2)
-        {
-            if ($v1[1] == $v2[1]) return 0;
-            return ($v1[1] < $v2[1]) ? -1 : 1;
-        }
+foreach($arResult['ITEMS'] as $key => $arValue) {
+    if(!($arValue['PROPERTY_TYPE'] == "N" || isset($arValue['PRICE'])) && count($arValue['VALUES'])) {
+        usort($arValue['VALUES'], 'compareFilterValues');
+
+        $arResult['ITEMS'][$key]['VALUES'] = $arValue['VALUES'];
+    }
 }
