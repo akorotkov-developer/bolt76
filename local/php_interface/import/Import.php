@@ -224,6 +224,12 @@ class Import
                 case 'м2':
                     $iMeasure = 8;
                     break;
+                case 'компл':
+                    $iMeasure = 9;
+                    break;
+                case 'пог. м':
+                    $iMeasure = 10;
+                    break;
                 default:
                     $iMeasure = 5;
                     break;
