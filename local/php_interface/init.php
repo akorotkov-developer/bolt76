@@ -320,7 +320,8 @@ class Events
                     "LID" => "s1",
                     "C_FIELDS" => [
                         'ORDER_ID' => $arFields['ORDER_ID'],
-                        'MAIL_TEXT' => $sText
+                        'MAIL_TEXT' => $sText,
+                        'SALE_EMAIL' => 'mail@strprofi.ru'
                     ],
                     "FILE" => [
                         IO\Path::ConvertLogicalToPhysical($sFilePath),

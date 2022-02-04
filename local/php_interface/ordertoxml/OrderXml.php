@@ -65,7 +65,7 @@ class OrderXml
             ],
             false,
             false,
-            ['ID', 'NAME', 'PROPERTY_NOMNOMER', 'PROPERTY_UNITS', 'PROPERTY_Naimenovanie', 'PROPERTY_PRICE_OPT', 'PROPERTY_ARTICUL']
+            ['ID', 'NAME', 'PROPERTY_Nomenklaturniy_nomer', 'PROPERTY_UNITS', 'PROPERTY_Naimenovanie', 'PROPERTY_PRICE_OPT', 'PROPERTY_ARTICUL']
         );
 
         $arIblockItems = [];
@@ -164,7 +164,7 @@ class OrderXml
                         <Свойство Имя="Группа складов" Тип="Булево"><Значение>false</Значение></Свойство>
                         <Свойство Имя="НаименованиеПолное" Тип="Строка"><Значение>' . $arItem["PROPERTY_NAIMENOVANIE_VALUE"] . '</Значение></Свойство>
                         <Свойство Имя="БазоваяЕдиницаИзмерения" Тип="Строка"><Значение>' . $arItem["PROPERTY_UNITS_VALUE"] . '</Значение></Свойство>
-                        <Свойство Имя="Код" Тип="Строка"><Значение>' . $arItem["PROPERTY_NOMNOMER_VALUE"] . '</Значение></Свойство>
+                        <Свойство Имя="Код" Тип="Строка"><Значение>' . $arItem["PROPERTY_NOMENKLATURNIY_NOMER_VALUE"] . '</Значение></Свойство>
                         <Свойство Имя="Комментарий" Тип="Строка"><Пусто/></Свойство>
                         <Свойство Имя="Наименование" Тип="Строка"><Значение>' . $arItem["NAME"] . '</Значение></Свойство>
                     </Объект>
@@ -173,8 +173,8 @@ class OrderXml
                         <Свойство Имя="Количество" Тип="Число"><Значение>' . $arItem['QUANTITY'] . '</Значение></Свойство>
                         <Свойство Имя="Номенклатура" Тип="СправочникСсылка.Складская картотека"><Нпп>' . ($n) . '</Нпп></Свойство>
                         <Свойство Имя="СуммаНДС" Тип="Число"><Пусто/></Свойство>
-                        <Свойство Имя="Сумма" Тип="Число"><Значение>0</Значение></Свойство>
-                        <Свойство Имя="Цена" Тип="Число"><Значение>0</Значение></Свойство>
+                        <Свойство Имя="Сумма" Тип="Число"><Значение>' . $arItem['QUANTITY'] * $arItem['PRICE'] . '</Значение></Свойство>
+                        <Свойство Имя="Цена" Тип="Число"><Значение>' . $arItem['PRICE'] . '</Значение></Свойство>
                     </Объект>';
             $n += 2;
         }
@@ -214,7 +214,7 @@ class OrderXml
 						<td style="' . $styles["td"] . $styles["td20"] . '">' . ($j++) . '.</td>
 						<td style="' . $styles["td"] . $styles["td100"] . '">' . $arItem["PROPERTY_ARTICUL_VALUE"] . '</td>
 						<td style="' . $styles["td"] . '">' . $arItem["PROPERTY_NAIMENOVANIE_VALUE"] . '</td>
-						<td style="' . $styles["td"] . $styles["td100"] . '">' . $arItem['NAME'] . '</td>
+						<td style="' . $styles["td"] . $styles["td100"] . '">' . $arItem['QUANTITY'] . '</td>
 						<td style="' . $styles["td"] . $styles["td100"] . '">' . $arItem["PRICE"] . ' руб</td>
 						<td style="' . $styles["td"] . $styles["td100"] . '">' . round((float)$arItem["PROPERTY_PRICE_OPT_VALUE"], 2) . ' руб</td>
 						</tr>';
