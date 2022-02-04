@@ -411,10 +411,30 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                     'ROWID', 'NOMNOMER', 'SHOW_IN_PRICE', 'SORT_IN_PRICE', 'PHOTOS',
                                                                     'VES1000PS', 'MaksZapas', 'MinZapas', 'Otobrajat_v_prayse',
                                                                     'Svertka', 'SHOW_IN_PRICE', 'Otobrajat_na_sayte',
-                                                                    'Svobodno', 'Nomenklaturniy_nomer'
+                                                                    'Svobodno', 'Nomenklaturniy_nomer', 'Naimenovanie', 'TipSkladskogoZapasa'
                                                                 ];
+
+                                                            // Отсортируем свойства в нужном порядке
+                                                            $arPrepareProps['ARTICUL'] = $arResult['PROPERTIES']['ARTICUL'];
+                                                            unset($arResult['PROPERTIES']['ARTICUL']);
+                                                            $arPrepareProps['UNITS'] = $arResult['PROPERTIES']['UNITS'];
+                                                            unset($arResult['PROPERTIES']['UNITS']);
+                                                            $arPrepareProps['PRICE_OPT2'] = $arResult['PROPERTIES']['PRICE_OPT2'];
+                                                            unset($arResult['PROPERTIES']['PRICE_OPT2']);
+                                                            $arPrepareProps['PRICE_OPT'] = $arResult['PROPERTIES']['PRICE_OPT'];
+                                                            unset($arResult['PROPERTIES']['PRICE_OPT']);
+                                                            $arPrepareProps['PRICE'] = $arResult['PROPERTIES']['PRICE'];
+                                                            unset($arResult['PROPERTIES']['PRICE']);
+                                                            $arPrepareProps['Ostatok'] = $arResult['PROPERTIES']['Ostatok'];
+                                                            unset($arResult['PROPERTIES']['Ostatok']);
+                                                            $arPrepareProps['UPAKOVKA'] = $arResult['PROPERTIES']['UPAKOVKA'];
+                                                            unset($arResult['PROPERTIES']['UPAKOVKA']);
+
+                                                            $arResult['PROPERTIES'] = array_merge($arPrepareProps, $arResult['PROPERTIES']);
+
                                                             foreach ($arResult['PROPERTIES'] as $property)
                                                             {
+
                                                                 if ($property['CODE'] == 'UPAKOVKA2') {
                                                                     continue;
                                                                 }
@@ -423,7 +443,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                     continue;
                                                                 }
 
-                                                                if ($property['VALUE'] == 0) {
+                                                                if ($property['VALUE'] === 0) {
                                                                     continue;
                                                                 }
 
@@ -449,11 +469,23 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                 if ($property['CODE'] == 'UPAKOVKA' && $property['VALUE'] != '') {?>
                                                                     <div class="prop-item">
                                                                         <dt class="prop-item-title"><?=$property['NAME']?></dt>
-                                                                        <dd><?=(
+                                                                        <?php
+                                                                        if ( $arResult['PROPERTIES']['UPAKOVKA2']['VALUE'] != '') {
+                                                                            $sValue = (
+                                                                                is_array($property['VALUE'])
+                                                                                    ? implode(' / ', $property['VALUE'])
+                                                                                    : $property['VALUE']
+                                                                                ) . ' / ' . $arResult['PROPERTIES']['UPAKOVKA2']['VALUE'];
+                                                                        } else {
+                                                                            $sValue = (
                                                                             is_array($property['VALUE'])
                                                                                 ? implode(' / ', $property['VALUE'])
                                                                                 : $property['VALUE']
-                                                                            )?> / <?=$arResult['PROPERTIES']['UPAKOVKA2']['VALUE']?>
+                                                                            );
+                                                                        }
+                                                                        ?>
+                                                                        <dd>
+                                                                            <?=$sValue?>
                                                                         </dd>
                                                                     </div>
                                                                 <?php } else {
