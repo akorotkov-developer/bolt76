@@ -45,6 +45,8 @@ $ElementID=$APPLICATION->IncludeComponent(
 		"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
 		'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
 		'CURRENCY_ID' => $arParams['CURRENCY_ID'],
+
+        "STRICT_SECTION_CHECK" => (isset($arParams['DETAIL_STRICT_SECTION_CHECK']) ? $arParams['DETAIL_STRICT_SECTION_CHECK'] : '')
 	),
 	$component
 );?>
