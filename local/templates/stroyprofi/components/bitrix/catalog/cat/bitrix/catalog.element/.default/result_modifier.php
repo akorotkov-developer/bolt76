@@ -39,7 +39,7 @@ if (!empty($arResult['PREVIEW_PICTURE']['SRC'])) {
 
 // Установка заголовка
 global $APPLICATION;
-$APPLICATION->SetTitle(($arResult['PROPERTIES']['NAIMENOVANIE']['VALUE'] != '') ? $arResult['PROPERTIES']['NAIMENOVANIE']['VALUE'] : $arResult['NAME']);
+$APPLICATION->SetTitle(($arResult['PROPERTIES']['Naimenovanie']['VALUE'] != '') ? $arResult['PROPERTIES']['Naimenovanie']['VALUE'] : $arResult['NAME']);
 
 // Добавим фото если есть дополнительные фото в товаре
 if (count($arResult['PROPERTIES']['PHOTOS']['VALUE']) > 0 && $arResult['PROPERTIES']['PHOTOS']['VALUE'] !== false) {
