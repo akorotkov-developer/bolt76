@@ -58,3 +58,33 @@
         min-width: 190px;
     }
 }
+@media (max-width: 1537px) {
+    #pdfFrame {
+        width: 750px;
+    }
+}
+@media (max-width: 1430px) {
+    #pdfFrame {
+        width: 650px;
+    }
+}
+@media (max-width: 1300px) {
+    #pdfFrame {
+        width: 550px;
+    }
+}
+@media (max-width: 1200px) {
+    #pdfFrame {
+        width: 750px;
+    }
+}
+@media (max-width: 1160px) {
+    #pdfFrame {
+        width: 600px;
+    }
+}
+@media (max-width: 1000px) {
+    #pdfFrame {
+        width: 500px;
+    }
+}
