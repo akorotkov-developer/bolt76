@@ -411,7 +411,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                     'ROWID', 'NOMNOMER', 'SHOW_IN_PRICE', 'SORT_IN_PRICE', 'PHOTOS',
                                                                     'VES1000PS', 'MaksZapas', 'MinZapas', 'Otobrajat_v_prayse',
                                                                     'Svertka', 'SHOW_IN_PRICE', 'Otobrajat_na_sayte',
-                                                                    'Svobodno'
+                                                                    'Svobodno', 'Nomenklaturniy_nomer'
                                                                 ];
                                                             foreach ($arResult['PROPERTIES'] as $property)
                                                             {
@@ -429,6 +429,15 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 
                                                                 if ($property['NAME'] == 'Оптовая цена 2') {
                                                                     $property['NAME'] = 'Оптовая цена';
+                                                                    if ($property['VALUE'] != '') {
+                                                                        $property['VALUE'] = $property['VALUE'] . ' ₽';
+                                                                    }
+                                                                }
+
+                                                                if ($property['NAME'] == 'Розничная цена') {
+                                                                    if ($property['VALUE'] != '') {
+                                                                        $property['VALUE'] = $property['VALUE'] . ' ₽';
+                                                                    }
                                                                 }
 
                                                                 if ($property['NAME'] == 'Остаток') {
