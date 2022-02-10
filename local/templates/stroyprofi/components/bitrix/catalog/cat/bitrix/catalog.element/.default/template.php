@@ -407,7 +407,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                         <dl class="product-item-detail-properties">
                                                             <?php
                                                             $arExcludedProps = [
-                                                                    'PRICE_OPT', 'PHOTO_ID', 'V_REZERVE', 'NAIMENOVANIE',
+                                                                    'PRICE_OPT2', 'PHOTO_ID', 'V_REZERVE', 'NAIMENOVANIE',
                                                                     'ROWID', 'NOMNOMER', 'SHOW_IN_PRICE', 'SORT_IN_PRICE', 'PHOTOS',
                                                                     'VES1000PS', 'MaksZapas', 'MinZapas', 'Otobrajat_v_prayse',
                                                                     'Svertka', 'SHOW_IN_PRICE', 'Otobrajat_na_sayte',
@@ -459,11 +459,19 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                         $property['VALUE'] = $property['VALUE'] . ' ₽';
                                                                     }
                                                                 }
+                                                                if ($property['NAME'] == 'Оптовая цена') {
+                                                                    if ($property['VALUE'] != '') {
+                                                                        $property['VALUE'] = $property['VALUE'] . ' ₽';
+                                                                    }
+                                                                }
+
 
                                                                 if ($property['NAME'] == 'Остаток') {
                                                                     $property['NAME'] = 'Наличие';
 
                                                                     $property['VALUE'] = ($arResult['PROPERTIES']['Svobodno']['VALUE'] > 0) ? $arResult['PROPERTIES']['Svobodno']['VALUE'] : '0';
+
+                                                                    $property['VALUE'] = $property['VALUE'] . ' ' . $arResult['PROPERTIES']['UNITS']['VALUE'];
                                                                 }
 
                                                                 if ($property['CODE'] == 'UPAKOVKA' && $property['VALUE'] != '') {?>
@@ -485,7 +493,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                         }
                                                                         ?>
                                                                         <dd>
-                                                                            <?=$sValue?>
+                                                                            <?=$sValue . ' ' . $arResult['PROPERTIES']['UNITS']['VALUE']?>
                                                                         </dd>
                                                                     </div>
                                                                 <?php } else {
