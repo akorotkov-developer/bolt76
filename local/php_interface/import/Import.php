@@ -80,6 +80,9 @@ class Import
             // Сделать из элементов инфоблока товары с ценами и параметрами
             $this->makeProducts();
 
+            // Установить коэфициенты единицы измерения для всех продуктов
+            $this->setRatio();
+
             $this->echo('Импорт завершен ' . date("d.m.Y H:i:s"));
         }
     }
@@ -100,7 +103,8 @@ class Import
             $arFilter,
             false,
             false,
-            ['ID', 'PROPERTY_PRICE_OPT', 'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE', 'PROPERTY_Ostatok', 'PROPERTY_UNITS']
+            ['ID', 'PROPERTY_PRICE_OPT', 'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE',
+                'PROPERTY_Ostatok', 'PROPERTY_UNITS', 'PROPERTY_KRATNOST']
         );
 
         $arItems = [];
@@ -863,6 +867,77 @@ class Import
                         ]
                     );
                 }
+            }
+        }
+    }
+
+    /**
+     * Установить коэфициенты единицы измерения для всех продуктов
+     */
+    public function setRatio()
+    {
+        //1. Получаем все товары на сайте
+        $arFilter = [
+            'IBLOCK_ID' => $this->iblock,
+            'INCLUDE_SUBSECTIONS' => 'Y'
+        ];
+
+        $dbRez = CIBlockElement::GetList(
+            ['SORT'=>'ASC'],
+            $arFilter,
+            false,
+            false,
+            ['ID', 'PROPERTY_PRICE_OPT', 'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE',
+                'PROPERTY_Ostatok', 'PROPERTY_UNITS', 'PROPERTY_KRATNOST']
+        );
+
+        $arItems = [];
+        while($arRez = $dbRez->Fetch())
+        {
+            $arItems[$arRez['ID']] = $arRez;
+        }
+
+        //4. Получаем все продукты на сайте
+        $dbRez = CCatalogProduct::GetList(
+            [],
+            []
+        );
+
+        $arProducts = [];
+        while($arRez = $dbRez->Fetch()) {
+            $arProducts[$arRez['ID']] = $arRez;
+        }
+
+        //Получаем все коэфициенты единицы измерения на сайте
+        $rsRatios = CCatalogMeasureRatio::getList(
+            [],
+            [],
+            false,
+            false,
+            ['PRODUCT_ID', 'RATIO', 'ID']
+        );
+
+        $arRatios = [];
+        while($arResult = $rsRatios->Fetch()) {
+            $arRatios[$arResult['PRODUCT_ID']] = $arResult;
+        }
+
+        // Добавляем коэфиценты единицы измерения
+        foreach ($arProducts as $key => $product) {
+            // Записываем и создаем коэфициент единицы измерения
+            if (empty($arRatios[$key])) {
+                CCatalogMeasureRatio::add([
+                    'PRODUCT_ID' => $product['ID'],
+                    'RATIO' => (!$arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']) ? 1 : $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']
+                ]);
+            } else {
+                CCatalogMeasureRatio::update(
+                    $arRatios[$product['ID']]['ID'],
+                    [
+                        'PRODUCT_ID' => $arRatios[$product['ID']]['PRODUCT_ID'],
+                        'RATIO' => (!$arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']) ? 1 : $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']
+                    ]
+                );
             }
         }
     }
