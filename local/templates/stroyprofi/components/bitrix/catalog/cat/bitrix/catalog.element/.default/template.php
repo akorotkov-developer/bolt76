@@ -411,7 +411,8 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                     'ROWID', 'NOMNOMER', 'SHOW_IN_PRICE', 'SORT_IN_PRICE', 'PHOTOS',
                                                                     'VES1000PS', 'MaksZapas', 'MinZapas', 'Otobrajat_v_prayse',
                                                                     'Svertka', 'SHOW_IN_PRICE', 'Otobrajat_na_sayte',
-                                                                    'Svobodno', 'Nomenklaturniy_nomer', 'Naimenovanie', 'TipSkladskogoZapasa'
+                                                                    'Svobodno', 'Nomenklaturniy_nomer', 'Naimenovanie',
+                                                                    'TipSkladskogoZapasa', 'Kratnost'
                                                                 ];
 
                                                             // Отсортируем свойства в нужном порядке
