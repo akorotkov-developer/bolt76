@@ -139,8 +139,11 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                                              data-k="<?= $k; ?>">0 шт
                                                         </div></div><? } ?>
                                                     <div class="input_holder">
-                                                        <input type="text" name="ITEM[<?= $arElement["ID"] ?>]"
-                                                               data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>">
+                                                        <input type="text" class="quantity_input" name="ITEM[<?= $arElement["ID"] ?>]"
+                                                               data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
+                                                               data-ratio="<?= $arElement['PROPERTIES']['Kratnost']['VALUE']?>
+                                                        >
+                                                        <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
                                                     </div>
                                                     <? if (count($countTips)) { ?>
                                                         <div class="help_values">
@@ -249,8 +252,11 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                             <div class="vesHelperHolder">
                             <div class="vesHelper" data-val='<?= $k_val; ?>' data-k="<?= $k; ?>" data-num="0">0 шт</div></div><? } ?>
                         <div class="input_holder">
-                            <input type="text" name="ITEM[<?= $arElement["ID"] ?>]"
-                                   data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>">
+                            <input type="text" class="quantity_input" name="ITEM[<?= $arElement["ID"] ?>]"
+                                   data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
+                                   data-ratio="<?= $arElement['PROPERTIES']['Kratnost']['VALUE']?>"
+                            >
+                            <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
                         </div>
                         <? if (count($countTips)) { ?>
                             <div class="help_values">

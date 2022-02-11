@@ -1129,3 +1129,7 @@ td .buy_helper_holder{
 #calc_result {
     font-size: 18px;font-weight: bold;
 }
+.hint_min {
+    font-size: 9px;
+    color: #808080;
+}

@@ -116,7 +116,13 @@ if(sizeof($arResult["ITEMS"])>0){
                                                 <div class="buy_helper_holder">
                                                     <div class="buy_helper">
                                                         <?if($ves){?><div class="vesHelperHolder"><div class="vesHelper" data-val='<?=$k_val;?>' data-k="<?=$k;?>">0 шт</div></div><?}?>
-                                                        <div class="input_holder"><input type="text" name="ITEM[<?=$arElement["ID"]?>]" data-price="<?=$arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]?>"></div>
+                                                        <div class="input_holder">
+                                                            <input type="text" class="quantity_input" name="ITEM[<?=$arElement["ID"]?>]"
+                                                                   data-price="<?=$arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]?>"
+                                                                   data-ratio="<?= $arElement['PROPERTIES']['Kratnost']['VALUE']?>
+                                                            >
+                                                            <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
+                                                        </div>
                                                         <?if(count($countTips)){?>
                                                         <div class="help_values">
                                                             <?foreach($countTips as $c){?>
@@ -217,7 +223,13 @@ if(sizeof($arResult["ITEMS"])>0){
                     <div class="buy_helper_holder">
                         <div class="buy_helper">
                             <?if($ves){?><div class="vesHelperHolder"><div class="vesHelper" data-val='<?=$k_val;?>' data-k="<?=$k;?>">0 шт</div></div><?}?>
-                            <div class="input_holder"><input type="text" name="ITEM[<?=$arElement["ID"]?>]" data-price="<?=$arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]?>"></div>
+                            <div class="input_holder">
+                                <input type="text" class="quantity_input" name="ITEM[<?=$arElement["ID"]?>]"
+                                       data-price="<?=$arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]?>"
+                                       data-ratio="<?= $arElement['PROPERTIES']['Kratnost']['VALUE']?>
+                                >
+                                <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
+                            </div>
 	                        <?if(count($countTips)){?>
                             <div class="help_values">
 		                        <?foreach($countTips as $c){?>

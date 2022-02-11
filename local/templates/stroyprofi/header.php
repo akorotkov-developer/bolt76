@@ -15,6 +15,7 @@ use \Bitrix\Main\Page\Asset;
     <link rel="icon" href="/favicon.ico?1" type="image/ico">
 
     <script type="text/javascript" src='<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick.js'></script>
+    <script type="text/javascript" src="<?= SITE_TEMPLATE_PATH?>/script.js"></script>
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick.css">
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick-theme.css">
 </head>
