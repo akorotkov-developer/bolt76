@@ -464,7 +464,11 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                         $property['VALUE'] = $property['VALUE'] . ' ₽';
                                                                     }
                                                                 }
-
+                                                                if ($property['NAME'] == 'Длина' || $property['NAME'] == 'Диаметр') {
+                                                                    if ($property['VALUE'] != '') {
+                                                                        $property['VALUE'] = $property['VALUE'] . ' мм';
+                                                                    }
+                                                                }
 
                                                                 if ($property['NAME'] == 'Остаток') {
                                                                     $property['NAME'] = 'Наличие';
