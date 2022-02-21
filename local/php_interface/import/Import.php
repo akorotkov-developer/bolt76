@@ -925,19 +925,24 @@ class Import
         // Добавляем коэфиценты единицы измерения
         foreach ($arProducts as $key => $product) {
             // Записываем и создаем коэфициент единицы измерения
-            if (empty($arRatios[$key])) {
+            if (empty($arRatios[$key]) && $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE'] != '') {
                 CCatalogMeasureRatio::add([
                     'PRODUCT_ID' => $product['ID'],
-                    'RATIO' => (!$arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']) ? 1 : $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']
+                    'RATIO' => $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']
                 ]);
             } else {
-                CCatalogMeasureRatio::update(
-                    $arRatios[$product['ID']]['ID'],
-                    [
-                        'PRODUCT_ID' => $arRatios[$product['ID']]['PRODUCT_ID'],
-                        'RATIO' => (!$arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']) ? 1 : $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']
-                    ]
-                );
+                // Если единица измерения задана в файле, то обновляем ее, если нет, то удаляем единицу измерения
+                if (!$arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']) {
+                    CCatalogMeasureRatio::delete($arRatios[$product['ID']]['ID']);
+                } else {
+                    CCatalogMeasureRatio::update(
+                        $arRatios[$product['ID']]['ID'],
+                        [
+                            'PRODUCT_ID' => $arRatios[$product['ID']]['PRODUCT_ID'],
+                            'RATIO' => $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']
+                        ]
+                    );
+                }
             }
         }
     }

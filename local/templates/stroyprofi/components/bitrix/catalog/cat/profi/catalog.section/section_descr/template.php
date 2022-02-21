@@ -141,9 +141,11 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                                     <div class="input_holder">
                                                         <input type="text" class="quantity_input" name="ITEM[<?= $arElement["ID"] ?>]"
                                                                data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
-                                                               data-ratio="<?= $arElement['PROPERTIES']['Kratnost']['VALUE']?>
+                                                               data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
                                                         >
-                                                        <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
+                                                        <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
+                                                            <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
+                                                        <?php }?>
                                                     </div>
                                                     <? if (count($countTips)) { ?>
                                                         <div class="help_values">
@@ -254,9 +256,11 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                         <div class="input_holder">
                             <input type="text" class="quantity_input" name="ITEM[<?= $arElement["ID"] ?>]"
                                    data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
-                                   data-ratio="<?= $arElement['PROPERTIES']['Kratnost']['VALUE']?>"
+                                   data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
                             >
-                            <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
+                            <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
+                                <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
+                            <?php }?>
                         </div>
                         <? if (count($countTips)) { ?>
                             <div class="help_values">
