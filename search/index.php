@@ -46,6 +46,11 @@ CModule::IncludeModule("iblock");
 									<?}?></td>
                             <td class="product">
                                 <div class="section_name">
+                                    <?php
+                                    echo '<pre>';
+                                    var_dump($ar_result);
+                                    echo '</pre>';
+                                    ?>
                                     <a href="<?=$ar_result["SECTION_PAGE_URL"]?>"><?=$ar_result["NAME"]?></a>
                                 </div>
                                 <div class="price">
@@ -56,12 +61,12 @@ CModule::IncludeModule("iblock");
 						<?}?></table><?
 			}
 		}
-		$arSelect = Array("ID", "NAME", "IBLOCK_SECTION_ID", "PREVIEW_PICTURE", "PROPERTY_PRICE_OPT", "PROPERTY_PRICE");
+		$arSelect = Array("ID", "NAME", "IBLOCK_SECTION_ID", "PREVIEW_PICTURE", "PROPERTY_PRICE_OPT", "PROPERTY_PRICE", "DETAIL_PAGE_URL");
 		$arFilter = Array("IBLOCK_ID" => 1, "ACTIVE" => "Y");
         $arFilter = [
             'LOGIC' => 'OR',
             'PROPERTY_ARTICUL' => str_replace("%", "", $q),
-            'NAME' => $q
+            'NAME' => $q,
         ];
 		$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize"=>250), $arSelect);
 		$arElements = Array();
@@ -98,10 +103,10 @@ CModule::IncludeModule("iblock");
 								<?}?></td>
                         <td class="product">
                             <div class="section_name">
-                                <a href="<?=$sectionInfo[$arElement["IBLOCK_SECTION_ID"]]["SECTION_PAGE_URL"]?>"><?=$arElement["NAME"]?></a>
+                                <a href="<?=$arElement["DETAIL_PAGE_URL"]?>"><?=$arElement["NAME"]?></a>
                             </div>
                             <div class="name">
-                                <a href="<?=$sectionInfo[$arElement["IBLOCK_SECTION_ID"]]["SECTION_PAGE_URL"]?>"><?=$sectionInfo[$arElement["IBLOCK_SECTION_ID"]]["NAME"]?></a>
+                                <a href="<?=$arElement["DETAIL_PAGE_URL"]?>"><?=$sectionInfo[$arElement["IBLOCK_SECTION_ID"]]["NAME"]?></a>
                             </div>
 							<?if($arElement["PROPERTY_PRICE_OPT_VALUE"]>0){?>
                             <div class="price">
