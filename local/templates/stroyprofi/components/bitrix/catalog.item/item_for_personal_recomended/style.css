@@ -499,12 +499,24 @@
 
 .product-item-amount-field-container { }
 
-.product-item-amount-field-btn-plus,
-.product-item-amount-field-btn-minus {
+.item-for-recmended-product .product-item-amount-field-btn-plus {
 	position: relative;
 	display: inline-block;
-	min-width: 22px;
-	height: 22px;
+	min-width: 16px;
+	height: 16px;
+	border-radius: 2px;
+	background-color: #f2f2f2;
+	color: #fff;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	transition: background 300ms ease, opacity 300ms ease;
+}
+.item-for-recmended-product .product-item-amount-field-btn-minus {
+	position: relative;
+	display: inline-block;
+	min-width: 16px;
+	height: 16px;
 	border-radius: 2px;
 	background-color: #f2f2f2;
 	color: #fff;

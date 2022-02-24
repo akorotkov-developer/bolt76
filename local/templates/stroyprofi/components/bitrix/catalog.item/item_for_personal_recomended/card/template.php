@@ -121,7 +121,7 @@ use \Bitrix\Main\Localization\Loc;
 	<? else: ?>
 	</span>
 	<? endif; ?>
-	<div class="product-item-title dsfsdfsdf">
+	<div class="product-item-title">
 		<? if ($itemHasDetailUrl): ?>
 		<a href="<?=$item['DETAIL_PAGE_URL']?>" title="<?=$productTitle?>">
 		<? endif; ?>

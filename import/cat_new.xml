@@ -878,7 +878,7 @@
 <sID>20874</sID>
 <viewTemplate></viewTemplate>
 <showFilter></showFilter>
-<name> 5 Гвозди ершеные оц. исп.7811-7120</name>
+<name> 5 Гвозди ершеные оц. чертеж 7811-7120</name>
 <desc></desc>
 </category>
 <category>
@@ -3089,96 +3089,6 @@
 <childs>
 <category>
 <PorNomer>801</PorNomer>
-<ID>15708</ID>
-<sID>36043</sID>
-<viewTemplate></viewTemplate>
-<showFilter></showFilter>
-<name> 1 Саморез черный крупная, мелкая резьба (пакеты)</name>
-<desc>Стальные фосфатированные саморезы с мелкой и крупной [BR][BR]резьбой.</desc>
-</category>
-<category>
-<PorNomer>802</PorNomer>
-<ID>17834</ID>
-<sID>41186</sID>
-<viewTemplate></viewTemplate>
-<showFilter></showFilter>
-<name> 2 Саморез черный крупная, мелкая резьба фасованный</name>
-<desc>Стальные фосфатированные саморезы с мелкой и крупной [BR][BR]резьбой.</desc>
-</category>
-<category>
-<PorNomer>803</PorNomer>
-<ID>15707</ID>
-<sID>36042</sID>
-<viewTemplate></viewTemplate>
-<showFilter></showFilter>
-<name> 5 Саморез с прессшайбой острый, сверло (пакеты)</name>
-<desc>Стальной оцинкованный с [BR][BR]прессшайбой для крепления листового металла.</desc>
-</category>
-<category>
-<PorNomer>804</PorNomer>
-<ID>17785</ID>
-<sID>41138</sID>
-<viewTemplate></viewTemplate>
-<showFilter></showFilter>
-<name> 6 Саморез с прессшайбой (кор. №2)</name>
-<desc>Стальной оцинкованный саморез с [BR][BR]прессшайбой для крепления листового металла.</desc>
-</category>
-<category>
-<PorNomer>805</PorNomer>
-<ID>16412</ID>
-<sID>38242</sID>
-<viewTemplate></viewTemplate>
-<showFilter></showFilter>
-<name> 7 Саморез с прессшайбой (кор. №4)</name>
-<desc>Стальной оцинкованный саморез с [BR][BR]прессшайбой для крепления листового металла.</desc>
-</category>
-<category>
-<PorNomer>806</PorNomer>
-<ID>17809</ID>
-<sID>41161</sID>
-<viewTemplate></viewTemplate>
-<showFilter></showFilter>
-<name> 8 Саморез с прессшайбой (кор. №6)</name>
-<desc>Стальной оцинкованный саморез с [BR][BR]прессшайбой для крепления листового металла.</desc>
-</category>
-<category>
-<PorNomer>807</PorNomer>
-<ID>17285</ID>
-<sID>39445</sID>
-<viewTemplate></viewTemplate>
-<showFilter></showFilter>
-<name> 9 Саморез универсальный желтый (пакет)</name>
-<desc></desc>
-</category>
-<category>
-<PorNomer>808</PorNomer>
-<ID>17918</ID>
-<sID>41270</sID>
-<viewTemplate></viewTemplate>
-<showFilter></showFilter>
-<name>10 Саморез универсальный желтый (кор. №2)</name>
-<desc></desc>
-</category>
-<category>
-<PorNomer>809</PorNomer>
-<ID>17187</ID>
-<sID>39185</sID>
-<viewTemplate></viewTemplate>
-<showFilter></showFilter>
-<name>12 Саморез универсальный желтый (кор. №6)</name>
-<desc></desc>
-</category>
-<category>
-<PorNomer>810</PorNomer>
-<ID>4255</ID>
-<sID>20651</sID>
-<viewTemplate></viewTemplate>
-<showFilter></showFilter>
-<name>13 Саморез универсальный белый (пакеты)</name>
-<desc></desc>
-</category>
-<category>
-<PorNomer>811</PorNomer>
 <ID>1098</ID>
 <sID>19399</sID>
 <viewTemplate></viewTemplate>
@@ -3187,7 +3097,7 @@
 <desc>Шуруп для крепления деревянных  лаг и </desc>
 </category>
 <category>
-<PorNomer>812</PorNomer>
+<PorNomer>802</PorNomer>
 <ID>4275</ID>
 <sID>20671</sID>
 <viewTemplate></viewTemplate>
@@ -3208,15 +3118,6 @@
 <childs>
 <category>
 <PorNomer>801</PorNomer>
-<ID>3968</ID>
-<sID>20216</sID>
-<viewTemplate></viewTemplate>
-<showFilter></showFilter>
-<name> 1 Дюбель гвоздь потай</name>
-<desc></desc>
-</category>
-<category>
-<PorNomer>802</PorNomer>
 <ID>3938</ID>
 <sID>20185</sID>
 <viewTemplate></viewTemplate>
@@ -3225,7 +3126,7 @@
 <desc></desc>
 </category>
 <category>
-<PorNomer>803</PorNomer>
+<PorNomer>802</PorNomer>
 <ID>15385</ID>
 <sID>35614</sID>
 <viewTemplate></viewTemplate>
@@ -3234,7 +3135,7 @@
 <desc></desc>
 </category>
 <category>
-<PorNomer>804</PorNomer>
+<PorNomer>803</PorNomer>
 <ID>17973</ID>
 <sID>41325</sID>
 <viewTemplate></viewTemplate>
@@ -5738,7 +5639,7 @@
 <sID>44998</sID>
 <viewTemplate></viewTemplate>
 <showFilter></showFilter>
-<name>Ведра малярные</name>
+<name>Ведра</name>
 <desc></desc>
 </category>
 <category>
