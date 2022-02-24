@@ -115,7 +115,7 @@ if(sizeof($arResult["ITEMS"])>0){
                                             <div class="buy">
                                                 <div class="buy_helper_holder">
                                                     <div class="buy_helper">
-                                                        <?if($ves){?><div class="vesHelperHolder"><div class="vesHelper" data-val='<?=$k_val;?>' data-k="<?=$k;?>">0 шт</div></div><?}?>
+                                                        <?if($ves){?><div class="vesHelperHolder"><div class="vesHelper" data-val='<?=$k_val;?>' data-k="<?=$k;?>">0 <?=$arElement["PROPERTIES"]["UNITS"]["VALUE"]?></div></div><?}?>
                                                         <div class="input_holder">
                                                             <input type="text" class="quantity_input" name="ITEM[<?=$arElement["ID"]?>]"
                                                                    data-price="<?=$arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]?>"
@@ -224,7 +224,7 @@ if(sizeof($arResult["ITEMS"])>0){
                 <td class="buy">
                     <div class="buy_helper_holder">
                         <div class="buy_helper">
-                            <?if($ves){?><div class="vesHelperHolder"><div class="vesHelper" data-val='<?=$k_val;?>' data-k="<?=$k;?>">0 шт</div></div><?}?>
+                            <?if($ves){?><div class="vesHelperHolder"><div class="vesHelper" data-val='<?=$k_val;?>' data-k="<?=$k;?>">0 <?=$arElement["PROPERTIES"]["UNITS"]["VALUE"]?></div></div><?}?>
                             <div class="input_holder">
                                 <input type="text" class="quantity_input" name="ITEM[<?=$arElement["ID"]?>]"
                                        data-price="<?=$arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]?>"
