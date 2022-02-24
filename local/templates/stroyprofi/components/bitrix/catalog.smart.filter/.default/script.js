@@ -220,8 +220,16 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 					curProp = BX.findChild(BX.findParent(this.curFilterinput, {'class':'bx-filter-parameters-box'}), {'class':'bx-filter-container-modef'}, true, false);
 					curProp.appendChild(modef);
 
-					var iOffsetTop = $(this.curFilterinput).offset().top - 6;
-					$(curProp).offset({ top: iOffsetTop});
+					console.log('this.curFilterinput:');
+					console.log($(this.curFilterinput).attr('checked'));
+
+					if ($(this.curFilterinput).attr('checked') == 'checked') {
+						$(curProp).show();
+						var iOffsetTop = $(this.curFilterinput).offset().top - 6;
+						$(curProp).offset({top: iOffsetTop});
+					} else {
+						$(curProp).hide();
+					}
 				}
 
 				if (result.SEF_SET_FILTER_URL)
