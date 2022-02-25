@@ -575,8 +575,8 @@ class Import
                     'PRICE' => (float)str_replace(",", ".", $item['CZena1']),
                     'PRICE_OPT' => (float)str_replace(",", ".", $item['CZena2']),
                     'PRICE_OPT2' => (float)str_replace(",", ".", $item['CZena3']),
-                    'Naimenovanie' => trim(strval($item['Naimenovanie'])),
-                    'Svertka' => trim(strval($item['Svertka'])),
+                    'Naimenovanie' => $item['Naimenovanie'],
+                    'Svertka' => $item['Svertka'],
                     'PHOTO_ID' => $item['Foto'][0],
                     'VES' => $item['Ves'],
                     'UNITS' => $item['EdIzmereniya'],
@@ -666,8 +666,8 @@ class Import
                     'PRICE' => (float)str_replace(",", ".", $item['CZena1']),
                     'PRICE_OPT' => (float)str_replace(",", ".", $item['CZena2']),
                     'PRICE_OPT2' => (float)str_replace(",", ".", $item['CZena3']),
-                    'Naimenovanie' => trim(strval($item['Naimenovanie'])),
-                    'Svertka' => trim(strval($item['Svertka'])),
+                    'Naimenovanie' => $item['Naimenovanie'],
+                    'Svertka' => $item['Svertka'],
                     'PHOTO_ID' => $item['Foto'][0],
                     'VES' => $item['Ves'],
                     'UNITS' => $item['EdIzmereniya'],
@@ -747,12 +747,12 @@ class Import
                 continue;
             }
             if ($a[2] == 'Svertka') {
-                $arTemp[$a[0]]['Svertka'] = trim($a[count($a) - 1]);
+                $arTemp[$a[0]]['Svertka'] = $a[count($a) - 1];
 
                 continue;
             }
             if ($a[2] == 'Naimenovanie') {
-                $arTemp[$a[0]]['Naimenovanie'] = trim($a[count($a) - 1]);
+                $arTemp[$a[0]]['Naimenovanie'] = $a[count($a) - 1];
 
                 continue;
             }
