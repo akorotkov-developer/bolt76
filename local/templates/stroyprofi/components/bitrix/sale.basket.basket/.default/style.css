@@ -2236,3 +2236,7 @@ body.bx-theme-yellow .catalog-block-header{border-color:#f4b236;}
 	background-color: #FF7920;
 	color: #fff;
 }
+.b-clear-basket {
+	width: 60%;
+	text-align: center;
+}

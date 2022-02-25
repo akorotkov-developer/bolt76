@@ -1402,12 +1402,9 @@ function getCurrencyCode()
 	}
 
 	return currency;
-
-
 }
 
 BX.ready(function() {
-
 	basketPoolQuantity = new BasketPoolQuantity();
 	var couponBlock = BX('coupons_block'),
 		basketItems = BX('basket_items');
@@ -1420,4 +1417,16 @@ BX.ready(function() {
 
 	if (BX.type.isNotEmptyString(basketJSParams['EVENT_ONCHANGE_ON_START']) && basketJSParams['EVENT_ONCHANGE_ON_START'] == "Y")
 		BX.onCustomEvent('OnBasketChange');
+
+	// Действие на кнопке Очистить корзину
+	$('#clear_basket').on('click', function() {
+		$.ajax({
+			url: sTemplatePath + '/ajaxClearBasket.php',
+			method: 'get',
+			data: {},
+			success: function(data) {
+				location.reload();
+			}
+		});
+	});
 });

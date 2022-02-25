@@ -336,3 +336,8 @@ else
 {
 	ShowError($arResult['ERROR_MESSAGE']);
 }
+?>
+
+<script>
+    var sTemplatePath = '<?= $templateFolder?>';
+</script>
