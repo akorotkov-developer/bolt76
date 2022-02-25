@@ -59,6 +59,11 @@ if ($ar_result = $db_list->GetNext()) {
 
         <div class="bx-sidebar-block">
             <?
+            if ($_GET['tst']) {
+                echo '<pre>';
+                var_dump($arParams["HIDE_NOT_AVAILABLE"]);
+                echo '</pre>';
+            }
             $APPLICATION->IncludeComponent(
                 "bitrix:catalog.smart.filter",
                 "",
@@ -85,6 +90,7 @@ if ($ar_result = $db_list->GetNext()) {
                     "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
                     "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
                     "INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
+                    "DISPLAY_ELEMENT_COUNT" => 'Y'
                 ),
                 $component,
                 array('HIDE_ICONS' => 'Y')
