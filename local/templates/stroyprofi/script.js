@@ -3,12 +3,7 @@ $(document).ready(function () {
         var ratio = ($(this).attr('data-ratio') != 'NaN') ? parseFloat($(this).attr('data-ratio')) : 'NaN';
         var curVal = parseFloat($(this).val());
 
-        console.log('ratio');
-        console.log(ratio);
-
         if (ratio != 'NaN') {
-            console.log('Попали сюда');
-
             if (isNaN(curVal)) {
                 $(this).val(ratio);
             } else if (curVal < ratio) {
@@ -20,8 +15,10 @@ $(document).ready(function () {
                     $(this).val((Math.trunc(curVal / ratio) * ratio));
                 }
             }
-        } else {
-            console.log('Должно ничего не происходить!');
+
+            var obToolTip = $(this).parent().siblings('.kratnostHelperHolder');
+            obToolTip.fadeIn('200');
+            setTimeout(function() { obToolTip.fadeOut('200'); }, 2000);
         }
     });
 });

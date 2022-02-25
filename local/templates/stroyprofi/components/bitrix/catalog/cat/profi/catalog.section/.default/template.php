@@ -133,6 +133,15 @@ if(sizeof($arResult["ITEMS"])>0){
                                                             <div class="clear"></div>
                                                         </div>
                                                         <?}?>
+
+                                                        <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
+                                                            <div class="kratnostHelperHolder">
+                                                                <div class="kratnostHelper">
+                                                                    Данная продукция отпускается
+                                                                    кртано <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?> <?=$arElement["PROPERTIES"]["UNITS"]["VALUE"]?>
+                                                                </div>
+                                                            </div>
+                                                        <?php }?>
                                                     </div><a href="#" class="add_to_cart_one one"><img src="/img/cart_buttton.png" alt=""></a>
                                                 </div>
                                             </div>
@@ -242,6 +251,15 @@ if(sizeof($arResult["ITEMS"])>0){
                                 <div class="clear"></div>
                             </div>
 	                        <?}?>
+
+                            <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
+                                <div class="kratnostHelperHolder">
+                                    <div class="kratnostHelper">
+                                        Данная продукция отпускается
+                                        кртано <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?> <?=$arElement["PROPERTIES"]["UNITS"]["VALUE"]?>
+                                    </div>
+                                </div>
+                            <?php }?>
                         </div>
                     </div>
                 </td>
