@@ -328,7 +328,101 @@ class Events
                     ]
                 ]);
 
-                unlink($_SERVER["DOCUMENT_ROOT"] . "/cart/Исходящие счета.xml");
+                // Сохраняем XML файл с заказам в инфоблоке Счета заказов для СБИС++
+                if(CModule::IncludeModule('iblock')) {
+                    // Получаем ID свойства ID заказа и Счет
+                    $dbResult = CIBlockProperty::GetList(
+                        [],
+                        ['IBLOCK_ID' => '7']
+                    );
+
+                    $iOrderId = false;
+                    $iBillId = false;
+                    while ($arResultProps = $dbResult->Fetch()) {
+                        if ($arResultProps['CODE'] == 'BILL') {
+                            $iBillId = $arResultProps['ID'];
+                        }
+                        if ($arResultProps['CODE'] == 'ORDER_ID') {
+                            $iOrderId = $arResultProps['ID'];
+                        }
+                    }
+
+                    // Добавляем элемент в инфоблок
+                    $obElement = new CIBlockElement;
+
+                    $arProps = [
+                        $iOrderId => $arFields['ORDER_ID'],
+                        $iBillId => CFile::MakeFileArray($_SERVER["DOCUMENT_ROOT"] . '/cart/Исходящие счета.xml')
+                    ];
+
+                    $arLoadProductArray = [
+                        'IBLOCK_ID'      => 7,
+                        'PROPERTY_VALUES'=> $arProps,
+                        'NAME'           => 'Счет заказа № ' . $arFields['ORDER_ID'],
+                        'ACTIVE'         => 'Y',
+                    ];
+
+                    $obElement->Add($arLoadProductArray);
+                }
+
+                unlink($_SERVER["DOCUMENT_ROOT"] . '/cart/Исходящие счета.xml');
+            }
+        }
+    }
+}
+
+AddEventHandler("main", "OnAdminListDisplay", "OnAdminListDisplayHandler");
+function OnAdminListDisplayHandler(&$list) {
+    if ($list->table_id == 'tbl_sale_order') {
+        $list->aVisibleHeaders["CONNECTED"] =
+            [
+                'id' => 'SBIS_BILL',
+                'content' => 'Счет для СБИС++', // текст в шапке таблицы для поля CONNECTED
+                'sort' => "SBIS_BILL",
+                'default' => true,
+                'align' => 'left',
+            ];
+
+        $list->arVisibleColumns[]= 'SBIS_BILL';
+
+        $arOrderIds = [];
+        foreach ($list->aRows as $row) {
+            preg_match('/<a[^>]*?>(.*?)<\/a>/si', $row->aFields['ID']['view']['value'], $matches);
+            $orderId = $matches[1];
+            $orderId = str_replace('№', '', $orderId);
+            $arOrderIds[] = $orderId;
+        }
+
+        // Получем все ссылки на файлы для полученных заказов
+        $dbResult = CIBlockElement::GetList(
+            [],
+            [
+                'IBLOCK_ID' => 7,
+                'PROPERTY_ORDER_ID' => $arOrderIds
+            ],
+            false,
+            false,
+            ['ID', 'PROPERTY_BILL', 'PROPERTY_ORDER_ID']
+        );
+
+        $arItems = [];
+        while($arResult = $dbResult->Fetch()){
+            $arItems[$arResult['PROPERTY_ORDER_ID_VALUE']] = $arResult['PROPERTY_BILL_VALUE'];
+        }
+
+        // Проставим ссылки на файлы для скачивания
+        foreach ($list->aRows as $row) {
+            preg_match('/<a[^>]*?>(.*?)<\/a>/si', $row->aFields['ID']['view']['value'], $matches);
+            $orderId = $matches[1];
+            $orderId = str_replace('№', '', $orderId);
+
+            if (!empty($arItems[$orderId])) {
+                \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Здесь'], '', 'log.txt');
+
+                $row->addField(
+                    'CONNECTED',
+                    '<a href="' . CFile::GetPath($arItems[$orderId]) . '" download>Скачать</a>'
+                );
             }
         }
     }
