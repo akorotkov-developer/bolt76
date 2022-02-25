@@ -645,6 +645,11 @@ class Import
             }
 
             $el->Update($ob["ID"], $arUpdate);
+
+            // Обнуляем фото
+            CIBlockElement::SetPropertyValuesEx($ob["ID"], $this->iblock, ['PHOTOS' => ['VALUE' => '']]);
+
+            // Записываем новые свойства
             CIBlockElement::SetPropertyValuesEx($ob["ID"], $this->iblock, $propsToUpdate);
 
             $ID = $ob["ID"];
