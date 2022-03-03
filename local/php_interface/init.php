@@ -417,8 +417,6 @@ function OnAdminListDisplayHandler(&$list) {
             $orderId = str_replace('№', '', $orderId);
 
             if (!empty($arItems[$orderId])) {
-                \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Здесь'], '', 'log.txt');
-
                 $row->addField(
                     'CONNECTED',
                     '<a href="' . CFile::GetPath($arItems[$orderId]) . '" download>Скачать</a>'
