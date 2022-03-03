@@ -59,11 +59,6 @@ if ($ar_result = $db_list->GetNext()) {
 
         <div class="bx-sidebar-block">
             <?
-            if ($_GET['tst']) {
-                echo '<pre>';
-                var_dump($arParams["HIDE_NOT_AVAILABLE"]);
-                echo '</pre>';
-            }
             $APPLICATION->IncludeComponent(
                 "bitrix:catalog.smart.filter",
                 "",

@@ -46,11 +46,6 @@ CModule::IncludeModule("iblock");
 									<?}?></td>
                             <td class="product">
                                 <div class="section_name">
-                                    <?php
-                                    echo '<pre>';
-                                    var_dump($ar_result);
-                                    echo '</pre>';
-                                    ?>
                                     <a href="<?=$ar_result["SECTION_PAGE_URL"]?>"><?=$ar_result["NAME"]?></a>
                                 </div>
                                 <div class="price">
@@ -106,7 +101,7 @@ CModule::IncludeModule("iblock");
                                 <a href="<?=$arElement["DETAIL_PAGE_URL"]?>"><?=$arElement["NAME"]?></a>
                             </div>
                             <div class="name">
-                                <a href="<?=$arElement["DETAIL_PAGE_URL"]?>"><?=$sectionInfo[$arElement["IBLOCK_SECTION_ID"]]["NAME"]?></a>
+                                <a href="<?=$sectionInfo[$arElement["IBLOCK_SECTION_ID"]]["SECTION_PAGE_URL"]?>"><?=$sectionInfo[$arElement["IBLOCK_SECTION_ID"]]["NAME"]?></a>
                             </div>
 							<?if($arElement["PROPERTY_PRICE_OPT_VALUE"]>0){?>
                             <div class="price">
