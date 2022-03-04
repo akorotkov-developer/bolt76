@@ -371,17 +371,36 @@ class Events
     }
 }
 
+if (!function_exists('change_key')) {
+    function change_key($array, $old_key, $new_key)
+    {
+
+        if (!array_key_exists($old_key, $array))
+            return $array;
+
+        $keys = array_keys($array);
+        $keys[array_search($old_key, $keys)] = $new_key;
+
+        return array_combine($keys, $array);
+    }
+}
+
 AddEventHandler("main", "OnAdminListDisplay", "OnAdminListDisplayHandler");
 function OnAdminListDisplayHandler(&$list) {
     if ($list->table_id == 'tbl_sale_order') {
-        $list->aVisibleHeaders["CONNECTED"] =
+        $arTempElement = ["CONNECTED" =>
             [
                 'id' => 'SBIS_BILL',
                 'content' => 'Счет для СБИС++', // текст в шапке таблицы для поля CONNECTED
                 'sort' => "SBIS_BILL",
                 'default' => true,
                 'align' => 'left',
-            ];
+            ]
+        ];
+
+        array_splice($list->aVisibleHeaders, 3, 0, $arTempElement);
+
+        $list->aVisibleHeaders = change_key($list->aVisibleHeaders, '0', 'CONNECTED');
 
         $list->arVisibleColumns[]= 'SBIS_BILL';
 
