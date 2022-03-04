@@ -16,6 +16,7 @@ class Import
     public $productSections = [];
     public $arDynamicPropsMap = [];
     public $xmlCat;
+    public $iPropAvailbleId;
 
     /**
      * Установка начальных параметров
@@ -27,6 +28,13 @@ class Import
 
         $this->startTime = date("d.m.Y H:i:s");
         $this->iblock = 1;
+
+        // Определяем ID свойства в наличии
+        $dbResult = CIBlockProperty::GetPropertyEnum('AVAILABLE', '', ['IBLOCK_ID' => 1]);
+
+        if ($arResult = $dbResult->Fetch()) {
+            $this->iAvailablePropId = $arResult['ID'];
+        }
 
         if ($_SERVER['SERVER_PORT'] == '443') {
             $sHttp = 'https://';
@@ -585,6 +593,7 @@ class Import
                     'Ostatok' => $item['Ostatok'],
                     'SHOW_IN_PRICE' => ($item['show_in_price'] > 0) ? 1 : 0,
                     'SORT_IN_PRICE' => $item['show_in_price'],
+                    'AVAILABLE' => ((int)$item['Ostatok'] > 0) ? $this->iAvailablePropId : ''
                 ]
             ];
 
@@ -676,6 +685,7 @@ class Import
                     'Ostatok' => $item['Ostatok'],
                     'SHOW_IN_PRICE' => ($item['show_in_price'] > 0) ? 1 : 0,
                     'SORT_IN_PRICE' => $item['show_in_price'],
+                    'AVAILABLE' => ((int)$item['Ostatok'] > 0) ? $this->iAvailablePropId : ''
                 ],
             ];
 
