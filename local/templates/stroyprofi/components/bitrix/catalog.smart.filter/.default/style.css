@@ -747,3 +747,12 @@ COLOR
 		display: none;
 	}
 }
+.filter-block-available {
+	display: block!important;
+}
+.bx-filter-block .bx-filter-parameters-box-container-available {
+	padding-bottom: 0px;
+}
+.bx-filter-input-checkbox {
+	line-height: 21px;
+}

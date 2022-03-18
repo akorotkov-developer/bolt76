@@ -50,7 +50,41 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 					)
 						continue;
 					?>
-					<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-parameters-box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>bx-active<?endif?>">
+                    <?php
+                    if ($arItem['CODE'] == 'AVAILABLE') {?>
+                        <div class="col-lg-12 bx-filter-parameters-box">
+                            <span class="bx-filter-container-modef"></span>
+                            <div class="bx-filter-block filter-block-available" data-role="bx_filter_block">
+                                <div class="row bx-filter-parameters-box-container bx-filter-parameters-box-container-available">
+                                    <?php $arCur = current($arItem["VALUES"]);?>
+                                    <div class="col-xs-12">
+                                        <?foreach($arItem["VALUES"] as $val => $ar):?>
+                                            <div class="checkbox">
+                                                <label data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label <? echo $ar["DISABLED"] ? 'disabled': '' ?>" for="<? echo $ar["CONTROL_ID"] ?>">
+                                                        <span class="bx-filter-input-checkbox">
+                                                            <input
+                                                                    type="checkbox"
+                                                                    value="<? echo $ar["HTML_VALUE"] ?>"
+                                                                    name="<? echo $ar["CONTROL_NAME"] ?>"
+                                                                    id="<? echo $ar["CONTROL_ID"] ?>"
+                                                                <? echo $ar["CHECKED"]? 'checked="checked"': '' ?>
+                                                                onclick="smartFilter.click(this)"
+                                                            />
+                                                            <span class="bx-filter-param-text" title="<?=$ar["VALUE"];?>">В наличии<?
+                                                                if ($arParams["DISPLAY_ELEMENT_COUNT"] !== "N" && isset($ar["ELEMENT_COUNT"])):
+                                                                    ?>&nbsp;(<span data-role="count_<?=$ar["CONTROL_ID"]?>"><? echo $ar["ELEMENT_COUNT"]; ?></span>)<?
+                                                                endif;?></span>
+                                                        </span>
+                                                </label>
+                                            </div>
+                                        <?endforeach;?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } else {
+                    ?>
+					    <div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-12<?endif?> bx-filter-parameters-box <?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>bx-active<?endif?>">
 						<span class="bx-filter-container-modef"></span>
 						<div class="bx-filter-parameters-box-title" onclick="smartFilter.hideFilterProps(this)">
 							<span class="bx-filter-parameters-box-hint">
@@ -534,7 +568,8 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 							<div style="clear: both"></div>
 						</div>
 					</div>
-				<?
+				    <?php }?>
+                <?
 				}
 
                 foreach($arResult["ITEMS"] as $key=>$arItem)//prices
