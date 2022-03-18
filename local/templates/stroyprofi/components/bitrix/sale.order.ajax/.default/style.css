@@ -1,3 +1,13 @@
+.bx-blue .btn.btn-default {
+    background-color: #FF7920;
+    border-color: #FF7920;
+    border-radius: 0px;
+}
+.bx-blue .btn.btn-default:hover {
+    background-color: #FF7920;
+    border-color: #FF7920;
+}
+
 .wrapper .bx-blue .btn.btn-default {
     background-color: #FF7920;
     border-color: #FF7920;
