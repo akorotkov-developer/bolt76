@@ -229,20 +229,7 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 					}
 
 					// Преберем все параметры фильтра и скроем ненужные
-					var spanText;
-					$('.bx-filter-param-text').each(function(i, obj) {
-						spanText = $(obj).find('span').text();
-
-						if (spanText == 0) {
-							$(obj).parent().parent().parent().fadeOut();
-						} else {
-							$(obj).parent().parent().parent().fadeIn();
-						}
-					});
-
-					$('.bx-filter-block').each(function(i, obj) {
-						$(obj).css({ "height": "auto" });
-					});
+					showHideCheckBoxsInFilter();
 				}
 
 				if (result.SEF_SET_FILTER_URL)
@@ -905,3 +892,30 @@ BX.Iblock.SmartFilter = (function()
 
 	return SmartFilter;
 })();
+
+/**
+ * Преберем все параметры фильтра и скроем ненужные
+ */
+function showHideCheckBoxsInFilter()
+{
+	// Преберем все параметры фильтра и скроем ненужные
+	var spanText;
+	$('.bx-filter-param-text').each(function(i, obj) {
+		spanText = $(obj).find('span').text();
+
+		if (spanText == 0) {
+			$(obj).parent().parent().parent().fadeOut();
+		} else {
+			$(obj).parent().parent().parent().fadeIn();
+		}
+	});
+
+	$('.bx-filter-block').each(function(i, obj) {
+		$(obj).css({ "height": "auto" });
+	});
+}
+
+$( document ).ready(function() {
+	// Преберем все параметры фильтра и скроем ненужные
+	showHideCheckBoxsInFilter();
+});
