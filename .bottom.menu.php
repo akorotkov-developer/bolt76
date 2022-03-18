@@ -29,6 +29,13 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
+		"Доставка",
+		"/deivery/",
+		Array(),
+		Array(),
+		""
+	),
+	Array(
 		"Корзина", 
 		"/cart/", 
 		Array(), 
