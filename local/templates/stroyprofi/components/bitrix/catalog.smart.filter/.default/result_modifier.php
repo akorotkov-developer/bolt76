@@ -116,3 +116,22 @@ foreach($arResult['ITEMS'] as $key => $arValue) {
         $arResult['ITEMS'][$key]['VALUES'] = $arValue['VALUES'];
     }
 }
+
+/** Сортировка текстовых полей по алфавиту */
+if (!function_exists('compareFilterValuesForAlphabet')) {
+    function compareFilterValuesForAlphabet($a, $b)
+    {
+        if ($a['VALUE'] == $b['VALUE']) {
+            return 0;
+        }
+        return ($a['VALUE'] < $b['VALUE']) ? -1 : 1;
+    }
+}
+
+foreach($arResult['ITEMS'] as $key => $arValue) {
+    if($arValue['PROPERTY_TYPE'] == "S" && count($arValue['VALUES'])) {
+        usort($arValue['VALUES'], 'compareFilterValuesForAlphabet');
+
+        $arResult['ITEMS'][$key]['VALUES'] = $arValue['VALUES'];
+    }
+}
