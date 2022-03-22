@@ -28,13 +28,13 @@ $aMenuLinks = Array(
 		Array(), 
 		"" 
 	),
-	Array(
+/*	Array(
 		"Доставка",
 		"/delivery/",
 		Array(),
 		Array(),
-		false
-	),
+		""
+	),*/
 	Array(
 		"База знаний", 
 		"/articles/", 
