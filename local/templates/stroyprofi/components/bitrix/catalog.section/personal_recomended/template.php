@@ -324,7 +324,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 
 					case 3:
 						?>
-						<div class="col-xs-12 product-item-small-card">
+						<div class="col-xs-8 product-item-small-card">
 							<div class="row">
 								<?
 								foreach ($rowItems as $item)

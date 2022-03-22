@@ -1080,6 +1080,8 @@ h1 {
 
 .detail_image {
 	width: 100%;
+	max-height: 300px;
+	object-fit: contain;
 }
 .b-image-slider-main img {
 	width: 100%;
