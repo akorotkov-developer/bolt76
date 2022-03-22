@@ -1,8 +1,11 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
+
+use Bitrix\Main\UI\Extension;
+Extension::load('ui.bootstrap4');
 ?>
 
-    <div id="content" class="col-sm-9">
+    <div id="content" class="col-xs-6 col-sm-3 col-md-3">
         <?php if ($_GET['confirm_registration'] == 'yes') {
 
             $APPLICATION->IncludeComponent("bitrix:system.auth.confirmation",
@@ -17,7 +20,7 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 
         <? $APPLICATION->IncludeComponent("bitrix:system.auth.form", "", array(
                 "REGISTER_URL" => "/account/register/",
-                "FORGOT_PASSWORD_URL" => "/auth/",
+                "FORGOT_PASSWORD_URL" => "/account/forgot/",
                 "PROFILE_URL" => "/personal/",
                 "SHOW_ERRORS" => "Y"
             )
