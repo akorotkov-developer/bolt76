@@ -12,12 +12,17 @@ use \Bitrix\Main\Page\Asset;
     <script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="/js/functions.js?123"></script>
     <script type="text/javascript" src="/js/jquery.tools.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
     <link rel="icon" href="/favicon.ico?1" type="image/ico">
 
     <script type="text/javascript" src='<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick.js'></script>
     <script type="text/javascript" src="<?= SITE_TEMPLATE_PATH?>/script.js"></script>
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick.css">
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick-theme.css">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"
+    />
 </head>
 <body>
 <div class="notification" id="notification">Товар добавлен<br/>в <a href="/personal/cart/">корзину</a></div>

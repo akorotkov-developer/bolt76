@@ -228,7 +228,9 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                             {
                                                 ?>
                                                 <div class="<?=($key == 0 ? ' active' : '')?>" data-entity="image" data-id="<?=$photo['ID']?>">
-                                                    <img class="detail_image" src="<?=$photo['SRC']?>" alt="<?=$alt?>" title="<?=$title?>"<?=($key == 0 ? ' itemprop="image"' : '')?> >
+                                                    <a href="<?=$photo['SRC']?>" data-fancybox>
+                                                        <img class="detail_image" src="<?=$photo['SRC']?>" alt="<?=$alt?>" title="<?=$title?>"<?=($key == 0 ? ' itemprop="image"' : '')?> >
+                                                    </a>
                                                 </div>
                                                 <?
                                             }
@@ -236,7 +238,9 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 
                                         if (count($arResult['PHOTOS']) > 0) {
                                             foreach ($arResult['PHOTOS'] as $photoSrc) {?>
-                                                <img class="detail_image" src="<?= $photoSrc?>" >
+                                                <a href="<?= $photoSrc?>" data-fancybox="gallery">
+                                                    <img class="detail_image" src="<?= $photoSrc?>" >
+                                                </a>
                                             <?php }
                                         }
 
