@@ -78,8 +78,9 @@ use \Bitrix\Main\Page\Asset;
                                 "SHOW_PRODUCTS" => "N",
                                 "POSITION_FIXED" =>"N",
                                 "SHOW_AUTHOR" => "Y",
-                                "PATH_TO_REGISTER" => SITE_DIR."login/",
-                                "PATH_TO_PROFILE" => SITE_DIR."personal/"
+                                "PATH_TO_REGISTER" => SITE_DIR."account/register/",
+                                "PATH_TO_PROFILE" => SITE_DIR."personal/",
+                                "PATH_TO_AUTHORIZE" => SITE_DIR."account/auth/",
                             ),
                             false,
                             array()
