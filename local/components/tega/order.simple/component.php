@@ -1,6 +1,6 @@
 <?php
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-
+\Bitrix\Main\Diag\Debug::dumpToFile(['$_REQUEST' => $_REQUEST], '', 'log.txt');
 if (empty($arParams["PERSON_TYPE_ID"])) {
     ShowError(\Bitrix\Main\Localization\Loc::getMessage("PERSON_TYPE_IS_NOT_SET"));
     return;

@@ -1,5 +1,5 @@
 <?
-$MESS ['ORDER_PROPS'] = "Свойства заказа";
+$MESS ['ORDER_PROPS'] = "Контактные данные";
 $MESS ['DELIVERY'] = "Способы доставки";
 $MESS ['PAY_SYSTEM'] = "Способы оплаты";
 $MESS ['COMMENT'] = "Комментарий к заказу";
@@ -8,3 +8,4 @@ $MESS ['DELIVERY_PRICE'] = "Стоимость доставки:";
 $MESS ['TOTAL_PRICE'] = "Итого к оплате <br> с учетом доставки:";
 $MESS ['ORDER_SUCCESSFULLY_CREATED'] = "Спасибо! Ваш заказ успешно оформлен.";
 $MESS ['SUBMIT_BUTTON'] = "Оформить заказ";
+$MESS ['PAYMANT_TYPES'] = "Типы плательщика";
