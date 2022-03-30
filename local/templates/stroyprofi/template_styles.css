@@ -1171,3 +1171,7 @@ td .buy_helper_holder{
 .padding-left-50 {
     padding-left: 50px;
 }
+.payments_logs img {
+    max-height: 30px;
+    margin-top: 8px;
+}

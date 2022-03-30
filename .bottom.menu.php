@@ -41,6 +41,13 @@ $aMenuLinks = Array(
 		Array(), 
 		Array(), 
 		"" 
+	),
+	Array(
+		"Информация для покупателей",
+		"/buyer_info/",
+		Array(),
+		Array(),
+		""
 	)
 );
 ?>

@@ -12,9 +12,16 @@
                     <div class="shurup shurup_right"></div>
                     <table class="footer-table">
                         <tr>
-                            <td><div class="copyright">
-                                Строй Profi, 2012–<?=date("Y");?>
-                            </div></td>
+                            <td>
+                                <div class="copyright">
+                                 Строй Profi, 2012–<?=date("Y");?>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="payments_logs">
+                                    <img src="/images/logo-visa.png" alt="Логотипы платежных систсем">
+                                </div>
+                            </td>
                             <td><div class="menu">
 	                            <?$APPLICATION->IncludeComponent(
 	                            "bitrix:menu",
