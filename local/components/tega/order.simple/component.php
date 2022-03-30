@@ -1,6 +1,8 @@
 <?php
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-\Bitrix\Main\Diag\Debug::dumpToFile(['$_REQUEST' => $_REQUEST], '', 'log.txt');
+
+use Bitrix\Sale\PaySystem;
+
 if (empty($arParams["PERSON_TYPE_ID"])) {
     ShowError(\Bitrix\Main\Localization\Loc::getMessage("PERSON_TYPE_IS_NOT_SET"));
     return;
@@ -383,6 +385,31 @@ if (isset($form)) {
             /* / events sending */
 
             if ($arParams["ORDER_RESULT_PAGE"] !== "") {
+                // Проверяем если оплата была выбрана сбербанком, то редиректим пользователя на страницу с оплатой по карте СБЕРА
+                $order = \Bitrix\Sale\Order::load($arResult["ORDER_ID"]);
+                $paymentCollection = $order->getPaymentCollection();
+
+                $paySystemService = PaySystem\Manager::getObjectById(2);
+
+                foreach ($paymentCollection as $payment) {
+                    $payService = $payment->getPaySystem();
+                    $paySystemId = $payService->getField('ID');
+
+                    if ($paySystemId == 2) {
+                        $payment->setField('SUM', $order->getPrice());
+
+                        $result = $order->save();
+                        if ($result->isSuccess()) {
+                            LocalRedirect("/sber_pay.php?order_id=" . $arResult["ORDER_ID"], true);
+                        }
+                        else {
+                            echo $result->getError();
+                        }
+
+                        break;
+                    }
+                }
+
                 LocalRedirect($arParams["ORDER_RESULT_PAGE"] . "?ORDER_ID=" . $arResult["ORDER_ID"], true);
             } else {
                 $arResult["ORDER_SUCCESSFULLY_CREATED"] = "Y";
