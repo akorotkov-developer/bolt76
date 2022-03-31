@@ -17,6 +17,7 @@
     vertical-align: top;
     border-spacing: 0;
     border-collapse: collapse;
+    padding: 5px;
 }
 
 .content_table .left_block_holder{
@@ -390,7 +391,6 @@ hr.dashed{
     display: block;
     padding: 10px 0;
     height: 50px;
-    overflow: hidden;
     text-align: center;
 }
 

@@ -30,4 +30,7 @@ $APPLICATION->SetTitle("Заказы");
     "USER_CONSENT_IS_LOADED" => "Y"
 ),
     false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+
+<iframe width="100%" height="100%" src=""></iframe>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
