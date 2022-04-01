@@ -2240,3 +2240,6 @@ body.bx-theme-yellow .catalog-block-header{border-color:#f4b236;}
 	width: 60%;
 	text-align: center;
 }
+body .content_table td {
+	vertical-align: middle;
+}

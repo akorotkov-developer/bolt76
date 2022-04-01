@@ -452,12 +452,19 @@ foreach ($this->basketItems as $row)
 	$result['BASKET_ITEM_RENDER_DATA'][] = $rowData;
 }
 
+if ($result['allSum'] < 3000) {
+    $result['show_wrong'] = true;
+} else {
+    $result['show_wrong'] = false;
+}
 $totalData = array(
 	'DISABLE_CHECKOUT' => (int)$result['ORDERABLE_BASKET_ITEMS_COUNT'] === 0,
 	'PRICE' => $result['allSum'],
 	'PRICE_FORMATED' => $result['allSum_FORMATED'],
 	'PRICE_WITHOUT_DISCOUNT_FORMATED' => $result['PRICE_WITHOUT_DISCOUNT'],
-	'CURRENCY' => $result['CURRENCY']
+	'CURRENCY' => $result['CURRENCY'],
+	'SHOW_WRONG' => $result['show_wrong'],
+	'SHOW_SND_BTN' => !$result['show_wrong']
 );
 
 if ($result['DISCOUNT_PRICE_ALL'] > 0)

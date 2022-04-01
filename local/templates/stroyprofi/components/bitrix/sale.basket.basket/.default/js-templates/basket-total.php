@@ -29,6 +29,11 @@ use Bitrix\Main\Localization\Loc;
 		}
 		?>
 		<div class="basket-checkout-section">
+            {{#SHOW_WRONG}}
+            <div class="wrong-pay-sum">
+                Нельзя оформить заказ на сумму меньше 3000 руб.
+            </div>
+            {{/SHOW_WRONG}}
 			<div class="basket-checkout-section-inner">
                 <div class="basket-checkout-block b-clear-basket basket-checkout-block-btn">
                     <button class="btn btn-lg btn-default basket-btn-checkout" id="clear_basket">
@@ -72,10 +77,12 @@ use Bitrix\Main\Localization\Loc;
 				</div>
 
 				<div class="basket-checkout-block basket-checkout-block-btn">
-					<button class="btn btn-lg btn-default basket-btn-checkout{{#DISABLE_CHECKOUT}} disabled{{/DISABLE_CHECKOUT}}"
-						data-entity="basket-checkout-button">
-						<?=Loc::getMessage('SBB_ORDER')?>
-					</button>
+                    {{#SHOW_SND_BTN}}
+                        <button class="btn btn-lg btn-default basket-btn-checkout{{#DISABLE_CHECKOUT}} disabled{{/DISABLE_CHECKOUT}}"
+                            data-entity="basket-checkout-button">
+                            <?=Loc::getMessage('SBB_ORDER')?>
+                        </button>
+                    {{/SHOW_SND_BTN}}
 				</div>
 			</div>
 		</div>
