@@ -25,6 +25,12 @@ Extension::load('ui.bootstrap4');
                 "SHOW_ERRORS" => "Y"
             )
         ); ?>
+
+        <?php
+        global $USER;
+        if ($_GET['login'] == 'yes' && $USER->IsAuthorized()) {
+            LocalRedirect('/catalog/');
+        }?>
     </div><!-- /#content -->
 
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
