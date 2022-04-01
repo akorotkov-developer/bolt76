@@ -82,7 +82,7 @@ if($arParams["USE_REVIEW"]=="Y" && IsModuleInstalled("forum") && $ElementID):?>
 
 <div class="related_products">
     <div class="col-xs-12" data-entity="parent-container">
-        <div class="catalog-block-header" data-entity="header" data-showed="false"
+        <div class="catalog-block-header catalog-block-header-personal-recomended" data-entity="header" data-showed="false"
              style="display: none; opacity: 0;">
             <b>Персональные рекомендации: </b>
         </div>

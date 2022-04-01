@@ -1197,3 +1197,7 @@ td .buy_helper_holder{
     margin-right: 10px;
     min-width: 230px;
 }
+.catalog-block-header-personal-recomended {
+    font-size: 18px;
+    color: #FF7920;
+}
