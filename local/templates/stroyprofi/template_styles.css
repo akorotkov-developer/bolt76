@@ -1200,4 +1200,6 @@ td .buy_helper_holder{
 .catalog-block-header-personal-recomended {
     font-size: 18px;
     color: #FF7920;
+    border-top: 1px solid #dfdfe1;
+    padding-top: 25px;
 }
