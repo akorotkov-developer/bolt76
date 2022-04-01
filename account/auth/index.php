@@ -28,7 +28,7 @@ Extension::load('ui.bootstrap4');
 
         <?php
         global $USER;
-        if ($_GET['login'] == 'yes' && $USER->IsAuthorized()) {
+        if ($USER->IsAuthorized()) {
             LocalRedirect('/catalog/');
         }?>
     </div><!-- /#content -->
