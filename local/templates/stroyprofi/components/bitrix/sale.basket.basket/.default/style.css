@@ -626,6 +626,8 @@
 	width: 100%;
 	height: auto;
 	transition: 300ms all ease;
+	max-height: 150px;
+	object-fit: contain;
 }
 
 .basket-items-list-wrapper-compact .basket-item-image {
