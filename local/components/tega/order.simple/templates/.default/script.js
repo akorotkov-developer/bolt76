@@ -31,11 +31,39 @@ $( document ).ready(function() {
 var objOrderForm = {
     init: function () {
         $("input[id='simple_order_form_PHONE']").mask("+7(999) 999-9999");
+        $('#simple_order_form_INN').bind("change keyup input click", function() {
+            if (this.value.match(/[^0-9]/g)) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            }
+        });
+        $('#simple_order_form_KPP').bind("change keyup input click", function() {
+            if (this.value.match(/[^0-9]/g)) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            }
+        });
 
         var sToken = "ed7f02d17e73afff8b0621a1b1b5a5a100d06672";
         $(".form-control-address").suggestions({
             token: sToken,
             type: "ADDRESS",
         });
+        $("input[name='simple_order_form[COMPANY_ADR]']").suggestions({
+            token: sToken,
+            type: "ADDRESS",
+        });
     }
 }
+
+$(document).ready(function() {
+    $(document).on('click', '.switch', function() {
+        var radiosPersonType = $('input:radio[name=PERSON_TYPE]');
+        $(this).toggleClass("switchOn");
+        if ($(this).hasClass('switchOn')) {
+            radiosPersonType.filter('[value=2]').attr('checked', true);
+            radiosPersonType.trigger('change');
+        } else {
+            radiosPersonType.filter('[value=1]').attr('checked', true);
+            radiosPersonType.trigger('change');
+        }
+    });
+});

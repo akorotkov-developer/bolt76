@@ -199,3 +199,71 @@ form[name="simple_order_form"] {
 .req_fail:invalid {
     border: 2px solid red;
 }
+
+.switch {
+    width: 52px;
+    height: 22px;
+    background: #E5E5E5;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    border-radius:16px; //IE 11
+    -moz-border-radius:16px; //Mozilla
+    -webkit-border-radius:16px; //Chrome и Safari
+}
+.switch:before {
+    content: ' ';
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 50px;
+    height: 20px;
+    background: #fff;
+    z-index: 1;
+    border-radius:16px;
+    -moz-border-radius:16px;
+    -webkit-border-radius:16px;
+}
+
+.switch:after {
+    content: ' ';
+    height: 19px;
+    width: 26px;
+    border-radius: 28px;
+    background: #fff;
+    position: absolute;
+    z-index: 2;
+    top: 1px;
+    left: 1px;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+    -webkit-box-shadow: 0 2px 5px #999999;
+    box-shadow: 0 2px 5px #999999;
+}
+.switchOn,.switchOn:before
+{
+    background: #FF7920 !important;
+}
+
+.switchOn:after
+{
+    left: 25px !important;
+}
+.hidden-checkbox {
+    display: none;
+}
+.order-simple label.switch-label {
+    width: auto;
+    margin-right: 15px;
+}
+.order-simple__fieldwitch {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

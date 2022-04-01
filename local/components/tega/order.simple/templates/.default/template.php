@@ -53,7 +53,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                     </div>
                 <? } ?>
 
-                <div class="order-simple__block">
+                <div class="order-simple__block" style="display: none">
                     <div class="order-simple__block__title">1. <? echo GetMessage("PAYMANT_TYPES"); ?></div>
                     <?php
                     $dbResult = CSalePersonType::GetList(['SORT' => 'ASC'], ['LID' => SITE_ID]);
@@ -88,13 +88,16 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
 
                 <? if (!empty($arResult["ORDER_PROPS"])) { ?>
                     <div class="order-simple__block order-simple__block-width50 order-simple__block__noborder order-simple__block__marginminus15">
-                        <div class="order-simple__block__title">2. <? echo GetMessage("ORDER_PROPS"); ?></div>
+                        <div class="order-simple__block__title">1. <? echo GetMessage("ORDER_PROPS"); ?></div>
                         <div class="order-props-in-two-columns">
                             <?php
                             $arNoRequired = ['COMPANY_ADR', 'INN', 'KPP'];
                             // Исключенные для показа свойства
                             $arExcludedProps = ['LOCATION', 'ZIP', 'CITY', 'ADDRESS'];
+                            $i = 0;
                             foreach ($arResult["ORDER_PROPS"] as $arProp) {
+                                $i++;
+
                                 if (in_array($arProp['CODE'], $arExcludedProps)) {
                                     continue;
                                 }
@@ -103,8 +106,8 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                     $sRequired = 'required';
                                 } else {
                                     $sRequired = '';
-                                }
-                                ?>
+                                } ?>
+
                                 <div class="order-simple__field order-props-in-two-columns__item">
                                     <label for="<? echo $arParams["FORM_NAME"] ?>_<?= $arProp["CODE"] ?>">
                                     <span class="order-simple__field__title">
@@ -130,10 +133,28 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                             <input class="form-control" id="<? echo $arParams["FORM_NAME"] ?>_<?= $arProp["CODE"] ?>"
                                                    value="<? echo $arResult["CURRENT_VALUES"]["ORDER_PROPS"][$arProp["CODE"]]; ?>"
                                                    name="<? echo $arParams["FORM_NAME"] ?>[<?= $arProp["CODE"] ?>]"
-                                                   type="text" <?= $sRequired?>/>
+                                                   type="text"
+                                                   <?= $sRequired?>
+                                            />
                                         <? } ?>
                                     </label>
                                 </div>
+
+                            <?php if ($i == 3) { ?>
+                                </div>
+                                <div class="order-props-in-two-columns">
+                                    <div class="order-simple__field order-props-in-two-columns__item order-simple__fieldwitch">
+                                        <label class="switch-label">
+                                            <input type="checkbox" name="checkboxName" class="checkbox hidden-checkbox"/>
+                                            <div class="switch <?= ($_REQUEST['PERSON_TYPE'] == '2') ? 'switchOn' : ''?>"></div>
+                                        </label>
+                                        <div class="switch-label">
+                                            <b>Оформить как юридическое лицо</b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="order-props-in-two-columns">
+                            <?php } ?>
                             <? } ?>
                         </div>
                     </div>
@@ -142,7 +163,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
 
                 <? if (!empty($arResult["DELIVERY"])) { ?>
                     <div class="order-simple__block">
-                        <div class="order-simple__block__title">3. <? echo GetMessage("DELIVERY"); ?></div>
+                        <div class="order-simple__block__title">2. <? echo GetMessage("DELIVERY"); ?></div>
 
                         <div class="delivery_logos">
                             <?php
@@ -190,7 +211,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
 
                 <? if ($arResult["PAY_SYSTEM"]) { ?>
                     <div class="order-simple__block">
-                        <div class="order-simple__block__title">4. <? echo GetMessage("PAY_SYSTEM"); ?></div>
+                        <div class="order-simple__block__title">3. <? echo GetMessage("PAY_SYSTEM"); ?></div>
                         <?
                         foreach ($arResult["PAY_SYSTEM"] as $arPaySystem) { ?>
                             <div class="order-simple__field">
