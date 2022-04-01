@@ -213,8 +213,18 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                     <div class="order-simple__block">
                         <div class="order-simple__block__title">3. <? echo GetMessage("PAY_SYSTEM"); ?></div>
                         <?
-                        foreach ($arResult["PAY_SYSTEM"] as $arPaySystem) { ?>
-                            <div class="order-simple__field">
+                        foreach ($arResult["PAY_SYSTEM"] as $arPaySystem) {
+                            if ($arPaySystem['ID'] == 3 && $_REQUEST['PERSON_TYPE'] == '2') {
+                                continue;
+                            }
+
+                            if ($_REQUEST['simple_order_form']['DELIVERY'] == '4' && $arPaySystem['ID'] == 3) {
+                                $sDisplay = 'style="display: none;"';
+                            } else {
+                                $sDisplay = '';
+                            }
+                            ?>
+                            <div class="order-simple__field" <?= $sDisplay; ?>>
                                 <label for="pay_system_<?= $arPaySystem["ID"] ?>">
                                     <input type="radio"
                                            onchange="submitForm('NO_VALID'); return false;"

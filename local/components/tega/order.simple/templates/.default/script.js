@@ -57,13 +57,32 @@ var objOrderForm = {
 $(document).ready(function() {
     $(document).on('click', '.switch', function() {
         var radiosPersonType = $('input:radio[name=PERSON_TYPE]');
+        var paySystemBlock = $('input[name="simple_order_form[PAY_SYSTEM]"]');
+        var labelPaySystem = $('label[for="pay_system_3"]').parent();
+
         $(this).toggleClass("switchOn");
         if ($(this).hasClass('switchOn')) {
             radiosPersonType.filter('[value=2]').attr('checked', true);
             radiosPersonType.trigger('change');
+            labelPaySystem.fadeOut();
+            paySystemBlock.filter('[value=2]').attr('checked', true);
         } else {
             radiosPersonType.filter('[value=1]').attr('checked', true);
             radiosPersonType.trigger('change');
+            labelPaySystem.fadeIn();
+        }
+    });
+
+    // При доставке до терминала не должно быть наличного расчета
+    $(document).on('change', '.input_delivery', function() {
+        var paySystemBlock = $('input[name="simple_order_form[PAY_SYSTEM]"]');
+        var labelPaySystem = $('label[for="pay_system_3"]').parent();
+
+        if ($(this).val() == 4) {
+            labelPaySystem.fadeOut();
+            paySystemBlock.filter('[value=2]').attr('checked', true);
+        } else {
+            labelPaySystem.fadeIn();
         }
     });
 });
