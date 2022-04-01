@@ -1175,3 +1175,25 @@ td .buy_helper_holder{
     max-height: 30px;
     margin-top: 8px;
 }
+.btn-primary {
+     color: #fff;
+     background-color: #FF7920!important;
+     border-color: #FF7920!important;
+}
+.form-control-maxwidth200 {
+    max-width: 200px;
+}
+.form-calculate-result {
+    margin-bottom: 50px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.form-group-flex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.form-group-flex label {
+    margin-right: 10px;
+    min-width: 230px;
+}
