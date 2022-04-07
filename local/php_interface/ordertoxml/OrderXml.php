@@ -200,12 +200,12 @@ class OrderXml
 
         $text = '<table style="border-spacing:0px;border-collapse:collapse;width:100%;font-size:12px;font-family:Arial;">
 					<tr style="background:#FF7920;">
-					<td style="' . $styles["td"] . $styles["td20"] . '">№</td>
-					<td style="' . $styles["td"] . $styles["td100"] . '">Артикул</td>
-					<td style="' . $styles["td"] . '">Наименование</td>
-					<td style="' . $styles["td"] . $styles["td100"] . '">Количество</td>
-					<td style="' . $styles["td"] . $styles["td100"] . '">Цена роз</td>
-					<td style="' . $styles["td"] . $styles["td100"] . '">Цена опт</td>
+                        <td style="' . $styles["td"] . $styles["td20"] . '">№</td>
+                        <td style="' . $styles["td"] . $styles["td100"] . '">Артикул</td>
+                        <td style="' . $styles["td"] . '">Наименование</td>
+                        <td style="' . $styles["td"] . $styles["td100"] . '">Количество</td>
+                        <td style="' . $styles["td"] . $styles["td100"] . '">Цена роз</td>
+                        <td style="' . $styles["td"] . $styles["td100"] . '">Цена опт</td>
 					</tr>';
 
         $j = 1;
@@ -215,7 +215,7 @@ class OrderXml
 						<td style="' . $styles["td"] . $styles["td100"] . '">' . $arItem["PROPERTY_ARTICUL_VALUE"] . '</td>
 						<td style="' . $styles["td"] . '">' . $arItem["PROPERTY_NAIMENOVANIE_VALUE"] . '</td>
 						<td style="' . $styles["td"] . $styles["td100"] . '">' . $arItem['QUANTITY'] . '</td>
-						<td style="' . $styles["td"] . $styles["td100"] . '">' . $arItem["PRICE"] . ' руб</td>
+						<td style="' . $styles["td"] . $styles["td100"] . '">' . round((float)$arItem["PRICE"], 2) . ' руб</td>
 						<td style="' . $styles["td"] . $styles["td100"] . '">' . round((float)$arItem["PROPERTY_PRICE_OPT_VALUE"], 2) . ' руб</td>
 						</tr>';
         }
