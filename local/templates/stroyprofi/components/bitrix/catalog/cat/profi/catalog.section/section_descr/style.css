@@ -20,3 +20,9 @@
     white-space: nowrap;
     border-radius: 3px;
 }
+.filter_section_title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px;
+    display: block;
+}

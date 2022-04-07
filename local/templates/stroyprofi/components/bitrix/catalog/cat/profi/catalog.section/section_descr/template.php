@@ -24,8 +24,14 @@ if (sizeof($arResult["ITEMS"]) > 0) {
     </tr>
     </thead>
     <tbody>
-    <? foreach ($arResult["ITEMS"] as $cell => $arElement): ?>
-        <?
+    <?php
+    $isSectionNameWrited = false;
+    foreach ($arResult["ITEMS"] as $cell => $arElement):
+
+        if ($arResult['IS_FILTER']) {
+            $sCurSectionNameForFilter = $arElement['FILTER_SECTION_NAME'];
+        }
+
         $this->AddEditAction($arElement['ID'], $arElement['EDIT_LINK'], CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "ELEMENT_EDIT"));
         $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BCS_ELEMENT_DELETE_CONFIRM')));
 
@@ -55,6 +61,30 @@ if (sizeof($arResult["ITEMS"]) > 0) {
 
         $arElement["NAME"] = ($arElement["NAME"] == "-" ? $arElement["PROPERTIES"]["NAIMENOVANIE"]["VALUE"] : $arElement["NAME"]);
         ?>
+
+        <?php
+        // Поставим заголовок для товаров в случае фильтрации, если он еще не был записан
+        if ($arResult['IS_FILTER'] && !$isSectionNameWrited) { ?>
+            <tr>
+                <td colspan="11">
+                    <span class="filter_section_title"><?= $sCurSectionNameForFilter?></span>
+                </td>
+            </tr>
+            <?php
+            $isSectionNameWrited = true;
+        }
+
+        // Проверяем, если у следующего элемента отличается заголовок, то зададим переменной
+        // заголовка новое значение
+        if (!empty($arResult['ITEMS'][$cell + 1]) &&
+            $arResult['ITEMS'][$cell + 1]['FILTER_SECTION_NAME'] != $sCurSectionNameForFilter &&
+            $arResult['ITEMS'][$cell + 1]['FILTER_SECTION_NAME'] != '') {
+
+            $sCurSectionNameForFilter = $arResult['ITEMS'][$cell + 1]['FILTER_SECTION_NAME'];
+            $isSectionNameWrited = false;
+        }
+        ?>
+
         <tr id="<?= $this->GetEditAreaId($arElement['ID']); ?>"
             class="<?= ((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
             <? if ($cell == 0) { ?>
