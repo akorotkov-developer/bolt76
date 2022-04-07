@@ -267,3 +267,23 @@ form[name="simple_order_form"] {
     margin-top: 15px;
     margin-bottom: 15px;
 }
+.order-simple .order-simple__block .b-transport-info {
+    margin-top: 15px;
+    border: 1px solid #dfdfe1;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 50vmin;
+    min-width: 50vmax;
+    display: none;
+}
+.b-transport-info h4 {
+    margin-bottom: 20px;
+}
+.delivery_company_name {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+}
+.delivery_company_name .order-simple__field {
+    margin-right: 20px;
+}

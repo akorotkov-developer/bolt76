@@ -31,6 +31,8 @@ $( document ).ready(function() {
 var objOrderForm = {
     init: function () {
         $("input[id='simple_order_form_PHONE']").mask("+7(999) 999-9999");
+        $("input[id='simple_order_form_RECIPIENT_PHONE']").mask("+7(999) 999-9999");
+
         $('#simple_order_form_INN').bind("change keyup input click", function() {
             if (this.value.match(/[^0-9]/g)) {
                 this.value = this.value.replace(/[^0-9]/g, '');
@@ -48,6 +50,10 @@ var objOrderForm = {
             type: "ADDRESS",
         });
         $("input[name='simple_order_form[COMPANY_ADR]']").suggestions({
+            token: sToken,
+            type: "ADDRESS",
+        });
+        $("input[name='simple_order_form[TERMINAL_ADDRESS]']").suggestions({
             token: sToken,
             type: "ADDRESS",
         });
@@ -74,6 +80,7 @@ $(document).ready(function() {
     });
 
     // При доставке до терминала не должно быть наличного расчета
+    // Должны быть видны данные для доставки
     $(document).on('change', '.input_delivery', function() {
         var paySystemBlock = $('input[name="simple_order_form[PAY_SYSTEM]"]');
         var labelPaySystem = $('label[for="pay_system_3"]').parent();
@@ -81,8 +88,28 @@ $(document).ready(function() {
         if ($(this).val() == 4) {
             labelPaySystem.fadeOut();
             paySystemBlock.filter('[value=2]').attr('checked', true);
+
+            // Показываем блок с данными о доставке
+            $('.b-transport-info').fadeIn();
+            $('#simple_order_form_TRANSPORT_COMPANY').val($('input[name="delivery_company_name"]:checked').val());
         } else {
             labelPaySystem.fadeIn();
+            $('.b-transport-info').fadeOut();
+            $('#simple_order_form_TRANSPORT_COMPANY').val('');
+        }
+    });
+
+    // Переключение названий компаний доставки
+    $(document).on('change', 'input[name="delivery_company_name"]', function() {
+        console.log($(this).val());
+        $('#simple_order_form_TRANSPORT_COMPANY').val($(this).val());
+    });
+
+    // Запрет отправки формы по нажатию Enter
+    $('#simple_order_form').bind("keypress", function(e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            return false;
         }
     });
 });

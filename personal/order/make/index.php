@@ -8,6 +8,7 @@ Extension::load('ui.bootstrap4');
 ?>
 
 <?php
+// Если юридическое лицо то ... , иначе физическое лицо
 if ($_REQUEST['PERSON_TYPE'] == 2) {
     $arOrderProps = [
         0 => "9",
@@ -17,6 +18,11 @@ if ($_REQUEST['PERSON_TYPE'] == 2) {
         4 => "13",
         5 => "14",
         6 => "15",
+        7 => "21",
+        8 => "23",
+        9 => "25",
+        10 => "27",
+        11 => "29",
     ];
 } else {
     $arOrderProps = [
@@ -27,6 +33,11 @@ if ($_REQUEST['PERSON_TYPE'] == 2) {
         4 => "5",
         5 => "6",
         6 => "7",
+        7 => "20",
+        8 => "22",
+        9 => "24",
+        10 => "26",
+        11 => "28",
     ];
 }
 
@@ -45,7 +56,7 @@ $APPLICATION->IncludeComponent(
 		"ENABLE_VALIDATION_INPUT_ID" => "simple_order_form_validation",
 		"ENABLE_VALIDATION_INPUT_NAME" => "validation",
 		"EVENT_TYPES" => array(
-			0 => "SALE_NEW_ORDER",
+			//0 => "SALE_NEW_ORDER",
 		),
 		"FIO_PROPERTY" => "1",
 		"FORM_ID" => "simple_order_form",

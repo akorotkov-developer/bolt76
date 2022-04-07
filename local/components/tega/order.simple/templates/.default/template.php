@@ -93,7 +93,10 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                             <?php
                             $arNoRequired = ['COMPANY_ADR', 'INN', 'KPP'];
                             // Исключенные для показа свойства
-                            $arExcludedProps = ['LOCATION', 'ZIP', 'CITY', 'ADDRESS'];
+                            $arExcludedProps = [
+                                'LOCATION', 'ZIP', 'CITY', 'ADDRESS', 'TRANSPORT_COMPANY', 'TERMINAL_ADDRESS',
+                                'TRANSPORT_RECIPIENT_FULL_NAME', 'PASSPORT_DATA_RECIPIENT', 'RECIPIENT_PHONE'
+                            ];
                             $i = 0;
                             foreach ($arResult["ORDER_PROPS"] as $arProp) {
                                 $i++;
@@ -199,6 +202,14 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                             } else {
                                 $sDisplay = "style='display: none'";
                             }
+
+                            if ($arDelivery['ID'] == 4 && $arDelivery['CHECKED'] == "Y") {
+                                $sDisplayTransportData = "style='display: block'";
+                                $sDeliveryValue = 'СДЭК';
+                            } else {
+                                $sDisplayTransportData = "";
+                                $sDeliveryValue = '';
+                            }
                         } ?>
                         <label for="simple_order_form_ADDRESS" <?= $sDisplay?> class="b-label-address">
                                 <span class="order-simple__field__title">
@@ -206,6 +217,85 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                 </span>
                             <input class="form-control form-control-address" id="simple_order_form_ADDRESS" value="<?= $_REQUEST['simple_order_form']['ADDRESS']?>" name="simple_order_form[ADDRESS]" type="text" placeholder="Введите адрес доставки">
                         </label>
+
+                        <div class="b-transport-info" <?= $sDisplayTransportData?>>
+                            <h4><b>Данные доставки:</b></h4>
+
+                            <div class="delivery_company_name">
+                                <div class="order-simple__field">
+                                    <label for="sdek">
+                                        <input type="radio" checked="" id="sdek" value="СДЭК" name="delivery_company_name" autocomplete="off">
+                                        <b>СДЭК</b>
+                                    </label>
+                                </div>
+                                <div class="order-simple__field">
+                                    <label for="business_lines">
+                                        <input type="radio" id="business_lines" value="Деловые линии" name="delivery_company_name" autocomplete="off">
+                                        <b>Деловые линии</b>
+                                    </label>
+                                </div>
+                                <div class="order-simple__field">
+                                    <label for="pek">
+                                        <input type="radio" id="pek" value="ПЭК" name="delivery_company_name" autocomplete="off">
+                                        <b>ПЭК</b>
+                                    </label>
+                                </div>
+                                <div class="order-simple__field">
+                                    <label for="baikal_servise">
+                                        <input type="radio" id="baikal_servise" value="Байкал сервис" name="delivery_company_name" autocomplete="off">
+                                        <b>Байкал-Сервис</b>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="order-props-in-two-columns">
+                                <div class="order-simple__field order-props-in-two-columns__item" style="display: none">
+                                    <label for="simple_order_form_TRANSPORT_COMPANY">
+                                        <span class="order-simple__field__title">
+                                            Транспортная компания
+                                        </span>
+                                        <input class="form-control" id="simple_order_form_TRANSPORT_COMPANY" value="<?= $sDeliveryValue?>" name="simple_order_form[TRANSPORT_COMPANY]" type="text">
+                                    </label>
+                                </div>
+
+                                <div class="order-simple__field order-props-in-two-columns__item">
+                                    <label for="simple_order_form_RECIPIENT_PHONE">
+                                        <span class="order-simple__field__title">
+                                            Контактный телефон получателя
+                                        </span>
+                                        <input class="form-control" id="simple_order_form_RECIPIENT_PHONE" value="" name="simple_order_form[RECIPIENT_PHONE]" type="text">
+                                    </label>
+                                </div>
+
+                                <div class="order-simple__field order-props-in-two-columns__item">
+                                    <label for="simple_order_form_TRANSPORT_RECIPIENT_FULL_NAME">
+                                        <span class="order-simple__field__title">
+                                            ФИО получателя
+                                        </span>
+                                        <input class="form-control" id="simple_order_form_TRANSPORT_RECIPIENT_FULL_NAME" value="" name="simple_order_form[TRANSPORT_RECIPIENT_FULL_NAME]" type="text">
+                                    </label>
+                                </div>
+
+                                <div class="order-simple__field order-props-in-two-columns__item">
+                                    <label for="simple_order_form_PASSPORT_DATA_RECIPIENT">
+                                        <span class="order-simple__field__title">
+                                            Паспортные данные получателя
+                                        </span>
+                                        <input class="form-control" id="simple_order_form_PASSPORT_DATA_RECIPIENT" value="" name="simple_order_form[PASSPORT_DATA_RECIPIENT]" type="text">
+                                    </label>
+                                </div>
+
+                                <div class="order-simple__field order-props-in-two-columns__item">
+                                    <label for="simple_order_form_TERMINAL_ADDRESS">
+                                        <span class="order-simple__field__title">
+                                            Адрес терминала транспортной компании
+                                        </span>
+                                        <input class="form-control" id="simple_order_form_TERMINAL_ADDRESS" value="" name="simple_order_form[TERMINAL_ADDRESS]" type="text">
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 <? } ?>
 
