@@ -36,6 +36,11 @@ use Bitrix\Main\Localization\Loc;
             {{/SHOW_WRONG}}
 			<div class="basket-checkout-section-inner">
                 <div class="basket-checkout-block b-clear-basket basket-checkout-block-btn">
+                    <a href="/catalog/" class="btn btn-lg btn-default basket-btn-checkout">
+                        Продолжить покупки
+                    </a>
+                </div>
+                <div class="basket-checkout-block b-clear-basket basket-checkout-block-btn">
                     <button class="btn btn-lg btn-default basket-btn-checkout" id="clear_basket">
                         Очистить корзину
                     </button>
