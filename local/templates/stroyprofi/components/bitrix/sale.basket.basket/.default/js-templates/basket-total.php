@@ -31,7 +31,7 @@ use Bitrix\Main\Localization\Loc;
 		<div class="basket-checkout-section">
             {{#SHOW_WRONG}}
             <div class="wrong-pay-sum">
-                Нельзя оформить заказ на сумму меньше 3000 руб.
+                Нельзя оформить заказ на сумму меньше 1000 руб.
             </div>
             {{/SHOW_WRONG}}
 			<div class="basket-checkout-section-inner">

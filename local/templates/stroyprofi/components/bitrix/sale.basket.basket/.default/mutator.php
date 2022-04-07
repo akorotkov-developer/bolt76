@@ -452,7 +452,7 @@ foreach ($this->basketItems as $row)
 	$result['BASKET_ITEM_RENDER_DATA'][] = $rowData;
 }
 
-if ($result['allSum'] < 3000) {
+if ($result['allSum'] < 1000) {
     $result['show_wrong'] = true;
 } else {
     $result['show_wrong'] = false;
