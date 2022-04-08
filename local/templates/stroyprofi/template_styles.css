@@ -1226,3 +1226,14 @@ td .buy_helper_holder{
     margin-top: 0.25rem;
     color: #dc3545;
 }
+.standart_table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+}
+.standart_table td {
+    vertical-align: top;
+    border-spacing: 0;
+    border-collapse: collapse;
+    padding: 5px;
+    border: 1px solid #000;
+}
