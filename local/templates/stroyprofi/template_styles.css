@@ -1227,13 +1227,22 @@ td .buy_helper_holder{
     color: #dc3545;
 }
 .standart_table {
-    font-family: Arial, sans-serif;
+    font-family: Verdana, Arial, sans-serif;
     border-collapse: collapse;
+}
+.standart_table th {
+    vertical-align: top;
+    border-spacing: 0;
+    border-collapse: collapse;
+    padding: 5px;
+    font-weight: bold;
+    border: 1px solid #000;
 }
 .standart_table td {
     vertical-align: top;
     border-spacing: 0;
     border-collapse: collapse;
     padding: 5px;
+    width: 80%;
     border: 1px solid #000;
 }
