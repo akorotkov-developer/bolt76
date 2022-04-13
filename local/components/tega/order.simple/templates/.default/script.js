@@ -101,7 +101,6 @@ $(document).ready(function() {
 
     // Переключение названий компаний доставки
     $(document).on('change', 'input[name="delivery_company_name"]', function() {
-        console.log($(this).val());
         $('#simple_order_form_TRANSPORT_COMPANY').val($(this).val());
     });
 
@@ -111,5 +110,15 @@ $(document).ready(function() {
             e.preventDefault();
             return false;
         }
+    });
+
+    // Выбор типа доставки при выборе доставкой до терминала транспортной компанией
+    $(document).on('change', 'input[name="delivery_type"]', function() {
+        $('#address_for_delivery_type').text($(this).val());
+    });
+
+    // Событие выбора времени доставки в select
+    $(document).on('change', 'select#choose_delivery_time', function() {
+        $('#simple_order_form_DESIRED_DELIVERY_TIME').val($(this).val());
     });
 });

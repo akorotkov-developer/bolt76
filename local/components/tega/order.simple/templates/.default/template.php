@@ -95,7 +95,8 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                             // Исключенные для показа свойства
                             $arExcludedProps = [
                                 'LOCATION', 'ZIP', 'CITY', 'ADDRESS', 'TRANSPORT_COMPANY', 'TERMINAL_ADDRESS',
-                                'TRANSPORT_RECIPIENT_FULL_NAME', 'PASSPORT_DATA_RECIPIENT', 'RECIPIENT_PHONE'
+                                'TRANSPORT_RECIPIENT_FULL_NAME', 'PASSPORT_DATA_RECIPIENT', 'RECIPIENT_PHONE',
+                                'FIO_RECIPIENT', 'CONTACT_PHONE_RECIPIENT', 'DESIRED_DELIVERY_TIME'
                             ];
                             $i = 0;
                             foreach ($arResult["ORDER_PROPS"] as $arProp) {
@@ -211,12 +212,56 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                 $sDeliveryValue = '';
                             }
                         } ?>
-                        <label for="simple_order_form_ADDRESS" <?= $sDisplay?> class="b-label-address">
-                                <span class="order-simple__field__title">
-                                    <b>Адрес доставки</b>
-                                </span>
-                            <input class="form-control form-control-address" id="simple_order_form_ADDRESS" value="<?= $_REQUEST['simple_order_form']['ADDRESS']?>" name="simple_order_form[ADDRESS]" type="text" placeholder="Введите адрес доставки">
-                        </label>
+                        <div <?= $sDisplay?> class="b-label-address">
+
+                            <div class="order-props-in-two-columns">
+                                <div class="order-simple__field order-props-in-two-columns__item">
+                                    <label for="simple_order_form_FIO_RECIPIENT">
+                                        <span class="order-simple__field__title">
+                                            ФИО получателя
+                                        </span>
+                                        <input class="form-control" id="simple_order_form_FIO_RECIPIENT" value="" name="simple_order_form[FIO_RECIPIENT]" type="text" required="">
+                                    </label>
+                                </div>
+
+                                <div class="order-simple__field order-props-in-two-columns__item">
+                                    <label for="simple_order_form_CONTACT_PHONE_RECIPIENT">
+                                        <span class="order-simple__field__title">
+                                            Контанктый телефон получателя
+                                        </span>
+                                        <input class="form-control" id="simple_order_form_CONTACT_PHONE_RECIPIENT" value="" name="simple_order_form[CONTACT_PHONE_RECIPIENT]" type="text" required="">
+                                    </label>
+                                </div>
+
+                                <div class="order-simple__field order-props-in-two-columns__item">
+                                    <label for="simple_order_form_DESIRED_DELIVERY_TIME">
+                                        <span class="order-simple__field__title">
+                                            Желаемое время доставки
+                                        </span>
+
+                                        <select id="choose_delivery_time">
+                                            <option value="" disabled selected>Выберите желаемое время доставки</option>
+                                            <option value="с 10:00 до 12:00">с 10:00 до 12:00</option>
+                                            <option value="c 12:00 до 15:00">c 12:00 до 15:00</option>
+                                            <option value="с 15:00 до 17:00">с 15:00 до 17:00</option>
+                                            <option value="с 17:00 до 19:00">с 17:00 до 19:00</option>
+                                        </select>
+
+                                        <input class="form-control" id="simple_order_form_DESIRED_DELIVERY_TIME" value="" name="simple_order_form[DESIRED_DELIVERY_TIME]" type="hidden" required="">
+                                    </label>
+                                </div>
+
+                                <div class="order-simple__field order-props-in-two-columns__item">
+                                    <label for="simple_order_form_ADDRESS">
+                                        <span class="order-simple__field__title">
+                                            Адрес доставки
+                                        </span>
+                                        <input class="form-control form-control-address" id="simple_order_form_ADDRESS" value="<?= $_REQUEST['simple_order_form']['ADDRESS']?>" name="simple_order_form[ADDRESS]" type="text" placeholder="Введите адрес доставки">
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
 
                         <div class="b-transport-info" <?= $sDisplayTransportData?>>
                             <h4><b>Данные доставки:</b></h4>
@@ -284,17 +329,34 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                         <input class="form-control" id="simple_order_form_PASSPORT_DATA_RECIPIENT" value="" name="simple_order_form[PASSPORT_DATA_RECIPIENT]" type="text">
                                     </label>
                                 </div>
+                            </div>
 
+                            <div class="delivery_type">
+                                <div class="order-simple__field">
+                                    <label for="terminal">
+                                        <input type="radio" checked="" id="terminal" value="Доставка до терминала транспортной компании" name="delivery_type" autocomplete="off">
+                                        <b>Доставка до терминала транспортной компании</b>
+                                    </label>
+                                </div>
+                                <div class="order-simple__field">
+                                    <label for="address_delivery">
+                                        <input type="radio" id="address_delivery" value="Адресная доставки" name="delivery_type" autocomplete="off">
+                                        <b>Адресная доставка (до двери)</b>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="order-props-in-two-columns">
                                 <div class="order-simple__field order-props-in-two-columns__item">
                                     <label for="simple_order_form_TERMINAL_ADDRESS">
-                                        <span class="order-simple__field__title">
-                                            Адрес терминала транспортной компании
-                                        </span>
+                                            <span class="order-simple__field__title" id="address_for_delivery_type">
+                                                Адрес терминала транспортной компании
+                                            </span>
                                         <input class="form-control" id="simple_order_form_TERMINAL_ADDRESS" value="" name="simple_order_form[TERMINAL_ADDRESS]" type="text">
                                     </label>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
                 <? } ?>

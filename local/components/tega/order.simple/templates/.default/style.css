@@ -287,3 +287,14 @@ form[name="simple_order_form"] {
 .delivery_company_name .order-simple__field {
     margin-right: 20px;
 }
+.order-props-in-two-columns {
+    margin-bottom: 15px;
+}
+.delivery_type {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+}
+.delivery_type .order-simple__field {
+    margin-right: 20px;
+}
