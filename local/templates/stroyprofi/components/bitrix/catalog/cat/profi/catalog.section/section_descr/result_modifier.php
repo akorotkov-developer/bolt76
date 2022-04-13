@@ -42,7 +42,10 @@ if (strpos($sCurPage, '/apply/') !== false) {
             }
 
             foreach ($arResult['ITEMS'] as $key => $arItem) {
-                $arResult['ITEMS'][$key]['FILTER_SECTION_NAME'] = $arSections[$arItem['~IBLOCK_SECTION_ID']];
+                $sFilteredSectName = ltrim($arSections[$arItem['~IBLOCK_SECTION_ID']], '1234567890');
+                $sFilteredSectName = ltrim($sFilteredSectName);
+
+                $arResult['ITEMS'][$key]['FILTER_SECTION_NAME'] = $sFilteredSectName;
             }
 
             $arResult['IS_FILTER'] = true;
