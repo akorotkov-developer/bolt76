@@ -32,6 +32,7 @@ var objOrderForm = {
     init: function () {
         $("input[id='simple_order_form_PHONE']").mask("+7(999) 999-9999");
         $("input[id='simple_order_form_RECIPIENT_PHONE']").mask("+7(999) 999-9999");
+        $("input[id='simple_order_form_CONTACT_PHONE_RECIPIENT']").mask("+7(999) 999-9999");
 
         $('#simple_order_form_INN').bind("change keyup input click", function() {
             if (this.value.match(/[^0-9]/g)) {
