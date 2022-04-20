@@ -379,7 +379,6 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                             <div class="order-simple__field" <?= $sDisplay; ?>>
                                 <label for="pay_system_<?= $arPaySystem["ID"] ?>">
                                     <input type="radio"
-                                           onchange="submitForm('NO_VALID'); return false;"
                                            <? if ($arPaySystem["CHECKED"] == "Y"){ ?>checked<? } ?>
                                            id="pay_system_<?= $arPaySystem["ID"] ?>"
                                            name="<? echo $arParams["FORM_NAME"] ?>[PAY_SYSTEM]"

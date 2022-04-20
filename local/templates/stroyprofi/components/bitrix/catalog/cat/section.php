@@ -58,8 +58,7 @@ if ($ar_result = $db_list->GetNext()) {
     <div class="col-lg-3 b-product-filter <?= (isset($arParams['FILTER_HIDE_ON_MOBILE']) && $arParams['FILTER_HIDE_ON_MOBILE'] === 'Y' ? ' hidden-xs' : '') ?>">
 
         <div class="bx-sidebar-block">
-            <?
-            $APPLICATION->IncludeComponent(
+            <? $APPLICATION->IncludeComponent(
                 "bitrix:catalog.smart.filter",
                 "",
                 array(
@@ -85,7 +84,7 @@ if ($ar_result = $db_list->GetNext()) {
                     "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
                     "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
                     "INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
-                    "DISPLAY_ELEMENT_COUNT" => 'Y'
+                    "DISPLAY_ELEMENT_COUNT" => 'Y',
                 ),
                 $component,
                 array('HIDE_ICONS' => 'Y')
@@ -167,7 +166,17 @@ if ($ar_result = $db_list->GetNext()) {
     <div class="section-panes">
         <div class="section-pane b-product-items"><? } ?>
 
-                <? $APPLICATION->IncludeComponent(
+            <?php
+            $sCurPage = $APPLICATION->GetCurPage();
+            if (strpos($sCurPage, '/apply/') !== false) {
+                $arParams["ELEMENT_SORT_FIELD"] = 'PROPERTY_ELEMENT_SECTION_NAME';
+            }
+
+            $arParams["ELEMENT_SORT_FIELD2"] = 'PROPERTY_Naimenovanie';
+            $arParams["ELEMENT_SORT_ORDER2"] = $arParams["ELEMENT_SORT_ORDER"];
+
+
+            $APPLICATION->IncludeComponent(
                     "profi:catalog.section",
                     ($template ? 'section_descr' : ''),
                     array(
@@ -175,6 +184,8 @@ if ($ar_result = $db_list->GetNext()) {
                         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
                         "ELEMENT_SORT_FIELD" => $arParams["ELEMENT_SORT_FIELD"],
                         "ELEMENT_SORT_ORDER" => $arParams["ELEMENT_SORT_ORDER"],
+                        "ELEMENT_SORT_FIELD2" => $arParams["ELEMENT_SORT_FIELD2"],
+                        "ELEMENT_SORT_ORDER2" => $arParams["ELEMENT_SORT_ORDER"],
                         "PROPERTY_CODE" => $arParams["LIST_PROPERTY_CODE"],
                         "META_KEYWORDS" => $arParams["LIST_META_KEYWORDS"],
                         "META_DESCRIPTION" => $arParams["LIST_META_DESCRIPTION"],
