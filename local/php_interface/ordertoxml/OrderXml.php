@@ -204,11 +204,12 @@ class OrderXml
                         <td style="' . $styles["td"] . $styles["td100"] . '">Артикул</td>
                         <td style="' . $styles["td"] . '">Наименование</td>
                         <td style="' . $styles["td"] . $styles["td100"] . '">Количество</td>
-                        <td style="' . $styles["td"] . $styles["td100"] . '">Цена роз</td>
-                        <td style="' . $styles["td"] . $styles["td100"] . '">Цена опт</td>
+                        <td style="' . $styles["td"] . $styles["td100"] . '">Цена</td>
+                        <!--<td style="' . $styles["td"] . $styles["td100"] . '">Цена опт</td>-->
 					</tr>';
 
         $j = 1;
+        $totalPrice = 0;
         foreach ($this->arOrderParams as $arItem) {
             $text .= '<tr style="' . $styles["tr" . ($i++ % 2)] . '">
 						<td style="' . $styles["td"] . $styles["td20"] . '">' . ($j++) . '.</td>
@@ -216,9 +217,18 @@ class OrderXml
 						<td style="' . $styles["td"] . '">' . $arItem["PROPERTY_NAIMENOVANIE_VALUE"] . '</td>
 						<td style="' . $styles["td"] . $styles["td100"] . '">' . $arItem['QUANTITY'] . '</td>
 						<td style="' . $styles["td"] . $styles["td100"] . '">' . round((float)$arItem["PRICE"], 2) . ' руб</td>
-						<td style="' . $styles["td"] . $styles["td100"] . '">' . round((float)$arItem["PROPERTY_PRICE_OPT_VALUE"], 2) . ' руб</td>
+						<!--<td style="' . $styles["td"] . $styles["td100"] . '">' . round((float)$arItem["PROPERTY_PRICE_OPT_VALUE"], 2) . ' руб</td>-->
 						</tr>';
+            $totalPrice += round((float)$arItem["PRICE"], 2);
         }
+
+        $text .= '<tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>Итого:</b></td>
+                    <td><b>' . $totalPrice . ' руб</b></td>
+                  ';
 
         $text .= '</table>';
 
