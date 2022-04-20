@@ -242,7 +242,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                         <span class="order-simple__field__title">
                                             ФИО получателя
                                         </span>
-                                        <input class="form-control" id="simple_order_form_FIO_RECIPIENT" value="" name="simple_order_form[FIO_RECIPIENT]" type="text" required="">
+                                        <input class="form-control" id="simple_order_form_FIO_RECIPIENT" value="" name="simple_order_form[FIO_RECIPIENT]" type="text" >
                                     </label>
                                 </div>
 
@@ -251,7 +251,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                         <span class="order-simple__field__title">
                                             Контанктый телефон получателя
                                         </span>
-                                        <input class="form-control" id="simple_order_form_CONTACT_PHONE_RECIPIENT" value="" name="simple_order_form[CONTACT_PHONE_RECIPIENT]" type="text" required="">
+                                        <input class="form-control" id="simple_order_form_CONTACT_PHONE_RECIPIENT" value="" name="simple_order_form[CONTACT_PHONE_RECIPIENT]" type="text" >
                                     </label>
                                 </div>
 
@@ -269,7 +269,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                             <option value="с 17:00 до 19:00">с 17:00 до 19:00</option>
                                         </select>
 
-                                        <input class="form-control" id="simple_order_form_DESIRED_DELIVERY_TIME" value="" name="simple_order_form[DESIRED_DELIVERY_TIME]" type="hidden" required="">
+                                        <input class="form-control" id="simple_order_form_DESIRED_DELIVERY_TIME" value="" name="simple_order_form[DESIRED_DELIVERY_TIME]" type="hidden" >
                                     </label>
                                 </div>
 
