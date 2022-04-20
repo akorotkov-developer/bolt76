@@ -133,9 +133,31 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                                     </option>
                                                 <? } ?>
                                             </select>
-                                        <? } else { ?>
+                                        <? } else {
+                                            if ($arProp["CODE"] == 'CONTACT_PERSON') {
+                                                if ($arResult["CURRENT_VALUES"]["ORDER_PROPS"]['CONTACT_PERSON'] != '') {
+                                                    $value = $arResult["CURRENT_VALUES"]["ORDER_PROPS"]['CONTACT_PERSON'];
+                                                } else if ($_REQUEST['simple_order_form']['FIO'] != '') {
+                                                    $value = $_REQUEST['simple_order_form']['FIO'];
+                                                } else {
+                                                    $value = '';
+                                                }
+                                            } else if ($arResult["CURRENT_VALUES"]["ORDER_PROPS"][$arProp["CODE"]] != '') {
+                                                $value = $_REQUEST['simple_order_form'][$arProp["CODE"]];
+                                            } else if ($arProp["CODE"] == 'FIO') {
+                                                if ($arResult["CURRENT_VALUES"]["ORDER_PROPS"]['FIO'] != '') {
+                                                    $value = $arResult["CURRENT_VALUES"]["ORDER_PROPS"]['FIO'];
+                                                } else if ($_REQUEST['simple_order_form']['CONTACT_PERSON'] != '') {
+                                                    $value = $_REQUEST['simple_order_form']['CONTACT_PERSON'];
+                                                } else {
+                                                    $value = '';
+                                                }
+                                            } else {
+                                                $value = '';
+                                            }
+                                            ?>
                                             <input class="form-control" id="<? echo $arParams["FORM_NAME"] ?>_<?= $arProp["CODE"] ?>"
-                                                   value="<? echo $arResult["CURRENT_VALUES"]["ORDER_PROPS"][$arProp["CODE"]]; ?>"
+                                                   value="<?= $value; ?>"
                                                    name="<? echo $arParams["FORM_NAME"] ?>[<?= $arProp["CODE"] ?>]"
                                                    type="text"
                                                    <?= $sRequired?>
@@ -368,6 +390,9 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                         foreach ($arResult["PAY_SYSTEM"] as $arPaySystem) {
                             if ($arPaySystem['ID'] == 3 && $_REQUEST['PERSON_TYPE'] == '2') {
                                 continue;
+                            }
+                            if ($arPaySystem['ID'] == 5 && $_REQUEST['PERSON_TYPE'] == '2') {
+                                $arPaySystem["CHECKED"] = 'Y';
                             }
 
                             if ($_REQUEST['simple_order_form']['DELIVERY'] == '4' && $arPaySystem['ID'] == 3) {

@@ -71,7 +71,8 @@ $(document).ready(function() {
             radiosPersonType.filter('[value=2]').attr('checked', true);
             radiosPersonType.trigger('change');
             labelPaySystem.fadeOut();
-            paySystemBlock.filter('[value=2]').attr('checked', true);
+            paySystemBlock.filter('[value=5]').attr('checked', true);
+            paySystemBlock.trigger('change');
         } else {
             radiosPersonType.filter('[value=1]').attr('checked', true);
             radiosPersonType.trigger('change');
