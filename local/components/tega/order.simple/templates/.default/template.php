@@ -276,7 +276,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                 <div class="order-simple__field order-props-in-two-columns__item">
                                     <label for="simple_order_form_ADDRESS">
                                         <span class="order-simple__field__title">
-                                            Адрес доставки
+                                            Адрес доставки (масимально подробно)
                                         </span>
                                         <input class="form-control form-control-address" id="simple_order_form_ADDRESS" value="<?= $_REQUEST['simple_order_form']['ADDRESS']?>" name="simple_order_form[ADDRESS]" type="text" placeholder="Введите адрес доставки">
                                     </label>
@@ -356,13 +356,13 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                             <div class="delivery_type">
                                 <div class="order-simple__field">
                                     <label for="terminal">
-                                        <input type="radio" checked="" id="terminal" value="Доставка до терминала транспортной компании" name="delivery_type" autocomplete="off">
-                                        <b>Доставка до терминала транспортной компании</b>
+                                        <input type="radio" checked="" id="terminal" value="Адрес доставки" name="delivery_type" autocomplete="off">
+                                        <b>Адрес доставки</b>
                                     </label>
                                 </div>
                                 <div class="order-simple__field">
                                     <label for="address_delivery">
-                                        <input type="radio" id="address_delivery" value="Адресная доставки" name="delivery_type" autocomplete="off">
+                                        <input type="radio" id="address_delivery" value="Адрес доставки" name="delivery_type" autocomplete="off">
                                         <b>Адресная доставка (до двери)</b>
                                     </label>
                                 </div>
@@ -372,7 +372,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                 <div class="order-simple__field order-props-in-two-columns__item">
                                     <label for="simple_order_form_TERMINAL_ADDRESS">
                                             <span class="order-simple__field__title" id="address_for_delivery_type">
-                                                Адрес терминала транспортной компании
+                                                Адрес доставки
                                             </span>
                                         <input class="form-control" id="simple_order_form_TERMINAL_ADDRESS" value="" name="simple_order_form[TERMINAL_ADDRESS]" type="text">
                                     </label>
