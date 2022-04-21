@@ -379,7 +379,12 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                 ?>
                                                 <div class="product-item-detail-tab-content active" data-entity="tab-container" data-value="description"
                                                      itemprop="description">
-                                                    <?
+                                                    <?php
+                                                    if ($arResult['SECTION_DESCRIPTION'] != '') {
+                                                        echo $arResult['SECTION_DESCRIPTION'];
+                                                        echo '<hr>';
+                                                    }
+
                                                     if (
                                                         $arResult['PREVIEW_TEXT'] != ''
                                                         && (

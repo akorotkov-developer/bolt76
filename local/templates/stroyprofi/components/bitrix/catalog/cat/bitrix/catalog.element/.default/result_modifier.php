@@ -16,13 +16,15 @@ $obSections = CIBlockSection::GetList(
     ['SORT' => 'ASC'],
     $arFields,
     false,
-    ['ID', 'PICTURE']
+    ['ID', 'PICTURE', 'DESCRIPTION']
 );
 
 $arSection = [];
 if ($arRez = $obSections->Fetch()) {
     $arSection = $arRez;
 }
+
+$arResult['SECTION_DESCRIPTION'] = $arSection['DESCRIPTION'];
 
 if (!empty($arResult['PREVIEW_PICTURE']['SRC'])) {
     $arResult['MORE_PHOTO_PICTURE']['ID'] = (int) $arResult['PREVIEW_PICTURE']['ID'];
