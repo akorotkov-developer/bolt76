@@ -6,6 +6,9 @@
     max-width: 320px;
     min-width: auto;
 }
+.order-simple #simple_order_form_TERMINAL_ADDRESS {
+    max-width: initial;
+}
 
 .order-simple input[type='text'],
 .order-simple textarea

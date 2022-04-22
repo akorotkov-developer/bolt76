@@ -62,7 +62,7 @@ if(sizeof($arResult["ITEMS"])>0){
             <a href="<?=$file_big["src"]?>" class="fancybox"><img src="<?=$file["src"]?>" alt=""></a>
 
 			<?}?>
-            <div class="description"><?=$arResult["DESCRIPTION"]?></div>
+            <div class="description"><?/*=$arResult["DESCRIPTION"]*/?></div>
             <div class="clear"></div>
         </td><?}?>
             <td class="art">

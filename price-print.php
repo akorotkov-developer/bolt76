@@ -923,7 +923,7 @@ class pricePrint
 
     private function sortSectionsCats2Xml() {
         /**Сортировка категорий*/
-        $xml = simplexml_load_file("import/cat.xml");
+        $xml = simplexml_load_file("import/cat_new.xml");
 
         //Переведем XML в массив
         $arrXml = $this->xmlToArray($xml);

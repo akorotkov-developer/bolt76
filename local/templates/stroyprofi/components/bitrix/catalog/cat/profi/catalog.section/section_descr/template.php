@@ -98,7 +98,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                                                                         alt=""></a>
 
                             <? } ?>
-                            <div class="description"><?= $arResult["DESCRIPTION"] ?></div>
+                            <div class="description"><?/*= $arResult["DESCRIPTION"]*/ ?></div>
                             <div class="clear"></div>
                             </td><? } ?>
                         <td class="art">

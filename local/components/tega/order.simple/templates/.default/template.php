@@ -273,14 +273,12 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                     </label>
                                 </div>
 
-                                <div class="order-simple__field order-props-in-two-columns__item">
-                                    <label for="simple_order_form_ADDRESS">
-                                        <span class="order-simple__field__title">
-                                            Адрес доставки (масимально подробно)
-                                        </span>
-                                        <input class="form-control form-control-address" id="simple_order_form_ADDRESS" value="<?= $_REQUEST['simple_order_form']['ADDRESS']?>" name="simple_order_form[ADDRESS]" type="text" placeholder="Введите адрес доставки">
-                                    </label>
-                                </div>
+                                <label for="simple_order_form_ADDRESS">
+                                    <span class="order-simple__field__title">
+                                        Адрес доставки (масимально подробно)
+                                    </span>
+                                    <input class="form-control form-control-address" id="simple_order_form_ADDRESS" value="<?= $_REQUEST['simple_order_form']['ADDRESS']?>" name="simple_order_form[ADDRESS]" type="text" placeholder="Введите адрес доставки">
+                                </label>
                             </div>
 
                         </div>
@@ -310,6 +308,12 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                 <div class="order-simple__field">
                                     <label for="baikal_servise">
                                         <input type="radio" id="baikal_servise" value="Байкал сервис" name="delivery_company_name" autocomplete="off">
+                                        <b>Байкал-Сервис</b>
+                                    </label>
+                                </div>
+                                <div class="order-simple__field">
+                                    <label for="vozovozov">
+                                        <input type="radio" id="vozovozov" value="Возовозов" name="delivery_company_name" autocomplete="off">
                                         <b>Байкал-Сервис</b>
                                     </label>
                                 </div>
@@ -368,17 +372,12 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                 </div>
                             </div>
 
-                            <div class="order-props-in-two-columns">
-                                <div class="order-simple__field order-props-in-two-columns__item">
-                                    <label for="simple_order_form_TERMINAL_ADDRESS">
+                            <label for="simple_order_form_TERMINAL_ADDRESS">
                                             <span class="order-simple__field__title" id="address_for_delivery_type">
                                                 Адрес доставки
                                             </span>
-                                        <input class="form-control" id="simple_order_form_TERMINAL_ADDRESS" value="" name="simple_order_form[TERMINAL_ADDRESS]" type="text">
-                                    </label>
-                                </div>
-                            </div>
-
+                                <input class="form-control" id="simple_order_form_TERMINAL_ADDRESS" value="" name="simple_order_form[TERMINAL_ADDRESS]" type="text">
+                            </label>
                         </div>
                     </div>
                 <? } ?>

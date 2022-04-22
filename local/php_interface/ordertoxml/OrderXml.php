@@ -18,6 +18,32 @@ class OrderXml
     private $sPhone;
     private $sEmail;
 
+    // Данные компании
+    private $companyName;
+    private $companyAddr;
+    private $companyInn;
+    private $companyKpp;
+
+    // Название доставки
+    private $deliveryName;
+
+    // Данные доставки
+    private $delivFioRecipient;
+    private $delivContactPhoneRecipient;
+    private $delivTime;
+    private $delivAddress;
+    private $delivCompanyName;
+    private $delivPhoneTerminalReicipient;
+    private $delivFioTerminalRecipient;
+    private $delivPassportTerminalRecipient;
+    private $delivTerminalAddress;
+
+    // Название платежной системы
+    private $paySystemName;
+
+    // Комментарий пользователя
+    private $userComment;
+
     /**
      * Получение праметров заказа
      * @param int $iOrderId
@@ -39,6 +65,41 @@ class OrderXml
         $this->sFio = $propertyCollection->getProfileName()->getFieldValues()['VALUE'];
         $this->sPhone = $propertyCollection->getPhone()->getFieldValues()['VALUE'];
         $this->sEmail = $propertyCollection->getUserEmail()->getFieldValues()['VALUE'];
+
+        // Данные компании
+        if ($obOrder->getPersonTypeId() == '2') {
+            $this->companyName = $propertyCollection->getItemByOrderPropertyCode('COMPANY')->getFieldValues()['VALUE'];
+            $this->companyAddr = $propertyCollection->getItemByOrderPropertyCode('COMPANY_ADR')->getFieldValues()['VALUE'];
+            $this->companyInn = $propertyCollection->getItemByOrderPropertyCode('INN')->getFieldValues()['VALUE'];
+            $this->companyKpp = $propertyCollection->getItemByOrderPropertyCode('KPP')->getFieldValues()['VALUE'];
+        }
+
+        // Способы доставки
+        $shipmentCollection = $obOrder->getShipmentCollection();
+        foreach($shipmentCollection as $shipment)
+        {
+            $this->deliveryName = $shipment->getDeliveryName(); //тут мы уже получили имя доставки
+        }
+
+        // Данные доставки
+        $this->delivFioRecipient = $propertyCollection->getItemByOrderPropertyCode('FIO_RECIPIENT')->getFieldValues()['VALUE'];
+        $this->delivContactPhoneRecipient = $propertyCollection->getItemByOrderPropertyCode('CONTACT_PHONE_RECIPIENT')->getFieldValues()['VALUE'];
+        $this->delivTime = $propertyCollection->getItemByOrderPropertyCode('DESIRED_DELIVERY_TIME')->getFieldValues()['VALUE'];
+        $this->delivAddress = $propertyCollection->getItemByOrderPropertyCode('ADDRESS')->getFieldValues()['VALUE'];
+        $this->delivCompanyName = $propertyCollection->getItemByOrderPropertyCode('TRANSPORT_COMPANY')->getFieldValues()['VALUE'];
+        $this->delivPhoneTerminalReicipient = $propertyCollection->getItemByOrderPropertyCode('RECIPIENT_PHONE')->getFieldValues()['VALUE'];
+        $this->delivFioTerminalRecipient = $propertyCollection->getItemByOrderPropertyCode('TRANSPORT_RECIPIENT_FULL_NAME')->getFieldValues()['VALUE'];
+        $this->delivPassportTerminalRecipient = $propertyCollection->getItemByOrderPropertyCode('PASSPORT_DATA_RECIPIENT')->getFieldValues()['VALUE'];
+        $this->delivTerminalAddress = $propertyCollection->getItemByOrderPropertyCode('TERMINAL_ADDRESS')->getFieldValues()['VALUE'];
+
+        // Название платежной системы
+        $paymentCollection = $obOrder->getPaymentCollection();
+        foreach ($paymentCollection as $payment) {
+            $this->paySystemName = $payment->getPaymentSystemName();
+        }
+
+        // Комментарий пользователя
+        $this->userComment = $obOrder->getField('USER_DESCRIPTION');
 
         // Получаем товары в корзине с их ценой и количеством
         $dbBasketItems = \CSaleBasket::GetList(
@@ -239,10 +300,65 @@ class OrderXml
         $text .= "<h3 style='padding:5px;color:#000;margin-bottom:10px;'>Клиент, " . $this->sFio . "!</h3>";
         $text .= "<p style='padding: 5px;'>Разместил заказ № " . $this->iOrderId . " от " . date("d.m.Y H:i") . ".<br/>Его состав:</p>";
         $text .= $items_list;
-        $text .= "<p><b>Данные:</b></p>";
+        $text .= "<p><b>Данные покупателя:</b></p>";
         $text .= "ФИО: " . $this->sFio . "<br/>";
         $text .= "Email: " . $this->sEmail . "<br/>";
-        $text .= "Телефон: " . $this->sPhone;
+        $text .= "Телефон: " . $this->sPhone . "<br/>";
+
+
+        if ($this->companyName != '' || $this->companyAddr != '' || $this->companyInn != '' || $this->companyKpp != '') {
+            $text .= "<p><b>Данные компании:</b></p>";
+
+            if ($this->companyName != '') {
+                $text .= "Название компании: " . $this->companyName . "<br/>";
+            }
+            if ($this->companyAddr != '') {
+                $text .= "Юридический адрес: " . $this->companyAddr . "<br/>";
+            }
+            if ($this->companyInn != '') {
+                $text .= "ИНН: " . $this->companyInn . "<br/>";
+            }
+            if ($this->companyKpp != '') {
+                $text .= "КПП: " . $this->companyKpp . "<br/>";
+            }
+        }
+
+        $text .= "<p><b>Данные доставки:</b></p>";
+        $text .= "Вариант доставки: " . $this->deliveryName . "<br/>";
+
+        if ($this->delivFioRecipient != '') {
+            $text .= "ФИО получателя: " . $this->delivFioRecipient . "<br/>";
+        }
+        if ($this->delivContactPhoneRecipient != '') {
+            $text .= "Контанктый телефон получателя: " . $this->delivContactPhoneRecipient . "<br/>";
+        }
+        if ($this->delivTime != '') {
+            $text .= "Желаемое время доставки: " . $this->delivTime . "<br/>";
+        }
+        if ($this->delivAddress != '') {
+            $text .= "Адрес доставки (масимально подробно): " . $this->delivAddress . "<br/>";
+        }
+        if ($this->delivCompanyName != '') {
+            $text .= "Название транспортной компании: " . $this->delivCompanyName . "<br/>";
+        }
+        if ($this->delivPhoneTerminalReicipient != '') {
+            $text .= "Контактный телефон получателя: " . $this->delivPhoneTerminalReicipient . "<br/>";
+        }
+        if ($this->delivFioTerminalRecipient != '') {
+            $text .= "ФИО получателя: " . $this->delivFioTerminalRecipient . "<br/>";
+        }
+        if ($this->delivPassportTerminalRecipient != '') {
+            $text .= "Паспортные данные получателя: " . $this->delivPassportTerminalRecipient . "<br/>";
+        }
+        if ($this->delivTerminalAddress != '') {
+            $text .= "Адрес доставки: " . $this->delivTerminalAddress . "<br/>";
+        }
+
+        $text .= "<p><b>Способ оплаты:</b></p>";
+        $text .= "Название способа оплаты: " . $this->paySystemName . "<br/>";
+
+        $text .= "<p><b>Комментарий пользователя:</b></p>";
+        $text .=  $this->userComment . "<br/>";
 
         echo $text;
 
