@@ -313,8 +313,8 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                 </div>
                                 <div class="order-simple__field">
                                     <label for="vozovozov">
-                                        <input type="radio" id="vozovozov" value="Возовозов" name="delivery_company_name" autocomplete="off">
-                                        <b>Байкал-Сервис</b>
+                                        <input type="radio" id="vozovozov" value="Возовоз" name="delivery_company_name" autocomplete="off">
+                                        <b>Возовоз</b>
                                     </label>
                                 </div>
                             </div>
