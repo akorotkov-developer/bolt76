@@ -280,7 +280,7 @@ class OrderXml
 						<td style="' . $styles["td"] . $styles["td100"] . '">' . round((float)$arItem["PRICE"], 2) . ' руб</td>
 						<!--<td style="' . $styles["td"] . $styles["td100"] . '">' . round((float)$arItem["PROPERTY_PRICE_OPT_VALUE"], 2) . ' руб</td>-->
 						</tr>';
-            $totalPrice += round((float)$arItem["PRICE"], 2);
+            $totalPrice += (round((float)$arItem["PRICE"], 2) * $arItem['QUANTITY']);
         }
 
         $text .= '<tr>
