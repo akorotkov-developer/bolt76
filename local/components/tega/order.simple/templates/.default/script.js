@@ -124,3 +124,22 @@ $(document).ready(function() {
         $('#simple_order_form_DESIRED_DELIVERY_TIME').val($(this).val());
     });
 });
+
+// Загрузка файла на сервер
+function downloadFile(obj) {
+    var obFile = obj.files[0];
+    var form_data = new FormData;
+    form_data.append("file", obFile);
+    $.ajax({
+        url: sTemplateFolder + "/downloadfile.php",
+        type: "POST",
+        processData: false,
+        contentType:false,
+        async:false,
+        data: form_data,
+        success:function(data) {
+            $('input[name="simple_order_form[FILE_WITH_BANKING_DETAILS]"]').val(data);
+            $('#file_name').html(obj.files[0].name);
+        }
+    });
+};

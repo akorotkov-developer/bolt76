@@ -36,6 +36,7 @@ if (empty($arResult["USER"])) {
 }
 
 $form = $_POST[$arParams["FORM_NAME"]];
+\Bitrix\Main\Diag\Debug::dumpToFile(['$form' => $form], '', 'log.txt');
 $isValidationEnabled = $_POST[$arParams["ENABLE_VALIDATION_INPUT_NAME"]] == "N";
 \Bitrix\Sale\DiscountCouponsManager::init();
 $order = \Bitrix\Sale\Order::create($arParams["SITE_ID"], $arResult["USER"]["ID"]);

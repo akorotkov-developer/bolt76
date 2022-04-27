@@ -30,6 +30,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
 
 <div class="order-simple">
     <form method="post"
+          enctype="multipart/form-data"
           id="<? echo $arParams["FORM_ID"]; ?>"
           name="<? echo $arParams["FORM_NAME"]; ?>"
           action="<? echo $arParams["FORM_ACTION"]; ?>">
@@ -96,7 +97,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                             $arExcludedProps = [
                                 'LOCATION', 'ZIP', 'CITY', 'ADDRESS', 'TRANSPORT_COMPANY', 'TERMINAL_ADDRESS',
                                 'TRANSPORT_RECIPIENT_FULL_NAME', 'PASSPORT_DATA_RECIPIENT', 'RECIPIENT_PHONE',
-                                'FIO_RECIPIENT', 'CONTACT_PHONE_RECIPIENT', 'DESIRED_DELIVERY_TIME'
+                                'FIO_RECIPIENT', 'CONTACT_PHONE_RECIPIENT', 'DESIRED_DELIVERY_TIME', 'FILE_WITH_BANKING_DETAILS'
                             ];
                             $i = 0;
                             foreach ($arResult["ORDER_PROPS"] as $arProp) {
@@ -417,6 +418,19 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                 <? } ?>
 
                 <div class="order-simple__block">
+                    <div class="order-simple__block__title">Файл с реквизитами</div>
+                    <input class="btn btn-themes" type="button" id="loadFile" value="Загрузить файл" onclick="document.getElementById('download_file_banking_detail').click();" />
+                    <span id="file_name"></span>
+
+                    <input type="file" id="download_file_banking_detail"
+                           onChange="downloadFile(this);"
+                           accept="txt,application/pdf,application/vnd.ms-excel,application/vnd.ms-excel,application/msword,application/msword"
+                           style="display: none"
+                    >
+                    <input type="hidden" name="simple_order_form[FILE_WITH_BANKING_DETAILS]"  value="">
+                </div>
+
+                <div class="order-simple__block">
                     <div class="order-simple__block__title"><? echo GetMessage("COMMENT"); ?></div>
                     <textarea
                             name="<? echo $arParams["FORM_NAME"] ?>[USER_COMMENT]"
@@ -502,6 +516,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
 </div>
 
 <script>
+    var sTemplateFolder = '<?= $this->GetFolder();?>';
     objOrderForm.init();
 </script>
 
