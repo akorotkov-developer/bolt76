@@ -285,6 +285,8 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                 $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"];
                             } elseif  ($arResult['IS_OPT_3']) {
                                 $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT2"]["VALUE"];
+                            } else {
+                                $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"];
                             }
                             ?>
                             <div class="buy_helper_holder price">
@@ -300,7 +302,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                         </td>
 
                         <?php if (!$arResult['IS_OPT_2'] && !$arResult['IS_OPT_3']) { ?>
-                            <td class="roz sdfsdfsdf">
+                            <td class="roz">
                                 <div class="buy_helper_holder price">
                                     <? if ($ves) { ?>
                                         <div class="vesHelperHolder">
