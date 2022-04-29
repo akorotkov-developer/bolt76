@@ -324,16 +324,14 @@ class Events
                     IO\Path::ConvertLogicalToPhysical($sFilePath)
                 ];
 
-
                 // Отпарвляем дополнительное письмо с заказом и файлом СБИС++ для Василия
                 $sAttachFileSrc = $obOrderXml->getAttachFile()['SRC'];
                 $arFiles = [
                     IO\Path::ConvertLogicalToPhysical($sFilePath),
                 ];
                 if ($sAttachFileSrc['SRC'] != '') {
-                    $arFiles[] = $sAttachFileSrc['SRC'];
+                    $arFiles[] = $sAttachFileSrc;
                 }
-                \Bitrix\Main\Diag\Debug::dumpToFile(['$arFiles' => $arFiles], '', 'log.txt');
                 Event::send([
                     "EVENT_NAME" => "ORDER_INFO",
                     "LID" => "s1",
@@ -341,7 +339,7 @@ class Events
                         'ORDER_ID' => $arFields['ORDER_ID'],
                         'MAIL_TEXT' => $sText,
                         'SALE_EMAIL' => 'mail@strprofi.ru',
-                        'EMAIL' => 'strprofi@yandex.ru, mail@strprofi.ru'
+                        'EMAIL' => '89065267799@mail.ru, strprofi@yandex.ru, mail@strprofi.ru'
                     ],
                     "FILE" => $arFiles
                 ]);
