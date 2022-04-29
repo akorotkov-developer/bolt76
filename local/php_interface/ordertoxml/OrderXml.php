@@ -44,6 +44,9 @@ class OrderXml
     // Комментарий пользователя
     private $userComment;
 
+    // Файл, прикрепленные к заказу
+    private $orderAttachFile;
+
     /**
      * Получение праметров заказа
      * @param int $iOrderId
@@ -100,6 +103,9 @@ class OrderXml
 
         // Комментарий пользователя
         $this->userComment = $obOrder->getField('USER_DESCRIPTION');
+
+        // Файл, прикрепленный к заказу
+        $this->orderAttachFile = $propertyCollection->getItemByOrderPropertyCode('FILE_WITH_BANKING_DETAILS')->getFieldValues()['VALUE'];
 
         // Получаем товары в корзине с их ценой и количеством
         $dbBasketItems = \CSaleBasket::GetList(
@@ -363,5 +369,14 @@ class OrderXml
         echo $text;
 
         return $text;
+    }
+
+    /**
+     * Функция получения прикрепленного файла
+     * @return mixed
+     */
+    public function getAttachFile()
+    {
+        return $this->orderAttachFile;
     }
 }
