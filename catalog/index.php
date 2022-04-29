@@ -37,6 +37,17 @@ while($arResult = $dbResult->Fetch()) {
 ?>
 
 <?php
+/** Определяем цену для текущего пользователя */
+$priceGroup = UserHelper::getPriceUserGroup();
+
+if ($priceGroup == 'OPT_2') {
+    $sPriceCode = 'OPT';
+} elseif ($priceGroup == 'OPT_3') {
+    $sPriceCode = 'OPT2';
+} else {
+    $sPriceCode = 'OPT';
+}
+
 $APPLICATION->IncludeComponent(
 	"bitrix:catalog",
     'cat',
@@ -64,7 +75,7 @@ $APPLICATION->IncludeComponent(
 		"FILTER_NAME" => "arrFilter",
 		"USE_COMPARE" => "N",
 		"PRICE_CODE" => array(
-			0 => "BASE",
+			0 => $sPriceCode,
 		),
 		"USE_PRICE_COUNT" => "N",
 		"SHOW_PRICE_COUNT" => "1",
@@ -84,8 +95,9 @@ $APPLICATION->IncludeComponent(
 			0 => "ARTICUL",
 			1 => "UNITS",
 			2 => "PRICE_OPT",
-			3 => "PRICE",
-			4 => "",
+			3 => "PRICE_OPT2",
+			4 => "PRICE",
+			5 => "",
 		),
 		"INCLUDE_SUBSECTIONS" => $isApplyFilter ? 'Y' : 'N',
 		"IS_APPLY_FILTER" => $isApplyFilter ? 'Y' : 'N',

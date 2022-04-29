@@ -5,6 +5,7 @@ CJSCore::Init(array("jquery"));
 require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/phpmailer/Exception.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/phpmailer/PHPMailer.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/phpmailer/SMTP.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/userhelper/UserHelper.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -277,9 +278,18 @@ function MyGetOptimalPrice($productID, $quantity = 1, $arUserGroups = array(), $
         }
     }
 
-    // получаем все типы цен, возможные для данного товара
+    // получаем все типы цен, возможные для данного товара  назначем цену в зависимости от группы пользователя
     $arOptPrices = CCatalogProduct::GetByIDEx($productID);
-    $price = $arOptPrices['PRICES'][1]['PRICE'];
+
+    $priceGroup = UserHelper::getPriceUserGroup();
+
+    if ($priceGroup == 'OPT_2') {
+        $price = $arOptPrices['PRICES'][2]['PRICE'];
+    } elseif ($priceGroup == 'OPT_3') {
+        $price = $arOptPrices['PRICES'][3]['PRICE'];
+    } else {
+        $price = $arOptPrices['PRICES'][1]['PRICE'];
+    }
 
     return array(
         'PRICE' => array(

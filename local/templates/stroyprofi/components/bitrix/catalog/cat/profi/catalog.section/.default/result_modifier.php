@@ -73,3 +73,12 @@ if (strpos($sCurPage, '/apply/') !== false) {
         }
     }
 }
+
+/** Определяем цену для текущего пользователя */
+$priceGroup = UserHelper::getPriceUserGroup();
+
+if ($priceGroup == 'OPT_2') {
+    $arResult['IS_OPT_2'] = true;
+} elseif ($priceGroup == 'OPT_3') {
+    $arResult['IS_OPT_3'] = true;
+}

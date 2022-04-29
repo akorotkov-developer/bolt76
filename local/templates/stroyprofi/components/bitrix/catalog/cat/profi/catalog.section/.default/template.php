@@ -12,7 +12,11 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                     <td class="nopadding-i"></td>
                     <td class="name">Наименование</td>
                     <td class="opt">Опт</td>
-                    <td class="roz">Розница</td>
+
+                    <?php if (!$arResult['IS_OPT_2'] && !$arResult['IS_OPT_3']) { ?>
+                        <td class="roz">Розница</td>
+                    <?php }?>
+
                     <td class="upak">В упаковке</td>
                     <td class="avail">Наличие</td>
                     <td class="buy">Купить</td>
@@ -117,7 +121,14 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                             $k_val = "кг";
                             $e = 'руб/кг';
                         }
-                        $ok = number_format(round($arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"] / $k, 2), 2, ', ', ' ');
+
+                        if ($arResult['IS_OPT_2']) {
+                            $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"];
+                        } elseif ($arResult['IS_OPT_3']) {
+                            $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT2"]["VALUE"];
+                        }
+
+                        $ok = number_format(round($sPrice / $k, 2), 2, ', ', ' ');
                         $rk = number_format(round($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] / $k, 2), 2, ', ', ' ');
                         ?>
                         <td class="nopadding-i">
@@ -260,26 +271,37 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                             </a>
                         </td>
                         <td class="opt">
+                            <?php
+                            if ($arResult['IS_OPT_2']) {
+                                $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"];
+                            } elseif  ($arResult['IS_OPT_3']) {
+                                $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT2"]["VALUE"];
+                            }
+                            ?>
                             <div class="buy_helper_holder price">
                                 <? if ($ves) { ?>
                                     <div class="vesHelperHolder">
                                         <div class="vesHelper"
-                                             data-price="<?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"]) ?>">
+                                             data-price="<?= coolPrice($sPrice) ?>">
                                             ~ <?= $ok ?> <?= $e ?></div>
                                     </div>
                                 <? } ?>
-                                <?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"]) ?></div>
+                                <?= coolPrice($sPrice) ?>
+                            </div>
                         </td>
-                        <td class="roz">
-                            <div class="buy_helper_holder price">
-                                <? if ($ves) { ?>
-                                    <div class="vesHelperHolder">
-                                        <div class="vesHelper"
-                                             data-price="<?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]) ?>">
-                                            ~ <?= $rk ?> <?= $e ?></div>
-                                    </div>
-                                <? } ?>
-                            <?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]) ?></td>
+                        <?php if (!$arResult['IS_OPT_2'] && !$arResult['IS_OPT_3']) { ?>
+                            <td class="roz">
+                                <div class="buy_helper_holder price">
+                                    <? if ($ves) { ?>
+                                        <div class="vesHelperHolder">
+                                            <div class="vesHelper"
+                                                 data-price="<?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]) ?>">
+                                                ~ <?= $rk ?> <?= $e ?></div>
+                                        </div>
+                                    <? } ?>
+                                <?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]) ?>
+                            </td>
+                        <?php }?>
                         <td class="upak"><?= $up1; ?><?= ($up2 ? '/' . $up2 : '') ?></td>
                         <td class="avail"><? if ((float)$arElement["PROPERTIES"]["Svobodno"]["VALUE"] > 0) {
                                 echo 'В наличии';
