@@ -141,18 +141,22 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                                 } else if ($_REQUEST['simple_order_form']['FIO'] != '') {
                                                     $value = $_REQUEST['simple_order_form']['FIO'];
                                                 } else {
-                                                    $value = '';
+                                                    $value = $arResult['USER_DB_FIO'];
                                                 }
-                                            } else if ($arResult["CURRENT_VALUES"]["ORDER_PROPS"][$arProp["CODE"]] != '') {
-                                                $value = $_REQUEST['simple_order_form'][$arProp["CODE"]];
                                             } else if ($arProp["CODE"] == 'FIO') {
                                                 if ($arResult["CURRENT_VALUES"]["ORDER_PROPS"]['FIO'] != '') {
                                                     $value = $arResult["CURRENT_VALUES"]["ORDER_PROPS"]['FIO'];
                                                 } else if ($_REQUEST['simple_order_form']['CONTACT_PERSON'] != '') {
                                                     $value = $_REQUEST['simple_order_form']['CONTACT_PERSON'];
                                                 } else {
-                                                    $value = '';
+                                                    $value = $arResult['USER_DB_FIO'];
                                                 }
+                                            } else if ($arProp["CODE"] == 'PHONE') {
+                                                $value = $arResult['USER_DB_PERSONAL_PHONE'];
+                                            } else if ($arProp['CODE'] == 'EMAIL') {
+                                                $value = $arResult['USER_DB_PERSONAL_EMAIL'];
+                                            } else if ($arResult["CURRENT_VALUES"]["ORDER_PROPS"][$arProp["CODE"]] != '') {
+                                                $value = $_REQUEST['simple_order_form'][$arProp["CODE"]];
                                             } else {
                                                 $value = '';
                                             }
