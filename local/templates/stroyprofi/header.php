@@ -65,6 +65,7 @@ use \Bitrix\Main\Page\Asset;
 				);?></div>
                 <div class="cart">
                     <div class="inner">
+                        <a href="/personal/cart" class="img_cart_link"></a>
                         <?php
                         $APPLICATION->IncludeComponent(
                             "bitrix:sale.basket.basket.line",

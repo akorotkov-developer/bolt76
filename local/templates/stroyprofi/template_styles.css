@@ -88,6 +88,7 @@
 .top .cart .inner{
     background: url('/img/cart.png?2') left top no-repeat;
     padding-left: 45px;
+    position: relative;
 }
 
 .top .cart .caption{
@@ -1245,4 +1246,12 @@ td .buy_helper_holder{
     padding: 5px;
     width: 80%;
     border: 1px solid #000;
+}
+.img_cart_link {
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 0px;
+    right: 0px;
 }

@@ -339,7 +339,7 @@ class Events
                         'ORDER_ID' => $arFields['ORDER_ID'],
                         'MAIL_TEXT' => $sText,
                         'SALE_EMAIL' => 'mail@strprofi.ru',
-                        'EMAIL' => '89065267799@mail.ru, strprofi@yandex.ru, mail@strprofi.ru'
+                        'EMAIL' => 'strprofi@yandex.ru, mail@strprofi.ru'
                     ],
                     "FILE" => $arFiles
                 ]);
