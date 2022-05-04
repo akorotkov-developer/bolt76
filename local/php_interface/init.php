@@ -314,10 +314,15 @@ class Events
     function OnBeforeEventAddHandler(&$event, &$lid, &$arFields)
     {
         if ($event == 'SALE_NEW_ORDER') {
+            \Bitrix\Main\Diag\Debug::dumpToFile(['$arFields' => $arFields], '', 'log.txt');
+
             $obOrderXml = new OrderXml($arFields['ORDER_ID']);
-            $isCreated = $obOrderXml->createXml($arFields['ORDER_ID']);
-            $sText = $obOrderXml->getMailText($arFields['ORDER_ID']);
+            $isCreated = $obOrderXml->createXml();
+            $sText = $obOrderXml->getMailText();
             $sFilePath = $_SERVER["DOCUMENT_ROOT"] . "/cart/Исходящие счета.xml";
+
+            // Подмена свойства ORDER_LIST для почтовых сообщений клиенту
+            $arFields['ORDER_LIST'] = $obOrderXml->getOrderTableList();
 
             if ($isCreated) {
                 $arFields['FILE'] = [

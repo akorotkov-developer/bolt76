@@ -372,6 +372,47 @@ class OrderXml
     }
 
     /**
+     * Получить список товаров в заказе
+     * @return string
+     */
+    public function getOrderTableList(): string
+    {
+        $text = '<table style="border-spacing:0px;border-collapse:collapse;width:100%;font-size:12px;font-family:Arial;">
+					<tr style="background:#bad3df;">
+                        <td style="border: 1px solid;">№</td>
+                        <td style="border: 1px solid;">Артикул</td>
+                        <td style="border: 1px solid;">Наименование</td>
+                        <td style="border: 1px solid;">Количество</td>
+                        <td style="border: 1px solid;">Цена</td>
+					</tr>';
+
+        $j = 1;
+        $totalPrice = 0;
+        foreach ($this->arOrderParams as $arItem) {
+            $text .= '<tr>
+						<td style="border: 1px solid;">' . ($j++) . '.</td>
+						<td style="border: 1px solid;">' . $arItem["PROPERTY_ARTICUL_VALUE"] . '</td>
+						<td style="border: 1px solid;">' . $arItem["PROPERTY_NAIMENOVANIE_VALUE"] . '</td>
+						<td style="border: 1px solid;">' . $arItem['QUANTITY'] . '</td>
+						<td style="border: 1px solid;">' . round((float)$arItem["PRICE"], 2) . ' руб</td>
+					  </tr>';
+            $totalPrice += (round((float)$arItem["PRICE"], 2) * $arItem['QUANTITY']);
+        }
+
+        $text .= '<tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="border: 1px solid;"><b>Итого:</b></td>
+                    <td style="border: 1px solid;"><b>' . $totalPrice . ' руб</b></td>
+                  ';
+
+        $text .= '</table>';
+
+        return $text;
+    }
+
+    /**
      * Функция получения прикрепленного файла
      * @return mixed
      */
