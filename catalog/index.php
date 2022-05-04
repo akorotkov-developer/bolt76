@@ -45,7 +45,7 @@ if ($priceGroup == 'OPT_2') {
 } elseif ($priceGroup == 'OPT_3') {
     $sPriceCode = 'OPT2';
 } else {
-    $sPriceCode = 'OPT';
+    $sPriceCode = 'BASE';
 }
 
 $APPLICATION->IncludeComponent(

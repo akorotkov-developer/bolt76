@@ -59,7 +59,9 @@ class Import
         if (!$error) {
             echo $sString . '<br>';
         } else {
-            echo '<span style="color: red">' . $sString . '</span><br>';
+            if ($sString != '') {
+                echo '<span style="color: red">' . $sString . '</span><br>';
+            }
         }
     }
 
@@ -68,31 +70,118 @@ class Import
      */
     public function startImport()
     {
+        global $DB;
+        $bSuccess = true;
+
         if ($this->productsFile == false) {
             $this->echo('Ошибка открытия файла с товарами', true);
         } else {
             $this->echo('Начало импорта ' . date("d.m.Y H:i:s"));
 
-            // Устанавливаем массив с продуктами
-            $this->setArProducts();
+            $DB->StartTransaction();
+            try {
+                // Устанавливаем массив с продуктами
+                $this->setArProducts();
 
-            // Установить динамические свойства
-            $this->checkDynamicProps();
+                // Сохранение данных
+                $DB->Commit();
+            } catch( Exception $ex ) {
+                // Откат изменений
+                $DB->Rollback();
 
-            // Загрузить разделы для товаров
-            $this->setSections();
+                // Сброс флага успеха
+                $bSuccess = false;
 
-            // Установить символьные коды для товаров
-            $this->setCodesForProducts();
+                echo 'An error occurred: ' . $ex->getMessage();
+            }
 
-            // Сделать из элементов инфоблока товары с ценами и параметрами
-            $this->makeProducts();
+            $DB->StartTransaction();
+            try {
+                // Установить динамические свойства
+                $this->checkDynamicProps();
 
-            // Установить коэфициенты единицы измерения для всех продуктов
-            $this->setRatio();
+                // Сохранение данных
+                $DB->Commit();
+            } catch( Exception $ex ) {
+                // Откат изменений
+                $DB->Rollback();
 
-            $this->echo('Импорт завершен ' . date("d.m.Y H:i:s"));
+                // Сброс флага успеха
+                $bSuccess = false;
+
+                echo 'An error occurred: ' . $ex->getMessage();
+            }
+
+            $DB->StartTransaction();
+            try {
+                // Загрузить разделы для товаров
+                $this->setSections();
+
+                // Сохранение данных
+                $DB->Commit();
+            } catch( Exception $ex ) {
+                // Откат изменений
+                $DB->Rollback();
+
+                // Сброс флага успеха
+                $bSuccess = false;
+
+                echo 'An error occurred: ' . $ex->getMessage();
+            }
+
+            $DB->StartTransaction();
+            try {
+                // Установить символьные коды для товаров
+                $this->setCodesForProducts();
+
+                // Сохранение данных
+                $DB->Commit();
+            } catch( Exception $ex ) {
+                // Откат изменений
+                $DB->Rollback();
+
+                // Сброс флага успеха
+                $bSuccess = false;
+
+                echo 'An error occurred: ' . $ex->getMessage();
+            }
+
+            $DB->StartTransaction();
+            try {
+                // Сделать из элементов инфоблока товары с ценами и параметрами
+                $this->makeProducts();
+
+                // Сохранение данных
+                $DB->Commit();
+            } catch( Exception $ex ) {
+                // Откат изменений
+                $DB->Rollback();
+
+                // Сброс флага успеха
+                $bSuccess = false;
+
+                echo 'An error occurred: ' . $ex->getMessage();
+            }
+
+            $DB->StartTransaction();
+            try {
+                // Установить коэфициенты единицы измерения для всех продуктов
+                $this->setRatio();
+
+                // Сохранение данных
+                $DB->Commit();
+            } catch( Exception $ex ) {
+                // Откат изменений
+                $DB->Rollback();
+
+                // Сброс флага успеха
+                $bSuccess = false;
+
+                echo 'An error occurred: ' . $ex->getMessage();
+            }
         }
+
+        return $bSuccess;
     }
 
     /**
@@ -192,7 +281,7 @@ class Import
                 ];
                 if ($arPricesItems[$arItem['ID'] . '_' . $PRICE_OPT_ID]) {
                     CPrice::Update(
-                        $arItem['ID'],
+                        $arPricesItems[$arItem['ID'] . '_' . $PRICE_OPT_ID]['ID'],
                         $arFields
                     );
                 } else {
@@ -212,7 +301,7 @@ class Import
                 ];
                 if ($arPricesItems[$arItem['ID'] . '_' . $PRICE_OPT2_ID]) {
                     CPrice::Update(
-                        $arItem['ID'],
+                        $arPricesItems[$arItem['ID'] . '_' . $PRICE_OPT2_ID]['ID'],
                         $arFields
                     );
                 } else {
