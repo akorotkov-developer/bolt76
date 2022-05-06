@@ -301,3 +301,6 @@ form[name="simple_order_form"] {
 .delivery_type .order-simple__field {
     margin-right: 20px;
 }
+.order-simple__block.no-border-bottom {
+    border-bottom: 0px;
+}

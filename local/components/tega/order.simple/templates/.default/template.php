@@ -188,6 +188,21 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                             <?php } ?>
                             <? } ?>
                         </div>
+
+                        <?php if ($_REQUEST['PERSON_TYPE'] == '2') {?>
+                            <div class="order-simple__block no-border-bottom">
+                                <div class="order-simple__block__title">Файл с реквизитами</div>
+                                <input class="btn btn-themes" type="button" id="loadFile" value="Загрузить файл" onclick="document.getElementById('download_file_banking_detail').click();" />
+                                <span id="file_name"></span>
+
+                                <input type="file" id="download_file_banking_detail"
+                                       onChange="downloadFile(this);"
+                                       accept="txt,application/pdf,application/vnd.ms-excel,application/vnd.ms-excel,application/msword,application/msword"
+                                       style="display: none"
+                                >
+                                <input type="hidden" name="simple_order_form[FILE_WITH_BANKING_DETAILS]"  value="">
+                            </div>
+                        <?php }?>
                     </div>
                     <div class="order-simple__block"></div>
                 <? } ?>
@@ -420,19 +435,6 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                         <? } ?>
                     </div>
                 <? } ?>
-
-                <div class="order-simple__block">
-                    <div class="order-simple__block__title">Файл с реквизитами</div>
-                    <input class="btn btn-themes" type="button" id="loadFile" value="Загрузить файл" onclick="document.getElementById('download_file_banking_detail').click();" />
-                    <span id="file_name"></span>
-
-                    <input type="file" id="download_file_banking_detail"
-                           onChange="downloadFile(this);"
-                           accept="txt,application/pdf,application/vnd.ms-excel,application/vnd.ms-excel,application/msword,application/msword"
-                           style="display: none"
-                    >
-                    <input type="hidden" name="simple_order_form[FILE_WITH_BANKING_DETAILS]"  value="">
-                </div>
 
                 <div class="order-simple__block">
                     <div class="order-simple__block__title"><? echo GetMessage("COMMENT"); ?></div>
