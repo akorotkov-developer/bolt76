@@ -108,8 +108,9 @@ class pricePrint
 
     public function getSectionsXMLObject()
     {
-        if (!$this->sectionsXMLObject)
+        if (!$this->sectionsXMLObject) {
             $this->setSectionsXMLObject();
+        }
         return $this->sectionsXMLObject;
     }
 
@@ -468,6 +469,7 @@ class pricePrint
         //exit;
         $rootId = $sections[0]['ID'];
         $rootItemId = false;
+
 
         foreach ($sections as $sectionKey => $section) {
             $setContents = true;
@@ -950,12 +952,11 @@ class pricePrint
             $arSectionIds[$arSection['UF_ROWID']] = $arSection['ID'];
             $arSectionsKeys[$arSection['ID']] = $arSection['UF_ROWID'];
         }
-
         //Поочереди сделаем запросы в базу
         foreach ($arSectionIds as $sectId) {
             $arFilter = [
                 'IBLOCK_ID' => 1,
-                'PROPERTY_SHOW_IN_PRICE' => [1],
+                'PROPERTY_SHOW_IN_PRICE_VALUE' => 'Да',
                 'SECTION_ID' => $sectId,
                 'INCLUDE_SUBSECTIONS' => 'Y'
             ];
@@ -1229,7 +1230,7 @@ $sizes = array(
     'bigCellHeight' => 20
 );
 
-$pricePrint = pricePrint::set(array('cache' => true, 'sizes' => $sizes));
+$pricePrint = pricePrint::set(array('cache' => false, 'sizes' => $sizes));
 
 $firstList = '<div id="first-list">
 
