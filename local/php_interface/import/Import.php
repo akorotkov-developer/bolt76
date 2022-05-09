@@ -92,6 +92,7 @@ class Import
                 // Сброс флага успеха
                 $bSuccess = false;
 
+                echo 'Ошибка на стадии получения списка товаров \n';
                 echo 'An error occurred: ' . $ex->getMessage();
             }
 
@@ -109,6 +110,7 @@ class Import
                 // Сброс флага успеха
                 $bSuccess = false;
 
+                echo 'Ошибка на стадии установки динамических свойств \n';
                 echo 'An error occurred: ' . $ex->getMessage();
             }
 
@@ -126,6 +128,7 @@ class Import
                 // Сброс флага успеха
                 $bSuccess = false;
 
+                echo 'Ошибка на стадии добавлени/удаления элементов \n';
                 echo 'An error occurred: ' . $ex->getMessage();
             }
 
@@ -143,6 +146,7 @@ class Import
                 // Сброс флага успеха
                 $bSuccess = false;
 
+                echo 'Ошибка на стадии установки символьных кодов товаров \n';
                 echo 'An error occurred: ' . $ex->getMessage();
             }
 
@@ -160,6 +164,7 @@ class Import
                 // Сброс флага успеха
                 $bSuccess = false;
 
+                echo 'Ошибка на стадии формирования товаров с ценами и параметрами \n';
                 echo 'An error occurred: ' . $ex->getMessage();
             }
 
@@ -177,6 +182,7 @@ class Import
                 // Сброс флага успеха
                 $bSuccess = false;
 
+                echo 'Ошибка на стадии установки коэффициентов кратности \n';
                 echo 'An error occurred: ' . $ex->getMessage();
             }
         }
