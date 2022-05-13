@@ -270,12 +270,14 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                 </div>
                             </a>
                         </td>
-                        <td class="opt">
+                        <td class="opt sfsdfsd">
                             <?php
                             if ($arResult['IS_OPT_2']) {
                                 $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"];
                             } elseif  ($arResult['IS_OPT_3']) {
                                 $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT2"]["VALUE"];
+                            } else {
+                                $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"];
                             }
                             ?>
                             <div class="buy_helper_holder price">
