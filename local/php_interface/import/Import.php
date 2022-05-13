@@ -441,12 +441,14 @@ class Import
             $image = (int)$topContent->sID;
             if (sizeof($topContent->childs->category) > 0) {
                 $desc = str_replace('[BR]', "\n", str_replace('[BR][BR]', "\n", $topContent->desc));
-                $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc);
+                $viewTemplate = $topContent->viewTemplate;
+                $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc, $viewTemplate);
                 $present[] = $ID;
                 $this->sectionWalker($topContent->childs, $ID);
             } else {
                 $desc = str_replace('[BR]', "\n", str_replace('[BR][BR]', "\n", $topContent->desc));
-                $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc, true);
+                $viewTemplate = $topContent->viewTemplate;
+                $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc, $viewTemplate, true);
                 $present[] = $ID;
                 $this->removeSection($ID, array());
             }
@@ -469,7 +471,7 @@ class Import
      * @param false $isItem
      * @return false|int|mixed
      */
-    private function addSection($name, $internal, $parent, $photo, $sort, $price_id, $descr, $isItem = false)
+    private function addSection($name, $internal, $parent, $photo, $sort, $price_id, $descr, $viewTemplate, $isItem = false)
     {
         $newName = preg_replace("/^([0-9]{1,2}\. ?[0-9]?\.? ?[0-9]* ?)/", "", trim($name));
         $code = $this->rus2lat($newName);
@@ -496,14 +498,13 @@ class Import
             ];
 
             $arUpdate["PICTURE"] = false;
-            $arUpdate["UF_TEMPLATE"] = 0;
+            $arUpdate["UF_TEMPLATE"] = $viewTemplate;
 
             if ($photo != 0) {
                 if ($this->testphile($picfile)) {
                     $pic = CFile::MakeFileArray($picfile);
                     if ($pic["size"] > 0) {
                         $arUpdate["PICTURE"] = $pic;
-                        $arUpdate["UF_TEMPLATE"] = 1;
                     }
                 }
             }
@@ -522,14 +523,13 @@ class Import
                 "UF_PRODUCT" => ($isItem ? '1' : '0'),
                 "UF_PRICE_ID" => $price_id,
                 "UF_ROWID" => $internal,
-                "UF_TEMPLATE" => 0
+                "UF_TEMPLATE" => $viewTemplate
             ];
             if ($photo != 0) {
                 if ($this->testphile($picfile)) {
                     $pic = CFile::MakeFileArray($picfile);
                     if ($pic["size"] > 0) {
                         $arAdd["PICTURE"] = $pic;
-                        $arAdd["UF_TEMPLATE"] = 1;
                     }
                 }
             }
