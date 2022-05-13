@@ -14,3 +14,7 @@ $MESS['SAVE'] = "Сохранить изменения";
 $MESS['RESET'] = "Сбросить";
 $MESS['LAST_LOGIN'] = "Последняя авторизация:";
 $MESS['NEW_PASSWORD_REQ'] = "Новый пароль:";
+$MESS['UF_COMPANY_NAME'] = "Название компании:";
+$MESS['UF_YUR_ADDRESS'] = "Юридический адрес:";
+$MESS['UF_INN'] = "ИНН:";
+$MESS['UF_KPP'] = "КПП:";

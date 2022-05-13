@@ -314,9 +314,8 @@ class Events
     function OnBeforeEventAddHandler(&$event, &$lid, &$arFields)
     {
         if ($event == 'SALE_NEW_ORDER') {
-            \Bitrix\Main\Diag\Debug::dumpToFile(['$arFields' => $arFields], '', 'log.txt');
-
             $obOrderXml = new OrderXml($arFields['ORDER_ID']);
+            $obOrderXml->setFieldsForUser();
             $isCreated = $obOrderXml->createXml();
             $sText = $obOrderXml->getMailText();
             $sFilePath = $_SERVER["DOCUMENT_ROOT"] . "/cart/Исходящие счета.xml";

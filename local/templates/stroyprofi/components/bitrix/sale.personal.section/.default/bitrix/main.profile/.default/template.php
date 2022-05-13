@@ -87,6 +87,30 @@ Extension::load('ui.bootstrap4');
 					<input class="form-control" type="text" name="EMAIL" maxlength="50" id="main-profile-email" value="<?=$arResult["arUser"]["EMAIL"]?>" />
 				</div>
 			</div>
+			<div class="form-group">
+				<label class="main-profile-form-label col-sm-12 col-md-3 text-md-right" for="main-profile-company"><?=Loc::getMessage('UF_COMPANY_NAME')?></label>
+				<div class="col-sm-12">
+					<input class="form-control" type="text" name="UF_COMPANY_NAME" maxlength="50" id="main-profile-company" value="<?=$arResult["arUser"]["UF_COMPANY_NAME"]?>" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="main-profile-form-label col-sm-12 col-md-3 text-md-right" for="main-profile-yuraddress"><?=Loc::getMessage('UF_YUR_ADDRESS')?></label>
+				<div class="col-sm-12">
+					<input class="form-control" type="text" name="UF_YUR_ADDRESS" maxlength="50" id="main-profile-yuraddress" value="<?=$arResult["arUser"]["UF_YUR_ADDRESS"]?>" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="main-profile-form-label col-sm-12 col-md-3 text-md-right" for="main-profile-inn"><?=Loc::getMessage('UF_INN')?></label>
+				<div class="col-sm-12">
+					<input class="form-control" type="text" name="UF_INN" maxlength="50" id="main-profile-inn" value="<?=$arResult["arUser"]["UF_INN"]?>" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="main-profile-form-label col-sm-12 col-md-3 text-md-right" for="main-profile-kpp"><?=Loc::getMessage('UF_KPP')?></label>
+				<div class="col-sm-12">
+					<input class="form-control" type="text" name="UF_KPP" maxlength="50" id="main-profile-kpp" value="<?=$arResult["arUser"]["UF_KPP"]?>" />
+				</div>
+			</div>
 			<?
 			if ($arResult['CAN_EDIT_PASSWORD'])
 			{

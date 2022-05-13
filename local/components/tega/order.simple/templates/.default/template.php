@@ -119,7 +119,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                         <?= $arProp["NAME"] ?>
                                         <? if (in_array($arProp["ID"], $arParams["REQUIRED_ORDER_PROPS"])) { ?>*<? } ?>
                                     </span>
-                                        <? if (
+                                        <?php if (
                                             $arParams["USE_DATE_CALCULATION"] == "Y" &&
                                             $arProp["ID"] == $arParams["DATE_PROPERTY"]
                                         ) { ?>
@@ -157,6 +157,14 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                                 $value = $arResult['USER_DB_PERSONAL_EMAIL'];
                                             } else if ($arResult["CURRENT_VALUES"]["ORDER_PROPS"][$arProp["CODE"]] != '') {
                                                 $value = $_REQUEST['simple_order_form'][$arProp["CODE"]];
+                                            } else if ($arProp["CODE"] == 'COMPANY') {
+                                                $value = $arResult['USER_DB_COMPANY_NAME'];
+                                            } else if ($arProp["CODE"] == 'COMPANY_ADR') {
+                                                $value = $arResult['USER_DB_YUR_ADDRESS'];
+                                            } else if ($arProp["CODE"] == 'INN') {
+                                                $value = $arResult['USER_DB_INN'];
+                                            } else if ($arProp["CODE"] == 'KPP') {
+                                                $value = $arResult['USER_DB_KPP'];
                                             } else {
                                                 $value = '';
                                             }

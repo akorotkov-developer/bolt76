@@ -47,6 +47,9 @@ class OrderXml
     // Файл, прикрепленные к заказу
     private $orderAttachFile;
 
+    // Id покупателя
+    private $iUserId;
+
     /**
      * Получение праметров заказа
      * @param int $iOrderId
@@ -64,6 +67,7 @@ class OrderXml
 
         $this->iOrderId = $iOrderId;
         $obOrder = Sale\Order::load($iOrderId);
+        $this->iUserId = $obOrder->getUserId();
         $propertyCollection = $obOrder->getPropertyCollection();
         $this->sFio = $propertyCollection->getProfileName()->getFieldValues()['VALUE'];
         $this->sPhone = $propertyCollection->getPhone()->getFieldValues()['VALUE'];
@@ -419,5 +423,26 @@ class OrderXml
     public function getAttachFile()
     {
         return $this->orderAttachFile;
+    }
+
+    /**
+     * Установить пользовательские поля для текущего пользователя
+     */
+    public function setFieldsForUser()
+    {
+        $obUser = new \CUser;
+
+        if ($this->companyName != '') {
+            $obUser->Update($this->iUserId, ['UF_COMPANY_NAME' => $this->companyName]);
+        }
+        if ($this->companyAddr != '') {
+            $obUser->Update($this->iUserId, ['UF_YUR_ADDRESS' => $this->companyAddr]);
+        }
+        if ($this->companyInn != '') {
+            $obUser->Update($this->iUserId, ['UF_INN' => $this->companyInn]);
+        }
+        if ($this->companyKpp != '') {
+            $obUser->Update($this->iUserId, ['UF_KPP' => $this->companyKpp]);
+        }
     }
 }
