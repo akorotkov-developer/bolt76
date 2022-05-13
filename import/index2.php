@@ -3,11 +3,11 @@
  * Новый импорт
  */
 
-set_time_limit();
+set_time_limit(0);
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 
 CModule::IncludeModule("iblock");
-set_time_limit();
+set_time_limit(0);
 
 require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/import/Import.php';
 
