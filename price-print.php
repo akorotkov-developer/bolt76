@@ -956,7 +956,7 @@ class pricePrint
         foreach ($arSectionIds as $sectId) {
             $arFilter = [
                 'IBLOCK_ID' => 1,
-                'PROPERTY_SHOW_IN_PRICE_VALUE' => 'Да',
+                'PROPERTY_SHOW_IN_PRICE' => [1],
                 'SECTION_ID' => $sectId,
                 'INCLUDE_SUBSECTIONS' => 'Y'
             ];
