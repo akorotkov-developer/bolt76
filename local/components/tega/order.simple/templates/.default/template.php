@@ -152,7 +152,11 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                                     $value = $arResult['USER_DB_FIO'];
                                                 }
                                             } else if ($arProp["CODE"] == 'PHONE') {
-                                                $value = $arResult['USER_DB_PERSONAL_PHONE'];
+                                                if ($_REQUEST['simple_order_form']['PHONE'] != '') {
+                                                    $value = $_REQUEST['simple_order_form']['PHONE'];
+                                                } else {
+                                                    $value = $arResult['USER_DB_PERSONAL_PHONE'];
+                                                }
                                             } else if ($arProp['CODE'] == 'EMAIL') {
                                                 $value = $arResult['USER_DB_PERSONAL_EMAIL'];
                                             } else if ($arResult["CURRENT_VALUES"]["ORDER_PROPS"][$arProp["CODE"]] != '') {
