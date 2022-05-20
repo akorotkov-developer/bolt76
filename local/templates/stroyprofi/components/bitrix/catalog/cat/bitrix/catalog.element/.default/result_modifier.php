@@ -56,3 +56,16 @@ if (count($arResult['PROPERTIES']['PHOTOS']['VALUE']) > 0 && $arResult['PROPERTI
 }
 
 $arResult['PHOTOS'] = $arPhotos;
+
+/**
+ * Получаем обычную и оптовую цену товара
+ */
+$allProductPrices = \Bitrix\Catalog\PriceTable::getList([
+    "select" => ["*"],
+    "filter" => [
+        "=PRODUCT_ID" => $arResult['ID'],
+    ],
+    "order" => ["CATALOG_GROUP_ID" => "ASC"]
+])->fetchAll();
+
+$arResult['ALL_PRODUCT_PRICES'] = $allProductPrices;

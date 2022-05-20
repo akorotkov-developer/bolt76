@@ -460,18 +460,18 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                 if ($property['NAME'] == 'Оптовая цена 2') {
                                                                     $property['NAME'] = 'Оптовая цена';
                                                                     if ($property['VALUE'] != '') {
-                                                                        $property['VALUE'] = $property['VALUE'] . ' ₽';
+                                                                        $property['VALUE'] = $arResult['ALL_PRODUCT_PRICES'][2]['PRICE'] . ' ₽';
                                                                     }
                                                                 }
 
                                                                 if ($property['NAME'] == 'Розничная цена') {
                                                                     if ($property['VALUE'] != '') {
-                                                                        $property['VALUE'] = $property['VALUE'] . ' ₽';
+                                                                        $property['VALUE'] = $arResult['ALL_PRODUCT_PRICES'][0]['PRICE'] . ' ₽';
                                                                     }
                                                                 }
                                                                 if ($property['NAME'] == 'Оптовая цена') {
                                                                     if ($property['VALUE'] != '') {
-                                                                        $property['VALUE'] = $property['VALUE'] . ' ₽';
+                                                                        $property['VALUE'] = $arResult['ALL_PRODUCT_PRICES'][1]['PRICE'] . ' ₽';
                                                                     }
                                                                 }
                                                                 if ($property['NAME'] == 'Длина' || $property['NAME'] == 'Диаметр') {
