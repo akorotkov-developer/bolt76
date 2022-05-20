@@ -58,6 +58,18 @@ var objOrderForm = {
             token: sToken,
             type: "ADDRESS",
         });
+        $("input[name='simple_order_form[INN]']").suggestions({
+            token: sToken,
+            type: "party",
+            onSelect: function(suggestion) {
+                $("input[name='simple_order_form[INN]']").val(suggestion.data.inn);
+                $("input[name='simple_order_form[KPP]']").val(suggestion.data.kpp);
+                $("input[name='simple_order_form[COMPANY]']").val(suggestion.data.name.short_with_opf);
+                $("input[name='simple_order_form[COMPANY_ADR]']").val(suggestion.data.address.value);
+
+                console.log(suggestion.data);
+            }
+        });
     }
 }
 
