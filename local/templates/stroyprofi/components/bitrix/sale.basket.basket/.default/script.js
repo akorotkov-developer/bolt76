@@ -1420,13 +1420,46 @@ BX.ready(function() {
 
 	// Действие на кнопке Очистить корзину
 	$('#clear_basket').on('click', function() {
-		$.ajax({
-			url: sTemplatePath + '/ajaxClearBasket.php',
-			method: 'get',
-			data: {},
-			success: function(data) {
-				location.reload();
+		const messageBox = new BX.UI.Dialogs.MessageBox(
+			{
+				message: '<label for="confirm_clearbasket">' +
+					'<input type="checkbox" id="confirm_clearbasket" name="confirm_clearbasket"> Вы уверениы, что хотите очистить корзину?</label>',
+				title: 'Очистка корзины',
+				modal: true,
+				buttons: [
+					new BX.UI.Button(
+						{
+							color: BX.UI.Button.Color.DANGER,
+							text: 'Очистить',
+							onclick: function(button, event) {
+								if (BX(messageBox.popupWindow.contentContainer.children[0].children[0]).checked) {
+									$.ajax({
+										url: sTemplatePath + '/ajaxClearBasket.php',
+										method: 'get',
+										data: {},
+										success: function(data) {
+											location.reload();
+										}
+									});
+
+									button.context.close();
+								}
+							}
+						}
+					),
+					new BX.UI.Button(
+						{
+							color: BX.UI.Button.Color.PRIMARY,
+							text: 'Отмена',
+							onclick: function(button, event) {
+								button.context.close();
+							}
+						}
+					)
+				],
 			}
-		});
+		);
+
+		messageBox.show();
 	});
 });
