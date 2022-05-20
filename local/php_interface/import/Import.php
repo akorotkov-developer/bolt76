@@ -17,6 +17,8 @@ class Import
     public $arDynamicPropsMap = [];
     public $xmlCat;
     public $iPropAvailbleId;
+    public $arCatalogSections;
+    public $arProductElements;
 
     /**
      * Установка начальных параметров
@@ -57,10 +59,10 @@ class Import
     public function echo(string $sString, bool $error = false)
     {
         if (!$error) {
-            echo $sString . '<br>';
+            echo $sString . ' ' . date("d.m.Y H:i:s") . PHP_EOL;
         } else {
             if ($sString != '') {
-                echo '<span style="color: red">' . $sString . '</span><br>';
+                echo '<span style="color: red">' . $sString . ' ' . date("d.m.Y H:i:s") . '</span><br>';
             }
         }
     }
@@ -76,115 +78,25 @@ class Import
         if ($this->productsFile == false) {
             $this->echo('Ошибка открытия файла с товарами', true);
         } else {
-            $this->echo('Начало импорта ' . date("d.m.Y H:i:s"));
+            $this->echo('Начало импорта!');
 
-            $DB->StartTransaction();
-            try {
-                // Устанавливаем массив с продуктами
-                $this->setArProducts();
+            // Устанавливаем массив с продуктами
+            $this->setArProducts();
 
-                // Сохранение данных
-                $DB->Commit();
-            } catch( Exception $ex ) {
-                // Откат изменений
-                $DB->Rollback();
+            // Установить динамические свойства
+            $this->checkDynamicProps();
 
-                // Сброс флага успеха
-                $bSuccess = false;
+            // Загрузить разделы для товаров
+            $this->setSections();
 
-                echo 'Ошибка на стадии получения списка товаров \n';
-                echo 'An error occurred: ' . $ex->getMessage();
-            }
+            // Установить символьные коды для товаров
+            $this->setCodesForProducts();
 
-            $DB->StartTransaction();
-            try {
-                // Установить динамические свойства
-                $this->checkDynamicProps();
+            // Сделать из элементов инфоблока товары с ценами и параметрами
+            $this->makeProducts();
 
-                // Сохранение данных
-                $DB->Commit();
-            } catch( Exception $ex ) {
-                // Откат изменений
-                $DB->Rollback();
-
-                // Сброс флага успеха
-                $bSuccess = false;
-
-                echo 'Ошибка на стадии установки динамических свойств \n';
-                echo 'An error occurred: ' . $ex->getMessage();
-            }
-
-            $DB->StartTransaction();
-            try {
-                // Загрузить разделы для товаров
-                $this->setSections();
-
-                // Сохранение данных
-                $DB->Commit();
-            } catch( Exception $ex ) {
-                // Откат изменений
-                $DB->Rollback();
-
-                // Сброс флага успеха
-                $bSuccess = false;
-
-                echo 'Ошибка на стадии добавлени/удаления элементов \n';
-                echo 'An error occurred: ' . $ex->getMessage();
-            }
-
-            $DB->StartTransaction();
-            try {
-                // Установить символьные коды для товаров
-                $this->setCodesForProducts();
-
-                // Сохранение данных
-                $DB->Commit();
-            } catch( Exception $ex ) {
-                // Откат изменений
-                $DB->Rollback();
-
-                // Сброс флага успеха
-                $bSuccess = false;
-
-                echo 'Ошибка на стадии установки символьных кодов товаров \n';
-                echo 'An error occurred: ' . $ex->getMessage();
-            }
-
-            $DB->StartTransaction();
-            try {
-                // Сделать из элементов инфоблока товары с ценами и параметрами
-                $this->makeProducts();
-
-                // Сохранение данных
-                $DB->Commit();
-            } catch( Exception $ex ) {
-                // Откат изменений
-                $DB->Rollback();
-
-                // Сброс флага успеха
-                $bSuccess = false;
-
-                echo 'Ошибка на стадии формирования товаров с ценами и параметрами \n';
-                echo 'An error occurred: ' . $ex->getMessage();
-            }
-
-            $DB->StartTransaction();
-            try {
-                // Установить коэфициенты единицы измерения для всех продуктов
-                $this->setRatio();
-
-                // Сохранение данных
-                $DB->Commit();
-            } catch( Exception $ex ) {
-                // Откат изменений
-                $DB->Rollback();
-
-                // Сброс флага успеха
-                $bSuccess = false;
-
-                echo 'Ошибка на стадии установки коэффициентов кратности \n';
-                echo 'An error occurred: ' . $ex->getMessage();
-            }
+            // Установить коэфициенты единицы измерения для всех продуктов
+            $this->setRatio();
         }
 
         return $bSuccess;
@@ -206,7 +118,7 @@ class Import
             $arFilter,
             false,
             false,
-            ['ID', 'PROPERTY_PRICE_OPT', 'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE',
+            ['ID', 'NAME', 'PROPERTY_PRICE_OPT', 'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE',
                 'PROPERTY_Ostatok', 'PROPERTY_UNITS', 'PROPERTY_KRATNOST']
         );
 
@@ -244,6 +156,8 @@ class Import
         $PRICE_OPT_ID = 2; //Оптовая цена
         $PRICE_OPT2_ID = 3; //Оптовая цена 2
         foreach ($arItems as $arItem) {
+            $this->echo('Обновление цены товара ' . $arItem['NAME']);
+
             //Сначала проверим существует ли такой продукт в системе и если не существует, то создадим его
             if (!$arProducts[$arItem['ID']]) {
                 \Bitrix\Catalog\Model\Product::add(
@@ -357,28 +271,9 @@ class Import
      */
     public function setCodesForProducts()
     {
-        //1. Получаем все товары на сайте
-        $arFilter = [
-            'IBLOCK_ID' => $this->iblock,
-            'INCLUDE_SUBSECTIONS' => 'Y'
-        ];
-
-        $dbRez = CIBlockElement::GetList(
-            ['SORT'=>'ASC'],
-            $arFilter,
-            false,
-            false,
-            ['ID', 'NAME']
-        );
-
-        $arItems = [];
-        while($arRez = $dbRez->Fetch())
-        {
-            $arItems[] = $arRez;
-        }
-
-        foreach ($arItems as $item) {
-            $elem = new CIBlockElement();
+        $elem = new CIBlockElement();
+        foreach ($this->arProductElements as $item) {
+            $this->echo('Обновление символьного кода для товара ' . $item['NAME']);
             $elem->Update($item['ID'], ['CODE' => $this->translit($item['NAME'])]);
         }
     }
@@ -407,25 +302,69 @@ class Import
     private function setSections()
     {
         if (sizeof($this->xmlCat->category)) {
+            // Получаем список всех категорий на сайте
+            $this->arCatalogSections = $this->getCatalogSections();
+            // Получаем все товары на сайте
+            $this->arProductElements = $this->getProductElements();
+
             $this->sectionWalker($this->xmlCat, 0);
 
-            $arFilter = [
-                'IBLOCK_ID' => $this->iblock,
-                'ID' => array_keys($this->productSections)
-            ];
-
-            $dbList = CIBlockSection::GetList([], $arFilter, false, ["UF_PRICE_ID"]);
-            while ($arResult = $dbList->GetNext()) {
+            foreach ($this->arCatalogSections as $arSection) {
                 $this->parseSection(
-                    $this->productSections[$arResult["ID"]],
-                    $arResult["ID"],
-                    (int)$arResult["UF_PRICE_ID"],
-                    $arResult["DEPTH_LEVEL"],
-                    $this->arProducts,
+                    $this->productSections[$arSection['ID']],
+                    $arSection['ID'],
                     $this->arDynamicPropsMap
                 );
             }
         }
+    }
+
+    /**
+     * Получить все товары на сайте
+     * @return array
+     */
+    private function getProductElements(): array
+    {
+        $arSelect = [
+            'ID',
+            'NAME',
+            'IBLOCK_ID',
+            'PROPERTY_PHOTO_ID',
+            'PREVIEW_PICTURE',
+            'PROPERTY_ROWID',
+            'PROPERTY_PHOTOS'
+        ];
+        $arFilter = [
+            'IBLOCK_ID' => $this->iblock,
+        ];
+
+        $obDbRequest = CIBlockElement::GetList([], $arFilter, false, false, $arSelect);
+        $arElements = [];
+        while($arResult = $obDbRequest->GetNext()) {
+            $arElements[$arResult['PROPERTY_ROWID_VALUE']] = $arResult;
+        }
+
+        return $arElements;
+    }
+
+    /**
+     * Функция для получения массива секций каталога
+     * @return array
+     */
+    private function getCatalogSections(): array
+    {
+        $arFilter = [
+            'IBLOCK_ID' => $this->iblock,
+        ];
+
+        $dbList = \CIBlockSection::GetList([], $arFilter, false,["UF_*"]);
+
+        $arSections = [];
+        while($arResult = $dbList->Fetch()) {
+            $arSections[$arResult['UF_ROWID']] = $arResult;
+        }
+
+        return $arSections;
     }
 
     /**
@@ -440,12 +379,14 @@ class Import
 
             $image = (int)$topContent->sID;
             if (sizeof($topContent->childs->category) > 0) {
+                $this->echo('Импорт секции ' . strval($topContent->name));
                 $desc = str_replace('[BR]', "\n", str_replace('[BR][BR]', "\n", $topContent->desc));
                 $viewTemplate = $topContent->viewTemplate;
                 $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc, $viewTemplate);
                 $present[] = $ID;
                 $this->sectionWalker($topContent->childs, $ID);
             } else {
+                $this->echo('Импорт секции ' . strval($topContent->name));
                 $desc = str_replace('[BR]', "\n", str_replace('[BR][BR]', "\n", $topContent->desc));
                 $viewTemplate = $topContent->viewTemplate;
                 $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc, $viewTemplate, true);
@@ -468,6 +409,7 @@ class Import
      * @param $sort
      * @param $price_id
      * @param $descr
+     * @param $viewTemplate
      * @param false $isItem
      * @return false|int|mixed
      */
@@ -478,16 +420,10 @@ class Import
 
         $obSection = new CIBlockSection;
 
-        $arFilter = [
-            'IBLOCK_ID' => $this->iblock,
-            'UF_ROWID' => $internal,
-            "SECTION_ID" => $parent
-        ];
-
-        $dbList = CIBlockSection::GetList([], $arFilter, false,["UF_*"]);
         $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photo . '.jpg';
-        if ($arResult = $dbList->GetNext()) {
-            $ID = $arResult["ID"];
+
+        if (!empty($this->arCatalogSections[$internal])) {
+            $ID = $this->arCatalogSections[$internal]["ID"];
             $arUpdate = [
                 "NAME" => $newName,
                 "UF_ORIGINAL_NAME" => $name,
@@ -607,19 +543,16 @@ class Import
     /**
      * @param $strCatID
      * @param $siteCatID
-     * @param $price_id
-     * @param $depth
-     * @param $items
      * @param $arDynamicPropsMap
      */
-    private function parseSection($strCatID, $siteCatID, $price_id, $depth, $items, $arDynamicPropsMap)
+    private function parseSection($strCatID, $siteCatID, $arDynamicPropsMap)
     {
         $total = 0;
 
         $present = [];
 
-        if (isset($items[$strCatID])) {
-            foreach ($items[$strCatID] as $item) {
+        if (isset($this->arProducts[$strCatID])) {
+            foreach ($this->arProducts[$strCatID] as $item) {
                 $ID = $this->addUpdateElement($item, $siteCatID, $arDynamicPropsMap);
                 $present[] = $ID;
                 $total++;
@@ -651,23 +584,15 @@ class Import
      */
     private function addUpdateElement($item, $siteCatID, $arDynamicPropsMap)
     {
+        \Bitrix\Main\Loader::includeModule('iblock');
+
         $sName = ($item['Svertka'] != '') ? $item['Svertka'] : $item['Naimenovanie'];
 
-        $el = new CIBlockElement;
-        $arSelect = [
-            'ID',
-            'IBLOCK_ID',
-            'PROPERTY_PHOTO_ID',
-            'PREVIEW_PICTURE'
-        ];
-        $arFilter = [
-            'IBLOCK_ID' => $this->iblock,
-            'PROPERTY_ROWID' => intval($item['ID']),
-            'SECTION_ID' => $siteCatID,
-        ];
+        $this->echo('Добавление/обновление товара ' . $sName . ' c ROW_ID: ' . $item['ID']);
 
-        $res = CIBlockElement::GetList([], $arFilter, false, false, $arSelect);
-        if ($ob = $res->GetNext()) {
+        $el = new \CIBlockElement;
+
+        if (!empty($this->arProductElements[$item['ID']])) {
             $arUpdate = [
                 'NAME' => $sName,
                 'PREVIEW_TEXT' => trim(strval($item['Opisanie'])),
@@ -712,21 +637,22 @@ class Import
             $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photo . '.jpg';
 
             $flag_update_pic = false;
-            if ($ob["PROPERTY_PHOTO_ID_VALUE"] != $item['Foto'][0]) {
+            if ($this->arProductElements[$item['ID']]["PROPERTY_PHOTO_ID_VALUE"] != $item['Foto'][0]) {
                 $flag_update_pic = true;
             }
-            if ($ob["PREVIEW_PICTURE"] == NULL) {
+            if ($this->arProductElements[$item['ID']]["PREVIEW_PICTURE"] == NULL) {
                 $flag_update_pic = true;
             }
             if ($this->testphile($picfile)) {
                 $flag_update_pic = true;
             }
 
+            $propsToUpdate = [];
             if (($flag_update_pic) && ($this->testphile($picfile))) {
                 $photo = $item['Foto'][0];
 
                 if ($photo != 0) {
-                    $propsToUpdate["PHOTO_ID"] = $item['Foto'][0];
+                    $arUpdate['PROPERTY_VALUES']["PHOTO_ID"] = $item['Foto'][0];
                     $pic = CFile::MakeFileArray($picfile);
                     if ($pic["size"] > 0) {
                         $arUpdate['PREVIEW_PICTURE'] = $pic;
@@ -748,15 +674,22 @@ class Import
                 $arUpdate['PREVIEW_PICTURE'] = ['del' => 'Y'];
             }
 
-            $el->Update($ob["ID"], $arUpdate);
+            $isUpdated = $el->Update($this->arProductElements[$item['ID']]['ID'], $arUpdate);
+            if (!$isUpdated) {
+                $this->echo($el->LAST_ERROR);
+            }
 
             // Обнуляем фото
-            CIBlockElement::SetPropertyValuesEx($ob["ID"], $this->iblock, ['PHOTOS' => ['VALUE' => '']]);
+            if (count($this->arProductElements[$item['ID']]['PROPERTY_PHOTOS_VALUE']) > 0 || !empty($propsToUpdate['PHOTOS'])) {
+                \CIBlockElement::SetPropertyValuesEx($this->arProductElements[$item['ID']]['ID'], $this->iblock, ['PHOTOS' => ['VALUE' => '']]);
+            }
 
-            // Записываем новые свойства
-            CIBlockElement::SetPropertyValuesEx($ob["ID"], $this->iblock, $propsToUpdate);
+            if (!empty($propsToUpdate['PHOTOS']) && count($propsToUpdate['PHOTOS']) > 0) {
+                // Записываем новые свойства
+                \CIBlockElement::SetPropertyValuesEx($this->arProductElements[$item['ID']]['ID'], $this->iblock, $propsToUpdate);
+            }
 
-            $ID = $ob["ID"];
+            $ID = $this->arProductElements[$item['ID']]['ID'];
         } else {
             $arLoad = [
                 'IBLOCK_ID' => $this->iblock,
@@ -997,7 +930,7 @@ class Import
             $arFilter,
             false,
             false,
-            ['ID', 'PROPERTY_PRICE_OPT', 'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE',
+            ['ID', 'NAME', 'PROPERTY_PRICE_OPT', 'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE',
                 'PROPERTY_Ostatok', 'PROPERTY_UNITS', 'PROPERTY_KRATNOST']
         );
 
@@ -1034,6 +967,8 @@ class Import
 
         // Добавляем коэфиценты единицы измерения
         foreach ($arProducts as $key => $product) {
+            $this->echo('Установка единицы измерения для товара  ' . $arItems[$product['ID']]['NAME']);
+
             // Записываем и создаем коэфициент единицы измерения
             if (empty($arRatios[$key]) && $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE'] != '') {
                 CCatalogMeasureRatio::add([
