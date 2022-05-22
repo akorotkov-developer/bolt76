@@ -1422,8 +1422,7 @@ BX.ready(function() {
 	$('#clear_basket').on('click', function() {
 		const messageBox = new BX.UI.Dialogs.MessageBox(
 			{
-				message: '<label for="confirm_clearbasket">' +
-					'<input type="checkbox" id="confirm_clearbasket" name="confirm_clearbasket"> Вы уверениы, что хотите очистить корзину?</label>',
+				message: '<span style="color: red; font-weight: bold; font-size: 18px;">Очистить корзину?</span>',
 				title: 'Очистка корзины',
 				modal: true,
 				buttons: [
@@ -1432,18 +1431,16 @@ BX.ready(function() {
 							color: BX.UI.Button.Color.DANGER,
 							text: 'Очистить',
 							onclick: function(button, event) {
-								if (BX(messageBox.popupWindow.contentContainer.children[0].children[0]).checked) {
-									$.ajax({
-										url: sTemplatePath + '/ajaxClearBasket.php',
-										method: 'get',
-										data: {},
-										success: function(data) {
-											location.reload();
-										}
-									});
+								$.ajax({
+									url: sTemplatePath + '/ajaxClearBasket.php',
+									method: 'get',
+									data: {},
+									success: function(data) {
+										location.reload();
+									}
+								});
 
-									button.context.close();
-								}
+								button.context.close();
 							}
 						}
 					),
