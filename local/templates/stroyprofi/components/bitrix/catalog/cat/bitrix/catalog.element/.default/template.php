@@ -500,6 +500,10 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                     $property['VALUE'] = $property['VALUE'] . ' ' . $arResult['PROPERTIES']['UNITS']['VALUE'];
                                                                 }
 
+                                                                if ($property['NAME'] == 'Единицы') {
+                                                                    $property['NAME'] = 'Единицы измерения';
+                                                                }
+
                                                                 if ($property['CODE'] == 'UPAKOVKA' && $property['VALUE'] != '') {?>
                                                                     <div class="prop-item">
                                                                         <dt class="prop-item-title"><?=$property['NAME']?></dt>
