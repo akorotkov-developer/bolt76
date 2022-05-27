@@ -1255,3 +1255,21 @@ td .buy_helper_holder{
     left: 0px;
     right: 0px;
 }
+.popup-window-buttons .ui-btn.ui-btn-danger {
+    --ui-btn-background: #FF7920;
+    --ui-btn-background-hover: #FF7920;
+    --ui-btn-background-active: #FF7920;
+    --ui-btn-border-color: #FF7920;
+    --ui-btn-border-color-hover: #FF7920;
+    --ui-btn-border-color-active: #FF7920;
+    --ui-btn-color: #fff;
+    --ui-btn-color-hover: #fff;
+    --ui-btn-color-active: #fff;
+    border-color: #FF7920!important;
+    background-color: #FF7920!important;
+}
+.popup-window-buttons .ui-btn.ui-btn-primary {
+    color: #000!important;
+    background-color: #fff!important;
+    border-color: #FF7920!important;
+}

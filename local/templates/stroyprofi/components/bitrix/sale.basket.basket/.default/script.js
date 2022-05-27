@@ -1422,7 +1422,7 @@ BX.ready(function() {
 	$('#clear_basket').on('click', function() {
 		const messageBox = new BX.UI.Dialogs.MessageBox(
 			{
-				message: '<span style="color: red; font-weight: bold; font-size: 18px;">Очистить корзину?</span>',
+				message: '<span style="color: #FF7920; font-weight: bold; font-size: 18px;">Очистить корзину?</span>',
 				title: 'Очистка корзины',
 				modal: true,
 				buttons: [
