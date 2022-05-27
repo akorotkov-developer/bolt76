@@ -356,6 +356,17 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                         <?
                                                     }
 
+                                                    if (!empty($arResult['ADDITIONAL_TABS']) && count($arResult['ADDITIONAL_TABS']) > 0) {
+                                                        foreach ($arResult['ADDITIONAL_TABS'] as $arTab) { ?>
+                                                            <li class="product-item-detail-tab" data-entity="tab" data-value="<?= $arTab['CODE']?>">
+                                                                <a href="javascript:void(0);" class="product-item-detail-tab-link">
+                                                                    <span><?= $arTab['NAME']?></span>
+                                                                </a>
+                                                            </li>
+                                                        <?php
+                                                        }
+                                                    }
+
                                                     if ($arParams['USE_COMMENTS'] === 'Y')
                                                     {
                                                         ?>
@@ -373,11 +384,12 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                     </div>
                                     <div class="row" id="<?=$itemIds['TAB_CONTAINERS_ID']?>">
                                         <div class="col-md-8 col-xs-12">
+
                                             <?
                                             if ($showDescription)
                                             {
                                                 ?>
-                                                <div class="product-item-detail-tab-content active" data-entity="tab-container" data-value="description"
+                                                <div class="product-item-detail-tab-content" data-entity="tab-container" data-value="description"
                                                      itemprop="description">
                                                     <?php
                                                     if ($arResult['SECTION_DESCRIPTION'] != '') {
@@ -408,7 +420,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                             if (!empty($arResult['DISPLAY_PROPERTIES']) || $arResult['SHOW_OFFERS_PROPS'])
                                             {
                                                 ?>
-                                                <div class="product-item-detail-tab-content" data-entity="tab-container" data-value="properties">
+                                                <div class="product-item-detail-tab-content active" data-entity="tab-container" data-value="properties">
                                                     <?
                                                     if (!empty($arResult['DISPLAY_PROPERTIES']))
                                                     {
@@ -541,6 +553,15 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                     ?>
                                                 </div>
                                                 <?
+                                            }
+
+                                            if (!empty($arResult['ADDITIONAL_TABS']) && count($arResult['ADDITIONAL_TABS']) > 0) {
+                                                foreach ($arResult['ADDITIONAL_TABS'] as $arTab) {?>
+                                                    <div class="product-item-detail-tab-content" data-entity="tab-container" data-value="<?= $arTab['CODE']?>">
+                                                        <iframe class="additional-frame" src="/files/additional_product_information/<?= $arTab['FILE']?>"></iframe>
+                                                    </div>
+                                                    <?php
+                                                }
                                             }
 
                                             if ($arParams['USE_COMMENTS'] === 'Y')

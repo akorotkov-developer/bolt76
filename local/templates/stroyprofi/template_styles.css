@@ -1273,3 +1273,7 @@ td .buy_helper_holder{
     background-color: #fff!important;
     border-color: #FF7920!important;
 }
+.additional-frame {
+    width: 100vh;
+    height: 100vh;
+}

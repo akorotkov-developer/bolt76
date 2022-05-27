@@ -3560,4 +3560,23 @@ BX.ready(function() {
 			$("#notification").animate({"top": "0"}, 400).delay(2000).animate({"top": "-100px"}, 400);
 		});
 	});
+
+	// Переключение вкладок
+	$('.product-item-detail-tab').on('click', function() {
+		var tabName = $(this).attr('data-value');
+
+		$('.product-item-detail-tab').each(function (index, element) {
+			$(element).removeClass('active');
+		});
+		$(this).addClass('active');
+		$('.product-item-detail-tab-content').each(function (index, element) {
+			if ($(element).attr('data-value') == tabName) {
+				if (!$(element).hasClass('active')) {
+					$(element).addClass('active');
+				}
+			} else {
+				$(element).removeClass('active');
+			}
+		});
+	});
 });
