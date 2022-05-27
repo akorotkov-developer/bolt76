@@ -107,27 +107,6 @@ class Import
      */
     public function makeProducts()
     {
-        //1. Получаем все товары на сайте
-        $arFilter = [
-            'IBLOCK_ID' => $this->iblock,
-            'INCLUDE_SUBSECTIONS' => 'Y'
-        ];
-
-        $dbRez = CIBlockElement::GetList(
-            ['SORT'=>'ASC'],
-            $arFilter,
-            false,
-            false,
-            ['ID', 'NAME', 'PROPERTY_PRICE_OPT', 'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE',
-                'PROPERTY_Ostatok', 'PROPERTY_UNITS', 'PROPERTY_KRATNOST']
-        );
-
-        $arItems = [];
-        while($arRez = $dbRez->Fetch())
-        {
-            $arItems[] = $arRez;
-        }
-
         //2. Получаем все цены на сайте
         $dbRez = CPrice::GetList(
             [],
@@ -155,9 +134,7 @@ class Import
         $PRICE_BASE_ID = 1; //Базовая цена
         $PRICE_OPT_ID = 2; //Оптовая цена
         $PRICE_OPT2_ID = 3; //Оптовая цена 2
-        foreach ($arItems as $arItem) {
-            $this->echo('Обновление цены товара ' . $arItem['NAME']);
-
+        foreach ($this->arProductElements as $arItem) {
             //Сначала проверим существует ли такой продукт в системе и если не существует, то создадим его
             if (!$arProducts[$arItem['ID']]) {
                 \Bitrix\Catalog\Model\Product::add(
@@ -167,6 +144,8 @@ class Import
                         'VAT_INCLUDED' => 'Y' //НДС входит в стоимость
                     ]
                 );
+
+                $this->echo('Создание товара ' . $arItem['NAME']);
             }
 
             //Запишем цены
@@ -180,11 +159,15 @@ class Import
                 ];
 
                 if ($arPricesItems[$arItem['ID'] . '_' . $PRICE_BASE_ID]) {
-                    CPrice::Update(
-                        $arPricesItems[$arItem['ID'] . '_' . $PRICE_BASE_ID]['ID'],
-                        $arFields
-                    );
+                    if (round($arPricesItems[$arItem['ID'] . '_' . $PRICE_BASE_ID]['PRICE'], 2) != round($arItem['PROPERTY_PRICE_VALUE'], 2)) {
+                        $this->echo('Обновление розничной цены товара ' . $arItem['NAME']);
+                        CPrice::Update(
+                            $arPricesItems[$arItem['ID'] . '_' . $PRICE_BASE_ID]['ID'],
+                            $arFields
+                        );
+                    }
                 } else {
+                    $this->echo('Создание розничной цены товара ' . $arItem['NAME']);
                     CPrice::Add(
                         $arFields
                     );
@@ -200,11 +183,15 @@ class Import
                     "CURRENCY" => "RUB",
                 ];
                 if ($arPricesItems[$arItem['ID'] . '_' . $PRICE_OPT_ID]) {
-                    CPrice::Update(
-                        $arPricesItems[$arItem['ID'] . '_' . $PRICE_OPT_ID]['ID'],
-                        $arFields
-                    );
+                    if (round($arPricesItems[$arItem['ID'] . '_' . $PRICE_OPT_ID]['PRICE'], 2) != round($arItem['PROPERTY_PRICE_OPT_VALUE'], 2)) {
+                        $this->echo('Обновление оптовой цены товара ' . $arItem['NAME']);
+                        CPrice::Update(
+                            $arPricesItems[$arItem['ID'] . '_' . $PRICE_OPT_ID]['ID'],
+                            $arFields
+                        );
+                    }
                 } else {
+                    $this->echo('Создание оптовой цены товара ' . $arItem['NAME']);
                     CPrice::Add(
                         $arFields
                     );
@@ -220,11 +207,15 @@ class Import
                     "CURRENCY" => "RUB",
                 ];
                 if ($arPricesItems[$arItem['ID'] . '_' . $PRICE_OPT2_ID]) {
-                    CPrice::Update(
-                        $arPricesItems[$arItem['ID'] . '_' . $PRICE_OPT2_ID]['ID'],
-                        $arFields
-                    );
+                    if (round($arPricesItems[$arItem['ID'] . '_' . $PRICE_OPT2_ID]['PRICE'], 2) != round($arItem['PROPERTY_PRICE_OPT2_VALUE'], 2)) {
+                        $this->echo('Обновление оптовой цены2 товара ' . $arItem['NAME']);
+                        CPrice::Update(
+                            $arPricesItems[$arItem['ID'] . '_' . $PRICE_OPT2_ID]['ID'],
+                            $arFields
+                        );
+                    }
                 } else {
+                    $this->echo('Создание оптовой цены2 товара ' . $arItem['NAME']);
                     CPrice::Add(
                         $arFields
                     );
@@ -256,13 +247,16 @@ class Import
                     break;
             }
 
-            CCatalogProduct::Update(
-                $arItem['ID'],
-                [
-                    'QUANTITY' => $arItem['PROPERTY_Ostatok_VALUE'],
-                    'MEASURE' => $iMeasure
-                ]
-            );
+            if ($arProducts[$arItem['ID']]['MEASURE'] != $iMeasure) {
+                $this->echo('Обновление единиц измерения товара ' . $arItem['NAME']);
+                CCatalogProduct::Update(
+                    $arItem['ID'],
+                    [
+                        'QUANTITY' => $arItem['PROPERTY_Ostatok_VALUE'],
+                        'MEASURE' => $iMeasure
+                    ]
+                );
+            }
         }
     }
 
@@ -273,8 +267,12 @@ class Import
     {
         $elem = new CIBlockElement();
         foreach ($this->arProductElements as $item) {
-            $this->echo('Обновление символьного кода для товара ' . $item['NAME']);
-            $elem->Update($item['ID'], ['CODE' => $this->translit($item['NAME'])]);
+            $sCode = $this->translit($item['NAME']);
+
+            if ($sCode != $item['CODE']) {
+                $this->echo('Обновление символьного кода для товара ' . $item['NAME']);
+                $elem->Update($item['ID'], ['CODE' => $sCode]);
+            }
         }
     }
 
@@ -328,11 +326,18 @@ class Import
         $arSelect = [
             'ID',
             'NAME',
+            'CODE',
             'IBLOCK_ID',
             'PROPERTY_PHOTO_ID',
             'PREVIEW_PICTURE',
             'PROPERTY_ROWID',
-            'PROPERTY_PHOTOS'
+            'PROPERTY_PHOTOS',
+            'PROPERTY_PRICE_OPT',
+            'PROPERTY_PRICE_OPT2',
+            'PROPERTY_PRICE',
+            'PROPERTY_Ostatok',
+            'PROPERTY_UNITS',
+            'PROPERTY_KRATNOST',
         ];
         $arFilter = [
             'IBLOCK_ID' => $this->iblock,
@@ -967,26 +972,31 @@ class Import
 
         // Добавляем коэфиценты единицы измерения
         foreach ($arProducts as $key => $product) {
-            $this->echo('Установка единицы измерения для товара  ' . $arItems[$product['ID']]['NAME']);
-
             // Записываем и создаем коэфициент единицы измерения
             if (empty($arRatios[$key]) && $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE'] != '') {
+                $this->echo('Добавление единицы измерения для товара  ' . $arItems[$product['ID']]['NAME']);
                 CCatalogMeasureRatio::add([
                     'PRODUCT_ID' => $product['ID'],
                     'RATIO' => $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']
                 ]);
             } else {
                 // Если единица измерения задана в файле, то обновляем ее, если нет, то удаляем единицу измерения
-                if (!$arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']) {
-                    CCatalogMeasureRatio::delete($arRatios[$product['ID']]['ID']);
+                if (!$arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE'] ) {
+                    if ($arRatios[$product['ID']]['RATIO']) {
+                        $this->echo('Удаление единицы измерения у товара  ' . $arItems[$product['ID']]['NAME']);
+                        CCatalogMeasureRatio::delete($arRatios[$product['ID']]['ID']);
+                    }
                 } else {
-                    CCatalogMeasureRatio::update(
-                        $arRatios[$product['ID']]['ID'],
-                        [
-                            'PRODUCT_ID' => $arRatios[$product['ID']]['PRODUCT_ID'],
-                            'RATIO' => $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']
-                        ]
-                    );
+                    if ($arRatios[$product['ID']]['RATIO'] != $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']) {
+                        $this->echo('Обновление единицы измерения у товара  ' . $arItems[$product['ID']]['NAME']);
+                        CCatalogMeasureRatio::update(
+                            $arRatios[$product['ID']]['ID'],
+                            [
+                                'PRODUCT_ID' => $arRatios[$product['ID']]['PRODUCT_ID'],
+                                'RATIO' => $arItems[$product['ID']]['PROPERTY_KRATNOST_VALUE']
+                            ]
+                        );
+                    }
                 }
             }
         }
