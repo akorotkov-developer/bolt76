@@ -246,7 +246,7 @@ if ($ar_result = $db_list->GetNext()) {
             <? if ($isTabs) { ?><?
                 foreach ($tabs as $tab) {
                     ?>
-                    <div class="section-pane dadasdasd">
+                    <div class="section-pane">
                     <div class="section-pane-inner"><?
                         print $tab['PREVIEW_TEXT'];
                         if ($tab['PROPERTY_PDF_VALUE']) {

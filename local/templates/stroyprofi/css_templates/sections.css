@@ -1,0 +1,18 @@
+/** Стили для вкладок описание разделов */
+.section-pane ul {
+    padding-left: 20px;
+}
+.section-pane li {
+    list-style-type: none; /* Прячем исходные маркеры */
+}
+.section-pane li:before {
+    color: #FF7920; /* Цвет маркера */
+    content: "•"; /* Сам маркер */
+    padding-right: 10px; /* Расстояние от маркера до текста */
+}
+.section-pane a {
+    text-decoration: underline;
+}
+.section-pane a:hover {
+    color: #FF7920;
+}
