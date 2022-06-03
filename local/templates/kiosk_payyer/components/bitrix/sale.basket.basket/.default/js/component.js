@@ -576,7 +576,8 @@
 
 		checkOutAction: function()
 		{
-			document.location.href = this.params.PATH_TO_ORDER;
+			alert('Функйионал вывода заказа на печать');
+			//document.location.href = this.params.PATH_TO_ORDER;
 		},
 
 		addCouponAction: function(event)

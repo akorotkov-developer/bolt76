@@ -28,7 +28,7 @@ $MESS["SBB_COUPON"] = "купон";
 $MESS["SBB_TOTAL"] = "Итого";
 $MESS["SBB_WEIGHT"] = "Общий вес";
 $MESS["SBB_VAT"] = "Сумма НДС";
-$MESS["SBB_ORDER"] = "Оформить заказ";
+$MESS["SBB_ORDER"] = "Распечатать чек";
 $MESS["SBB_BASKET_ITEM_MAX_COUNT_EXCEEDED"] = "Перейдите в <a href=#PATH#>корзину</a> для редактирования";
 $MESS["SBB_WARNING_ITEM"] = "c ошибками";
 $MESS["SBB_IN_BASKET"] = "В корзине";
