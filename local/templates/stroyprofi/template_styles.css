@@ -1280,3 +1280,22 @@ td .buy_helper_holder{
 .product-item-detail-tab-content[data-value="properties"] {
     width: 80%;
 }
+
+/** Стили для вкладок описание */
+.product-item-detail-tab-content ul {
+    padding-left: 20px;
+}
+.product-item-detail-tab-content li {
+    list-style-type: none; /* Прячем исходные маркеры */
+}
+.product-item-detail-tab-content li:before {
+    color: #FF7920; /* Цвет маркера */
+    content: "•"; /* Сам маркер */
+    padding-right: 10px; /* Расстояние от маркера до текста */
+}
+.product-item-detail-tab-content a {
+    text-decoration: underline;
+}
+.product-item-detail-tab-content a:hover {
+    color: #FF7920;
+}
