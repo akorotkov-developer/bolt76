@@ -3573,9 +3573,11 @@ BX.ready(function() {
 			if ($(element).attr('data-value') == tabName) {
 				if (!$(element).hasClass('active')) {
 					$(element).addClass('active');
+					$(element).show();
 				}
 			} else {
 				$(element).removeClass('active');
+				$(element).hide();
 			}
 		});
 	});
