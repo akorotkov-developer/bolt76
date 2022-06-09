@@ -65,6 +65,30 @@ use \Bitrix\Main\Page\Asset;
 					),
 					false
 				);?></div>
+                <?php
+                global $USER;
+                if(!$USER->IsAuthorized()) // Для неавторизованного
+                {
+                    global $APPLICATION;
+                    $arFavorites = unserialize($_COOKIE["favorites"]);
+                } else {
+                    $idUser = $USER->GetID();
+                    $rsUser = CUser::GetByID($idUser);
+                    $arUser = $rsUser->Fetch();
+                    $arFavorites = $arUser['UF_FAVORITES'];
+                }
+                ?>
+                <div class="b-header-favorite">
+                    <a href="/personal/wishlist/">
+                        <svg  class="favorite-svg-icon-header" title="Избранное" width="31" height="31" viewBox="0 0 24 24" fill="none" stroke="#8899a4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </a>
+
+                    <span class="favorite-title"><a href="/personal/wishlist/">Избранное</a></span>
+                    <span class="favorite-count"><?= count($arFavorites)?></span>
+                </div>
+
                 <div class="cart">
                     <div class="inner">
                         <a href="/personal/cart" class="img_cart_link"></a>

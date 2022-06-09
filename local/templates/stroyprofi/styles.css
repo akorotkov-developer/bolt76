@@ -30,3 +30,46 @@ hr {
 table {
 border-collapse: collapse;
 }
+.top .b-header-favorite {
+    padding: 5px 20px 10px;
+    background: url(/img/semitrans.png);
+    height: 60px;
+    position: absolute;
+    top: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    left: 68%;
+}
+.favorite-svg-icon:hover {
+    stroke: #FF7920;
+    fill: #FF7920;
+    opacity: .7;
+    cursor: pointer;
+}
+.favorite-svg-icon.active {
+    stroke: #FF7920;
+    fill: #FF7920;
+    opacity: .7;
+}
+.favorite-svg-icon, .favorite-svg-icon-header {
+    stroke: #000;
+    opacity: .7;
+}
+.b-header-favorite {
+    position: relative;
+    text-align: center;
+}
+.favorite-title {
+    display: block;
+    color: #FF7920;
+    font-weight: bold;
+}
+.favorite-title a {
+    color: #FF7920!important;
+}
+.b-header-favorite .favorite-count {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    font-weight: bold;
+}

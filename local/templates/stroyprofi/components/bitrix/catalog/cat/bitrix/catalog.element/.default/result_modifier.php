@@ -105,3 +105,24 @@ if (!empty($arResult['PROPERTIES']['ADDITIONAL_PRODUCT_INFORMATION']['VALUE']) &
 
     $arResult['ADDITIONAL_TABS'] = $arAdditionalTabs;
 }
+
+/** Проерка находится товар в избранном */
+global $USER;
+if(!$USER->IsAuthorized()) // Для неавторизованного
+{
+    global $APPLICATION;
+    $arFavorites = unserialize($_COOKIE["favorites"]);
+} else {
+    $idUser = $USER->GetID();
+    $rsUser = CUser::GetByID($idUser);
+    $arUser = $rsUser->Fetch();
+    $arFavorites = $arUser['UF_FAVORITES'];
+
+}
+
+foreach ($arFavorites as $favoriteItemId) {
+    if ($arResult['ID'] == $favoriteItemId) {
+        $arResult['IS_FAVORITE'] = true;
+    }
+}
+
