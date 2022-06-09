@@ -47,6 +47,24 @@ $APPLICATION->SetTitle("Доставка");
                                                                                 rel="noopener noreferrer"> Расчет
                                         стоимости</a></td>
                             </tr>
+                            <tr>
+                                <td><img src="delivery-cdek.png"
+                                         alt="Сдэк" border="0" width="275"></td>
+                                <td class="vertalign-middle padding-left-50"><a class="link-btn-orange"
+                                                                                href="https://www.cdek-calc.ru/"
+                                                                                target="_blank"
+                                                                                rel="noopener noreferrer"> Расчет
+                                        стоимости</a></td>
+                            </tr>
+                            <tr>
+                                <td><img src="vozovoz.png" width="275"
+                                         alt="Сдэк" border="0"></td>
+                                <td class="vertalign-middle padding-left-50"><a class="link-btn-orange"
+                                                                                href="https://vozovoz.ru/order/create/"
+                                                                                target="_blank"
+                                                                                rel="noopener noreferrer"> Расчет
+                                        стоимости</a></td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
