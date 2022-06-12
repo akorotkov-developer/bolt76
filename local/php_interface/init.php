@@ -1,6 +1,9 @@
 <?php
 CJSCore::Init(array("jquery"));
 
+require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/import/Import.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/import/importInCron.php';
+
 /**Подключение PHP mailer*/
 require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/phpmailer/Exception.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/phpmailer/PHPMailer.php';
@@ -463,4 +466,19 @@ function OnAdminListDisplayHandler(&$list) {
             }
         }
     }
+}
+
+
+function startImport() {
+    echo 'Старт импорта!';
+    ob_start();
+
+    echo 'Тест 99999 1009999900';
+
+    $sOutForLog = ob_get_contents();
+    ob_end_clean();
+
+    file_put_contents('log_import.txt', $sOutForLog);
+
+    return 'startImport();';
 }

@@ -23,7 +23,7 @@ class Import
     /**
      * Установка начальных параметров
      */
-    public function __construct()
+    public function __construct($rootPath = '')
     {
         Loader::includeModule('iblock');
         Loader::includeModule('sale');
@@ -47,8 +47,15 @@ class Import
         $this->host = $sHttp . $_SERVER['SERVER_NAME'] . '/';
         $this->url = $this->host . "import/export/";
 
-        $this->xmlCat = simplexml_load_file("./cat_new.xml");
-        $this->productsFile = file('catalog_new.txt');
+        if ($rootPath != '') {
+            $catNewXml = $rootPath . '/import/cat_new.xml';
+            $catNew = $rootPath . '/import/catalog_new.txt';
+        } else {
+            $catNewXml = $_SERVER['DOCUMENT_ROOT'] . '/import/cat_new.xml';
+            $catNew = $_SERVER['DOCUMENT_ROOT'] . '/import/catalog_new.txt';
+        }
+        $this->xmlCat = simplexml_load_file($catNewXml);
+        $this->productsFile = file($catNew);
     }
 
     /**
