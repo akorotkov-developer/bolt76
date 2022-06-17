@@ -461,7 +461,7 @@ function OnAdminListDisplayHandler(&$list) {
             if (!empty($arItems[$orderId])) {
                 $row->addField(
                     'CONNECTED',
-                    '<a href="' . CFile::GetPath($arItems[$orderId]) . '" download>Скачать</a>'
+                    '<a href="' . CFile::GetPath($arItems[$orderId]) . '" download="Исходящие счета.xml">Скачать</a>'
                 );
             }
         }
