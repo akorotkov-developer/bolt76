@@ -54,6 +54,23 @@ class Import
             $catNewXml = $_SERVER['DOCUMENT_ROOT'] . '/import/cat_new.xml';
             $catNew = $_SERVER['DOCUMENT_ROOT'] . '/import/catalog_new.txt';
         }
+
+        // Необходимо сначала подготовить файл с секциями для загрузки
+        // заменить все <desc> на <desc><![CDATA[ , чтобы описание в HTML
+        // у секций не воспринималось как объект
+        $xmlFile = file_get_contents($catNewXml);
+
+        $preparedXmlFile = str_replace("<desc>", "<desc><![CDATA[", $xmlFile);
+        $preparedXmlFile = str_replace("</desc>", "]]></desc>", $preparedXmlFile);
+
+        if ($rootPath != '') {
+            file_put_contents($rootPath . '/import/preparedCatNew.xml', $preparedXmlFile);
+            $catNewXml = $rootPath . '/import/preparedCatNew.xml';
+        } else {
+            file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/import/preparedCatNew.xml', $preparedXmlFile);
+            $catNewXml = $_SERVER['DOCUMENT_ROOT'] . '/import/preparedCatNew.xml';
+        }
+
         $this->xmlCat = simplexml_load_file($catNewXml);
         $this->productsFile = file($catNew);
     }
@@ -392,14 +409,17 @@ class Import
             $image = (int)$topContent->sID;
             if (sizeof($topContent->childs->category) > 0) {
                 $this->echo('Импорт секции ' . strval($topContent->name));
-                $desc = str_replace('[BR]', "\n", str_replace('[BR][BR]', "\n", $topContent->desc));
+
+                $desc = (string) $topContent->desc;
+                $desc = str_replace('[BR]', "\n", str_replace('[BR][BR]', "\n", $desc));
                 $viewTemplate = $topContent->viewTemplate;
                 $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc, $viewTemplate);
                 $present[] = $ID;
                 $this->sectionWalker($topContent->childs, $ID);
             } else {
                 $this->echo('Импорт секции ' . strval($topContent->name));
-                $desc = str_replace('[BR]', "\n", str_replace('[BR][BR]', "\n", $topContent->desc));
+                $desc = (string) $topContent->desc;
+                $desc = str_replace('[BR]', "\n", str_replace('[BR][BR]', "\n", $desc));
                 $viewTemplate = $topContent->viewTemplate;
                 $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc, $viewTemplate, true);
                 $present[] = $ID;
