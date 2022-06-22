@@ -628,6 +628,7 @@ class Import
             $arUpdate = [
                 'NAME' => $sName,
                 'PREVIEW_TEXT' => trim(strval($item['Opisanie'])),
+                'PREVIEW_TEXT_TYPE' => 'html',
                 'SORT' => intval($item['PorNomer']),
                 'PROPERTY_VALUES' => [
                     'ARTICUL' => $item['Artikul'],
@@ -728,6 +729,7 @@ class Import
                 'IBLOCK_SECTION_ID' => $siteCatID,
                 'NAME' => $sName,
                 'PREVIEW_TEXT' => trim(strval($item['Opisanie'])),
+                'PREVIEW_TEXT_TYPE' => 'html',
                 'SORT' => intval($item['PorNomer']),
                 'PROPERTY_VALUES' => [
                     'ARTICUL' => $item['Artikul'],
