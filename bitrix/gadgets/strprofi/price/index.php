@@ -18,9 +18,18 @@
 
 
 <p><button class="download">Скачать прайс-лист</button></p>
+<p><button class="start_import">Запустить импорт</button></p>
+<p><button class="auto_cache">Автокеширование</button></p>
 
 
 <script type="text/javascript">
+    $('.start_import').click(function () {
+        window.open("/import/index2.php?start=gogo", '');
+    });
+    $('.auto_cache').click(function () {
+        window.open("/bitrix/admin/cache.php?lang=ru", '');
+    });
+
     $('.download').click(function() {
         $.ajax({
             url: "/bitrix/gadgets/strprofi/price/clear_cache.php",
