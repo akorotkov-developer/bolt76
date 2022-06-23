@@ -73,3 +73,6 @@ border-collapse: collapse;
     top: 0px;
     font-weight: bold;
 }
+.b-favorite {
+    text-align: right;
+}
