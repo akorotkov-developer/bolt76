@@ -2615,4 +2615,32 @@
 			});
 		}
 	};
+
+	/** Добавление товаров в избранное */
+	$(document).on('click', '.product-item', function() {
+		var favorID = $(this).find('.favorite-svg-icon').attr('data-product-id');
+		var thisOb = $(this);
+
+		deleteFavorite(favorID, thisOb);
+	});
+
+	function deleteFavorite(id, thisOb)
+	{
+		var param = 'id=' + id + '&action=delete';
+		$.ajax({
+			url:     '/local/ajax/add_to_favorite.php', // URL отправки запроса
+			type:     'GET',
+			dataType: 'html',
+			data: param,
+			success: function(response) { // Если Данные отправлены успешно
+				thisOb.parent().parent().remove();
+
+				var wishCount = parseInt($('.b-header-favorite .favorite-count').html()) - 1;
+				$('.b-header-favorite .favorite-count').html(wishCount); // Визуально меняем количество у иконки
+			},
+			error: function(jqXHR, textStatus, errorThrown){ // Ошибка
+				console.log('Error: '+ errorThrown);
+			}
+		});
+	}
 })(window);
