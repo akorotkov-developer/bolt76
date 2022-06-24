@@ -20,7 +20,6 @@ use \Bitrix\Main\Page\Asset;
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick.css">
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick-theme.css">
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/css_templates/products.css">
-    <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/css_templates/sections.css">
     <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"

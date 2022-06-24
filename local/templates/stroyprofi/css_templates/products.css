@@ -2,6 +2,14 @@
 .product-item-detail-tab-content ul {
     padding-left: 20px;
 }
+section p {text-indent: 25px;}
+.product-item-detail-tab-content p {text-indent: 25px;}
+
+.product-item-detail-tab-content h1 {color: #FF7920;}
+.product-item-detail-tab-content h2 {color: #FF7920; font-size: 22px;}
+.product-item-detail-tab-content h3 {color: #FF7920; font-size: 20px;}
+.product-item-detail-tab-content h4 {color: #FF7920; font-size: 18px;}
+
 .product-item-detail-tab-content li {
     list-style-type: none; /* Прячем исходные маркеры */
 }
