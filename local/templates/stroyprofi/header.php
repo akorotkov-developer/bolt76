@@ -161,9 +161,13 @@ use \Bitrix\Main\Page\Asset;
 			$inCatalog = CSite::InDir("/catalog/");
 			$cPage = ($APPLICATION->GetCurPage() == '/catalog/') ;
 			?>
-			<?if($inCatalog && $showLeftPanel){?><a class="open_left" <?=($mclose?'style="display:block;"':'')?> href="#"></a><?}?>
+			<?if($inCatalog && $showLeftPanel){?><a class="open_left" <?=($mclose?'style="display:block;"':'')?> href="#"></a><?}
+
+            $APPLICATION->GetCurPage() == '/account/auth/';
+            ?>
             <table class="full content_table">
-				<?
+				<tr <?=$APPLICATION->GetCurPage() == '/account/auth/' ? 'style="display: contents"' : 'style="display: inherit"'?>>
+                <?
 				if($showLeftPanel){?>
                     <td class="left_block_holder" <?=(($inCatalog&&$mclose)?'style="display:none;"':'')?>>
                         <div class="left_block">

@@ -620,6 +620,12 @@ class Import
 
         $sName = ($item['Svertka'] != '') ? $item['Svertka'] : $item['Naimenovanie'];
 
+        if ($item['ID'] == '15799') {
+            AddMessage2Log($item, '$item');
+            AddMessage2Log($siteCatID, '$siteCatID');
+            AddMessage2Log($arDynamicPropsMap, '$arDynamicPropsMap');
+        }
+
         $this->echo('Добавление/обновление товара ' . $sName . ' c ROW_ID: ' . $item['ID']);
 
         $el = new \CIBlockElement;

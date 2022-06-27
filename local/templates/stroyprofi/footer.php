@@ -1,6 +1,7 @@
 </div></td>
-<div class="clear"></div>
+</tr>
 </table>
+<div class="clear"></div>
 </div>
 </div>
     <div class="footer">

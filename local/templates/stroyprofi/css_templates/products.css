@@ -24,3 +24,26 @@ section p {text-indent: 25px;}
 .product-item-detail-tab-content a:hover {
     color: #FF7920;
 }
+
+.main_block .section-pane table thead tr {
+    color: #FF7920;
+	font-weight: bold;
+}
+.main_block .product-item-detail-tab-content table thead tr {
+    color: #FF7920;
+	font-weight: bold;
+}
+.main_block table.element_table thead tr {
+    color: black;
+}
+.main_block .section-pane table tr td {
+    text-align: center;
+    vertical-align: middle;
+}
+.main_block .product-item-detail-tab-content table tr td {
+    text-align: center;
+    vertical-align: middle;
+}
+.main_block table.element_table tr td {
+    text-align: left;
+}

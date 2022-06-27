@@ -23,5 +23,5 @@ if ($_GET['start'] == "gogo") {
     $sOutForLog = ob_get_contents();
     ob_end_clean();
 
-    file_put_contents('log_import.txt', $sOutForLog);
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/import/logs/log_import.txt', $sOutForLog);
 }
