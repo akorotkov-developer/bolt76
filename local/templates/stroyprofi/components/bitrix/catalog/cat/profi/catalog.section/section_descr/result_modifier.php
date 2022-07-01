@@ -21,8 +21,32 @@ if (strpos($sCurPage, '/apply/') !== false) {
         }
     }
 
+    $arProductIds = array_column($arResult['ITEMS'], 'ID');
+    if ($_GET['tst']) {
+        $dbResult = CIBlockElement::GetList(
+            [],
+            [
+                'IBLOCKI_ID' => 1,
+                'ID' => $arProductIds
+            ],
+            false,
+            false,
+            ['ID', 'DETAIL_PAGE_URL']
+        );
+
+        $arItemsProducts = [];
+        while($arResults = $dbResult->Fetch()) {
+            $arItemsProducts[$arResults['ID']] = $arResults;
+        }
+    }
+
+    foreach ($arItemsProducts as $key => $arProduct) {
+        $arItemsProducts[$key]['DETAIL_PAGE_URL'] = CIBlock::ReplaceDetailUrl($arProduct['DETAIL_PAGE_URL'], $arProduct, false, 'E');
+    }
+
     foreach ($arResult['ITEMS'] as $key => $arItem) {
         $arResult['ITEMS'][$key]['NAME'] = $arItem['PROPERTY_' . $iNaimenovanieId];
+        $arResult['ITEMS'][$key]['DETAIL_PAGE_URL'] = $arItemsProducts[$arItem['ID']]['DETAIL_PAGE_URL'];
     }
 
     // Разделение результатов фильтрации по разделам
