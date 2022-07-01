@@ -1280,5 +1280,18 @@ td .buy_helper_holder{
 .product-item-detail-tab-content[data-value="properties"] {
     width: 80%;
 }
-
+.b-right-banner-list .next_slick_arrow.slick-arrow {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    z-index: 100;
+    cursor: pointer;
+}
+.b-right-banner-list .prev_slick_arrow.slick-arrow {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    z-index: 100;
+    cursor: pointer;
+}
 

@@ -1,0 +1,10 @@
+.b-right-banner-list__item-img {
+    max-width: 100%;
+}
+.b-right_banner {
+    max-width: 400px;
+}
+.b-right-banner-list__item-link {
+    display: flex;
+    justify-content: center;
+}
