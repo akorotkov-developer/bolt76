@@ -12,6 +12,41 @@
     p span{
         display: none;
     }
+    .download_log_import {
+        color: #000!important;
+        border-radius: 2px;
+        appearance: auto;
+        writing-mode: horizontal-tb !important;
+        font-style: ;
+        font-variant-ligatures: ;
+        font-variant-caps: ;
+        font-variant-numeric: ;
+        font-variant-east-asian: ;
+        font-weight: ;
+        font-stretch: ;
+        font-size: ;
+        font-family: ;
+        text-rendering: auto;
+        color: buttontext;
+        letter-spacing: normal;
+        word-spacing: normal;
+        line-height: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: center;
+        align-items: flex-start;
+        cursor: default;
+        box-sizing: border-box;
+        background-color: buttonface;
+        margin: 0em;
+        padding: 1px 6px;
+        border-width: 1px;
+        border-style: outset;
+        border-color: buttonborder;
+        border-image: initial;
+    }
 </style>
 
 
@@ -20,7 +55,7 @@
 <p><button class="download">Скачать прайс-лист</button></p>
 <p><button class="start_import">Запустить импорт</button></p>
 <p><button class="auto_cache">Автокеширование</button></p>
-
+<p><a href="/import/logs/log_import.txt" class="download_log_import" download="">Скачать лог импорта</a></p>
 
 <script type="text/javascript">
     $('.start_import').click(function () {
