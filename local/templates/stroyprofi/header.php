@@ -166,7 +166,7 @@ use \Bitrix\Main\Page\Asset;
             $APPLICATION->GetCurPage() == '/account/auth/';
             ?>
             <table class="full content_table">
-				<tr <?=$APPLICATION->GetCurPage() == '/account/auth/' ? 'style="display: contents"' : 'style="display: inherit"'?>>
+				<tr <?=$APPLICATION->GetCurPage() == '/account/auth/' ? 'style="display: contents"' : 'style="display: contents"'?>>
                 <?
 				if($showLeftPanel){?>
                     <td class="left_block_holder" <?=(($inCatalog&&$mclose)?'style="display:none;"':'')?>>
@@ -243,7 +243,7 @@ use \Bitrix\Main\Page\Asset;
 							false
 						);?></div>
                     </td><?}?>
-                <td style="width: 1px;"><div style="width:1px;height: 600px;"></div></td>
+
                 <td>
                     <div class="main_block<?=(!$showLeftPanel?' no-left':'')?>">
                         <div class="breadcrumbs">
