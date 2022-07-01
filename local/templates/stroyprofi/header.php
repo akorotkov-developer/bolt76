@@ -85,7 +85,7 @@ use \Bitrix\Main\Page\Asset;
                     </a>
 
                     <span class="favorite-title"><a href="/personal/wishlist/">Избранное</a></span>
-                    <span class="favorite-count"><?= count($arFavorites)?></span>
+                    <span class="favorite-count"><?= (!$arFavorites) ? '0' : count($arFavorites)?></span>
                 </div>
 
                 <div class="cart">
