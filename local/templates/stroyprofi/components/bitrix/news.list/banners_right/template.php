@@ -15,7 +15,7 @@
     $('.b-right-banner-list').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 4000,
         nextArrow: '<div class="prev_slick_arrow"><img src="<?= SITE_TEMPLATE_PATH?>/plugins/slick/images/arrowleft.png"></div>',
         prevArrow: '<div class="next_slick_arrow"><img src="<?= SITE_TEMPLATE_PATH?>/plugins/slick/images/arrowright.png"></div>',
