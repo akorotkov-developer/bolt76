@@ -692,8 +692,12 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 												<?
 											}
 											?>
-											<div class="product-item-detail-price-current" id="<?=$itemIds['PRICE_ID']?>">
-												<?=$price['PRINT_RATIO_PRICE']?>
+											<div class="product-item-detail-price-current">
+												<?=$price['PRINT_PRICE']?>
+											</div>
+
+											<div style="display: none" class="product-item-detail-price-current" id="<?=$itemIds['PRICE_ID']?>">
+												<?=$price['PRINT_PRICE']?>
 											</div>
 											<?
 											if ($arParams['SHOW_OLD_PRICE'] === 'Y')
