@@ -1,6 +1,13 @@
 <?php
 CJSCore::Init(array("jquery"));
 
+if (defined('ADMIN_SECTION') && ADMIN_SECTION === true) {
+    $asset = \Bitrix\Main\Page\Asset::getInstance();
+    $asset->addJs('/local/templates/stroyprofi/js/jquery-3.6.0.js');
+    $asset->addJs('/local/templates/stroyprofi/js/admin_scripts.js');
+    $asset->addCss('/local/templates/stroyprofi/css_templates/admin_styles.css');
+}
+
 require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/import/Import.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/import/importInCron.php';
 
@@ -411,6 +418,9 @@ if (!function_exists('change_key')) {
 AddEventHandler("main", "OnAdminListDisplay", "OnAdminListDisplayHandler");
 function OnAdminListDisplayHandler(&$list) {
     if ($list->table_id == 'tbl_sale_order') {
+        /**
+         * Столбец для скачивания отчетов СБИС++
+         */
         $arTempElement = ["CONNECTED" =>
             [
                 'id' => 'SBIS_BILL',
@@ -464,6 +474,66 @@ function OnAdminListDisplayHandler(&$list) {
                     '<a href="' . CFile::GetPath($arItems[$orderId]) . '" download="Исходящие счета.xml">Скачать</a>'
                 );
             }
+        }
+
+        /**
+         * Столбец для формирования ссылки на оплату
+         */
+        $arTempElement = ["CONNECTED2" =>
+            [
+                'id' => 'PAY_URL_SEND_ORDER',
+                'content' => 'Ссылка на оплату / Отправка заказа', // текст в шапке таблицы для поля CONNECTED2
+                'sort' => "PAY_URL_SEND_ORDER",
+                'default' => true,
+                'align' => 'left',
+            ]
+        ];
+
+        array_splice($list->aVisibleHeaders, 3, 0, $arTempElement);
+
+        $list->aVisibleHeaders = change_key($list->aVisibleHeaders, '0', 'CONNECTED2');
+
+        $list->arVisibleColumns[]= 'PAY_URL_SEND_ORDER';
+
+        $arOrderIds = [];
+        foreach ($list->aRows as $row) {
+            preg_match('/<a[^>]*?>(.*?)<\/a>/si', $row->aFields['ID']['view']['value'], $matches);
+            $orderId = $matches[1];
+            $orderId = str_replace('№', '', $orderId);
+            $arOrderIds[] = $orderId;
+        }
+
+        // Получем все заказы с онлайн оплатой
+        $dbRes = \Bitrix\Sale\Order::getList([
+            'select' => ['ID'],
+            'filter' => [
+                'PAY_SYSTEM_ID' => 2, //по платежной системе*/
+                'ID' => $arOrderIds
+            ],
+            'order' => ['ID' => 'DESC']
+        ]);
+
+        $arOrdersWithSberPay = [];
+        while ($order = $dbRes->fetch()){
+            $arOrdersWithSberPay[] = $order['ID'];
+        }
+
+        // Заполним ячейки
+        // Заполним ячейки
+        foreach ($list->aRows as $row) {
+            preg_match('/<a[^>]*?>(.*?)<\/a>/si', $row->aFields['ID']['view']['value'], $matches);
+            $orderId = $matches[1];
+            $orderId = str_replace('№', '', $orderId);
+
+            $strToInsert = '<a style="cursor: pointer;" class="send_changed_order" data-orderid="' . $orderId . '">Отправить письмо покупателю</a>';
+            if (in_array($orderId, $arOrdersWithSberPay)){
+                $strToInsert .= '<br><br><a style="cursor: pointer;" class="get_link_for_sber_pay" data-orderid="' . $orderId . '">Получить ссылку на оплату</a>';
+            }
+
+            $row->addField(
+                'CONNECTED2',
+                $strToInsert
+            );
         }
     }
 }
