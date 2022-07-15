@@ -2,8 +2,6 @@
 require_once($_SERVER['DOCUMENT_ROOT']. "/bitrix/modules/main/include/prolog_before.php");
 
 if ($_REQUEST['orderId'] != '') {
-    $_REQUEST['orderId'] = 288;
-
     \Bitrix\Main\Loader::includeModule('sale');
 
     // Получем все ссылки на файлы для полученных заказов
@@ -22,7 +20,6 @@ if ($_REQUEST['orderId'] != '') {
         $arFields['ORDER_DATE'] = $order['DATE_INSERT']->format("d.m.Y H:i:s");
         $arFields['ORDER_USER'] = $order['USER_ID'];
         $arFields['PRICE'] = round($order['PRICE'], 2) . ' &#8381;';
-        $arFields['BCC'] = 'strprofi@yandex.ru';
         $arFields['SALE_EMAIL'] = 'strprofi@yandex.ru';
         $arFields['PRICE_DELIVERY'] = (float)$order['PRICE_DELIVERY'];
 
