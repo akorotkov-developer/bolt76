@@ -91,9 +91,10 @@ if (sizeof($arResult["ITEMS"]) > 0) {
 
                     <tr id="<?= $this->GetEditAreaId($arElement['ID']); ?>"
                         class="<?= ((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
-                        <? if ($cell == 0) { ?>
+                        <? if ($cell == 0 &&  !$arResult['IS_FILTER']) { ?>
                         <td rowspan="<?= (sizeof($arResult["ITEMS"]) + 1) ?>" class="section_description">
-                            <? if ($arResult["PICTURE"]["ID"]) {
+
+                            <? if ($arResult["PICTURE"]["ID"] && !$arResult['IS_FILTER']) {
                                 $file = CFile::ResizeImageGet($arResult["PICTURE"]["ID"], array('width' => 150, 'height' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                 $file_big = CFile::ResizeImageGet($arResult["PICTURE"]["ID"], array('width' => 900, 'height' => 600), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                 ?>
@@ -104,7 +105,8 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                             <? } ?>
                             <div class="description"><?/*= $arResult["DESCRIPTION"]*/ ?></div>
                             <div class="clear"></div>
-                            </td><? } ?>
+                        </td>
+                        <? } ?>
                         <td class="art">
                             <div class="name-holder">
                                 <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
@@ -144,7 +146,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                             <? if ($arElement["DETAIL_TEXT"]) { ?><a href="#" class="">
                                 <img src="/images/i.png" alt="Информация"/></a><? } ?>
                         </td>
-                        <td class="name">
+                        <td class="name" <?php if ($arResult['IS_FILTER']) {echo 'style="width: 100%"';}?>>
                             <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
                                 <div class="name_wrapper">
 
@@ -366,7 +368,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                             </div>
                         </td>
                         <td class="mera"><?= $mera ?></td>
-                        <td class="cart_td"><a href="#" class="add_to_cart_one"><img src="/img/cart_buttton.png" alt=""></a>
+                        <td class="cart_td" <?php if ($arResult['IS_FILTER']) {echo 'colspan="2"';}?>><a href="#" class="add_to_cart_one"><img src="/img/cart_buttton.png" alt=""></a>
                         </td>
 
                     </tr>
