@@ -28,7 +28,6 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                 <?php
                 $isSectionNameWrited = false;
                 foreach ($arResult["ITEMS"] as $cell => $arElement):
-
                     if ($arResult['IS_FILTER']) {
                         $sCurSectionNameForFilter = $arElement['FILTER_SECTION_NAME'];
                     }

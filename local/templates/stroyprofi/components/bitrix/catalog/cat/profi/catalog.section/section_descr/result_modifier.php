@@ -22,22 +22,21 @@ if (strpos($sCurPage, '/apply/') !== false) {
     }
 
     $arProductIds = array_column($arResult['ITEMS'], 'ID');
-    if ($_GET['tst']) {
-        $dbResult = CIBlockElement::GetList(
-            [],
-            [
-                'IBLOCKI_ID' => 1,
-                'ID' => $arProductIds
-            ],
-            false,
-            false,
-            ['ID', 'DETAIL_PAGE_URL']
-        );
 
-        $arItemsProducts = [];
-        while($arResults = $dbResult->Fetch()) {
-            $arItemsProducts[$arResults['ID']] = $arResults;
-        }
+    $dbResult = CIBlockElement::GetList(
+        [],
+        [
+            'IBLOCKI_ID' => 1,
+            'ID' => $arProductIds
+        ],
+        false,
+        false,
+        ['ID', 'DETAIL_PAGE_URL']
+    );
+
+    $arItemsProducts = [];
+    while($arResults = $dbResult->Fetch()) {
+        $arItemsProducts[$arResults['ID']] = $arResults;
     }
 
     foreach ($arItemsProducts as $key => $arProduct) {

@@ -27,8 +27,17 @@ hr {
     background: #262525;
     border: 0;
 }
-table {
-border-collapse: collapse;
+table {border-collapse: collapse;}
+
+.top .b-header-favorite {
+    padding: 5px 20px 10px;
+    background: url(/img/semitrans.png);
+    height: 60px;
+    position: absolute;
+    top: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    left: 68%;
 }
 .top .b-header-favorite {
     padding: 5px 20px 10px;
@@ -40,6 +49,10 @@ border-collapse: collapse;
     line-height: 18px;
     left: 68%;
 }
+
+
+
+
 .favorite-svg-icon:hover {
     stroke: #FF7920;
     fill: #FF7920;
