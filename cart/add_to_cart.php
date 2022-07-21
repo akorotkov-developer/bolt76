@@ -64,6 +64,8 @@ if (!$iQuantity) {
     return false;
 }
 
+$iQuantity = str_replace(',', '.', $iQuantity);
+
 // Получаем артикул товара для добавления в корзину
 $arFilter = Array(
     'IBLOCK_ID' => 1,
