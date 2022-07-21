@@ -67,7 +67,10 @@ foreach ($this->basketItems as $row)
 	// show price including ratio
 	if ($rowData['MEASURE_RATIO'] != 1)
 	{
-		$price = PriceMaths::roundPrecision($rowData['PRICE'] * $rowData['MEASURE_RATIO']);
+	    // TODO Убираем функционал по просьбе заказчика, возможно придется вернуть обратно
+		// $price = PriceMaths::roundPrecision($rowData['PRICE'] * $rowData['MEASURE_RATIO']);
+		$price = PriceMaths::roundPrecision($rowData['PRICE']);
+
 		if ($price != $rowData['PRICE'])
 		{
 			$rowData['PRICE'] = $price;

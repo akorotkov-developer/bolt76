@@ -351,7 +351,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 						</div>
 
 						<div class="basket-item-price-title">
-							<?=Loc::getMessage('SBB_BASKET_ITEM_PRICE_FOR')?> {{MEASURE_RATIO}} {{MEASURE_TEXT}}
+							<?/*=Loc::getMessage('SBB_BASKET_ITEM_PRICE_FOR')*/?> {{MEASURE_RATIO}} {{MEASURE_TEXT}}
 						</div>
 						{{#SHOW_LOADING}}
 							<div class="basket-items-list-item-overlay"></div>
