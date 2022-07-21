@@ -72,9 +72,9 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 					{
 						?>
 						<div class="basket-item-block-image<?=(!isset($mobileColumns['PREVIEW_PICTURE']) ? ' hidden-xs' : '')?>">
-							<!--{{#DETAIL_PAGE_URL}}
+							{{#DETAIL_PAGE_URL}}
 								<a href="{{DETAIL_PAGE_URL}}" class="basket-item-image-link">
-							{{/DETAIL_PAGE_URL}}-->
+							{{/DETAIL_PAGE_URL}}
 
 							<img class="basket-item-image" alt="{{NAME}}"
 								src="{{{IMAGE_URL}}}{{^IMAGE_URL}}<?=$templateFolder?>/images/no_photo.png{{/IMAGE_URL}}">
@@ -102,9 +102,9 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 							}
 							?>
 
-							<!--{{#DETAIL_PAGE_URL}}
+							{{#DETAIL_PAGE_URL}}
 								</a>
-							{{/DETAIL_PAGE_URL}}-->
+							{{/DETAIL_PAGE_URL}}
 						</div>
 						<?
 					}
@@ -119,15 +119,15 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 						}
 						?>
 						<h2 class="basket-item-info-name">
-							<!--{{#DETAIL_PAGE_URL}}
+							{{#DETAIL_PAGE_URL}}
 								<a href="{{DETAIL_PAGE_URL}}" class="basket-item-info-name-link">
-							{{/DETAIL_PAGE_URL}}-->
+							{{/DETAIL_PAGE_URL}}
 	
 							<span data-entity="basket-item-name">{{NAME}}</span>
 
-							<!--{{#DETAIL_PAGE_URL}}
+							{{#DETAIL_PAGE_URL}}
 								</a>
-							{{/DETAIL_PAGE_URL}}-->
+							{{/DETAIL_PAGE_URL}}
 						</h2>
 						{{#NOT_AVAILABLE}}
 							<div class="basket-items-list-item-warning-container">
