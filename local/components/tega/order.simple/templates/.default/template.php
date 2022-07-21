@@ -519,7 +519,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                         <div class="left-total-items">
                             <?php foreach ($arResult['BASKET_ITEMS'] as $basketItem) {?>
                                 <div class="total-item">
-                                    <div class="left-total-item_title"><?= $basketItem['NAME']?></div>
+                                    <div class="left-total-item_title"><a href="<?= $basketItem['DETAIL_PAGE_URL']?>"><?= $basketItem['NAME']?></a></div>
                                     <div class="left-total-item_description"><?= round((float) $basketItem['QUANTITY'] * (float) $basketItem['PRICE'])?> ₽ - <?= $basketItem['QUANTITY']?> <?= $basketItem['MEASURE_NAME']?></div>
                                 </div>
                             <?php } ?>
