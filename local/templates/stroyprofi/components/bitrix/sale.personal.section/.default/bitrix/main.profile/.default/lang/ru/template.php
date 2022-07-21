@@ -18,3 +18,4 @@ $MESS['UF_COMPANY_NAME'] = "Название компании:";
 $MESS['UF_YUR_ADDRESS'] = "Юридический адрес:";
 $MESS['UF_INN'] = "ИНН:";
 $MESS['UF_KPP'] = "КПП:";
+$MESS['PERSONAL_PHONE'] = "Телефон:";

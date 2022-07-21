@@ -89,6 +89,12 @@ Extension::load('ui.bootstrap4');
 					<input class="form-control" type="text" name="EMAIL" maxlength="50" id="main-profile-email" value="<?=$arResult["arUser"]["EMAIL"]?>" />
 				</div>
 			</div>
+			<div class="form-group">
+				<label class="main-profile-form-label col-sm-12 col-md-3 text-md-right" for="main-profile-email"><?=Loc::getMessage('PERSONAL_PHONE')?></label>
+				<div class="col-sm-12">
+					<input class="form-control" type="text" name="PERSONAL_PHONE" maxlength="50" id="main-profile-email" value="<?=$arResult["arUser"]["PERSONAL_PHONE"]?>" />
+				</div>
+			</div>
             <div class="form-group">
                 <label class="main-profile-form-label col-sm-12 col-md-3 text-md-right" for="main-profile-inn"><?=Loc::getMessage('UF_INN')?></label>
                 <div class="col-sm-12">

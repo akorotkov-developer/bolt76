@@ -27,7 +27,7 @@ if ($arParams['SET_TITLE'] == 'Y')
 		"SEND_INFO" => $arParams["SEND_INFO_PRIVATE"],
 		"CHECK_RIGHTS" => $arParams['CHECK_RIGHTS_PRIVATE'],
 		"EDITABLE_EXTERNAL_AUTH_ID" => $arParams['EDITABLE_EXTERNAL_AUTH_ID'],
-        "USER_PROPERTY" => ['UF_COMPANY_NAME', 'UF_YUR_ADDRESS', 'UF_INN', 'UF_KPP']
+        "USER_PROPERTY" => ['PHONE_NUMBER', 'UF_COMPANY_NAME', 'UF_YUR_ADDRESS', 'UF_INN', 'UF_KPP']
 	),
 	$component
 );?>

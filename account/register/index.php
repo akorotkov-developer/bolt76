@@ -26,7 +26,7 @@ Extension::load('ui.bootstrap4');
                 'PERSONAL_STREET',
                 'PERSONAL_NOTES',
             ],
-            "REQUIRED_FIELDS" => Array(),
+            "REQUIRED_FIELDS" => Array('PHONE_NUMBER'),
             "AUTH" => "Y",
             "USE_BACKURL" => "Y",
             "SUCCESS_PAGE" => "successful.php",
