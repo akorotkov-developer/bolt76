@@ -14,7 +14,7 @@ section p {text-indent: 25px;}
 .product-item-detail-tab-content table thead {padding: 10px; border: 1px solid  #FF7920; color: #FF7920;}
 .product-item-detail-tab-content table th {padding: 10px; border: 1px solid  #FF7920; color: #FF7920;}
 .product-item-detail-tab-content table tr td {text-align: left;}
-.product-item-detail-tab-content li {list-style-type: none;} /* Прячем исходные маркеры */
+/*.product-item-detail-tab-content li {list-style-type: none;}  Прячем исходные маркеры */
 
 
 .catalog-element p {text-indent: 25px; text-align: justify;}
@@ -26,7 +26,7 @@ section p {text-indent: 25px;}
 .catalog-element table thead {padding: 10px; border: 1px solid  #FF7920; color: #FF7920;}
 .catalog-element table th {padding: 10px; border: 1px solid  #FF7920; color: #FF7920;}
 .catalog-element table tr td {text-align: left;}
-.catalog-element li {list-style-type: none;} /* Прячем исходные маркеры */
+ /*.catalog-element li {list-style-type: none;} Прячем исходные маркеры */
 
 .element_table {border: 0px!important;}
 
@@ -40,7 +40,13 @@ section p {text-indent: 25px;}
 .section-pane table thead {padding: 10px; border: 1px solid  #FF7920; color: #FF7920;}
 .section-pane table th {padding: 10px; border: 1px solid  #FF7920; color: #FF7920;}
 .section-pane table tr td {text-align: left;}
-.section-pane li {list-style-type: none;} /* Прячем исходные маркеры */
+/*.section-pane li {list-style-type: none;}  Прячем исходные маркеры */
+
+.product-item-detail-tab-content li:before {
+    color: #FF7920;
+    content: "•";
+    padding-right: 10px;
+}
 
 
 .product-item-detail-tab-content li:before {

@@ -64,13 +64,16 @@ if (strpos($sCurPage, '/apply/') !== false) {
                 $arSections[$arRes['ID']] = $arRes['NAME'];
             }
 
+            $arSectionsForCount = [];
             foreach ($arResult['ITEMS'] as $key => $arItem) {
                 $sFilteredSectName = ltrim($arSections[$arItem['~IBLOCK_SECTION_ID']], '1234567890');
                 $sFilteredSectName = ltrim($sFilteredSectName);
 
                 $arResult['ITEMS'][$key]['FILTER_SECTION_NAME'] = $sFilteredSectName;
+                $arSectionsForCount[] = $sFilteredSectName;
             }
 
+            $arResult['SECTIONS_COUNT'] = array_unique($arSectionsForCount);
             $arResult['IS_FILTER'] = true;
         }
     }

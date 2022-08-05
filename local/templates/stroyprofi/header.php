@@ -1,5 +1,19 @@
 <?php
 use \Bitrix\Main\Page\Asset;
+
+// Определяем, является ли пользователь покупателем киоска
+global $USER;
+$arGroups = [];
+
+$rsGroups = \CUser::GetUserGroupEx($USER->GetID());
+while($arGroup = $rsGroups->GetNext()) {
+    $arGroups[] = $arGroup['STRING_ID'];
+}
+
+$isKioskBuyer = false;
+if (in_array('KIOSK_BUYER', $arGroups)) {
+    $isKioskBuyer = true;
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -24,6 +38,7 @@ use \Bitrix\Main\Page\Asset;
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"
     />
+    <link rel="stylesheet" type="text/css" href="<?= SITE_TEMPLATE_PATH?>/css_templates/print_styles.css" media="print">
 </head>
 <body>
 <div class="notification" id="notification">Товар добавлен<br/>в <a href="/personal/cart/">корзину</a></div>

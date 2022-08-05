@@ -83,18 +83,26 @@ use Bitrix\Main\Localization\Loc;
 					</div>
 				</div>
 
-				<div class="basket-checkout-block basket-checkout-block-btn">
-                    {{#SHOW_SND_BTN}}
-                        <button class="btn btn-lg btn-default basket-btn-checkout{{#DISABLE_CHECKOUT}} disabled{{/DISABLE_CHECKOUT}}"
-                            data-entity="basket-checkout-button">
-                            <?=Loc::getMessage('SBB_ORDER')?>
+                <?php if ($arParams['IS_KIOSK_BUYER']) {?>
+                    <div class="basket-checkout-block basket-checkout-block-btn">
+                        <button class="btn btn-lg btn-default get-order-check basket-btn-checkout{{#DISABLE_CHECKOUT}} disabled{{/DISABLE_CHECKOUT}}">
+                            <?=Loc::getMessage('SBB_ORDER_CHECK')?>
                         </button>
-                    {{/SHOW_SND_BTN}}
-				</div>
+                    </div>
+                <?php } else {?>
+                    <div class="basket-checkout-block basket-checkout-block-btn">
+                        {{#SHOW_SND_BTN}}
+                            <button class="btn btn-lg btn-default basket-btn-checkout{{#DISABLE_CHECKOUT}} disabled{{/DISABLE_CHECKOUT}}"
+                                data-entity="basket-checkout-button">
+                                <?=Loc::getMessage('SBB_ORDER')?>
+                            </button>
+                        {{/SHOW_SND_BTN}}
+                    </div>
+                <?php }?>
 			</div>
 		</div>
 
-		<?
+		<?php
 		if ($arParams['HIDE_COUPON'] !== 'Y')
 		{
 		?>

@@ -1,6 +1,11 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 <?
 if (sizeof($arResult["ITEMS"]) > 0) {
+    if ($_GET['tst']) {
+        echo '<pre>';
+        var_dump('121212312312');
+        echo '</pre>';
+    }
     ?>
     <div class="catalog_element">
         <form action="/cart/add_to_cart.php" method="post" class="order_form">

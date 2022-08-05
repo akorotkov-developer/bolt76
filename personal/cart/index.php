@@ -4,7 +4,23 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 ?>
 
 <h1>Моя корзина</h1>
-<?$APPLICATION->IncludeComponent(
+<?php
+
+/** Определяем, является ли пользователь покупателем киоска */
+global $USER;
+$arGroups = [];
+
+$rsGroups = \CUser::GetUserGroupEx($USER->GetID());
+while($arGroup = $rsGroups->GetNext()) {
+    $arGroups[] = $arGroup['STRING_ID'];
+}
+
+$isKioskBuyer = false;
+if (in_array('KIOSK_BUYER', $arGroups)) {
+    $isKioskBuyer = true;
+}
+
+$APPLICATION->IncludeComponent(
 	"bitrix:sale.basket.basket",
 	"",
 	[
@@ -60,6 +76,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"USE_ENHANCED_ECOMMERCE" => "N",
 		"USE_GIFTS" => "N",
 		"USE_PREPAYMENT" => "N",
-		"USE_PRICE_ANIMATION" => "Y"
+		"USE_PRICE_ANIMATION" => "Y",
+        "IS_KIOSK_BUYER" => $isKioskBuyer
 	]
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -91,23 +91,25 @@ if (sizeof($arResult["ITEMS"]) > 0) {
 
                     <tr id="<?= $this->GetEditAreaId($arElement['ID']); ?>"
                         class="<?= ((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
-                        <? if ($cell == 0 &&  !$arResult['IS_FILTER']) { ?>
-                        <td rowspan="<?= (sizeof($arResult["ITEMS"]) + 1) ?>" class="section_description">
+                        <?php
 
-                            <? if ($arResult["PICTURE"]["ID"] && !$arResult['IS_FILTER']) {
-                                $file = CFile::ResizeImageGet($arResult["PICTURE"]["ID"], array('width' => 150, 'height' => 150), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                        if ($cell == 0) { ?>
+                        <td rowspan="<?= (sizeof($arResult["ITEMS"]) + 1 + sizeof($arResult['SECTIONS_COUNT']) + 1) ?>" class="section_description">
+
+                            <? if ($arResult["PICTURE"]["ID"]) {
+                                $file = CFile::ResizeImageGet($arResult["PICTURE"]["ID"], array('width' => 128, 'height' => 130), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                 $file_big = CFile::ResizeImageGet($arResult["PICTURE"]["ID"], array('width' => 900, 'height' => 600), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                 ?>
 
-                                <a href="<?= $file_big["src"] ?>" class="fancybox"><img src="<?= $file["src"] ?>"
+                                <a href="<?= $file["src"] ?>" class="fancybox"><img src="<?= $file["src"] ?>"
                                                                                         alt=""></a>
 
-                            <? } ?>
+                            <? }?>
                             <div class="description"><?/*= $arResult["DESCRIPTION"]*/ ?></div>
                             <div class="clear"></div>
                         </td>
-                        <? } ?>
-                        <td class="art">
+                        <? }  ?>
+                        <td class="art <?= $cell?>">
                             <div class="name-holder">
                                 <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
                                     <span><?= $arElement["DISPLAY_PROPERTIES"]["ARTICUL"]["VALUE"] ?></span>

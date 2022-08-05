@@ -1459,4 +1459,40 @@ BX.ready(function() {
 
 		messageBox.show();
 	});
+
+	// Клик по кнопке получить чек на заказ
+	$('.get-order-check').on('click', function() {
+		const messageBox = new BX.UI.Dialogs.MessageBox(
+			{
+				message: '<span style="color: #FF7920; font-weight: bold; font-size: 18px;">Распечатать чек?</span>',
+				title: 'Печать заказа',
+				modal: true,
+				buttons: [
+					new BX.UI.Button(
+						{
+							color: BX.UI.Button.Color.DANGER,
+							text: 'Печать',
+							onclick: function(button, event) {
+								alert('Ушло на печать');
+								window.print();
+
+								button.context.close();
+							}
+						}
+					),
+					new BX.UI.Button(
+						{
+							color: BX.UI.Button.Color.PRIMARY,
+							text: 'Отмена',
+							onclick: function(button, event) {
+								button.context.close();
+							}
+						}
+					)
+				],
+			}
+		);
+
+		messageBox.show();
+	});
 });
