@@ -256,6 +256,18 @@ if (empty($arResult['ERROR_MESSAGE']))
 				</div>
 			</div>
 		</div>
+
+        <div class="basket-item-table_print" id="basket-item-table_print">
+            <?php
+            if ($_GET['tst']) {
+                foreach ($arResult["GRID"]["ROWS"] as $k => $arItem) {
+                    if ($arItem["DELAY"] == "N" && $arItem["CAN_BUY"] == "Y") {
+
+                    }
+                }
+            }
+            ?>
+        </div>
 		<?
 		if (
 			$arParams['BASKET_WITH_ORDER_INTEGRATION'] !== 'Y'

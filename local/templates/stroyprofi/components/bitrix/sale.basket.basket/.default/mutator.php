@@ -19,10 +19,23 @@ $mobileColumns = array_fill_keys($mobileColumns, true);
 $result['BASKET_ITEM_RENDER_DATA'] = array();
 
 // Определим картинки для товавров без картинок, путем поиска картинки для раздела
+$serialNumber = 1;
 foreach ($this->basketItems as $row)
 {
+    // Найдем артикул
+    $sArticul = '';
+    foreach ($row['PROPS'] as $arRomItem) {
+        if ($arRomItem['CODE'] == 'ARTICUL') {
+            $sArticul = $arRomItem['VALUE'];
+        }
+    }
+
 	$rowData = array(
 		'ID' => $row['ID'],
+		'IS_HEADER' => $serialNumber === 1,
+		'SERIAL_NUMBER' => $serialNumber++,
+		'ARTICUL' => $sArticul,
+		'NAIMENOVANIE' => $row['PROPERTY_Naimenovanie_VALUE'],
 		'PRODUCT_ID' => $row['PRODUCT_ID'],
 		'NAME' => isset($row['~NAME']) ? $row['~NAME'] : $row['NAME'],
 		'QUANTITY' => $row['QUANTITY'],

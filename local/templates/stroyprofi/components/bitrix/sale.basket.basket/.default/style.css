@@ -2248,3 +2248,6 @@ body .content_table td {
 .basket-checkout-block-total {
 	padding-left: 15px;
 }
+.only-print {
+	display: none;
+}

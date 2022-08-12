@@ -42,8 +42,36 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 }
 ?>
 <script id="basket-item-template" type="text/html">
-	<tr class="basket-items-list-item-container{{#SHOW_RESTORE}} basket-items-list-item-container-expend{{/SHOW_RESTORE}}"
+    {{#IS_HEADER}}
+        <tr class="only-print only-print-head">
+            <td class="only-print only-print-1">№</td>
+            <td class="only-print only-print-2">арт</td>
+            <td class="only-print only-print-3">Ед.из</td>
+            <td class="only-print only-print-4">Кол-во</td>
+            <td class="only-print only-print-5">Факт</td>
+            <td class="only-print only-print-7">Наименование</td>
+        </tr>
+    {{/IS_HEADER}}
+    <tr class="basket-items-list-item-container{{#SHOW_RESTORE}} basket-items-list-item-container-expend{{/SHOW_RESTORE}}"
 		id="basket-item-{{ID}}" data-entity="basket-item" data-id="{{ID}}">
+        <td class="only-print only-print-1">
+            {{SERIAL_NUMBER}}
+        </td>
+        <td class="only-print only-print-2">
+            {{ARTICUL}}
+        </td>
+        <td class="only-print only-print-3">
+            {{MEASURE_TEXT}}
+        </td>
+        <td class="only-print only-print-4">
+            {{QUANTITY}}
+        </td>
+        <td class="only-print only-print-5">
+
+        </td>
+        <td class="only-print only-print-6">
+            {{NAIMENOVANIE}}
+        </td>
 		{{#SHOW_RESTORE}}
 			<td class="basket-items-list-item-notification" colspan="<?=$restoreColSpan?>">
 				<div class="basket-items-list-item-notification-inner basket-items-list-item-notification-removed" id="basket-item-height-aligner-{{ID}}">
