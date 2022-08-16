@@ -1473,6 +1473,8 @@ BX.ready(function() {
 							color: BX.UI.Button.Color.DANGER,
 							text: 'Печать',
 							onclick: function(button, event) {
+								$('.shipment-specification-print_datetime').text(new Date().getDate() + '.' + new Date().getMonth() + '.' + new Date().getFullYear() + ' время: ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds());
+
 								print(false);
 
 								button.context.close();

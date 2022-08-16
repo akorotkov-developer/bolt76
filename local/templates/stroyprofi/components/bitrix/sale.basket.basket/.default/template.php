@@ -189,7 +189,12 @@ if (empty($arResult['ERROR_MESSAGE']))
 	}
 	?>
 	<div id="basket-root" class="bx-basket bx-<?=$arParams['TEMPLATE_THEME']?> bx-step-opacity" style="opacity: 0;">
-		<?
+        <div class="shipment-specification-print">
+            Спецификация на отгрузку  №  <span class="shipment-specification-print_number"><?= rand(10000, 99999);?></span> от <br>
+            <span class="shipment-specification-print_datetime">05.08.22; время:  10:45:44</span>
+        </div>
+
+        <?
 		if (
 			$arParams['BASKET_WITH_ORDER_INTEGRATION'] !== 'Y'
 			&& in_array('top', $arParams['TOTAL_BLOCK_DISPLAY'])

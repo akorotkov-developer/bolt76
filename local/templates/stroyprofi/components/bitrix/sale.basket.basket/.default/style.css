@@ -2251,3 +2251,6 @@ body .content_table td {
 .only-print {
 	display: none;
 }
+.shipment-specification-print {
+	display: none;
+}
