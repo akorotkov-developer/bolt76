@@ -16,7 +16,7 @@ while($arGroup = $rsGroups->GetNext()) {
 }
 
 $isKioskBuyer = false;
-if (in_array('KIOSK_BUYER', $arGroups)) {
+if (in_array('KIOSK_BUYER', $arGroups) || strpos($_SERVER['HTTP_USER_AGENT'], 'KioskBrowser') !== false) {
     $isKioskBuyer = true;
 }
 

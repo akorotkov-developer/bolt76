@@ -1473,8 +1473,7 @@ BX.ready(function() {
 							color: BX.UI.Button.Color.DANGER,
 							text: 'Печать',
 							onclick: function(button, event) {
-								alert('Ушло на печать');
-								window.print();
+								print(false);
 
 								button.context.close();
 							}

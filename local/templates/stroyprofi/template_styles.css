@@ -1294,4 +1294,10 @@ td .buy_helper_holder{
     z-index: 100;
     cursor: pointer;
 }
+/*.page_content .main_block {
+    height: calc(100vh - 241px);
+}*/
+.page_content {
+    min-height: calc(100vh - 215px);
+}
 
