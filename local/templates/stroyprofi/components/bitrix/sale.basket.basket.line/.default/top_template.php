@@ -7,7 +7,22 @@
  */
 $compositeStub = (isset($arResult['COMPOSITE_STUB']) && $arResult['COMPOSITE_STUB'] == 'Y');
 ?><div class="bx-hdr-profile">
-<?if (!$compositeStub && $arParams['SHOW_AUTHOR'] == 'Y'):?>
+<?php
+
+global $USER;
+$arGroups = [];
+
+$rsGroups = \CUser::GetUserGroupEx($USER->GetID());
+while($arGroup = $rsGroups->GetNext()) {
+    $arGroups[] = $arGroup['STRING_ID'];
+}
+
+$isKioskBuyer = false;
+if (in_array('KIOSK_BUYER', $arGroups) || strpos($_SERVER['HTTP_USER_AGENT'], 'KioskBrowser') !== false) {
+    $isKioskBuyer = true;
+}
+
+if (!$compositeStub && $arParams['SHOW_AUTHOR'] == 'Y' && !$isKioskBuyer):?>
 	<div class="bx-basket-block">
 		<i class="fa fa-user"></i>
 		<?if ($USER->IsAuthorized()):
