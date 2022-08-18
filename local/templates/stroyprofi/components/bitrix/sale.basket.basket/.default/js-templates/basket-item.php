@@ -42,35 +42,22 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 }
 ?>
 <script id="basket-item-template" type="text/html">
-    {{#IS_HEADER}}
-        <tr class="only-print only-print-head">
-            <td class="only-print only-print-1">№</td>
-            <td class="only-print only-print-2">арт</td>
-            <td class="only-print only-print-3">Ед.из</td>
-            <td class="only-print only-print-4">Кол-во</td>
-            <td class="only-print only-print-5">Факт</td>
-            <td class="only-print only-print-7">Наименование</td>
-        </tr>
-    {{/IS_HEADER}}
     <tr class="basket-items-list-item-container{{#SHOW_RESTORE}} basket-items-list-item-container-expend{{/SHOW_RESTORE}}"
 		id="basket-item-{{ID}}" data-entity="basket-item" data-id="{{ID}}">
         <td class="only-print only-print-1">
-            {{SERIAL_NUMBER}}
-        </td>
-        <td class="only-print only-print-2">
-            {{ARTICUL}}
-        </td>
-        <td class="only-print only-print-3">
-            {{MEASURE_TEXT}}
-        </td>
-        <td class="only-print only-print-4">
-            {{QUANTITY}}
-        </td>
-        <td class="only-print only-print-5">
-
-        </td>
-        <td class="only-print only-print-6">
-            {{NAIMENOVANIE}}
+            <div class="printing-serial-naimenovanie">
+                <div class="serial-print">
+                    {{SERIAL_NUMBER}}
+                </div>
+                <div class="naimenovanie-print">
+                    {{NAIMENOVANIE}}
+                </div>
+            </div>
+            <div class="printing-other-props">
+                <div class="articul-print">{{ARTICUL}}</div>
+                <div class="measure-text-print">{{MEASURE_TEXT}}</div>
+                <div class="quantity-print">{{QUANTITY}}</div>
+            </div>
         </td>
 		{{#SHOW_RESTORE}}
 			<td class="basket-items-list-item-notification" colspan="<?=$restoreColSpan?>">

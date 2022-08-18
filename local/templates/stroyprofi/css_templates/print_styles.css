@@ -74,33 +74,16 @@ a[href]:after {
     max-width: 350px;
 }
 .only-print-1 {
-    width: 10%;
+    width:  100%;
+    border-bottom: 2px solid #000;
 }
-.only-print-2 {
-    width: 15%;
-}
-.only-print-3 {
-    width: 15%;
-}
-.only-print-4 {
-    width: 15%;
-    text-align: center;
-}
-.only-print-5 {
-    width: 15%;
-}
-.only-print-6 {
-    width: 30%;
-}
-.only-print-7 {
-    width: 15%;
+.basket-items-list-table td.only-print.only-print-1  {
+    padding-bottom: 10px!important;
+    padding-top: 10px!important;
 }
 .basket-items-list-item-container {
     position: relative;
     display: table-row;
-}
-.basket-items-list-item-container > td {
-    border-top: 1px solid #000;
 }
 .basket-checkout-container {
     max-width: 350px;
@@ -123,7 +106,7 @@ a[href]:after {
 }
 .shipment-specification-print {
     display: block;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
 }
@@ -134,4 +117,20 @@ a[href]:after {
     height: content-box;
     position: relative;
     overflow: hidden;
+}
+.printing-serial-naimenovanie {
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+.naimenovanie-print {
+    width: 85%;
+    text-align: right;
+}
+.printing-other-props {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: bold;
 }
