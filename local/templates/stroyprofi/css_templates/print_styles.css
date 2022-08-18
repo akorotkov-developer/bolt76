@@ -127,3 +127,11 @@ a[href]:after {
     font-weight: bold;
     margin-bottom: 5px;
 }
+.print:last-child {
+    page-break-after: auto;
+}
+.wrapper {
+    height: content-box;
+    position: relative;
+    overflow: hidden;
+}
