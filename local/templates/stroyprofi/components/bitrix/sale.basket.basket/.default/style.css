@@ -1514,7 +1514,7 @@ h2.basket-item-info-name {
 }
 
 .bx-touch .basket-item-block-actions,
-.basket-items-list-item-container:hover .basket-item-block-actions { opacity: 1; }
+.basket-items-list-item-container .basket-item-block-actions { opacity: 1; }
 
 .basket-item-actions-remove {
 	position: relative;
