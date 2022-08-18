@@ -59,13 +59,28 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
 						),
 						false
 					);?></div>
-					<?$APPLICATION->IncludeComponent(
+					<?php
+                    global $USER;
+                    $arGroups = [];
+
+                    $rsGroups = \CUser::GetUserGroupEx($USER->GetID());
+                    while($arGroup = $rsGroups->GetNext()) {
+                        $arGroups[] = $arGroup['STRING_ID'];
+                    }
+
+                    $isKioskBuyer = false;
+                    if (in_array('KIOSK_BUYER', $arGroups) || strpos($_SERVER['HTTP_USER_AGENT'], 'KioskBrowser') !== false) {
+                        $isKioskBuyer = true;
+                    }
+
+                    $APPLICATION->IncludeComponent(
 					"bitrix:main.include",
 					"",
 					Array(
 						"AREA_FILE_SHOW" => "file",
 						"PATH" => "/includes/contact_email.php",
-						"EDIT_TEMPLATE" => ""
+						"EDIT_TEMPLATE" => "",
+                        "IS_KIOSK_PAYER" => $isKioskBuyer
 					),
 					false
 				);?></div>
