@@ -147,6 +147,19 @@ $(function () {
     $('.add_to_cart_one').live('click', function (e) {
         e.preventDefault();
         el = $(this);
+        var inputval = $(el).parent().siblings('.buy').find('input');
+        var inputData = $(el).closest('tr').find('.buy .input_holder input').attr('data-ratio');
+
+        if (inputval.val() == '') {
+            var value = 0;
+            if (inputData == 'NaN') {
+                value = 1;
+            } else {
+                value = inputData;
+            }
+            inputval.val(value);
+        }
+
         $.post("/cart/add_to_cart.php", $(el).closest('tr').find('.buy .input_holder input').serialize(), function (data) {
             if ($.trim(data) != '') {
                 $('.cart_info_holder').html(data);
@@ -161,13 +174,11 @@ $(function () {
         })
     });
 
-
     $('.recount_cart').click(function (e) {
         e.preventDefault();
         $('#recount_cart').val("Y");
         $(this).closest('form').submit();
     });
-
 
     recountForm();
     $(".onblur").live("focus", function () {
