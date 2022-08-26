@@ -113,6 +113,10 @@ class Import
             // Загрузить разделы для товаров
             $this->setSections();
 
+            // Обновляем доступные товары в переменных
+            $this->arCatalogSections = $this->getCatalogSections();
+            $this->arProductElements = $this->getProductElements();
+
             // Установить символьные коды для товаров
             $this->setCodesForProducts();
 
