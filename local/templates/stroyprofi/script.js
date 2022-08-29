@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
 
     // Функционал отслеживает бездействие пользователя в течении 3 минут, если ничего не произошло редиректит его на авторизацию киоска
-    if (isKioskBuyer) {
+ /*   if (isKioskBuyer) {
         var mytime = mytime1 = 180;
         document.onmousemove = document.onkeydown = document.onscroll = document.ontouchstart = function() {mytime = mytime1};
         setInterval(function(){
@@ -33,5 +33,5 @@ $(document).ready(function () {
                 location.href = "/kiosk_auth/";
             }
         }, 1000);
-    }
+    }*/
 });

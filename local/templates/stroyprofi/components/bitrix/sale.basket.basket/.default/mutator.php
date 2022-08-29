@@ -30,12 +30,34 @@ foreach ($this->basketItems as $row)
         }
     }
 
+    // Определяем остаток для товара
+    $dbResult = CIBlockElement::GetList(
+        [],
+        [
+            '=ID' => $row['PRODUCT_ID']
+        ],
+        false,
+        false,
+        ['ID', 'PROPERTY_Svobodno']
+    );
+
+    if ($arDbResult = $dbResult->Fetch()) {
+        $iSvobodno = $arDbResult['PROPERTY_SVOBODNO_VALUE'];
+        if ($iSvobodno != '') {
+            $isSvobodno = true;
+        } else {
+            $isSvobodno = false;
+        }
+    }
+
 	$rowData = array(
 		'ID' => $row['ID'],
 		'IS_HEADER' => $serialNumber === 1,
 		'SERIAL_NUMBER' => $serialNumber++,
 		'ARTICUL' => $sArticul,
-		'NAIMENOVANIE' => $row['PROPERTY_Naimenovanie_VALUE'],
+		'SVOBODNO' => $iSvobodno,
+		'IS_SVOBODNO' => $isSvobodno,
+		'NAIMENOVANIE' => $row['~PROPERTY_Naimenovanie_VALUE'],
 		'PRODUCT_ID' => $row['PRODUCT_ID'],
 		'NAME' => isset($row['~NAME']) ? $row['~NAME'] : $row['NAME'],
 		'QUANTITY' => $row['QUANTITY'],

@@ -56,7 +56,13 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
             <div class="printing-other-props">
                 <div class="articul-print">{{ARTICUL}}</div>
                 <div class="measure-text-print">{{MEASURE_TEXT}}</div>
-                <div class="quantity-print">{{QUANTITY}}</div>
+                <div class="quantity-print">
+                    {{QUANTITY}}
+
+                    {{#IS_SVOBODNO}}
+                        | (Ост. {{SVOBODNO}})
+                    {{/IS_SVOBODNO}}
+                </div>
             </div>
         </td>
 		{{#SHOW_RESTORE}}

@@ -31,11 +31,13 @@ use Bitrix\Main\Localization\Loc;
 		}
 		?>
 		<div class="basket-checkout-section">
-            {{#SHOW_WRONG}}
-            <div class="wrong-pay-sum">
-                Нельзя оформить заказ на сумму меньше 1000 руб.
-            </div>
-            {{/SHOW_WRONG}}
+            <?php if (!$arParams['IS_KIOSK_BUYER']) {?>
+                {{#SHOW_WRONG}}
+                <div class="wrong-pay-sum">
+                    Нельзя оформить заказ на сумму меньше 1000 руб.
+                </div>
+                {{/SHOW_WRONG}}
+            <?php }?>
 			<div class="basket-checkout-section-inner">
                 <div class="basket-checkout-block b-clear-basket basket-checkout-block-btn">
                     <a href="/catalog/" class="btn btn-lg btn-default basket-btn-checkout">
