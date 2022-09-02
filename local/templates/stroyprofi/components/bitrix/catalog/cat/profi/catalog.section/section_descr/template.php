@@ -178,6 +178,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                                 <? } ?>
                                                 <td class="properties">
                                                     <div class="buy">
+
                                                         <div class="buy_helper_holder">
                                                             <div class="buy_helper">
                                                                 <? if ($ves) { ?>
@@ -331,6 +332,9 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                 }
                             } ?></td>
                         <td class="buy">
+                            <span class="section-product-minus">
+                                -
+                            </span>
                             <div class="buy_helper_holder">
 
                                 <div class="buy_helper">
@@ -368,6 +372,9 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                     <?php } ?>
                                 </div>
                             </div>
+                            <span class="section-product-plus">
+                                +
+                            </span>
                         </td>
                         <td class="mera"><?= $mera ?></td>
                         <td class="cart_td" <?php if ($arResult['IS_FILTER']) {echo 'colspan="2"';}?>><a href="#" class="add_to_cart_one"><img src="/img/cart_buttton.png" alt=""></a>

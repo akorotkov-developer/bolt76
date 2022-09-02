@@ -8,4 +8,45 @@ $( document ).ready(function() {
             return false;
         }
     });
+
+    // Обработчики событий для кнопок плюс и минус
+    $('.section-product-plus').bind("click", function(e) {
+        var quantInput = $(this).siblings('.buy_helper_holder').find('.quantity_input');
+        var dataRatio = $(this).siblings('.buy_helper_holder').find('.quantity_input').attr('data-ratio');
+        var ratio = 1;
+        var val = 0;
+
+        if (dataRatio != 'NaN') {
+            ratio = parseFloat(dataRatio);
+        }
+
+        if (quantInput.val() == '') {
+            val = 0;
+        } else {
+            val = parseFloat(quantInput.val());
+        }
+
+        quantInput.val(val + ratio);
+    });
+
+    $('.section-product-minus').bind("click", function(e) {
+        var quantInput = $(this).siblings('.buy_helper_holder').find('.quantity_input');
+        var dataRatio = $(this).siblings('.buy_helper_holder').find('.quantity_input').attr('data-ratio');
+        var ratio = 1;
+        var val = 0;
+
+        if (dataRatio != 'NaN') {
+            ratio = parseFloat(dataRatio);
+        }
+
+        if (quantInput.val() == '') {
+            val = 0;
+        } else {
+            val = parseFloat(quantInput.val());
+        }
+
+        if (val > 0) {
+            quantInput.val(val - ratio);
+        }
+    });
 });

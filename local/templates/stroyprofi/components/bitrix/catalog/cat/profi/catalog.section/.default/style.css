@@ -26,3 +26,20 @@
     margin: 15px;
     display: block;
 }
+td.buy {
+    position: relative;
+}
+.section-product-minus {
+    left: -5px;
+    top: 6px;
+}
+.section-product-plus {
+    right: -9px;
+    top: 7px;
+}
+.section-product-minus, .section-product-plus {
+    cursor: pointer;
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+}

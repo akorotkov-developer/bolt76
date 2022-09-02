@@ -1,11 +1,6 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 <?
 if (sizeof($arResult["ITEMS"]) > 0) {
-    if ($_GET['tst']) {
-        echo '<pre>';
-        var_dump('121212312312');
-        echo '</pre>';
-    }
     ?>
     <div class="catalog_element">
         <form action="/cart/add_to_cart.php" method="post" class="order_form">
@@ -321,7 +316,11 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                             } ?></td>
 
                         <td class="buy">
+
                             <div class="buy_helper_holder">
+                                <span class="section-product-minus">
+                                    -
+                                </span>
                                 <div class="buy_helper">
                                     <? if ($ves) {
                                         ?>
@@ -358,6 +357,9 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                         </div>
                                     <?php } ?>
                                 </div>
+                                <span class="section-product-plus">
+                                    +
+                                </span>
                             </div>
                         </td>
                         <td class="mera"><?= $arElement["DISPLAY_PROPERTIES"]["UNITS"]["VALUE"] ?></td>
