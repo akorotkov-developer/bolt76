@@ -16,6 +16,23 @@
     var isKioskBuyer = '<?php echo CUtil::PhpToJSObject($isKioskBuyer)?>';
 </script>
 
+<?php
+if ($isKioskBuyer) {
+    ?>
+    <script type="text/javascript" src='<?= SITE_TEMPLATE_PATH?>/plugins/idltimer/idle-timer.js'></script>
+    <script>
+        $(function() {
+            $( document ).idleTimer( 180000 );
+
+            $( document ).on( "idle.idleTimer", function(event, elem, obj){
+                $(location).attr('href', '/kiosk_auth/');
+            });
+        });
+    </script>
+<?php
+}
+?>
+
 </div></td>
 </tr>
 </table>
