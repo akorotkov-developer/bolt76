@@ -43,7 +43,7 @@ foreach ($this->basketItems as $row)
 
     if ($arDbResult = $dbResult->Fetch()) {
         $iSvobodno = $arDbResult['PROPERTY_SVOBODNO_VALUE'];
-        if ($iSvobodno != '') {
+        if ($iSvobodno != '' && $iSvobodno > 0) {
             $isSvobodno = true;
         } else {
             $isSvobodno = false;

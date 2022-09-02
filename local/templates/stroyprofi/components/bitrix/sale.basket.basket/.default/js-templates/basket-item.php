@@ -62,6 +62,9 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                     {{#IS_SVOBODNO}}
                         | (Ост. {{SVOBODNO}})
                     {{/IS_SVOBODNO}}
+                    {{^IS_SVOBODNO}}
+                        | Нет в наличии
+                    {{/IS_SVOBODNO}}
                 </div>
             </div>
         </td>
