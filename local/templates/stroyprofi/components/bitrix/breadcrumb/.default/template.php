@@ -13,6 +13,7 @@ for($index = 0, $itemSize = count($arResult); $index < $itemSize; $index++)
 		$strReturn .= '<span>&nbsp;&rarr;&nbsp;</span>';
 
 	$title = htmlspecialcharsex($arResult[$index]["TITLE"]);
+	$title = preg_replace('/^\d+\s+/', '', $title);
 	if($arResult[$index]["LINK"] <> "")
 		$strReturn .= '<a href="'.$arResult[$index]["LINK"].'" title="'.$title.'">'.$title.'</a>';
 	else

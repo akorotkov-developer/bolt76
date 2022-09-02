@@ -6,7 +6,9 @@
 <?
 $first=true;
 $previousLevel = 0;
-foreach($arResult as $arItem):?>
+foreach($arResult as $arItem):
+    $arItem['TEXT'] = preg_replace('/^\d+\s+/', '', $arItem['TEXT']);
+    ?>
 
 	<?if ($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel):?>
 		<?=str_repeat("</ul></li>", ($previousLevel - $arItem["DEPTH_LEVEL"]));?>

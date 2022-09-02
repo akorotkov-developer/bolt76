@@ -29,17 +29,20 @@
 td.buy {
     position: relative;
 }
-.section-product-minus {
-    left: 2px;
-    top: 6px;
-}
-.section-product-plus {
-    right: 1px;
-    top: 7px;
-}
-.section-product-minus, .section-product-plus {
-    cursor: pointer;
+.buy_helper:before {
+    content: '-';
     position: absolute;
+    left: -10px;
     font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
+}
+.buy_helper:after {
+    content: '+';
+    position: absolute;
+    right: -10px;
+    top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
 }
