@@ -88,6 +88,7 @@ a[href]:after {
 .basket-checkout-container {
     max-width: 350px;
     padding-left: 0px;
+    padding-bottom: 40px;
 }
 .basket-checkout-block.basket-checkout-block-total {
     display: none;
@@ -133,4 +134,7 @@ a[href]:after {
     justify-content: space-between;
     font-size: 14px;
     font-weight: bold;
+}
+.col-xs-12 {
+    padding-left: 0px!important;
 }
