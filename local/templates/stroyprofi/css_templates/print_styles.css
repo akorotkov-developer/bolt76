@@ -101,6 +101,7 @@ a[href]:after {
 }
 .basket-checkout-container {
     border:0px;
+    border-bottom: 1px solid #e6e6e6;
 }
 .basket-coupon-block-total-price-current {
     font-weight: bold;
@@ -120,7 +121,7 @@ a[href]:after {
     overflow: hidden;
 }
 .printing-serial-naimenovanie {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     display: flex;
     justify-content: space-between;
@@ -132,7 +133,7 @@ a[href]:after {
 .printing-other-props {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
 }
 .col-xs-12 {
