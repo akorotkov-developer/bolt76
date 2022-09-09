@@ -357,13 +357,17 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                     }
 
                                                     if (!empty($arResult['ADDITIONAL_TABS']) && count($arResult['ADDITIONAL_TABS']) > 0) {
-                                                        foreach ($arResult['ADDITIONAL_TABS'] as $arTab) { ?>
-                                                            <li class="product-item-detail-tab" data-entity="tab" data-value="<?= $arTab['CODE']?>">
-                                                                <a href="javascript:void(0);" class="product-item-detail-tab-link">
-                                                                    <span><?= $arTab['NAME']?></span>
-                                                                </a>
-                                                            </li>
-                                                        <?php
+                                                        foreach ($arResult['ADDITIONAL_TABS'] as $arTab) {
+                                                            if ($arTab['NAME'] != '') {
+                                                            ?>
+                                                                <li class="product-item-detail-tab" data-entity="tab" data-value="<?= $arTab['CODE']?>">
+                                                                    <a href="javascript:void(0);" class="product-item-detail-tab-link">
+                                                                        <span><?= $arTab['NAME']?></span>
+                                                                    </a>
+                                                                </li>
+
+                                                            <?php
+                                                            }
                                                         }
                                                     }
 
@@ -561,29 +565,31 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 
                                             if (!empty($arResult['ADDITIONAL_TABS']) && count($arResult['ADDITIONAL_TABS']) > 0) {
                                                 foreach ($arResult['ADDITIONAL_TABS'] as $arTab) {
-                                                    $info = new SplFileInfo($arTab['FILE']);
-                                                    $extension = $info->getExtension();
-                                                    switch ($extension) {
-                                                        case 'mp4':
-                                                        case 'mpeg':
-                                                        case 'avi':
-                                                        case 'vid':
-                                                        case 'webm':
-                                                        case 'wmv':?>
-                                                            <div class="product-item-detail-tab-content" data-entity="tab-container" data-value="<?= $arTab['CODE']?>">
-                                                                <video class="video-content" width="100%" height="100%" controls="controls">
-                                                                    <source src="/files/additional_product_information/<?= $arTab['FILE']?>">
-                                                                    Тег video не поддерживается вашим браузером.
-                                                                    <a href="/files/additional_product_information/<?= $arTab['FILE']?>">Скачайте видео</a>.
-                                                                </video>
-                                                            </div>
-                                                        <?php
-                                                            break;
-                                                        default:?>
-                                                            <div class="product-item-detail-tab-content" data-entity="tab-container" data-value="<?= $arTab['CODE']?>">
-                                                                <iframe class="additional-frame" src="/files/additional_product_information/<?= $arTab['FILE']?>"></iframe>
-                                                            </div>
-                                                        <?php
+                                                    if ($arTab['FILE'] != '') {
+                                                        $info = new SplFileInfo($arTab['FILE']);
+                                                        $extension = $info->getExtension();
+                                                        switch ($extension) {
+                                                            case 'mp4':
+                                                            case 'mpeg':
+                                                            case 'avi':
+                                                            case 'vid':
+                                                            case 'webm':
+                                                            case 'wmv':?>
+                                                                <div class="product-item-detail-tab-content" data-entity="tab-container" data-value="<?= $arTab['CODE']?>">
+                                                                    <video class="video-content" width="100%" height="100%" controls="controls">
+                                                                        <source src="/files/additional_product_information/<?= $arTab['FILE']?>">
+                                                                        Тег video не поддерживается вашим браузером.
+                                                                        <a href="/files/additional_product_information/<?= $arTab['FILE']?>">Скачайте видео</a>.
+                                                                    </video>
+                                                                </div>
+                                                            <?php
+                                                                break;
+                                                            default:?>
+                                                                <div class="product-item-detail-tab-content" data-entity="tab-container" data-value="<?= $arTab['CODE']?>">
+                                                                    <embed class="additional-frame" src="/files/additional_product_information/<?= $arTab['FILE']?>#toolbar=0&navpanes=0">
+                                                                </div>
+                                                            <?php
+                                                        }
                                                     }
                                                     ?>
                                                     <?php
