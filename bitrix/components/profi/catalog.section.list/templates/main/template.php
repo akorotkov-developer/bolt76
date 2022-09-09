@@ -14,11 +14,7 @@
         ?>
         <img src="<?=$file["src"]?>" alt="">
         <?}?></span>
-
-        <?php
-        $sSectionName = preg_replace('/^\d+\s+/', '', $section["NAME"]);
-        ?>
-        <span class="link<?=(mb_strlen($section["NAME"])>23?' small-height':'')?>"><?=$sSectionName?></span>
+        <span class="link<?=(mb_strlen($section["NAME"])>23?' small-height':'')?>"><?=$section["NAME"]?></span>
     </a>
     <?}?>
     <div class="clear"></div>

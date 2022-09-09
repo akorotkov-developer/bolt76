@@ -8,10 +8,7 @@
     <?if($arSection["PICTURE"]["ID"]>0){$file = CFile::ResizeImageGet($arSection["PICTURE"]["ID"], array('width' => 128, 'height' => 130), BX_RESIZE_IMAGE_PROPORTIONAL, true);?><?}?>
     <a class="section"  href="<?=$arSection["SECTION_PAGE_URL"]?>" id="<?=$this->GetEditAreaId($arSection['ID']);?>">
         <span class="picture"  style="background-image: url('<?if($arSection["PICTURE"]["ID"]>0){echo $file["src"]; }else{?>/img/no-image.jpeg<?}?>');"></span>
-        <?php
-        $sSectionName = preg_replace('/^\d+\s+/', '', $arSection["NAME"]);
-        ?>
-        <span class="link"><?=$sSectionName?></span>
+        <span class="link"><?=$arSection["NAME"]?></span>
     </a>
     <?}?>
     <div class="clear"></div>

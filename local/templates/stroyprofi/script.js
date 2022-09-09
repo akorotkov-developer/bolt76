@@ -34,17 +34,4 @@ $(document).ready(function () {
             }
         }, 1000);
     }*/
-
-    /**
-     * Убрать цифры в начале заголовков
-     * @type {*|jQuery}
-     */
-    var title = $('.main_block h1').text();
-    var first2Symbols = title.slice(0, 2);
-    var arrStopSymbols = ['0 ', '1 ', '2 ', '3 ', '4 ', '5 ', '6 ', '7 ', '8 ', '9 '];
-
-    if (arrStopSymbols.includes(first2Symbols)) {
-        title = title.slice(2);
-        $('.main_block h1').text(title);
-    }
 });

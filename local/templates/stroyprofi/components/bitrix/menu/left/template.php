@@ -7,7 +7,6 @@
 $first=true;
 $previousLevel = 0;
 foreach($arResult as $arItem):
-    $arItem['TEXT'] = preg_replace('/^\d+\s+/', '', $arItem['TEXT']);
     ?>
 
 	<?if ($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel):?>

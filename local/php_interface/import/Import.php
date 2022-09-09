@@ -452,6 +452,7 @@ class Import
     private function addSection($name, $internal, $parent, $photo, $sort, $price_id, $descr, $viewTemplate, $isItem = false)
     {
         $newName = preg_replace("/^([0-9]{1,2}\. ?[0-9]?\.? ?[0-9]* ?)/", "", trim($name));
+        $newName = preg_replace('/^\d+\s+/', '', $newName);
         $code = $this->rus2lat($newName);
 
         $obSection = new CIBlockSection;
