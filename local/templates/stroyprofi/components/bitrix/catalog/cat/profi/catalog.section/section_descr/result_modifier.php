@@ -3,7 +3,6 @@
 global $APPLICATION;
 
 $sCurPage = $APPLICATION->GetCurPage();
-
 if (strpos($sCurPage, '/apply/') !== false) {
 
     if(CModule::IncludeModule('iblock'))
@@ -59,18 +58,26 @@ if (strpos($sCurPage, '/apply/') !== false) {
                 'ID' => $arSectionIds
             ];
 
-            $dbResult = CIBlockSection::GetList([$by => $order], $arFilter);
+            $dbResult = CIBlockSection::GetList([$by => $order], $arFilter, false, ['ID', 'NAME', 'PICTURE']);
             while ($arRes = $dbResult->Fetch()) {
-                $arSections[$arRes['ID']] = $arRes['NAME'];
+                $arSections[$arRes['ID']]['NAME'] = $arRes['NAME'];
+
+                if ($arRes['PICTURE'] && $arRes['PICTURE'] != '') {
+                    $arSections[$arRes['ID']]['PICTURE'] = CFile::ResizeImageGet($arRes['PICTURE'], array('width' => 128, 'height' => 130), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                    $arSections[$arRes['ID']]['PICTURE_BIG'] = $file_big = CFile::ResizeImageGet($arRes["PICTURE"], array('width' => 900, 'height' => 600), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                }
             }
 
             $arSectionsForCount = [];
             foreach ($arResult['ITEMS'] as $key => $arItem) {
-                $sFilteredSectName = ltrim($arSections[$arItem['~IBLOCK_SECTION_ID']], '1234567890');
+                $sFilteredSectName = ltrim($arSections[$arItem['~IBLOCK_SECTION_ID']]['NAME'], '1234567890');
                 $sFilteredSectName = ltrim($sFilteredSectName);
 
                 $arResult['ITEMS'][$key]['FILTER_SECTION_NAME'] = $sFilteredSectName;
                 $arSectionsForCount[] = $sFilteredSectName;
+
+                $arResult['ITEMS'][$key]['PICTURE'] = $arSections[$arItem['~IBLOCK_SECTION_ID']]['PICTURE'];
+                $arResult['ITEMS'][$key]['PICTURE_BIG'] = $arSections[$arItem['~IBLOCK_SECTION_ID']]['PICTURE_BIG'];
             }
 
             $arResult['SECTIONS_COUNT'] = array_unique($arSectionsForCount);
