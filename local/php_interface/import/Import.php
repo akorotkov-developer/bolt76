@@ -19,6 +19,8 @@ class Import
     public $iPropAvailbleId;
     public $arCatalogSections;
     public $arProductElements;
+    public $sFileLogImportPath;
+    public $arPicturesMapping;
 
     /**
      * Установка начальных параметров
@@ -30,6 +32,7 @@ class Import
 
         $this->startTime = date("d.m.Y H:i:s");
         $this->iblock = 1;
+        $this->sFileLogImportPath = $_SERVER['DOCUMENT_ROOT'] . '/import/logs/log_import.txt';
 
         // Определяем ID свойства в наличии
         $dbResult = CIBlockProperty::GetPropertyEnum('AVAILABLE', '', ['IBLOCK_ID' => 1]);
@@ -83,10 +86,10 @@ class Import
     public function echo(string $sString, bool $error = false)
     {
         if (!$error) {
-            echo $sString . ' ' . date("d.m.Y H:i:s") . PHP_EOL;
+            file_put_contents($this->sFileLogImportPath, $sString . ' ' . date("d.m.Y H:i:s") . PHP_EOL, FILE_APPEND);
         } else {
             if ($sString != '') {
-                echo '<span style="color: red">' . $sString . ' ' . date("d.m.Y H:i:s") . '</span><br>';
+                file_put_contents($this->sFileLogImportPath, 'ОШИБКА: ' . $sString . ' ' . date("d.m.Y H:i:s") . PHP_EOL, FILE_APPEND);
             }
         }
     }
@@ -99,6 +102,9 @@ class Import
         global $DB;
         $bSuccess = true;
 
+        // Обнуляем файла лога перед началом импорта
+        file_put_contents($this->sFileLogImportPath, '');
+
         if ($this->productsFile == false) {
             $this->echo('Ошибка открытия файла с товарами', true);
         } else {
@@ -110,7 +116,7 @@ class Import
             // Установить динамические свойства
             $this->checkDynamicProps();
 
-            // Загрузить разделы для товаров
+            // Загрузить разделы и товары
             $this->setSections();
 
             // Установить символьные коды для товаров
@@ -329,12 +335,18 @@ class Import
             // Получаем все товары на сайте
             $this->arProductElements = $this->getProductElements();
 
+            // Получаем мапинг md5Хэшей
+            $this->arPicturesMapping = $this->getPictureMapping();
+
+            // Обновление разделов
             $this->sectionWalker($this->xmlCat, 0);
 
-            // Обновляем доступные товары в переменных
+            // Обновляем доступные товары в переменных и хэшиmd5
             $this->arCatalogSections = $this->getCatalogSections();
             $this->arProductElements = $this->getProductElements();
+            $this->arPicturesMapping = $this->getPictureMapping(true);
 
+            // Обновление товаров
             foreach ($this->arCatalogSections as $arSection) {
                 $this->parseSection(
                     $this->productSections[$arSection['ID']],
@@ -343,6 +355,47 @@ class Import
                 );
             }
         }
+    }
+
+    /**
+     * Формирование md5Хэшей для картинок
+     * @param false $isProducts
+     * @return array
+     */
+    private function getPictureMapping($isProducts = false): array
+    {
+        $arSectionPictureIDs = [];
+        $arElementsPictureIDs = [];
+        $arPropPhotosValue = [];
+
+        // Получаем хэши для картинок разделов
+        $arSectionPictureIDs = array_diff(array_unique(array_column($this->arCatalogSections, 'PICTURE')), ['']);
+
+        if  ($isProducts) {
+            $arElementsPictureIDs = array_diff(array_unique(array_column($this->arProductElements, 'PREVIEW_PICTURE')), ['']);
+            $arPropPhotosValue = array_column($this->arProductElements, 'PROPERTY_PHOTOS_VALUE');
+        }
+
+        // Общий массив картинок
+        $arPictureIDs = array_unique(array_merge($arSectionPictureIDs, $arElementsPictureIDs));
+
+        // Получаем все картинки по известным ID одним запросом
+        // и составляем мапинг этих картинок
+        $dbResult = CFile::GetList(
+            $arOrder = [],
+            $arFilter = [
+                "@ID" => implode(',', $arPictureIDs)
+            ],
+            $arParams = []
+        );
+
+        $arPicturesMapping = [];
+        while($arResult = $dbResult->Fetch()) {
+            $md5Hash = md5_file($_SERVER['DOCUMENT_ROOT'] . '/upload/' . $arResult['SUBDIR'] . '/' . $arResult['FILE_NAME']);
+            $arPicturesMapping[$arResult['ID']] = $md5Hash;
+        }
+
+        return $arPicturesMapping;
     }
 
     /**
@@ -412,8 +465,6 @@ class Import
 
             $image = (int)$topContent->sID;
             if (sizeof($topContent->childs->category) > 0) {
-                $this->echo('Импорт секции ' . strval($topContent->name));
-
                 $desc = (string) $topContent->desc;
                 $desc = str_replace('[BR]', "\n", str_replace('[BR][BR]', "\n", $desc));
                 $viewTemplate = $topContent->viewTemplate;
@@ -421,13 +472,12 @@ class Import
                 $present[] = $ID;
                 $this->sectionWalker($topContent->childs, $ID);
             } else {
-                $this->echo('Импорт секции ' . strval($topContent->name));
                 $desc = (string) $topContent->desc;
                 $desc = str_replace('[BR]', "\n", str_replace('[BR][BR]', "\n", $desc));
                 $viewTemplate = $topContent->viewTemplate;
                 $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc, $viewTemplate, true);
                 $present[] = $ID;
-                $this->removeSection($ID, array());
+                $this->removeSection($ID, array('После добавления'));
             }
 
             $this->productSections[$ID] = (int)$topContent->ID;
@@ -460,30 +510,62 @@ class Import
         $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photo . '.jpg';
 
         if (!empty($this->arCatalogSections[$internal])) {
-            $ID = $this->arCatalogSections[$internal]["ID"];
-            $arUpdate = [
-                "NAME" => $newName,
-                "UF_ORIGINAL_NAME" => $name,
-                "UF_PRICE_ID" => $price_id,
-                "DESCRIPTION" => $descr,
-                "SORT" => $sort,
-                "CODE" => $code,
-            ];
+            // Проверяем есть ли у нас изменения в разделе, если есть
+            // то вносим изменения, если нет, то проходим дальше
+            $isUpdate = false; // Флаг для того, чтобы понять надо обновлять раздел или нет
 
-            $arUpdate["PICTURE"] = false;
-            $arUpdate["UF_TEMPLATE"] = $viewTemplate;
+            // Проверяем свойства раздела
+            if (trim($this->arCatalogSections[$internal]['NAME']) != trim($newName)
+                || trim($this->arCatalogSections[$internal]['UF_ORIGINAL_NAME']) != trim($name)
+                || trim($this->arCatalogSections[$internal]['UF_PRICE_ID']) != trim($price_id)
+                || trim($this->arCatalogSections[$internal]['DESCRIPTION']) != trim($descr)
+                || trim($this->arCatalogSections[$internal]['SORT']) != trim($sort)
+                || trim($this->arCatalogSections[$internal]['CODE']) != trim($code)
+                || trim($this->arCatalogSections[$internal]['UF_TEMPLATE']) != trim($viewTemplate)) {
 
-            if ($photo != 0) {
-                if ($this->testphile($picfile)) {
-                    $pic = CFile::MakeFileArray($picfile);
-                    if ($pic["size"] > 0) {
-                        $arUpdate["PICTURE"] = $pic;
-                    }
-                }
+                $isUpdate = true;
             }
 
-            $obSection->Update($ID, $arUpdate);
+            // Проверяем картинку раздела
+            $curMd5 = $this->arPicturesMapping[$this->arCatalogSections[$internal]['PICTURE']];
+            $md5LocalFile = md5_file($picfile);
+
+            if ($curMd5 !== $md5LocalFile) {
+                $isUpdate = true;
+            }
+
+            // TODO подумать как можно переделать этот метода
+            if ($isUpdate || true) {
+                $this->echo('Обновление раздела ' . strval($name));
+
+                $ID = $this->arCatalogSections[$internal]["ID"];
+                $arUpdate = [
+                    "NAME" => $newName,
+                    "UF_ORIGINAL_NAME" => $name,
+                    "UF_PRICE_ID" => $price_id,
+                    "DESCRIPTION" => $descr,
+                    "SORT" => $sort,
+                    "CODE" => $code,
+                ];
+
+                $arUpdate["PICTURE"] = false;
+                $arUpdate["UF_TEMPLATE"] = $viewTemplate;
+
+                if ($photo != 0) {
+                    if ($this->testphile($picfile)) {
+                        $pic = CFile::MakeFileArray($picfile);
+                        if ($pic["size"] > 0) {
+                            $arUpdate["PICTURE"] = $pic;
+                        }
+                    }
+                }
+
+                // TODO не забыть восстановить функционал
+                $obSection->Update($ID, $arUpdate);
+            }
         } else {
+            $this->echo('Добавление раздела ' . strval($name));
+
             $arAdd = [
                 "IBLOCK_ID" => $this->iblock,
                 "IBLOCK_SECTION_ID" => $parent,
@@ -509,6 +591,7 @@ class Import
 
             $ID = $obSection->Add($arAdd);
         }
+
         return $ID;
     }
 
@@ -577,6 +660,7 @@ class Import
         }
     }
 
+
     /**
      * @param $strCatID
      * @param $siteCatID
@@ -608,6 +692,7 @@ class Import
         $res = CIBlockElement::GetList([], $arFilter, false, false, ['ID']);
 
         while ($ob = $res->GetNext()) {
+            $this->echo('Удаление товара ' . $ob['NAME']);
             $el->Delete($ob['ID']);
         }
     }
@@ -624,12 +709,6 @@ class Import
         \Bitrix\Main\Loader::includeModule('iblock');
 
         $sName = ($item['Svertka'] != '') ? $item['Svertka'] : $item['Naimenovanie'];
-
-        if ($item['ID'] == '15799') {
-            AddMessage2Log($item, '$item');
-            AddMessage2Log($siteCatID, '$siteCatID');
-            AddMessage2Log($arDynamicPropsMap, '$arDynamicPropsMap');
-        }
 
         $this->echo('Добавление/обновление товара ' . $sName . ' c ROW_ID: ' . $item['ID']);
 
@@ -716,6 +795,94 @@ class Import
                 }
             } else {
                 $arUpdate['PREVIEW_PICTURE'] = ['del' => 'Y'];
+            }
+
+            /**
+             * Проверка есть ли разница в обновляемых свойствах
+             */
+            $isUpdate = false; // Флаг обновления товара
+
+            // Проверка стандартных полей
+            if ($arUpdate['NAME'] != $sName
+                || $arUpdate['SORT'] != intval($item['PorNomer'])
+            ) {
+                $isUpdate = true;
+            }
+
+            // Проверка динамических полей
+            foreach ($item as $propCode => $propValue) {
+
+                switch ($propCode) {
+                    case 'SECTION_ID':
+                        break;
+                    case 'ID':
+                        if ($arUpdate['PROPERTY_VALUES']['ROWID'] != $propValue) {
+                            $isUpdate = true;
+                        }
+                        break;
+                    case 'Artikul':
+                        if ($arUpdate['PROPERTY_VALUES']['ARTICUL'] != $propValue) {
+                            $isUpdate = true;
+                        }
+                        break;
+                    case 'CZena1':
+                        if ($arUpdate['PROPERTY_VALUES']['PRICE'] != (float)str_replace(",", ".", $propValue)) {
+                            $isUpdate = true;
+                        }
+                        break;
+                    case 'CZena2':
+                        if ($arUpdate['PROPERTY_VALUES']['PRICE_OPT'] != (float)str_replace(",", ".", $propValue)) {
+                            $isUpdate = true;
+                        }
+                        break;
+                    case 'CZena3':
+                        if ($arUpdate['PROPERTY_VALUES']['PRICE_OPT2'] != (float)str_replace(",", ".", $propValue)) {
+                            $isUpdate = true;
+                        }
+                        break;
+                    case 'Foto':
+                        if ($arUpdate['PROPERTY_VALUES']['PHOTO_ID'] != $propValue[0]) {
+                            $isUpdate = true;
+                        }
+                        break;
+                    case 'Ves':
+                        if ($arUpdate['PROPERTY_VALUES']['VES'] != $propValue) {
+                            $isUpdate = true;
+                        }
+                        break;
+                    case 'EdIzmereniya':
+                        if ($arUpdate['PROPERTY_VALUES']['UNITS'] != $propValue) {
+                            $isUpdate = true;
+                        }
+                        break;
+                    case 'VUpakovke':
+                        if ($arUpdate['PROPERTY_VALUES']['UPAKOVKA'] != $propValue) {
+                            $isUpdate = true;
+                        }
+                        break;
+                    case 'VUpakovke2':
+                        if ($arUpdate['PROPERTY_VALUES']['UPAKOVKA2'] != $propValue) {
+                            $isUpdate = true;
+                        }
+                        break;
+                    case 'Ostatok':
+                        if ($arUpdate['PROPERTY_VALUES']['Ostatok'] != $propValue) {
+                            $isUpdate = true;
+                        }
+                        if ($arUpdate['PROPERTY_VALUES']['AVAILABLE'] != ((int)$propValue > 0) ? $this->iAvailablePropId : '') {
+                            $isUpdate = true;
+                        }
+                        break;
+                    case 'show_in_price':
+                        if ($arUpdate['PROPERTY_VALUES']['SHOW_IN_PRICE'] != ($propValue > 0) ? 1 : 0) {
+                            $isUpdate = true;
+                        }
+                        if ($arUpdate['PROPERTY_VALUES']['SORT_IN_PRICE'] != $propValue) {
+                            $isUpdate = true;
+                        }
+
+                        break;
+                }
             }
 
             $isUpdated = $el->Update($this->arProductElements[$item['ID']]['ID'], $arUpdate);

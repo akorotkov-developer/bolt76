@@ -7844,58 +7844,172 @@
 </category>
 <category>
 <PorNomer>1010</PorNomer>
-<ID>2415</ID>
-<sID>18621</sID>
-<viewTemplate>0</viewTemplate>
-<name>10 Спецодежда и СИЗ</name>
+<ID>18833</ID>
+<sID>43783</sID>
+<viewTemplate>1</viewTemplate>
+<name>10 Замки</name>
 <desc></desc>
 <childs>
     <category>
         <PorNomer>1001</PorNomer>
-        <ID>19379</ID>
-        <sID>44330</sID>
+        <ID>5695</ID>
+        <sID>40141</sID>
         <viewTemplate>0</viewTemplate>
-        <name>1 Защита рук</name>
+        <name>1 Замки навесные</name>
         <desc></desc>
+        <childs>
+            <category>
+                <PorNomer>1001</PorNomer>
+                <ID>18823</ID>
+                <sID>43773</sID>
+                <viewTemplate>1</viewTemplate>
+                <name>1. Замки навесные Апекс МВС</name>
+                <desc></desc>
+            </category>
+            <category>
+                <PorNomer>1002</PorNomer>
+                <ID>5717</ID>
+                <sID>40143</sID>
+                <viewTemplate>1</viewTemplate>
+                <name>2. Замки навесные серии HG Soller</name>
+                <desc></desc>
+            </category>
+            <category>
+                <PorNomer>1003</PorNomer>
+                <ID>18831</ID>
+                <sID>43781</sID>
+                <viewTemplate>1</viewTemplate>
+                <name>3. Замки навесные серии HG Аллюр</name>
+                <desc></desc>
+            </category>
+            <category>
+                <PorNomer>1004</PorNomer>
+                <ID>18826</ID>
+                <sID>43776</sID>
+                <viewTemplate>1</viewTemplate>
+                <name>4. Замки навесные Аллюр с длинной дужкой ВС1Ч</name>
+                <desc></desc>
+            </category>
+            <category>
+                <PorNomer>1005</PorNomer>
+                <ID>18827</ID>
+                <sID>43777</sID>
+                <viewTemplate>1</viewTemplate>
+                <name>5 Замки навесные с защищенной дужкой Аллюр ВС2Ч 501,601</name>
+                <desc></desc>
+            </category>
+            <category>
+                <PorNomer>1006</PorNomer>
+                <ID>2148</ID>
+                <sID>18353</sID>
+                <viewTemplate>1</viewTemplate>
+                <name>6 Замки серия HBX Soller</name>
+                <desc></desc>
+            </category>
+            <category>
+                <PorNomer>1007</PorNomer>
+                <ID>18834</ID>
+                <sID>43784</sID>
+                <viewTemplate>1</viewTemplate>
+                <name>7. Замки навесные Авангард</name>
+                <desc></desc>
+            </category>
+            <category>
+                <PorNomer>1008</PorNomer>
+                <ID>18821</ID>
+                <sID>43771</sID>
+                <viewTemplate>0</viewTemplate>
+                <name>8. Замки навесные Аллюр Мастер ключ</name>
+                <desc></desc>
+            </category>
+            <category>
+                <PorNomer>1009</PorNomer>
+                <ID>19791</ID>
+                <sID>44780</sID>
+                <viewTemplate>1</viewTemplate>
+                <name>9. Замки навесные влагозащ АЛЛЮР ВС1Ч черный 6 кл.</name>
+                <desc></desc>
+            </category>
+            <category>
+                <PorNomer>1010</PorNomer>
+                <ID>23095</ID>
+                <sID>48083</sID>
+                <viewTemplate>0</viewTemplate>
+                <name>10. Замки навесные с одной секретностью</name>
+                <desc></desc>
+            </category>
+        </childs>
     </category>
     <category>
         <PorNomer>1002</PorNomer>
-        <ID>19396</ID>
-        <sID>44347</sID>
-        <viewTemplate>0</viewTemplate>
-        <name>2 Защита органов зрения</name>
+        <ID>18825</ID>
+        <sID>43775</sID>
+        <viewTemplate>1</viewTemplate>
+        <name>2 Замки с гибкой дужкой</name>
         <desc></desc>
     </category>
     <category>
         <PorNomer>1003</PorNomer>
-        <ID>19397</ID>
-        <sID>44348</sID>
-        <viewTemplate>0</viewTemplate>
-        <name>3 Защита органов дыхания</name>
+        <ID>18822</ID>
+        <sID>43772</sID>
+        <viewTemplate>1</viewTemplate>
+        <name>3 Замки накладные</name>
         <desc></desc>
     </category>
     <category>
         <PorNomer>1004</PorNomer>
-        <ID>21736</ID>
-        <sID>46720</sID>
-        <viewTemplate>0</viewTemplate>
-        <name>4 Защита органов слуха</name>
+        <ID>18824</ID>
+        <sID>43774</sID>
+        <viewTemplate>1</viewTemplate>
+        <name>4 Замки почтовые</name>
         <desc></desc>
     </category>
     <category>
         <PorNomer>1005</PorNomer>
-        <ID>19380</ID>
-        <sID>44331</sID>
-        <viewTemplate>0</viewTemplate>
-        <name>Каски защитные</name>
+        <ID>18829</ID>
+        <sID>43779</sID>
+        <viewTemplate>1</viewTemplate>
+        <name>5 Замки врезные без ручек</name>
         <desc></desc>
     </category>
     <category>
         <PorNomer>1006</PorNomer>
-        <ID>21831</ID>
-        <sID>46814</sID>
-        <viewTemplate>0</viewTemplate>
-        <name>Наколенники защитные</name>
+        <ID>18830</ID>
+        <sID>43780</sID>
+        <viewTemplate>1</viewTemplate>
+        <name>6 Замки врезные с ручками</name>
+        <desc></desc>
+    </category>
+    <category>
+        <PorNomer>1007</PorNomer>
+        <ID>5990</ID>
+        <sID>41585</sID>
+        <viewTemplate>1</viewTemplate>
+        <name>7 Замки для стальных китайских дверей</name>
+        <desc></desc>
+    </category>
+    <category>
+        <PorNomer>1008</PorNomer>
+        <ID>19001</ID>
+        <sID>43953</sID>
+        <viewTemplate>1</viewTemplate>
+        <name>8 Комплекты ручек для стальных китайских дверей</name>
+        <desc></desc>
+    </category>
+    <category>
+        <PorNomer>1009</PorNomer>
+        <ID>6026</ID>
+        <sID>22364</sID>
+        <viewTemplate>1</viewTemplate>
+        <name>9 Личины</name>
+        <desc></desc>
+    </category>
+    <category>
+        <PorNomer>1010</PorNomer>
+        <ID>19002</ID>
+        <sID>43954</sID>
+        <viewTemplate>1</viewTemplate>
+        <name>10 Личины для стальных китайских дверей</name>
         <desc></desc>
     </category>
 </childs>
@@ -8070,6 +8184,14 @@
                 <name>Уголок мебельный УМ</name>
                 <desc></desc>
             </category>
+            <category>
+                <PorNomer>1104</PorNomer>
+                <ID>4968</ID>
+                <sID>49660</sID>
+                <viewTemplate>1</viewTemplate>
+                <name>Уголок трехсторонний</name>
+                <desc></desc>
+            </category>
         </childs>
     </category>
     <category>
@@ -8140,172 +8262,58 @@
 </category>
 <category>
 <PorNomer>1212</PorNomer>
-<ID>18833</ID>
-<sID>43783</sID>
-<viewTemplate>1</viewTemplate>
-<name>12 Замки</name>
+<ID>2415</ID>
+<sID>18621</sID>
+<viewTemplate>0</viewTemplate>
+<name>12 Спецодежда и СИЗ</name>
 <desc></desc>
 <childs>
     <category>
         <PorNomer>1201</PorNomer>
-        <ID>5695</ID>
-        <sID>40141</sID>
+        <ID>19379</ID>
+        <sID>44330</sID>
         <viewTemplate>0</viewTemplate>
-        <name>1 Замки навесные</name>
+        <name>1 Защита рук</name>
         <desc></desc>
-        <childs>
-            <category>
-                <PorNomer>1201</PorNomer>
-                <ID>18823</ID>
-                <sID>43773</sID>
-                <viewTemplate>1</viewTemplate>
-                <name>1. Замки навесные Апекс МВС</name>
-                <desc></desc>
-            </category>
-            <category>
-                <PorNomer>1202</PorNomer>
-                <ID>5717</ID>
-                <sID>40143</sID>
-                <viewTemplate>1</viewTemplate>
-                <name>2. Замки навесные серии HG Soller</name>
-                <desc></desc>
-            </category>
-            <category>
-                <PorNomer>1203</PorNomer>
-                <ID>18831</ID>
-                <sID>43781</sID>
-                <viewTemplate>1</viewTemplate>
-                <name>3. Замки навесные серии HG Аллюр</name>
-                <desc></desc>
-            </category>
-            <category>
-                <PorNomer>1204</PorNomer>
-                <ID>18826</ID>
-                <sID>43776</sID>
-                <viewTemplate>1</viewTemplate>
-                <name>4. Замки навесные Аллюр с длинной дужкой ВС1Ч</name>
-                <desc></desc>
-            </category>
-            <category>
-                <PorNomer>1205</PorNomer>
-                <ID>18827</ID>
-                <sID>43777</sID>
-                <viewTemplate>1</viewTemplate>
-                <name>5 Замки навесные с защищенной дужкой Аллюр ВС2Ч 501,601</name>
-                <desc></desc>
-            </category>
-            <category>
-                <PorNomer>1206</PorNomer>
-                <ID>2148</ID>
-                <sID>18353</sID>
-                <viewTemplate>1</viewTemplate>
-                <name>6 Замки серия HBX Soller</name>
-                <desc></desc>
-            </category>
-            <category>
-                <PorNomer>1207</PorNomer>
-                <ID>18834</ID>
-                <sID>43784</sID>
-                <viewTemplate>1</viewTemplate>
-                <name>7. Замки навесные Авангард</name>
-                <desc></desc>
-            </category>
-            <category>
-                <PorNomer>1208</PorNomer>
-                <ID>18821</ID>
-                <sID>43771</sID>
-                <viewTemplate>0</viewTemplate>
-                <name>8. Замки навесные Аллюр Мастер ключ</name>
-                <desc></desc>
-            </category>
-            <category>
-                <PorNomer>1209</PorNomer>
-                <ID>19791</ID>
-                <sID>44780</sID>
-                <viewTemplate>1</viewTemplate>
-                <name>9. Замки навесные влагозащ АЛЛЮР ВС1Ч черный 6 кл.</name>
-                <desc></desc>
-            </category>
-            <category>
-                <PorNomer>1210</PorNomer>
-                <ID>23095</ID>
-                <sID>48083</sID>
-                <viewTemplate>0</viewTemplate>
-                <name>10. Замки навесные с одной секретностью</name>
-                <desc></desc>
-            </category>
-        </childs>
     </category>
     <category>
         <PorNomer>1202</PorNomer>
-        <ID>18825</ID>
-        <sID>43775</sID>
-        <viewTemplate>1</viewTemplate>
-        <name>2 Замки с гибкой дужкой</name>
+        <ID>19396</ID>
+        <sID>44347</sID>
+        <viewTemplate>0</viewTemplate>
+        <name>2 Защита органов зрения</name>
         <desc></desc>
     </category>
     <category>
         <PorNomer>1203</PorNomer>
-        <ID>18822</ID>
-        <sID>43772</sID>
-        <viewTemplate>1</viewTemplate>
-        <name>3 Замки накладные</name>
+        <ID>19397</ID>
+        <sID>44348</sID>
+        <viewTemplate>0</viewTemplate>
+        <name>3 Защита органов дыхания</name>
         <desc></desc>
     </category>
     <category>
         <PorNomer>1204</PorNomer>
-        <ID>18824</ID>
-        <sID>43774</sID>
-        <viewTemplate>1</viewTemplate>
-        <name>4 Замки почтовые</name>
+        <ID>21736</ID>
+        <sID>46720</sID>
+        <viewTemplate>0</viewTemplate>
+        <name>4 Защита органов слуха</name>
         <desc></desc>
     </category>
     <category>
         <PorNomer>1205</PorNomer>
-        <ID>18829</ID>
-        <sID>43779</sID>
-        <viewTemplate>1</viewTemplate>
-        <name>5 Замки врезные без ручек</name>
+        <ID>19380</ID>
+        <sID>44331</sID>
+        <viewTemplate>0</viewTemplate>
+        <name>Каски защитные</name>
         <desc></desc>
     </category>
     <category>
         <PorNomer>1206</PorNomer>
-        <ID>18830</ID>
-        <sID>43780</sID>
-        <viewTemplate>1</viewTemplate>
-        <name>6 Замки врезные с ручками</name>
-        <desc></desc>
-    </category>
-    <category>
-        <PorNomer>1207</PorNomer>
-        <ID>5990</ID>
-        <sID>41585</sID>
-        <viewTemplate>1</viewTemplate>
-        <name>7 Замки для стальных китайских дверей</name>
-        <desc></desc>
-    </category>
-    <category>
-        <PorNomer>1208</PorNomer>
-        <ID>19001</ID>
-        <sID>43953</sID>
-        <viewTemplate>1</viewTemplate>
-        <name>8 Комплекты ручек для стальных китайских дверей</name>
-        <desc></desc>
-    </category>
-    <category>
-        <PorNomer>1209</PorNomer>
-        <ID>6026</ID>
-        <sID>22364</sID>
-        <viewTemplate>1</viewTemplate>
-        <name>9 Личины</name>
-        <desc></desc>
-    </category>
-    <category>
-        <PorNomer>1210</PorNomer>
-        <ID>19002</ID>
-        <sID>43954</sID>
-        <viewTemplate>1</viewTemplate>
-        <name>10 Личины для стальных китайских дверей</name>
+        <ID>21831</ID>
+        <sID>46814</sID>
+        <viewTemplate>0</viewTemplate>
+        <name>Наколенники защитные</name>
         <desc></desc>
     </category>
 </childs>
