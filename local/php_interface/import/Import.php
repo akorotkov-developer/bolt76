@@ -102,8 +102,9 @@ class Import
         global $DB;
         $bSuccess = true;
 
-        // Обнуляем файла лога перед началом импорта
+        // Обнуляем файла лога перед началом импорта и пишем старт импорта
         file_put_contents($this->sFileLogImportPath, '');
+        file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/import/logs/log_import_check.txt', 'N', 'Старт импорта');
 
         if ($this->productsFile == false) {
             $this->echo('Ошибка открытия файла с товарами', true);
@@ -803,14 +804,14 @@ class Import
             $isUpdate = false; // Флаг обновления товара
 
             // Проверка стандартных полей
-            if ($arUpdate['NAME'] != $sName
+            /*if ($arUpdate['NAME'] != $sName
                 || $arUpdate['SORT'] != intval($item['PorNomer'])
             ) {
                 $isUpdate = true;
-            }
+            }*/
 
             // Проверка динамических полей
-            foreach ($item as $propCode => $propValue) {
+            /*foreach ($item as $propCode => $propValue) {
 
                 switch ($propCode) {
                     case 'SECTION_ID':
@@ -883,7 +884,7 @@ class Import
 
                         break;
                 }
-            }
+            }*/
 
             $isUpdated = $el->Update($this->arProductElements[$item['ID']]['ID'], $arUpdate);
             if (!$isUpdated) {
