@@ -86,7 +86,7 @@ class Import
     public function echo(string $sString, bool $error = false)
     {
         if (!$error) {
-            file_put_contents($this->sFileLogImportPath, $sString . ' ' . date("d.m.Y H:i:s") . PHP_EOL, FILE_APPEND);
+            file_put_contents($this->sFileLogImportPath, $sString . ' ' . date("d.m.Y 4:i:s") . PHP_EOL, FILE_APPEND);
         } else {
             if ($sString != '') {
                 file_put_contents($this->sFileLogImportPath, 'ОШИБКА: ' . $sString . ' ' . date("d.m.Y H:i:s") . PHP_EOL, FILE_APPEND);
@@ -113,21 +113,18 @@ class Import
 
             // Устанавливаем массив с продуктами
             $this->setArProducts();
-
             // Установить динамические свойства
             $this->checkDynamicProps();
-
             // Загрузить разделы и товары
             $this->setSections();
-
             // Установить символьные коды для товаров
             $this->setCodesForProducts();
-
             // Сделать из элементов инфоблока товары с ценами и параметрами
             $this->makeProducts();
-
             // Установить коэфициенты единицы измерения для всех продуктов
             $this->setRatio();
+
+            $this->echo('Конец импорта!');
         }
 
         return $bSuccess;
@@ -153,7 +150,10 @@ class Import
         //4. Получаем все продукты на сайте
         $dbRez = CCatalogProduct::GetList(
             [],
-            []
+            [],
+            false,
+            false,
+            ['ID', 'MEASURE']
         );
 
         $arProducts = [];
@@ -334,10 +334,10 @@ class Import
             // Получаем список всех категорий на сайте
             $this->arCatalogSections = $this->getCatalogSections();
             // Получаем все товары на сайте
-            $this->arProductElements = $this->getProductElements();
+            /*$this->arProductElements = $this->getProductElements();*/
 
             // Получаем мапинг md5Хэшей
-            $this->arPicturesMapping = $this->getPictureMapping();
+            /*$this->arPicturesMapping = $this->getPictureMapping();*/
 
             // Обновление разделов
             $this->sectionWalker($this->xmlCat, 0);
@@ -351,8 +351,7 @@ class Import
             foreach ($this->arCatalogSections as $arSection) {
                 $this->parseSection(
                     $this->productSections[$arSection['ID']],
-                    $arSection['ID'],
-                    $this->arDynamicPropsMap
+                    $arSection['ID']
                 );
             }
         }
@@ -409,6 +408,7 @@ class Import
             'ID',
             'NAME',
             'CODE',
+            'SORT',
             'IBLOCK_ID',
             'PROPERTY_PHOTO_ID',
             'PREVIEW_PICTURE',
@@ -420,14 +420,31 @@ class Import
             'PROPERTY_Ostatok',
             'PROPERTY_UNITS',
             'PROPERTY_KRATNOST',
+            'PROPERTY_ARTICUL',
+            'PROPERTY_VES',
+            'PROPERTY_UPAKOVKA',
+            'PROPERTY_UPAKOVKA2',
+            'PROPERTY_AVAILABLE',
+            'PROPERTY_SHOW_IN_PRICE',
+            'PROPERTY_SORT_IN_PRICE',
         ];
+
+        $arDynamicPropsKeys = array_keys($this->arDynamicPropsMap);
+
+        foreach ($arDynamicPropsKeys as $keyProp) {
+            if ($keyProp != '') {
+                $arSelect[] = 'PROPERTY_' . $keyProp;
+            }
+        }
+
         $arFilter = [
             'IBLOCK_ID' => $this->iblock,
         ];
 
         $obDbRequest = CIBlockElement::GetList([], $arFilter, false, false, $arSelect);
+
         $arElements = [];
-        while($arResult = $obDbRequest->GetNext()) {
+        while ($arResult = $obDbRequest->GetNext()) {
             $arElements[$arResult['PROPERTY_ROWID_VALUE']] = $arResult;
         }
 
@@ -469,14 +486,16 @@ class Import
                 $desc = (string) $topContent->desc;
                 $desc = str_replace('[BR]', "\n", str_replace('[BR][BR]', "\n", $desc));
                 $viewTemplate = $topContent->viewTemplate;
-                $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc, $viewTemplate);
+                $bookmarks = $topContent->IdBookmark;
+                $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc, $viewTemplate, $bookmarks);
                 $present[] = $ID;
                 $this->sectionWalker($topContent->childs, $ID);
             } else {
                 $desc = (string) $topContent->desc;
                 $desc = str_replace('[BR]', "\n", str_replace('[BR][BR]', "\n", $desc));
                 $viewTemplate = $topContent->viewTemplate;
-                $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc, $viewTemplate, true);
+                $bookmarks = $topContent->IdBookmark;
+                $ID = $this->addSection(strval($topContent->name), intval($topContent->ID), $top, $image, intval($topContent->PorNomer), intval($topContent->price_id), $desc, $viewTemplate, $bookmarks, true);
                 $present[] = $ID;
                 $this->removeSection($ID, array('После добавления'));
             }
@@ -500,7 +519,7 @@ class Import
      * @param false $isItem
      * @return false|int|mixed
      */
-    private function addSection($name, $internal, $parent, $photo, $sort, $price_id, $descr, $viewTemplate, $isItem = false)
+    private function addSection($name, $internal, $parent, $photo, $sort, $price_id, $descr, $viewTemplate, $bookmarks, $isItem = false)
     {
         $newName = preg_replace("/^([0-9]{1,2}\. ?[0-9]?\.? ?[0-9]* ?)/", "", trim($name));
         $newName = preg_replace('/^\d+\s+/', '', $newName);
@@ -516,7 +535,7 @@ class Import
             $isUpdate = false; // Флаг для того, чтобы понять надо обновлять раздел или нет
 
             // Проверяем свойства раздела
-            if (trim($this->arCatalogSections[$internal]['NAME']) != trim($newName)
+            /*if (trim($this->arCatalogSections[$internal]['NAME']) != trim($newName)
                 || trim($this->arCatalogSections[$internal]['UF_ORIGINAL_NAME']) != trim($name)
                 || trim($this->arCatalogSections[$internal]['UF_PRICE_ID']) != trim($price_id)
                 || trim($this->arCatalogSections[$internal]['DESCRIPTION']) != trim($descr)
@@ -533,7 +552,7 @@ class Import
 
             if ($curMd5 !== $md5LocalFile) {
                 $isUpdate = true;
-            }
+            }*/
 
             // TODO подумать как можно переделать этот метода
             if ($isUpdate || true) {
@@ -547,6 +566,7 @@ class Import
                     "DESCRIPTION" => $descr,
                     "SORT" => $sort,
                     "CODE" => $code,
+                    "UF_TABS" => explode(':', $bookmarks)
                 ];
 
                 $arUpdate["PICTURE"] = false;
@@ -560,6 +580,8 @@ class Import
                         }
                     }
                 }
+
+                \Bitrix\Main\Diag\Debug::dumpToFile(['$arUpdate' => $arUpdate], '', 'log.txt');
 
                 // TODO не забыть восстановить функционал
                 $obSection->Update($ID, $arUpdate);
@@ -579,7 +601,8 @@ class Import
                 "UF_PRODUCT" => ($isItem ? '1' : '0'),
                 "UF_PRICE_ID" => $price_id,
                 "UF_ROWID" => $internal,
-                "UF_TEMPLATE" => $viewTemplate
+                "UF_TEMPLATE" => $viewTemplate,
+                "UF_TABS" => explode(':', $bookmarks)
             ];
             if ($photo != 0) {
                 if ($this->testphile($picfile)) {
@@ -665,17 +688,18 @@ class Import
     /**
      * @param $strCatID
      * @param $siteCatID
-     * @param $arDynamicPropsMap
      */
-    private function parseSection($strCatID, $siteCatID, $arDynamicPropsMap)
+    private function parseSection($strCatID, $siteCatID)
     {
         $total = 0;
 
+        // Список ID товаров, который должны находиться в текущем разделе
+        // нужен для того, что бы удалить лишние товары из раздела
         $present = [];
 
         if (isset($this->arProducts[$strCatID])) {
             foreach ($this->arProducts[$strCatID] as $item) {
-                $ID = $this->addUpdateElement($item, $siteCatID, $arDynamicPropsMap);
+                $ID = $this->addUpdateElement($item, $siteCatID);
                 $present[] = $ID;
                 $total++;
             }
@@ -702,16 +726,14 @@ class Import
      * Функция для добавления $item в раздел $siteCatId (товаров в раздел)
      * @param $item
      * @param $siteCatID
-     * @param $arDynamicPropsMap
      * @return false|mixed
+     * @throws \Bitrix\Main\LoaderException
      */
-    private function addUpdateElement($item, $siteCatID, $arDynamicPropsMap)
+    private function addUpdateElement($item, $siteCatID)
     {
         \Bitrix\Main\Loader::includeModule('iblock');
 
         $sName = ($item['Svertka'] != '') ? $item['Svertka'] : $item['Naimenovanie'];
-
-        $this->echo('Добавление/обновление товара ' . $sName . ' c ROW_ID: ' . $item['ID']);
 
         $el = new \CIBlockElement;
 
@@ -742,7 +764,7 @@ class Import
             ];
 
             // Добавим значения динамических свойств в товар
-            $arDynamicPropsKeys = array_keys($arDynamicPropsMap);
+            $arDynamicPropsKeys = array_keys($this->arDynamicPropsMap);
 
             foreach ($arDynamicPropsKeys as $sPropCode) {
                 if ($item[$sPropCode] != '') {
@@ -760,6 +782,7 @@ class Import
             $photo = $item['Foto'][0];
             $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photo . '.jpg';
 
+            $isUpdate = false; // Флаг обновления товара
             $flag_update_pic = false;
             if ($this->arProductElements[$item['ID']]["PROPERTY_PHOTO_ID_VALUE"] != $item['Foto'][0]) {
                 $flag_update_pic = true;
@@ -771,15 +794,25 @@ class Import
                 $flag_update_pic = true;
             }
 
+
             $propsToUpdate = [];
             if (($flag_update_pic) && ($this->testphile($picfile))) {
                 $photo = $item['Foto'][0];
 
                 if ($photo != 0) {
-                    $arUpdate['PROPERTY_VALUES']["PHOTO_ID"] = $item['Foto'][0];
-                    $pic = CFile::MakeFileArray($picfile);
-                    if ($pic["size"] > 0) {
-                        $arUpdate['PREVIEW_PICTURE'] = $pic;
+
+                    // Проверяем совпадает ли картинки, которые пытаемся загрузить
+                    // и картинка, которая уже находится на сайте
+                    if ($this->arPicturesMapping[$this->arProductElements[$item['ID']]['PREVIEW_PICTURE']] != md5_file($picfile) ) {
+                        $isUpdate = true;
+                    }
+
+                    if ($isUpdate) {
+                        $arUpdate['PROPERTY_VALUES']["PHOTO_ID"] = $item['Foto'][0];
+                        $pic = CFile::MakeFileArray($picfile);
+                        if ($pic["size"] > 0) {
+                            $arUpdate['PREVIEW_PICTURE'] = $pic;
+                        }
                     }
                 }
 
@@ -793,112 +826,128 @@ class Import
                             $propsToUpdate['PHOTOS'][] = \CFile::MakeFileArray($picfile);
                         }
                     }
+
+                    // TODO здесь надо сделать проверку на совпадение фото, в следующем релизе
+                    // сейчас пока, если у нас товар с несколькими картинками, то в любом случае обновляем его
+                    $isUpdate = true;
                 }
             } else {
-                $arUpdate['PREVIEW_PICTURE'] = ['del' => 'Y'];
+                if ($this->arPicturesMapping[$this->arProductElements[$item['ID']]['PREVIEW_PICTURE']] != md5_file($picfile)) {
+                    $isUpdate = true;
+
+                    $arUpdate['PREVIEW_PICTURE'] = ['del' => 'Y'];
+                }
             }
 
             /**
              * Проверка есть ли разница в обновляемых свойствах
              */
-            $isUpdate = false; // Флаг обновления товара
+            // Текущий элемент, который сейчас находится на сайте
+            $curElement = $this->arProductElements[$item['ID']];
 
             // Проверка стандартных полей
-            /*if ($arUpdate['NAME'] != $sName
-                || $arUpdate['SORT'] != intval($item['PorNomer'])
+            if ($curElement['NAME'] != $sName
+                || $curElement['SORT'] != intval($item['PorNomer'])
             ) {
                 $isUpdate = true;
-            }*/
+            }
 
             // Проверка динамических полей
-            /*foreach ($item as $propCode => $propValue) {
-
+            foreach ($item as $propCode => $propValue) {
                 switch ($propCode) {
                     case 'SECTION_ID':
                         break;
                     case 'ID':
-                        if ($arUpdate['PROPERTY_VALUES']['ROWID'] != $propValue) {
+                        if ($curElement['PROPERTY_ROWID_VALUE'] != $propValue) {
                             $isUpdate = true;
                         }
                         break;
                     case 'Artikul':
-                        if ($arUpdate['PROPERTY_VALUES']['ARTICUL'] != $propValue) {
+                        if ($curElement['PROPERTY_ARTICUL_VALUE'] != $propValue) {
                             $isUpdate = true;
                         }
                         break;
                     case 'CZena1':
-                        if ($arUpdate['PROPERTY_VALUES']['PRICE'] != (float)str_replace(",", ".", $propValue)) {
+                        if ($curElement['PROPERTY_PRICE_VALUE'] != (float)str_replace(",", ".", $propValue)) {
                             $isUpdate = true;
                         }
                         break;
                     case 'CZena2':
-                        if ($arUpdate['PROPERTY_VALUES']['PRICE_OPT'] != (float)str_replace(",", ".", $propValue)) {
+                        if ($curElement['PROPERTY_PRICE_OPT_VALUE'] != (float)str_replace(",", ".", $propValue)) {
                             $isUpdate = true;
                         }
                         break;
                     case 'CZena3':
-                        if ($arUpdate['PROPERTY_VALUES']['PRICE_OPT2'] != (float)str_replace(",", ".", $propValue)) {
+                        if ($curElement['PROPERTY_PRICE_OPT2_VALUE'] != (float)str_replace(",", ".", $propValue)) {
                             $isUpdate = true;
                         }
                         break;
                     case 'Foto':
-                        if ($arUpdate['PROPERTY_VALUES']['PHOTO_ID'] != $propValue[0]) {
+                        if ($curElement['PROPERTY_PHOTO_ID_VALUE'] != $propValue[0]) {
                             $isUpdate = true;
                         }
                         break;
                     case 'Ves':
-                        if ($arUpdate['PROPERTY_VALUES']['VES'] != $propValue) {
+                        if ($curElement['PROPERTY_VES_VALUE'] != $propValue) {
                             $isUpdate = true;
                         }
                         break;
                     case 'EdIzmereniya':
-                        if ($arUpdate['PROPERTY_VALUES']['UNITS'] != $propValue) {
+                        if ($curElement['PROPERTY_UNITS_VALUE'] != $propValue) {
                             $isUpdate = true;
                         }
                         break;
                     case 'VUpakovke':
-                        if ($arUpdate['PROPERTY_VALUES']['UPAKOVKA'] != $propValue) {
+                        if ($curElement['PROPERTY_UPAKOVKA_VALUE'] != $propValue) {
                             $isUpdate = true;
                         }
                         break;
                     case 'VUpakovke2':
-                        if ($arUpdate['PROPERTY_VALUES']['UPAKOVKA2'] != $propValue) {
+                        if ($curElement['PROPERTY_UPAKOVKA2_VALUE'] != $propValue) {
                             $isUpdate = true;
                         }
                         break;
                     case 'Ostatok':
-                        if ($arUpdate['PROPERTY_VALUES']['Ostatok'] != $propValue) {
+                        if ($curElement['PROPERTY_OSTATOK_VALUE'] != $propValue) {
                             $isUpdate = true;
                         }
-                        if ($arUpdate['PROPERTY_VALUES']['AVAILABLE'] != ((int)$propValue > 0) ? $this->iAvailablePropId : '') {
+                        if ($curElement['PROPERTY_AVAILABLE_VALUE'] != ((int)$propValue > 0) ? $this->iAvailablePropId : '') {
                             $isUpdate = true;
                         }
                         break;
                     case 'show_in_price':
-                        if ($arUpdate['PROPERTY_VALUES']['SHOW_IN_PRICE'] != ($propValue > 0) ? 1 : 0) {
+                        if ($curElement['PROPERTY_SHOW_IN_PRICE_VALUE'] != ($propValue > 0) ? 1 : 0) {
                             $isUpdate = true;
                         }
-                        if ($arUpdate['PROPERTY_VALUES']['SORT_IN_PRICE'] != $propValue) {
+                        if ($curElement['PROPERTY_SORT_IN_PRICE_VALUE'] != $propValue) {
                             $isUpdate = true;
                         }
-
+                        break;
+                    default:
+                        // Удалить лишние свойства из динамических
+                        if (!in_array($propCode, ['PorNomer', 'Opisanie', 'Naimenovanie', 'Svertka']) &&
+                            $curElement['PROPERTY_' . strtoupper($propCode) . '_VALUE'] != $propValue) {
+                            $isUpdate = true;
+                        }
                         break;
                 }
-            }*/
-
-            $isUpdated = $el->Update($this->arProductElements[$item['ID']]['ID'], $arUpdate);
-            if (!$isUpdated) {
-                $this->echo($el->LAST_ERROR);
             }
 
-            // Обнуляем фото
-            if (count($this->arProductElements[$item['ID']]['PROPERTY_PHOTOS_VALUE']) > 0 || !empty($propsToUpdate['PHOTOS'])) {
-                \CIBlockElement::SetPropertyValuesEx($this->arProductElements[$item['ID']]['ID'], $this->iblock, ['PHOTOS' => ['VALUE' => '']]);
-            }
+            if ($isUpdate) {
+                $isUpdated = $el->Update($this->arProductElements[$item['ID']]['ID'], $arUpdate);
+                if (!$isUpdated) {
+                    $this->echo($el->LAST_ERROR);
+                }
 
-            if (!empty($propsToUpdate['PHOTOS']) && count($propsToUpdate['PHOTOS']) > 0) {
-                // Записываем новые свойства
-                \CIBlockElement::SetPropertyValuesEx($this->arProductElements[$item['ID']]['ID'], $this->iblock, $propsToUpdate);
+                // Обнуляем фото
+                if (count($this->arProductElements[$item['ID']]['PROPERTY_PHOTOS_VALUE']) > 0 || !empty($propsToUpdate['PHOTOS'])) {
+                    \CIBlockElement::SetPropertyValuesEx($this->arProductElements[$item['ID']]['ID'], $this->iblock, ['PHOTOS' => ['VALUE' => '']]);
+                }
+
+                if (!empty($propsToUpdate['PHOTOS']) && count($propsToUpdate['PHOTOS']) > 0) {
+                    // Записываем новые свойства
+                    \CIBlockElement::SetPropertyValuesEx($this->arProductElements[$item['ID']]['ID'], $this->iblock, $propsToUpdate);
+                }
             }
 
             $ID = $this->arProductElements[$item['ID']]['ID'];
@@ -931,7 +980,7 @@ class Import
             ];
 
             // Добавим значения динамических свойств в товар
-            $arDynamicPropsKeys = array_keys($arDynamicPropsMap);
+            $arDynamicPropsKeys = array_keys($this->arDynamicPropsMap);
             foreach ($arDynamicPropsKeys as $sPropCode) {
                 if ($item[$sPropCode] != '') {
                     if ($item[$sPropCode] !== 0 && $item[$sPropCode] !== '0') {
@@ -969,6 +1018,8 @@ class Import
             }
 
             $ID = $el->Add($arLoad);
+
+            echo 'Добавлен товар с ID ' . $ID . '<br>';
 
             if ((isset($el->LAST_ERROR))) {
                 $this->echo($el->LAST_ERROR, true);
@@ -1067,7 +1118,6 @@ class Import
             $arTemp[$a[0]][$a[2]] = trim($a[count($a) - 1]);
 
             // Добавляем свойство в список динамических свойств
-
             if (!in_array($a[2], $this->arDynamicPropsMap)) {
                 $this->arDynamicPropsMap[$a[2]] = $a[3];
             }
