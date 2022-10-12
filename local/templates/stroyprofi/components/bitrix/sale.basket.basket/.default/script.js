@@ -1463,6 +1463,7 @@ BX.ready(function() {
 	// Клик по кнопке получить чек на заказ
 	$('.get-order-check').on('click', function() {
 		print();
+		window.location.href = '/';
 		/*const messageBox = new BX.UI.Dialogs.MessageBox(
 			{
 				message: '<span style="color: #FF7920; font-weight: bold; font-size: 18px;">Распечатать чек?</span>',

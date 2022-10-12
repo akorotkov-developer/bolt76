@@ -126,3 +126,33 @@ foreach ($arFavorites as $favoriteItemId) {
     }
 }
 
+/**
+ * Ссылки вперед назад
+ */
+$dbResult = CIBlockElement::GetList(
+    [
+        'PROPERTY_Naimenovanie' => 'ASC'
+    ],
+    [
+        'IBLOCK_ID' => 1,
+        'ACTIVE' => 'Y',
+        'SECTION_ID' => $arResult['ORIGINAL_PARAMETERS']['SECTION_ID']
+    ],
+    false,
+    false,
+    ['ID', 'DETAIL_PAGE_URL']
+);
+
+$arItems = [];
+$dbResult->SetUrlTemplates("#SITE_DIR#/catalog/#SECTION_ID#-#SECTION_CODE#/#ELEMENT_CODE#");
+while($arRes = $dbResult->GetNext()) {
+    $arItems[] = $arRes;
+}
+
+// Назначаем ссылки вперед и назад
+foreach ($arItems as $key => $item) {
+    if ($item['ID'] == $arResult['ID']) {
+        $arResult['PREV_LINK'] = $arItems[$key - 1]['DETAIL_PAGE_URL'];
+        $arResult['NEXT_LINK'] = $arItems[$key + 1]['DETAIL_PAGE_URL'];
+    }
+}

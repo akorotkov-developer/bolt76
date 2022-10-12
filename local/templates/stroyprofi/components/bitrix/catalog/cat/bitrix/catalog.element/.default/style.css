@@ -1088,3 +1088,19 @@ h1 {
 .video-content {
 	max-height: 80vh;
 }
+.b-prev {
+	width: 50%;
+	text-align: left;
+}
+.b-next {
+	width: 50%;
+	text-align: right;
+}
+.b-prev-next {
+	display: flex;
+	justify-content: space-between;
+}
+.b-prev-next a {
+	color: #FF7920;
+	font-weight: bold;
+}

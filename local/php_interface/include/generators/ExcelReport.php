@@ -2,19 +2,13 @@
 
 namespace NLMK\Report\Generators;
 
-use Bitrix\Iblock\Iblock;
 use Bitrix\Main\Loader;
-use Bitrix\Main\Type\DateTime;
 use Box\Spout\Common\Entity\Style\Border;
 use Box\Spout\Common\Entity\Style\Color;
 use Box\Spout\Writer\Common\Creator\Style\BorderBuilder;
 use Box\Spout\Writer\Common\Creator\Style\StyleBuilder;
 use Box\Spout\Writer\Common\Creator\WriterEntityFactory;
-
 use NLMK\Report\Formats\XlsxReport;
-use Bitrix\Main\UI\PageNavigation;
-use Bitrix\Main\Entity\ExpressionField;
-use Bitrix\Main\Localization\Loc;
 
 /**
  * Class HazardRequestsReport
@@ -58,6 +52,23 @@ final class ExcelReport extends XlsxReport
         $writer->setShouldUseInlineStrings(false);
         $writer->openToFile($this->getFileName());
         $writer->addRows($this->getData());
+        $writer->getSheets();
+
+
+
+
+
+
+        $style2 = (new StyleBuilder())
+            ->setFontSize(12)
+            ->setFontColor(Color::BLACK)
+            ->setBackgroundColor(Color::LIGHT_GREEN)
+            ->setFormat(1100)
+            ->build();
+        $rowFromValues = WriterEntityFactory::createRowFromArray(['11111111111111111111111', '22389472839adghahsdg72389493dkajs'], $style2);
+        $writer->addRow($rowFromValues);
+
+
         $writer->close();
     }
 
@@ -115,43 +126,33 @@ final class ExcelReport extends XlsxReport
         $border = (new BorderBuilder())
             ->setBorderBottom(Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID)
             ->build();
+
+        /**
+         * Заголовки для таблицы
+         */
         $headerStyle = (new StyleBuilder())
-            ->setFontSize(12)
+            ->setFontSize(14)
             ->setFontColor(Color::BLACK)
-            ->setShouldWrapText()
             ->setBackgroundColor("CFD4D8")
             ->setBorder($border)
             ->build();
-        $defaultStyle = $this->getStyles();
 
-        $arEvents = [
-            'EVENT1' => 'Событие 1',
-            'EVENT2' => 'Событие 2',
-            'EVENT3' => 'Событие 3',
-            'EVENT4' => 'Событие 4',
-        ];
-
-        /**
-         * Выявлено на территории СП
-         */
-        $arrData = array_merge(['Заголовок'], array_column($arEvents, 'NAME'));
-        $arExportData[] = WriterEntityFactory::createRowFromArray(
-            $arrData,
-            $headerStyle
-        );
-
-
-        /**
-         * Качество заполнения заявлений
-         */
         $arExportData[] = WriterEntityFactory::createRowFromArray(
             [
-                'Заголовок 1',
-                'Заголовок 2',
-                'Заголовок 3',
-                'Заголовок 4',
+                'Артикул',
+                'Наименование',
+                'Оптовая цена',
+                'В упаковке',
+                'Единица измерения',
             ],
             $headerStyle
         );
+
+        $defaultStyle = $this->getStyles();
+
+
+
+
+
     }
 }

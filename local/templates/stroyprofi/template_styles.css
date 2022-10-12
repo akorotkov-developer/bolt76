@@ -1301,3 +1301,14 @@ td .buy_helper_holder{
     min-height: calc(100vh - 215px);
 }
 
+body .bx-filter.bx-blue .btn-themes {
+    background-color: #FF7920;
+    border-color: #FF7920;
+    color: #FFF;
+}
+body .bx-filter.bx-blue .bx-ui-slider-pricebar-v {
+    background-color: #FF7920;
+}
+body .btn-link {
+    color: #FF7920;
+}
