@@ -611,8 +611,6 @@ class Import
                     }
                 }
 
-                \Bitrix\Main\Diag\Debug::dumpToFile(['$arUpdate' => $arUpdate], '', 'log.txt');
-
                 // TODO не забыть восстановить функционал
                 $obSection->Update($ID, $arUpdate);
             }

@@ -8,14 +8,12 @@ class importInCron
      */
     public static function start(): string
     {
-        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Здесь 1'], '', 'log.txt');
-
         try {
             $obImport = new Import();
 
             $obImport->startImport();
         } catch (Exception $e) {
-            \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => $e->getMessage()], '', 'log.txt');
+
         }
 
         return '\\' . __METHOD__ . '();';
@@ -47,7 +45,6 @@ class importInCron
             // Записываем в файл лога Флаг, о том, что импорт пока не завершился
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/import/logs/log_import_check.txt', 'N');
 
-            \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Тут 1'], '', 'log.txt');
             $resultStartImport['ACTIVE'] = 'Y';
 
             $after25minutes = date("d.m.Y H:i:s", strtotime(date('d.m.Y H:i:s').'+15 minute'));
@@ -56,7 +53,6 @@ class importInCron
             $after5minutes = date("d.m.Y H:i:s", strtotime(date('d.m.Y H:i:s').'+5 minute'));
             $resultStartImport['NEXT_EXEC'] = $after5minutes;
         } else if ($importFlag != 'N') {
-            \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Тут 2'], '', 'log.txt');
 
             $tomorrow = date("d.m.Y", strtotime(date('d.m.Y').'+ 1 days'));
             $resultStartImport['NEXT_EXEC'] = $tomorrow . ' 4:00:00';
@@ -65,9 +61,6 @@ class importInCron
         }
         \CAgent::Update($resultCheckImport['ID'], $resultCheckImport);
         \CAgent::Update($resultStartImport['ID'], $resultStartImport);
-
-        \Bitrix\Main\Diag\Debug::dumpToFile(['$resultCheckImport' => $resultCheckImport], '', 'log.txt');
-        \Bitrix\Main\Diag\Debug::dumpToFile(['$resultStartImport' => $resultStartImport], '', 'log.txt');
 
         return '\\' . __METHOD__ . '();';
     }

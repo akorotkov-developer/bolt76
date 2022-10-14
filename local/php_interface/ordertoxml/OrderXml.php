@@ -65,8 +65,6 @@ class OrderXml
         Loader::includeModule('sale');
         Loader::includeModule('iblock');
 
-        \Bitrix\Main\Diag\Debug::dumpToFile(['$iOrderId' => $iOrderId], '', 'log.txt');
-
         $this->iOrderId = $iOrderId;
         $obOrder = Sale\Order::load($iOrderId);
         $this->iUserId = $obOrder->getUserId();
@@ -128,8 +126,6 @@ class OrderXml
             $arCartProductItems[$arResult['PRODUCT_ID']]['QUANTITY'] = $arResult['QUANTITY'];
         }
         $arProductIds = array_keys($arCartProductItems);
-
-        \Bitrix\Main\Diag\Debug::dumpToFile(['$arProductIds' => $arProductIds], '', 'log.txt');
 
         //Получаем товары из инфоблока для определния свойств, которые должны добавится в XML файл
         $dbResult = \CIBlockElement::GetList(
