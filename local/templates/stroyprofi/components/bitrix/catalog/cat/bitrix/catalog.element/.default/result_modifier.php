@@ -156,3 +156,9 @@ foreach ($arItems as $key => $item) {
         $arResult['NEXT_LINK'] = $arItems[$key + 1]['DETAIL_PAGE_URL'];
     }
 }
+
+// Ссылка назад к списку
+$page = explode('/', $APPLICATION->GetCurPage());
+unset($page[0]);
+unset($page[count($page)]);
+$arResult['RETURN_LINK'] = '/' . implode('/', $page) . '/';
