@@ -1462,8 +1462,25 @@ BX.ready(function() {
 
 	// Клик по кнопке получить чек на заказ
 	$('.get-order-check').on('click', function() {
+		$.ajax({
+			url: '/local/ajax/create_order.php',
+			method: 'get',
+			data: {},
+			success: function(data) {
+				console.log('data');
+				console.log(data);
+
+				let link = document.createElement("a");
+				link.setAttribute("href", '/cart/Исходящие счета киоск №' + data + '.xml');
+				console.log('link');
+				console.log(link);
+				link.setAttribute("download", 'Исходящие счета киоск №' + data + '.xml');
+				link.click();
+			}
+		});
+
 		print();
-		window.location.href = '/';
+		window.location.href = '/kiosk_auth';
 		/*const messageBox = new BX.UI.Dialogs.MessageBox(
 			{
 				message: '<span style="color: #FF7920; font-weight: bold; font-size: 18px;">Распечатать чек?</span>',

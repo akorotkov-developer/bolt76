@@ -65,6 +65,8 @@ class OrderXml
         Loader::includeModule('sale');
         Loader::includeModule('iblock');
 
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$iOrderId' => $iOrderId], '', 'log.txt');
+
         $this->iOrderId = $iOrderId;
         $obOrder = Sale\Order::load($iOrderId);
         $this->iUserId = $obOrder->getUserId();
@@ -127,6 +129,8 @@ class OrderXml
         }
         $arProductIds = array_keys($arCartProductItems);
 
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$arProductIds' => $arProductIds], '', 'log.txt');
+
         //Получаем товары из инфоблока для определния свойств, которые должны добавится в XML файл
         $dbResult = \CIBlockElement::GetList(
             [],
@@ -159,7 +163,7 @@ class OrderXml
      * Метод создает XML файл для СБИС++
      * @return false|int
      */
-    public function createXml()
+    public function createXml($isKiosk = false)
     {
         $arResultItems = $this->arOrderParams;
 
@@ -252,7 +256,11 @@ class OrderXml
         $XML .= '</ФайлОбмена>';
         $XML = iconv("UTF-8", "Windows-1251", $XML);
 
-        return file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/cart/Исходящие счета.xml", $XML);
+        if ($isKiosk) {
+            return file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/cart/Исходящие счета киоск №" . $this->iOrderId . ".xml", $XML);
+        } else {
+            return file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/cart/Исходящие счета.xml", $XML);
+        }
     }
 
     /**

@@ -323,7 +323,7 @@ class Events
 {
     function OnBeforeEventAddHandler(&$event, &$lid, &$arFields)
     {
-        if ($event == 'SALE_NEW_ORDER') {
+        if ($event == 'SALE_NEW_ORDER' && $arFields['EMAIL'] != 'kiosk@kiosk.ru') {
             $obOrderXml = new OrderXml($arFields['ORDER_ID']);
             $obOrderXml->setFieldsForUser();
             $isCreated = $obOrderXml->createXml();
