@@ -4,7 +4,8 @@ error_reporting (E_ALL);
  * Новый импорт
  */
 
-require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
+// require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 
 CModule::IncludeModule("iblock");
 set_time_limit(0);
@@ -17,5 +18,4 @@ if ($_GET['start'] == "gogo") {
     $obImport->startImport();
 
     echo('Импорт завершен ' . date("d.m.Y H:i:s"));
-
 }

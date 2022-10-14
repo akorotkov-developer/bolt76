@@ -333,11 +333,6 @@ class Import
         if (sizeof($this->xmlCat->category)) {
             // Получаем список всех категорий на сайте
             $this->arCatalogSections = $this->getCatalogSections();
-            // Получаем все товары на сайте
-            /*$this->arProductElements = $this->getProductElements();*/
-
-            // Получаем мапинг md5Хэшей
-            /*$this->arPicturesMapping = $this->getPictureMapping();*/
 
             // Обновление разделов
             $this->sectionWalker($this->xmlCat, 0);
@@ -373,7 +368,7 @@ class Import
 
         if  ($isProducts) {
             $arElementsPictureIDs = array_diff(array_unique(array_column($this->arProductElements, 'PREVIEW_PICTURE')), ['']);
-            $arPropPhotosValue = array_column($this->arProductElements, 'PROPERTY_PHOTOS_VALUE');
+            // $arPropPhotosValue = array_column($this->arProductElements, 'PROPERTY_PHOTOS_VALUE');
         }
 
         // Общий массив картинок
@@ -437,6 +432,37 @@ class Import
             }
         }
 
+        // Массив свойств для проверки
+        $arCheckedProps = [
+            'ID',
+            'NAME',
+            'CODE',
+            'SORT',
+            'IBLOCK_ID',
+            'PREVIEW_PICTURE',
+            'PROPERTY_PHOTO_ID_VALUE',
+            'PROPERTY_ROWID_VALUE',
+            'PROPERTY_PHOTOS_VALUE',
+            'PROPERTY_PRICE_OPT_VALUE',
+            'PROPERTY_PRICE_OPT2_VALUE',
+            'PROPERTY_PRICE_VALUE',
+            'PROPERTY_Ostatok_VALUE',
+            'PROPERTY_UNITS_VALUE',
+            'PROPERTY_KRATNOST_VALUE',
+            'PROPERTY_ARTICUL_VALUE',
+            'PROPERTY_VES_VALUE',
+            'PROPERTY_UPAKOVKA_VALUE',
+            'PROPERTY_UPAKOVKA2_VALUE',
+            'PROPERTY_AVAILABLE_VALUE',
+            'PROPERTY_SHOW_IN_PRICE_VALUE',
+            'PROPERTY_SORT_IN_PRICE_VALUE',
+        ];
+        foreach ($arDynamicPropsKeys as $keyProp) {
+            if ($keyProp != '') {
+                $arCheckedProps[] = 'PROPERTY_' . $keyProp . '_VALUE';
+            }
+        }
+
         $arFilter = [
             'IBLOCK_ID' => $this->iblock,
         ];
@@ -445,7 +471,11 @@ class Import
 
         $arElements = [];
         while ($arResult = $obDbRequest->GetNext()) {
-            $arElements[$arResult['PROPERTY_ROWID_VALUE']] = $arResult;
+            foreach ($arCheckedProps as $prop) {
+                if ($arResult[strtoupper($prop)] != '') {
+                    $arElements[$arResult['PROPERTY_ROWID_VALUE']][$prop] = $arResult[strtoupper($prop)];
+                }
+            }
         }
 
         return $arElements;
@@ -834,8 +864,6 @@ class Import
             } else {
                 if ($this->arPicturesMapping[$this->arProductElements[$item['ID']]['PREVIEW_PICTURE']] != md5_file($picfile)) {
                     $isUpdate = true;
-
-                    $arUpdate['PREVIEW_PICTURE'] = ['del' => 'Y'];
                 }
             }
 
@@ -930,23 +958,6 @@ class Import
                             $isUpdate = true;
                         }
                         break;
-                }
-            }
-
-            if ($isUpdate) {
-                $isUpdated = $el->Update($this->arProductElements[$item['ID']]['ID'], $arUpdate);
-                if (!$isUpdated) {
-                    $this->echo($el->LAST_ERROR);
-                }
-
-                // Обнуляем фото
-                if (count($this->arProductElements[$item['ID']]['PROPERTY_PHOTOS_VALUE']) > 0 || !empty($propsToUpdate['PHOTOS'])) {
-                    \CIBlockElement::SetPropertyValuesEx($this->arProductElements[$item['ID']]['ID'], $this->iblock, ['PHOTOS' => ['VALUE' => '']]);
-                }
-
-                if (!empty($propsToUpdate['PHOTOS']) && count($propsToUpdate['PHOTOS']) > 0) {
-                    // Записываем новые свойства
-                    \CIBlockElement::SetPropertyValuesEx($this->arProductElements[$item['ID']]['ID'], $this->iblock, $propsToUpdate);
                 }
             }
 
