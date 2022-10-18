@@ -35,6 +35,11 @@ class importInCron
 
         $logImport = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/import/logs/log_import.txt');
         $isEnd = strpos($logImport, 'Конец импорта');
+        if ($isEnd) {
+            file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/import/logs/log_import_check.txt', 'Y');
+        }
+
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$importFlag' => $importFlag], '', 'log.txt');
 
         // Если Агент импорта оказался не активен, значит импорт не прошел
         // устанавливаем время импорта на 5 минут позже и переводим время
@@ -55,10 +60,12 @@ class importInCron
         } else if ($importFlag != 'N') {
 
             $tomorrow = date("d.m.Y", strtotime(date('d.m.Y').'+ 1 days'));
-            $resultStartImport['NEXT_EXEC'] = $tomorrow . ' 4:00:00';
-            $resultCheckImport['NEXT_EXEC'] = $tomorrow . ' 4:20:00';
+
+            $resultStartImport['NEXT_EXEC'] = $tomorrow . ' 5:00:00';
+            $resultCheckImport['NEXT_EXEC'] = $tomorrow . ' 5:20:00';
 
         }
+
         \CAgent::Update($resultCheckImport['ID'], $resultCheckImport);
         \CAgent::Update($resultStartImport['ID'], $resultStartImport);
 
