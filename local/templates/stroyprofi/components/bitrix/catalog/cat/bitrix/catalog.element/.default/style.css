@@ -1093,7 +1093,7 @@ h1 {
 }
 .b-next {
 	text-align: right;
-	margin-left: 30px;
+	margin-left: 15px;
 }
 .b-return {
 	margin-left: 30px;
@@ -1105,4 +1105,17 @@ h1 {
 .b-prev-next a {
 	color: #FF7920;
 	font-weight: bold;
+}
+.nav-icon {
+	width: 25px;
+	height: 25px;
+}
+.nav-next {
+	transform: rotate(180deg);
+}
+.nav-up {
+	transform: rotate(90deg);
+}
+.btn-nav {
+	font-size: 12px!important;
 }
