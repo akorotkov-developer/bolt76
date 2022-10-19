@@ -397,6 +397,8 @@ class Events
 
                 unlink($_SERVER["DOCUMENT_ROOT"] . '/cart/Исходящие счета.xml');
             }
+        } else if ($arFields['EMAIL'] == 'kiosk@kiosk.ru') {
+            $arFields['EMAIL'] = 'mail@strprofi.ru';
         }
     }
 }
