@@ -153,7 +153,7 @@ class Import
             [],
             false,
             false,
-            ['ID', 'MEASURE']
+            ['ID', 'MEASURE', 'QUANTITY']
         );
 
         $arProducts = [];
@@ -165,6 +165,7 @@ class Import
         $PRICE_BASE_ID = 1; //Базовая цена
         $PRICE_OPT_ID = 2; //Оптовая цена
         $PRICE_OPT2_ID = 3; //Оптовая цена 2
+
         foreach ($this->arProductElements as $arItem) {
             //Сначала проверим существует ли такой продукт в системе и если не существует, то создадим его
             if (!$arProducts[$arItem['ID']]) {
@@ -278,8 +279,8 @@ class Import
                     break;
             }
 
-            if ($arProducts[$arItem['ID']]['MEASURE'] != $iMeasure) {
-                $this->echo('Обновление единиц измерения товара ' . $arItem['NAME']);
+            if ($arProducts[$arItem['ID']]['MEASURE'] != $iMeasure || $arProducts[$arItem['ID']]['QUANTITY'] != $arItem['PROPERTY_Ostatok_VALUE']) {
+                $this->echo('Обновление остатков и единиц измерения товара ' . $arItem['NAME']);
                 CCatalogProduct::Update(
                     $arItem['ID'],
                     [
@@ -959,6 +960,25 @@ class Import
                             $isUpdate = true;
                         }
                         break;
+                }
+            }
+
+            if ($isUpdate) {
+                $isUpdated = $el->Update($this->arProductElements[$item['ID']]['ID'], $arUpdate);
+                if (!$isUpdated) {
+                    $this->echo($el->LAST_ERROR);
+                } else {
+                    $this->echo('Обновление товара  ' . $this->arProductElements[$item['ID']]['NAME']);
+                }
+
+                // Обнуляем фото
+                if (count($this->arProductElements[$item['ID']]['PROPERTY_PHOTOS_VALUE']) > 0 || !empty($propsToUpdate['PHOTOS'])) {
+                    \CIBlockElement::SetPropertyValuesEx($this->arProductElements[$item['ID']]['ID'], $this->iblock, ['PHOTOS' => ['VALUE' => '']]);
+                }
+
+                if (!empty($propsToUpdate['PHOTOS']) && count($propsToUpdate['PHOTOS']) > 0) {
+                    // Записываем новые свойства
+                    \CIBlockElement::SetPropertyValuesEx($this->arProductElements[$item['ID']]['ID'], $this->iblock, $propsToUpdate);
                 }
             }
 
