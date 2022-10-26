@@ -564,24 +564,21 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                 <div class="b-prev-next">
                                                     <div class="b-prev">
                                                         <?php if ($arResult['PREV_LINK'] != '') { ?>
-                                                            <a class="btn btn-default btn-nav" href="<?= $arResult['PREV_LINK']?>">
-                                                                <img class="nav-icon" src="<?= $this->GetFolder();?>/images/back.svg">
-                                                                Предыдущий товар
+                                                            <a class="" href="<?= $arResult['PREV_LINK']?>">
+                                                                <img class="nav-icon nav-prev" src="<?= $this->GetFolder();?>/images/arrow.png">
                                                             </a>
                                                         <?php }?>
                                                     </div>
                                                     <div class="b-next">
                                                         <?php if ($arResult['NEXT_LINK'] != '') { ?>
-                                                            <a class="btn btn-default btn-nav" href="<?= $arResult['NEXT_LINK']?>">
-                                                                Следующий товар
-                                                                <img class="nav-icon nav-next" src="<?= $this->GetFolder();?>/images/back.svg">
+                                                            <a class="" href="<?= $arResult['NEXT_LINK']?>">
+                                                                <img class="nav-icon nav-next" src="<?= $this->GetFolder();?>/images/arrow.png">
                                                             </a>
                                                         <?php }?>
                                                     </div>
                                                     <div class="b-return">
-                                                        <a class="btn btn-default btn-nav" href="<?= $arResult['RETURN_LINK']?>">
-                                                            <img class="nav-icon nav-up" src="<?= $this->GetFolder();?>/images/back.svg">
-                                                            Вернуться в список
+                                                        <a class="" href="<?= $arResult['RETURN_LINK']?>">
+                                                            <img class="nav-icon nav-up" src="<?= $this->GetFolder();?>/images/arrow.png">
                                                         </a>
                                                     </div>
                                                 </div>

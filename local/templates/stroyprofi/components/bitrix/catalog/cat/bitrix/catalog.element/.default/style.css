@@ -1110,11 +1110,11 @@ h1 {
 	width: 25px;
 	height: 25px;
 }
-.nav-next {
+.nav-prev {
 	transform: rotate(180deg);
 }
 .nav-up {
-	transform: rotate(90deg);
+	transform: rotate(-90deg);
 }
 .btn-nav {
 	font-size: 12px!important;
