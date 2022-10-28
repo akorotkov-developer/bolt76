@@ -2,6 +2,7 @@
     "require": {
         "phpoffice/phpspreadsheet": "^1.25",
         "phpoffice/phpexcel": "^1.8",
-        "phpoffice/phpword": "^0.18.3"
+        "phpoffice/phpword": "^0.18.3",
+        "spatie/array-to-xml": "^2.15"
     }
 }
