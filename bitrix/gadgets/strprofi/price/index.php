@@ -52,6 +52,7 @@
 
 
 
+<p><button class="download_excel">Скачать прайс-лист (Excel)</button></p>
 <p><button class="download">Скачать прайс-лист</button></p>
 <p><button class="start_import">Запустить импорт</button></p>
 <p><button class="auto_cache">Автокеширование</button></p>
@@ -77,7 +78,21 @@
         }
 
         setTimeout(openPrintWindow, 1000);
-    })
+    });
+
+    $('.download_excel').click(function() {
+        $.ajax({
+            url: "/price/index.php",
+            success: function(data){
+            }
+        });
+
+        function downloadPrice() {
+            window.open("/price/price.xlsx", '_blank');
+        }
+
+        setTimeout(downloadPrice, 1000);
+    });
 
     $('.clear').click(function (e) {
 
