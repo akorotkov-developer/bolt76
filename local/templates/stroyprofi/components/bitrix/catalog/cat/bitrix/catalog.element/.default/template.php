@@ -561,27 +561,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                     ?>
                                                 </div>
 
-                                                <div class="b-prev-next">
-                                                    <div class="b-prev">
-                                                        <?php if ($arResult['PREV_LINK'] != '') { ?>
-                                                            <a class="" href="<?= $arResult['PREV_LINK']?>">
-                                                                <img class="nav-icon nav-prev" src="<?= $this->GetFolder();?>/images/arrow.png">
-                                                            </a>
-                                                        <?php }?>
-                                                    </div>
-                                                    <div class="b-next">
-                                                        <?php if ($arResult['NEXT_LINK'] != '') { ?>
-                                                            <a class="" href="<?= $arResult['NEXT_LINK']?>">
-                                                                <img class="nav-icon nav-next" src="<?= $this->GetFolder();?>/images/arrow.png">
-                                                            </a>
-                                                        <?php }?>
-                                                    </div>
-                                                    <div class="b-return">
-                                                        <a class="" href="<?= $arResult['RETURN_LINK']?>">
-                                                            <img class="nav-icon nav-up" src="<?= $this->GetFolder();?>/images/arrow.png">
-                                                        </a>
-                                                    </div>
-                                                </div>
+
                                                 <?
                                             }
 
@@ -684,6 +664,28 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 			<div class="col-md-3 col-sm-12">
 				<div class="row">
 					<div class="col-sm-12">
+                        <div class="b-prev-next">
+                            <div class="b-prev">
+                                <?php if ($arResult['PREV_LINK'] != '') { ?>
+                                    <a class="" href="<?= $arResult['PREV_LINK']?>">
+                                        <img class="nav-icon nav-prev" src="<?= $this->GetFolder();?>/images/arrow.png">
+                                    </a>
+                                <?php }?>
+                            </div>
+                            <div class="b-next">
+                                <?php if ($arResult['NEXT_LINK'] != '') { ?>
+                                    <a class="" href="<?= $arResult['NEXT_LINK']?>">
+                                        <img class="nav-icon nav-next" src="<?= $this->GetFolder();?>/images/arrow.png">
+                                    </a>
+                                <?php }?>
+                            </div>
+                            <div class="b-return">
+                                <a class="" href="<?= $arResult['RETURN_LINK']?>">
+                                    <img class="nav-icon nav-up" src="<?= $this->GetFolder();?>/images/arrow.png">
+                                </a>
+                            </div>
+                        </div>
+
                         <div class="product-item-detail-pay-block">
                             <div class="b-favorite">
                                 <svg data-product-id="<?= $arResult['ID']?>" class="favorite-svg-icon <?=$arResult['IS_FAVORITE'] ? 'active' : ''?>" title="Добавить в избранное" width="31" height="31" viewBox="0 0 24 24" fill="none" stroke="#8899a4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
