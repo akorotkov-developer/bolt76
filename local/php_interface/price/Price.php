@@ -22,7 +22,7 @@ class Price
      * Номер текущей строки для записи
      * @var int
      */
-    private $lineCount = 6;
+    private $lineCount = 4;
 
     public function __construct()
     {
@@ -82,11 +82,12 @@ class Price
     {
         $this->spreadsheet = new Spreadsheet();
         $this->sheet = $this->spreadsheet->getActiveSheet();
-        $this->sheet->freezePane('A7');
-        $this->sheet->freezePane('B7');
-        $this->sheet->freezePane('C7');
+        $this->sheet->freezePane('A' . ($this->lineCount + 1));
+        $this->sheet->freezePane('B' . ($this->lineCount + 1));
+        $this->sheet->freezePane('C' . ($this->lineCount + 1));
+        $this->sheet->freezePane('D' . ($this->lineCount + 1));
 
-        $this->sheet->setAutoFilter('B6:E6');
+        $this->sheet->setAutoFilter('A' . $this->lineCount . ':D' . $this->lineCount);
     }
 
     /**
@@ -101,12 +102,36 @@ class Price
         //на том же сервере
         $drawing->setPath($_SERVER['DOCUMENT_ROOT'] . '/price/images/logo.png');
         //Указываем ячейку в которой разместим изображение
-        $drawing->setCoordinates('A1');
+        $drawing->setCoordinates('C1');
         //Можно задать отступ по X или Y оси
-        $drawing->setOffsetX(10);
-        $drawing->setOffsetY(10);
+        $drawing->setOffsetX(110);
+        $drawing->setOffsetY(0);
         //Передаем объект текущего листа
         $drawing->setWorksheet($this->sheet);
+
+        // Установка стилей для ячеек
+        $this->sheet->getStyle('B1:B2')->applyFromArray([
+            'font' => [
+                'name' => 'Arial',
+                'bold' => true,
+                'size' => 10,
+                'italic' => true,
+                'underline' => Font::UNDERLINE_DOUBLE,
+                'strikethrough' => false,
+                'color' => [
+                    'rgb' => '000000'
+                ]
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_LEFT,
+                'vertical' => Alignment::HORIZONTAL_LEFT,
+                'wrapText' => false,
+            ]
+        ]);
+
+        // Информация о компании
+        $this->sheet->setCellValue('B1', '150044, г.Ярославль, Ленинградский пр-т. 33, ТЦ "Омега"');
+        $this->sheet->setCellValue('B2', 'Дата генерация прайс-листа: ' . date('d.m.Y'));
     }
 
     /**
@@ -115,7 +140,7 @@ class Price
     private function createTitles()
     {
         // Установка стилей для ячеек
-        $this->sheet->getStyle('B6:E6')->applyFromArray([
+        $this->sheet->getStyle('A' . $this->lineCount . ':D' . $this->lineCount)->applyFromArray([
             'font' => [
                 'name' => 'Arial',
                 'bold' => true,
@@ -135,14 +160,14 @@ class Price
         ]);
 
         // Заголовки
-        $this->sheet->setCellValue('B6', 'Артикул');
-        $this->sheet->getColumnDimension('B')->setWidth(20);
-        $this->sheet->setCellValue('C6', 'Название товара');
-        $this->sheet->getColumnDimension('C')->setWidth(55);
-        $this->sheet->setCellValue('D6', 'Единица измерения');
-        $this->sheet->getColumnDimension('D')->setWidth(25);
-        $this->sheet->setCellValue('E6', 'Цена ₽');
-        $this->sheet->getColumnDimension('E')->setWidth(15);
+        $this->sheet->setCellValue('A' . $this->lineCount, 'Артикул');
+        $this->sheet->getColumnDimension('A')->setWidth(20);
+        $this->sheet->setCellValue('B' . $this->lineCount, 'Название товара');
+        $this->sheet->getColumnDimension('B')->setWidth(55);
+        $this->sheet->setCellValue('C' . $this->lineCount, 'Единица измерения');
+        $this->sheet->getColumnDimension('C')->setWidth(25);
+        $this->sheet->setCellValue('D' . $this->lineCount, 'Цена ₽');
+        $this->sheet->getColumnDimension('D')->setWidth(15);
     }
 
     /**
@@ -201,8 +226,11 @@ class Price
         $this->lineCount++;
 
         $this->setTitleStyle();
-        $this->sheet->mergeCells('B' . $this->lineCount . ':E' . $this->lineCount);
-        $this->sheet->setCellValue('B' . $this->lineCount, str_repeat('   ', (int)$value['DEPTH_LEVEL'] - 1) . $value['NAME']);
+        $this->sheet->mergeCells('A' . $this->lineCount . ':D' . $this->lineCount);
+        $this->sheet->setCellValue('A' . $this->lineCount, str_repeat('   ', (int)$value['DEPTH_LEVEL'] - 1) . $value['NAME']);
+
+        $this->sheet->getRowDimension($this->lineCount + 1)->setOutlineLevel(1);
+        $this->sheet->getRowDimension($this->lineCount + 1)->setVisible(false);
     }
 
     /**
@@ -226,11 +254,17 @@ class Price
                 $this->setItemStyle();
 
                 // Записываем параметры товара в текущую ячейку
-                $this->sheet->setCellValue('B' . $this->lineCount, $product['PROPERTY_ARTICUL_VALUE']);
-                $this->sheet->setCellValue('C' . $this->lineCount, trim($product['NAME']));
-                $this->sheet->setCellValue('D' . $this->lineCount, $product['PROPERTY_UNITS_VALUE']);
-                $this->sheet->setCellValue('E' . $this->lineCount, $product['PROPERTY_PRICE_VALUE']);
+                $this->sheet->setCellValue('A' . ($this->lineCount - 1), $product['PROPERTY_ARTICUL_VALUE']);
+                $this->sheet->setCellValue('B' . ($this->lineCount - 1), trim($product['NAME']));
+                $this->sheet->setCellValue('C' . ($this->lineCount - 1), $product['PROPERTY_UNITS_VALUE']);
+                $this->sheet->setCellValue('D' . ($this->lineCount - 1), $product['PROPERTY_PRICE_VALUE']);
+
+                // Скрываем строки с товарами
+                $this->sheet->getRowDimension($this->lineCount)->setOutlineLevel(1);
+                $this->sheet->getRowDimension($this->lineCount)->setVisible(false);
             }
+
+            $this->sheet->getRowDimension($this->lineCount + 1)->setCollapsed(true);
         }
     }
 
@@ -239,7 +273,7 @@ class Price
      */
     private function setTitleStyle()
     {
-        $this->sheet->getStyle('B' . $this->lineCount)->applyFromArray([
+        $this->sheet->getStyle('A' . $this->lineCount)->applyFromArray([
             'font' => [
                 'name' => 'Calibri',
                 'bold' => true,
@@ -258,7 +292,7 @@ class Price
      */
     private function setItemStyle()
     {
-        $this->sheet->getStyle('B' . $this->lineCount . ':E' . $this->lineCount)->applyFromArray([
+        $this->sheet->getStyle('A' . $this->lineCount . ':D' . $this->lineCount)->applyFromArray([
             'font' => [
                 'name' => 'Calibri',
                 'bold' => false,
@@ -282,6 +316,8 @@ class Price
             if (is_array($value['CHILD'])) {
                 // Записываем заголовок в прайс-лист
                 $this->writeTitle($value);
+
+                $this->lineCount++;
                 // Запись товаров в прайс лист
                 $this->writeProducts($value);
 
@@ -290,6 +326,7 @@ class Price
                 // Записываем заголовок в прайс-лист
                 $this->writeTitle($value);
 
+                $this->lineCount++;
                 // Запись товаров в прайс лист
                 $this->writeProducts($value);
             }

@@ -193,12 +193,13 @@ class pricePrint
                 $html .= '<div ' . $testData . '  class="sectionBoxMarginBottom"></div>';
             $this->heightCounterPlus($height);
         }
+
         $sectionImage = CFile::ResizeImageGet($section['PICTURE'], array('width' => 100, 'height' => 1000), BX_RESIZE_IMAGE_PROPORTIONAL, true);
         if ($sectionImage and $section['UF_TEMPLATE'] != 0) {
             if ($section['FORCE_BREAK_TABLE'] and $divider) {
 
             } else {
-                $img = '<img style="" src="' . $sectionImage['src'] . '" data-img="' . $section['FORCE_BREAK_TABLE'] . ', ' . $divider . '" />';
+                $img = '<img style="" src="' . $sectionImage['SRC'] . '" data-img="' . $section['FORCE_BREAK_TABLE'] . ', ' . $divider . '" />';
                 $html .= '<div data-table-height="' . $tableHeight . '" data-elements="' . $elementsNumber . '"  class="sectionImage">' . $img . '</div>';
             }
 
