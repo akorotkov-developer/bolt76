@@ -110,7 +110,6 @@ if ($ar_result = $db_list->GetNext()) {
 
         <div class="b-right_banner">
             <?php
-            if ($_GET['tst']) {
                 $APPLICATION->IncludeComponent(
                     "bitrix:news.list",
                     "banners_right",
@@ -159,7 +158,7 @@ if ($ar_result = $db_list->GetNext()) {
                     ),
                     $component
                 );
-            }
+
             ?>
         </div>
     </div>
