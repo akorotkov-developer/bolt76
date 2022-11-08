@@ -42,17 +42,14 @@ section p {text-indent: 25px;}
 .section-pane table tr td {text-align: left;}
 /*.section-pane li {list-style-type: none;}  Прячем исходные маркеры */
 
-.product-item-detail-tab-content li:before {
-    color: #FF7920;
-    content: "•";
-    padding-right: 10px;
+.product-item-detail-tab-content li::marker, .section-pane-inner li::marker {
+    content: "";
 }
-
-
-.product-item-detail-tab-content li:before {
+.product-item-detail-tab-content li:before, .section-pane-inner li:before {
     color: #FF7920; /* Цвет маркера */
     content: "•"; /* Сам маркер */
-    padding-right: 10px; /* Расстояние от маркера до текста */}
+    padding-right: 10px; /* Расстояние от маркера до текста */
+}
 
 .product-item-detail-tab-content a {
     text-decoration: underline;
