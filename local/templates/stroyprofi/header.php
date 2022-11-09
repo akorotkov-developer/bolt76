@@ -285,4 +285,4 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
 							false
 						);?>
                         </div>
-                        <h1><?$APPLICATION->ShowTitle("");?></h1>
+                        <h1><?$APPLICATION->ShowTitle();?></h1>
