@@ -199,7 +199,7 @@ class pricePrint
             if ($section['FORCE_BREAK_TABLE'] and $divider) {
 
             } else {
-                $img = '<img style="" src="' . $sectionImage['SRC'] . '" data-img="' . $section['FORCE_BREAK_TABLE'] . ', ' . $divider . '" />';
+                $img = '<img style="" src="' . $sectionImage['src'] . '" data-img="' . $section['FORCE_BREAK_TABLE'] . ', ' . $divider . '" />';
                 $html .= '<div data-table-height="' . $tableHeight . '" data-elements="' . $elementsNumber . '"  class="sectionImage">' . $img . '</div>';
             }
 

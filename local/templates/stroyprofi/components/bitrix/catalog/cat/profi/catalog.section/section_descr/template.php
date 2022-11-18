@@ -402,12 +402,13 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                             <td rowspan="<?= (sizeof($arResult["ITEMS"]) + 1 + sizeof($arResult['SECTIONS_COUNT']) + 1) ?>"
                                 class="section_description">
 
-                                <? if ($arResult["PICTURE"]["ID"]) {
+                                <?
+                                if ($arResult["PICTURE"]["ID"]) {
                                     $file = CFile::ResizeImageGet($arResult["PICTURE"]["ID"], array('width' => 128, 'height' => 130), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                     $file_big = CFile::ResizeImageGet($arResult["PICTURE"]["ID"], array('width' => 900, 'height' => 600), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                     ?>
 
-                                    <a href="<?= $file["src"] ?>" class="fancybox"><img src="<?= $file["src"] ?>"
+                                    <a href="<?= $file["src"] ?>" class="fancybox sdfdsfs"><img src="<?= $file["src"] ?>"
                                                                                         alt=""></a>
 
                                 <? } ?>
