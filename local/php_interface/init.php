@@ -351,6 +351,7 @@ class Events
                     "LID" => "s1",
                     "C_FIELDS" => [
                         'ORDER_ID' => $arFields['ORDER_ID'],
+                        'CLIENT_NAME' => $arFields['ORDER_USER'],
                         'MAIL_TEXT' => $sText,
                         'SALE_EMAIL' => 'mail@strprofi.ru',
                         'EMAIL' => 'strprofi@yandex.ru, mail@strprofi.ru'
