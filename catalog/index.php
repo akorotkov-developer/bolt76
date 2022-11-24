@@ -101,8 +101,8 @@ $APPLICATION->IncludeComponent(
 		),
 		"INCLUDE_SUBSECTIONS" => $isApplyFilter ? 'Y' : 'N',
 		"IS_APPLY_FILTER" => $isApplyFilter ? 'Y' : 'N',
-		"LIST_META_KEYWORDS" => "-",
-		"LIST_META_DESCRIPTION" => "-",
+        "LIST_META_KEYWORDS" => "UF_KEYWORDS",
+        "LIST_META_DESCRIPTION" => "UF_META_DESCRIPTION",
 		"LIST_BROWSER_TITLE" => "-",
 		"DETAIL_PROPERTY_CODE" => $arAvailableProps,
 		/*"DETAIL_PROPERTY_CODE" => array(
@@ -122,8 +122,8 @@ $APPLICATION->IncludeComponent(
             13 => 'POKRITIE',
             14 => 'DIAMETER'
 		),*/
-		"DETAIL_META_KEYWORDS" => "-",
-		"DETAIL_META_DESCRIPTION" => "-",
+		"DETAIL_META_KEYWORDS" => "KEYWORDS",
+		"DETAIL_META_DESCRIPTION" => "META_DESCRIPTION",
 		"DETAIL_BROWSER_TITLE" => "-",
 		"LINK_IBLOCK_TYPE" => "",
 		"LINK_IBLOCK_ID" => "",

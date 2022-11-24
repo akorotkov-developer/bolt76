@@ -21,7 +21,10 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<meta name="mailru-domain" content="6EZGx3j1030Ofx7m" />
     <title><?$APPLICATION->ShowTitle();?></title>
-	<?$APPLICATION->ShowHead();?>
+	<?
+    $APPLICATION->ShowHead();
+
+	?>
     <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
     <script type="text/javascript" src="//yandex.st/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>

@@ -600,7 +600,11 @@ class Import
                     "DESCRIPTION" => $descr,
                     "SORT" => $sort,
                     "CODE" => $code,
-                    "UF_TABS" => explode(':', $bookmarks)
+                    "UF_TABS" => explode(':', $bookmarks),
+                    'IPROPERTY_TEMPLATES' => [
+                        'SECTION_META_KEYWORDS' => '{=this.Name} в Ярославле, {=this.Name}, опт, недорого, прайс-лист, каталог, доставка до транспортной компании.',
+                        'SECTION_META_DESCRIPTION' => 'Купить {=this.Name} в Ярославле оптом и в розницу, доставка до транспортной компании. Низкие цены, акции и скидки на {=this.Name} в интернет-магазине СтройПрофи.',
+                    ]
                 ];
 
                 $arUpdate["PICTURE"] = false;
@@ -634,7 +638,11 @@ class Import
                 "UF_PRICE_ID" => $price_id,
                 "UF_ROWID" => $internal,
                 "UF_TEMPLATE" => $viewTemplate,
-                "UF_TABS" => explode(':', $bookmarks)
+                "UF_TABS" => explode(':', $bookmarks),
+                'IPROPERTY_TEMPLATES' => [
+                    'SECTION_META_KEYWORDS' => '{=this.Name} в Ярославле, {=this.Name}, опт, недорого, прайс-лист, каталог, доставка до транспортной компании.',
+                    'SECTION_META_DESCRIPTION' => 'Купить {=this.Name} в Ярославле оптом и в розницу, доставка до транспортной компании. Низкие цены, акции и скидки на {=this.Name} в интернет-магазине СтройПрофи.',
+                ]
             ];
             if ($photo != 0) {
                 if ($this->testphile($picfile)) {
@@ -792,6 +800,10 @@ class Import
                     'SHOW_IN_PRICE' => ($item['show_in_price'] > 0) ? 1 : 0,
                     'SORT_IN_PRICE' => $item['show_in_price'],
                     'AVAILABLE' => ((int)$item['Ostatok'] > 0) ? $this->iAvailablePropId : ''
+                ],
+                'IPROPERTY_TEMPLATES' => [
+                    'ELEMENT_META_KEYWORDS'    =>  '{=this.Name} в Ярославле, {=this.Name}, опт, недорого, прайс-лист, каталог, доставка до транспортной компании.',
+                    'ELEMENT_META_DESCRIPTION' =>  'Купить {=this.Name} в Ярославле оптом и в розницу, доставка до транспортной компании. Низкие цены, акции и скидки на {=this.Name} в интернет-магазине СтройПрофи.',
                 ]
             ];
 
@@ -1009,6 +1021,10 @@ class Import
                     'SORT_IN_PRICE' => $item['show_in_price'],
                     'AVAILABLE' => ((int)$item['Ostatok'] > 0) ? $this->iAvailablePropId : ''
                 ],
+                'IPROPERTY_TEMPLATES' => [
+                    'ELEMENT_META_KEYWORDS'    =>  '{=this.Name} в Ярославле, {=this.Name}, опт, недорого, прайс-лист, каталог, доставка до транспортной компании.',
+                    'ELEMENT_META_DESCRIPTION' =>  'Купить {=this.Name} в Ярославле оптом и в розницу, доставка до транспортной компании. Низкие цены, акции и скидки на {=this.Name} в интернет-магазине СтройПрофи.',
+                ]
             ];
 
             // Добавим значения динамических свойств в товар
