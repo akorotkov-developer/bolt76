@@ -108,6 +108,103 @@ if ($ar_result = $db_list->GetNext()) {
             ?>
         </div>
 
+        <div class="b-sale">
+            <?php
+            if ($_GET['tst']) {
+                $dbResult = CIBlockElement::GetList(
+                    [],
+                    [
+                        'IBLOCK_ID' => 1,
+                        'PROPERTY_SALE' => 'Y'
+                    ],
+                    false,
+                    false,
+                    [
+                        'ID'
+                    ]
+                );
+
+                $arItems = [];
+                while($arRes = $dbResult->Fetch()){
+                    $arItems[] = $arRes['ID'];
+                }
+
+                if (count($arItems) > 0) {
+                    $GLOBALS['arrFilterSale'] = ['ID' => $arItems];
+
+                    $APPLICATION->IncludeComponent(
+                        "bitrix:catalog.section",
+                        "sale",
+                        array(
+                            'IBLOCK_TYPE' => 'content',
+                            'IBLOCK_ID' => '1',
+                            'ELEMENT_SORT_FIELD' => 'PROPERTY_Naimenovanie',
+                            'ELEMENT_SORT_ORDER' => 'asc',
+                            'ELEMENT_SORT_FIELD2' => 'PROPERTY_Naimenovanie',
+                            'ELEMENT_SORT_ORDER2' => 'asc',
+                            'PROPERTY_CODE' =>
+                                array(
+
+                                ),
+                            'META_KEYWORDS' => 'UF_KEYWORDS',
+                            'META_DESCRIPTION' => 'UF_META_DESCRIPTION',
+                            'BROWSER_TITLE' => '-',
+                            'INCLUDE_SUBSECTIONS' => 'Y',
+                            'BASKET_URL' => '/personal/cart/',
+                            'ACTION_VARIABLE' => 'action',
+                            'PRODUCT_ID_VARIABLE' => 'id',
+                            'SECTION_ID_VARIABLE' => 'SECTION_ID',
+                            'PRODUCT_QUANTITY_VARIABLE' => 'quantity',
+                            'FILTER_NAME' => 'arrFilterSale',
+                            'CACHE_TYPE' => 'Y',
+                            'CACHE_TIME' => '36000000',
+                            'CACHE_FILTER' => 'N',
+                            'CACHE_GROUPS' => 'Y',
+                            'SET_TITLE' => 'Y',
+                            'SET_STATUS_404' => 'N',
+                            'DISPLAY_COMPARE' => 'N',
+                            'PAGE_ELEMENT_COUNT' => '35',
+                            'LINE_ELEMENT_COUNT' => '1',
+                            'PRICE_CODE' =>
+                                array(
+                                    0 => 'BASE',
+                                ),
+                            'USE_PRICE_COUNT' => 'N',
+                            'SHOW_PRICE_COUNT' => '1',
+                            'PRICE_VAT_INCLUDE' => 'Y',
+                            'USE_PRODUCT_QUANTITY' => 'Y',
+                            'DISPLAY_TOP_PAGER' => 'Y',
+                            'DISPLAY_BOTTOM_PAGER' => 'Y',
+                            'PAGER_TITLE' => 'Товары',
+                            'PAGER_SHOW_ALWAYS' => 'N',
+                            'PAGER_TEMPLATE' => 'modern',
+                            'PAGER_DESC_NUMBERING' => 'N',
+                            'PAGER_DESC_NUMBERING_CACHE_TIME' => '36000',
+                            'PAGER_SHOW_ALL' => 'Y',
+                            'OFFERS_CART_PROPERTIES' => NULL,
+                            'OFFERS_FIELD_CODE' => NULL,
+                            'OFFERS_PROPERTY_CODE' => NULL,
+                            'OFFERS_SORT_FIELD' => NULL,
+                            'OFFERS_SORT_ORDER' => NULL,
+                            'OFFERS_LIMIT' => NULL,
+                            'SECTION_ID' => '',
+                            'SECTION_CODE' => '',
+                            'SECTION_URL' => '/catalog/#SECTION_ID#-#SECTION_CODE#/',
+                            'DETAIL_URL' => '/catalog/#SECTION_ID#-#SECTION_CODE#/#ELEMENT_CODE#',
+                            'CONVERT_CURRENCY' => 'N',
+                            'CURRENCY_ID' => NULL,
+                            'SECTION_USER_FIELDS' =>
+                                array(
+                                    0 => 'UF_COUNTS',
+                                    1 => 'UF_SEE_ALSO',
+                                ),
+                        )
+                    );
+                }
+            }
+            ?>
+        </div>
+
         <div class="b-right_banner">
             <?php
                 $APPLICATION->IncludeComponent(
