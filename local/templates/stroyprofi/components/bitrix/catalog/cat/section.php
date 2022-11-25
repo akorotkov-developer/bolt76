@@ -361,8 +361,6 @@ if ($ar_result = $db_list->GetNext()) {
                             "ELEMENT_SORT_ORDER2" => $arParams["ELEMENT_SORT_ORDER2"],
                             "PROPERTY_CODE" => (isset($arParams["LIST_PROPERTY_CODE"]) ? $arParams["LIST_PROPERTY_CODE"] : []),
                             "PROPERTY_CODE_MOBILE" => $arParams["LIST_PROPERTY_CODE_MOBILE"],
-                            "META_KEYWORDS" => $arParams["LIST_META_KEYWORDS"],
-                            "META_DESCRIPTION" => $arParams["LIST_META_DESCRIPTION"],
                             "BROWSER_TITLE" => $arParams["LIST_BROWSER_TITLE"],
                             "SET_LAST_MODIFIED" => $arParams["SET_LAST_MODIFIED"],
                             "INCLUDE_SUBSECTIONS" => $arParams["INCLUDE_SUBSECTIONS"],
@@ -386,6 +384,7 @@ if ($ar_result = $db_list->GetNext()) {
                             "PRICE_CODE" => $arParams["~PRICE_CODE"],
                             "USE_PRICE_COUNT" => $arParams["USE_PRICE_COUNT"],
                             "SHOW_PRICE_COUNT" => $arParams["SHOW_PRICE_COUNT"],
+                            "HIDE_SECTION_DESCRIPTION" => 'Y',
 
                             "PRICE_VAT_INCLUDE" => $arParams["PRICE_VAT_INCLUDE"],
                             "USE_PRODUCT_QUANTITY" => $arParams['USE_PRODUCT_QUANTITY'],
@@ -403,7 +402,7 @@ if ($ar_result = $db_list->GetNext()) {
                             "OFFERS_LIMIT" => (isset($arParams["LIST_OFFERS_LIMIT"]) ? $arParams["LIST_OFFERS_LIMIT"] : 0),
 
                             "SECTION_ID" => $intSectionID,
-                            "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
+                            "SECTION_CODE" => '',
                             "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
                             "DETAIL_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["element"],
                             "USE_MAIN_ELEMENT_SECTION" => $arParams["USE_MAIN_ELEMENT_SECTION"],
@@ -460,7 +459,9 @@ if ($ar_result = $db_list->GetNext()) {
                             'COMPARE_NAME' => $arParams['COMPARE_NAME'],
                             'USE_COMPARE_LIST' => 'Y',
                             'BACKGROUND_IMAGE' => '',
-                            'DISABLE_INIT_JS_IN_COMPONENT' => (isset($arParams['DISABLE_INIT_JS_IN_COMPONENT']) ? $arParams['DISABLE_INIT_JS_IN_COMPONENT'] : '')
+                            'DISABLE_INIT_JS_IN_COMPONENT' => (isset($arParams['DISABLE_INIT_JS_IN_COMPONENT']) ? $arParams['DISABLE_INIT_JS_IN_COMPONENT'] : ''),
+                            'SET_META_KEYWORDS' => 'N',
+                            'SET_META_DESCRIPTION' => 'N',
                         ),
                         $component
                     );

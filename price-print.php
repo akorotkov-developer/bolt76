@@ -4,6 +4,7 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.
 require(__DIR__ . "/local/include/vendor/autoload.php");
 
 use Spatie\ArrayToXml\ArrayToXml;
+use Dompdf\Dompdf;
 
 CModule::IncludeModule("iblock");
 
@@ -1308,3 +1309,22 @@ echo $pricePrint->getContentsHTML();
 
 </body>
 </html>
+
+
+<?php
+/** Сохранение в PDF */
+
+// instantiate and use the dompdf class
+$dompdf = new Dompdf();
+$dompdf->loadHtml('hello world');
+
+// (Optional) Setup the paper size and orientation
+$dompdf->setPaper('A4', 'landscape');
+
+// Render the HTML as PDF
+$dompdf->render();
+
+// Output the generated PDF to Browser
+$output = $dompdf->output();
+file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/price/price.pdf', $output);
+?>

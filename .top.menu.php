@@ -43,10 +43,10 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Прайс в Excel",
-		"/price/price.xlsx",
-		Array(),
-		Array(),
+		"Скачать прайс",
+		"price",
+		[],
+		[],
 		""
 	)
 );

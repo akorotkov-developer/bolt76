@@ -293,6 +293,10 @@ if($this->StartResultCache(false, array($arrFilter, ($arParams["CACHE_GROUPS"]==
         $rsSection = CIBlockSection::GetList(Array(), $arFilter, false, $arSelect);
         $rsSection->SetUrlTemplates("", $arParams["SECTION_URL"]);
         $arResult = $rsSection->GetNext();
+
+		$ipropValues = new \Bitrix\Iblock\InheritedProperty\SectionValues($arFilter['IBLOCK_ID'], $arFilter['ID']);
+		$arMeta = $ipropValues->getValues();
+
         if($arResult)
             $bSectionFound = true;
     }
@@ -754,17 +758,17 @@ if($USER->IsAuthorized())
 
 $this->SetTemplateCachedData($arResult["NAV_CACHED_DATA"]);
 
-if(isset($arResult[$arParams["META_KEYWORDS"]]))
+if(isset($arMeta['SECTION_META_KEYWORDS']))
 {
-	$val = $arResult[$arParams["META_KEYWORDS"]];
+	$val = $arMeta['SECTION_META_KEYWORDS'];
 	if(is_array($val))
 		$val = implode(" ", $val);
 	$APPLICATION->SetPageProperty("keywords", $val);
 }
 
-if(isset($arResult[$arParams["META_DESCRIPTION"]]))
+if(isset($arMeta['SECTION_META_DESCRIPTION']))
 {
-	$val = $arResult[$arParams["META_DESCRIPTION"]];
+	$val = $arMeta['SECTION_META_DESCRIPTION'];
 	if(is_array($val))
 		$val = implode(" ", $val);
 	$APPLICATION->SetPageProperty("description", $val);
