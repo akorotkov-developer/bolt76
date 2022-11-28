@@ -203,7 +203,7 @@ class Price
     private function getCatalogItems(): array
     {
         $dbResult = CIBlockElement::GetList(
-            ['SORT'=>'ASC'],
+            ['PROPERTY_Naimenovanie' => 'ASC'],
             [
                 'IBLOCK_ID' => $this->catalogIblockId,
                 'ACTIVE' => 'Y'

@@ -52,7 +52,6 @@ final class ExcelReport extends XlsxReport
         $writer->setShouldUseInlineStrings(false);
         $writer->openToFile($this->getFileName());
         $writer->addRows($this->getData());
-        $writer->getSheets();
 
 
 
