@@ -111,11 +111,28 @@ if ($ar_result = $db_list->GetNext()) {
         <div class="b-sale">
             <?php
             if ($_GET['tst']) {
+                ?>
+
+
+                <section>
+                    <div class="content_sale">
+                        <h2>Распродажа</h2>
+                        <h2>Распродажа</h2>
+                    </div>
+                </section>
+
+
+                <?php
                 $dbResult = CIBlockElement::GetList(
                     [],
                     [
                         'IBLOCK_ID' => 1,
-                        'PROPERTY_SALE' => 'Y'
+                        'PROPERTY_SALE' => 'Y',
+                        [
+                            'LOGIC' => 'AND',
+                            '!=PROPERTY_OSTATOK' => false,
+                        ],
+                        '!=PROPERTY_OSTATOK' => '0',
                     ],
                     false,
                     false,
