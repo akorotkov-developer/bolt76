@@ -18,7 +18,7 @@
         if ($arParams["MAX_LEVEL"] == 1 && $arItem["DEPTH_LEVEL"] > 1)
             continue;
 
-        $arExcludedByKiosk = ['/delivery/', '/payment/'];
+        $arExcludedByKiosk = ['/delivery/', '/payment/', '/price'];
         if ($isKioskBuyer && in_array($arItem["LINK"], $arExcludedByKiosk)) {
             continue;
         }

@@ -4,6 +4,8 @@
         "phpoffice/phpexcel": "^1.8",
         "phpoffice/phpword": "^0.18.3",
         "spatie/array-to-xml": "^2.15",
-        "dompdf/dompdf": "^2.0"
+        "dompdf/dompdf": "^2.0",
+        "guzzlehttp/guzzle": "^7.5",
+        "arhitector/yandex": "dev-master"
     }
 }

@@ -435,7 +435,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                     'PRICE_OPT2', 'PHOTO_ID', 'V_REZERVE', 'NAIMENOVANIE',
                                                                     'ROWID', 'NOMNOMER', 'SHOW_IN_PRICE', 'SORT_IN_PRICE', 'PHOTOS',
                                                                     'VES1000PS', 'MaksZapas', 'MinZapas', 'Otobrajat_v_prayse',
-                                                                    'Svertka', 'SHOW_IN_PRICE', 'Otobrajat_na_sayte',
+                                                                    'Svertka', 'SHOW_IN_PRICE', 'Otobrajat_na_sayte', 'SALE',
                                                                     'Svobodno', 'Nomenklaturniy_nomer', 'Naimenovanie',
                                                                     'TipSkladskogoZapasa', 'Kratnost', 'AVAILABLE', 'ADDITIONAL_PRODUCT_INFORMATION'
                                                                 ];

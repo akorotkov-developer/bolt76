@@ -1314,7 +1314,7 @@ echo $pricePrint->getContentsHTML();
 <?php
 /** Сохранение в PDF */
 
-// instantiate and use the dompdf class
+/*// instantiate and use the dompdf class
 $dompdf = new Dompdf();
 $dompdf->loadHtml('hello world');
 
@@ -1326,5 +1326,5 @@ $dompdf->render();
 
 // Output the generated PDF to Browser
 $output = $dompdf->output();
-file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/price/price.pdf', $output);
+file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/price/price.pdf', $output);*/
 ?>
