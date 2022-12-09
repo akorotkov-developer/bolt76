@@ -1,4 +1,4 @@
-<?
+<?php
 
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ModuleManager;
@@ -47,13 +47,9 @@ class strprofibackupcloud extends CModule
 
     public function installFiles()
     {
-
-        /*        @mkdir($_SERVER["DOCUMENT_ROOT"] . "/bitrix/css/backup2ftp/", 0750, true);
-         *
-         * copy($this->MODULE_ROOT_DIR . "/install/admin/backup2ftp_copy.php", $_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/backup2ftp_copy.php");
-         * copy($this->MODULE_ROOT_DIR . "/install/admin/backup2ftp_index.php", $_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/backup2ftp_index.php");
-         * copy($this->MODULE_ROOT_DIR . "/install/admin/backup2ftp_log.php", $_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/backup2ftp_log.php");
-         * copy($this->MODULE_ROOT_DIR . "/src/styles.css", $_SERVER["DOCUMENT_ROOT"] . "/bitrix/css/backup2ftp/styles.css");*/
+        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Здесь'], '', 'log.txt');
+        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => $this->MODULE_ROOT_DIR . "/install/admin/strprofi_backup_journal.php"], '', 'log.txt');
+        copy($this->MODULE_ROOT_DIR . "/install/admin/strprofi_backup_journal.php", $_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/strprofi_backup_journal.php");
 
         return true;
 
@@ -61,13 +57,7 @@ class strprofibackupcloud extends CModule
 
     public function uninstallFiles()
     {
-
-        /*        unlink($_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/backup2ftp_copy.php");
-                unlink($_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/backup2ftp_index.php");
-                unlink($_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/backup2ftp_log.php");
-                unlink($_SERVER["DOCUMENT_ROOT"] . "/bitrix/css/backup2ftp/styles.css");
-
-                @rmdir($_SERVER["DOCUMENT_ROOT"] . "/bitrix/css/backup2ftp/");*/
+        unlink($_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/strprofi_backup_journal.php");
 
         return true;
 

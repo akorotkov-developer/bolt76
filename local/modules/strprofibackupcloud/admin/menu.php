@@ -18,14 +18,8 @@ if ($APPLICATION->GetGroupRight("strprofibackupcloud") > "D") {
             'title' => Loc::getMessage('BACKUP_MENU_TITLE'),
             'items_id' => 'menu_references',
             'icon' => 'bitrixcloud_menu_icon',
-            'items' => [
-                [
-                    'text' => Loc::getMessage('BACKUP_LOG_MENU_TITLE'),
-                    'url' => '/bitrix/admin/strprofi_backup.php?lang=' . LANGUAGE_ID,
-                    'more_url' => ['/bitrix/admin/strprofi_backup.php?lang=' . LANGUAGE_ID],
-                    'title' => Loc::getMessage('BACKUP_LOG_MENU_TITLE'),
-                ],
-            ],
+            'url' => '/bitrix/admin/strprofi_backup_journal.php?lang=' . LANGUAGE_ID,
+            'items' => [],
         ],
     ];
 
