@@ -398,7 +398,6 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                     <?php
                                                     if ($arResult['SECTION_DESCRIPTION'] != '') {
                                                         echo $arResult['SECTION_DESCRIPTION'];
-                                                        echo '<hr>';
                                                     }
 
                                                     if (
