@@ -47,9 +47,8 @@ class strprofibackupcloud extends CModule
 
     public function installFiles()
     {
-        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Здесь'], '', 'log.txt');
-        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => $this->MODULE_ROOT_DIR . "/install/admin/strprofi_backup_journal.php"], '', 'log.txt');
         copy($this->MODULE_ROOT_DIR . "/install/admin/strprofi_backup_journal.php", $_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/strprofi_backup_journal.php");
+        copy($this->MODULE_ROOT_DIR . "/install/admin/js/script.js", $_SERVER["DOCUMENT_ROOT"] . "/bitrix/js/" . $this->MODULE_ID . '/script.js');
 
         return true;
 
@@ -58,6 +57,7 @@ class strprofibackupcloud extends CModule
     public function uninstallFiles()
     {
         unlink($_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/strprofi_backup_journal.php");
+        unlink($_SERVER["DOCUMENT_ROOT"] . "/bitrix/js/" . $this->MODULE_ID . '/script.js');
 
         return true;
 
