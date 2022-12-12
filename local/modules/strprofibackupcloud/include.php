@@ -5,6 +5,12 @@ Bitrix\Main\Loader::registerAutoloadClasses(
         "StrprofiBackupCloud\\Backup" => "lib/Backup.php",
     ]
 );
+Bitrix\Main\Loader::registerAutoloadClasses(
+    "strprofibackupcloud",
+    [
+        "StrprofiBackupCloud\\Option" => "lib/Option.php",
+    ]
+);
 
 /**
  * Подключение js файлов
