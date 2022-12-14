@@ -71,28 +71,6 @@ function getTableSize($reg)
 Loader::includeModule('strprofibackupcloud');
 CJSCore::Init(['strprofibackupcloud']);
 
-$aTabs = [];
-$aTabs[] = ['DIV' => 'std', 'TAB' => Loc::getMessage('DUMP_MAIN_MAKE_ARC'), 'ICON' => 'main_user_edit', 'TITLE' => Loc::getMessage('MAKE_DUMP_FULL')];
-$aTabs[] = ['DIV' => 'expert', 'TAB' => Loc::getMessage('DUMP_MAIN_PARAMETERS'), 'ICON' => 'main_user_edit', 'TITLE' => Loc::getMessage('DUMP_MAIN_EXPERT_SETTINGS')];
-$aTabs[] = ['DIV' => 'journal', 'TAB' => Loc::getMessage('DUMP_MAIN_JOURNAL'), 'ICON' => 'main_user_edit', 'TITLE' => Loc::getMessage('DUMP_MAIN_JOURNAL_TITLE')];
-
-$editTab = new CAdminTabControl("editTab", $aTabs, true, true);
-
-$editTab->Begin();
-$editTab->BeginNextTab();
-?>
-
-    <tr>
-        <td>Параметры:</td>
-    </tr>
-
-<?php
-$editTab->BeginNextTab();
-?>
-
-    <span class="success_message_backup" style="color: green"></span><br><br>
-
-<?php
 function IntOption($name, $def = 0)
 {
     static $CACHE;
@@ -106,6 +84,52 @@ $bMcrypt = function_exists('mcrypt_encrypt') || function_exists('openssl_encrypt
 
 global $DB;
 
+$aTabs = [];
+$aTabs[] = ['DIV' => 'std', 'TAB' => Loc::getMessage('DUMP_MAIN_MAKE_ARC'), 'ICON' => 'main_user_edit', 'TITLE' => Loc::getMessage('MAKE_DUMP_FULL')];
+$aTabs[] = ['DIV' => 'expert', 'TAB' => Loc::getMessage('DUMP_MAIN_PARAMETERS'), 'ICON' => 'main_user_edit', 'TITLE' => Loc::getMessage('DUMP_MAIN_EXPERT_SETTINGS')];
+$aTabs[] = ['DIV' => 'journal', 'TAB' => Loc::getMessage('DUMP_MAIN_JOURNAL'), 'ICON' => 'main_user_edit', 'TITLE' => Loc::getMessage('DUMP_MAIN_JOURNAL_TITLE')];
+
+$editTab = new CAdminTabControl("editTab", $aTabs, true, true);
+
+$editTab->Begin();
+$editTab->BeginNextTab();
+?>
+
+    <tr class="heading">
+        <td colspan="2"><?=GetMessage("MAIN_DUMP_SCHEDULE")?></td>
+    </tr>
+    <tr>
+        <td style="width: 50%"><?= Loc::getMessage('MAIN_DUMP_TIME_CREATE_BACKUP')?></td>
+        <td style="width: 50%"><input name="time_to_copy" type="time" val="05:45"></td>
+    </tr>
+    <tr>
+        <td style="width: 50%"><?= Loc::getMessage('MAIN_DUMP_PERIOD')?></td>
+        <td style="width: 50%">
+            <select name="dump_auto_interval">
+                <option value="1"><?= Loc::getMessage('MAIN_DUMP_EVERY_DAY')?></option>
+                <option value="2"><?= Loc::getMessage('MAIN_DUMP_AFTER_DAY')?></option>
+                <option value="3"><?= Loc::getMessage('MAIN_DUMP_EVERY_3_DAY')?></option>
+                <option value="7" selected=""><?= Loc::getMessage('MAIN_DUMP_EVERY_WEEK')?></option>
+            </select>
+        </td>
+    </tr>
+
+    <tr class="heading">
+        <td colspan="2"><?=GetMessage("MAIN_DUMP_DELETE_OLD")?></td>
+    </tr>
+
+    <tr>
+        <td style="width: 50%"><?= Loc::getMessage('MAIN_DUMP_IS_DELETE_OLD_COPY')?></td>
+        <td style="width: 50%"><input name="is_delete_old_copy" type="checkbox" checked disabled></td>
+    </tr>
+
+<?php
+$editTab->BeginNextTab();
+?>
+
+    <span class="success_message_backup" style="color: green"></span><br><br>
+
+<?php
 if ($DB->type == 'MYSQL') {
     ?>
     <tr>
@@ -244,6 +268,7 @@ $editTab->End();
 echo BeginNote();
 echo '<div><span class=required><sup>1</sup></span> ' . Loc::getMessage('MAIN_DUMP_FOOTER_MASK') . '</div>';
 echo '<div><span class=required><sup>2</sup></span> ' . Loc::getMessage('MAIN_DUMP_MAX_ARCHIVE_SIZE_INFO') . '</div>';
+echo '<div><span class=required><sup>3</sup></span> ' . Loc::getMessage('MAIN_DUMP_SHED_TIME_SET') . '</div>';
 echo EndNote();
 ?>
 
