@@ -1,4 +1,7 @@
 <?php
+/**
+ * Подключение классов модуля
+ */
 Bitrix\Main\Loader::registerAutoloadClasses(
     "strprofibackupcloud",
     [
@@ -9,6 +12,12 @@ Bitrix\Main\Loader::registerAutoloadClasses(
     "strprofibackupcloud",
     [
         "StrprofiBackupCloud\\Option" => "lib/Option.php",
+    ]
+);
+Bitrix\Main\Loader::registerAutoloadClasses(
+    "strprofibackupcloud",
+    [
+        "StrprofiBackupCloud\\StorageTable" => "lib/StorageTable.php",
     ]
 );
 

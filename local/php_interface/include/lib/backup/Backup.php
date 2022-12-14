@@ -168,6 +168,8 @@ class Backup
      */
     public function uploadBackUp(array $backup)
     {
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$backupItem' => $backup], '', 'log.txt')
+
         // Получаем список файлов backup а
         $path = BX_ROOT . "/backup";
         $name = $path . '/' . $backup['ID'];
@@ -200,6 +202,8 @@ class Backup
 
         // Копирование резервной копии на яндекс.диск
         foreach ($arLink as $link) {
+            \Bitrix\Main\Diag\Debug::dumpToFile(['$link' => $link], '', 'log.txt');
+
             $spellLink = explode('/', $link);
             $fileName = $spellLink[count($spellLink) - 1];
 
@@ -210,6 +214,8 @@ class Backup
                 $resource->upload($localFilePath); // Записываем файл на яндекс диск
                 unlink($localFilePath); // Удаляем файл на сервере
             }
+
+            break;
         }
 
 /*      $resource = $disk->getResource('/test_backup2');

@@ -13,7 +13,6 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/b
 
 $APPLICATION->SetTitle("Резервные копии на Яндекс.Диске");
 
-//
 $context = Application::getInstance()->getContext();
 $request = $context->getRequest();
 

@@ -43,6 +43,7 @@ $backUps = $obBackup->getBackupSite();
 if (is_array($backUps) && count($backUps) > 0) {
     foreach ($backUps as $backupItem) {
         $obBackup->uploadBackUp($backupItem);
+        break;
     }
 }
 
