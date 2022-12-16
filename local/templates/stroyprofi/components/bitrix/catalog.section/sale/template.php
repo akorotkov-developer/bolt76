@@ -207,6 +207,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 								{
 									?>
 									<div class="col-xs-6 col-sm-2 col-md-2 item-for-recmended-product item-for-sale">
+                                        <h2 class="sale_title"><?= $item['PROPERTIES']['SALE']['VALUE']?></h2>
 										<?
 										$APPLICATION->IncludeComponent(
 											'bitrix:catalog.item',
