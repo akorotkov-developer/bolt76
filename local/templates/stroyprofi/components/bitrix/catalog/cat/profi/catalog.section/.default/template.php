@@ -84,7 +84,11 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                     ?>
                     <tr id="<?= $this->GetEditAreaId($arElement['ID']); ?>"
                         class="<?= ((float)$arElement["PROPERTIES"]["OSTATOK"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
-                        <td class="pic no-back-hover">
+                        <td class="pic no-back-hover list-preview-slider">
+                            <div class="list-img-slider-content">
+                                <img src="<?= $arElement["PREVIEW_PICTURE"]["SRC"];?>">
+                            </div>
+
                             <? if ($arElement["PREVIEW_PICTURE"]) {
                                 ?>
                                 <? $file = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], array('width' => 100, 'height' => 50), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
