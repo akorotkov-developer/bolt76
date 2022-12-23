@@ -20,6 +20,18 @@ Bitrix\Main\Loader::registerAutoloadClasses(
         "StrprofiBackupCloud\\StorageTable" => "lib/StorageTable.php",
     ]
 );
+Bitrix\Main\Loader::registerAutoloadClasses(
+    "strprofibackupcloud",
+    [
+        "StrprofiBackupCloud\\UploadActivity" => "lib/UploadActivity.php",
+    ]
+);
+Bitrix\Main\Loader::registerAutoloadClasses(
+    "strprofibackupcloud",
+    [
+        "StrprofiBackupCloud\\UploadByAgent" => "lib/UploadByAgent.php.php",
+    ]
+);
 
 /**
  * Подключение js файлов

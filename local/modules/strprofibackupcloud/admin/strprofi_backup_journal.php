@@ -93,7 +93,10 @@ $editTab = new CAdminTabControl("editTab", $aTabs, true, true);
 $editTab->Begin();
 $editTab->BeginNextTab();
 ?>
-
+    <tr>
+        <td><span class="success_message_backup" style="color: green"></span><br><br></td>
+        <td></td>
+    </tr>
     <tr class="heading">
         <td colspan="2"><?=GetMessage("MAIN_DUMP_SCHEDULE")?></td>
     </tr>
@@ -125,8 +128,6 @@ $editTab->BeginNextTab();
 <?php
 $editTab->BeginNextTab();
 ?>
-
-    <span class="success_message_backup" style="color: green"></span><br><br>
 
 <?php
 if ($DB->type == 'MYSQL') {
@@ -273,6 +274,7 @@ echo EndNote();
 
 <script>
     var bitrix_sesion_id = '<?=bitrix_sessid_get()?>';
+    var admin_module_name = '<?= ADMIN_MODULE_NAME?>';
 </script>
 
 <?php

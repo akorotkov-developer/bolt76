@@ -8,6 +8,12 @@ use CBitrixCloudBackup;
 use CDBResult;
 use CFile;
 use CTar;
+use StrprofiBackupCloud\StorageTable;
+use Arhitector\Yandex\Disk;
+use Arhitector\Yandex\Disk\Resource\Closed;
+use League\Event\Event;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Класс для backup ов
@@ -30,157 +36,98 @@ class Backup
     }
 
     /**
-     * Получить backup 'ы c сайта
-     */
-    public function getBackupSite(): array
-    {
-        $bMcrypt = function_exists('mcrypt_encrypt') || function_exists('openssl_encrypt');
-        $bBitrixCloud = $bMcrypt && CModule::IncludeModule('bitrixcloud') && CModule::IncludeModule('clouds');
-
-        $arFiles = array();
-        $arTmpFiles = array();
-
-        if (is_dir($p = DOCUMENT_ROOT . BX_ROOT . '/backup')) {
-            if ($dir = opendir($p)) {
-                while (($item = readdir($dir)) !== false) {
-                    $f = $p . '/' . $item;
-                    if (!is_file($f))
-                        continue;
-                    $arTmpFiles[] = array(
-                        'NAME' => $item,
-                        'SIZE' => filesize($f),
-                        'DATE' => filemtime($f),
-                        'BUCKET_ID' => 0,
-                        'PLACE' => 'Локально'
-                    );
-                }
-                closedir($dir);
-            }
-        }
-
-        // Получаем резервные копии из облака
-        if ($bBitrixCloud) {
-            $backup = CBitrixCloudBackup::getInstance();
-            try {
-                foreach ($backup->listFiles() as $ar) {
-                    $arTmpFiles[] = array(
-                        'NAME' => $ar['FILE_NAME'],
-                        'SIZE' => $ar['FILE_SIZE'],
-                        'DATE' => preg_match('#^([0-9]{4})([0-9]{2})([0-9]{2})_([0-9]{2})([0-9]{2})([0-9]{2})#', $ar['FILE_NAME'], $r) ? strtotime("{$r[1]}-{$r[2]}-{$r[3]} {$r[4]}:{$r[5]}:{$r[6]}") : '',
-                        'BUCKET_ID' => -1,
-                        'PLACE' => 'В облаке'
-                    );
-                }
-            } catch (Exception $e) {
-                $bBitrixCloud = false;
-                $strBXError = $e->getMessage();
-            }
-        }
-
-        // Резервные копии из журнала
-        $arAllBucket = CBackup::GetBucketList();
-        if ($arAllBucket) {
-            foreach ($arAllBucket as $arBucket) {
-                if ($arCloudFiles = CBackup::GetBucketFileList($arBucket['ID'], BX_ROOT . '/backup/')) {
-                    foreach ($arCloudFiles['file'] as $k => $v) {
-                        $arTmpFiles[] = array(
-                            'NAME' => $v,
-                            'SIZE' => $arCloudFiles['file_size'][$k],
-                            'DATE' => preg_match('#^([0-9]{4})([0-9]{2})([0-9]{2})_([0-9]{2})([0-9]{2})([0-9]{2})#', $v, $r) ? strtotime("{$r[1]}-{$r[2]}-{$r[3]} {$r[4]}:{$r[5]}:{$r[6]}") : '',
-                            'BUCKET_ID' => $arBucket['ID'],
-                            'PLACE' => htmlspecialcharsbx($arBucket['BUCKET'] . ' (' . $arBucket['SERVICE_ID'] . ')')
-                        );
-                    }
-                }
-            }
-        }
-
-        // Формирования массива backup ов
-        $arParts = [];
-        $arSize = [];
-        $i = 0;
-        foreach ($arTmpFiles as $k => $ar) {
-            if (preg_match('#^(.*\.(enc|tar|gz|sql))(\.[0-9]+)?$#', $ar['NAME'], $regs)) {
-                $i++;
-                $BUCKET_ID = intval($ar['BUCKET_ID']);
-                $arParts[$BUCKET_ID . $regs[1]]++;
-                $arSize[$BUCKET_ID . $regs[1]] += $ar['SIZE'];
-                if (!$regs[3]) {
-                    if ($by == 'size') {
-                        $key = $arSize[$BUCKET_ID . $regs[1]];
-                    } elseif ($by == 'timestamp') {
-                        $key = $ar['DATE'];
-                    } elseif ($by == 'location') {
-                        $key = $ar['PLACE'];
-                    } else { // name
-                        $key = $regs[1];
-                    }
-                    $key .= '_' . $i;
-                    $arFiles[$key] = $ar;
-                }
-            }
-        }
-
-        if ($order == 'desc') {
-            krsort($arFiles);
-        } else {
-            ksort($arFiles);
-        }
-
-        // Получим данные о резервных копиях в виде объекта CDBResult
-        $arBackups = [];
-
-        $rsDirContent = new CDBResult;
-        $rsDirContent->InitFromArray($arFiles);
-        $rsDirContent->NavStart(20);
-
-        while ($f = $rsDirContent->NavNext(true, "f_")) {
-            $BUCKET_ID = intval($f['BUCKET_ID']);
-
-            $c = $arParts[$BUCKET_ID . $f['NAME']];
-
-            if ($c > 1) {
-                $parts = ' ( частей: ' . $c . ')';
-                $size = $arSize[$BUCKET_ID . $f['NAME']];
-            } else {
-                $parts = '';
-                $size = $f['SIZE'];
-            }
-
-            $arBackups[] = [
-                'NAME' => $f['NAME'] . $parts,
-                'SIZE' => CFile::FormatSize($size),
-                'PLACE' => $f['PLACE'],
-                'DATE' => FormatDate('x', $f['DATE']),
-                'ID' => $f['NAME'],
-                'BUCKET_ID' => $BUCKET_ID,
-                'PARTS' => $c
-            ];
-        }
-
-        return $arBackups;
-    }
-
-    /**
      * Закачать Backup на внешний диск
      * @param array $backup
-     * @return bool
      */
     public function uploadBackUp(array $backup)
     {
-        \Bitrix\Main\Diag\Debug::dumpToFile(['$backupItem' => $backup], '', 'log.txt')
-
         // Получаем список файлов backup а
         $path = BX_ROOT . "/backup";
         $name = $path . '/' . $backup['ID'];
 
+        $arLink = [];
         while (file_exists(DOCUMENT_ROOT . $name)) {
             $arLink[] = htmlspecialcharsbx($name);
             $name = CTar::getNextName($name);
         }
 
+        $dataForStorage = [
+            'LINKS' => $arLink,
+            'TOTAL_ITEMS' => count($arLink),
+            'NAME' => $backup['NAME']
+        ];
+
+        // Записываем информацию в StorageTable
+        $rowId = $this->addBackupInfoToStorage($dataForStorage);
+
+        // Загружаем файлы на Яндекс.Диск
+        $this->uploadToYaDisk($rowId);
+    }
+
+    /**
+     * Метод агента для загрузки резервной копии на Яндекс.Диск
+     * @param int $rowId
+     * @return false|string
+     * @throws \Bitrix\Main\ArgumentException
+     * @throws \Bitrix\Main\LoaderException
+     * @throws \Bitrix\Main\ObjectPropertyException
+     * @throws \Bitrix\Main\SystemException
+     */
+    public function uploadToYaDisk(int $rowId)
+    {
+        /**
+         * Будем работать с большими массивами. Добавим памяти.
+         */
+        if ($rowId > 0) {
+            $rowData = StorageTable::getRowById($rowId);
+
+            // Если процент загрузки меньше 100, то продолжаем загрузку данных на Яндекс.Диск
+            if ($rowData !== null && (int)$rowData['PERCENT'] < 100) {
+                $data = $rowData['DATA'];
+
+                // Отправляем первую ссылку на загрузку
+                \Bitrix\Main\Diag\Debug::dumpToFile(['$data' => $data], '', 'log.txt');
+                if (count($data['LINKS']) > 0) {
+                    $link = array_shift($data['LINKS']);
+
+                    echo '<pre>';
+                    var_dump($link);
+                    echo '</pre>';
+
+                    $this->uploadFileToYaDisk($link, $data, $rowId);
+                }
+            }
+        }
+    }
+
+    /**
+     * Сохранение данных в Storage
+     * @param int $rowId
+     * @param array $data
+     * @throws \Exception
+     */
+    private function saveDataInStorage(int $rowId, array $data)
+    {
+        $percent = round(100 - (count($data['LINKS']) * 100 / (int)$data['TOTAL_ITEMS']), 0);
+
+        StorageTable::update(
+            $rowId,
+            [
+                'DATA' => $data,
+                'PERCENT' => $percent
+            ]
+        );
+    }
+
+    /**
+     * Загрузить файл на яндекс диск
+     */
+    public function uploadFileToYaDisk($link, $data, $rowId)
+    {
         // передать OAuth-токен зарегистрированного приложения.
         $disk = new \Arhitector\Yandex\Disk($this->token);
+
+        $backUpName = $data['NAME'];
 
         // Получаем папку с backup ами или создаем папку
         $resource = $disk->getResource(self::ROOT_FOLDER_BACKUP);
@@ -194,55 +141,61 @@ class Backup
         }
 
         // Создаем папку для резервной копии
-        $folderToCopy = self::ROOT_FOLDER_BACKUP . '/' . SITE_SERVER_NAME . '/' . $backup['NAME'];
+        $folderToCopy = self::ROOT_FOLDER_BACKUP . '/' . SITE_SERVER_NAME . '/' . $backUpName;
         $resource = $disk->getResource($folderToCopy);
         if (!$resource->has()) {
             $resource->create();
         }
 
         // Копирование резервной копии на яндекс.диск
-        foreach ($arLink as $link) {
-            \Bitrix\Main\Diag\Debug::dumpToFile(['$link' => $link], '', 'log.txt');
+        $spellLink = explode('/', $link);
+        $fileName = $spellLink[count($spellLink) - 1];
 
-            $spellLink = explode('/', $link);
-            $fileName = $spellLink[count($spellLink) - 1];
+        $resource = $disk->getResource($folderToCopy . '/' . $fileName);
 
-            $resource = $disk->getResource($folderToCopy . '/' . $fileName);
+        // Рекурсивная запись файлов на Яндекс.Диск
+        $selfOb = $this;
+        if (!$resource->has()) {
+            $disk->addListener('uploaded', function (Event $event, Closed $resource, Disk $disk, StreamInterface $uploadedStream, ResponseInterface $response) use ($selfOb, $rowId, $data) {
+                \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Файл загружен'], '', 'log.txt');
 
-            if (!$resource->has()) {
-                $localFilePath = DOCUMENT_ROOT . $link;
-                $resource->upload($localFilePath); // Записываем файл на яндекс диск
-                unlink($localFilePath); // Удаляем файл на сервере
-            }
+                // Записываем процент и ссылки в таблицу StorageTable
+                $selfOb->saveDataInStorage($rowId, $data);
 
-            break;
+                // Загрузка следующего файла
+                $selfOb->uploadToYaDisk($rowId);
+            });
+
+            $localFilePath = DOCUMENT_ROOT . $link;
+            $resource->upload($localFilePath); // Записываем файл на яндекс диск
         }
 
-/*      $resource = $disk->getResource('/test_backup2');
+
+        /*      $resource = $disk->getResource('/test_backup2');
 
 
-        $isDir = $resource->getPath();
-        echo '<pre>';
-        var_dump($isDir);
-        echo '</pre>';
+                $isDir = $resource->getPath();
+                echo '<pre>';
+                var_dump($isDir);
+                echo '</pre>';
 
-        // Получаем иттератор
-        $resource->items->getIterator();
+                // Получаем иттератор
+                $resource->items->getIterator();
 
-        // Количество элементов внутри ресурса
-        echo '<pre>';
-        var_dump($resource->items->count());
-        echo '</pre>';
+                // Количество элементов внутри ресурса
+                echo '<pre>';
+                var_dump($resource->items->count());
+                echo '</pre>';
 
-        foreach ($resource->items as $item) {
+                foreach ($resource->items as $item) {
 
-            echo '<pre>';
-            var_dump( $item->get('name'));
-            echo '</pre>';
-            echo '<pre>';
-            var_dump($item->toArray());
-            echo '</pre>';
-        }*/
+                    echo '<pre>';
+                    var_dump( $item->get('name'));
+                    echo '</pre>';
+                    echo '<pre>';
+                    var_dump($item->toArray());
+                    echo '</pre>';
+                }*/
 
 
         /*$resource->upload( $_SERVER['DOCUMENT_ROOT'] . '/test_backup/new_file.txt');
@@ -250,7 +203,47 @@ class Backup
         echo '<pre>';
         var_dump($resource->toArray(['name', 'type', 'size']));
         echo '</pre>';*/
-
-        return true;
     }
+
+    /**
+     * Записываем информацию в StorageTable
+     * @param array $arLink
+     */
+    private function addBackupInfoToStorage(array $dataForStorage): int
+    {
+        $storageAdd = StorageTable::add(
+            [
+                'DATA' => $dataForStorage,
+                'PERCENT' => 0,
+            ]
+        );
+
+        return (int)$storageAdd->getId();
+    }
+
+    /**
+     * Добавляем агента для загрузки резервных копий на Яндекс диск
+     */
+    /*private function addAgent($rowId)
+    {
+        echo '<pre>';
+        var_dump('Добавился агент');
+        echo '</pre>';
+
+        CAgent::addAgent(
+            '\Strprofi\Backup::uploadToYaDisk(' . $rowId . ');',
+            'strprofibackupcloud',
+            'Y',
+            30,
+            ConvertTimeStamp(
+                time() + \CTimeZone::getOffset(),
+                'FULL'
+            ),
+            'Y',
+            ConvertTimeStamp(
+                time() + \CTimeZone::getOffset(),
+                'FULL'
+            )
+        );
+    }*/
 }

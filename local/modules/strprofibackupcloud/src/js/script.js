@@ -9,14 +9,22 @@ BX.ready(function() {
             $('.success_message_backup').text('Перенос резервных копий на Яндекс.Диск запущен');
 
             isStarted = true;
-            $.ajax({
-                url: '/test_backup/test.php',
-                method: 'post',
-                dataType: 'html',
-                data: {},
-                success: function (data) {
+
+            BX.ajax({
+                url: '/local/modules/' + admin_module_name + '/tools/run_upload.php',
+                data: {
+                    'action': 'start_upload'
+                },
+                method: 'POST',
+                dataType: 'json',
+                async: true,
+                onsuccess: function(data) {
+                    console.log(data, 'data');
+                },
+                onfailure: function() {
+
                 }
-            });
+           });
         }
     });
 

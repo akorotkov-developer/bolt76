@@ -41,11 +41,16 @@ $backUps = $obBackup->getBackupSite();
 
 // Копируем все бэкапы
 if (is_array($backUps) && count($backUps) > 0) {
+    echo '<pre>';
+    var_dump($backUps);
+    echo '</pre>';
+
     foreach ($backUps as $backupItem) {
         $obBackup->uploadBackUp($backupItem);
         break;
     }
 }
+
 
 // Закачать backup
 /*$uploadBackUp = $obBackup->uploadBackUp($backUps[0]);*/

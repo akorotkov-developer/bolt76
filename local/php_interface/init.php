@@ -555,3 +555,8 @@ function startImport() {
 
     return 'startImport();';
 }
+
+
+\Bitrix\Main\Loader::registerAutoLoadClasses(null, [
+    'Strprofi\Backup' => '/local/php_interface/include/lib/backup/Backup.php'
+]);
