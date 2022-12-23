@@ -538,8 +538,12 @@ max-width: 150px;
 }
 
 .catalog_element .element_table td.pic img {
-max-width:100px;
+    max-width:100px;
 }
+.catalog_element .element_table td.pic .list-img-slider-content img, .list-img-slider-content img {
+    max-width: 300px;
+}
+
 
 .catalog_element .element_table td.art{
     width: 40px;

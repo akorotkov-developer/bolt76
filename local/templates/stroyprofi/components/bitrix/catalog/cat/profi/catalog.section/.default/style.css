@@ -54,6 +54,8 @@ td.buy {
 }
 .list-img-slider-content {
     display: none;
+    top: -80px;
+    text-align: center;
     /* NEW */
     padding: 10px;
     position: absolute;
@@ -67,4 +69,10 @@ td.buy {
     -webkit-box-shadow: 1px 0px 4px 0px rgb(0 0 0 / 22%);
     -moz-box-shadow: 1px 0px 4px 0px rgba(0, 0, 0, 0.22);
     box-shadow: 1px 0px 4px 0px rgb(0 0 0 / 22%);
+}
+.list-img-slider-content span {
+    margin-top: 15px;
+    font-weight: normal!important;
+    color: #000!important;
+    display: block;
 }

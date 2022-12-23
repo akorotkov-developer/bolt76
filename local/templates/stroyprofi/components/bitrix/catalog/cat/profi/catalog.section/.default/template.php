@@ -87,6 +87,8 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                         <td class="pic no-back-hover list-preview-slider">
                             <div class="list-img-slider-content">
                                 <img src="<?= $arElement["PREVIEW_PICTURE"]["SRC"];?>">
+                                <br>
+                                <span>(<?= $arElement["DISPLAY_PROPERTIES"]["ARTICUL"]["VALUE"]?>) <?= $arElement["NAME"] ?></span>
                             </div>
 
                             <? if ($arElement["PREVIEW_PICTURE"]) {
@@ -142,7 +144,12 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                         <td class="name">
                             <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
                                 <div class="name_wrapper">
-                                    <div class="name-holder">
+                                    <div class="name-holder list-preview-slider">
+                                        <div class="list-img-slider-content">
+                                            <img src="<?= $arElement["PREVIEW_PICTURE"]["SRC"];?>">
+                                            <br>
+                                            <span>(<?= $arElement["DISPLAY_PROPERTIES"]["ARTICUL"]["VALUE"]?>) <?= $arElement["NAME"] ?></span>
+                                        </div>
                                         <span><?= $arElement["NAME"] ?></span>
                                     </div>
                                     <div class="description_holder" id="detailed_<?= $arElement["ID"] ?>">
