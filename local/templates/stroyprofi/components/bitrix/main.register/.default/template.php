@@ -45,7 +45,8 @@ elseif($arResult["USE_EMAIL_CONFIRMATION"] === "Y"):
 
 <?if($arResult["SHOW_SMS_FIELD"] == true):?>
 
-<form method="post" action="<?=POST_FORM_ACTION_URI?>" name="regform">
+<form method="post" action="<?=POST_FORM_ACTION_URI?>" name="regform" >
+
 <?
 if($arResult["BACKURL"] <> ''):
 ?>
@@ -54,6 +55,7 @@ if($arResult["BACKURL"] <> ''):
 endif;
 ?>
 <input type="hidden" name="SIGNED_DATA" value="<?=htmlspecialcharsbx($arResult["SIGNED_DATA"])?>" />
+
 <table>
 	<tbody>
 		<tr>
@@ -101,6 +103,9 @@ new BX.PhoneAuth({
 <?else:?>
 
 <form method="post" action="<?=POST_FORM_ACTION_URI?>" name="regform" enctype="multipart/form-data">
+    <div class="bt-block">
+        <input type="text" name="bt-input" class="bt-input">
+    </div>
 <?
 if($arResult["BACKURL"] <> ''):
 ?>

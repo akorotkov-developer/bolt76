@@ -76,3 +76,6 @@ td.buy {
     color: #000!important;
     display: block;
 }
+.pic.list-preview-slider {
+    position: relative;
+}
