@@ -54,6 +54,21 @@ if ($ar_result = $db_list->GetNext()) {
 }
 ?>
 
+<?php if ($_GET['tst'] == 'tst') {?>
+    <div class="b-tags">
+        <div class="tags">
+            <a href="#">
+                4.8
+                <span class="tags__hide">Класс прочности</span>
+            </a>
+            <a href="#">Анкер</a>
+            <a href="#">Болт</a>
+            <a href="#" class="active">Винт</a>
+            <a href="#">Гвоздь</a>
+        </div>
+    </div>
+<?php } ?>
+
 <div class="b-container-top">
     <div class="col-lg-3 b-product-filter <?= (isset($arParams['FILTER_HIDE_ON_MOBILE']) && $arParams['FILTER_HIDE_ON_MOBILE'] === 'Y' ? ' hidden-xs' : '') ?>">
 

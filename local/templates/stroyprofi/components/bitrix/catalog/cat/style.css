@@ -158,3 +158,85 @@
         );
     }
 }
+
+/** Облако тэгов */
+.b-tags .tags {
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 40px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.b-tags .tags a {
+    white-space: nowrap;
+    /* Style for "Rounded Re" */
+    width: auto;
+    border-radius: 13px;
+    background-color: #090a0b;
+
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    color: #ffffff;
+
+    position: relative; /* для подсказки */
+    margin-right: 2px;
+}
+.b-tags .tags a.active {
+    background: #FF7920;
+}
+
+/* это нужно, если есть необходимость что бы можно было навести курсор на подсказку. Иначе будет исчезать */
+.b-tags .tags a:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 20px;
+    visibility: hidden;
+}
+.b-tags .tags a:hover:after {
+    visibility: visible;
+}
+.b-tags .tags a:hover {
+    background: #FF7920;
+}
+
+/* оформление плашки */
+.b-tags .tags__hide {
+    position: absolute;
+    left: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000;
+    background: #fff;
+    padding: 5px 10px;
+    line-height: 1;
+    transition: all .3s;
+
+    /* параметры для изчезновения/появления. Можете настроить как вам угодно */
+    visibility: hidden;
+    opacity: 0;
+    bottom: 0;
+}
+.b-tags .tags a:hover .tags__hide {
+    visibility: visible;
+    opacity: 1;
+    bottom: calc(100% + 15px);
+}
+/* треугольник */
+.b-tags .tags__hide:before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    margin-left: -5px;
+    transform: rotate(45deg)
+}
