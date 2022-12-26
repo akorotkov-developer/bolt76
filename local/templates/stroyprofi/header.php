@@ -149,6 +149,22 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
                 </div>
                 <div class="clear"></div>
             </div>
+
+
+            <!-- Бегущая строка -->
+            <div class="marquee">
+                <span>
+                    <?php
+                    $APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+                            "AREA_FILE_SHOW" => "file",
+                            "PATH" => "/local/include_file/top_marquee.php",
+                        )
+                    );
+                    ?>
+                </span>
+            </div>
+
+
             <div class="dark_line">
                 <div class="corners left"><div class="right"></div></div>
                 <div class="content">

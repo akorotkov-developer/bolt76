@@ -34,4 +34,13 @@ $(document).ready(function () {
             }
         }, 1000);
     }*/
+
+    /**
+     * Проверка бегущей строки если, в ней пусто, то нужно скрыть её и поменять стиль
+     */
+    var marqueeText = $.trim($('.marquee span').text());
+    if (marqueeText == '') {
+        $('.marquee').css('height', '1px');
+        $('.header').css('height', '142px');
+    }
 });
