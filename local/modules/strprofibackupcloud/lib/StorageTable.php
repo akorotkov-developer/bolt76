@@ -45,6 +45,10 @@ class StorageTable extends Entity\DataManager
                 'required' => true,
                 'serialized' => true,
             ]),
+            new Entity\TextField('DISK_TYPE', [
+                'required' => true,
+                'serialized' => true,
+            ]),
             new Entity\IntegerField('PERCENT', [
 
             ]),

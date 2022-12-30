@@ -98,6 +98,14 @@ $editTab->BeginNextTab();
         <td></td>
     </tr>
     <tr class="heading">
+        <td colspan="2"><?=GetMessage("MAIN_DUMP_DISK")?></td>
+    </tr>
+    <tr>
+        <td style="width: 50%"><?= Loc::getMessage('MAIN_DUMP_YANDEX_DISK')?></td>
+        <td style="width: 50%"><input name="disk_type" id="disk_type" type="radio" value="yadisk" checked disabled></td>
+    </tr>
+
+    <tr class="heading">
         <td colspan="2"><?=GetMessage("MAIN_DUMP_SCHEDULE")?></td>
     </tr>
     <tr>

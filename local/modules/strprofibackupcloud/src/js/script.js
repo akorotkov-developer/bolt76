@@ -13,7 +13,8 @@ BX.ready(function() {
             BX.ajax({
                 url: '/local/modules/' + admin_module_name + '/tools/run_upload.php',
                 data: {
-                    'action': 'start_upload'
+                    'action': 'start_upload',
+                    'disk_type': document.getElementById('disk_type').value
                 },
                 method: 'POST',
                 dataType: 'json',
@@ -37,7 +38,35 @@ BX.ready(function() {
 
         AjaxSend('dump.php', queryString);
     });
+
+    /**
+     * Проверить текущий статус переноса резервных копий
+     */
+    setInterval(checkExportStatus, 10000);
 });
+
+/**
+ * Проверить текущий статус переноса резервных копий
+ */
+function checkExportStatus()
+{
+    BX.ajax({
+        url: '/local/modules/' + admin_module_name + '/tools/check_status.php',
+        data: {},
+        method: 'POST',
+        dataType: 'json',
+        async: true,
+        onsuccess: function(data) {
+            console.log(Number(data));
+            if (Number(data) > 0) {
+                $('.success_message_backup').text('Прогресс: ' + data + '%');
+            }
+        },
+        onfailure: function() {
+
+        }
+    });
+}
 
 var counter_started = false;
 var counter_sec = 0;
