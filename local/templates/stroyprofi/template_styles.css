@@ -1326,6 +1326,12 @@ body .btn-link {
     box-sizing: border-box;
     margin-top: 15px;
 }
+.marquee span a {
+    color: #f16522;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
 
 .marquee span {
     display: inline-block;

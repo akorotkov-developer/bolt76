@@ -14,7 +14,6 @@ global $APPLICATION;
 // Установка заголовка
 $APPLICATION->SetPageProperty('title', $arResult['NAME']);
 
-
 if (isset($templateData['TEMPLATE_THEME']))
 {
 	$APPLICATION->SetAdditionalCSS($templateFolder.'/themes/'.$templateData['TEMPLATE_THEME'].'/style.css');
