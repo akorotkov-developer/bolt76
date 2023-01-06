@@ -2,6 +2,7 @@
 
 namespace StrprofiBackupCloud\Controller;
 
+use PackageLoader\PackageLoader;
 use Arhitector\Yandex\Disk;
 use Arhitector\Yandex\Disk\Resource\Closed;
 use Bitrix\Main\Config\Option;
@@ -9,9 +10,7 @@ use League\Event\Event;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use StrprofiBackupCloud\StorageTable;
-
-// TODO НЕ ЗАБЫТЬ УБРАТЬ ЭТО ОТСЮДА!!!
-require($_SERVER['DOCUMENT_ROOT']  . '/local/include/vendor/autoload.php');
+use StrprofiBackupCloud\Option as ModuleOption;
 
 /**
  * Класс для загрузки данных на Яндекс.Диск
@@ -23,12 +22,6 @@ class YaDisk
      * @var string
      */
     private string $token;
-
-    /**
-     * Данные бэкапов
-     * @var array
-     */
-    private array $rowData;
 
     /**
      * Количество ссылок на архивы бэкапов, используется для получения процента завершения загрузки
@@ -56,7 +49,44 @@ class YaDisk
         // Отключаем прерывание скрипта при отключении клиента
         ignore_user_abort(true);
 
+        // Подключить все зависимости для Яндекс SDK
+        $this->loadSDK();
+
         $this->token = Option::get(self::ADMIN_MODULE_NAME, "yandextoken");
+    }
+
+    /**
+     * Подключение SDK Яндекса и его зависимостей
+     */
+    private function loadSDK()
+    {
+        $homeDir = $_SERVER['DOCUMENT_ROOT'] . '/local/modules/' . ModuleOption::ADMIN_MODULE_NAME . '/lib/SDK/';
+        $requires = [
+            $homeDir . 'arhitector/yandex',
+            $homeDir . 'arhitector/requires/laminas/laminas-diactoros',
+            $homeDir . 'arhitector/requires/laminas/laminas-escaper',
+            $homeDir . 'arhitector/requires/league/event',
+            $homeDir . 'arhitector/requires/php-http/client-common',
+            $homeDir . 'arhitector/requires/php-http/curl-client',
+            $homeDir . 'arhitector/requires/php-http/message',
+            $homeDir . 'arhitector/requires/php-http/httplug',
+            $homeDir . 'arhitector/requires/php-http/message-factory',
+            $homeDir . 'arhitector/requires/php-http/promise',
+            $homeDir . 'arhitector/requires/psr/http-client',
+            $homeDir . 'arhitector/requires/psr/http-factory',
+            $homeDir . 'arhitector/requires/psr/http-message',
+            $homeDir . 'arhitector/requires/psr/simple-cache',
+            $homeDir . 'arhitector/requires/symfony/options-resolver',
+            $homeDir . 'arhitector/requires/symfony/deprecation-contracts',
+            $homeDir . 'arhitector/requires/symfony/polyfill-mbstring',
+            $homeDir . 'arhitector/requires/symfony/polyfill-php73',
+            $homeDir . 'arhitector/requires/symfony/polyfill-php80',
+        ];
+
+        foreach ($requires as $requirePath) {
+            $loader = new PackageLoader();
+            $loader->load($requirePath);
+        }
     }
 
     /**

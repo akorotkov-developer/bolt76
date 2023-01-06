@@ -32,9 +32,16 @@ class PackageLoader
 
     public function loadFiles($files){
         foreach($files as $file){
-            $fullpath = $this->dir."/".$file;
-            if(file_exists($fullpath)){
-                include_once($fullpath);
+            $includeFiles = implode(',', get_included_files());
+
+            $moduleDirTree = explode('/', $this->dir);
+            $moduleDirName = $moduleDirTree[count($moduleDirTree) - 1];
+
+            if (strpos($includeFiles, $moduleDirName . '/' . $file) === false) {
+                $fullpath = $this->dir . "/" . $file;
+                if (file_exists($fullpath)) {
+                    include_once($fullpath);
+                }
             }
         }
     }

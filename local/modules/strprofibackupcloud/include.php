@@ -1,5 +1,4 @@
 <?php
-use PackageLoader\PackageLoader;
 use Bitrix\Main\Loader;
 
 /**
@@ -56,7 +55,7 @@ Loader::registerAutoloadClasses(
 Loader::registerAutoloadClasses(
     'strprofibackupcloud',
     [
-        'StrprofiBackupCloud\\Controller\\YaDisk' => 'lib/Contoroller/YaDisk.php',
+        'StrprofiBackupCloud\\Controller\\YaDisk' => 'lib/Controller/YaDisk.php',
     ]
 );
 Loader::registerAutoLoadClasses(null, [
@@ -68,38 +67,6 @@ Loader::registerAutoloadClasses(
         'PackageLoader\\PackageLoader' => 'lib/PackageLoader.php',
     ]
 );
-
-
-/**
- * Подключение SDK и зависимостей
- */
-
-$homeDir = __DIR__ . '/lib/SDK/';
-$requires = [
-    $homeDir . 'arhitector/yandex',
-    $homeDir . 'arhitector/requires/laminas/laminas-diactoros',
-    $homeDir . 'arhitector/requires/laminas/laminas-escaper',
-    $homeDir . 'arhitector/requires/league/event',
-    $homeDir . 'arhitector/requires/php-http/client-common',
-    $homeDir . 'arhitector/requires/php-http/curl-client',
-    $homeDir . 'arhitector/requires/php-http/message',
-    $homeDir . 'arhitector/requires/php-http/httplug',
-    $homeDir . 'arhitector/requires/php-http/message-factory',
-    $homeDir . 'arhitector/requires/psr/http-client',
-    $homeDir . 'arhitector/requires/psr/http-factory',
-    $homeDir . 'arhitector/requires/psr/http-message',
-    $homeDir . 'arhitector/requires/psr/simple-cache',
-    $homeDir . 'arhitector/requires/symfony/options-resolver',
-    $homeDir . 'arhitector/requires/symfony/deprecation-contracts',
-    $homeDir . 'arhitector/requires/symfony/polyfill-mbstring',
-    $homeDir . 'arhitector/requires/symfony/polyfill-php73',
-    $homeDir . 'arhitector/requires/symfony/polyfill-php80',
-];
-
-foreach ($requires as $requirePath) {
-    $loader = new PackageLoader();
-    $loader->load($requirePath);
-}
 
 /**
  * Подключение js файлов
