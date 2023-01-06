@@ -1,55 +1,105 @@
 <?php
+use PackageLoader\PackageLoader;
+use Bitrix\Main\Loader;
+
 /**
  * Подключение классов модуля
  */
-Bitrix\Main\Loader::registerAutoloadClasses(
+Loader::registerAutoloadClasses(
     'strprofibackupcloud',
     [
         'StrprofiBackupCloud\\Backup' => 'lib/Backup.php',
     ]
 );
-Bitrix\Main\Loader::registerAutoloadClasses(
+Loader::registerAutoloadClasses(
     'strprofibackupcloud',
     [
         'StrprofiBackupCloud\\Option' => 'lib/Option.php',
     ]
 );
-Bitrix\Main\Loader::registerAutoloadClasses(
+Loader::registerAutoloadClasses(
     'strprofibackupcloud',
     [
         'StrprofiBackupCloud\\StorageTable' => 'lib/StorageTable.php',
     ]
 );
-Bitrix\Main\Loader::registerAutoloadClasses(
+Loader::registerAutoloadClasses(
     'strprofibackupcloud',
     [
         'StrprofiBackupCloud\\UploadActivity' => 'lib/UploadActivity.php',
     ]
 );
-Bitrix\Main\Loader::registerAutoloadClasses(
+Loader::registerAutoloadClasses(
     'strprofibackupcloud',
     [
         'StrprofiBackupCloud\\UploadByAgent' => 'lib/UploadByAgent.php',
     ]
 );
-Bitrix\Main\Loader::registerAutoloadClasses(
+Loader::registerAutoloadClasses(
     'strprofibackupcloud',
     [
         'StrprofiBackupCloud\\LocalBackup' => 'lib/LocalBackup.php',
     ]
 );
-Bitrix\Main\Loader::registerAutoloadClasses(
+Loader::registerAutoloadClasses(
     'strprofibackupcloud',
     [
         'StrprofiBackupCloud\\Uploader' => 'lib/Uploader.php',
     ]
 );
-Bitrix\Main\Loader::registerAutoloadClasses(
+Loader::registerAutoloadClasses(
+    'strprofibackupcloud',
+    [
+        'StrprofiBackupCloud\\CloudFactory' => 'lib/CloudFactory.php',
+    ]
+);
+Loader::registerAutoloadClasses(
     'strprofibackupcloud',
     [
         'StrprofiBackupCloud\\Controller\\YaDisk' => 'lib/Contoroller/YaDisk.php',
     ]
 );
+Loader::registerAutoLoadClasses(null, [
+    'Strprofi\Backup' => '/local/php_interface/include/lib/backup/Backup.php'
+]);
+Loader::registerAutoloadClasses(
+    'strprofibackupcloud',
+    [
+        'PackageLoader\\PackageLoader' => 'lib/PackageLoader.php',
+    ]
+);
+
+
+/**
+ * Подключение SDK и зависимостей
+ */
+
+$homeDir = __DIR__ . '/lib/SDK/';
+$requires = [
+    $homeDir . 'arhitector/yandex',
+    $homeDir . 'arhitector/requires/laminas/laminas-diactoros',
+    $homeDir . 'arhitector/requires/laminas/laminas-escaper',
+    $homeDir . 'arhitector/requires/league/event',
+    $homeDir . 'arhitector/requires/php-http/client-common',
+    $homeDir . 'arhitector/requires/php-http/curl-client',
+    $homeDir . 'arhitector/requires/php-http/message',
+    $homeDir . 'arhitector/requires/php-http/httplug',
+    $homeDir . 'arhitector/requires/php-http/message-factory',
+    $homeDir . 'arhitector/requires/psr/http-client',
+    $homeDir . 'arhitector/requires/psr/http-factory',
+    $homeDir . 'arhitector/requires/psr/http-message',
+    $homeDir . 'arhitector/requires/psr/simple-cache',
+    $homeDir . 'arhitector/requires/symfony/options-resolver',
+    $homeDir . 'arhitector/requires/symfony/deprecation-contracts',
+    $homeDir . 'arhitector/requires/symfony/polyfill-mbstring',
+    $homeDir . 'arhitector/requires/symfony/polyfill-php73',
+    $homeDir . 'arhitector/requires/symfony/polyfill-php80',
+];
+
+foreach ($requires as $requirePath) {
+    $loader = new PackageLoader();
+    $loader->load($requirePath);
+}
 
 /**
  * Подключение js файлов

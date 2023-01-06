@@ -14,13 +14,6 @@ use Bitrix\Main\Application;
 use Bitrix\Main\Loader;
 use StrprofiBackupCloud\UploadActivity;
 
-// TODO УБРАТЬ ЭТО!!! ПЕРЕНЕСТИ КЛАСС В МОДУЛЬ !!!
-require($_SERVER['DOCUMENT_ROOT']  . '/local/include/vendor/autoload.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/classes/general/backup.php");
-Bitrix\Main\Loader::registerAutoLoadClasses(null, [
-    'Strprofi\Backup' => '/local/php_interface/include/lib/backup/Backup.php'
-]);
-
 $request = Application::getInstance()->getContext()->getRequest();
 
 Loader::includeModule('strprofibackupcloud');
@@ -32,12 +25,4 @@ if ($request->getPost('action') && $request->getPost('action') == 'start_upload'
 
     $activity = new UploadActivity();
     $activity->startUpload($diskType);
-
-/*    $obBackup = new StrProfiBackup();
-    $token = $obBackup->getToken();
-
-    $obBackup = new Backup($token);
-
-    // TODO тестовая отправка
-    $obBackup->uploadToYaDisk(46);*/
 }

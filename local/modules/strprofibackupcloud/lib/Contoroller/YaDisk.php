@@ -44,11 +44,11 @@ class YaDisk
     /**
      * Корневая папка для бэкапов модуля
      */
-    const ROOT_FOLDER_BACKUP = '/Bitrix backups';
+    const ROOT_FOLDER_BACKUP = '/BackUp strprofi.ru';
 
     const ADMIN_MODULE_NAME = 'strprofibackupcloud';
 
-    public function __construct($rowData)
+    public function __construct()
     {
         // Уберем ограничение времени выполнения скрипта
         set_time_limit(0);
@@ -57,28 +57,28 @@ class YaDisk
         ignore_user_abort(true);
 
         $this->token = Option::get(self::ADMIN_MODULE_NAME, "yandextoken");
-        $this->rowData = $rowData;
     }
 
     /**
      * Перенос бэкапов на Яндекс.Диск
+     * @param $rowData
+     * @throws \Bitrix\Main\ArgumentOutOfRangeException
      */
-    public function transferBackup()
+    public function transferBackup(array $rowData)
     {
-        if ($this->rowData !== null && (int)$this->rowData['PERCENT'] < 100) {
+        if ((int)$rowData['PERCENT'] < 100) {
             // ID Текущей операции
-            Option::set(self::ADMIN_MODULE_NAME, "CUR_TASK_ID", $this->rowData['ID']);
+            Option::set(self::ADMIN_MODULE_NAME, "CUR_TASK_ID", $rowData['ID']);
 
-            $data = $this->rowData['DATA'];
-
-            \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Запущен перенос копий на Яндекс Диск'], '', 'log.txt');
+            $data = $rowData['DATA'];
 
             if (count($data) > 0) {
                 $backupInfo = $this->getBackUpInfo($data);
 
                 foreach ($backupInfo as $backUpItem) {
                     foreach ($backUpItem['LINKS'] as $link) {
-                        $this->uploadFileToYaDisk($link, $backUpItem['NAME']);
+                        $this->uploadFileToYaDisk($link, $backUpItem['NAME'], $rowData['ID']);
+                        sleep(2);
                     }
                 }
             }
@@ -88,7 +88,7 @@ class YaDisk
     /**
      * Загрузить файл на яндекс диск
      */
-    public function uploadFileToYaDisk($link, $backUpName)
+    public function uploadFileToYaDisk($link, $backUpName, $storageFieldId)
     {
         // передать OAuth-токен зарегистрированного приложения.
         $disk = new \Arhitector\Yandex\Disk($this->token);
@@ -99,13 +99,13 @@ class YaDisk
             $resource->create();
         }
 
-        $resource = $disk->getResource(self::ROOT_FOLDER_BACKUP . '/' . SITE_SERVER_NAME);
+        $resource = $disk->getResource(self::ROOT_FOLDER_BACKUP);
         if (!$resource->has()) {
             $resource->create();
         }
 
         // Создаем папку для резервной копии
-        $folderToCopy = self::ROOT_FOLDER_BACKUP . '/' . SITE_SERVER_NAME . '/' . $backUpName;
+        $folderToCopy = self::ROOT_FOLDER_BACKUP . '/' . $backUpName;
         $resource = $disk->getResource($folderToCopy);
         if (!$resource->has()) {
             $resource->create();
@@ -120,11 +120,11 @@ class YaDisk
         // Рекурсивная запись файлов на Яндекс.Диск
         $selfOb = $this;
         if (!$resource->has()) {
-            $disk->addListener('uploaded', function (Event $event, Closed $resource, Disk $disk, StreamInterface $uploadedStream, ResponseInterface $response) use ($selfOb, $rowId, $data) {
+            $disk->addListener('uploaded', function (Event $event, Closed $resource, Disk $disk, StreamInterface $uploadedStream, ResponseInterface $response) use ($selfOb, $storageFieldId) {
                 $this->uploadedLinks++;
 
                 // Записываем процент и ссылки в таблицу StorageTable
-                $selfOb->saveDataInStorage();
+                $selfOb->saveDataInStorage($storageFieldId);
             });
 
             $localFilePath = $_SERVER['DOCUMENT_ROOT'] . $link;
@@ -137,12 +137,12 @@ class YaDisk
      * Сохранение данных в Storage
      * @throws \Exception
      */
-    private function saveDataInStorage()
+    private function saveDataInStorage($id)
     {
         $percent = round($this->uploadedLinks * 100 / $this->totalLinks, 0);
 
         StorageTable::update(
-            $this->rowData['ID'],
+            $id,
             [
                 'PERCENT' => $percent
             ]

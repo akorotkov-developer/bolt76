@@ -4,6 +4,7 @@ namespace StrprofiBackupCloud;
 
 use CAgent;
 use StrprofiBackupCloud\Controller\YaDisk;
+use StrprofiBackupCloud\CloudFactory;
 
 /**
  * Класс для работы с загрузкой файлов на внешний диск, работающих на агентах
@@ -13,7 +14,7 @@ class UploadActivity
     /**
      * Запуск переноса резервных копий
      */
-    public function startUpload(string $diskType)
+    public function startUpload(string $diskType): void
     {
         // Получаем список локальных резервных копий
         $localBackup = new LocalBackup();
@@ -81,23 +82,19 @@ class UploadActivity
     {
         $rowData = StorageTable::getRowById($rowId);
 
-        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Попали сюда'], '', 'log.txt');
-        \Bitrix\Main\Diag\Debug::dumpToFile(['$rowId' => $rowId], '', 'log.txt');
-
-        switch ($rowData['DISK_TYPE']) {
-            case 'yadisk':
-                $controller = new YaDisk($rowData);
-                break;
-        }
-
-        $controller->transferBackup();
+        $controller = CloudFactory::factory($rowData['DISK_TYPE']);
+        $controller->transferBackup($rowData);
     }
 
     /**
      * Проверить статус текущей загрузки
      * @param int $rowId
+     * @return string
+     * @throws \Bitrix\Main\ArgumentException
+     * @throws \Bitrix\Main\ObjectPropertyException
+     * @throws \Bitrix\Main\SystemException
      */
-    public function checkUploadStatus(int $rowId)
+    public function checkUploadStatus(int $rowId): string
     {
         $rowData = StorageTable::getRowById($rowId);
 
