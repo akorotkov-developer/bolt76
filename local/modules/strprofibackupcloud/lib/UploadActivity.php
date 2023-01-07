@@ -3,13 +3,13 @@
 namespace StrprofiBackupCloud;
 
 use CAgent;
-use StrprofiBackupCloud\Controller\YaDisk;
-use StrprofiBackupCloud\CloudFactory;
+use StrprofiBackupCloud\Controller\Formats\BaseCloud;
+use StrprofiBackupCloud\Interfaces\IUploadActivity;
 
 /**
  * Класс для работы с загрузкой файлов на внешний диск, работающих на агентах
  */
-class UploadActivity
+class UploadActivity implements IUploadActivity
 {
     /**
      * Запуск переноса резервных копий
@@ -55,7 +55,7 @@ class UploadActivity
     private function addAgent($rowId)
     {
         CAgent::addAgent(
-            '\StrprofiBackupCloud\UploadByAgent::uploadToExternalDrive(' . $rowId . ');',
+            '\StrprofiBackupCloud\UploadByAgent::upload(' . $rowId . ');',
             'strprofibackupcloud',
             'Y',
             30,
@@ -73,16 +73,11 @@ class UploadActivity
 
     /**
      * Загрузка бэкапов на внешний диск, по параметрам из записи в StorageTable c id = $rowId
-     * @param int $rowId
-     * @throws \Bitrix\Main\ArgumentException
-     * @throws \Bitrix\Main\ObjectPropertyException
-     * @throws \Bitrix\Main\SystemException
+     * @param BaseCloud $controller
+     * @param array $rowData
      */
-    public function uploadToExternalDrive(int $rowId)
+    public function uploadToExternalDrive(BaseCloud $controller, array $rowData): void
     {
-        $rowData = StorageTable::getRowById($rowId);
-
-        $controller = CloudFactory::factory($rowData['DISK_TYPE']);
         $controller->transferBackup($rowData);
     }
 

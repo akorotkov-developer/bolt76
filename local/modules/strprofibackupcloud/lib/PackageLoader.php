@@ -1,6 +1,6 @@
 <?php
 
-namespace PackageLoader;
+namespace StrprofiBackupCloud;
 
 /**
  * Класс для загрузки библиотек composer

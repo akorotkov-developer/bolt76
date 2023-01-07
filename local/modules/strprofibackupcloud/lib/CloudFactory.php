@@ -4,6 +4,7 @@ namespace StrprofiBackupCloud;
 
 use StrprofiBackupCloud\Controller;
 use Exception;
+use StrprofiBackupCloud\Controller\Formats\BaseCloud;
 
 /**
  * Класс для определения внешнего накопителя для переноса резервных копий
@@ -13,10 +14,10 @@ class CloudFactory
     /**
      * Возвращает контроллер для внешнего накопителя
      * @param string $diskType
-     * @return Controller\YaDisk
+     * @return BaseCloud
      * @throws Exception
      */
-    public static function factory(string $diskType)
+    public static function factory(string $diskType): BaseCloud
     {
         switch ($diskType) {
             case 'yadisk':

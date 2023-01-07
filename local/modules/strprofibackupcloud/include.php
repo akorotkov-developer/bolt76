@@ -58,6 +58,42 @@ Loader::registerAutoloadClasses(
         'StrprofiBackupCloud\\Controller\\YaDisk' => 'lib/Controller/YaDisk.php',
     ]
 );
+Loader::registerAutoloadClasses(
+    'strprofibackupcloud',
+    [
+        'StrprofiBackupCloud\\Interfaces\\ILocalBackup' => 'lib/Interfaces/ILocalBackup.php',
+    ]
+);
+Loader::registerAutoloadClasses(
+    'strprofibackupcloud',
+    [
+        'StrprofiBackupCloud\\Interfaces\\IUploadActivity' => 'lib/Interfaces/IUploadActivity.php',
+    ]
+);
+Loader::registerAutoloadClasses(
+    'strprofibackupcloud',
+    [
+        'StrprofiBackupCloud\\Interfaces\\IBaseCloud' => 'lib/Interfaces/IBaseCloud.php',
+    ]
+);
+Loader::registerAutoloadClasses(
+    'strprofibackupcloud',
+    [
+        'StrprofiBackupCloud\\Interfaces\\IUploadByAgent' => 'lib/Interfaces/IUploadByAgent.php',
+    ]
+);
+Loader::registerAutoloadClasses(
+    'strprofibackupcloud',
+    [
+        'StrprofiBackupCloud\\Interfaces\\IOption' => 'lib/Interfaces/IOption.php',
+    ]
+);
+Loader::registerAutoloadClasses(
+    'strprofibackupcloud',
+    [
+        'StrprofiBackupCloud\\Controller\\Formats\\BaseCloud' => 'lib/Controller/Formats/BaseCloud.php',
+    ]
+);
 Loader::registerAutoLoadClasses(null, [
     'Strprofi\Backup' => '/local/php_interface/include/lib/backup/Backup.php'
 ]);

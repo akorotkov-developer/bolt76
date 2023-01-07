@@ -3,18 +3,33 @@
 namespace StrprofiBackupCloud;
 
 use Bitrix\Main\Config\Option as ConfigOption;
+use StrprofiBackupCloud\Interfaces\IOption;
 
-class Option
+/**
+ * Класс для работы с опциями модуля
+ */
+class Option implements IOption
 {
     const ADMIN_MODULE_NAME = 'strprofibackupcloud';
 
-    public function getOptions(array $options)
+    /**
+     * Получить значение опции
+     * @param string $option
+     * @return string
+     */
+    public function getOption(string $option): string
     {
-
+        return ConfigOption::get(self::ADMIN_MODULE_NAME, $option);
     }
 
-    public function setOptions(array $options)
+    /**
+     * Установить значение опции
+     * @param string $name
+     * @param string $value
+     * @throws \Bitrix\Main\ArgumentOutOfRangeException
+     */
+    public function setOption(string $name, string $value)
     {
-
+        ConfigOption::set(self::ADMIN_MODULE_NAME, $name, $value);
     }
 }

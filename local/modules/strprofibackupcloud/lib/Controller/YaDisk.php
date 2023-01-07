@@ -2,20 +2,20 @@
 
 namespace StrprofiBackupCloud\Controller;
 
-use PackageLoader\PackageLoader;
+use StrprofiBackupCloud\PackageLoader;
 use Arhitector\Yandex\Disk;
 use Arhitector\Yandex\Disk\Resource\Closed;
-use Bitrix\Main\Config\Option;
 use League\Event\Event;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use StrprofiBackupCloud\StorageTable;
 use StrprofiBackupCloud\Option as ModuleOption;
+use StrprofiBackupCloud\LocalBackup;
+use StrprofiBackupCloud\Controller\Formats\BaseCloud;
 
 /**
  * Класс для загрузки данных на Яндекс.Диск
  */
-class YaDisk
+class YaDisk extends BaseCloud
 {
     /**
      * Токен для доступа к Яндекс.Диск
@@ -35,11 +35,15 @@ class YaDisk
     private int $uploadedLinks = 0;
 
     /**
+     * Экземпляр класса ModuleOption
+     * @var ModuleOption
+     */
+    private ModuleOption $option;
+
+    /**
      * Корневая папка для бэкапов модуля
      */
     const ROOT_FOLDER_BACKUP = '/BackUp strprofi.ru';
-
-    const ADMIN_MODULE_NAME = 'strprofibackupcloud';
 
     public function __construct()
     {
@@ -52,7 +56,8 @@ class YaDisk
         // Подключить все зависимости для Яндекс SDK
         $this->loadSDK();
 
-        $this->token = Option::get(self::ADMIN_MODULE_NAME, "yandextoken");
+        $this->option = new ModuleOption();
+        $this->token = $this->option->getOption("yandextoken");
     }
 
     /**
@@ -91,19 +96,24 @@ class YaDisk
 
     /**
      * Перенос бэкапов на Яндекс.Диск
-     * @param $rowData
+     * @param array $rowData
      * @throws \Bitrix\Main\ArgumentOutOfRangeException
      */
-    public function transferBackup(array $rowData)
+    public function transferBackup(array $rowData): void
     {
         if ((int)$rowData['PERCENT'] < 100) {
-            // ID Текущей операции
-            Option::set(self::ADMIN_MODULE_NAME, "CUR_TASK_ID", $rowData['ID']);
+            // Установим ID текущей операции, чтобы потом можно было определить прогресс
+            // или продолжить операцию в случае падения скрипта
+            $this->option->setOption("CUR_TASK_ID", $rowData['ID']);
 
             $data = $rowData['DATA'];
 
             if (count($data) > 0) {
-                $backupInfo = $this->getBackUpInfo($data);
+                $localBackup = new LocalBackup();
+                $backupInfo = $localBackup->getBackUpInfo($data);
+                $this->totalLinks = $backupInfo['TOTAL_LINKS'];
+
+                die('Y');
 
                 foreach ($backupInfo as $backUpItem) {
                     foreach ($backUpItem['LINKS'] as $link) {
@@ -117,11 +127,14 @@ class YaDisk
 
     /**
      * Загрузить файл на яндекс диск
+     * @param $link
+     * @param $backUpName
+     * @param $rowId
      */
-    public function uploadFileToYaDisk($link, $backUpName, $storageFieldId)
+    private function uploadFileToYaDisk($link, $backUpName, $rowId)
     {
         // передать OAuth-токен зарегистрированного приложения.
-        $disk = new \Arhitector\Yandex\Disk($this->token);
+        $disk = new Disk($this->token);
 
         // Получаем папку с backup ами или создаем папку
         $resource = $disk->getResource(self::ROOT_FOLDER_BACKUP);
@@ -147,96 +160,18 @@ class YaDisk
 
         $resource = $disk->getResource($folderToCopy . '/' . $fileName);
 
-        // Рекурсивная запись файлов на Яндекс.Диск
+        // Запись файлов на Яндекс.Диск
         $selfOb = $this;
         if (!$resource->has()) {
-            $disk->addListener('uploaded', function (Event $event, Closed $resource, Disk $disk, StreamInterface $uploadedStream, ResponseInterface $response) use ($selfOb, $storageFieldId) {
+            $disk->addListener('uploaded', function (Event $event, Closed $resource, Disk $disk, StreamInterface $uploadedStream, ResponseInterface $response) use ($selfOb, $rowId) {
                 $this->uploadedLinks++;
 
                 // Записываем процент и ссылки в таблицу StorageTable
-                $selfOb->saveDataInStorage($storageFieldId);
+                $selfOb->setProgress($this->uploadedLinks, $this->totalLinks, $rowId);
             });
 
             $localFilePath = $_SERVER['DOCUMENT_ROOT'] . $link;
             $resource->upload($localFilePath); // Записываем файл на яндекс диск
         }
-    }
-
-    // TODO вынести эту функцию в отдельный класс (Такой метод должен быть во всех дисках)
-    /**
-     * Сохранение данных в Storage
-     * @throws \Exception
-     */
-    private function saveDataInStorage($id)
-    {
-        $percent = round($this->uploadedLinks * 100 / $this->totalLinks, 0);
-
-        StorageTable::update(
-            $id,
-            [
-                'PERCENT' => $percent
-            ]
-        );
-    }
-
-    // TODO вынести эту функцию в отдельный класс
-    /**
-     * Получаем информацию о бэкапах
-     * @param array $data
-     * @return array
-     */
-    private function getBackUpInfo(array $data): array
-    {
-        $backInfo = [];
-
-        foreach ($data as $key => $backupItem) {
-            // Получаем список файлов backup а
-            $path = BX_ROOT . "/backup";
-            $name = $path . '/' . $backupItem['ID'];
-
-            $arLink = [];
-            while (file_exists($_SERVER['DOCUMENT_ROOT'] . $name)) {
-                $arLink[] = htmlspecialcharsbx($name);
-                $name = $this->getNextName($name);
-            }
-
-            $backInfo[$key] = [
-                'LINKS' => $arLink,
-                'TOTAL_ITEMS' => count($arLink),
-                'NAME' => $backupItem['NAME']
-            ];
-
-            // Общее количество ссылок во всех резервных копиях
-            // для определения прогресса загрузки
-            $this->totalLinks += count($arLink);
-        }
-
-        return $backInfo;
-    }
-
-    // TODO вынести эту функцию в отдельный класс
-
-    /**
-     * Получить имя файла
-     * @param $file
-     */
-    private function getNextName($file)
-    {
-        if (!$file)
-            $file = $this->file;
-
-        static $CACHE;
-        $c = &$CACHE[$file];
-
-        if (!$c) {
-            $l = strrpos($file, '.');
-            $num = substr($file, $l + 1);
-            if (is_numeric($num))
-                $file = substr($file, 0, $l + 1) . ++$num;
-            else
-                $file .= '.1';
-            $c = $file;
-        }
-        return $c;
     }
 }
