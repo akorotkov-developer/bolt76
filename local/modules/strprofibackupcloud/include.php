@@ -8,99 +8,21 @@ Loader::registerAutoloadClasses(
     'strprofibackupcloud',
     [
         'StrprofiBackupCloud\\Backup' => 'lib/Backup.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
         'StrprofiBackupCloud\\Option' => 'lib/Option.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
         'StrprofiBackupCloud\\StorageTable' => 'lib/StorageTable.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
         'StrprofiBackupCloud\\UploadActivity' => 'lib/UploadActivity.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
         'StrprofiBackupCloud\\UploadByAgent' => 'lib/UploadByAgent.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
         'StrprofiBackupCloud\\LocalBackup' => 'lib/LocalBackup.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
         'StrprofiBackupCloud\\Uploader' => 'lib/Uploader.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
         'StrprofiBackupCloud\\CloudFactory' => 'lib/CloudFactory.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
+        'StrprofiBackupCloud\\PackageLoader' => 'lib/PackageLoader.php',
         'StrprofiBackupCloud\\Controller\\YaDisk' => 'lib/Controller/YaDisk.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
-        'StrprofiBackupCloud\\Interfaces\\ILocalBackup' => 'lib/Interfaces/ILocalBackup.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
-        'StrprofiBackupCloud\\Interfaces\\IUploadActivity' => 'lib/Interfaces/IUploadActivity.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
-        'StrprofiBackupCloud\\Interfaces\\IBaseCloud' => 'lib/Interfaces/IBaseCloud.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
-        'StrprofiBackupCloud\\Interfaces\\IUploadByAgent' => 'lib/Interfaces/IUploadByAgent.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
-        'StrprofiBackupCloud\\Interfaces\\IOption' => 'lib/Interfaces/IOption.php',
-    ]
-);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
         'StrprofiBackupCloud\\Controller\\Formats\\BaseCloud' => 'lib/Controller/Formats/BaseCloud.php',
-    ]
-);
-Loader::registerAutoLoadClasses(null, [
-    'Strprofi\Backup' => '/local/php_interface/include/lib/backup/Backup.php'
-]);
-Loader::registerAutoloadClasses(
-    'strprofibackupcloud',
-    [
-        'PackageLoader\\PackageLoader' => 'lib/PackageLoader.php',
+        'StrprofiBackupCloud\\Interfaces\\ILocalBackup' => 'lib/Interfaces/ILocalBackup.php',
+        'StrprofiBackupCloud\\Interfaces\\IUploadActivity' => 'lib/Interfaces/IUploadActivity.php',
+        'StrprofiBackupCloud\\Interfaces\\IBaseCloud' => 'lib/Interfaces/IBaseCloud.php',
+        'StrprofiBackupCloud\\Interfaces\\IUploadByAgent' => 'lib/Interfaces/IUploadByAgent.php',
+        'StrprofiBackupCloud\\Interfaces\\IOption' => 'lib/Interfaces/IOption.php',
     ]
 );
 

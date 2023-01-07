@@ -113,8 +113,6 @@ class YaDisk extends BaseCloud
                 $backupInfo = $localBackup->getBackUpInfo($data);
                 $this->totalLinks = $backupInfo['TOTAL_LINKS'];
 
-                die('Y');
-
                 foreach ($backupInfo as $backUpItem) {
                     foreach ($backUpItem['LINKS'] as $link) {
                         $this->uploadFileToYaDisk($link, $backUpItem['NAME'], $rowData['ID']);
