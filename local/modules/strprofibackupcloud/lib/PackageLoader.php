@@ -9,12 +9,18 @@ class PackageLoader
 {
     public $dir;
 
+    /**
+     * @return mixed
+     */
     public function getComposerFile()
     {
         return json_decode(file_get_contents($this->dir."/composer.json"), 1);
     }
 
-    public function load($dir)
+    /**
+     * @param string $dir
+     */
+    public function load(string $dir): void
     {
         $this->dir = $dir;
 
@@ -30,7 +36,11 @@ class PackageLoader
         }
     }
 
-    public function loadFiles($files){
+    /**
+     * @param array $files
+     */
+    public function loadFiles(array $files): void
+    {
         foreach($files as $file){
             $includeFiles = implode(',', get_included_files());
 
@@ -46,17 +56,27 @@ class PackageLoader
         }
     }
 
-    public function loadPSR4($namespaces)
+    /**
+     * @param array $namespaces
+     */
+    public function loadPSR4(array $namespaces): void
     {
         $this->loadPSR($namespaces, true);
     }
 
-    public function loadPSR0($namespaces)
+    /**
+     * @param array $namespaces
+     */
+    public function loadPSR0(array $namespaces): void
     {
         $this->loadPSR($namespaces, false);
     }
 
-    public function loadPSR($namespaces, $psr4)
+    /**
+     * @param array $namespaces
+     * @param bool $psr4
+     */
+    public function loadPSR(array $namespaces, bool $psr4): void
     {
         $dir = $this->dir;
 
