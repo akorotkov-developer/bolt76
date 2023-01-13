@@ -52,6 +52,7 @@
 
 
 
+<p><button class="edit_marquee">Бегущая строка</button></p>
 <p><button class="download_excel">Скачать прайс-лист (Excel)</button></p>
 <p><button class="download">Скачать прайс-лист</button></p>
 <p><button class="start_import">Запустить импорт</button></p>
@@ -59,6 +60,9 @@
 <p><a href="/import/logs/log_import.txt" class="download_log_import" download="">Скачать лог импорта</a></p>
 
 <script type="text/javascript">
+    $('.edit_marquee').click(function() {
+        window.open("/bitrix/admin/fileman_file_edit.php?path=%2Flocal%2Finclude_file%2Ftop_marquee.php&site=s1&lang=ru&&filter=Y&set_filter=Y");
+    });
     $('.start_import').click(function () {
         window.open("/import/index2.php?start=gogo", '');
     });
