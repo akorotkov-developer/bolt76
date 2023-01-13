@@ -31,7 +31,8 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
     <script type="text/javascript" src="/js/functions.js?123"></script>
     <script type="text/javascript" src="/js/jquery.tools.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
-    <link rel="icon" href="/favicon.ico?1" type="image/ico">
+    <!--<link rel="icon" href="/favicon.ico?1" type="image/ico">-->
+    <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
 
     <script type="text/javascript" src='<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick.js'></script>
     <script type="text/javascript" src="<?= SITE_TEMPLATE_PATH?>/script.js"></script>
