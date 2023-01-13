@@ -32,11 +32,28 @@ BX.ready(function() {
     /**
      * Старт резервного копирования
      */
-    BX.bind(BX('start_reserv_copy'), 'click', function() {
+    /*BX.bind(BX('start_reserv_copy'), 'click', function() {
         var queryString = '?lang=ru&process=Y&action=start&dump_bucket_id=0&dump_max_exec_time=20&dump_max_exec_time_sleep=1&dump_archive_size_limit=100&dump_integrity_check=Y&dump_file_public=Y&dump_file_kernel=Y&skip_mask=Y&arMask[]=%2Fimport%2F.cache&arMask[]=%2Fbitrix%2Fbackup&arMask[]=%2Fupload%2Fresize_cache&arMask[]=%2Fupload%2Ftmp&arMask[]=%2Fimport%2Fimg&arMask[]=&max_file_size=0&dump_base=Y&sessid=1e0b402750f2452b7eced6d4ee9e83f4';
         queryString += '&' + bitrix_sesion_id;
 
         AjaxSend('dump.php', queryString);
+    });*/
+    BX.bind(BX('start_reserv_copy'), 'click', function() {
+        BX.ajax({
+            url: '/local/modules/' + admin_module_name + '/tools/run_upload.php',
+            data: {
+                'action': 'rezerv_copy',
+            },
+            method: 'POST',
+            dataType: 'json',
+            async: true,
+            onsuccess: function(data) {
+                console.log(data, 'data');
+            },
+            onfailure: function() {
+
+            }
+        });
     });
 
     /**
@@ -79,7 +96,6 @@ function StartCounter() {
 
 // Стоп счетчика
 function StopCounter(result) {
-    counter_started = false;
     if (result) {
         var regs;
         if (regs = /<!--([0-9]+)-->/.exec(result)) {
@@ -103,7 +119,9 @@ function AjaxSend(url, data) {
 
     StartCounter();
     CHttpRequest.Action = function (result) {
+
         StopCounter(result);
+
         if (stop) {
             EndDump();
         }

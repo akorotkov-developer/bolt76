@@ -1,7 +1,6 @@
 <?php
 
 use Bitrix\Main\Loader;
-use StrprofiBackupCloud\Backup;
 use Bitrix\Main\Application;
 use Bitrix\Main\Localization\Loc;
 
@@ -110,16 +109,32 @@ $editTab->BeginNextTab();
     </tr>
     <tr>
         <td style="width: 50%"><?= Loc::getMessage('MAIN_DUMP_TIME_CREATE_BACKUP')?></td>
-        <td style="width: 50%"><input name="time_to_copy" type="time" val="05:45"></td>
+        <td style="width: 50%">
+            <?php
+            $APPLICATION->IncludeComponent(
+                    'bitrix:main.clock',
+                    "",
+                    [
+                        'INPUT_ID' => 'time_to_copy',
+                        'INPUT_NAME' => 'time_to_copy',
+                        'INPUT_TITLE' => Loc::getMessage('MAIN_DUMP_TIME_CREATE_BACKUP'),
+                        'INIT_TIME' => "05:30",
+                        'STEP' => '0'
+                    ]
+            );?>
+        </td>
+        <td>
+
+        </td>
     </tr>
     <tr>
         <td style="width: 50%"><?= Loc::getMessage('MAIN_DUMP_PERIOD')?></td>
         <td style="width: 50%">
             <select name="dump_auto_interval">
-                <option value="1"><?= Loc::getMessage('MAIN_DUMP_EVERY_DAY')?></option>
-                <option value="2"><?= Loc::getMessage('MAIN_DUMP_AFTER_DAY')?></option>
-                <option value="3"><?= Loc::getMessage('MAIN_DUMP_EVERY_3_DAY')?></option>
-                <option value="7" selected=""><?= Loc::getMessage('MAIN_DUMP_EVERY_WEEK')?></option>
+                <option value="every_day" selected><?= Loc::getMessage('MAIN_DUMP_EVERY_DAY')?></option>
+                <option value="after_day"><?= Loc::getMessage('MAIN_DUMP_AFTER_DAY')?></option>
+                <option value="every_3_day"><?= Loc::getMessage('MAIN_DUMP_EVERY_3_DAY')?></option>
+                <option value="every_week"><?= Loc::getMessage('MAIN_DUMP_EVERY_WEEK')?></option>
             </select>
         </td>
     </tr>
@@ -235,8 +250,8 @@ if ($DB->type == 'MYSQL') {
         <td width=40%><?= Loc::getMessage('STEP_LIMIT') ?></td>
         <td>
             <input type="text" name="dump_max_exec_time" value="<?= IntOption("dump_max_exec_time", 20) ?>" size=2>
-            <? echo Loc::getMessage('MAIN_DUMP_FILE_STEP_sec'); ?>,
-            <? echo Loc::getMessage('MAIN_DUMP_FILE_STEP_SLEEP') ?>
+            <?= Loc::getMessage('MAIN_DUMP_FILE_STEP_sec'); ?>,
+            <?= Loc::getMessage('MAIN_DUMP_FILE_STEP_SLEEP') ?>
             <input type="text" name="dump_max_exec_time_sleep"
                    value="<?= IntOption("dump_max_exec_time_sleep", 3) ?>" size=2>
             <? echo Loc::getMessage('MAIN_DUMP_FILE_STEP_sec'); ?>
@@ -254,10 +269,6 @@ if ($DB->type == 'MYSQL') {
 
 <?php
 $editTab->BeginNextTab();
-
-
-/*$obBackup = new Backup();
-$token = $obBackup->getToken();*/
 ?>
 
     <tr>
