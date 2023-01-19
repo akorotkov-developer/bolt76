@@ -60,6 +60,7 @@ if (mb_strlen($q) >= 1) {
     $arFilter = [
         'LOGIC' => 'OR',
         'PROPERTY_ARTICUL' => str_replace("%", "", $q),
+        'PROPERTY_Naimenovanie' => $q,
         'NAME' => $q
     ];
 

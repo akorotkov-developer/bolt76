@@ -28,6 +28,11 @@ if ($request->getPost('action') && $request->getPost('action') == 'start_upload'
     $activity->startUpload($diskType);
 } else if ($request->getPost('action') == 'rezerv_copy') {
     \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Начали делать резервную копию'], '', 'log.txt');
+
+    // TODO временный запуск
+    $activity = new UploadActivity();
+    $activity->startUpload('yadisk');
+
     $dump = new Dump();
 
     $paramsForDumpAll = [
