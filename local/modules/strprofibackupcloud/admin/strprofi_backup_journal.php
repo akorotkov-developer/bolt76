@@ -278,8 +278,8 @@ $editTab->BeginNextTab();
 <?php
 $editTab->Buttons();
 ?>
-    <input id="start_reserv_copy" type="button" value="Старт резервного копирования">
-    <input id="start_copy_backup" type="button" value="Запустить перенос резервных копий"/>
+    <input id="start_reserv_copy" type="button" value="Запуск">
+    <!--<input id="start_copy_backup" type="button" value="Запуск"/>-->
 
 <?php
 $editTab->End();

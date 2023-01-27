@@ -16,6 +16,9 @@ class UploadByAgent implements IUploadByAgent
      */
     public static function upload($rowId): bool
     {
+        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Загрузка на Яндекс диск в ' . date('d.m.Y H:i:s')], '', 'log.txt');
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$rowId' => $rowId], '', 'log.txt');
+
         if ($rowId > 0) {
             $rowData = StorageTable::getRowById($rowId);
 

@@ -16,4 +16,11 @@ interface ILocalBackup
      * @return array
      */
     public function getBackUpInfo(array $data): array;
+
+    /**
+     * Удаляет backUp с сервера
+     * @param array $data
+     * @return bool
+     */
+    public function delete(array $data): bool;
 }

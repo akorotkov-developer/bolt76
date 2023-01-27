@@ -86,10 +86,10 @@ class Import
     public function echo(string $sString, bool $error = false)
     {
         if (!$error) {
-            file_put_contents($this->sFileLogImportPath, $sString . ' ' . date("d.m.Y H:i:s") . PHP_EOL, FILE_APPEND);
+            file_put_contents($this->sFileLogImportPath, $sString . ' ' . date("d.m.Y 5:i:s") . PHP_EOL, FILE_APPEND);
         } else {
             if ($sString != '') {
-                file_put_contents($this->sFileLogImportPath, 'ОШИБКА: ' . $sString . ' ' . date("d.m.Y H:i:s") . PHP_EOL, FILE_APPEND);
+                file_put_contents($this->sFileLogImportPath, 'ОШИБКА: ' . $sString . ' ' . date("d.m.Y 5:i:s") . PHP_EOL, FILE_APPEND);
             }
         }
     }
@@ -1066,8 +1066,6 @@ class Import
             }
 
             $ID = $el->Add($arLoad);
-
-            echo 'Добавлен товар с ID ' . $ID . '<br>';
 
             if ((isset($el->LAST_ERROR))) {
                 $this->echo($el->LAST_ERROR, true);

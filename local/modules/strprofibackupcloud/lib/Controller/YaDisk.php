@@ -101,6 +101,8 @@ class YaDisk extends BaseCloud
      */
     public function transferBackup(array $rowData): void
     {
+        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Перенос резервной копии'], '', 'log.txt');
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$rowData' => $rowData], '', 'log.txt');
         if ((int)$rowData['PERCENT'] < 100) {
             // Установим ID текущей операции, чтобы потом можно было определить прогресс
             // или продолжить операцию в случае падения скрипта
@@ -119,6 +121,9 @@ class YaDisk extends BaseCloud
                         sleep(2);
                     }
                 }
+
+                // Удаление бэкапа после закачки на внешний диск
+                $localBackup->delete($rowData);
             }
         }
     }

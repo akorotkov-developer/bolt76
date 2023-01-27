@@ -54,20 +54,20 @@ class UploadActivity implements IUploadActivity
      */
     private function addAgent($rowId)
     {
+        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Добавление агента'], '', 'log.txt');
+        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => '\StrprofiBackupCloud\UploadByAgent::upload(' . $rowId . ');'], '', 'log.txt');
+        // TODO выполнение агента через 10 минут после старта, не забыть убрать это, что бы агент выполнялся сразу следом за созданием резервной копии
         CAgent::addAgent(
             '\StrprofiBackupCloud\UploadByAgent::upload(' . $rowId . ');',
             'strprofibackupcloud',
-            'Y',
+            'N',
             30,
             ConvertTimeStamp(
                 time() + \CTimeZone::getOffset(),
                 'FULL'
             ),
             'Y',
-            ConvertTimeStamp(
-                time() + \CTimeZone::getOffset(),
-                'FULL'
-            )
+            date('d.m.Y H:i:s', strtotime('+10 minutes'))
         );
     }
 

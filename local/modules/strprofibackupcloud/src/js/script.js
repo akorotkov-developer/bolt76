@@ -39,6 +39,8 @@ BX.ready(function() {
         AjaxSend('dump.php', queryString);
     });*/
     BX.bind(BX('start_reserv_copy'), 'click', function() {
+        $('.success_message_backup').text('Процесс резервного копирования и переноса на внешний диск запущен');
+
         BX.ajax({
             url: '/local/modules/' + admin_module_name + '/tools/run_upload.php',
             data: {
@@ -48,10 +50,9 @@ BX.ready(function() {
             dataType: 'json',
             async: true,
             onsuccess: function(data) {
-                console.log(data, 'data');
+
             },
             onfailure: function() {
-
             }
         });
     });
@@ -59,7 +60,7 @@ BX.ready(function() {
     /**
      * Проверить текущий статус переноса резервных копий
      */
-    setInterval(checkExportStatus, 10000);
+    /*setInterval(checkExportStatus, 10000);*/
 });
 
 /**

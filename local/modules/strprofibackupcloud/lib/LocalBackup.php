@@ -140,6 +140,18 @@ class LocalBackup implements ILocalBackup
     }
 
     /**
+     * Удаление бэкапа с сервера
+     * @param array $data
+     * @return bool
+     */
+    public function delete(array $data): bool
+    {
+        \Bitrix\Main\Diag\Debug::dumpToFile(['Данные для удаления бэкапа' => $data], '', 'log.txt');
+
+        return true;
+    }
+
+    /**
      * Получить имя файла
      * @param $file
      * @return mixed|string
