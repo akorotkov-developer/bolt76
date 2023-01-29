@@ -528,7 +528,7 @@ function OnAdminListDisplayHandler(&$list) {
             $orderId = $matches[1];
             $orderId = str_replace('№', '', $orderId);
 
-            $strToInsert = '<a style="cursor: pointer;" class="send_changed_order" data-orderid="' . $orderId . '">Отправить письмо покупателю</a>';
+            $strToInsert = '<a style="cursor: pointer;" class="send_changed_order" data-orderid="' . $orderId . '">Отправить письмо покупателю со ссылкой на оплату</a>';
             if (in_array($orderId, $arOrdersWithSberPay)){
                 $strToInsert .= '<br><br><a style="cursor: pointer;" class="get_link_for_sber_pay" data-orderid="' . $orderId . '">Получить ссылку на оплату</a>';
             }

@@ -20,6 +20,7 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<meta name="mailru-domain" content="6EZGx3j1030Ofx7m" />
+    <meta name="viewport" content="width=device-width,height=device-height,minimum-scale=1">
     <title><?$APPLICATION->ShowTitle();?></title>
 	<?
     $APPLICATION->ShowHead();
@@ -44,6 +45,7 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
             href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"
     />
     <link rel="stylesheet" type="text/css" href="<?= SITE_TEMPLATE_PATH?>/css_templates/print_styles.css" media="print">
+
 </head>
 <body>
 <div class="notification" id="notification">Товар добавлен<br/>в <a href="/personal/cart/">корзину</a></div>

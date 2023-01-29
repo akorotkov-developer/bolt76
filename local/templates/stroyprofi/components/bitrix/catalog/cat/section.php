@@ -424,7 +424,7 @@ if ($ar_result = $db_list->GetNext()) {
 
                         <iframe id="pdfFrame"
                                 src="https://strprofi.ru<?= $pdf; ?>"
-                                width="830" height="1150" style="border: none;"></iframe>
+                                height="1150" style="border: none;"></iframe>
 
                             <?
                         }

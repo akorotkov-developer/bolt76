@@ -412,7 +412,7 @@ hr.dashed{
 .sections_list.main .section .picture{
     height: 100px;
     display: block;
-    width: 260px;
+    text-align: center;
 }
 
 
@@ -1349,4 +1349,43 @@ body .btn-link {
 @keyframes marquee {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
+}
+
+/**
+Адаптив для верстки
+ */
+@media (max-width: 1450px) {
+    .top .contacts {
+        left: 20%;
+    }
+    .top .address {
+        left: 37%;
+    }
+    .top .b-header-favorite {
+        left: 61%;
+    }
+}
+@media (max-width: 1240px) {
+    .top .address {
+        display: none;
+    }
+}
+@media (max-width: 1010px) {
+    .top .b-header-favorite {
+        left: 45%;
+    }
+    .wrapper {
+        min-width: auto;
+    }
+}
+@media (max-width: 768px) {
+    .top .contacts {
+        display: none;
+    }
+    .top .b-header-favorite {
+        display: none;
+    }
+    .top .cart {
+        display: none;
+    }
 }
