@@ -13,7 +13,7 @@ class importInCron
 
             $obImport->startImport();
         } catch (Exception $e) {
-
+            \Bitrix\Main\Diag\Debug::dumpToFile(['Ошибка запуска импорта' => $e->getMessage()], '', 'log.txt');
         }
 
         return '\\' . __METHOD__ . '();';
