@@ -22,6 +22,7 @@ class UploadActivity implements IUploadActivity
 
         // Добавить запись в StorageTable для старта переноса
         $rowId = $this->addNewTask($backupList, $diskType);
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$rowId' => $rowId], '', 'log.txt');
 
         if ($rowId > 0) {
             // Добавляем агент, который переносит бэкапы на внешний диск

@@ -14,10 +14,108 @@ use StrprofiBackupCloud\Dump\Helpers\CDirRealScan;
 use CTarCheck;
 use CFile;
 use StrprofiBackupCloud\Option as ModuleOption;
+use CArchiver;
 
 class Dump
 {
     private $skip_mask_array;
+    private CArchiver $arch;
+
+    public function CreateDump2($params, $dbParams)
+    {
+        $documentRoot = $_SERVER['DOCUMENT_ROOT'];
+
+        // Определяем кодировку БД
+        $charset = (BX_UTF) ? 'utf8' : 'cp1251';
+        system('
+            dbconn=' . $documentRoot . '/bitrix/php_interface/dbconn.php; 
+            echo "$dbconn";
+            
+            host=' . $params['HOST'] . ';
+            username=' . $params['LOGIN'] . ';
+            password=' . $params['PASSWORD'] . ';
+            database=' . $params['DB_NAME'] . ';
+            
+            doc_root=' . $documentRoot . ';
+            charset=' . $charset . ';
+            backup_dir=bitrix/backup;
+            nameSql=mysqldump;
+            
+            cd $doc_root && mysqldump --host=$host --user=$username --password=$password --default-character-set=$charset $database > $backup_dir/$nameSql.sql
+        ', $output);
+
+
+
+
+
+
+
+
+
+
+        //$this->dumpFiles();
+
+        //$this->dumpDB($dbParams);
+    }
+
+    private function dumpFiles()
+    {
+        require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/classes/general/tar_gz.php');
+
+        $backup_dir = $_SERVER['DOCUMENT_ROOT'] . '/bitrix/backup/strprofi';
+        $dumpSqlName = 'dump.sql';
+        $siteBackupName = 'sitedump';
+
+        $this->arch = new CArchiver($backup_dir . '/' . $siteBackupName . '.tar.gz', true);
+
+        $this->arch->AddFile("$backup_dir/$dumpSqlName",'', $_SERVER['DOCUMENT_ROOT']);
+        $this->Store($_SERVER['DOCUMENT_ROOT'] . '/about');
+
+        echo '<pre>';
+        var_dump('Здесь');
+        echo '</pre>';
+
+        // unlink("$backup_dir/$dumpSqlName");
+    }
+
+    private function Store($path)
+    {
+       $path = str_replace('\\','/',$path);
+       if (preg_match('#^' . $_SERVER['DOCUMENT_ROOT'].'/bitrix/backup#', $path) ||
+          preg_match('#^' . $_SERVER['DOCUMENT_ROOT'].'/bitrix/[^/]*cache/#', $path)) {
+           return;
+       }
+
+       $this->arch->AddFile($path,'',$_SERVER['DOCUMENT_ROOT']);
+       if (is_dir($path))
+       {
+          $dir = opendir($path);
+          while(false !== $file=readdir($dir))
+          {
+             if ($file=='.' || $file=='..') {
+                 continue;
+             }
+
+             self::Store($path . '/' . $file);
+          }
+          closedir($dir);
+       }
+    }
+
+    /**
+     * Дамп базы данных
+     */
+    private function dumpDB($dbParams)
+    {
+        $pathToBackup = $_SERVER['DOCUMENT_ROOT'] . '/bitrix/backup/strprofi/';
+
+        if (!file_exists($pathToBackup)) {
+            mkdir($pathToBackup, 0777, true);
+        }
+        exec('mysqldump --user=' . $dbParams['LOGIN'] . ' --password=' . $dbParams['PASSWORD'] . ' --host=' . $dbParams['HOST'] . ' ' . $dbParams['DB_NAME'] . ' > ' . $pathToBackup . 'dump.sql');
+
+        echo 'Закончился дамп';
+    }
 
     /**
      * Создание резервной копии сайта
@@ -408,11 +506,6 @@ class Dump
         if($NS['step'] == 4)
         {
             $step_done = 0;
-            echo 'CheckDumpFiles<br>';
-            echo '<pre>';
-            var_dump(CBackup::CheckDumpFiles());
-            echo '</pre>';
-            echo 'CheckDumpFiles<br>';
             if (CBackup::CheckDumpFiles())
             {
                 if (haveTime())
