@@ -1390,7 +1390,7 @@ body .btn-link {
 .section-pane-inner ul {
 	width: 100%;
 	text-align: left;
-	padding-left: 50px;
+	padding-left: 0px;
 }
 
 
@@ -1489,9 +1489,15 @@ body .btn-link {
     .menu {
         display: none;
     }
-    .left_block_holder {
-        display: none;
+    .main_navigation {
+        margin-left: -10px;
+        font-size: 8px;
+        font-family: "Tahoma", sans-serif;
+        line-height: 8px;
+        position: relative;
+        width: 185px;
     }
+
 }
 @media (max-width: 505px) {
     .top .logo {
@@ -1503,6 +1509,9 @@ body .btn-link {
     }
     .top .cart {
         margin: 7px 0px 0 0;
+    }
+    .left_block_holder {
+        display: none;
     }
 }
 @media (max-width: 470px) {
