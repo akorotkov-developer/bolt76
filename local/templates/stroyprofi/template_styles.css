@@ -1354,6 +1354,57 @@ body .btn-link {
 }
 
 /**
+Вкладки в разделах
+ */
+
+.section-pane-inner{
+    max-width: 3440px;
+}
+
+.section-pane-inner .large {
+    width: 80%;
+
+}
+
+.section-pane-inner .border-zero {
+    border: 0;
+}
+
+.section-pane-inner .wide_img {
+    max-width: 700px;
+}
+
+.section-pane-inner table {
+	width: 100%;
+}
+
+.section-pane-inner p {
+	width: 100%;
+}
+
+.section-pane-inner td img {
+	width: auto;
+    height: auto;
+}
+
+.section-pane-inner ul {
+	width: 100%;
+	text-align: left;
+	padding-left: 50px;
+}
+
+
+.section-pane-inner video {
+    width: 100%;
+    max-width: 3440px;
+}
+
+.section-pane-inner img {
+	width: 100%;
+	max-width: 3440px;
+}
+
+/**
 Адаптив для верстки
  */
 .menu {
@@ -1436,6 +1487,9 @@ body .btn-link {
         margin-right: 0px;
     }
     .menu {
+        display: none;
+    }
+    .left_block_holder {
         display: none;
     }
 }
