@@ -173,23 +173,24 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
                 <div class="content">
                     <div class="shurup shurup_left"></div>
                     <div class="shurup shurup_right"></div>
-                    <div class="menu"><?$APPLICATION->IncludeComponent(
-						"bitrix:menu",
-						"simple",
-						Array(
-							"ROOT_MENU_TYPE" => "top",
-							"MAX_LEVEL" => "1",
-							"CHILD_MENU_TYPE" => "left",
-							"USE_EXT" => "N",
-							"DELAY" => "N",
-							"ALLOW_MULTI_SELECT" => "N",
-							"MENU_CACHE_TYPE" => "A",
-							"MENU_CACHE_TIME" => "3600",
-							"MENU_CACHE_USE_GROUPS" => "N",
-							"MENU_CACHE_GET_VARS" => array()
-						),
-						false
-					);?></div>
+                    <?php
+                        $APPLICATION->IncludeComponent(
+                        "bitrix:menu",
+                        "simple",
+                        Array(
+                            "ROOT_MENU_TYPE" => "top",
+                            "MAX_LEVEL" => "1",
+                            "CHILD_MENU_TYPE" => "left",
+                            "USE_EXT" => "N",
+                            "DELAY" => "N",
+                            "ALLOW_MULTI_SELECT" => "N",
+                            "MENU_CACHE_TYPE" => "A",
+                            "MENU_CACHE_TIME" => "3600",
+                            "MENU_CACHE_USE_GROUPS" => "N",
+                            "MENU_CACHE_GET_VARS" => array()
+                        ),
+                        false
+                    );?>
                     <div class="search">
                         <form action="/search/" method="get">
                             <input type="text" class="search-input onblur <?=($_GET['q']?"":"blured");?>" rel="Поиск по наименованиям и артикулам" name="q" value="<?=($_GET['q']?htmlspecialchars($_GET['q']):"Поиск по наименованиям и артикулам");?>">

@@ -35,6 +35,7 @@ class importInCron
 
         $logImport = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/import/logs/log_import.txt');
         $isEnd = strpos($logImport, 'Конец импорта');
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$isEnd' => $isEnd], '', 'log.txt');
         if ($isEnd) {
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/import/logs/log_import_check.txt', 'Y');
         }
@@ -45,7 +46,7 @@ class importInCron
         // устанавливаем время импорта на 5 минут позже и переводим время
         // агента проверки импорта на 25 минут позднее
         // Если агент импорта был активен, то переводим время агента проверки
-        // на следующие сутки на 4:20 утра
+        // на следующие сутки на 5:20 утра
         if ($resultStartImport['ACTIVE'] == 'N' || !$isEnd) {
             // Записываем в файл лога Флаг, о том, что импорт пока не завершился
             file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/import/logs/log_import_check.txt', 'N');
