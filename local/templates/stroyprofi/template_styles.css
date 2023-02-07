@@ -1476,14 +1476,14 @@ body .btn-link {
     }
     .main_navigation {
         margin-left: -10px;
-        font-size: 8px;
+        font-size: 10px;
         font-family: "Tahoma", sans-serif;
-        line-height: 8px;
+        line-height: 14px;
         position: relative;
         width: 185px;
     }
     .orphus {
-        max-width: 100px;
+        max-width: 150px;
     }
     .col-lg-9 {
         position: relative;
@@ -1492,7 +1492,7 @@ body .btn-link {
         padding-left: 1px;
     }
     .page_content .main_block {
-        margin: 0 20px 0 -5px;
+        margin: 0 20px 0 0px;
     }
 }
 
@@ -1512,7 +1512,9 @@ body .btn-link {
     .left_block_holder {
         display: none;
     }
-
+    .main_block table.element_table tr td {
+        padding: 5px;
+    }
 }
 @media (max-width: 505px) {
     .top .logo {
