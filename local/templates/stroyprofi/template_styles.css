@@ -1485,6 +1485,9 @@ body .btn-link {
     .page_content .main_block {
         margin: 0 20px 0 0px;
     }
+    .content_table .left_block_holder {
+        width: 185px;
+    }
 }
 @media (max-width: 805px) {
     .top .b-header-favorite {
