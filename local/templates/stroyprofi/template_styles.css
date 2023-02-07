@@ -1527,6 +1527,21 @@ body .btn-link {
     .top .cart {
         margin: 7px 0px 0 0;
     }
+    h1 {
+        font-size: 24px;
+    }
+    .content_table td {
+        padding: 2px;
+    }
+    .main_block {
+        width: 420px;
+    }
+    body {
+        font-size: 10px;
+    }
+    .main_block table.element_table tr td {
+        padding: 2px;
+    }
 }
 @media (max-width: 470px) {
     .copyright {
