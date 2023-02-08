@@ -957,18 +957,6 @@ td .buy_helper_holder{
 .blured {
     color: #aaa;
 }
-.prominado {
-    float:right;
-    font-family: Arial, sans-serif;
-    display: block;
-    background: url("/images/prominado.png") top center no-repeat;
-    width: 118px;
-    padding: 28px 23px 0 0;
-    font-size: 11px;
-    line-height: 11px;
-    text-align: right;
-    color: #666666;
-}
 .search-where-block {
     background: #262525;
     float:right;
@@ -1090,7 +1078,7 @@ td .buy_helper_holder{
     color: #000;
 }
 .catalog-section-list h3 {
-    font-family: Georgia;
+    font-family: Georgia, serif;
     font-style: italic;
     font-size: 20px;
 }
@@ -1114,7 +1102,7 @@ td .buy_helper_holder{
     color: #fff;
     text-shadow: 0 1px 0 #FF7920;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF7920', endColorstr='#FF7920',GradientType=0 );
-    border-radius: 0px;
+    border-radius: 0;
 }
 .bx_catalog_list_home .bx_bt_blue:hover {
     background-color: #FF7920;
@@ -1145,8 +1133,7 @@ td .buy_helper_holder{
     background-color: #FF7920;
     border-color: #FF7920;
     color: #FFF;
-    border: 0px;
-    padding: 10px;
+    border: 0;
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -1259,8 +1246,8 @@ td .buy_helper_holder{
     position: absolute;
     width: 50px;
     height: 50px;
-    left: 0px;
-    right: 0px;
+    left: 0;
+    right: 0;
 }
 .popup-window-buttons .ui-btn.ui-btn-danger {
     --ui-btn-background: #FF7920;
@@ -1290,14 +1277,14 @@ td .buy_helper_holder{
 .b-right-banner-list .next_slick_arrow.slick-arrow {
     position: absolute;
     top: 50%;
-    right: 0px;
+    right: 0;
     z-index: 100;
     cursor: pointer;
 }
 .b-right-banner-list .prev_slick_arrow.slick-arrow {
     position: absolute;
     top: 50%;
-    left: 0px;
+    left: 0;
     z-index: 100;
     cursor: pointer;
 }
@@ -1484,7 +1471,7 @@ body .btn-link {
         margin-left: 15px;
     }
     .top .cart {
-        padding: 5px 20px 0px 7px;
+        padding: 5px 20px 0 7px;
     }
     .main_navigation {
         margin-left: -10px;
@@ -1504,7 +1491,7 @@ body .btn-link {
         padding-left: 1px;
     }
     .page_content .main_block {
-        margin: 0 20px 0 0px;
+        margin: 0 20px 0 0;
     }
     .content_table .left_block_holder {
         width: 185px;
@@ -1528,7 +1515,7 @@ body .btn-link {
         display: none;
     }
     .top .logo {
-        margin-right: 0px;
+        margin-right: 0;
     }
     .menu {
         display: none;
@@ -1543,13 +1530,13 @@ body .btn-link {
 @media (max-width: 505px) {
     .top .logo {
         width: 120px;
-        margin: 27px 0px 0px 5px;
+        margin: 27px 0 0 5px;
     }
     .top .logo img {
         width: 120px;
     }
     .top .cart {
-        margin: 7px 0px 0 0;
+        margin: 7px 0 0 0;
     }
 
     h1 {
@@ -1652,7 +1639,6 @@ body .btn-link {
         opacity: 0;
     }
     .menu_mobile .navbar-container .hamburger-lines {
-        display: block;
         height: 23px;
         width: 35px;
         position: absolute;
@@ -1671,14 +1657,14 @@ body .btn-link {
         background: #FF7920;
     }
     .menu_mobile .navbar-container .hamburger-lines .line1 {
-        transform-origin: 0% 0%;
+        transform-origin: 0 0;
         transition: transform 0.4s ease-in-out;
     }
     .menu_mobile .navbar-container .hamburger-lines .line2 {
         transition: transform 0.2s ease-in-out;
     }
     .menu_mobile .navbar-container .hamburger-lines .line3 {
-        transform-origin: 0% 100%;
+        transform-origin: 0 100%;
         transition: transform 0.4s ease-in-out;
     }
     .menu_mobile .navbar .menu-items {
@@ -1693,7 +1679,7 @@ body .btn-link {
         padding-left: 50px;
         padding-right: 50px;
         transition: transform 0.5s ease-in-out;
-        box-shadow: 5px 0px 10px 0px #aaa;
+        box-shadow: 5px 0 10px 0 #aaa;
         position: relative;
         z-index: 999;
     }
