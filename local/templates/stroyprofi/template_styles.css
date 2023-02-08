@@ -1352,6 +1352,12 @@ body .btn-link {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
 }
+/**
+Персональные рекомендации
+ */
+.col-xs-6 {
+    width: 25%;
+}
 
 /**
 Вкладки в разделах
@@ -1372,6 +1378,9 @@ body .btn-link {
 
 .section-pane-inner .wide_img {
     max-width: 700px;
+}
+.section-pane-inner .mid_img {
+    max-width: 500px;
 }
 
 .section-pane-inner table {
@@ -1423,10 +1432,19 @@ body .btn-link {
     .top .b-header-favorite {
         left: 61%;
     }
+    .catalog_element .element_table thead td {
+        padding: 10px 2px;
+    }
 }
 @media (max-width: 1240px) {
     .top .address {
         display: none;
+    }
+    .col-xs-6 {
+        width: 30%;
+    }
+    .catalog_element .element_table thead td {
+        padding: 10px;
     }
 }
 @media (max-width: 1010px) {
@@ -1447,6 +1465,9 @@ body .btn-link {
     .header .menu a {
         color: #FFFFFF;
         margin-right: 15px;
+    }
+    .col-xs-6 {
+        width: 40%;
     }
 }
 @media (max-width: 920px) {
@@ -1539,6 +1560,9 @@ body .btn-link {
     }
     body {
         font-size: 10px;
+    }
+    .col-xs-6 {
+        width: 100%;
     }
 }
 @media (max-width: 470px) {
