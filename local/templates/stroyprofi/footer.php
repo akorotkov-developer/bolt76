@@ -41,7 +41,7 @@ if ($isKioskBuyer) {
 </div>
     <div class="footer">
         <div class="width_wrapper">
-            <div class="dark_line">
+            <div class="dark_line_bottom">
                 <div class="corners left"><div class="right"></div></div>
                 <div class="content">
                     <div class="shurup shurup_left"></div>

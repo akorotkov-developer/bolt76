@@ -884,9 +884,15 @@ td .buy_helper_holder{
     color:#FFFFFF;;
 }
 
-.dark_line{
+.dark_line_top{
     background: #262525;
     margin:20px -5px;
+    padding: 0 5px;
+}
+
+.dark_line_bottom{
+    background: #262525;
+    margin:0 -5px;
     padding: 0 5px;
 }
 
