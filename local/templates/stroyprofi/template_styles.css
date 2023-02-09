@@ -26,7 +26,7 @@
 
 
 .header{
-    height: 175px;
+    height: 142px;
     background: url('/img/header.jpg') left top no-repeat;
     background-size: cover;
 }
@@ -886,7 +886,7 @@ td .buy_helper_holder{
 
 .dark_line{
     background: #262525;
-    margin:0 -5px;
+    margin:20px -5px;
     padding: 0 5px;
 }
 
@@ -1362,7 +1362,6 @@ body .btn-link {
 .section-pane-inner .border-zero {
     border: 0;
 }
-
 .section-pane-inner .wide_img {
     max-width: 700px;
 }
@@ -1380,7 +1379,7 @@ body .btn-link {
 
 .section-pane-inner td img {
     width: auto;
-    height: auto;
+    max-width: 300px;
 }
 
 .section-pane-inner ul {
@@ -1489,9 +1488,6 @@ body .btn-link {
         min-height: 1px;
         padding-right: 1px;
         padding-left: 1px;
-    }
-    .page_content .main_block {
-        margin: 0 20px 0 0;
     }
     .content_table .left_block_holder {
         width: 185px;
