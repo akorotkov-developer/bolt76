@@ -169,7 +169,7 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
 <!--            </div>-->
 
 
-            <div class="dark_line_top">
+            <div class="dark_line">
                 <div class="corners left"><div class="right"></div></div>
                 <div class="content">
                     <div class="shurup shurup_left"></div>

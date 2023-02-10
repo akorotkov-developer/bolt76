@@ -859,7 +859,6 @@ td .buy_helper_holder{
 
 .footer{
     height: 53px;
-    overflow-x: hidden;
     margin: 0 auto;
     line-height: 25px;
 }
@@ -884,7 +883,7 @@ td .buy_helper_holder{
     color:#FFFFFF;;
 }
 
-.dark_line_top{
+.dark_line{
     background: #262525;
     margin:20px -5px;
     padding: 0 5px;
@@ -1368,12 +1367,6 @@ body .btn-link {
 .section-pane-inner .border-zero {
     border: 0;
 }
-.section-pane-inner .wide_img {
-    max-width: 700px;
-}
-.section-pane-inner .mid_img {
-    max-width: 500px;
-}
 
 .section-pane-inner table {
     width: 100%;
@@ -1403,6 +1396,21 @@ body .btn-link {
 .section-pane-inner img {
     width: 100%;
     max-width: 3440px;
+}
+/**
+Классы для картинок
+ */
+.wide_img {
+    max-width: 700px;
+}
+.mid_img {
+    max-width: 500px;
+}
+.small_img {
+    max-width: 200px;
+}
+.product_img {
+    max-width: 100px;
 }
 
 /**
