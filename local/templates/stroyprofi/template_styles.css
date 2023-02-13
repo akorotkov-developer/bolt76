@@ -889,7 +889,7 @@ td .buy_helper_holder{
     padding: 0 5px;
 }
 
-.dark_line_bottom{
+.bottom{
     background: #262525;
     margin:0 -5px;
     padding: 0 5px;
@@ -1352,6 +1352,25 @@ body .btn-link {
 }
 
 /**
+Классы для картинок
+ */
+.wide_img {
+    max-width: 700px;
+}
+.mid_img {
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+.small_img {
+    max-width: 200px;
+    margin: 10px;
+}
+.product_img {
+    max-width: 100px;
+    margin-right: 20px;
+}
+
+/**
 Вкладки в разделах
  */
 
@@ -1361,7 +1380,6 @@ body .btn-link {
 
 .section-pane-inner .large {
     width: 80%;
-
 }
 
 .section-pane-inner .border-zero {
@@ -1378,7 +1396,7 @@ body .btn-link {
 
 .section-pane-inner td img {
     width: auto;
-    max-width: 300px;
+    max-width: 150px;
 }
 
 .section-pane-inner ul {
@@ -1387,7 +1405,6 @@ body .btn-link {
     padding-left: 50px;
 }
 
-
 .section-pane-inner video {
     width: 100%;
     max-width: 3440px;
@@ -1395,22 +1412,6 @@ body .btn-link {
 
 .section-pane-inner img {
     width: 100%;
-    max-width: 3440px;
-}
-/**
-Классы для картинок
- */
-.wide_img {
-    max-width: 700px;
-}
-.mid_img {
-    max-width: 500px;
-}
-.small_img {
-    max-width: 200px;
-}
-.product_img {
-    max-width: 100px;
 }
 
 /**
@@ -1445,6 +1446,13 @@ body .btn-link {
     }
     .catalog_element .element_table thead td {
         padding: 10px;
+    }
+    .footer .menu a{
+        font-size: 12px;
+        margin: 5px 10px;
+    }
+    .footer .copyright{
+        font-size: 14px;
     }
 }
 @media (max-width: 1010px) {
