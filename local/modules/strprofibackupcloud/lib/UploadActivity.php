@@ -22,7 +22,6 @@ class UploadActivity implements IUploadActivity
 
         // Добавить запись в StorageTable для старта переноса
         $rowId = $this->addNewTask($backupList, $diskType);
-        \Bitrix\Main\Diag\Debug::dumpToFile(['$rowId' => $rowId], '', 'log.txt');
 
         if ($rowId > 0) {
             // Добавляем агент, который переносит бэкапы на внешний диск
@@ -55,9 +54,6 @@ class UploadActivity implements IUploadActivity
      */
     private function addAgent($rowId)
     {
-        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Добавление агента'], '', 'log.txt');
-        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => '\StrprofiBackupCloud\UploadByAgent::upload(' . $rowId . ');'], '', 'log.txt');
-        // TODO выполнение агента через 10 минут после старта, не забыть убрать это, что бы агент выполнялся сразу следом за созданием резервной копии
         CAgent::addAgent(
             '\StrprofiBackupCloud\UploadByAgent::upload(' . $rowId . ');',
             'strprofibackupcloud',
@@ -68,7 +64,7 @@ class UploadActivity implements IUploadActivity
                 'FULL'
             ),
             'Y',
-            date('d.m.Y H:i:s', strtotime('+10 minutes'))
+            date('d.m.Y H:i:s')
         );
     }
 

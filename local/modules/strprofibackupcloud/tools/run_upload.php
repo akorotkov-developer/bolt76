@@ -29,7 +29,7 @@ if ($request->getPost('action') && $request->getPost('action') == 'start_upload'
 } else if ($request->getPost('action') == 'rezerv_copy') {
     \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Начали делать резервную копию'], '', 'log.txt');
 
-    $dump = new Dump();
+/*    $dump = new Dump();
 
     $paramsForDumpAll = [
         'lang' => 'ru',
@@ -38,11 +38,11 @@ if ($request->getPost('action') && $request->getPost('action') == 'start_upload'
         'dump_bucket_id' => '0',
         'dump_all' => 'Y',
         'sessid' => bitrix_sessid()
-    ];
-
-    $dump->createDump($paramsForDumpAll);
+    ];*/
 
     // TODO временный запуск
     $activity = new UploadActivity();
     $activity->startUpload('yadisk');
+
+/*    $dump->createDump($paramsForDumpAll);*/
 }

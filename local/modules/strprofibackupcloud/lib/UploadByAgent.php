@@ -3,6 +3,7 @@
 namespace StrprofiBackupCloud;
 
 use StrprofiBackupCloud\Interfaces\IUploadByAgent;
+use StrprofiBackupCloud\Dump\Dump;
 
 class UploadByAgent implements IUploadByAgent
 {
@@ -16,10 +17,12 @@ class UploadByAgent implements IUploadByAgent
      */
     public static function upload($rowId): bool
     {
-        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Загрузка на Яндекс диск в ' . date('d.m.Y H:i:s')], '', 'log.txt');
-        \Bitrix\Main\Diag\Debug::dumpToFile(['$rowId' => $rowId], '', 'log.txt');
-
         if ($rowId > 0) {
+            // Делаем бэкап сайта
+            \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Перед дампом'], '', 'log.txt');
+            $dump = new Dump();
+            $dump->createDump2();
+
             $rowData = StorageTable::getRowById($rowId);
 
             // Получаем контроллер для переноса бэкапов
