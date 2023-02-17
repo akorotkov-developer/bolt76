@@ -155,17 +155,18 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
 
 
             <!-- Бегущая строка -->
-            <div class="marquee">
-                <span>
-                    <?php
-                    $APPLICATION->IncludeComponent("bitrix:main.include","",Array(
-                            "AREA_FILE_SHOW" => "file",
-                            "PATH" => "/local/include_file/top_marquee.php",
-                        )
-                    );
-                    ?>
-                </span>
-            </div>
+
+<!--            <div class="marquee">-->
+<!--                <span>-->
+<!--                    --><?php
+//                    $APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+//                            "AREA_FILE_SHOW" => "file",
+//                            "PATH" => "/local/include_file/top_marquee.php",
+//                        )
+//                    );
+//                    ?>
+<!--                </span>-->
+<!--            </div>-->
 
 
             <div class="dark_line">
@@ -246,7 +247,7 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
 							);?>
                             </div><br/>
                             <script type="text/javascript" src="/js/orphus.js"></script>
-                            <div style="text-align: center;"><a href="http://orphus.ru" id="orphus" target="_blank"><img alt="Система Orphus" src="/images/orphus.gif" border="0" width="257" height="48" /></a></div>
+                            <div style="text-align: center;"><a href="http://orphus.ru" id="orphus" target="_blank"><img class="orphus" alt="Система Orphus" src="/images/orphus.gif" /></a></div>
 
 	                        <?$APPLICATION->IncludeComponent(
 							"bitrix:news.list",

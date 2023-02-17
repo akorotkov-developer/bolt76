@@ -17,8 +17,10 @@
 .main_block .catalog_element {
     width: 100%;
 }
+/**
 .b-container-recomended-products {
     margin-bottom: 170px;
+ */
 }
 .b-container-recomended-products .bx-blue .btn.btn-default:hover {
     background-color: #FF7920;
