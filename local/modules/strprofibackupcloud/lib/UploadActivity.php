@@ -16,16 +16,28 @@ class UploadActivity implements IUploadActivity
      */
     public function startUpload(string $diskType): void
     {
-        // Получаем список локальных резервных копий
-        $localBackup = new LocalBackup();
-        $backupList = $localBackup->getLocalBackups();
-
+        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Старт резервного копирования'], '', 'log.txt');
         // Добавить запись в StorageTable для старта переноса
-        $rowId = $this->addNewTask($backupList, $diskType);
+        $rowId = $this->addNewTask([], $diskType);
 
         if ($rowId > 0) {
             // Добавляем агент, который переносит бэкапы на внешний диск
             $this->addAgent($rowId);
+        }
+    }
+
+    /**
+     * Деактивировать все агенты переноса резервных копий
+     */
+    public function stopUpload(): void
+    {
+        $dbResult = CAgent::GetList(
+            ['ID' => 'DESC'],
+            ['NAME' => '\StrprofiBackupCloud\UploadByAgent::upload(%']
+        );
+
+        while($arResult = $dbResult->fetch()) {
+            CAgent::Delete($arResult['ID']);
         }
     }
 
@@ -51,21 +63,37 @@ class UploadActivity implements IUploadActivity
     /**
      * Добавить агент
      * @param $rowId
+     * @throws \Exception
      */
-    private function addAgent($rowId)
+    private function addAgent($rowId): void
     {
-        CAgent::addAgent(
+        $time1 =  strtotime(date("Y-m-d H:i:s"));
+        $time2 =  strtotime(date("Y-m-d 5:30:00"));
+
+        if ($time1 > $time2) {
+            $startDate = new \DateTime(date('Y-m-d 5:30:00'));
+            $startDate->format('Y-m-d H:i:s');
+            $startDate->modify('+1 day');
+            $time1 = $startDate->format('d.m.Y H:i:s');
+        } else {
+            $startDate = new \DateTime(date('Y-m-d 5:30:00'));
+            $time1 = $startDate->format('d.m.Y H:i:s');
+        }
+
+        $isAdd = CAgent::addAgent(
             '\StrprofiBackupCloud\UploadByAgent::upload(' . $rowId . ');',
             'strprofibackupcloud',
             'N',
-            30,
+            86400,
             ConvertTimeStamp(
                 time() + \CTimeZone::getOffset(),
                 'FULL'
             ),
             'Y',
-            date('d.m.Y H:i:s')
+            $time1
         );
+
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$isAdd' => $isAdd], '', 'log.txt');
     }
 
     /**

@@ -2,7 +2,6 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Поиск по сайту");
 CModule::IncludeModule("iblock");
-\Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Здесь 1'], '', 'log.txt');
 ?><div class="search_results">
     <form action="/search/" method="get">
         <input type="text" name="q" value="<?=htmlspecialchars($_GET["q"]);?>" class="search-input">
@@ -17,7 +16,6 @@ CModule::IncludeModule("iblock");
 	$where = ($_GET['where'] == "articul") ? "articul" : "name";
 
 	$q = trim(strip_tags($_GET["q"]));
-	\Bitrix\Main\Diag\Debug::dumpToFile(['$q' => $q], '', 'log.txt');
 	if(mb_strlen($q)>=1){
 		$finded = false;
 		$q = str_replace(Array(" ", " ", "-", "_", "\"", "/", "\\", "(", ")"), "%", $q);

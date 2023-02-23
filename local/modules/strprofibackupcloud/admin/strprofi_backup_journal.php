@@ -3,6 +3,8 @@
 use Bitrix\Main\Loader;
 use Bitrix\Main\Application;
 use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\UI\Extension;
+use StrprofiBackupCloud\UploadActivity;
 
 defined('ADMIN_MODULE_NAME') or define('ADMIN_MODULE_NAME', 'strprofibackupcloud');
 
@@ -12,59 +14,11 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/b
 
 $APPLICATION->SetTitle("Резервные копии на Яндекс.Диске");
 
+Extension::load("ui.alerts");
+Extension::load("ui.buttons");
+
 $context = Application::getInstance()->getContext();
 $request = $context->getRequest();
-
-if ($request->get('process') == 'Y') {
-    $getParams = $request->getQueryList()->toArray();
-
-    $stringParams = '';
-    foreach ($getParams as $key => $param) {
-        $stringParams .= $key . '=' . $param . '&';
-    }
-    $stringParams = trim($stringParams, '&');
-
-    LocalRedirect('/bitrix/admin/dump.php?' . $stringParams);
-    ?>
-<?php };
-
-if ($_REQUEST['ajax_mode'] == 'Y') {
-    if ($_REQUEST['action'] == 'get_table_size') {
-        ?>
-        <script>
-            BX('db_size').innerHTML = "(<?=CFile::FormatSize(getTableSize(""))?>)";
-            BX('db_stat_size').innerHTML = "(<?=CFile::FormatSize(getTableSize("^b_stat"))?>)";
-            BX('db_search_size').innerHTML = "(<?=CFile::FormatSize(getTableSize("^b_search"))?>)";
-            BX('db_event_size').innerHTML = "(<?=CFile::FormatSize(getTableSize("^b_event_log$"))?>)";
-        </script>
-        <?
-        die();
-    }
-}
-
-function getTableSize($reg)
-{
-    global $DB;
-    if ($DB->type != 'MYSQL')
-        return 0;
-
-    static $CACHE;
-
-    if (!$CACHE) {
-        $CACHE = array();
-        $sql = "SHOW TABLE STATUS";
-        $res = $DB->Query($sql);
-
-        while ($row = $res->Fetch())
-            $CACHE[$row['Name']] = $row['Data_length'];
-    }
-
-    $size = 0;
-    foreach ($CACHE as $table => $s)
-        if (!$reg || preg_match('#' . $reg . '#i', $table))
-            $size += $s;
-    return $size;
-}
 
 Loader::includeModule('strprofibackupcloud');
 CJSCore::Init(['strprofibackupcloud']);
@@ -79,7 +33,58 @@ function IntOption($name, $def = 0)
 
 $bGzip = function_exists('gzcompress');
 $bMcrypt = function_exists('mcrypt_encrypt') || function_exists('openssl_encrypt');
+?>
 
+<?php
+// Проверяем статус модуля
+$dbResult = CAgent::GetList(
+    ['ID' => 'DESC'],
+    ['NAME' => '\StrprofiBackupCloud\UploadByAgent::upload(%']
+);
+
+$arAgents = [];
+while($arResult = $dbResult->fetch()) {
+    $arAgents[] = $arResult;
+}
+$curAgent = array_shift($arAgents);
+
+// Текущий статус модуля
+$isStatusActive = $curAgent['ACTIVE'] == 'Y';
+
+// Удаляем лишние агенты
+if (count($arAgents) > 0) {
+    foreach ($arAgents as $agent) {
+        CAgent::Delete($agent['ID']);
+    }
+}
+
+if ($request->get('active') == 'y' && !$isStatusActive) {
+    $activity = new UploadActivity();
+    $activity->startUpload('yadisk');
+    $isStatusActive = true;
+}
+if ($request->get('deactive') == 'y') {
+    $activity = new UploadActivity();
+    $activity->stopUpload();
+    $isStatusActive = false;
+}
+
+if ($isStatusActive) {
+?>
+    <div class="ui-alert ui-alert-success">
+        <span class="ui-alert-message"><strong>Статус:</strong> Активен</span>
+    </div>
+<?php
+} else {
+?>
+    <div class="ui-alert ui-alert-danger">
+        <span class="ui-alert-message"><strong>Статус:</strong> Не активен</span>
+    </div>
+<?php
+}
+?>
+
+<?php
 global $DB;
 
 $aTabs = [];
@@ -277,8 +282,23 @@ $editTab->BeginNextTab();
 
 <?php
 $editTab->Buttons();
+
+if ($isStatusActive) {
 ?>
-    <input id="start_reserv_copy" type="button" value="Запуск">
+    <a href="<?=$APPLICATION->GetCurPageParam("deactive=y", array(
+        "active",
+        "deactive")
+    );?>" class="ui-btn ui-btn-danger-dark">Деактивировать</a>
+<?php
+} else {
+?>
+    <a href="<?=$APPLICATION->GetCurPageParam("active=y", array(
+            "active",
+            "deactive")
+    );?>" class="ui-btn ui-btn-success">Активировать</a>
+<?php
+}
+?>
     <!--<input id="start_copy_backup" type="button" value="Запуск"/>-->
 
 <?php

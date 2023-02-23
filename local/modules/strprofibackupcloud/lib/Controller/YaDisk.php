@@ -101,33 +101,23 @@ class YaDisk extends BaseCloud
      */
     public function transferBackup(array $rowData): void
     {
+        $this->option->setOption("CUR_TASK_ID", $rowData['ID']);
 
-        /*if ((int)$rowData['PERCENT'] < 100) {*/
-            // Установим ID текущей операции, чтобы потом можно было определить прогресс
-            // или продолжить операцию в случае падения скрипта
-            $this->option->setOption("CUR_TASK_ID", $rowData['ID']);
+        $localBackup = new LocalBackup();
+        $localBackupFiles = $localBackup->getLocalBackups();
 
-            /*$data = $rowData['DATA'];*/
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$localBackupFiles' => $localBackupFiles], '', 'log.txt');
 
-            $dir = $_SERVER['DOCUMENT_ROOT'] . '/bitrix/backup/strprofi';
-            $scannedDirectory = array_diff(scandir($dir), ['..', '.']);
-
-            if (count($scannedDirectory) > 0) {
-                /*$localBackup = new LocalBackup();
-                $backupInfo = $localBackup->getBackUpInfo($data);
-                $this->totalLinks = $backupInfo['TOTAL_LINKS'];*/
-
-                foreach ($scannedDirectory as $backUpItem) {
-                    /*foreach ($backUpItem['LINKS'] as $link) {*/
-                        $this->uploadFileToYaDisk($backUpItem, 'backup_' . date('d.m.Y'), $rowData['ID']);
-                        sleep(2);
-                   /* }*/
-                }
-
-                // Удаление бэкапа после закачки на внешний диск
-                $localBackup->delete($rowData);
+        if (count($localBackupFiles) > 0) {
+            foreach ($localBackupFiles as $backUpItem) {
+                \Bitrix\Main\Diag\Debug::dumpToFile(['$backUpItem' => $backUpItem], '', 'log.txt');
+                $this->uploadFileToYaDisk($backUpItem, date('d.m.Y') . '_backup' , $rowData['ID']);
+                sleep(2);
             }
-        /*}*/
+
+            // Удаление бэкапа после закачки на внешний диск
+            $localBackup->delete($localBackupFiles);
+        }
     }
 
     /**
@@ -136,8 +126,9 @@ class YaDisk extends BaseCloud
      * @param $backUpName
      * @param $rowId
      */
-    private function uploadFileToYaDisk($link, $backUpName, $rowId)
+    public function uploadFileToYaDisk($link, $backUpName, $rowId)
     {
+        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Тут 1'], '', 'log.txt');
         // передать OAuth-токен зарегистрированного приложения.
         $disk = new Disk($this->token);
 
@@ -176,7 +167,7 @@ class YaDisk extends BaseCloud
                 $selfOb->setProgress($this->uploadedLinks, $this->totalLinks, $rowId);
             });
 
-            $localFilePath = $_SERVER['DOCUMENT_ROOT'] . '/bitrix/backup/strprofi/' . $link;
+            $localFilePath = $_SERVER['DOCUMENT_ROOT'] . $link;
             \Bitrix\Main\Diag\Debug::dumpToFile(['$localFilePath' => $localFilePath], '', 'log.txt');
             $resource->upload($localFilePath); // Записываем файл на яндекс диск
         }

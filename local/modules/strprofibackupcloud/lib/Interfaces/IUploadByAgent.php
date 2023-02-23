@@ -9,5 +9,5 @@ interface IUploadByAgent
      * @param $rowId
      * @return bool
      */
-    public static function upload($rowId): bool;
+    public static function upload($rowId): string;
 }

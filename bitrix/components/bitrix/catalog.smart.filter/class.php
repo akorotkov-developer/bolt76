@@ -125,6 +125,10 @@ class CBitrixCatalogSmartFilter extends CBitrixComponent
 			self::$catalogIncluded = Loader::includeModule('catalog');
 		if (self::$catalogIncluded)
 		{
+            CModule::IncludeModule("catalog");
+		    echo '<pre>';
+		    var_dump('123');
+		    echo '</pre>';
 			$arCatalog = CCatalogSKU::GetInfoByProductIBlock($this->IBLOCK_ID);
 			if (!empty($arCatalog))
 			{

@@ -10,29 +10,30 @@ class UploadByAgent implements IUploadByAgent
     /**
      * Загрузка бэкапов на внешний диск, по параметрам из записи в StorageTable c id = $rowId
      * @param $rowId
-     * @return bool
+     * @return string
      * @throws \Bitrix\Main\ArgumentException
      * @throws \Bitrix\Main\ObjectPropertyException
      * @throws \Bitrix\Main\SystemException
      */
-    public static function upload($rowId): bool
+    public static function upload($rowId): string
     {
-        if ($rowId > 0) {
-            // Делаем бэкап сайта
-            \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Перед дампом'], '', 'log.txt');
-            $dump = new Dump();
-            $dump->createDump2();
+        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Начало работы агента'], '', 'log.txt');
+        \Bitrix\Main\Diag\Debug::dumpToFile(['__METHOD__' => '\\' . __METHOD__ . '(' . $rowId . ');'], '', 'log.txt');
+        // Делаем резервную копию
+        $dump = new Dump();
+        $dump->CreateDump();
 
-            $rowData = StorageTable::getRowById($rowId);
+        $rowData = StorageTable::getRowById($rowId);
 
-            // Получаем контроллер для переноса бэкапов
-            $controller = CloudFactory::factory($rowData['DISK_TYPE']);
+        // Получаем контроллер для переноса бэкапов
+        $controller = CloudFactory::factory('yadisk');
 
-            // Отправляем задание на загрузку копий по $rowId
-            $uploader = new UploadActivity();
-            $uploader->uploadToExternalDrive($controller, $rowData);
-        }
+        // Отправляем задание на загрузку копий по $rowId
+        $uploader = new UploadActivity();
+        $uploader->uploadToExternalDrive($controller, $rowData);
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$rowId' => $rowId], '', 'log.txt');
+        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => '\StrprofiBackupCloud\UploadByAgent::upload(' . $rowId . ');'], '', 'log.txt');
 
-        return false;
+        return '\\' . __METHOD__ . '(' . $rowId . ');';
     }
 }
