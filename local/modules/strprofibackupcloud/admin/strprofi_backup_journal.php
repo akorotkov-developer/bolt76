@@ -16,6 +16,7 @@ $APPLICATION->SetTitle("Резервные копии на Яндекс.Диск
 
 Extension::load("ui.alerts");
 Extension::load("ui.buttons");
+Extension::load("ui.progressbar");
 
 $context = Application::getInstance()->getContext();
 $request = $context->getRequest();
@@ -83,6 +84,15 @@ if ($isStatusActive) {
 <?php
 }
 ?>
+
+<div class="copy_progress" style="display: none;">
+    Создание и перенос резервной копии: <span>1%</span>
+    <div class="ui-progressbar ui-progressbar-bg">
+        <div class="ui-progressbar-track">
+            <div id="progress_for_cur_copy" class="ui-progressbar-bar" style="width:0%;"></div>
+        </div>
+    </div>
+</div>
 
 <?php
 global $DB;
@@ -285,22 +295,28 @@ $editTab->Buttons();
 
 if ($isStatusActive) {
 ?>
-    <a href="<?=$APPLICATION->GetCurPageParam("deactive=y", array(
-        "active",
-        "deactive")
+    <a href="<?=$APPLICATION->GetCurPageParam("deactive=y",
+        [
+            "active",
+            "deactive",
+            "create_copy"
+        ]
     );?>" class="ui-btn ui-btn-danger-dark">Деактивировать</a>
 <?php
 } else {
 ?>
     <a href="<?=$APPLICATION->GetCurPageParam("active=y", array(
             "active",
-            "deactive")
+            "deactive",
+            "create_copy"
+            )
     );?>" class="ui-btn ui-btn-success">Активировать</a>
 <?php
 }
 ?>
     <!--<input id="start_copy_backup" type="button" value="Запуск"/>-->
 
+    <a class="ui-btn ui-btn-success" id="create_copy">Создать резервную копию на внешнем диске</a>
 <?php
 $editTab->End();
 

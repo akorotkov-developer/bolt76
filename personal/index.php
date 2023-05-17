@@ -55,7 +55,7 @@ $APPLICATION->SetTitle("Персональный раздел");
                 "SHOW_CONTACT_PAGE" => "N",
                 "SHOW_ORDER_PAGE" => "Y",
                 "SHOW_PRIVATE_PAGE" => "Y",
-                "SHOW_PROFILE_PAGE" => "N",
+                "SHOW_PROFILE_PAGE" => "Y",
                 "ALLOW_INNER" => "N",
                 "ONLY_INNER_FULL" => "N",
                 "SHOW_SUBSCRIBE_PAGE" => "N",

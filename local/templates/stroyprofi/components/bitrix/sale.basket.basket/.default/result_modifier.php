@@ -28,3 +28,32 @@ if ('' != $arParams['TEMPLATE_THEME'])
 }
 if ('' == $arParams['TEMPLATE_THEME'])
 	$arParams['TEMPLATE_THEME'] = 'blue';
+
+
+    // Проверка на доступные товары
+    $productIds = array_column($arResult['GRID']['ROWS'], 'PRODUCT_ID');
+    $basketItems = array_column($arResult['GRID']['ROWS'], NULL,'PRODUCT_ID');
+
+    $dbResult = CIBlockElement::GetList(
+        [],
+        [
+            'IBLOCK_ID' => 1,
+            'ID' => $productIds
+        ],
+        false,
+        false,
+        [
+            'ID', 'NAME', 'PROPERTY_SVOBODNO', 'PROPERTY_Svertka'
+        ]
+    );
+
+    $arItems = [];
+    while($aRes = $dbResult->Fetch()) {
+        if ((float)$aRes['PROPERTY_SVOBODNO_VALUE'] - (float)$basketItems[$aRes['ID']]['QUANTITY'] < 0) {
+            $arItems[] = trim($aRes['PROPERTY_SVERTKA_VALUE']) . ' (Доступно: ' . (float)$aRes['PROPERTY_SVOBODNO_VALUE'] . ')';
+        }
+    }
+
+    if (count($arItems) > 0) {
+        $arResult['NOT_AVAIL'] = $arItems;
+    }

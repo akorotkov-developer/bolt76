@@ -13,6 +13,8 @@ $( document ).ready(function() {
 
     $('.send_changed_order').on('click', function() {
         var orderId = $(this).attr('data-orderid');
+        console.log('orderId');
+        console.log(orderId);
 
         var btn_send = {
             title: 'Отправить',

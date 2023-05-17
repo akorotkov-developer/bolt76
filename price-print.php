@@ -130,7 +130,7 @@ class pricePrint
     private $sectionsByIdArray = array();
     private $sectionsXMLObject = false;
     private $settings;
-    private $pagesCounter = 0;
+    private $pagesCounter = 1;
     private $firstColumn = true;
     private $pageTitle = '';
     private $contentsArray = array();
@@ -1086,8 +1086,7 @@ class pricePrint
                 'PROPERTY_NOMNOMER',
                 'PROPERTY_NomenklaturaGeog',
                 'PROPERTY_VES',
-                'PROPERTY_VUpakovke1',
-                'PROPERTY_VUpakovke2',
+                'PROPERTY_UPAKOVKA',
                 'PROPERTY_NAIMENOVANIE',
                 'PREVIEW_PICTURE',
                 'PROPERTY_PRICE',
@@ -1131,7 +1130,7 @@ class pricePrint
                         <NomNomer><?=$item['PROPERTY_PROPERTY_NOMNOMER_VALUE'];?></NomNomer>
                         <NomenklaturaGeog><?=$item['PROPERTY_NomenklaturaGeog_VALUE'];?></NomenklaturaGeog>
                         <Ves><?=$item['PROPERTY_VES_VALUE'];?></Ves>
-                        <VUpakovke><?=$item['PROPERTY_VUpakovke1_VALUE'];?></VUpakovke>
+                        <VUpakovke><?=$item['PROPERTY_UPAKOVKA_VALUE'];?></VUpakovke>
                         <VUpakovke2><?=$item['PROPERTY_VUpakovke1_VALUE'];?></VUpakovke2>
                         <Ostatok><?=$item['PROPERTY_OSTATOK_VALUE'];?></Ostatok>
                         <Artikul><?=$item['PROPERTY_ARTICUL_VALUE'];?></Artikul>

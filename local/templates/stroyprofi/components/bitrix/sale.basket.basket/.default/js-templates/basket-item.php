@@ -44,7 +44,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 <script id="basket-item-template" type="text/html">
     <tr class="basket-items-list-item-container{{#SHOW_RESTORE}} basket-items-list-item-container-expend{{/SHOW_RESTORE}}"
 		id="basket-item-{{ID}}" data-entity="basket-item" data-id="{{ID}}">
-        <td class="only-print only-print-1">
+        <td class="only-print only-print-1" style="display: none">
             <div class="printing-serial-naimenovanie">
                 <div class="serial-print">
                     {{SERIAL_NUMBER}}
@@ -348,6 +348,12 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 							}
 							?>
 						</div>
+
+                        {{^IS_AVAIL}}
+                            <div class="avail_info">
+                                Вы пытаетесь заказать больше товара, чем есть в наличии (доступно {{SVOBODNO}})
+                            </div>
+                        {{/IS_AVAIL}}
 					</div>
 					{{#SHOW_LOADING}}
 						<div class="basket-items-list-item-overlay"></div>
@@ -428,7 +434,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 			{
 				?>
 				<td class="basket-items-list-item-price<?=(!isset($mobileColumns['SUM']) ? ' hidden-xs' : '')?>">
-					<div class="basket-item-block-price">
+					<div class="basket-item-block-price basket-item-block-price-nopadding-top">
 						{{#SHOW_DISCOUNT_PRICE}}
 							<div class="basket-item-price-old">
 								<span class="basket-item-price-old-text" id="basket-item-sum-price-old-{{ID}}">

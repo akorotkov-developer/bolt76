@@ -549,6 +549,7 @@ hr.dashed{
 
 .catalog_element .element_table td.pic img {
     max-width:100px;
+    padding: 10px 5px;
 }
 .catalog_element .element_table td.pic .list-img-slider-content img, .list-img-slider-content img {
     max-width: 300px;
@@ -895,7 +896,7 @@ td .buy_helper_holder{
 
 .dark_line{
     background: #262525;
-    margin:1px -5px;
+    margin:20px -5px;
     padding: 0 5px;
 }
 
@@ -1393,9 +1394,23 @@ body .btn-link {
 }
 .table_big_img{
     width: 100%!important;
-    max-width: 300px!important;
+    max-width: 500px!important;
+    margin-bottom: 20px;
 }
-
+.logo_img{
+    max-width: 100px;
+    transition: 0.4s;
+    width: 100%;
+    padding: 0;
+}
+.logo_img:hover{
+    transform: scale(1.5);
+    padding: 0 20px;
+}
+.mid_content td {
+    vertical-align: middle;
+    padding: 10px;
+}
 /**
 Вкладки в разделах
  */
@@ -1466,6 +1481,10 @@ body .btn-link {
     .catalog_element .element_table thead td {
         padding: 10px 2px;
     }
+    .catalog_element .element_table td{
+        padding: 0 7px;
+        vertical-align: middle;
+    }
 }
 @media (max-width: 1240px) {
     .top .address {
@@ -1506,6 +1525,9 @@ body .btn-link {
     }
     .col-xs-6 {
         width: 40%;
+    }
+    .footer .menu {
+        display: none;
     }
 }
 @media (max-width: 920px) {
@@ -1565,15 +1587,16 @@ body .btn-link {
     .top .logo {
         margin-right: 0;
     }
-    .menu {
-        display: none;
-    }
     .left_block_holder {
         display: none;
     }
     .main_block table.element_table tr td {
         padding: 5px;
     }
+    .menu{
+        display: none;
+    }
+
 }
 @media (max-width: 505px) {
     .top .logo {
@@ -1796,4 +1819,9 @@ body .btn-link {
     .sections_list.main .section {
         width: 100%;
     }
+}
+
+.has-image[data-image-fit=contain] .fancybox__image {
+    padding: 30px;
+    background-color: #fff;
 }

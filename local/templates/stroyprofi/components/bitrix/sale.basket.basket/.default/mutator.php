@@ -48,6 +48,12 @@ foreach ($this->basketItems as $row)
         } else {
             $isSvobodno = false;
         }
+
+        if ((float)$row['QUANTITY'] > (float)$iSvobodno) {
+            $isAvail = false;
+        } else {
+            $isAvail = true;
+        }
     }
 
 	$rowData = array(
@@ -55,7 +61,8 @@ foreach ($this->basketItems as $row)
 		'IS_HEADER' => $serialNumber === 1,
 		'SERIAL_NUMBER' => $serialNumber++,
 		'ARTICUL' => $sArticul,
-		'SVOBODNO' => $iSvobodno,
+		'IS_AVAIL' => $isAvail,
+		'SVOBODNO' => (float)$iSvobodno,
 		'IS_SVOBODNO' => $isSvobodno,
 		'NAIMENOVANIE' => $row['~PROPERTY_Naimenovanie_VALUE'],
 		'PRODUCT_ID' => $row['PRODUCT_ID'],

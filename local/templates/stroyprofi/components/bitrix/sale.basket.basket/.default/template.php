@@ -4,6 +4,7 @@ use Bitrix\Main;
 use Bitrix\Main\Localization\Loc;
 
 \Bitrix\Main\UI\Extension::load("ui.fonts.ruble");
+\Bitrix\Main\UI\Extension::load("ui.alerts");
 
 /**
  * @var array $arParams
@@ -15,6 +16,20 @@ use Bitrix\Main\Localization\Loc;
  * @var CBitrixComponentTemplate $this
  * @var array $giftParameters
  */
+
+if (count($arResult['NOT_AVAIL']) > 0) { ?>
+    <!-- .ui-alert.ui-alert-icon-warning-->
+    <div class="ui-alert ui-alert-icon-warning">
+            <span class="ui-alert-message"><strong>Внимание!</strong>
+                В заказе присутствуют товары, которых нет в наличии. Оплата заказа после согласования с менеджером.
+                <br>
+                <?= implode('<br>', $arResult['NOT_AVAIL']) ?>
+            </span>
+    </div>
+
+    <?
+}
+
 
 $documentRoot = Main\Application::getDocumentRoot();
 

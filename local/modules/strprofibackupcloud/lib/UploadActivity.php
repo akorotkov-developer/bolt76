@@ -14,7 +14,7 @@ class UploadActivity implements IUploadActivity
     /**
      * Запуск переноса резервных копий
      */
-    public function startUpload(string $diskType): void
+    public function startUpload(string $diskType, array $params = []): int
     {
         \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Старт резервного копирования'], '', 'log.txt');
         // Добавить запись в StorageTable для старта переноса
@@ -22,8 +22,10 @@ class UploadActivity implements IUploadActivity
 
         if ($rowId > 0) {
             // Добавляем агент, который переносит бэкапы на внешний диск
-            $this->addAgent($rowId);
+            $this->addAgent($rowId, $params);
         }
+
+        return $rowId;
     }
 
     /**
@@ -62,10 +64,11 @@ class UploadActivity implements IUploadActivity
 
     /**
      * Добавить агент
-     * @param $rowId
+     * @param int $rowId
+     * @param array $params
      * @throws \Exception
      */
-    private function addAgent($rowId): void
+    private function addAgent(int $rowId, array $params): void
     {
         $time1 =  strtotime(date("Y-m-d H:i:s"));
         $time2 =  strtotime(date("Y-m-d 5:30:00"));
@@ -77,6 +80,11 @@ class UploadActivity implements IUploadActivity
             $time1 = $startDate->format('d.m.Y H:i:s');
         } else {
             $startDate = new \DateTime(date('Y-m-d 5:30:00'));
+            $time1 = $startDate->format('d.m.Y H:i:s');
+        }
+
+        if ($params['NOW']) {
+            $startDate = new \DateTime(date('Y-m-d H:i:s'));
             $time1 = $startDate->format('d.m.Y H:i:s');
         }
 

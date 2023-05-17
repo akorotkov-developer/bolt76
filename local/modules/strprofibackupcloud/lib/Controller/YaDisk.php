@@ -109,11 +109,15 @@ class YaDisk extends BaseCloud
         \Bitrix\Main\Diag\Debug::dumpToFile(['$localBackupFiles' => $localBackupFiles], '', 'log.txt');
 
         if (count($localBackupFiles) > 0) {
+            $this->totalLinks = (count($localBackupFiles));
+
             foreach ($localBackupFiles as $backUpItem) {
                 \Bitrix\Main\Diag\Debug::dumpToFile(['$backUpItem' => $backUpItem], '', 'log.txt');
                 $this->uploadFileToYaDisk($backUpItem, date('d.m.Y') . '_backup' , $rowData['ID']);
                 sleep(2);
             }
+
+            \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Дошли до конца перед удалением'], '', 'log.txt');
 
             // Удаление бэкапа после закачки на внешний диск
             $localBackup->delete($localBackupFiles);

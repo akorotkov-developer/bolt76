@@ -9,7 +9,7 @@ interface IUploadActivity
     /**
      * Запуск переноса резервных копий
      */
-    public function startUpload(string $diskType): void;
+    public function startUpload(string $diskType, array $params): int;
 
     /**
      * Загрузка бэкапов на внешний диск, по параметрам из записи в StorageTable c id = $rowId

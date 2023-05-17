@@ -45,7 +45,6 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
             href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"
     />
     <link rel="stylesheet" type="text/css" href="<?= SITE_TEMPLATE_PATH?>/css_templates/print_styles.css" media="print">
-
 </head>
 <body>
 <div class="notification" id="notification">Товар добавлен<br/>в <a href="/personal/cart/">корзину</a></div>
@@ -154,8 +153,8 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
             </div>
 
 
-            <!-- Бегущая строка -->
-
+       <!-- Бегущая строка -->
+<!---->
 <!--            <div class="marquee">-->
 <!--                <span>-->
 <!--                    --><?php
@@ -167,7 +166,6 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
 //                    ?>
 <!--                </span>-->
 <!--            </div>-->
-
 
             <div class="dark_line">
                 <div class="corners left"><div class="right"></div></div>

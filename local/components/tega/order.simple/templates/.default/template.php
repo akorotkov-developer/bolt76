@@ -1,6 +1,8 @@
 <?php
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
+\Bitrix\Main\UI\Extension::load("ui.alerts");
+
 if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
     echo GetMessage("ORDER_SUCCESSFULLY_CREATED");
     return;
@@ -29,6 +31,20 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
 </script>
 
 <div class="order-simple">
+    <?php
+    if (count($arResult['NOT_AVAIL']) > 0) {?>
+        <!-- .ui-alert.ui-alert-icon-warning-->
+        <div class="ui-alert ui-alert-icon-warning">
+            <span class="ui-alert-message"><strong>Внимание!</strong>
+                В заказе присутствуют товары, которых нет в наличии. Оплата заказа после согласования с менеджером.
+                <br>
+                <?= implode('<br>', $arResult['NOT_AVAIL'])?>
+            </span>
+        </div>
+
+        <?
+    }
+    ?>
     <form method="post"
           enctype="multipart/form-data"
           id="<? echo $arParams["FORM_ID"]; ?>"

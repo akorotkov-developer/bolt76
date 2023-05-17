@@ -12,6 +12,7 @@ ignore_user_abort(true);
 
 use Bitrix\Main\Application;
 use Bitrix\Main\Loader;
+use StrprofiBackupCloud\LocalBackup;
 use StrprofiBackupCloud\UploadActivity;
 use StrprofiBackupCloud\Dump\Dump;
 
@@ -45,4 +46,20 @@ if ($request->getPost('action') && $request->getPost('action') == 'start_upload'
     $activity->startUpload('yadisk');
 
 /*    $dump->createDump($paramsForDumpAll);*/
+}
+
+if ($request->getPost('action') == 'create_copy') {
+    $localBackup = new LocalBackup();
+    $localBackupFiles = $localBackup->getLocalBackups();
+    $localBackup->delete($localBackupFiles);
+
+    $params = [
+        'NOW' => true
+    ];
+
+    $activity = new UploadActivity();
+    $rowId = $activity->startUpload($diskType, $params);
+
+    // Возвращаем $rowId для получения информации о прогрессе
+    echo $rowId;
 }

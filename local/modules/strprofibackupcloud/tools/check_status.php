@@ -6,12 +6,17 @@ define("PUBLIC_AJAX_MODE", true);
 use Bitrix\Main\Config\Option;
 use StrprofiBackupCloud\UploadActivity;
 use Bitrix\Main\Loader;
+use Bitrix\Main\Application;
 
 require_once($_SERVER['DOCUMENT_ROOT']. "/bitrix/modules/main/include/prolog_before.php");
 
 Loader::includeModule('strprofibackupcloud');
 
-$rowId = Option::get('strprofibackupcloud', "CUR_TASK_ID");
+$request = Application::getInstance()->getContext()->getRequest();
+
+/*$rowId = Option::get('strprofibackupcloud', "CUR_TASK_ID");*/
+
+$rowId = $request->get('rowid');
 
 $status = '';
 

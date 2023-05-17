@@ -23,7 +23,7 @@ class Dump
         // Определяем кодировку БД
         $charset = (BX_UTF) ? 'utf8' : 'cp1251';
         $dir = $_SERVER['DOCUMENT_ROOT'];
-        $command = 'cd ' . $dir . ' && mysqldump --host=localhost --user=bitrix0 --password=v9sG0A0m --default-character-set=' . $charset . ' sitemanager > ' . 'bitrix/backup/strprofi/mysqlDump.sql';
+        $command = 'cd ' . $dir . ' && mysqldump --host=localhost --user=bitrix0 --password=awasawas --default-character-set=' . $charset . ' sitemanager > ' . 'bitrix/backup/strprofi/mysqlDump.sql';
 
         passthru($command, $retval);
 

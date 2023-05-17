@@ -2,6 +2,36 @@ BX.ready(function() {
     var isStarted = false;
 
     /**
+     * Создать резервную копию на внешнем диске
+     */
+    BX.bind(BX('create_copy'), 'click', function() {
+        if (!isStarted) {
+            isStarted = true;
+
+            $('.copy_progress').show();
+
+            console.log('Тут 1');
+            BX.ajax({
+                url: '/local/modules/' + admin_module_name + '/tools/run_upload.php',
+                data: {
+                    'action': 'create_copy',
+                    'disk_type': document.getElementById('disk_type').value
+                },
+                method: 'POST',
+                dataType: 'json',
+                async: true,
+                onsuccess: function(data) {
+                    console.log(data, 'data');
+                    checkExportStatus(data);
+                },
+                onfailure: function() {
+
+                }
+            });
+        }
+    });
+
+    /**
      * Старт переноса резервных копий
      */
     BX.bind(BX('start_copy_backup'), 'click', function() {
@@ -66,10 +96,13 @@ BX.ready(function() {
 /**
  * Проверить текущий статус переноса резервных копий
  */
-function checkExportStatus()
+function checkExportStatus(rowId)
 {
+    console.log(rowId, 'rowId');
+    console.log(admin_module_name, 'admin_module_name');
+
     BX.ajax({
-        url: '/local/modules/' + admin_module_name + '/tools/check_status.php',
+        url: '/local/modules/strprofibackupcloud/tools/check_status.php?rowid=' . rowId,
         data: {},
         method: 'POST',
         dataType: 'json',
@@ -77,7 +110,7 @@ function checkExportStatus()
         onsuccess: function(data) {
             console.log(Number(data));
             if (Number(data) > 0) {
-                $('.success_message_backup').text('Прогресс: ' + data + '%');
+                $('#progress_for_cur_copy').css('width', data + '%');
             }
         },
         onfailure: function() {

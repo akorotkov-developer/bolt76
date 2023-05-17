@@ -1503,7 +1503,7 @@ h2.basket-item-info-name {
 
 /*region Actions*/
 .basket-items-list-item-remove {
-	padding-top: 17px !important;
+	padding-top: 0px !important;
 	vertical-align: top;
 }
 
@@ -2253,4 +2253,13 @@ body .content_table td {
 }
 .shipment-specification-print {
 	display: none;
+}
+.basket-item-block-price-nopadding-top {
+	padding-top: 0px;
+}
+.ui-alert.ui-alert-icon-warning .ui-alert-message {
+	color: #f16522;
+}
+.basket-items-list .avail_info {
+	color: #f16522;
 }
