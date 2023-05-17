@@ -1,6 +1,8 @@
 <?php
 
 use \Bitrix\Main\Loader;
+use Bitrix\Main\Mail\Event;
+use Bitrix\Main\Type\DateTime;
 
 /**
  * Класс импорта товаров
@@ -130,9 +132,30 @@ class Import
             $this->setRatio();
 
             $this->echo('Конец импорта!');
+
+            // Отправка лога импорта
+            $this->sendLog();
         }
 
         return $bSuccess;
+    }
+
+    /**
+     * Отправка лога в конце импорта
+     */
+    private function sendLog(): void
+    {
+        $objDateTime = new DateTime();
+        Event::send([
+            'EVENT_NAME' => 'SEND_LOGS_IMPORT',
+            'LID' => 's1',
+            'C_FIELDS' => [
+                'LOG_DATE' => $objDateTime->format('d.m.Y')
+            ],
+            'FILE' => [
+                $_SERVER['DOCUMENT_ROOT'] . '/import/logs/log_import.txt'
+            ]
+        ]);
     }
 
     /**
