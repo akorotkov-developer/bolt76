@@ -143,3 +143,6 @@ a[href]:after {
     height: 100px;
     border-bottom: 1px solid #000;
 }
+.ui-alert.ui-alert-icon-warning {
+    display: none;
+}

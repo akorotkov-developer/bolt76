@@ -44,7 +44,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 <script id="basket-item-template" type="text/html">
     <tr class="basket-items-list-item-container{{#SHOW_RESTORE}} basket-items-list-item-container-expend{{/SHOW_RESTORE}}"
 		id="basket-item-{{ID}}" data-entity="basket-item" data-id="{{ID}}">
-        <td class="only-print only-print-1" style="display: none">
+        <td class="only-print only-print-1">
             <div class="printing-serial-naimenovanie">
                 <div class="serial-print">
                     {{SERIAL_NUMBER}}
