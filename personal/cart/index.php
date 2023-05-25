@@ -18,7 +18,14 @@ while($arGroup = $rsGroups->GetNext()) {
 $isKioskBuyer = false;
 if (in_array('KIOSK_BUYER', $arGroups) || strpos($_SERVER['HTTP_USER_AGENT'], 'KioskBrowser') !== false) {
     $isKioskBuyer = true;
-}
+    ?>
+    <link rel="stylesheet" type="text/css" href="<?= SITE_TEMPLATE_PATH ?>/css_templates/print_styles.css"
+          media="print">
+        <?php
+}?>
+
+<?php
+
 
 $APPLICATION->IncludeComponent(
 	"bitrix:sale.basket.basket",
