@@ -26,33 +26,35 @@ while ($arItems = $dbBasketItems->Fetch())
 $arResult['BASKET_ITEMS'] = $arBasketItems;
 $arBasketItems = array_column($arBasketItems, NULL, 'PRODUCT_ID');
 
-$dbResult = CIBlockElement::GetList(
-    [],
-    [
-        'IBLOCK_ID' => 1,
-        'ID' => $arProductIds
-    ],
-    false,
-    false,
-    [
-        'ID', 'NAME', 'PROPERTY_SVOBODNO', 'PROPERTY_Svertka'
-    ]
-);
+if (count($arProductIds) > 0) {
+    $dbResult = CIBlockElement::GetList(
+        [],
+        [
+            'IBLOCK_ID' => 1,
+            'ID' => $arProductIds
+        ],
+        false,
+        false,
+        [
+            'ID', 'NAME', 'PROPERTY_SVOBODNO', 'PROPERTY_Svertka'
+        ]
+    );
 
-$arItems = [];
-while($aRes = $dbResult->Fetch()) {
-    if ((float)$aRes['PROPERTY_SVOBODNO_VALUE'] - (float)$arBasketItems[$aRes['ID']]['QUANTITY'] < 0) {
-        $arItems[] = trim($aRes['PROPERTY_SVERTKA_VALUE']) . ' (Доступно: ' . (float)$aRes['PROPERTY_SVOBODNO_VALUE'] . ')';;
+    $arItems = [];
+    while ($aRes = $dbResult->Fetch()) {
+        if ((float)$aRes['PROPERTY_SVOBODNO_VALUE'] - (float)$arBasketItems[$aRes['ID']]['QUANTITY'] < 0) {
+            $arItems[] = trim($aRes['PROPERTY_SVERTKA_VALUE']) . ' (Доступно: ' . (float)$aRes['PROPERTY_SVOBODNO_VALUE'] . ')';;
+        }
     }
-}
 
-if (count($arItems) > 0) {
-    $arResult['NOT_AVAIL'] = $arItems;
+    if (count($arItems) > 0) {
+        $arResult['NOT_AVAIL'] = $arItems;
 
-    // Убираем онлайн оплату
-    foreach ($arResult['PAY_SYSTEM'] as $key => $paySystem) {
-        if ($paySystem['ID'] == 2) {
-            unset($arResult['PAY_SYSTEM'][$key]);
+        // Убираем онлайн оплату
+        foreach ($arResult['PAY_SYSTEM'] as $key => $paySystem) {
+            if ($paySystem['ID'] == 2) {
+                unset($arResult['PAY_SYSTEM'][$key]);
+            }
         }
     }
 }
