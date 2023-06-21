@@ -110,6 +110,9 @@ class Import
 
         if ($this->productsFile == false) {
             $this->echo('Ошибка открытия файла с товарами', true);
+
+            // Отправка лога импорта
+            $this->sendLog();
         } else {
             $this->echo('Начало импорта!');
 
@@ -827,7 +830,8 @@ class Import
                     'Ostatok' => $item['Ostatok'],
                     'SHOW_IN_PRICE' => ($item['show_in_price'] > 0) ? 1 : 0,
                     'SORT_IN_PRICE' => $item['show_in_price'],
-                    'AVAILABLE' => ((int)$item['Ostatok'] > 0) ? $this->iAvailablePropId : ''
+                    'AVAILABLE' => ((int)$item['Ostatok'] > 0) ? $this->iAvailablePropId : '',
+                    'SALE' => $item['Rasprodaja']
                 ],
                 'IPROPERTY_TEMPLATES' => [
                     'ELEMENT_META_KEYWORDS'    =>  '{=this.Name} в Ярославле, {=this.Name}, опт, недорого, прайс-лист, каталог, доставка до транспортной компании.',
