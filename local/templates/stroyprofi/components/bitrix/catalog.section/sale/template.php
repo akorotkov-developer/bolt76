@@ -195,50 +195,47 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 		{
 			$rowItems = array_splice($arResult['ITEMS'], 0, 1000);
 			?>
-			<div class="row <?=$rowData['CLASS']?>" data-entity="items-row">
 				<?
 
 
 						?>
-						<div class="col-xs-8 product-item-small-card product-item-small-card-sale">
-							<div class="row product-items-sale-list">
-								<?
-								foreach ($rowItems as $item)
-								{
-									?>
-									<div class="col-xs-6 col-sm-2 col-md-2 item-for-recmended-product item-for-sale">
-                                        <h2 class="sale_title"><?= $item['PROPERTIES']['SALE']['VALUE']?></h2>
-										<?
-										$APPLICATION->IncludeComponent(
-											'bitrix:catalog.item',
-											'item_for_sale',
-											array(
-												'RESULT' => array(
-													'ITEM' => $item,
-													'AREA_ID' => $areaIds[$item['ID']],
-													'TYPE' => $rowData['TYPE'],
-													'BIG_LABEL' => 'N',
-													'BIG_DISCOUNT_PERCENT' => 'N',
-													'BIG_BUTTONS' => 'N',
-													'SCALABLE' => 'N'
-												),
-												'PARAMS' => $generalParams
-													+ array('SKU_PROPS' => $arResult['SKU_PROPS'][$item['IBLOCK_ID']])
-											),
-											$component,
-											array('HIDE_ICONS' => 'Y')
-										);
-										?>
-									</div>
-									<?
-								}
-								?>
-							</div>
-						</div>
+                <div class="col-xs-12 product-item-small-card">
+                    <div class="row">
+                        <?
+                        foreach ($rowItems as $item)
+                        {
+                            ?>
+                            <div class="col-xs-3 col-sm-2 col-md-2 item-for-recmended-product">
+                                <?
+                                $APPLICATION->IncludeComponent(
+                                    'bitrix:catalog.item',
+                                    'item_for_personal_recomended',
+                                    array(
+                                        'RESULT' => array(
+                                            'ITEM' => $item,
+                                            'AREA_ID' => $areaIds[$item['ID']],
+                                            'TYPE' => $rowData['TYPE'],
+                                            'BIG_LABEL' => 'N',
+                                            'BIG_DISCOUNT_PERCENT' => 'N',
+                                            'BIG_BUTTONS' => 'N',
+                                            'SCALABLE' => 'N'
+                                        ),
+                                        'PARAMS' => $generalParams
+                                            + array('SKU_PROPS' => $arResult['SKU_PROPS'][$item['IBLOCK_ID']])
+                                    ),
+                                    $component,
+                                    array('HIDE_ICONS' => 'Y')
+                                );
+                                ?>
+                            </div>
+                            <?
+                        }
+                        ?>
+                    </div>
+                </div>
 						<?
 
 				?>
-			</div>
 			<?
 		}
 		unset($generalParams, $rowItems);

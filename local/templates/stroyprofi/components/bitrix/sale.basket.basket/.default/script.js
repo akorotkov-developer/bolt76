@@ -1467,13 +1467,9 @@ BX.ready(function() {
 			method: 'get',
 			data: {},
 			success: function(data) {
-				console.log('data');
-				console.log(data);
-
 				let link = document.createElement("a");
 				link.setAttribute("href", '/cart/Исходящие счета киоск №' + data + '.xml');
-				console.log('link');
-				console.log(link);
+
 				link.setAttribute("download", 'Исходящие счета киоск №' + data + '.xml');
 				link.click();
 			}
