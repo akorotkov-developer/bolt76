@@ -226,267 +226,35 @@ if ($ar_result = $db_list->GetNext()) {
             */?>
         </div>-->
 
-        <div class="b-right_banner">
+        <div class="b-sale">
             <?php
-                $APPLICATION->IncludeComponent(
-                    "bitrix:news.list",
-                    "banners_right",
-                    array(
-                        "DISPLAY_DATE" => "N",
-                        "DISPLAY_NAME" => "N",
-                        "DISPLAY_PICTURE" => "N",
-                        "DISPLAY_PREVIEW_TEXT" => "N",
-                        "AJAX_MODE" => "N",
-                        "IBLOCK_TYPE" => "content",
-                        "IBLOCK_ID" => "8",
-                        "NEWS_COUNT" => "999",
-                        "SORT_BY1" => "ACTIVE_FROM",
-                        "SORT_ORDER1" => "DESC",
-                        "SORT_BY2" => "SORT",
-                        "SORT_ORDER2" => "ASC",
-                        "FILTER_NAME" => "",
-                        "FIELD_CODE" => ["PREVIEW_PICTURE"],
-                        "PROPERTY_CODE" => ["LINK"],
-                        "CHECK_DATES" => "Y",
-                        "DETAIL_URL" => "",
-                        "PREVIEW_TRUNCATE_LEN" => "",
-                        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                        "SET_TITLE" => "N",
-                        "SET_STATUS_404" => "N",
-                        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                        "ADD_SECTIONS_CHAIN" => "N",
-                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                        "PARENT_SECTION" => "",
-                        "PARENT_SECTION_CODE" => "",
-                        "CACHE_TYPE" => "A",
-                        "CACHE_TIME" => "36000000",
-                        "CACHE_FILTER" => "N",
-                        "CACHE_GROUPS" => "Y",
-                        "DISPLAY_TOP_PAGER" => "N",
-                        "DISPLAY_BOTTOM_PAGER" => "N",
-                        "PAGER_TITLE" => "Новости",
-                        "PAGER_SHOW_ALWAYS" => "N",
-                        "PAGER_TEMPLATE" => "",
-                        "PAGER_DESC_NUMBERING" => "N",
-                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-                        "PAGER_SHOW_ALL" => "N",
-                        "AJAX_OPTION_JUMP" => "N",
-                        "AJAX_OPTION_STYLE" => "N",
-                        "AJAX_OPTION_HISTORY" => "N"
-                    ),
-                    $component
-                );
+            /**
+             * Блок распродажа
+             */
+            $dbResult = CIBlockElement::GetList(
+                [],
+                [
+                    'IBLOCK_ID' => 1,
+                    '!PROPERTY_SALE' => false
+                ],
+                false,
+                false,
+                [
+                    'ID', 'PROPERTY_SVOBODNO'
+                ]
+            );
 
-            ?>
-        </div>
-    </div>
-
-    <div class="col-md-12 col-lg-9 b-product-ctalogsection">
-
-        <?php if ($arParams['IS_APPLY_FILTER'] != 'Y') {?>
-
-            <?php $APPLICATION->IncludeComponent(
-                "profi:catalog.section.list",
-                "",
-                array(
-                    "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-                    "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-                    "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
-                    "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
-                    "CACHE_TYPE" => $arParams["CACHE_TYPE"],
-                    "CACHE_TIME" => $arParams["CACHE_TIME"],
-                    "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-                    "COUNT_ELEMENTS" => $arParams["SECTION_COUNT_ELEMENTS"],
-                    "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
-                    //      "FILTER_NAME" =>"arrSectionFilter",
-                    "TOP_DEPTH" => 1
-                ),
-                $component
-            ); ?>
-
-        <?php }?>
-
-
-        <?
-        if (count($tabsID) > 0 && $tabsID !== false) {
-            $isTabs = true;
-        } else {
-            $isTabs = false;
-        }
-        if ($isTabs) {
-        //    print_r($tabsID);
-            $arSelect = array("ID", "CODE", "PROPERTY_TITLE", "PREVIEW_TEXT", "PROPERTY_PDF");
-            $arFilter = array("IBLOCK_ID" => "4", "ACTIVE" => "Y", "ID" => $tabsID);
-            $res = CIBlockElement::GetList(array('sort' => 'asc'), $arFilter, false, false, $arSelect);
-            $tabs = array();
-            ?>
-            <ul class="section-tabs"><?
-            ?>
-            <li><a id="tab-prices" href="#prices">Цены</a></li><?
-            while ($ob = $res->GetNext()) {
-                $tabs[] = $ob;
-                ?>
-                <li><a id="tab-<?= $ob['CODE']; ?>" href="#<?= $ob['CODE']; ?>"><?= $ob['PROPERTY_TITLE_VALUE']; ?></a></li><?
-            }
-            ?>
-            <div class="clear"></div></ul><?
-        }
-        ?>
-
-
-    <? if ($isTabs){ ?>
-    <div class="section-panes">
-        <div class="section-pane b-product-items"><? } ?>
-
-            <?php
-            $sCurPage = $APPLICATION->GetCurPage();
-            if (strpos($sCurPage, '/apply/') !== false) {
-                $arParams["ELEMENT_SORT_FIELD"] = 'PROPERTY_ELEMENT_SECTION_NAME';
-            }
-
-            $arParams["ELEMENT_SORT_FIELD2"] = 'PROPERTY_Naimenovanie';
-            $arParams["ELEMENT_SORT_ORDER2"] = $arParams["ELEMENT_SORT_ORDER"];
-
-
-            $APPLICATION->IncludeComponent(
-                    "profi:catalog.section",
-                    ($template ? 'section_descr' : ''),
-                    array(
-                        "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-                        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-                        "ELEMENT_SORT_FIELD" => $arParams["ELEMENT_SORT_FIELD"],
-                        "ELEMENT_SORT_ORDER" => $arParams["ELEMENT_SORT_ORDER"],
-                        "ELEMENT_SORT_FIELD2" => $arParams["ELEMENT_SORT_FIELD2"],
-                        "ELEMENT_SORT_ORDER2" => $arParams["ELEMENT_SORT_ORDER"],
-                        "PROPERTY_CODE" => $arParams["LIST_PROPERTY_CODE"],
-                        "META_KEYWORDS" => $arParams["LIST_META_KEYWORDS"],
-                        "META_DESCRIPTION" => $arParams["LIST_META_DESCRIPTION"],
-                        "BROWSER_TITLE" => $arParams["LIST_BROWSER_TITLE"],
-                        "INCLUDE_SUBSECTIONS" => $arParams["INCLUDE_SUBSECTIONS"],
-                        "BASKET_URL" => $arParams["BASKET_URL"],
-                        "ACTION_VARIABLE" => $arParams["ACTION_VARIABLE"],
-                        "PRODUCT_ID_VARIABLE" => $arParams["PRODUCT_ID_VARIABLE"],
-                        "SECTION_ID_VARIABLE" => $arParams["SECTION_ID_VARIABLE"],
-                        "PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
-                        "FILTER_NAME" => $arParams["FILTER_NAME"],
-                        "CACHE_TYPE" => $arParams["CACHE_TYPE"],
-                        "CACHE_TIME" => $arParams["CACHE_TIME"],
-                        "CACHE_FILTER" => $arParams["CACHE_FILTER"],
-                        "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-                        "SET_TITLE" => $arParams["SET_TITLE"],
-                        "SET_STATUS_404" => $arParams["SET_STATUS_404"],
-                        "DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
-                        "PAGE_ELEMENT_COUNT" => $arParams["PAGE_ELEMENT_COUNT"],
-                        "LINE_ELEMENT_COUNT" => $arParams["LINE_ELEMENT_COUNT"],
-                        "PRICE_CODE" => $arParams["PRICE_CODE"],
-                        "USE_PRICE_COUNT" => $arParams["USE_PRICE_COUNT"],
-                        "SHOW_PRICE_COUNT" => $arParams["SHOW_PRICE_COUNT"],
-
-                        "PRICE_VAT_INCLUDE" => $arParams["PRICE_VAT_INCLUDE"],
-                        "USE_PRODUCT_QUANTITY" => $arParams['USE_PRODUCT_QUANTITY'],
-
-                        "DISPLAY_TOP_PAGER" => $arParams["DISPLAY_TOP_PAGER"],
-                        "DISPLAY_BOTTOM_PAGER" => $arParams["DISPLAY_BOTTOM_PAGER"],
-                        "PAGER_TITLE" => $arParams["PAGER_TITLE"],
-                        "PAGER_SHOW_ALWAYS" => $arParams["PAGER_SHOW_ALWAYS"],
-                        "PAGER_TEMPLATE" => $arParams["PAGER_TEMPLATE"],
-                        "PAGER_DESC_NUMBERING" => $arParams["PAGER_DESC_NUMBERING"],
-                        "PAGER_DESC_NUMBERING_CACHE_TIME" => $arParams["PAGER_DESC_NUMBERING_CACHE_TIME"],
-                        "PAGER_SHOW_ALL" => $arParams["PAGER_SHOW_ALL"],
-
-                        "OFFERS_CART_PROPERTIES" => $arParams["OFFERS_CART_PROPERTIES"],
-                        "OFFERS_FIELD_CODE" => $arParams["LIST_OFFERS_FIELD_CODE"],
-                        "OFFERS_PROPERTY_CODE" => $arParams["LIST_OFFERS_PROPERTY_CODE"],
-                        "OFFERS_SORT_FIELD" => $arParams["OFFERS_SORT_FIELD"],
-                        "OFFERS_SORT_ORDER" => $arParams["OFFERS_SORT_ORDER"],
-                        "OFFERS_LIMIT" => $arParams["LIST_OFFERS_LIMIT"],
-
-                        "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
-                        "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
-                        "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
-                        "DETAIL_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["element"],
-                        'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
-                        'CURRENCY_ID' => $arParams['CURRENCY_ID'],
-                        "SECTION_USER_FIELDS" => array("UF_COUNTS", "UF_SEE_ALSO")
-                    ),
-                    $component
-                );
-                ?>
-
-            </div>
-
-            <? if ($isTabs) { ?><?
-                foreach ($tabs as $tab) {
-                    ?>
-                    <div class="section-pane">
-                    <div class="section-pane-inner"><?
-                        print $tab['PREVIEW_TEXT'];
-                        if ($tab['PROPERTY_PDF_VALUE']) {
-                            $pdf = CFile::GetPath($tab['PROPERTY_PDF_VALUE']);
-                            ?>
-
-                        <iframe id="pdfFrame"
-                                src="https://strprofi.ru<?= $pdf; ?>"
-                                height="1150" style="border: none;"></iframe>
-
-                            <?
-                        }
-                        ?></div></div><?
+            $items = [];
+            while($arRes = $dbResult->Fetch()){
+                if ((int)$arRes['PROPERTY_SVOBODNO_VALUE'] > 0) {
+                    $items[] = $arRes['ID'];
                 }
-            } ?>
-        </div>
-
-    </div>
-</div>
-
-<div class="b-container-bottom">
-    <?php if (ModuleManager::isModuleInstalled("sale")) {
-        $arRecomData = array();
-        $recomCacheID = array('IBLOCK_ID' => $arParams['IBLOCK_ID']);
-        $obCache = new CPHPCache();
-        if ($obCache->InitCache(36000, serialize($recomCacheID), "/sale/bestsellers"))
-        {
-            $arRecomData = $obCache->GetVars();
-        }
-        elseif ($obCache->StartDataCache())
-        {
-            if (Loader::includeModule("catalog"))
-            {
-                $arSKU = CCatalogSku::GetInfoByProductIBlock($arParams['IBLOCK_ID']);
-                $arRecomData['OFFER_IBLOCK_ID'] = (!empty($arSKU) ? $arSKU['IBLOCK_ID'] : 0);
             }
-            $obCache->EndDataCache($arRecomData);
-        }?>
+
+                $GLOBALS['arrFilterSale'] = ['ID' => $items]; ?>
 
 
-        <?php
-        /**
-         * Блок распродажа
-         */
-        $dbResult = CIBlockElement::GetList(
-            [],
-            [
-                'IBLOCK_ID' => 1,
-                'PROPERTY_SALE' => 'SALE'
-            ],
-            false,
-            false,
-            [
-                 'ID'
-            ]
-        );
-
-        $arItems = [];
-        while($arResult = $dbResult->Fetch()){
-            $arItems[] = $arResult['ID'];
-        }
-
-        if ($_GET['tst']) {
-            $GLOBALS['arrFilterSale'] = ['ID' => $arItems];
-            ?>
-
-            <div class="col-xs-12 b-container-recomended-products">
-                <div class="catalog-block-header">
+                <div class="catalog-block-header catalog-block-header-personal-recomended">
                     <b>Распродажа: </b>
                 </div>
                 <?
@@ -560,9 +328,186 @@ if ($ar_result = $db_list->GetNext()) {
                     ), $component
                 );
                 ?>
-            </div>
+        </div>
+    </div>
 
-        <?php } ?>
+    <div class="col-md-12 col-lg-9 b-product-ctalogsection 1111">
+
+        <?php if ($arParams['IS_APPLY_FILTER'] != 'Y') {?>
+
+            <?php $APPLICATION->IncludeComponent(
+                "profi:catalog.section.list",
+                "",
+                array(
+                    "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+                    "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+                    "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
+                    "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
+                    "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+                    "CACHE_TIME" => $arParams["CACHE_TIME"],
+                    "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+                    "COUNT_ELEMENTS" => $arParams["SECTION_COUNT_ELEMENTS"],
+                    "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
+                    //      "FILTER_NAME" =>"arrSectionFilter",
+                    "TOP_DEPTH" => 1
+                ),
+                $component
+            ); ?>
+
+        <?php }?>
+
+
+        <?
+        if (count($tabsID) > 0 && $tabsID !== false) {
+            $isTabs = true;
+        } else {
+            $isTabs = false;
+        }
+        if ($isTabs) {
+        //    print_r($tabsID);
+            $arSelect = array("ID", "CODE", "PROPERTY_TITLE", "PREVIEW_TEXT", "PROPERTY_PDF");
+            $arFilter = array("IBLOCK_ID" => "4", "ACTIVE" => "Y", "ID" => $tabsID);
+            $res = CIBlockElement::GetList(array('sort' => 'asc'), $arFilter, false, false, $arSelect);
+            $tabs = array();
+            ?>
+            <ul class="section-tabs"><?
+            ?>
+            <li><a id="tab-prices" href="#prices">Цены</a></li><?
+            while ($ob = $res->GetNext()) {
+                $tabs[] = $ob;
+                ?>
+                <li><a id="tab-<?= $ob['CODE']; ?>" href="#<?= $ob['CODE']; ?>"><?= $ob['PROPERTY_TITLE_VALUE']; ?></a></li><?
+            }
+            ?>
+            <div class="clear"></div></ul><?
+        }
+        ?>
+
+
+        <? if ($isTabs){ ?>
+        <div class="section-panes">
+            <div class="section-pane b-product-items"><? } ?>
+
+                <?php
+                $sCurPage = $APPLICATION->GetCurPage();
+                if (strpos($sCurPage, '/apply/') !== false) {
+                    $arParams["ELEMENT_SORT_FIELD"] = 'PROPERTY_ELEMENT_SECTION_NAME';
+                }
+
+                $arParams["ELEMENT_SORT_FIELD2"] = 'PROPERTY_Naimenovanie';
+                $arParams["ELEMENT_SORT_ORDER2"] = $arParams["ELEMENT_SORT_ORDER"];
+
+
+                $APPLICATION->IncludeComponent(
+                        "profi:catalog.section",
+                        ($template ? 'section_descr' : ''),
+                        array(
+                            "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+                            "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+                            "ELEMENT_SORT_FIELD" => $arParams["ELEMENT_SORT_FIELD"],
+                            "ELEMENT_SORT_ORDER" => $arParams["ELEMENT_SORT_ORDER"],
+                            "ELEMENT_SORT_FIELD2" => $arParams["ELEMENT_SORT_FIELD2"],
+                            "ELEMENT_SORT_ORDER2" => $arParams["ELEMENT_SORT_ORDER"],
+                            "PROPERTY_CODE" => $arParams["LIST_PROPERTY_CODE"],
+                            "META_KEYWORDS" => $arParams["LIST_META_KEYWORDS"],
+                            "META_DESCRIPTION" => $arParams["LIST_META_DESCRIPTION"],
+                            "BROWSER_TITLE" => $arParams["LIST_BROWSER_TITLE"],
+                            "INCLUDE_SUBSECTIONS" => $arParams["INCLUDE_SUBSECTIONS"],
+                            "BASKET_URL" => $arParams["BASKET_URL"],
+                            "ACTION_VARIABLE" => $arParams["ACTION_VARIABLE"],
+                            "PRODUCT_ID_VARIABLE" => $arParams["PRODUCT_ID_VARIABLE"],
+                            "SECTION_ID_VARIABLE" => $arParams["SECTION_ID_VARIABLE"],
+                            "PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
+                            "FILTER_NAME" => $arParams["FILTER_NAME"],
+                            "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+                            "CACHE_TIME" => $arParams["CACHE_TIME"],
+                            "CACHE_FILTER" => $arParams["CACHE_FILTER"],
+                            "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+                            "SET_TITLE" => $arParams["SET_TITLE"],
+                            "SET_STATUS_404" => $arParams["SET_STATUS_404"],
+                            "DISPLAY_COMPARE" => $arParams["USE_COMPARE"],
+                            "PAGE_ELEMENT_COUNT" => $arParams["PAGE_ELEMENT_COUNT"],
+                            "LINE_ELEMENT_COUNT" => $arParams["LINE_ELEMENT_COUNT"],
+                            "PRICE_CODE" => $arParams["PRICE_CODE"],
+                            "USE_PRICE_COUNT" => $arParams["USE_PRICE_COUNT"],
+                            "SHOW_PRICE_COUNT" => $arParams["SHOW_PRICE_COUNT"],
+
+                            "PRICE_VAT_INCLUDE" => $arParams["PRICE_VAT_INCLUDE"],
+                            "USE_PRODUCT_QUANTITY" => $arParams['USE_PRODUCT_QUANTITY'],
+
+                            "DISPLAY_TOP_PAGER" => $arParams["DISPLAY_TOP_PAGER"],
+                            "DISPLAY_BOTTOM_PAGER" => $arParams["DISPLAY_BOTTOM_PAGER"],
+                            "PAGER_TITLE" => $arParams["PAGER_TITLE"],
+                            "PAGER_SHOW_ALWAYS" => $arParams["PAGER_SHOW_ALWAYS"],
+                            "PAGER_TEMPLATE" => $arParams["PAGER_TEMPLATE"],
+                            "PAGER_DESC_NUMBERING" => $arParams["PAGER_DESC_NUMBERING"],
+                            "PAGER_DESC_NUMBERING_CACHE_TIME" => $arParams["PAGER_DESC_NUMBERING_CACHE_TIME"],
+                            "PAGER_SHOW_ALL" => $arParams["PAGER_SHOW_ALL"],
+
+                            "OFFERS_CART_PROPERTIES" => $arParams["OFFERS_CART_PROPERTIES"],
+                            "OFFERS_FIELD_CODE" => $arParams["LIST_OFFERS_FIELD_CODE"],
+                            "OFFERS_PROPERTY_CODE" => $arParams["LIST_OFFERS_PROPERTY_CODE"],
+                            "OFFERS_SORT_FIELD" => $arParams["OFFERS_SORT_FIELD"],
+                            "OFFERS_SORT_ORDER" => $arParams["OFFERS_SORT_ORDER"],
+                            "OFFERS_LIMIT" => $arParams["LIST_OFFERS_LIMIT"],
+
+                            "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
+                            "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
+                            "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
+                            "DETAIL_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["element"],
+                            'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
+                            'CURRENCY_ID' => $arParams['CURRENCY_ID'],
+                            "SECTION_USER_FIELDS" => array("UF_COUNTS", "UF_SEE_ALSO")
+                        ),
+                        $component
+                    );
+                    ?>
+
+                </div>
+
+                <? if ($isTabs) { ?><?
+                    foreach ($tabs as $tab) {
+                        ?>
+                        <div class="section-pane">
+                        <div class="section-pane-inner"><?
+                            print $tab['PREVIEW_TEXT'];
+                            if ($tab['PROPERTY_PDF_VALUE']) {
+                                $pdf = CFile::GetPath($tab['PROPERTY_PDF_VALUE']);
+                                ?>
+
+                            <iframe id="pdfFrame"
+                                    src="https://strprofi.ru<?= $pdf; ?>"
+                                    height="1150" style="border: none;"></iframe>
+
+                                <?
+                            }
+                            ?></div></div><?
+                    }
+                } ?>
+        </div>
+
+    </div>
+</div>
+
+<div class="b-container-bottom">
+    <?php if (ModuleManager::isModuleInstalled("sale")) {
+        $arRecomData = array();
+        $recomCacheID = array('IBLOCK_ID' => $arParams['IBLOCK_ID']);
+        $obCache = new CPHPCache();
+        if ($obCache->InitCache(36000, serialize($recomCacheID), "/sale/bestsellers"))
+        {
+            $arRecomData = $obCache->GetVars();
+        }
+        elseif ($obCache->StartDataCache())
+        {
+            if (Loader::includeModule("catalog"))
+            {
+                $arSKU = CCatalogSku::GetInfoByProductIBlock($arParams['IBLOCK_ID']);
+                $arRecomData['OFFER_IBLOCK_ID'] = (!empty($arSKU) ? $arSKU['IBLOCK_ID'] : 0);
+            }
+            $obCache->EndDataCache($arRecomData);
+        }?>
+
 
         <?php
         if (!empty($arRecomData)) {
