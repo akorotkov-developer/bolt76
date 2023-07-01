@@ -205,7 +205,7 @@ if (empty($arResult['ERROR_MESSAGE']))
 	?>
 	<div id="basket-root" class="bx-basket bx-<?=$arParams['TEMPLATE_THEME']?> bx-step-opacity" style="opacity: 0;">
         <div class="shipment-specification-print">
-            Заказ - киоск <span class="shipment-specification-print_datetime"><?= date('d.m.Y h:i')?></span>
+            Заказ № <span id="kiosk_order_number"></span>- киоск <span class="shipment-specification-print_datetime"><?= date('d.m.Y h:i')?></span>
         </div>
 
         <?

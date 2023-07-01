@@ -153,27 +153,14 @@ $generalParams = array(
 
 $obName = 'ob'.preg_replace('/[^a-zA-Z0-9_]/', 'x', $this->GetEditAreaId($navParams['NavNum']));
 $containerName = 'container-'.$navParams['NavNum'];
-
-if ($showTopPager)
-{
-	?>
-	<div data-pagination-num="<?=$navParams['NavNum']?>">
-		<!-- pagination-container -->
-		<?=$arResult['NAV_STRING']?>
-		<!-- pagination-container -->
-	</div>
-	<?
-}
-
-if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
-{
-	?>
-	<div class="bx-section-desc bx-<?=$arParams['TEMPLATE_THEME']?>">
-		<p class="bx-section-desc-post"><?=$arResult['DESCRIPTION']?></p>
-	</div>
-	<?
-}
 ?>
+
+<link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 <div class="catalog-section bx-<?=$arParams['TEMPLATE_THEME']?>" data-entity="<?=$containerName?>">
 	<?
@@ -199,17 +186,24 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 
 
 						?>
-                <div class="col-xs-12 product-item-small-card">
-                    <div class="row">
+
+                <div class="product-items-sale swiper">
+                    <div class="swiper-wrapper">
                         <?
                         foreach ($rowItems as $item)
                         {
+                            if ($item['PROPERTIES']['SALE']['VALUE'] != '') {
+                                $item['LABEL'] = true;
+                                $item['LABEL_ARRAY_VALUE'] = [
+                                        'SALE' => $item['PROPERTIES']['SALE']['VALUE']
+                                ];
+                            }
                             ?>
-                            <div class="col-xs-3 col-sm-2 col-md-2 item-for-recmended-product">
+
                                 <?
                                 $APPLICATION->IncludeComponent(
                                     'bitrix:catalog.item',
-                                    'item_for_personal_recomended',
+                                    'item_for_sale',
                                     array(
                                         'RESULT' => array(
                                             'ITEM' => $item,
@@ -227,16 +221,18 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
                                     array('HIDE_ICONS' => 'Y')
                                 );
                                 ?>
-                            </div>
                             <?
                         }
                         ?>
                     </div>
-                </div>
-						<?
 
-				?>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+
 			<?
+            break;
 		}
 		unset($generalParams, $rowItems);
 		?>
@@ -256,6 +252,34 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 	}
 	?>
 </div>
+
+<style>
+    .swiper {
+        width: 200px;
+        height: auto;
+    }
+</style>
+
+<script>
+    $( document ).ready(function() {
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            loop: true,
+            slidesPerView: 1,
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 3000,
+            },
+        });
+    });
+
+</script>
+
 <?
 if ($showLazyLoad)
 {
@@ -285,7 +309,7 @@ $signedTemplate = $signer->sign($templateName, 'catalog.section');
 $signedParams = $signer->sign(base64_encode(serialize($arResult['ORIGINAL_PARAMETERS'])), 'catalog.section');
 ?>
 <script>
-    $('.product-items-sale-list').slick({
+    /*$('.product-items-sale-list').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -327,7 +351,7 @@ $signedParams = $signer->sign(base64_encode(serialize($arResult['ORIGINAL_PARAME
             // settings: "unslick"
             // instead of a settings object
         ]
-    });
+    });*/
 </script>
 
 <script>

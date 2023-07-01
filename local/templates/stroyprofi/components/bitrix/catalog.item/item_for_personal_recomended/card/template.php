@@ -71,6 +71,10 @@ use \Bitrix\Main\Localization\Loc;
 			<?
 		}
 
+        /*$item['LABEL'] = true;
+		$item['LABEL_ARRAY_VALUE'] = [
+            'sale' => '20%'
+        ];*/
 		if ($item['LABEL'])
 		{
 			?>

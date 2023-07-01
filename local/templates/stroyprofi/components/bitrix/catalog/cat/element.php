@@ -81,111 +81,9 @@ if($arParams["USE_REVIEW"]=="Y" && IsModuleInstalled("forum") && $ElementID):?>
 
 
 <div class="related_products">
-    <?php
-    /**
-     * Блок распродажа
-     */
-    $dbResult = CIBlockElement::GetList(
-        [],
-        [
-            'IBLOCK_ID' => 1,
-            'PROPERTY_SALE' => 'SALE'
-        ],
-        false,
-        false,
-        [
-            'ID'
-        ]
-    );
 
-    $arItems = [];
-    while($arResult = $dbResult->Fetch()){
-        $arItems[] = $arResult['ID'];
-    }
 
-    if ($_GET['tst']) {
-        $GLOBALS['arrFilterSale'] = ['ID' => $arItems]; ?>
-
-        <div class="col-xs-12 b-container-recomended-products">
-            <div class="catalog-block-header catalog-block-header-personal-recomended">
-                <b>Распродажа: </b>
-            </div>
-            <?
-
-            $APPLICATION->IncludeComponent(
-                "bitrix:catalog.section",
-                "sale",
-                array(
-                    'IBLOCK_TYPE' => 'content',
-                    'IBLOCK_ID' => '1',
-                    'ELEMENT_SORT_FIELD' => 'PROPERTY_Naimenovanie',
-                    'ELEMENT_SORT_ORDER' => 'asc',
-                    'ELEMENT_SORT_FIELD2' => 'PROPERTY_Naimenovanie',
-                    'ELEMENT_SORT_ORDER2' => 'asc',
-                    'PROPERTY_CODE' =>
-                        array(
-                            'SALE'
-                        ),
-                    'META_KEYWORDS' => 'UF_KEYWORDS',
-                    'META_DESCRIPTION' => 'UF_META_DESCRIPTION',
-                    'BROWSER_TITLE' => '-',
-                    'INCLUDE_SUBSECTIONS' => 'Y',
-                    'BASKET_URL' => '/personal/cart/',
-                    'ACTION_VARIABLE' => 'action',
-                    'PRODUCT_ID_VARIABLE' => 'id',
-                    'SECTION_ID_VARIABLE' => 'SECTION_ID',
-                    'PRODUCT_QUANTITY_VARIABLE' => 'quantity',
-                    'FILTER_NAME' => 'arrFilterSale',
-                    'CACHE_TYPE' => 'Y',
-                    'CACHE_TIME' => '36000000',
-                    'CACHE_FILTER' => 'N',
-                    'CACHE_GROUPS' => 'Y',
-                    'SET_TITLE' => 'Y',
-                    'SET_STATUS_404' => 'N',
-                    'DISPLAY_COMPARE' => 'N',
-                    'PAGE_ELEMENT_COUNT' => '35',
-                    'LINE_ELEMENT_COUNT' => '1',
-                    'PRICE_CODE' =>
-                        array(
-                            0 => 'BASE',
-                        ),
-                    'USE_PRICE_COUNT' => 'N',
-                    'SHOW_PRICE_COUNT' => '1',
-                    'PRICE_VAT_INCLUDE' => 'Y',
-                    'USE_PRODUCT_QUANTITY' => 'Y',
-                    'DISPLAY_TOP_PAGER' => 'Y',
-                    'DISPLAY_BOTTOM_PAGER' => 'Y',
-                    'PAGER_TITLE' => 'Товары',
-                    'PAGER_SHOW_ALWAYS' => 'N',
-                    'PAGER_TEMPLATE' => 'modern',
-                    'PAGER_DESC_NUMBERING' => 'N',
-                    'PAGER_DESC_NUMBERING_CACHE_TIME' => '36000',
-                    'PAGER_SHOW_ALL' => 'Y',
-                    'OFFERS_CART_PROPERTIES' => NULL,
-                    'OFFERS_FIELD_CODE' => NULL,
-                    'OFFERS_PROPERTY_CODE' => NULL,
-                    'OFFERS_SORT_FIELD' => NULL,
-                    'OFFERS_SORT_ORDER' => NULL,
-                    'OFFERS_LIMIT' => NULL,
-                    'SECTION_ID' => '',
-                    'SECTION_CODE' => '',
-                    'SECTION_URL' => '/catalog/#SECTION_ID#-#SECTION_CODE#/',
-                    'DETAIL_URL' => '/catalog/#SECTION_ID#-#SECTION_CODE#/#ELEMENT_CODE#',
-                    'CONVERT_CURRENCY' => 'N',
-                    'CURRENCY_ID' => NULL,
-                    'SECTION_USER_FIELDS' =>
-                        array(
-                            0 => 'UF_COUNTS',
-                            1 => 'UF_SEE_ALSO',
-                        ),
-                ), $component
-            );
-            ?>
-        </div>
-
-    <?php } ?>
-
-    <div class="col-xs-12" data-entity="parent-container">
+    <div class="col-xs-9" data-entity="parent-container">
         <div class="catalog-block-header catalog-block-header-personal-recomended" data-entity="header" data-showed="false"
              style="display: none; opacity: 0;">
             <b>Персональные рекомендации: </b>
@@ -305,6 +203,112 @@ if($arParams["USE_REVIEW"]=="Y" && IsModuleInstalled("forum") && $ElementID):?>
             $component
         );
         ?>
+    </div>
+    <div class="col-xs-3">
+        <div class="b-sale">
+            <?php
+            /**
+             * Блок распродажа
+             */
+            $dbResult = CIBlockElement::GetList(
+                [],
+                [
+                    'IBLOCK_ID' => 1,
+                    '!PROPERTY_SALE' => false
+                ],
+                false,
+                false,
+                [
+                    'ID', 'PROPERTY_SVOBODNO'
+                ]
+            );
+
+            $items = [];
+            while($arRes = $dbResult->Fetch()){
+                if ((int)$arRes['PROPERTY_SVOBODNO_VALUE'] > 0) {
+                    $items[] = $arRes['ID'];
+                }
+            }
+
+            $GLOBALS['arrFilterSale'] = ['ID' => $items]; ?>
+
+
+            <div class="catalog-block-header catalog-block-header-personal-recomended">
+                <b>Распродажа: </b>
+            </div>
+            <?
+
+            $APPLICATION->IncludeComponent(
+                "bitrix:catalog.section",
+                "sale",
+                array(
+                    'IBLOCK_TYPE' => 'content',
+                    'IBLOCK_ID' => '1',
+                    'ELEMENT_SORT_FIELD' => 'PROPERTY_Naimenovanie',
+                    'ELEMENT_SORT_ORDER' => 'asc',
+                    'ELEMENT_SORT_FIELD2' => 'PROPERTY_Naimenovanie',
+                    'ELEMENT_SORT_ORDER2' => 'asc',
+                    'PROPERTY_CODE' =>
+                        array(
+                            'SALE'
+                        ),
+                    'META_KEYWORDS' => 'UF_KEYWORDS',
+                    'META_DESCRIPTION' => 'UF_META_DESCRIPTION',
+                    'BROWSER_TITLE' => '-',
+                    'INCLUDE_SUBSECTIONS' => 'Y',
+                    'BASKET_URL' => '/personal/cart/',
+                    'ACTION_VARIABLE' => 'action',
+                    'PRODUCT_ID_VARIABLE' => 'id',
+                    'SECTION_ID_VARIABLE' => 'SECTION_ID',
+                    'PRODUCT_QUANTITY_VARIABLE' => 'quantity',
+                    'FILTER_NAME' => 'arrFilterSale',
+                    'CACHE_TYPE' => 'Y',
+                    'CACHE_TIME' => '36000000',
+                    'CACHE_FILTER' => 'N',
+                    'CACHE_GROUPS' => 'Y',
+                    'SET_TITLE' => 'Y',
+                    'SET_STATUS_404' => 'N',
+                    'DISPLAY_COMPARE' => 'N',
+                    'PAGE_ELEMENT_COUNT' => '35',
+                    'LINE_ELEMENT_COUNT' => '1',
+                    'PRICE_CODE' =>
+                        array(
+                            0 => 'BASE',
+                        ),
+                    'USE_PRICE_COUNT' => 'N',
+                    'SHOW_PRICE_COUNT' => '1',
+                    'PRICE_VAT_INCLUDE' => 'Y',
+                    'USE_PRODUCT_QUANTITY' => 'Y',
+                    'DISPLAY_TOP_PAGER' => 'Y',
+                    'DISPLAY_BOTTOM_PAGER' => 'Y',
+                    'PAGER_TITLE' => 'Товары',
+                    'PAGER_SHOW_ALWAYS' => 'N',
+                    'PAGER_TEMPLATE' => 'modern',
+                    'PAGER_DESC_NUMBERING' => 'N',
+                    'PAGER_DESC_NUMBERING_CACHE_TIME' => '36000',
+                    'PAGER_SHOW_ALL' => 'Y',
+                    'OFFERS_CART_PROPERTIES' => NULL,
+                    'OFFERS_FIELD_CODE' => NULL,
+                    'OFFERS_PROPERTY_CODE' => NULL,
+                    'OFFERS_SORT_FIELD' => NULL,
+                    'OFFERS_SORT_ORDER' => NULL,
+                    'OFFERS_LIMIT' => NULL,
+                    'SECTION_ID' => '',
+                    'SECTION_CODE' => '',
+                    'SECTION_URL' => '/catalog/#SECTION_ID#-#SECTION_CODE#/',
+                    'DETAIL_URL' => '/catalog/#SECTION_ID#-#SECTION_CODE#/#ELEMENT_CODE#',
+                    'CONVERT_CURRENCY' => 'N',
+                    'CURRENCY_ID' => NULL,
+                    'SECTION_USER_FIELDS' =>
+                        array(
+                            0 => 'UF_COUNTS',
+                            1 => 'UF_SEE_ALSO',
+                        ),
+                ), $component
+            );
+            ?>
+
+        </div>
     </div>
 </div>
 

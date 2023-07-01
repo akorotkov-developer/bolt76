@@ -22,7 +22,7 @@ use \Bitrix\Main\Localization\Loc;
  * @var CatalogSectionComponent $component
  */
 ?>
-<div class="product-item">
+<div class="product-item-sale">
 
 	<? if ($itemHasDetailUrl): ?>
 	<a class="product-item-image-wrapper" href="<?=$item['DETAIL_PAGE_URL']?>" title="<?=$imgTitle?>"
@@ -395,23 +395,7 @@ use \Bitrix\Main\Localization\Loc;
 						{
 							?>
 							<div class="product-item-info-container" data-entity="props-block">
-								<dl class="product-item-properties">
-									<?
-									foreach ($item['DISPLAY_PROPERTIES'] as $code => $displayProperty)
-									{
-										?>
-										<dt<?=(!isset($item['PROPERTY_CODE_MOBILE'][$code]) ? ' class="hidden-xs"' : '')?>>
-											<?=$displayProperty['NAME']?>
-										</dt>
-										<dd<?=(!isset($item['PROPERTY_CODE_MOBILE'][$code]) ? ' class="hidden-xs"' : '')?>>
-											<?=(is_array($displayProperty['DISPLAY_VALUE'])
-												? implode(' / ', $displayProperty['DISPLAY_VALUE'])
-												: $displayProperty['DISPLAY_VALUE'])?>
-										</dd>
-										<?
-									}
-									?>
-								</dl>
+
 							</div>
 							<?
 						}
@@ -504,33 +488,7 @@ use \Bitrix\Main\Localization\Loc;
 						{
 							?>
 							<div class="product-item-info-container" data-entity="props-block">
-								<dl class="product-item-properties">
-									<?
-									if ($showProductProps)
-									{
-										foreach ($item['DISPLAY_PROPERTIES'] as $code => $displayProperty)
-										{
-											?>
-											<dt<?=(!isset($item['PROPERTY_CODE_MOBILE'][$code]) ? ' class="hidden-xs"' : '')?>>
-												<?=$displayProperty['NAME']?>
-											</dt>
-											<dd<?=(!isset($item['PROPERTY_CODE_MOBILE'][$code]) ? ' class="hidden-xs"' : '')?>>
-												<?=(is_array($displayProperty['DISPLAY_VALUE'])
-													? implode(' / ', $displayProperty['DISPLAY_VALUE'])
-													: $displayProperty['DISPLAY_VALUE'])?>
-											</dd>
-											<?
-										}
-									}
 
-									if ($showOfferProps)
-									{
-										?>
-										<span id="<?=$itemIds['DISPLAY_PROP_DIV']?>" style="display: none;"></span>
-										<?
-									}
-									?>
-								</dl>
 							</div>
 							<?
 						}

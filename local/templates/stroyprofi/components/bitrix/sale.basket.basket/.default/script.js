@@ -1471,11 +1471,13 @@ BX.ready(function() {
 				link.setAttribute("href", '/cart/Исходящие счета киоск №' + data + '.xml');
 
 				link.setAttribute("download", 'Исходящие счета киоск №' + data + '.xml');
+				console.log(data);
 				link.click();
+				print();
 			}
 		});
 
-		print();
+
 		window.location.href = '/kiosk_auth';
 		/*const messageBox = new BX.UI.Dialogs.MessageBox(
 			{

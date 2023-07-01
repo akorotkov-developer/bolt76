@@ -881,3 +881,36 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 }
+.product-item-sale {
+	max-width: 200px;
+	padding-top: 15px;
+}
+.b-sale .product-item-label-left {
+	left: 5px;
+}
+.b-sale .swiper-button-next:after, .b-sale .swiper-button-prev:after {
+	color: #FF7920;
+}
+.b-sale .product-item-label-text.product-item-label-small span {
+	position: relative;
+	font-family: sans-serif;
+	text-transform: uppercase;
+	font-size: 2em;
+	letter-spacing: 4px;
+	overflow: hidden;
+	background: linear-gradient(90deg, #000, #FF7920, #000);
+	background-repeat: no-repeat;
+	background-size: 80%;
+	animation: animate 2s linear infinite;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: rgba(255, 255, 255, 0);
+	line-height: 25px;
+}
+@keyframes animate {
+	0% {
+		background-position: -500%;
+	}
+	100% {
+		background-position: 500%;
+	}
+}

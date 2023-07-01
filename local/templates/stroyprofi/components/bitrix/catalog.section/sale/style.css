@@ -127,7 +127,7 @@
 	font-size: 10px;
 }
 .item-for-sale {
-	max-width: 300px;
+	max-width: 200px;
 }
 .product-item-small-card-sale {
 	max-width: 300px;
@@ -154,4 +154,7 @@
 	color: #FF7920;
 	text-align: center;
 	font-weight: bold;
+}
+.product-item .product-item-label-text span {
+	background-color: #FF7920;
 }
