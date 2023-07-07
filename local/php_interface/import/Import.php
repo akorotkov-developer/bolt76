@@ -866,12 +866,10 @@ class Import
             if ($this->arProductElements[$item['ID']]["PREVIEW_PICTURE"] == NULL) {
                 $flag_update_pic = true;
             }
-            if ($this->testphile($picfile)) {
-                $flag_update_pic = true;
-            }
-
 
             $propsToUpdate = [];
+
+
             if (($flag_update_pic) && ($this->testphile($picfile))) {
                 $photo = $item['Foto'][0];
 
@@ -879,7 +877,7 @@ class Import
 
                     // Проверяем совпадает ли картинки, которые пытаемся загрузить
                     // и картинка, которая уже находится на сайте
-                    if ($this->arPicturesMapping[$this->arProductElements[$item['ID']]['PREVIEW_PICTURE']] != md5_file($picfile) ) {
+                    if ($this->arPicturesMapping[$this->arProductElements[$item['ID']]['PREVIEW_PICTURE']] != md5_file($picfile)) {
                         $isUpdate = true;
                     }
 
@@ -909,6 +907,11 @@ class Import
                 }
             } else {
                 if ($this->arPicturesMapping[$this->arProductElements[$item['ID']]['PREVIEW_PICTURE']] != md5_file($picfile)) {
+                    $isUpdate = true;
+                }
+
+                if ($photo == '') {
+                    $arUpdate['PREVIEW_PICTURE'] = ['del' => 'Y'];
                     $isUpdate = true;
                 }
             }
