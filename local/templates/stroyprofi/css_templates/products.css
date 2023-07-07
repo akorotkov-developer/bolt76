@@ -1,0 +1,83 @@
+/** Стили для вкладок описание товара */
+.product-item-detail-tab-content ul {
+    padding-left: 20px;
+}
+section p {text-indent: 25px;}
+
+
+.product-item-detail-tab-content p {text-indent: 25px; text-align: justify;}
+.product-item-detail-tab-content h1 {color: #FF7920;}
+.product-item-detail-tab-content h2 {color: #FF7920; font-size: 22px;}
+.product-item-detail-tab-content h3 {color: #FF7920; font-size: 20px;}
+.product-item-detail-tab-content h4 {color: #FF7920; font-size: 18px;}
+.product-item-detail-tab-content table {padding: 10px; border: 1px solid  #FF7920;}
+.product-item-detail-tab-content table thead {padding: 10px; border: 1px solid  #FF7920; color: #FF7920;}
+.product-item-detail-tab-content table th {padding: 10px; border: 1px solid  #FF7920; color: #FF7920;}
+.product-item-detail-tab-content table tr td {text-align: left;}
+/*.product-item-detail-tab-content li {list-style-type: none;}  Прячем исходные маркеры */
+
+
+.catalog-element p {text-indent: 25px; text-align: justify;}
+.catalog-element h1 {color: #FF7920;}
+.catalog-element h2 {color: #FF7920; font-size: 22px;}
+.catalog-element h3 {color: #FF7920; font-size: 20px;}
+.catalog-element h4 {color: #FF7920; font-size: 18px;}
+.catalog-element table {padding: 10px; border: 1px solid  #FF7920;}
+.catalog-element table thead {padding: 10px; border: 1px solid  #FF7920; color: #FF7920;}
+.catalog-element table th {padding: 10px; border: 1px solid  #FF7920; color: #FF7920;}
+.catalog-element table tr td {text-align: left;}
+ /*.catalog-element li {list-style-type: none;} Прячем исходные маркеры */
+
+.element_table {border: 0px!important;}
+
+h3 {color: #FF7920; font-size: 20px;}
+
+.section-pane h1 {color: #FF7920;}
+.section-pane h2 {color: #FF7920; font-size: 22px;}
+.section-pane h3 {color: #FF7920; font-size: 20px;}
+.section-pane h4 {color: #FF7920; font-size: 18px;}
+.section-pane p {text-indent: 25px; text-align: justify;}
+.section-pane table {padding: 10px; border: 1px solid  #FF7920;}
+.section-pane table thead {padding: 10px; border: 1px solid  #FF7920; color: #FF7920;}
+.section-pane table th {padding: 10px; border: 1px solid  #FF7920; color: #FF7920;}
+.section-pane table tr td {text-align: left;}
+/*.section-pane li {list-style-type: none;}  Прячем исходные маркеры */
+
+.product-item-detail-tab-content li::marker, .section-pane-inner li::marker {
+    content: "";
+}
+.product-item-detail-tab-content li:before, .section-pane-inner li:before {
+    color: #FF7920; /* Цвет маркера */
+    content: "•"; /* Сам маркер */
+    padding-right: 10px; /* Расстояние от маркера до текста */
+}
+
+.product-item-detail-tab-content a {
+    text-decoration: underline;
+}
+.product-item-detail-tab-content a:hover {
+    color: #FF7920;
+}
+
+.main_block .section-pane table thead tr {
+    color: #FF7920;
+	font-weight: bold;
+}
+.main_block .product-item-detail-tab-content table thead tr {
+    color: #FF7920;
+	font-weight: bold;
+}
+.main_block table.element_table thead tr {
+    color: black;
+}
+.main_block .section-pane table tr td {
+    text-align: left;
+    vertical-align: middle;
+}
+.main_block .product-item-detail-tab-content table tr td {
+    text-align: left;
+    vertical-align: middle;
+}
+.main_block table.element_table tr td {
+    text-align: left;
+}

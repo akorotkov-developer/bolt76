@@ -1,0 +1,32 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background: #ffffff;
+    font-size: 12px;
+}
+
+.clear{
+    clear: both;
+}
+
+a{
+    color:#000000;
+    outline:none;
+}
+
+a, img{
+    border: none;
+    outline:none;
+}
+hr {
+    height: 1px;
+    margin: 20px 0;
+    line-height: 1px;
+    font-size: 1px;
+    background: #262525;
+    border: 0;
+}
+table {
+border-collapse: collapse;
+}

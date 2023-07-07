@@ -1,0 +1,247 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+.main_block .section-pane.b-product-items {
+    display: flex;
+    flex-flow: wrap;
+}
+.b-product-filter {
+    order: 2;
+}
+.b-product-ctalogsection {
+    order: 1;
+}
+.main_block .b-container-top {
+    display: flex;
+    flex-flow: wrap;
+}
+.main_block .catalog_element {
+    width: 100%;
+}
+/**
+.b-container-recomended-products {
+    margin-bottom: 170px;
+ */
+}
+.b-container-recomended-products .bx-blue .btn.btn-default:hover {
+    background-color: #FF7920;
+    border-color: #FF7920;
+}
+.b-container-recomended-products .bx-blue .btn.btn-default {
+    background-color: #FF7920;
+    border-color: #FF7920;
+}
+@media (max-width: 1360px) {
+    .element_table thead tr td.first-td {
+        display: none;
+    }
+    .element_table tbody tr td.section_description {
+        display: none;
+    }
+    .element_table thead tr td.pic {
+        display: none;
+    }
+    .element_table tbody tr td.pic {
+        display: none;
+    }
+}
+@media (max-width: 1217px) {
+    .element_table thead tr td.avail {
+        display: none;
+    }
+    .element_table tbody tr td.avail {
+        display: none;
+    }
+}
+@media (max-width: 1180px) {
+    .bx-filter {
+        min-width: 190px;
+    }
+}
+@media (max-width: 1070px) {
+    .bx-filter {
+        min-width: 190px;
+    }
+}
+#pdfFrame {
+    width: 100%;
+}
+@media (max-width: 1537px) {
+    #pdfFrame {
+        width: 100%;
+    }
+}
+@media (max-width: 1430px) {
+    #pdfFrame {
+        width: 100%;
+    }
+}
+@media (max-width: 1300px) {
+    #pdfFrame {
+        width: 100%;
+    }
+}
+@media (max-width: 1200px) {
+    #pdfFrame {
+        width: 100%;
+    }
+}
+@media (max-width: 1160px) {
+    #pdfFrame {
+        width: 100%;
+    }
+}
+@media (max-width: 1000px) {
+    #pdfFrame {
+        width: 100%;
+    }
+}
+
+
+
+/**
+Анимированная надпись Распродажа
+ */
+.b-sale .catalog-section {
+    margin-top: 45px;
+}
+
+
+
+.content_sale {
+    position: relative;
+    top: -20px;
+}
+.content_sale h2 {
+    color: #fff;
+    font-size: 4em;
+    position: absolute;
+    transform: translate(14%, -50%);
+    margin-bottom: 20px;
+    z-index: 100;
+}
+@media (max-width: 1700px) {
+    .content_sale h2 {
+        font-size: 45px;
+        transform: translate(0%, -50%);
+    }
+}
+.content_sale h2:nth-child(1) {
+    color: transparent;
+    -webkit-text-stroke: 2px #FF7920;
+}
+.content_sale h2:nth-child(2) {
+    color: #FF7920;
+    animation: animate_sale 4s ease-in-out infinite;
+}
+@keyframes animate_sale {
+    0%,
+    100% {
+        clip-path: polygon(
+                0% 45%,
+                16% 44%,
+                33% 50%,
+                54% 60%,
+                70% 61%,
+                84% 59%,
+                100% 52%,
+                100% 100%,
+                0% 100%
+        );
+    }
+
+    50% {
+        clip-path: polygon(
+                0% 60%,
+                15% 65%,
+                34% 66%,
+                51% 62%,
+                67% 50%,
+                84% 45%,
+                100% 46%,
+                100% 100%,
+                0% 100%
+        );
+    }
+}
+
+/** Облако тэгов */
+.b-tags .tags {
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 40px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.b-tags .tags a {
+    white-space: nowrap;
+    /* Style for "Rounded Re" */
+    width: auto;
+    border-radius: 13px;
+    background-color: #090a0b;
+
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    color: #ffffff;
+
+    position: relative; /* для подсказки */
+    margin-right: 2px;
+}
+.b-tags .tags a.active {
+    background: #FF7920;
+}
+
+/* это нужно, если есть необходимость что бы можно было навести курсор на подсказку. Иначе будет исчезать */
+.b-tags .tags a:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 20px;
+    visibility: hidden;
+}
+.b-tags .tags a:hover:after {
+    visibility: visible;
+}
+.b-tags .tags a:hover {
+    background: #FF7920;
+}
+
+/* оформление плашки */
+.b-tags .tags__hide {
+    position: absolute;
+    left: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000;
+    background: #fff;
+    padding: 5px 10px;
+    line-height: 1;
+    transition: all .3s;
+
+    /* параметры для изчезновения/появления. Можете настроить как вам угодно */
+    visibility: hidden;
+    opacity: 0;
+    bottom: 0;
+}
+.b-tags .tags a:hover .tags__hide {
+    visibility: visible;
+    opacity: 1;
+    bottom: calc(100% + 15px);
+}
+/* треугольник */
+.b-tags .tags__hide:before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    margin-left: -5px;
+    transform: rotate(45deg)
+}

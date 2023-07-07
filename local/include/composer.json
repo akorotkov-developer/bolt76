@@ -1,0 +1,17 @@
+{
+    "name": "strprofi/akorotkov",
+    "description": "StrProfi composer file",
+    "authors": [
+        {
+            "name": "Akorotokov"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "StrProfi\\": "app/"
+        }
+    },
+    "require": {
+        "spatie/array-to-xml": "^2.16"
+    }
+}
