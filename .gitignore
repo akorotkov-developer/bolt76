@@ -16,6 +16,10 @@ upload/
 bitrix/backup/
 import/
 test_backup/
+images/
+files/
+img/
+tmp/
 
 # files ext
 *.sql
