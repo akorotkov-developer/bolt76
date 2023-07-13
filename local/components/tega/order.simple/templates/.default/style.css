@@ -304,3 +304,16 @@ form[name="simple_order_form"] {
 .order-simple__block.no-border-bottom {
     border-bottom: 0px;
 }
+.required-field::after {
+    content: "*";
+    color: red;
+}
+.error_input {
+    border: 2px solid;
+    border-color: red;
+}
+.b-error-info {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 20px;
+}

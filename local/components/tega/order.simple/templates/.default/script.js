@@ -26,6 +26,10 @@ $( document ).ready(function() {
     $('#submitbtn').on('click', function() {
         $('input[required]').addClass('req_fail');
     });
+
+    $(document).on('input change', 'input.form-control', function() {
+        $(this).removeClass('error_input');
+    });
 });
 
 var objOrderForm = {

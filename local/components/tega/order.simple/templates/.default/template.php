@@ -14,6 +14,37 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
 <script src="<?= $this->GetFolder(); ?>/jquery.maskedinput.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
+    function validateSubmitForm()
+    {
+        var isValid = true;
+        var curElement;
+        var errors = [];
+
+        $('.required-field').each(function(i, element) {
+            curElement = $(element).siblings('input');
+            if (curElement.val() == '' && curElement.is(":visible")) {
+                isValid = false;
+                if (!curElement.hasClass('error_input')) {
+                    curElement.addClass('error_input');
+                    errors.push($(element).text());
+                }
+            }
+        });
+
+        if (errors.length > 0) {
+            $('.b-error-info').html('Вы не заполнили обязательные поля:<br>' + errors.join('<br>'));
+
+            var destination = $('.b-error-info').offset().top;
+            if ($.browser.safari) {
+                $('body').animate({ scrollTop: destination }, 1100); //1100 - скорость
+            } else {
+                $('html').animate({ scrollTop: destination }, 1100);
+            }
+        }
+
+        return isValid;
+    }
+
     function submitForm(val) {
         BX('<? echo $arParams["ENABLE_VALIDATION_INPUT_ID"]; ?>').value = (val !== 'Y') ? "N" : "Y";
         var orderForm = BX('<? echo $arParams["FORM_ID"]; ?>');
@@ -25,8 +56,14 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
             });
         }
 
-        BX.submit(orderForm);
-        return true;
+        // Валидация формы оформления заказа
+        var isValid = validateSubmitForm();
+
+        if (isValid) {
+            BX.submit(orderForm);
+        } else {
+            return false;
+        }
     }
 </script>
 
@@ -70,6 +107,9 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                     </div>
                 <? } ?>
 
+                <div class="b-error-info">
+
+                </div>
                 <div class="order-simple__block" style="display: none">
                     <div class="order-simple__block__title">1. <? echo GetMessage("PAYMANT_TYPES"); ?></div>
                     <?php
@@ -125,16 +165,15 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
 
                                 if (!in_array($arProp['CODE'], $arNoRequired)) {
                                     $sRequired = 'required';
+                                    $sClassRequired = 'required-field';
                                 } else {
                                     $sRequired = '';
+                                    $sClassRequired = '';
                                 } ?>
 
                                 <div class="order-simple__field order-props-in-two-columns__item">
                                     <label for="<? echo $arParams["FORM_NAME"] ?>_<?= $arProp["CODE"] ?>">
-                                    <span class="order-simple__field__title">
-                                        <?= $arProp["NAME"] ?>
-                                        <? if (in_array($arProp["ID"], $arParams["REQUIRED_ORDER_PROPS"])) { ?>*<? } ?>
-                                    </span>
+                                    <span class="order-simple__field__title <?= $sClassRequired?>"><?= $arProp["NAME"] ?></span>
                                         <?php if (
                                             $arParams["USE_DATE_CALCULATION"] == "Y" &&
                                             $arProp["ID"] == $arParams["DATE_PROPERTY"]
@@ -287,18 +326,14 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                             <div class="order-props-in-two-columns">
                                 <div class="order-simple__field order-props-in-two-columns__item">
                                     <label for="simple_order_form_FIO_RECIPIENT">
-                                        <span class="order-simple__field__title">
-                                            ФИО получателя
-                                        </span>
+                                        <span class="order-simple__field__title required-field">ФИО получателя</span>
                                         <input class="form-control" id="simple_order_form_FIO_RECIPIENT" value="" name="simple_order_form[FIO_RECIPIENT]" type="text" >
                                     </label>
                                 </div>
 
                                 <div class="order-simple__field order-props-in-two-columns__item">
                                     <label for="simple_order_form_CONTACT_PHONE_RECIPIENT">
-                                        <span class="order-simple__field__title">
-                                            Контанктый телефон получателя
-                                        </span>
+                                        <span class="order-simple__field__title required-field">Контанктый телефон получателя</span>
                                         <input class="form-control" id="simple_order_form_CONTACT_PHONE_RECIPIENT" value="" name="simple_order_form[CONTACT_PHONE_RECIPIENT]" type="text" >
                                     </label>
                                 </div>
@@ -322,9 +357,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                                 </div>
 
                                 <label for="simple_order_form_ADDRESS">
-                                    <span class="order-simple__field__title">
-                                        Адрес доставки (масимально подробно)
-                                    </span>
+                                    <span class="order-simple__field__title required-field">Адрес доставки (масимально подробно)</span>
                                     <input class="form-control form-control-address" id="simple_order_form_ADDRESS" value="<?= $_REQUEST['simple_order_form']['ADDRESS']?>" name="simple_order_form[ADDRESS]" type="text" placeholder="Введите адрес доставки">
                                 </label>
                             </div>
@@ -379,27 +412,21 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
 
                                 <div class="order-simple__field order-props-in-two-columns__item">
                                     <label for="simple_order_form_RECIPIENT_PHONE">
-                                        <span class="order-simple__field__title" id="transport_company_contact_phone">
-                                            <?= ($_REQUEST['PERSON_TYPE'] == '2') ? 'Контактный телефон представителя' : 'Контактный телефон получателя'?>
-                                        </span>
+                                        <span class="order-simple__field__title required-field" id="transport_company_contact_phone"><?= ($_REQUEST['PERSON_TYPE'] == '2') ? 'Контактный телефон представителя' : 'Контактный телефон получателя'?></span>
                                         <input class="form-control" id="simple_order_form_RECIPIENT_PHONE" value="" name="simple_order_form[RECIPIENT_PHONE]" type="text">
                                     </label>
                                 </div>
 
                                 <div class="order-simple__field order-props-in-two-columns__item">
                                     <label for="simple_order_form_TRANSPORT_RECIPIENT_FULL_NAME">
-                                        <span class="order-simple__field__title" id="transport_company_fio">
-                                            <?= ($_REQUEST['PERSON_TYPE'] == '2') ? 'ФИО представителя' : 'ФИО получателя'?>
-                                        </span>
+                                        <span class="order-simple__field__title required-field" id="transport_company_fio"><?= ($_REQUEST['PERSON_TYPE'] == '2') ? 'ФИО представителя' : 'ФИО получателя'?></span>
                                         <input class="form-control" id="simple_order_form_TRANSPORT_RECIPIENT_FULL_NAME" value="" name="simple_order_form[TRANSPORT_RECIPIENT_FULL_NAME]" type="text">
                                     </label>
                                 </div>
 
-                                <div class="order-simple__field order-props-in-two-columns__item" <?= ($_REQUEST['PERSON_TYPE'] == '2') ? 'style="display: none;"' : ''?>>
+                                <div class="order-simple__field order-props-in-two-columns__item " <?= ($_REQUEST['PERSON_TYPE'] == '2') ? 'style="display: none;"' : ''?>>
                                     <label for="simple_order_form_PASSPORT_DATA_RECIPIENT">
-                                        <span class="order-simple__field__title">
-                                            Паспортные данные получателя
-                                        </span>
+                                        <span class="order-simple__field__title required-field">Паспортные данные получателя</span>
                                         <input class="form-control" id="simple_order_form_PASSPORT_DATA_RECIPIENT" value="" name="simple_order_form[PASSPORT_DATA_RECIPIENT]" type="text">
                                     </label>
                                 </div>
@@ -421,9 +448,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                             </div>
 
                             <label for="simple_order_form_TERMINAL_ADDRESS">
-                                            <span class="order-simple__field__title" id="address_for_delivery_type">
-                                                Адрес терминала
-                                            </span>
+                                            <span class="order-simple__field__title required-field" id="address_for_delivery_type">Адрес терминала</span>
                                 <input class="form-control" id="simple_order_form_TERMINAL_ADDRESS" value="" name="simple_order_form[TERMINAL_ADDRESS]" type="text">
                             </label>
                         </div>
