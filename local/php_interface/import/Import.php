@@ -866,11 +866,13 @@ class Import
             if ($this->arProductElements[$item['ID']]["PREVIEW_PICTURE"] == NULL) {
                 $flag_update_pic = true;
             }
+            if (count($item['Foto']) > 0) {
+                $flag_update_pic = true;
+            }
 
             $propsToUpdate = [];
 
-
-            if (($flag_update_pic) && ($this->testphile($picfile))) {
+            if (($flag_update_pic) || ($this->testphile($picfile))) {
                 $photo = $item['Foto'][0];
 
                 if ($photo != 0) {
@@ -894,6 +896,8 @@ class Import
                 if (count($item['Foto']) > 1) {
                     array_shift($item['Foto']);
 
+                    \Bitrix\Main\Diag\Debug::dumpToFile(['photo' => $item['Foto']], '', 'log.txt');
+                    \Bitrix\Main\Diag\Debug::dumpToFile(['$item' => $item], '', 'log.txt');
                     foreach ($item['Foto'] as $photoItem) {
                         $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photoItem . '.jpg';
                         if ($this->testphile($picfile)) {
