@@ -235,6 +235,8 @@ hr.dashed{
 
 .page_content .left_block{
     background: #fff;
+    width: 20vw;
+    max-width: 290px;
 }
 
 .main_navigation{
@@ -243,7 +245,8 @@ hr.dashed{
     font-family: "Tahoma", sans-serif;
     line-height: 14px;
     position: relative;
-    width: 300px;
+    min-width: 185px;
+    /* width: 300px; */
 }
 
 .page_content .open_left{
@@ -1511,6 +1514,9 @@ body .btn-link {
     .footer .copyright{
         font-size: 14px;
     }
+    .main_block {
+        width: 68vw;
+    }
 }
 @media (max-width: 1010px) {
     .top .b-header-favorite {
@@ -1522,6 +1528,7 @@ body .btn-link {
     .wrapper {
         min-width: auto;
     }
+
 }
 
 @media (max-width: 978px) {
@@ -1561,7 +1568,7 @@ body .btn-link {
         font-family: "Tahoma", sans-serif;
         line-height: 14px;
         position: relative;
-        width: 185px;
+        /* width: 185px; */
     }
     .orphus {
         max-width: 150px;

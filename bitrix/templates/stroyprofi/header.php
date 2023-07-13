@@ -192,9 +192,8 @@
 							),
 							false
 						);?></div>
-                    </td><?}?>
-                <td style="width: 1px;"><div style="width:1px;height: 600px;"></div></td>
-                <td>
+                    </div><?}?>
+                <div>
                     <div class="main_block<?=(!$showLeftPanel?' no-left':'')?>">
                         <div class="breadcrumbs">
 							<?$APPLICATION->IncludeComponent(
