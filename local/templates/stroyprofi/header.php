@@ -28,10 +28,10 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
 	?>
     <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
     <script type="text/javascript" src="//yandex.st/jquery/1.8.2/jquery.min.js"></script>
-    <script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="/plugins/fancybox/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="/js/functions.js?123"></script>
     <script type="text/javascript" src="/js/jquery.tools.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+    <script src="/plugins/fancybox/fancybox.umd.js"></script>
     <!--<link rel="icon" href="/favicon.ico?1" type="image/ico">-->
     <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
 
@@ -42,7 +42,7 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/css_templates/products.css">
     <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"
+            href="/plugins/fancybox/fancybox.css"
     />
     <link rel="stylesheet" type="text/css" href="<?= SITE_TEMPLATE_PATH?>/css_templates/print_styles.css" media="print">
 </head>
