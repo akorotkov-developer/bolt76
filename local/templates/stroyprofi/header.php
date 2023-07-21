@@ -45,6 +45,7 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
             href="/plugins/fancybox/fancybox.css"
     />
     <link rel="stylesheet" type="text/css" href="<?= SITE_TEMPLATE_PATH?>/css_templates/print_styles.css" media="print">
+    <link rel="stylesheet" type="text/css" href="/local/templates/stroyprofi/components/bitrix/catalog.section/sale/style.css">
 </head>
 <body>
 <div class="notification" id="notification">Товар добавлен<br/>в <a href="/personal/cart/">корзину</a></div>
