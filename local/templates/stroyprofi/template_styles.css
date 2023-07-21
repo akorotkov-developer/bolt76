@@ -376,6 +376,9 @@ hr.dashed{
       float: left; */
     margin: 0 20px 0 20px;
 }
+.no-left{
+    width: 100%;
+}
 
 
 .breadcrumbs, .breadcrumbs a{
@@ -1491,6 +1494,9 @@ body .btn-link {
 @media (max-width: 1240px) {
     .main_block {
         width: 68vw;
+    }
+    .no-left{
+        width: 100%;
     }
     .top .contacts {
         left: 25%;
