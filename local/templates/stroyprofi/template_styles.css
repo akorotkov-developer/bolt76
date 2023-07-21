@@ -70,7 +70,7 @@ h3 {
 .top .contacts{
     font-size: 14px;
     line-height: 18px;
-    left:30%;
+    left:27%;
 }
 
 
@@ -235,6 +235,8 @@ hr.dashed{
 
 .page_content .left_block{
     background: #fff;
+    width: 20vw;
+    max-width: 290px;
 }
 
 .main_navigation{
@@ -242,8 +244,8 @@ hr.dashed{
     font-size: 12px;
     font-family: "Tahoma", sans-serif;
     line-height: 14px;
-    position: relative;
-    width: 300px;
+    min-width: 185px;
+    /* width: 300px; */
 }
 
 .page_content .open_left{
@@ -1470,7 +1472,7 @@ body .btn-link {
 }
 @media (max-width: 1450px) {
     .top .contacts {
-        left: 25%;
+        left: 20%;
     }
     .top .address {
          left: 42%;
@@ -1487,6 +1489,12 @@ body .btn-link {
     }
 }
 @media (max-width: 1240px) {
+    .main_block {
+        width: 68vw;
+    }
+    .top .contacts {
+        left: 25%;
+    }
     .top .address {
         display: none;
     }
@@ -1509,7 +1517,7 @@ body .btn-link {
 }
 @media (max-width: 1010px) {
     .top .b-header-favorite {
-        left: 52%;
+        left: 58%;
     }
     .top .contacts {
         left: 28%;
@@ -1535,7 +1543,7 @@ body .btn-link {
 }
 @media (max-width: 920px) {
     .top .b-header-favorite {
-        left: 54%;
+        left: 58%;
     }
     .top .contacts {
         left: 28%;
