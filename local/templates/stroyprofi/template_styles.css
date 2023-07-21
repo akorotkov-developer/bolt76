@@ -83,7 +83,7 @@ h3 {
 .top .address{
     font-size: 12px;
     line-height: 18px;
-    left: 48%;
+    left: 45%;
 }
 
 .top .cart{
@@ -1470,13 +1470,13 @@ body .btn-link {
 }
 @media (max-width: 1450px) {
     .top .contacts {
-        left: 30%;
+        left: 25%;
     }
     .top .address {
-        left: 37%;
+         left: 42%;
     }
     .top .b-header-favorite {
-        left: 61%;
+        left: 66%;
     }
     .catalog_element .element_table thead td {
         padding: 10px 2px;
@@ -1489,6 +1489,9 @@ body .btn-link {
 @media (max-width: 1240px) {
     .top .address {
         display: none;
+    }
+    .top .b-header-favorite {
+        left: 62%;
     }
     .col-xs-6 {
         width: 30%;
