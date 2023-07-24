@@ -1123,3 +1123,15 @@ h1 {
 .btn-nav {
 	font-size: 12px!important;
 }
+.fancybox__nav {
+	display: none!important;
+}
+.carousel__button.is-prev {
+	left: -40px!important;
+}
+.carousel__button.is-next {
+	right: -40px!important;
+}
+.carousel__button {
+	color: #fff!important;
+}

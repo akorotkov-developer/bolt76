@@ -67,6 +67,34 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
     }
 </script>
 
+<?php
+// Проверить авторизацию пользователя
+global $USER;
+if (!$USER->IsAuthorized()) {?>
+    <div id="dialog-content" style="display:none;width: 500px;">
+        <h2>Вы не авторизованы</h2>
+        <p>
+            <b><a href="/account/auth/?login=yes&backurl=/personal/order/make/">Войти</a></b>
+        </p>
+        <p>
+            <b><a href="/account/register/?register=yes&backurl=/personal/order/make/">Зарегистрироваться</a></b>
+        </p>
+        <p>
+            <b><a class="continue_without_registration">Продолжить без регистрации</a></b>
+        </p>
+    </div>
+
+    <script>
+        setTimeout(function(){
+            Fancybox.show([{ src: "#dialog-content", type: "inline" }]);
+        }, 1000);
+
+        $('.continue_without_registration').click(function(){
+            $('.carousel__button.is-close').trigger('click');
+        });
+    </script>
+<?php } ?>
+
 <div class="order-simple">
     <?php
     if (count($arResult['NOT_AVAIL']) > 0) {?>

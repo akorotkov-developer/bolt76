@@ -70,7 +70,7 @@ h3 {
 .top .contacts{
     font-size: 14px;
     line-height: 18px;
-    left:30%;
+    left:27%;
 }
 
 
@@ -83,7 +83,7 @@ h3 {
 .top .address{
     font-size: 12px;
     line-height: 18px;
-    left: 48%;
+    left: 45%;
 }
 
 .top .cart{
@@ -235,6 +235,8 @@ hr.dashed{
 
 .page_content .left_block{
     background: #fff;
+    width: 20vw;
+    max-width: 290px;
 }
 
 .main_navigation{
@@ -243,7 +245,8 @@ hr.dashed{
     font-family: "Tahoma", sans-serif;
     line-height: 14px;
     position: relative;
-    width: 300px;
+    min-width: 185px;
+    /* width: 300px; */
 }
 
 .page_content .open_left{
@@ -370,7 +373,7 @@ hr.dashed{
 }
 
 .main_block{
-    /*  width: 700px;
+      /* width: 700px;
       float: left; */
     margin: 0 20px 0 20px;
 }
@@ -1361,7 +1364,11 @@ body .btn-link {
  */
 .col-xs-6 {
     width: 25%;
-    margin-bottom: 200px;
+    margin-bottom: 220px;
+}
+
+.bx-filter-parameters-box-container .col-xs-6 {
+    margin-bottom: 10px;
 }
 
 /**
@@ -1410,6 +1417,10 @@ body .btn-link {
 .mid_content td {
     vertical-align: middle;
     padding: 10px;
+}
+
+.img_td{
+    width: 500px;
 }
 /**
 Вкладки в разделах
@@ -1470,13 +1481,13 @@ body .btn-link {
 }
 @media (max-width: 1450px) {
     .top .contacts {
-        left: 30%;
+        left: 20%;
     }
     .top .address {
-        left: 37%;
+         left: 42%;
     }
     .top .b-header-favorite {
-        left: 61%;
+        left: 66%;
     }
     .catalog_element .element_table thead td {
         padding: 10px 2px;
@@ -1503,10 +1514,16 @@ body .btn-link {
     .footer .copyright{
         font-size: 14px;
     }
+    .main_block {
+        width: 68vw;
+    }
+    .no-left{
+        width: 100%;
+    }
 }
 @media (max-width: 1010px) {
     .top .b-header-favorite {
-        left: 52%;
+        left: 58%;
     }
     .top .contacts {
         left: 28%;
@@ -1514,7 +1531,9 @@ body .btn-link {
     .wrapper {
         min-width: auto;
     }
+
 }
+
 @media (max-width: 978px) {
     .header .menu {
         font-size: 14px;
@@ -1532,7 +1551,7 @@ body .btn-link {
 }
 @media (max-width: 920px) {
     .top .b-header-favorite {
-        left: 54%;
+        left: 58%;
     }
     .top .contacts {
         left: 28%;
@@ -1552,7 +1571,7 @@ body .btn-link {
         font-family: "Tahoma", sans-serif;
         line-height: 14px;
         position: relative;
-        width: 185px;
+        max-width: 185px;
     }
     .orphus {
         max-width: 150px;
@@ -1594,6 +1613,9 @@ body .btn-link {
         padding: 5px;
     }
     .menu{
+        display: none;
+    }
+    .disable{
         display: none;
     }
 
@@ -1824,4 +1846,9 @@ body .btn-link {
 .has-image[data-image-fit=contain] .fancybox__image {
     padding: 30px;
     background-color: #fff;
+}
+body .btn.btn-default.btn-sm {
+    background-color: #FF7920;
+    border-color: #FF7920;
+    color: #FFF;
 }

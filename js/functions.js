@@ -81,7 +81,7 @@ $(function () {
         $('.header .search .search-input').val('').blur();
     });
 
-    $(".fancybox").fancybox();
+    /*$(".fancybox").fancybox();*/
 
     /*  $(window).resize(function(){
      $(".wrapper .page_content").css("height","auto");
