@@ -71,7 +71,7 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
 // Проверить авторизацию пользователя
 global $USER;
 if (!$USER->IsAuthorized()) {?>
-    <div id="dialog-content" style="display:none;width: 500px;">
+ <!--    <div id="dialog-">
         <h2>Вы не авторизованы</h2>
         <p>
             <b><a href="/account/auth/?login=yes&backurl=/personal/order/make/">Войти</a></b>
@@ -82,6 +82,22 @@ if (!$USER->IsAuthorized()) {?>
         <p>
             <b><a class="continue_without_registration">Продолжить без регистрации</a></b>
         </p>
+    </div>
+-->
+    <div id="dialog-content" class="form-popup">
+        <form action="/action_page.php" class="form-container">
+            <h1>Вы не авторизованы</h1>
+
+            <label for="email"><b>Логин</b></label>
+            <input type="text" placeholder="Введите Логин" name="email" required>
+
+            <label for="psw"><b>Пароль</b></label>
+            <input type="password" placeholder="Введите Пароль" name="psw" required>
+
+            <button type="submit" class="btn">Войти</button>
+            <button onclick="window.location.href='/account/register/?register=yes&backurl=%2Fpersonal%2Forder%2Fmake%2F';" type="submit" class="btn">Зарегистрироваться</button>
+            <button type="submit" class="btn cancel continue_without_registration">Продолжить без регистрации</button>
+        </form>
     </div>
 
     <script>

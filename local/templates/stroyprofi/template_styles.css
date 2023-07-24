@@ -1370,6 +1370,79 @@ body .btn-link {
 .bx-filter-parameters-box-container .col-xs-6 {
     margin-bottom: 10px;
 }
+/**
+Стили для всплывашки
+*/
+#dialog-content{
+    display:none;
+}
+
+/* Всплывающая форма-скрыта по умолчанию */
+.form-popup {
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+.form-popup.fancybox__content{
+    padding: 25;
+    border-radius: 15px;
+}
+.form-popup .carousel__button.is-close{
+    top: 0!important;
+    color: #FF7920!important;
+}
+
+.form-container h1{
+    color: #FF7920;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Добавить стили для контейнера формы */
+.form-container {
+    max-width: 310px;
+    padding: 10px;
+    background-color: white;
+}
+
+/* Поля ввода полной ширины */
+.form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* Когда входы получают фокус, сделайте что-нибудь */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Установите стиль для кнопки отправить/войти */
+.form-container .btn {
+    background-color: #FF7920;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Добавить красный цвет фона для кнопки "Отмена" */
+.form-container .cancel {
+    background-color: #797878;
+}
+
+/* Добавить некоторые эффекты наведения на кнопки */
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
 
 /**
 Классы для картинок

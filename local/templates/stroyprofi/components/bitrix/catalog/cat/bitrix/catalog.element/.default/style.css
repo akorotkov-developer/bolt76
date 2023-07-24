@@ -360,6 +360,7 @@
 	white-space: normal;
 	line-height: 16px;
 	transform: translateY(-50%);
+	color: white;
 }
 
 .btn-link.product-item-detail-buy-button { height: 25px; }
