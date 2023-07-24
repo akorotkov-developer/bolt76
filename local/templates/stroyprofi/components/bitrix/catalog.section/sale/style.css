@@ -88,6 +88,10 @@
 .row::before {
 	display: initial;
 }
+.swiper {
+	max-width: 800px;
+	height: auto;
+}
 
 .main_block .bx-blue .btn.btn-default {
 	background-color: #FF7920;

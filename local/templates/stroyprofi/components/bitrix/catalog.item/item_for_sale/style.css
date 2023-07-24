@@ -881,10 +881,7 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 }
-.product-item-sale {
-	max-width: 200px;
-	padding-top: 15px;
-}
+
 .b-sale .product-item-label-left {
 	left: 5px;
 }

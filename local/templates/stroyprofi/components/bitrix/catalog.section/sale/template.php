@@ -157,10 +157,10 @@ $containerName = 'container-'.$navParams['NavNum'];
 
 <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+        href="/plugins/swiper/swiper-bundle.css"
 />
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="/plugins/swiper/swiper-bundle.js"></script>
 
 <div class="catalog-section bx-<?=$arParams['TEMPLATE_THEME']?>" data-entity="<?=$containerName?>">
 	<?
@@ -254,10 +254,7 @@ $containerName = 'container-'.$navParams['NavNum'];
 </div>
 
 <style>
-    .swiper {
-        width: 200px;
-        height: auto;
-    }
+
 </style>
 
 <script>
