@@ -88,10 +88,10 @@ if (!$USER->IsAuthorized()) {?>
         <form action="/action_page.php" class="form-container">
             <h1>Вы не авторизованы</h1>
 
-            <label for="email"><b>Логин</b></label>
+            <!-- <label for="email"><b>Логин</b></label>-->
             <input type="text" placeholder="Введите Логин" name="email" required>
 
-            <label for="psw"><b>Пароль</b></label>
+            <!-- <label for="psw"><b>Пароль</b></label>-->
             <input type="password" placeholder="Введите Пароль" name="psw" required>
 
             <button type="submit" class="btn">Войти</button>

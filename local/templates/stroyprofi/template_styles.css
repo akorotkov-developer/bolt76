@@ -1386,7 +1386,7 @@ body .btn-link {
     z-index: 9;
 }
 .form-popup.fancybox__content{
-    padding: 25;
+    padding: 25px;
     border-radius: 15px;
 }
 .form-popup .carousel__button.is-close{
@@ -1411,9 +1411,11 @@ body .btn-link {
 .form-container input[type=text], .form-container input[type=password] {
     width: 100%;
     padding: 15px;
+    font-size: 14px;
     margin: 5px 0 22px 0;
     border: none;
     background: #f1f1f1;
+    outline: auto #afafaf;
 }
 
 /* Когда входы получают фокус, сделайте что-нибудь */
@@ -1426,6 +1428,7 @@ body .btn-link {
 .form-container .btn {
     background-color: #FF7920;
     color: white;
+    font-size: 14px;
     padding: 16px 20px;
     border: none;
     cursor: pointer;
