@@ -5,9 +5,7 @@ $APPLICATION->SetTitle("Оформление заказа");
 
 use Bitrix\Main\UI\Extension;
 Extension::load('ui.bootstrap4');
-?>
-
-<?php
+?><?php
 // Если юридическое лицо то ... , иначе физическое лицо
 if ($_REQUEST['PERSON_TYPE'] == 2) {
     $arOrderProps = [
@@ -51,7 +49,7 @@ if ($_REQUEST['PERSON_TYPE'] == 2) {
 
 $APPLICATION->IncludeComponent(
 	"tega:order.simple", 
-	".default", 
+	".default",
 	array(
 		"AJAX_MODE" => "Y",
 		"AJAX_OPTION_ADDITIONAL" => "",

@@ -1425,7 +1425,7 @@ body .btn-link {
 }
 
 /* Установите стиль для кнопки отправить/войти */
-.form-container .btn {
+.form-container .btn-popup {
     background-color: #FF7920;
     color: white;
     font-size: 14px;
@@ -1443,7 +1443,7 @@ body .btn-link {
 }
 
 /* Добавить некоторые эффекты наведения на кнопки */
-.form-container .btn:hover, .open-button:hover {
+.form-container .btn-popup:hover, .open-button:hover {
     opacity: 1;
 }
 
