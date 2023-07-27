@@ -1386,23 +1386,26 @@ body .btn-link {
     z-index: 9;
 }
 .form-popup.fancybox__content{
-    padding: 25px;
-    border-radius: 15px;
+    padding: 21px 21px 30px;
+    border-radius: 8px;
 }
 .form-popup .carousel__button.is-close{
     top: 0!important;
-    color: #FF7920!important;
+    color: #8f8f8f!important;
+    opacity: 0.8;
 }
 
 .form-container h1{
-    color: #FF7920;
+    color: #333;
+    font-weight: 700;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+    opacity: 0.8;
 }
 
 /* Добавить стили для контейнера формы */
 .form-container {
-    max-width: 310px;
+    max-width: 335px;
     padding: 10px;
     background-color: white;
 }
@@ -1410,12 +1413,14 @@ body .btn-link {
 /* Поля ввода полной ширины */
 .form-container input[type=text], .form-container input[type=password] {
     width: 100%;
-    padding: 15px;
-    font-size: 14px;
+    padding: 10px;
+    border-radius: 8px;
+    height: 50px;
+    font-size: 16px;
     margin: 5px 0 22px 0;
     border: none;
     background: #f1f1f1;
-    outline: auto #afafaf;
+    outline: auto rgb(175 175 175 / 50%);
 }
 
 /* Когда входы получают фокус, сделайте что-нибудь */
@@ -1427,24 +1432,29 @@ body .btn-link {
 /* Установите стиль для кнопки отправить/войти */
 .form-container .btn-popup {
     background-color: #FF7920;
+    background-image: linear-gradient(0deg, #FF7920, #fda061);
     color: white;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 700;
     padding: 16px 20px;
     border: none;
     cursor: pointer;
     width: 100%;
     margin-bottom:10px;
-    opacity: 0.8;
+    border-radius: 8px;
+    opacity: 1;
 }
 
 /* Добавить красный цвет фона для кнопки "Отмена" */
 .form-container .cancel {
-    background-color: #797878;
+    /*background-color: #797878;*/
+    background-image: linear-gradient(0deg, #8f8f8f, #b3b3b3);
 }
 
 /* Добавить некоторые эффекты наведения на кнопки */
 .form-container .btn-popup:hover, .open-button:hover {
-    opacity: 1;
+    opacity: 0.8;
+    transition: 0.3s;
 }
 
 /**

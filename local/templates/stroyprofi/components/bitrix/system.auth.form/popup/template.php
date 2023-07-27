@@ -51,8 +51,8 @@ CJSCore::Init();
                 </script>
             <?endif ?>
             <input type="submit" class="btn btn-primary btn-popup" name="Login" value="<?= GetMessage("AUTH_LOGIN_BUTTON") ?>"/>
-            <input type="button" onclick="window.location.href='/account/register/index.php';" class="btn-popup" value="Зарегистрироваться"/>
-            <input type="button" class="btn-popup cancel continue_without_registration" value="Продолжить без регистрации">
+            <input type="button" onclick="window.location.href='/account/register/index.php';" class="btn btn-popup" value="Зарегистрироваться"/>
+            <input type="button" class="btn btn-popup cancel continue_without_registration" value="Продолжить без регистрации">
         </form>
     <? endif ?>
 </div>
