@@ -1409,6 +1409,14 @@ body .btn-link {
     padding: 10px;
     background-color: white;
 }
+.pass_forgot {
+    color: #0d61af;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 20px;
+    width: fit-content;
+}
 
 /* Поля ввода полной ширины */
 .form-container input[type=text], .form-container input[type=password] {

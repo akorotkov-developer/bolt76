@@ -50,6 +50,9 @@ CJSCore::Init();
                     document.getElementById('bx_auth_secure<?=$arResult["RND"]?>').style.display = 'inline-block';
                 </script>
             <?endif ?>
+            <div class="pass_forgot">
+                <a class="pass_forgot" href="/account/forgot/?forgot_password=yes&backurl=%2Faccount%2Fauth%2F">Забыли пароль?</a>
+            </div>
             <input type="submit" class="btn btn-primary btn-popup" name="Login" value="<?= GetMessage("AUTH_LOGIN_BUTTON") ?>"/>
             <input type="button" onclick="window.location.href='/account/register/index.php';" class="btn btn-popup" value="Зарегистрироваться"/>
             <input type="button" class="btn btn-popup cancel continue_without_registration" value="Продолжить без регистрации">
