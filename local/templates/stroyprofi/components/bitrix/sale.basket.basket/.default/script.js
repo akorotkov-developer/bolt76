@@ -1467,18 +1467,16 @@ BX.ready(function() {
 			method: 'get',
 			data: {},
 			success: function(data) {
-				let link = document.createElement("a");
-				link.setAttribute("href", '/cart/Исходящие счета киоск №' + data + '.xml');
 
-				link.setAttribute("download", 'Исходящие счета киоск №' + data + '.xml');
-				console.log(data);
+				let link = document.createElement("a");
+				link.setAttribute("href", '/cart/Заказ киоск №' + data + '.xml');
+				link.setAttribute("download", 'Заказ киоск №' + data + '.xml');
 				link.click();
+				$('#check_order_number').html(data);
 				print();
+				window.location.href = '/kiosk_auth';
 			}
 		});
-
-
-		window.location.href = '/kiosk_auth';
 		/*const messageBox = new BX.UI.Dialogs.MessageBox(
 			{
 				message: '<span style="color: #FF7920; font-weight: bold; font-size: 18px;">Распечатать чек?</span>',
