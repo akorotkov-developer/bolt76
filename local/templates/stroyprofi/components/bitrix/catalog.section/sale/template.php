@@ -159,6 +159,7 @@ $containerName = 'container-'.$navParams['NavNum'];
         rel="stylesheet"
         href="/plugins/swiper/swiper-bundle.css"
 />
+<link rel="stylesheet" type="text/css" href="/local/templates/stroyprofi/components/bitrix/catalog.section/sale/style.css">
 
 <script src="/plugins/swiper/swiper-bundle.js"></script>
 
