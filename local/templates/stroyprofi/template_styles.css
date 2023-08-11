@@ -1531,7 +1531,7 @@ body .btn-link {
 }
 
 .img_td{
-    width: 500px;
+    width: 50%;
 }
 /**
 Вкладки в разделах
@@ -1543,10 +1543,6 @@ body .btn-link {
 
 .section-pane-inner .large {
     width: 80%;
-}
-
-.border-zero {
-    border: 0!important;
 }
 
 .table-align-top td {
@@ -1579,6 +1575,16 @@ body .btn-link {
 
 .section-pane-inner img {
     width: 100%;
+}
+.section-pane-inner td{
+    padding: 5px;
+    border: 1px solid  #FF7920;
+}
+.border-zero {
+    border: 0!important;
+}
+.border-zero td {
+    border: 0!important;
 }
 
 /**
