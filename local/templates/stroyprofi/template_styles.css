@@ -391,6 +391,7 @@ hr.dashed{
     text-decoration: none;
     float: left;
     margin:0 20px 40px 0;
+    transition: .2s;
 }
 
 .sections_list .section .picture{
@@ -411,6 +412,7 @@ hr.dashed{
 
 .sections_list .section:hover{
     color: #FF7920;
+    transform: scale(1.15);
 }
 
 .sections_list.main .section{
@@ -431,11 +433,11 @@ hr.dashed{
 .sections_list.main .section .link{
     display: block;
     font-size: 14px;
-    background: #FFFFFF;
+    background: transparent;
 }
 
 .sections_list.main .section:hover .link{
-    color:#000;
+    color: #FF7920;
 }
 
 .sections_list.main .section .link.small-height{
