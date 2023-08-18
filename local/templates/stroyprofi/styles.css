@@ -33,11 +33,19 @@ table {border-collapse: collapse;}
     padding: 5px 20px 10px;
     background: url(/img/semitrans.png);
     height: 60px;
-    position: absolute;
     top: 5px;
     font-size: 12px;
     line-height: 18px;
-    right: 285px;
+    left: 68%;
+}
+.top .b-header-favorite {
+    padding: 5px 20px 10px;
+    background: url(/img/semitrans.png);
+    height: 60px;
+    top: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    left: 68%;
 }
 
 
@@ -59,7 +67,6 @@ table {border-collapse: collapse;}
     opacity: .7;
 }
 .b-header-favorite {
-    position: relative;
     text-align: center;
 }
 .favorite-title {
@@ -71,9 +78,9 @@ table {border-collapse: collapse;}
     color: #FF7920!important;
 }
 .b-header-favorite .favorite-count {
-    position: absolute;
-    right: 5px;
-    top: 0px;
+    position: relative;
+    left: 40px;
+    bottom: 60px;
     font-weight: bold;
 }
 .b-favorite {
