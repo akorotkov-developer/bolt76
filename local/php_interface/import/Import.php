@@ -839,6 +839,29 @@ class Import
                 ]
             ];
 
+            // Если товар для распродажи, то добавить его дополнительно в раздел "Распродажа"
+            if ($item['Rasprodaja'] != '') {
+                $arFilter = ['IBLOCK_ID' => 1, 'CODE' => 'rasprodazha'];
+                $rsSections = CIBlockSection::GetList(['SORT' => 'ASC'], $arFilter);
+                $saleSectionId = false;
+                while ($section = $rsSections->Fetch()) {
+                    $saleSectionId = $section['ID'];
+                }
+
+                if ($saleSectionId) {
+                    $arUpdate['IBLOCK_SECTION'] = [
+                        $saleSectionId,
+                    ];
+
+                    $mainSection = $this->arCatalogSections[$arUpdate['PROPERTY_VALUES']['ROWID']];
+                    if ((int)$mainSection > 0) {
+                        $arUpdate['IBLOCK_SECTION'][] = $mainSection;
+                    }
+                }
+
+                \Bitrix\Main\Diag\Debug::dumpToFile(['$arUpdate----' => $arUpdate], '', 'log.txt');
+            }
+
             // Добавим значения динамических свойств в товар
             $arDynamicPropsKeys = array_keys($this->arDynamicPropsMap);
 
@@ -896,8 +919,6 @@ class Import
                 if (count($item['Foto']) > 1) {
                     array_shift($item['Foto']);
 
-                    \Bitrix\Main\Diag\Debug::dumpToFile(['photo' => $item['Foto']], '', 'log.txt');
-                    \Bitrix\Main\Diag\Debug::dumpToFile(['$item' => $item], '', 'log.txt');
                     foreach ($item['Foto'] as $photoItem) {
                         $picfile = $_SERVER['DOCUMENT_ROOT'] . '/import/img/' . $photoItem . '.jpg';
                         if ($this->testphile($picfile)) {
@@ -1058,13 +1079,29 @@ class Import
                     'Ostatok' => $item['Ostatok'],
                     'SHOW_IN_PRICE' => ($item['show_in_price'] > 0) ? 1 : 0,
                     'SORT_IN_PRICE' => $item['show_in_price'],
-                    'AVAILABLE' => ((int)$item['Ostatok'] > 0) ? $this->iAvailablePropId : ''
+                    'AVAILABLE' => ((int)$item['Ostatok'] > 0) ? $this->iAvailablePropId : '',
+                    'SALE' => $item['Rasprodaja']
                 ],
                 'IPROPERTY_TEMPLATES' => [
                     'ELEMENT_META_KEYWORDS'    =>  '{=this.Name} в Ярославле, {=this.Name}, опт, недорого, прайс-лист, каталог, доставка до транспортной компании.',
                     'ELEMENT_META_DESCRIPTION' =>  'Купить {=this.Name} в Ярославле оптом и в розницу, доставка до транспортной компании. Низкие цены, акции и скидки на {=this.Name} в интернет-магазине СтройПрофи.',
                 ]
             ];
+
+            // Если товар для распродажи, то добавить его дополнительно в раздел "Распродажа"
+            if ($item['Rasprodaja'] != '') {
+                $arFilter = ['IBLOCK_ID' => 1, 'CODE' => 'rasprodazha'];
+                $rsSections = CIBlockSection::GetList(['SORT' => 'ASC'], $arFilter);
+                $saleSectionId = false;
+                while ($section = $rsSections->Fetch()) {
+                    $saleSectionId = $section['ID'];
+                }
+
+                if ($saleSectionId) {
+                    $arLoad['IBLOCK_SECTION'] = [$saleSectionId, $siteCatID];
+                    unset($arLoad['IBLOCK_SECTION_ID']);
+                }
+            }
 
             // Добавим значения динамических свойств в товар
             $arDynamicPropsKeys = array_keys($this->arDynamicPropsMap);

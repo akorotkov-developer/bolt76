@@ -81,6 +81,8 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                         $sCurSectionNameForFilter = $arResult['ITEMS'][$cell + 1]['FILTER_SECTION_NAME'];
                         $isSectionNameWrited = false;
                     }
+
+                    // $arElement['PROPERTIES']['SALE']['VALUE'] == 'SALE'
                     ?>
                     <tr id="<?= $this->GetEditAreaId($arElement['ID']); ?>"
                         class="<?= ((float)$arElement["PROPERTIES"]["OSTATOK"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
@@ -141,7 +143,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                 ?><a href="#" class="fancybox_detailed" data-id="detailed_text_<?= $arElement["ID"] ?>">
                                     <img src="/images/i.png" alt="Информация"/></a><? } ?>
                         </td>
-                        <td class="name">
+                        <td class="name t-name-relative">
                             <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
                                 <div class="name_wrapper">
                                     <div class="name-holder">
@@ -274,6 +276,10 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                     </div>
                                 </div>
                             </a>
+
+                            <?php if ($arElement['PROPERTIES']['SALE']['VALUE'] != '') {?>
+                                <img class="i-sale-shildik" src="<?=SITE_TEMPLATE_PATH?>/images/sale.png">
+                            <?php }?>
                         </td>
                         <td class="opt sfsdfsd">
                             <?php

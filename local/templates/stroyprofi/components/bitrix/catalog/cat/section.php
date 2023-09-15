@@ -398,7 +398,6 @@ if ($ar_result = $db_list->GetNext()) {
                     $arParams["ELEMENT_SORT_FIELD2"] = 'PROPERTY_Naimenovanie';
                     $arParams["ELEMENT_SORT_ORDER2"] = $arParams["ELEMENT_SORT_ORDER"];
 
-
                     $APPLICATION->IncludeComponent(
                             "profi:catalog.section",
                             ($template ? 'section_descr' : ''),

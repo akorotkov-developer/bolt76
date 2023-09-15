@@ -151,7 +151,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                         <? if ($arElement["DETAIL_TEXT"]) { ?><a href="#" class="">
                             <img src="/images/i.png" alt="Информация"/></a><? } ?>
                     </td>
-                    <td class="name" <?php if ($arResult['IS_FILTER']) {
+                    <td class="name t-name-relative" <?php if ($arResult['IS_FILTER']) {
                         echo 'style="width: 100%"';
                     } ?>>
                         <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
@@ -288,6 +288,10 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                 </div>
                             </div>
                         </a>
+
+                        <?php if ($arElement['PROPERTIES']['SALE']['VALUE'] != '') {?>
+                            <img class="i-sale-shildik" src="<?=SITE_TEMPLATE_PATH?>/images/sale.jpg">
+                        <?php }?>
                     </td>
                     <td class="opt">
                         <?php
@@ -400,7 +404,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
 
                         if ($cell == 0) { ?>
                             <td rowspan="<?= (sizeof($arResult["ITEMS"]) + 1 + sizeof($arResult['SECTIONS_COUNT']) + 1) ?>"
-                                class="section_description">
+                                class="section_description 222">
 
                                 <?
                                 if ($arResult["PICTURE"]["ID"]) {
@@ -408,7 +412,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                     $file_big = CFile::ResizeImageGet($arResult["PICTURE"]["ID"], array('width' => 900, 'height' => 600), BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                     ?>
 
-                                    <a href="<?= $file["src"] ?>" class="fancybox sdfdsfs"><img src="<?= $file["src"] ?>"
+                                    <a href="<?= $file["src"] ?>" class="fancybox" data-fancybox><img src="<?= $file["src"] ?>"
                                                                                         alt=""></a>
 
                                 <? } ?>
