@@ -361,7 +361,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                         <div class="kratnostHelperHolder">
                                             <div class="kratnostHelper">
                                                 Данная продукция отпускается
-                                                кртано <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?> <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?>
+                                                кратно <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?> <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?>
                                             </div>
                                         </div>
                                     <?php } ?>

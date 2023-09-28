@@ -48,6 +48,19 @@ if ($priceGroup == 'OPT_2') {
     $sPriceCode = 'BASE';
 }
 
+if ($_GET['tst'] == 'tst') {
+    $listPropertyCode = array_merge($arAvailableProps, ['PRICE_OPT', 'PRICE_OPT2', 'PRICE']);
+} else {
+    $listPropertyCode = array(
+        0 => "ARTICUL",
+        1 => "UNITS",
+        2 => "PRICE_OPT",
+        3 => "PRICE_OPT2",
+        4 => "PRICE",
+        5 => "",
+    );
+}
+
 $APPLICATION->IncludeComponent(
 	"bitrix:catalog",
     'cat',
@@ -91,14 +104,7 @@ $APPLICATION->IncludeComponent(
 		"ELEMENT_SORT_ORDER" => "asc",
         "ELEMENT_SORT_FIELD2" => "NAME",
         "ELEMENT_SORT_ORDER2ELEMENT_SORT_ORDER2" => "asc",
-		"LIST_PROPERTY_CODE" => array(
-			0 => "ARTICUL",
-			1 => "UNITS",
-			2 => "PRICE_OPT",
-			3 => "PRICE_OPT2",
-			4 => "PRICE",
-			5 => "",
-		),
+        "LIST_PROPERTY_CODE" => $listPropertyCode,
 		"INCLUDE_SUBSECTIONS" => $isApplyFilter ? 'Y' : 'N',
 		"IS_APPLY_FILTER" => $isApplyFilter ? 'Y' : 'N',
         "LIST_META_KEYWORDS" => "UF_KEYWORDS",
