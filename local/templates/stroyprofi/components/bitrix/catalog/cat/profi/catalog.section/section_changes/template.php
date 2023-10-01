@@ -198,11 +198,18 @@
                                 $sPrice = $arElement['DISPLAY_PROPERTIES']['PRICE_OPT']['VALUE'];
                             }
                             ?>
-                            <div class="price"> <b>Опт: </b><?= coolPrice($sPrice) ?> ₽</div>
-
-                            <?php if (!$arResult['IS_OPT_2'] && !$arResult['IS_OPT_3']) { ?>
-                                <div class="price"> <b>Розница: </b><?= coolPrice($arElement['DISPLAY_PROPERTIES']['PRICE']['VALUE']) ?> ₽</div>
-                            <?php }?>
+                            <table class="price">
+                                <tr>
+                                    <td><b>Опт: </b></td>
+                                    <td><?= coolPrice($sPrice) ?> ₽</td>
+                                </tr>
+                                <?php if (!$arResult['IS_OPT_2'] && !$arResult['IS_OPT_3']) { ?>
+                                    <tr>
+                                        <td><b>Розница: </b></td>
+                                        <td><?= coolPrice($arElement['DISPLAY_PROPERTIES']['PRICE']['VALUE']) ?> ₽</td>
+                                    </tr>
+                                <?php }?>
+                            </table>
                         </div>
 
                         <div class="b-bottom-addcart">
@@ -233,7 +240,7 @@
                                 <?php } ?>
                             </div>
 
-                            <button class="btn btn-cart" type="button">Добавить в корзину</button>
+                            <button class="btn btn-cart" type="button">В корзину</button>
                         </div>
                     </div>
                 </div>

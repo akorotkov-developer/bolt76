@@ -213,3 +213,34 @@
 .product-layout.product-grid>.product-thumb .image {
     padding: 10px;
 }
+.section-pane .product-layout table {
+    border: 0px;
+}
+@media (max-width: 1875px) {
+    .product-layout .product-thumb img {
+        max-width: 130px;
+        max-height: 130px;
+    }
+}
+@media (max-width: 1300px) {
+    .product-layout .product-thumb img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+    .product-grid .caption .name a {
+        font-size: 9px;
+        font-weight: bold;
+    }
+}
+@media (max-width: 1191px) {
+    .product-grid .caption .name a {
+        font-size: 12px;
+        font-weight: bold;
+    }
+}
+@media (max-width: 767px) {
+    .product-layout .product-thumb img {
+        max-width: 230px;
+        max-height: 230px;
+    }
+}

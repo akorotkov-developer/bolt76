@@ -30,6 +30,10 @@ $( document ).ready(function() {
         localStorage.setItem('display', 'grid');
 
         // Сделать блоки одной высоты
+        setTimeout(setColumnHeight, 1000);
+    });
+
+    function setColumnHeight() {
         let column = 0;
         $('.product-layout.product-grid').each(function(){
             $(this).each(function(){
@@ -43,9 +47,7 @@ $( document ).ready(function() {
             $(this).height(column);
             $(this).children().height(column);
         });
-    });
-
-
+    }
 
     if (localStorage.getItem('display') == 'list') {
         $('#list-view').trigger('click');
@@ -75,7 +77,6 @@ $( document ).ready(function() {
         }
 
         $.post("/cart/add_to_cart.php", inputval.serialize(), function (data) {
-            console.log(data, 'data');
             if ($.trim(data) != '') {
                 $('.cart_info_holder').html(data);
                 inputval.val('');
@@ -91,7 +92,6 @@ $( document ).ready(function() {
 
     // Обработчики событий для кнопок плюс и минус
     $('.buy_helper').bind("click", function(e) {
-        console.log(e.offsetX, 'e.offsetX');
         if(e.offsetX < 10) {
             var quantInput = $(this).find('.quantity_input');
             var dataRatio = $(this).find('.quantity_input').attr('data-ratio');
