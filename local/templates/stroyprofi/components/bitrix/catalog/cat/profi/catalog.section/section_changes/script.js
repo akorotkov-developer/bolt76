@@ -25,7 +25,7 @@ $( document ).ready(function() {
         } else if (cols == 1) {
             $('.page_content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
         } else {
-            $('.page_content .product-layout').attr('class', 'product-layout product-grid col-lg-3 col-md-3 col-sm-3 col-xs-12');
+            $('.page_content .product-layout').attr('class', 'product-layout product-grid col-lg-3 col-md-4 col-sm-4 col-xs-12');
         }
         localStorage.setItem('display', 'grid');
 

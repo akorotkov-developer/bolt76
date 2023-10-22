@@ -1,6 +1,20 @@
+.product-layout.product-grid .b-favorite {
+    position: relative;
+    top: 10px;
+    right: 10px;
+}.product-layout.product-list .b-favorite {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
 .product-layout .product-thumb img {
     max-width: 230px;
     max-height: 230px;
+}
+.product-layout.product-list .product-thumb img {
+    max-width: 300px;
+    max-height: 300px;
+    padding: 30px;
 }
 .product-list.product-layout{
     margin-bottom:20px;
@@ -215,6 +229,9 @@
 }
 .section-pane .product-layout table {
     border: 0px;
+}
+.product-layout .button-group .b-prices .price td {
+    white-space: nowrap;
 }
 @media (max-width: 1875px) {
     .product-layout .product-thumb img {
