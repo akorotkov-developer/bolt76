@@ -69,6 +69,31 @@ if (strpos($sCurPage, '/apply/') !== false) {
             }
 
             $arSectionsForCount = [];
+
+            /**
+             * Сортировка по алфавиту с группировкой по разделам
+             */
+            $groupSectionItems = [];
+            foreach ($arResult['ITEMS'] as $key => $arItem) {
+                $groupSectionItems[$arItem['~IBLOCK_SECTION_ID']][] = $arItem;
+            }
+
+            foreach ($groupSectionItems as $groupKey => $group) {
+                usort($group, function($a, $b) {
+                    return trim($a['PROPERTIES']['Naimenovanie']['VALUE']) <=> trim($b['PROPERTIES']['Naimenovanie']['VALUE']);
+                });
+                $groupSectionItems[$groupKey] = $group;
+            }
+
+            $arResult['ITEMS'] = [];
+
+
+            foreach ($groupSectionItems as $group) {
+                foreach ($group as $item) {
+                    $arResult['ITEMS'][] = $item;
+                }
+            }
+
             foreach ($arResult['ITEMS'] as $key => $arItem) {
                 $sFilteredSectName = ltrim($arSections[$arItem['~IBLOCK_SECTION_ID']]['NAME'], '1234567890');
                 $sFilteredSectName = ltrim($sFilteredSectName);
