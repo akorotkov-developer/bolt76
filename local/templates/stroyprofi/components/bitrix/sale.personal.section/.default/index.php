@@ -85,6 +85,11 @@ if ($arParams['SHOW_CONTACT_PAGE'] === 'Y')
 		"icon" => '<i class="fa fa-info-circle"></i>'
 	);
 }
+$availablePages[] = array(
+    "path" => '/personal/wishlist/',
+    "name" => 'Избранное',
+    "icon" => '<i class="fa fa-info-circle"></i>'
+);
 
 $customPagesList = CUtil::JsObjectToPhp($arParams['~CUSTOM_PAGES']);
 if ($customPagesList)

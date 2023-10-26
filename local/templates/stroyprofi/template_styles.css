@@ -90,7 +90,7 @@ h3 {
     background: url('/img/semitrans.png');
     padding: 5px 20px 5px 10px;
     float: right;
-    margin: 7px 30px 0 0;
+    margin: 5px 30px 0 0;
     font-size: 12px;
     line-height: 15px;
 }
@@ -1604,7 +1604,7 @@ body .btn-link {
          left: 42%;
     }
     .top .b-header-favorite {
-        left: 66%;
+        right: 285px;
     }
     .catalog_element .element_table thead td {
         padding: 10px 2px;

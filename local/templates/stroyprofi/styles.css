@@ -37,17 +37,7 @@ table {border-collapse: collapse;}
     top: 5px;
     font-size: 12px;
     line-height: 18px;
-    left: 68%;
-}
-.top .b-header-favorite {
-    padding: 5px 20px 10px;
-    background: url(/img/semitrans.png);
-    height: 60px;
-    position: absolute;
-    top: 5px;
-    font-size: 12px;
-    line-height: 18px;
-    left: 68%;
+    right: 285px;
 }
 
 
