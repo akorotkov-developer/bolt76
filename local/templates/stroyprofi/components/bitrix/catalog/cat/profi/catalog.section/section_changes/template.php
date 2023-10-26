@@ -201,6 +201,16 @@
                             </b>
                         </div>
 
+                        <div class="in-pack">
+                            <?php
+                            $up1 = (float)$arElement["PROPERTIES"]["UPAKOVKA"]["VALUE"];
+                            $up2 = (float)$arElement["PROPERTIES"]["UPAKOVKA2"]["VALUE"];
+                            ?>
+                            <b>
+                                В упаковке: <?= $up1; ?><?= ($up2 ? '/' . $up2 : '') ?>&nbsp;<?=$arElement['PROPERTIES']['UNITS']['VALUE']?>
+                            </b>
+                        </div>
+
                         <div class="button-group">
                             <button class="btn btn-cart" type="button">Добавить в корзину</button>
                         </div>
