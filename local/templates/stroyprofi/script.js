@@ -44,7 +44,7 @@ $(document).ready(function () {
         $('.header').css('height', '142px');
     }
 
-    /** Добавление товаров в избранное */
+    /** Добавление/удаление товаров товаров в избранного */
     $('.favorite-svg-icon').on('click', function() {
         var favorID = $(this).attr('data-product-id');
         var doAction = '';

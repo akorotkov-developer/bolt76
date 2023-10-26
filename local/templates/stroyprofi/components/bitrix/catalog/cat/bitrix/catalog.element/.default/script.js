@@ -3583,7 +3583,6 @@ BX.ready(function() {
 	});
 });
 
-
 // $(document).ready(function() {
 // 	Fancybox.bind('[data-fancybox="gallery"]', {
 // 		on: {
