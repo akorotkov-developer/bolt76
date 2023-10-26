@@ -1,6 +1,6 @@
 <?php if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <?php if(sizeof($arResult["ITEMS"])>0) {?>
-    <div class="product-filter">
+    <div class="product-filter 121231">
         <div class="display hidden-xs">
             <button type="button" id="list-view" class="btn-list active" data-toggle="tooltip" title="List"><i class="fa fa-th-list"></i>
             </button>
@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row row-100">
         <?php foreach ($arResult["ITEMS"] as $cell => $arElement) {
             $this->AddEditAction($arElement['ID'], $arElement['EDIT_LINK'], CIBlock::GetArrayByID($arParams['IBLOCK_ID'], 'ELEMENT_EDIT'));
             $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::GetArrayByID($arParams['IBLOCK_ID'], 'ELEMENT_DELETE'), ['CONFIRM' => GetMessage('CT_BCS_ELEMENT_DELETE_CONFIRM')]);
