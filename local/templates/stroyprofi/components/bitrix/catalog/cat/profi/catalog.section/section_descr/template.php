@@ -404,7 +404,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
 
                         if ($cell == 0) { ?>
                             <td rowspan="<?= (sizeof($arResult["ITEMS"]) + 1 + sizeof($arResult['SECTIONS_COUNT']) + 1) ?>"
-                                class="section_description 222">
+                                class="section_description">
 
                                 <?
                                 if ($arResult["PICTURE"]["ID"]) {

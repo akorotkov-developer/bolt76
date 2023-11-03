@@ -54,8 +54,9 @@
                     <div class="image">
                         <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>">
                             <?php
+                            $pictureId = ((int)$arElement['PREVIEW_PICTURE']['ID'] > 0) ? $arElement['PREVIEW_PICTURE']['ID'] : $arResult['PICTURE']['ID'];
                             $file = CFile::ResizeImageGet(
-                                $arElement['PREVIEW_PICTURE']['ID'],
+                                $pictureId,
                                 ['width' => 268, 'height' => 268],
                                 BX_RESIZE_IMAGE_PROPORTIONAL,
                                 true
