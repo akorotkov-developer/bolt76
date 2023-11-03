@@ -65,213 +65,215 @@
                             <img src="<?= $file['src']?>" alt="<?= $arElement['NAME']?>" title="<?= $arElement['NAME']?>" class="img-responsive" />
                         </a>
                     </div>
-                    <div class="caption">
-                        <div class="name">
-                            <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>"><?= $arElement['NAME'] ?></a>
-                        </div>
-                        <div class="price"> 122.00 ₽</div>
+                    <div class="b-product-info">
+                        <div class="caption">
+                            <div class="name">
+                                <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>"><?= $arElement['NAME'] ?></a>
+                            </div>
+                            <div class="price"> 122.00 ₽</div>
 
-                        <div class="description">
-                            <?php if (!empty($arElement['DISPLAY_PROPERTIES'])) {?>
-                                <dl class="product-item-detail-properties">
-                                    <?php
-                                    $arExcludedProps = [
-                                        'PRICE_OPT2', 'PHOTO_ID', 'V_REZERVE', 'NAIMENOVANIE',
-                                        'ROWID', 'NOMNOMER', 'SHOW_IN_PRICE', 'SORT_IN_PRICE', 'PHOTOS',
-                                        'VES1000PS', 'MaksZapas', 'MinZapas', 'Otobrajat_v_prayse',
-                                        'Svertka', 'SHOW_IN_PRICE', 'Otobrajat_na_sayte', 'SALE',
-                                        'Svobodno', 'Nomenklaturniy_nomer', 'Naimenovanie',
-                                        'TipSkladskogoZapasa', 'Kratnost', 'AVAILABLE', 'ADDITIONAL_PRODUCT_INFORMATION'
-                                    ];
+                            <div class="description">
+                                <?php if (!empty($arElement['DISPLAY_PROPERTIES'])) {?>
+                                    <dl class="product-item-detail-properties">
+                                        <?php
+                                        $arExcludedProps = [
+                                            'PRICE_OPT2', 'PHOTO_ID', 'V_REZERVE', 'NAIMENOVANIE',
+                                            'ROWID', 'NOMNOMER', 'SHOW_IN_PRICE', 'SORT_IN_PRICE', 'PHOTOS',
+                                            'VES1000PS', 'MaksZapas', 'MinZapas', 'Otobrajat_v_prayse',
+                                            'Svertka', 'SHOW_IN_PRICE', 'Otobrajat_na_sayte', 'SALE',
+                                            'Svobodno', 'Nomenklaturniy_nomer', 'Naimenovanie',
+                                            'TipSkladskogoZapasa', 'Kratnost', 'AVAILABLE', 'ADDITIONAL_PRODUCT_INFORMATION'
+                                        ];
 
-                                    // Отсортируем свойства в нужном порядке
-                                    $arPrepareProps['ARTICUL'] = $arElement['DISPLAY_PROPERTIES']['ARTICUL'];
-                                    unset($arElement['DISPLAY_PROPERTIES']['ARTICUL']);
-                                    $arPrepareProps['UNITS'] = $arElement['DISPLAY_PROPERTIES']['UNITS'];
-                                    unset($arElement['DISPLAY_PROPERTIES']['UNITS']);
-                                    $arPrepareProps['PRICE_OPT2'] = $arElement['DISPLAY_PROPERTIES']['PRICE_OPT2'];
-                                    unset($arElement['DISPLAY_PROPERTIES']['PRICE_OPT2']);
-                                    $arPrepareProps['PRICE_OPT'] = $arElement['DISPLAY_PROPERTIES']['PRICE_OPT'];
-                                    unset($arElement['DISPLAY_PROPERTIES']['PRICE_OPT']);
-                                    $arPrepareProps['PRICE'] = $arElement['DISPLAY_PROPERTIES']['PRICE'];
-                                    unset($arElement['DISPLAY_PROPERTIES']['PRICE']);
-                                    $arPrepareProps['Ostatok'] = $arElement['DISPLAY_PROPERTIES']['Ostatok'];
-                                    unset($arElement['DISPLAY_PROPERTIES']['Ostatok']);
-                                    $arPrepareProps['UPAKOVKA'] = $arElement['DISPLAY_PROPERTIES']['UPAKOVKA'];
-                                    unset($arElement['DISPLAY_PROPERTIES']['UPAKOVKA']);
+                                        // Отсортируем свойства в нужном порядке
+                                        $arPrepareProps['ARTICUL'] = $arElement['DISPLAY_PROPERTIES']['ARTICUL'];
+                                        unset($arElement['DISPLAY_PROPERTIES']['ARTICUL']);
+                                        $arPrepareProps['UNITS'] = $arElement['DISPLAY_PROPERTIES']['UNITS'];
+                                        unset($arElement['DISPLAY_PROPERTIES']['UNITS']);
+                                        $arPrepareProps['PRICE_OPT2'] = $arElement['DISPLAY_PROPERTIES']['PRICE_OPT2'];
+                                        unset($arElement['DISPLAY_PROPERTIES']['PRICE_OPT2']);
+                                        $arPrepareProps['PRICE_OPT'] = $arElement['DISPLAY_PROPERTIES']['PRICE_OPT'];
+                                        unset($arElement['DISPLAY_PROPERTIES']['PRICE_OPT']);
+                                        $arPrepareProps['PRICE'] = $arElement['DISPLAY_PROPERTIES']['PRICE'];
+                                        unset($arElement['DISPLAY_PROPERTIES']['PRICE']);
+                                        $arPrepareProps['Ostatok'] = $arElement['DISPLAY_PROPERTIES']['Ostatok'];
+                                        unset($arElement['DISPLAY_PROPERTIES']['Ostatok']);
+                                        $arPrepareProps['UPAKOVKA'] = $arElement['DISPLAY_PROPERTIES']['UPAKOVKA'];
+                                        unset($arElement['DISPLAY_PROPERTIES']['UPAKOVKA']);
 
-                                    $arElement['DISPLAY_PROPERTIES'] = array_merge($arPrepareProps, $arElement['DISPLAY_PROPERTIES']);
+                                        $arElement['DISPLAY_PROPERTIES'] = array_merge($arPrepareProps, $arElement['DISPLAY_PROPERTIES']);
 
-                                    foreach ($arElement['DISPLAY_PROPERTIES'] as $property) {
-                                        if ($property['CODE'] == 'UPAKOVKA2') {
-                                            continue;
-                                        }
-
-                                        if (in_array($property['CODE'], $arExcludedProps)) {
-                                            continue;
-                                        }
-
-                                        if ($property['VALUE'] === 0) {
-                                            continue;
-                                        }
-
-                                        if ($property['NAME'] == 'Оптовая цена 2') {
-                                            continue;
-                                        }
-
-                                        if ($property['NAME'] == 'Розничная цена') {
-                                            continue;
-                                        }
-                                        if ($property['NAME'] == 'Оптовая цена') {
-                                            continue;
-                                        }
-                                        if ($property['NAME'] == 'Длина' || $property['NAME'] == 'Диаметр') {
-                                            if ($property['VALUE'] != '') {
-                                                $property['VALUE'] = $property['VALUE'] . ' мм';
+                                        foreach ($arElement['DISPLAY_PROPERTIES'] as $property) {
+                                            if ($property['CODE'] == 'UPAKOVKA2') {
+                                                continue;
                                             }
-                                        }
 
-                                        if ($property['NAME'] == 'Остаток') {
-                                            $property['NAME'] = 'Наличие';
+                                            if (in_array($property['CODE'], $arExcludedProps)) {
+                                                continue;
+                                            }
 
-                                            $property['VALUE'] = ($arElement['PROPERTIES']['Svobodno']['VALUE'] > 0) ? $arElement['PROPERTIES']['Svobodno']['VALUE'] : '0';
+                                            if ($property['VALUE'] === 0) {
+                                                continue;
+                                            }
 
-                                            $property['VALUE'] = $property['VALUE'] . ' ' . $arElement['PROPERTIES']['UNITS']['VALUE'];
-                                        }
+                                            if ($property['NAME'] == 'Оптовая цена 2') {
+                                                continue;
+                                            }
 
-                                        if ($property['NAME'] == 'Единицы') {
-                                            $property['NAME'] = 'Единицы измерения';
-                                        }
-
-                                        if ($property['CODE'] == 'UPAKOVKA' && $property['VALUE'] != '') {?>
-                                            <div class="prop-item">
-                                                <dt class="prop-item-title"><?=$property['NAME']?></dt>
-                                                <?php
-                                                if ( $arElement['PROPERTIES']['UPAKOVKA2']['VALUE'] != '') {
-                                                    $sValue = (
-                                                        is_array($property['VALUE'])
-                                                            ? implode(' / ', $property['VALUE'])
-                                                            : $property['VALUE']
-                                                        ) . ' / ' . $arElement['PROPERTIES']['UPAKOVKA2']['VALUE'];
-                                                } else {
-                                                    $sValue = (
-                                                    is_array($property['VALUE'])
-                                                        ? implode(' / ', $property['VALUE'])
-                                                        : $property['VALUE']
-                                                    );
+                                            if ($property['NAME'] == 'Розничная цена') {
+                                                continue;
+                                            }
+                                            if ($property['NAME'] == 'Оптовая цена') {
+                                                continue;
+                                            }
+                                            if ($property['NAME'] == 'Длина' || $property['NAME'] == 'Диаметр') {
+                                                if ($property['VALUE'] != '') {
+                                                    $property['VALUE'] = $property['VALUE'] . ' мм';
                                                 }
-                                                ?>
-                                                <dd>
-                                                    <?=$sValue . ' ' . $arElement['PROPERTIES']['UNITS']['VALUE']?>
-                                                </dd>
-                                            </div>
-                                        <?php } else {
-                                            if ($property['VALUE'] != '') {
-                                                ?>
+                                            }
+
+                                            if ($property['NAME'] == 'Остаток') {
+                                                $property['NAME'] = 'Наличие';
+
+                                                $property['VALUE'] = ($arElement['PROPERTIES']['Svobodno']['VALUE'] > 0) ? $arElement['PROPERTIES']['Svobodno']['VALUE'] : '0';
+
+                                                $property['VALUE'] = $property['VALUE'] . ' ' . $arElement['PROPERTIES']['UNITS']['VALUE'];
+                                            }
+
+                                            if ($property['NAME'] == 'Единицы') {
+                                                $property['NAME'] = 'Единицы измерения';
+                                            }
+
+                                            if ($property['CODE'] == 'UPAKOVKA' && $property['VALUE'] != '') {?>
                                                 <div class="prop-item">
                                                     <dt class="prop-item-title"><?=$property['NAME']?></dt>
-                                                    <dd><?=(
+                                                    <?php
+                                                    if ( $arElement['PROPERTIES']['UPAKOVKA2']['VALUE'] != '') {
+                                                        $sValue = (
+                                                            is_array($property['VALUE'])
+                                                                ? implode(' / ', $property['VALUE'])
+                                                                : $property['VALUE']
+                                                            ) . ' / ' . $arElement['PROPERTIES']['UPAKOVKA2']['VALUE'];
+                                                    } else {
+                                                        $sValue = (
                                                         is_array($property['VALUE'])
                                                             ? implode(' / ', $property['VALUE'])
                                                             : $property['VALUE']
-                                                        )?>
+                                                        );
+                                                    }
+                                                    ?>
+                                                    <dd>
+                                                        <?=$sValue . ' ' . $arElement['PROPERTIES']['UNITS']['VALUE']?>
                                                     </dd>
                                                 </div>
+                                            <?php } else {
+                                                if ($property['VALUE'] != '') {
+                                                    ?>
+                                                    <div class="prop-item">
+                                                        <dt class="prop-item-title"><?=$property['NAME']?></dt>
+                                                        <dd><?=(
+                                                            is_array($property['VALUE'])
+                                                                ? implode(' / ', $property['VALUE'])
+                                                                : $property['VALUE']
+                                                            )?>
+                                                        </dd>
+                                                    </div>
+                                                <?php }?>
                                             <?php }?>
-                                        <?php }?>
-                                        <?
-                                    }
-                                    unset($property);
-                                    ?>
-                                </dl>
-                            <?php } ?>
-                        </div>
-
-                        <div class="avail">
-                            <b>
-                                <? if ((float)$arElement["PROPERTIES"]["Svobodno"]["VALUE"] > 0) {
-                                    echo 'В наличии';
-                                } else {
-                                    if ($arElement["PROPERTIES"]["TipSkladskogoZapasa"]["VALUE"] == 'Обязательный ассортимент' &&
-                                        (float)$arElement["PROPERTIES"]["Svobodno"]["VALUE"] <= 0) {
-                                        echo 'Временно отсутствует';
-                                    } else {
-                                        echo 'Под заказ';
-                                    }
-                                } ?>
-                            </b>
-                        </div>
-
-                        <div class="in-pack">
-                            <?php
-                            $up1 = (float)$arElement["PROPERTIES"]["UPAKOVKA"]["VALUE"];
-                            $up2 = (float)$arElement["PROPERTIES"]["UPAKOVKA2"]["VALUE"];
-                            ?>
-                            <b>
-                                В упаковке: <?= $up1; ?><?= ($up2 ? '/' . $up2 : '') ?>&nbsp;<?=$arElement['PROPERTIES']['UNITS']['VALUE']?>
-                            </b>
-                        </div>
-
-                        <div class="button-group">
-                            <button class="btn btn-cart" type="button">Добавить в корзину</button>
-                        </div>
-                    </div>
-                    <div class="button-group">
-                        <div class="b-prices">
-                            <h3>Цены:</h3>
-
-                            <?php
-                            if ($arResult['IS_OPT_2']) {
-                                $sPrice = $arElement['DISPLAY_PROPERTIES']['PRICE_OPT']['VALUE'];
-                            } elseif  ($arResult['IS_OPT_3']) {
-                                $sPrice = $arElement['DISPLAY_PROPERTIES']['PRICE_OPT2']['VALUE'];
-                            } else {
-                                $sPrice = $arElement['DISPLAY_PROPERTIES']['PRICE_OPT']['VALUE'];
-                            }
-                            ?>
-                            <table class="price">
-                                <tr>
-                                    <td><b>Опт: </b></td>
-                                    <td><?= coolPrice($sPrice) ?> ₽</td>
-                                </tr>
-                                <?php if (!$arResult['IS_OPT_2'] && !$arResult['IS_OPT_3']) { ?>
-                                    <tr>
-                                        <td><b>Розница: </b></td>
-                                        <td><?= coolPrice($arElement['DISPLAY_PROPERTIES']['PRICE']['VALUE']) ?> ₽</td>
-                                    </tr>
-                                <?php }?>
-                            </table>
-                        </div>
-
-                        <div class="b-bottom-addcart">
-                            <div class="buy_helper">
-                                <? if ($ves) {
-                                    ?>
-                                    <div class="vesHelperHolder">
-                                    <div class="vesHelper" data-val='<?= $k_val; ?>' data-k="<?= $k; ?>">
-                                        0 <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?></div></div><? } ?>
-                                <div class="input_holder">
-                                    <input type="text" class="quantity_input" name="ITEM[<?= $arElement["ID"] ?>]"
-                                           data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
-                                           data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
-                                    >
-                                    <?= $arElement["DISPLAY_PROPERTIES"]["UNITS"]["VALUE"] ?>
-                                    <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
-                                        <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
-                                    <?php } ?>
-                                </div>
-
-                                <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
-                                    <div class="kratnostHelperHolder">
-                                        <div class="kratnostHelper">
-                                            Данная продукция отпускается
-                                            кратно <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?> <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?>
-                                        </div>
-                                    </div>
+                                            <?
+                                        }
+                                        unset($property);
+                                        ?>
+                                    </dl>
                                 <?php } ?>
                             </div>
 
-                            <button class="btn btn-cart" type="button">В корзину</button>
+                            <div class="avail">
+                                <b>
+                                    <? if ((float)$arElement["PROPERTIES"]["Svobodno"]["VALUE"] > 0) {
+                                        echo 'В наличии';
+                                    } else {
+                                        if ($arElement["PROPERTIES"]["TipSkladskogoZapasa"]["VALUE"] == 'Обязательный ассортимент' &&
+                                            (float)$arElement["PROPERTIES"]["Svobodno"]["VALUE"] <= 0) {
+                                            echo 'Временно отсутствует';
+                                        } else {
+                                            echo 'Под заказ';
+                                        }
+                                    } ?>
+                                </b>
+                            </div>
+
+                            <div class="in-pack">
+                                <?php
+                                $up1 = (float)$arElement["PROPERTIES"]["UPAKOVKA"]["VALUE"];
+                                $up2 = (float)$arElement["PROPERTIES"]["UPAKOVKA2"]["VALUE"];
+                                ?>
+                                <b>
+                                    В упаковке: <?= $up1; ?><?= ($up2 ? '/' . $up2 : '') ?>&nbsp;<?=$arElement['PROPERTIES']['UNITS']['VALUE']?>
+                                </b>
+                            </div>
+
+                            <div class="button-group">
+                                <button class="btn btn-cart" type="button">Добавить в корзину</button>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <div class="b-prices">
+                                <h3>Цены:</h3>
+
+                                <?php
+                                if ($arResult['IS_OPT_2']) {
+                                    $sPrice = $arElement['DISPLAY_PROPERTIES']['PRICE_OPT']['VALUE'];
+                                } elseif  ($arResult['IS_OPT_3']) {
+                                    $sPrice = $arElement['DISPLAY_PROPERTIES']['PRICE_OPT2']['VALUE'];
+                                } else {
+                                    $sPrice = $arElement['DISPLAY_PROPERTIES']['PRICE_OPT']['VALUE'];
+                                }
+                                ?>
+                                <table class="price">
+                                    <tr>
+                                        <td><b>Опт: </b></td>
+                                        <td><?= coolPrice($sPrice) ?> ₽</td>
+                                    </tr>
+                                    <?php if (!$arResult['IS_OPT_2'] && !$arResult['IS_OPT_3']) { ?>
+                                        <tr>
+                                            <td><b>Розница: </b></td>
+                                            <td><?= coolPrice($arElement['DISPLAY_PROPERTIES']['PRICE']['VALUE']) ?> ₽</td>
+                                        </tr>
+                                    <?php }?>
+                                </table>
+                            </div>
+
+                            <div class="b-bottom-addcart">
+                                <div class="buy_helper">
+                                    <? if ($ves) {
+                                        ?>
+                                        <div class="vesHelperHolder">
+                                        <div class="vesHelper" data-val='<?= $k_val; ?>' data-k="<?= $k; ?>">
+                                            0 <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?></div></div><? } ?>
+                                    <div class="input_holder">
+                                        <input type="text" class="quantity_input" name="ITEM[<?= $arElement["ID"] ?>]"
+                                               data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
+                                               data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
+                                        >
+                                        <?= $arElement["DISPLAY_PROPERTIES"]["UNITS"]["VALUE"] ?>
+                                        <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
+                                            <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
+                                        <?php } ?>
+                                    </div>
+
+                                    <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
+                                        <div class="kratnostHelperHolder">
+                                            <div class="kratnostHelper">
+                                                Данная продукция отпускается
+                                                кратно <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?> <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+
+                                <button class="btn btn-cart" type="button">В корзину</button>
+                            </div>
                         </div>
                     </div>
                 </div>
