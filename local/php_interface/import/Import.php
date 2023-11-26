@@ -779,17 +779,19 @@ class Import
         // Удалить лишние элементы, которые не попали в файл выгрузки
         $el = new CIBlockElement;
 
-        $arFilter = [
-            'IBLOCK_ID' => $this->iblock,
-            'SECTION_ID' => $siteCatID,
-            '!ID' => $present
-        ];
+        if ($siteCatID != '5966') {
+            $arFilter = [
+                'IBLOCK_ID' => $this->iblock,
+                'SECTION_ID' => $siteCatID,
+                '!ID' => $present
+            ];
 
-        $res = CIBlockElement::GetList([], $arFilter, false, false, ['ID']);
+            $res = CIBlockElement::GetList([], $arFilter, false, false, ['ID']);
 
-        while ($ob = $res->GetNext()) {
-            $this->echo('Удаление товара ' . $ob['NAME']);
-            $el->Delete($ob['ID']);
+            while ($ob = $res->GetNext()) {
+                $this->echo('Удаление товара ' . $ob['NAME']);
+                $el->Delete($ob['ID']);
+            }
         }
     }
 
@@ -853,13 +855,9 @@ class Import
                         $saleSectionId,
                     ];
 
-                    $mainSection = $this->arCatalogSections[$arUpdate['PROPERTY_VALUES']['ROWID']];
-                    if ((int)$mainSection > 0) {
-                        $arUpdate['IBLOCK_SECTION'][] = $mainSection;
-                    }
+                    $arUpdate['IBLOCK_SECTION'][] = $siteCatID;
+                    $arUpdate['IBLOCK_SECTION'] = array_unique($arUpdate['IBLOCK_SECTION']);
                 }
-
-                \Bitrix\Main\Diag\Debug::dumpToFile(['$arUpdate----' => $arUpdate], '', 'log.txt');
             }
 
             // Добавим значения динамических свойств в товар
@@ -1060,6 +1058,7 @@ class Import
                 'IBLOCK_ID' => $this->iblock,
                 'IBLOCK_SECTION_ID' => $siteCatID,
                 'NAME' => $sName,
+                'CODE' => $this->translit($sName),
                 'PREVIEW_TEXT' => trim(strval($item['Opisanie'])),
                 'PREVIEW_TEXT_TYPE' => 'html',
                 'SORT' => intval($item['PorNomer']),

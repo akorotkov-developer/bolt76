@@ -70,7 +70,6 @@
                             <div class="name">
                                 <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>"><?= $arElement['NAME'] ?></a>
                             </div>
-                            <div class="price"> 122.00 ₽</div>
 
                             <div class="description">
                                 <?php if (!empty($arElement['DISPLAY_PROPERTIES'])) {?>

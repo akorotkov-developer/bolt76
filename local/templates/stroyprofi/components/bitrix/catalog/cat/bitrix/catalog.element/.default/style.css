@@ -1121,6 +1121,9 @@ h1 {
 .nav-up {
 	transform: rotate(-90deg);
 }
+.product-item-detail-tab-content video {
+	max-width: 100%;
+}
 /*.btn-nav {*/
 /*	font-size: 12px!important;*/
 /*}*/
