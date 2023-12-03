@@ -51,7 +51,7 @@
                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                         </svg>
                     </div>
-                    <div class="image">
+                    <div class="image image-grid">
                         <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>">
                             <?php
                             $pictureId = ((int)$arElement['PREVIEW_PICTURE']['ID'] > 0) ? $arElement['PREVIEW_PICTURE']['ID'] : $arResult['PICTURE']['ID'];
@@ -63,6 +63,25 @@
                             );
                             ?>
                             <img src="<?= $file['src']?>" alt="<?= $arElement['NAME']?>" title="<?= $arElement['NAME']?>" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="image image-list">
+                        <?php
+                        $pictureId = ((int)$arElement['PREVIEW_PICTURE']['ID'] > 0) ? $arElement['PREVIEW_PICTURE']['ID'] : $arResult['PICTURE']['ID'];
+                        $file = CFile::ResizeImageGet(
+                            $pictureId,
+                            ['width' => 268, 'height' => 268],
+                            BX_RESIZE_IMAGE_PROPORTIONAL,
+                            true
+                        );
+                        ?>
+                        <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="image-item" style="
+                                background: url('<?= $file['src'] ?>');
+                                background-repeat: no-repeat;
+                                background-size: contain;
+                                background-position: center center;
+                                ">
+
                         </a>
                     </div>
                     <div class="b-product-info">

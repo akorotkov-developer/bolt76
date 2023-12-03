@@ -14,8 +14,18 @@
 .product-layout.product-list .product-thumb img {
     padding: 30px;
 }
+.product-layout.product-list .image-grid {
+    display: none!important;
+}
+.product-layout.product-grid  .image-list {
+    display: none!important;
+}
 .product-list.product-layout{
     margin-bottom:20px;
+}
+.product-layout .image-item {
+    width: 90%;
+    height: 90%;
 }
 .product-list .product-thumb .image{
     float:left;
