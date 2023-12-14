@@ -9,7 +9,7 @@ Extension::load('ui.bootstrap4');
     <h1 class="page-title">Регистрация</h1>
     <p>Если у вас уже есть аккаунт, пожалуйста <a href="/account/auth/" class="link_auth">авторизуйтесь</a>.</p>
 
-    <?$APPLICATION->IncludeComponent("bitrix:main.register","",Array(
+    <?$APPLICATION->IncludeComponent("bitrix:main.register",".default",Array(
             "USER_PROPERTY_NAME" => "",
             "SEF_MODE" => "Y",
             "SHOW_FIELDS" => [

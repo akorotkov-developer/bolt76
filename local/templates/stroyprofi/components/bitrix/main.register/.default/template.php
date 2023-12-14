@@ -103,6 +103,7 @@ new BX.PhoneAuth({
 <?else:?>
 
 <form method="post" action="<?=POST_FORM_ACTION_URI?>" name="regform" enctype="multipart/form-data">
+    <input type="hidden" name="recaptcha_token" value="">
     <div class="bt-block" style="display: none">
         <input type="text" name="bt-input" class="bt-input">
     </div>
