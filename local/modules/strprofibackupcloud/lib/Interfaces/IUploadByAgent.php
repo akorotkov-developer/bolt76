@@ -6,8 +6,7 @@ interface IUploadByAgent
 {
     /**
      * Загрузка бэкапов на внешний диск, по параметрам из записи в StorageTable c id = $rowId
-     * @param $rowId
      * @return bool
      */
-    public static function upload($rowId): string;
+    public static function upload(): string;
 }

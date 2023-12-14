@@ -14,20 +14,30 @@ class LocalBackup implements ILocalBackup
     /**
      * Получить backup 'ы c сайта
      */
-    public function getLocalBackups(): array
+    public static function getLocalBackups(): array
     {
-        $dir = '/bitrix/backup/strprofi/'; // Папка с изображениями на сервере
-        $files = array_diff(scandir($_SERVER['DOCUMENT_ROOT'] . $dir), ['..', '.']);
+        $entries = array_filter(scandir($_SERVER['DOCUMENT_ROOT'] . '/bitrix/backup/.'), function($item) {
+            return $item[0] !== '.';
+        });
 
-        foreach ($files as $key => $file) {
-            $files[$key] = $dir . $file;
+        $fileList = [];
+        foreach ($entries as $entry) {
+            $fileList[] = $entry;
         }
 
-        if (!is_array($files)) {
-            $files = [];
+        $archives = [];
+        foreach ($fileList as $file) {
+            if (preg_match('/^(.+)\.tar\.gz(\.\d+)?$/', $file, $matches)) {
+                $archiveName = $matches[1];
+                $archiveDate = explode('_', $archiveName);
+                $archiveFiles = $archives[$archiveName]['files'] ?? [];
+                $archiveFiles[] = '/bitrix/backup/' . $file;
+                $archives[$archiveName]['files'] = $archiveFiles;
+                $archives[$archiveName]['date'] = $archiveDate;
+            }
         }
 
-        return $files;
+        return $archives;
     }
 
     /**
@@ -74,7 +84,7 @@ class LocalBackup implements ILocalBackup
     public function delete(array $localBackupFiles): bool
     {
         foreach ($localBackupFiles as $file) {
-            unlink($file);
+            unlink($_SERVER['DOCUMENT_ROOT'] . $file);
         }
 
         return true;

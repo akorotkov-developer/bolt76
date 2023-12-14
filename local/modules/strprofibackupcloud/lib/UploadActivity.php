@@ -107,11 +107,11 @@ class UploadActivity implements IUploadActivity
     /**
      * Загрузка бэкапов на внешний диск, по параметрам из записи в StorageTable c id = $rowId
      * @param BaseCloud $controller
-     * @param array $rowData
+     * @param array $backUpFiles
      */
-    public function uploadToExternalDrive(BaseCloud $controller, array $rowData): void
+    public function uploadToExternalDrive(BaseCloud $controller, array $backUpFiles): void
     {
-        $controller->transferBackup($rowData);
+        $controller->transferBackup($backUpFiles);
     }
 
     /**

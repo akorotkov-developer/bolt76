@@ -2,6 +2,7 @@
 
 namespace StrprofiBackupCloud\Controller;
 
+use Bitrix\Main\Localization\Loc;
 use StrprofiBackupCloud\PackageLoader;
 use Arhitector\Yandex\Disk;
 use Arhitector\Yandex\Disk\Resource\Closed;
@@ -58,6 +59,9 @@ class YaDisk extends BaseCloud
 
         $this->option = new ModuleOption();
         $this->token = $this->option->getOption("yandextoken");
+        echo '<pre>';
+        var_dump($this->token);
+        echo '</pre>';
     }
 
     /**
@@ -96,31 +100,22 @@ class YaDisk extends BaseCloud
 
     /**
      * Перенос бэкапов на Яндекс.Диск
-     * @param array $rowData
+     * @param array $backUpFiles
      * @throws \Bitrix\Main\ArgumentOutOfRangeException
      */
-    public function transferBackup(array $rowData): void
+    public function transferBackup(array $backUpFiles): void
     {
-        $this->option->setOption("CUR_TASK_ID", $rowData['ID']);
+        if (count($backUpFiles) > 0) {
+            $localBackup = new LocalBackup();
+            $this->totalLinks = (count($backUpFiles));
 
-        $localBackup = new LocalBackup();
-        $localBackupFiles = $localBackup->getLocalBackups();
-
-        \Bitrix\Main\Diag\Debug::dumpToFile(['$localBackupFiles' => $localBackupFiles], '', 'log.txt');
-
-        if (count($localBackupFiles) > 0) {
-            $this->totalLinks = (count($localBackupFiles));
-
-            foreach ($localBackupFiles as $backUpItem) {
-                \Bitrix\Main\Diag\Debug::dumpToFile(['$backUpItem' => $backUpItem], '', 'log.txt');
-                $this->uploadFileToYaDisk($backUpItem, date('d.m.Y') . '_backup' , $rowData['ID']);
+            foreach ($backUpFiles as $backUpItem) {
+                $this->uploadFileToYaDisk($backUpItem, date('d.m.Y') . '_backup');
                 sleep(2);
             }
 
-            \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Дошли до конца перед удалением'], '', 'log.txt');
-
             // Удаление бэкапа после закачки на внешний диск
-            $localBackup->delete($localBackupFiles);
+            $localBackup->delete($backUpFiles);
         }
     }
 
@@ -130,9 +125,8 @@ class YaDisk extends BaseCloud
      * @param $backUpName
      * @param $rowId
      */
-    public function uploadFileToYaDisk($link, $backUpName, $rowId)
+    public function uploadFileToYaDisk($link, $backUpName)
     {
-        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Тут 1'], '', 'log.txt');
         // передать OAuth-токен зарегистрированного приложения.
         $disk = new Disk($this->token);
 
@@ -158,21 +152,15 @@ class YaDisk extends BaseCloud
         $spellLink = explode('/', $link);
         $fileName = $spellLink[count($spellLink) - 1];
 
-        \Bitrix\Main\Diag\Debug::dumpToFile(['$fileName' => $fileName], '', 'log.txt');
         $resource = $disk->getResource($folderToCopy . '/' . $fileName);
 
         // Запись файлов на Яндекс.Диск
-        $selfOb = $this;
         if (!$resource->has()) {
             $disk->addListener('uploaded', function (Event $event, Closed $resource, Disk $disk, StreamInterface $uploadedStream, ResponseInterface $response) use ($selfOb, $rowId) {
                 $this->uploadedLinks++;
-
-                // Записываем процент и ссылки в таблицу StorageTable
-                $selfOb->setProgress($this->uploadedLinks, $this->totalLinks, $rowId);
             });
 
             $localFilePath = $_SERVER['DOCUMENT_ROOT'] . $link;
-            \Bitrix\Main\Diag\Debug::dumpToFile(['$localFilePath' => $localFilePath], '', 'log.txt');
             $resource->upload($localFilePath); // Записываем файл на яндекс диск
         }
     }

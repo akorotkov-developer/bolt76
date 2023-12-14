@@ -8,7 +8,7 @@ interface ILocalBackup
      * Получение списка локальных копий
      * @return array
      */
-    public function getLocalBackups(): array;
+    public static function getLocalBackups(): array;
 
     /**
      * Получение информации о резервной копии

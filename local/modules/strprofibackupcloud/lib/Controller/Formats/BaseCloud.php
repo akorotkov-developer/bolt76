@@ -13,9 +13,9 @@ abstract class BaseCloud implements IBaseCloud
 {
     /**
      * Метод для переноса резервных копий на внешний накопитель
-     * @param array $rowData
+     * @param array $backUpFiles
      */
-    public function transferBackup(array $rowData): void {}
+    public function transferBackup(array $backUpFiles): void {}
 
     /**
      * Запись прогресса в StorageTable
