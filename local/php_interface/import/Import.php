@@ -635,8 +635,13 @@ class Import
                     'IPROPERTY_TEMPLATES' => [
                         'SECTION_META_KEYWORDS' => '{=this.Name} в Ярославле, {=this.Name}, опт, недорого, прайс-лист, каталог, доставка до транспортной компании.',
                         'SECTION_META_DESCRIPTION' => 'Купить {=this.Name} в Ярославле оптом и в розницу, доставка до транспортной компании. Низкие цены, акции и скидки на {=this.Name} в интернет-магазине СтройПрофи.',
-                    ]
+                    ],
+                    "UF_VKLADKI" => explode(':', $bookmarks),
                 ];
+
+                if ($ID == 6258) {
+                    \Bitrix\Main\Diag\Debug::dumpToFile(['$arUpdate' => $arUpdate], '', 'log.txt');
+                }
 
                 $arUpdate["PICTURE"] = false;
                 $arUpdate["UF_TEMPLATE"] = $viewTemplate;
@@ -673,7 +678,8 @@ class Import
                 'IPROPERTY_TEMPLATES' => [
                     'SECTION_META_KEYWORDS' => '{=this.Name} в Ярославле, {=this.Name}, опт, недорого, прайс-лист, каталог, доставка до транспортной компании.',
                     'SECTION_META_DESCRIPTION' => 'Купить {=this.Name} в Ярославле оптом и в розницу, доставка до транспортной компании. Низкие цены, акции и скидки на {=this.Name} в интернет-магазине СтройПрофи.',
-                ]
+                ],
+                "UF_VKLADKI" => explode(':', $bookmarks),
             ];
             if ($photo != 0) {
                 if ($this->testphile($picfile)) {

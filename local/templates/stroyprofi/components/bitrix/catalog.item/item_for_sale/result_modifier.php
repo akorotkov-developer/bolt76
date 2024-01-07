@@ -28,3 +28,40 @@ $arReplaces = ["#SECTION_ID#", "#SECTION_CODE#", "#ELEMENT_CODE#"];
 $arValues   = [$iSectionId, $sSectionCode, $arResult['ITEM']['CODE']];
 
 $arResult['ITEM']['DETAIL_PAGE_URL'] = str_replace($arReplaces, $arValues, $detailPageUrlTemplate);
+
+// Определяем картинку и название для товара
+$dbGroups = \CIBlockElement::GetElementGroups($arResult['ITEM']['ID'], true);
+$sections = false;
+while($group = $dbGroups->Fetch()) {
+    // TODO убрать строгое значение!
+    if ($group['ID'] != 5966) {
+        $sectionId = $group['ID'];
+    }
+}
+
+if ($sectionId) {
+    $result = CIBlockSection::GetList(
+        [],
+        [
+            'IBLOCK_ID' => 1,
+            '=ID' => $sectionId
+        ],
+        false,
+        ['ID', 'PICTURE', 'CODE', 'UF_TEMPLATE']
+    );
+
+    $sectionParams = [];
+    if ($section = $result->fetch()) {
+        $sectionParams = $section;
+    }
+
+    if (!empty($sectionParams) && $sectionParams['UF_TEMPLATE'] == 1 && $sectionParams['PICTURE']) {
+        $arResult['ITEM']['PREVIEW_PICTURE'] = CFile::ResizeImageGet($sectionParams['PICTURE'], ['width' => 900, 'height' => 600], BX_RESIZE_IMAGE_PROPORTIONAL, true);
+        $arResult['ITEM']['PREVIEW_PICTURE']['SRC'] = $arResult['ITEM']['PREVIEW_PICTURE']['src'];
+    }
+
+    if ($sectionParams['UF_TEMPLATE'] == 1) {
+        $arResult['ITEM']['NAME'] = $arResult['ITEM']['PROPERTIES']['Naimenovanie']['VALUE'];
+    }
+}
+
