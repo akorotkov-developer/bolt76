@@ -94,3 +94,42 @@ if ($priceGroup == 'OPT_2') {
 } elseif ($priceGroup == 'OPT_3') {
     $arResult['IS_OPT_3'] = true;
 }
+
+// Получаем картинки в случае, если товары находятся в разделе распродаж
+if ($arResult['ID'] == 5966) {
+    $arProductIds = array_column($arResult['ITEMS'], 'ID');
+
+    $sectionMap = [];
+    foreach ($arProductIds as $productId) {
+        $db_groups = CIBlockElement::GetElementGroups($productId, true);
+        if ($ar_group = $db_groups->Fetch()) {
+            if ($ar_group['ID'] != 5966) {
+                $sectionMap[$productId] = $ar_group['ID'];
+            }
+        }
+    }
+
+    $arFields = [
+        'IBLOCK_ID' => $arResult['IBLOCK_ID'],
+        'ID' => array_unique(array_values($sectionMap))
+    ];
+    $obSections = CIBlockSection::GetList(
+        ['SORT' => 'ASC'],
+        $arFields,
+        false,
+        ['ID', 'PICTURE', 'DESCRIPTION']
+    );
+
+    $arSection = [];
+    while ($arRez = $obSections->Fetch()) {
+        $arSection[$arRez['ID']] = $arRez;
+    }
+
+    // Назначим картинки
+    foreach ($arResult['ITEMS'] as $key => $arItem) {
+        if (!$arItem['PREVIEW_PICTURE']) {
+            $sectionId = $sectionMap[$arItem['ID']];
+            $arResult['ITEMS'][$key]['PREVIEW_PICTURE']['ID'] = $arSection[$sectionId]['PICTURE'];
+        }
+    }
+}

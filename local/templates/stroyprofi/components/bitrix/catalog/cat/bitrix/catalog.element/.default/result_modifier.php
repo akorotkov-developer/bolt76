@@ -8,9 +8,21 @@
 $component = $this->getComponent();
 $arParams = $component->applyTemplateModifications();
 
-$arFields = [
+
+$ElementId = $arResult['ID'];
+$db_groups = CIBlockElement::GetElementGroups($ElementId, true);
+$curSectionId = [];
+if($ar_group = $db_groups->Fetch()) {
+    $curSectionId = $ar_group["ID"];
+}
+
+/*$arFields = [
     'IBLOCK_ID' => $arResult['IBLOCK_ID'],
     'ID' => $arResult['ORIGINAL_PARAMETERS']['SECTION_ID']
+];*/
+$arFields = [
+    'IBLOCK_ID' => $arResult['IBLOCK_ID'],
+    'ID' => $curSectionId
 ];
 $obSections = CIBlockSection::GetList(
     ['SORT' => 'ASC'],
