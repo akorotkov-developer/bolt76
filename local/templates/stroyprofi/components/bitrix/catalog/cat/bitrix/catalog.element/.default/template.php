@@ -436,7 +436,8 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                                     'VES1000PS', 'MaksZapas', 'MinZapas', 'Otobrajat_v_prayse',
                                                                     'Svertka', 'SHOW_IN_PRICE', 'Otobrajat_na_sayte', 'SALE',
                                                                     'Svobodno', 'Nomenklaturniy_nomer', 'Naimenovanie',
-                                                                    'TipSkladskogoZapasa', 'Kratnost', 'AVAILABLE', 'ADDITIONAL_PRODUCT_INFORMATION'
+                                                                    'TipSkladskogoZapasa', 'Kratnost', 'AVAILABLE', 'ADDITIONAL_PRODUCT_INFORMATION',
+                                                                    'GROUP_PROPERTIES'
                                                                 ];
 
                                                             // Отсортируем свойства в нужном порядке

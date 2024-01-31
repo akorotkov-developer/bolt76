@@ -12,6 +12,7 @@ use Psr\Http\Message\StreamInterface;
 use StrprofiBackupCloud\Option as ModuleOption;
 use StrprofiBackupCloud\LocalBackup;
 use StrprofiBackupCloud\Controller\Formats\BaseCloud;
+use Exception;
 
 /**
  * Класс для загрузки данных на Яндекс.Диск
@@ -59,9 +60,6 @@ class YaDisk extends BaseCloud
 
         $this->option = new ModuleOption();
         $this->token = $this->option->getOption("yandextoken");
-        echo '<pre>';
-        var_dump($this->token);
-        echo '</pre>';
     }
 
     /**
@@ -114,6 +112,8 @@ class YaDisk extends BaseCloud
                 sleep(2);
             }
 
+            \Bitrix\Main\Diag\Debug::dumpToFile([date('d.m.Y H:i:s') => 'Закончилось копирование резервной копии'], '', 'log.txt');
+
             // Удаление бэкапа после закачки на внешний диск
             $localBackup->delete($backUpFiles);
         }
@@ -127,41 +127,47 @@ class YaDisk extends BaseCloud
      */
     public function uploadFileToYaDisk($link, $backUpName)
     {
-        // передать OAuth-токен зарегистрированного приложения.
-        $disk = new Disk($this->token);
+        try {
+            // передать OAuth-токен зарегистрированного приложения.
+            $disk = new Disk($this->token);
 
-        // Получаем папку с backup ами или создаем папку
-        $resource = $disk->getResource(self::ROOT_FOLDER_BACKUP);
-        if (!$resource->has()) {
-            $resource->create();
-        }
+            // Получаем папку с backup ами или создаем папку
+            $resource = $disk->getResource(self::ROOT_FOLDER_BACKUP);
+            if (!$resource->has()) {
+                $resource->create();
+            }
 
-        $resource = $disk->getResource(self::ROOT_FOLDER_BACKUP);
-        if (!$resource->has()) {
-            $resource->create();
-        }
+            $resource = $disk->getResource(self::ROOT_FOLDER_BACKUP);
+            if (!$resource->has()) {
+                $resource->create();
+            }
 
-        // Создаем папку для резервной копии
-        $folderToCopy = self::ROOT_FOLDER_BACKUP . '/' . $backUpName;
-        $resource = $disk->getResource($folderToCopy);
-        if (!$resource->has()) {
-            $resource->create();
-        }
+            // Создаем папку для резервной копии
+            $folderToCopy = self::ROOT_FOLDER_BACKUP . '/' . $backUpName;
+            $resource = $disk->getResource($folderToCopy);
+            if (!$resource->has()) {
+                $resource->create();
+            }
 
-        // Копирование резервной копии на яндекс.диск
-        $spellLink = explode('/', $link);
-        $fileName = $spellLink[count($spellLink) - 1];
+            // Копирование резервной копии на яндекс.диск
+            $spellLink = explode('/', $link);
+            $fileName = $spellLink[count($spellLink) - 1];
 
-        $resource = $disk->getResource($folderToCopy . '/' . $fileName);
+            $resource = $disk->getResource($folderToCopy . '/' . $fileName);
 
-        // Запись файлов на Яндекс.Диск
-        if (!$resource->has()) {
-            $disk->addListener('uploaded', function (Event $event, Closed $resource, Disk $disk, StreamInterface $uploadedStream, ResponseInterface $response) use ($selfOb, $rowId) {
-                $this->uploadedLinks++;
-            });
+            // Запись файлов на Яндекс.Диск
+            if (!$resource->has()) {
+                $disk->addListener('uploaded', function (Event $event, Closed $resource, Disk $disk, StreamInterface $uploadedStream, ResponseInterface $response) use ($selfOb, $rowId) {
+                    $this->uploadedLinks++;
+                });
 
-            $localFilePath = $_SERVER['DOCUMENT_ROOT'] . $link;
-            $resource->upload($localFilePath); // Записываем файл на яндекс диск
+                $localFilePath = $_SERVER['DOCUMENT_ROOT'] . $link;
+                $resource->upload($localFilePath); // Записываем файл на яндекс диск
+            } else {
+                \Bitrix\Main\Diag\Debug::dumpToFile([date('d.m.Y H:i:s') => 'Уже есть файл в этой папке: ' . $_SERVER['DOCUMENT_ROOT'] . $link], '', 'log.txt');
+            }
+        } catch (Exception $e) {
+            \Bitrix\Main\Diag\Debug::dumpToFile([date('d.m.Y H:i:s') . ' $e->getMessage()' => $e->getMessage()], '', 'log.txt');
         }
     }
 }
