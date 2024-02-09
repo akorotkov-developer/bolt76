@@ -112,8 +112,6 @@ class YaDisk extends BaseCloud
                 sleep(2);
             }
 
-            \Bitrix\Main\Diag\Debug::dumpToFile([date('d.m.Y H:i:s') => 'Закончилось копирование резервной копии'], '', 'log.txt');
-
             // Удаление бэкапа после закачки на внешний диск
             $localBackup->delete($backUpFiles);
         }
@@ -163,8 +161,6 @@ class YaDisk extends BaseCloud
 
                 $localFilePath = $_SERVER['DOCUMENT_ROOT'] . $link;
                 $resource->upload($localFilePath); // Записываем файл на яндекс диск
-            } else {
-                \Bitrix\Main\Diag\Debug::dumpToFile([date('d.m.Y H:i:s') => 'Уже есть файл в этой папке: ' . $_SERVER['DOCUMENT_ROOT'] . $link], '', 'log.txt');
             }
         } catch (Exception $e) {
             \Bitrix\Main\Diag\Debug::dumpToFile([date('d.m.Y H:i:s') . ' $e->getMessage()' => $e->getMessage()], '', 'log.txt');

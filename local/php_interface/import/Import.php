@@ -639,10 +639,6 @@ class Import
                     "UF_VKLADKI" => explode(':', $bookmarks),
                 ];
 
-                if ($ID == 6258) {
-                    \Bitrix\Main\Diag\Debug::dumpToFile(['$arUpdate' => $arUpdate], '', 'log.txt');
-                }
-
                 $arUpdate["PICTURE"] = false;
                 $arUpdate["UF_TEMPLATE"] = $viewTemplate;
 

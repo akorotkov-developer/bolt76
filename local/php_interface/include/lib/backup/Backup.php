@@ -86,7 +86,6 @@ class Backup
                 $data = $rowData['DATA'];
 
                 // Отправляем первую ссылку на загрузку
-                \Bitrix\Main\Diag\Debug::dumpToFile(['$data' => $data], '', 'log.txt');
                 if (count($data['LINKS']) > 0) {
                     $link = array_shift($data['LINKS']);
 
@@ -157,7 +156,6 @@ class Backup
         $selfOb = $this;
         if (!$resource->has()) {
             $disk->addListener('uploaded', function (Event $event, Closed $resource, Disk $disk, StreamInterface $uploadedStream, ResponseInterface $response) use ($selfOb, $rowId, $data) {
-                \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Файл загружен'], '', 'log.txt');
 
                 // Записываем процент и ссылки в таблицу StorageTable
                 $selfOb->saveDataInStorage($rowId, $data);

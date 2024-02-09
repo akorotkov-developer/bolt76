@@ -16,7 +16,6 @@ class UploadActivity implements IUploadActivity
      */
     public function startUpload(string $diskType, array $params = []): int
     {
-        \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'Старт резервного копирования'], '', 'log.txt');
         // Добавить запись в StorageTable для старта переноса
         $rowId = $this->addNewTask([], $diskType);
 
@@ -100,8 +99,6 @@ class UploadActivity implements IUploadActivity
             'Y',
             $time1
         );
-
-        \Bitrix\Main\Diag\Debug::dumpToFile(['$isAdd' => $isAdd], '', 'log.txt');
     }
 
     /**
