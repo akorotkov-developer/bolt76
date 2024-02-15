@@ -49,7 +49,7 @@ $arFilter = array('IBLOCK_ID' => $arParams["IBLOCK_ID"], 'CODE' => $arResult["VA
 $db_list = CIBlockSection::GetList(array(), $arFilter, false, array("UF_TEMPLATE", "UF_TABS"));
 $tabsID = array();
 if ($ar_result = $db_list->GetNext()) {
-    $template = ($ar_result["UF_GROUP_PROP"] == 1);
+    $template = ($ar_result["UF_TEMPLATE"] == 1);
     $tabsID = $ar_result["UF_TABS"];
 }
 ?>
