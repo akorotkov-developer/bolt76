@@ -154,6 +154,20 @@ if ($_GET['tst']) {
             $groupProp[$key] = trim($value);
         }
 
+        // Получаем имя свойства
+        $groupMap = [];
+        foreach ($groupProp as $groupCode) {
+            $iblockId = 1;
+            $properties = CIBlockProperty::GetList(
+                ['sort' => 'asc', 'name' => 'asc'],
+                ['ACTIVE' => 'Y', 'IBLOCK_ID' => $iblockId, 'CODE' => $groupCode]
+            );
+            while ($prop_fields = $properties->GetNext()) {
+                $groupMap[$groupCode] = $prop_fields['NAME'];
+            }
+        }
+        $arResult['GROUP_MAP'] = $groupMap;
+
         // Формируем фильтр
         $filter = [
             'IBLOCK_ID' => 1,
@@ -169,7 +183,7 @@ if ($_GET['tst']) {
         // Формируем поля для select
         $select = ['ID', 'NAME', 'PROPERTY_ARTICUL', 'PROPERTY_UNITS', 'PROPERTY_DIAMETER',
             'PROPERTY_LENGTH', 'PROPERTY_NAIMENOVANIE', 'PROPERTY_VES1000PS', 'PROPERTY_PRICE_OPT',
-            'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE', 'PREVIEW_PICTURE', 'DETAIL_PAGE_URL',
+            'PROPERTY_PRICE_OPT2', 'PROPERTY_PRICE', 'PREVIEW_PICTURE', 'DETAIL_PAGE_URL', 'PROPERTY_TipSkladskogoZapasa',
             'PROPERTY_Ostatok', 'PROPERTY_UPAKOVKA', 'PROPERTY_UPAKOVKA2', 'PROPERTY_Svobodno', 'PROPERTY_Kratnost'];
         foreach ($groupProp as $prop) {
             $select[] = 'PROPERTY_' . $prop;
@@ -186,25 +200,12 @@ if ($_GET['tst']) {
         $groupedItems = [];
         $arResultItems = array_column($arResult['ITEMS'], NULL,'ID');
 
+        $productMap = array_column($arResult['ITEMS'], NULL, 'ID');
         while($result = $dbResult->Fetch()) {
             foreach ($groupProp as $prop) {
-                $diametrDlina = $result['PROPERTY_DIAMETER_VALUE'] . '_' . $result['PROPERTY_LENGTH_VALUE'];
-                if ($diametrDlina != '_') {
-                    $groupedItems[$diametrDlina][$result['ID']]['GROUPS'][$prop] = $result['PROPERTY_' . $prop . '_VALUE'];
-                    $groupedItems[$diametrDlina][$result['ID']]['ELEMENT'] = $result;
-                    /*    'PROPERTIES' => [
-                            'PROPERTY_ARTICUL_VALUE' => $result['PROPERTY_ARTICUL_VALUE'],
-                            'PROPERTY_UNITS_VALUE' => $result['PROPERTY_UNITS_VALUE'],
-                            'PROPERTY_DIAMETER_VALUE' => $result['PROPERTY_DIAMETER_VALUE'],
-                            'PROPERTY_LENGTH_VALUE' => $result['PROPERTY_LENGTH_VALUE'],
-                            'PROPERTY_NAIMENOVANIE_VALUE' => $result['PROPERTY_NAIMENOVANIE_VALUE'],
-                            'PROPERTY_VES1000PS_VALUE' => $result['PROPERTY_VES1000PS_VALUE'],
-                            'PROPERTY_PRICE_OPT_VALUE' => $result['PROPERTY_PRICE_OPT_VALUE'],
-                            'PROPERTY_PRICE_OPT2_VALUE' => $result['PROPERTY_PRICE_OPT2_VALUE'],
-                            'PROPERTY_PRICE_VALUE' => $result['PROPERTY_PRICE_VALUE'],
-                        ]
-                    ];*/
-                }
+                $groupedItems[$prop][$result['ID']]['GROUP']= $result['PROPERTY_' . $prop . '_VALUE'];
+                $groupedItems[$prop][$result['ID']]['ELEMENT'] = $result;
+                $groupedItems[$prop][$result['ID']]['ELEMENT']['DETAIL_PAGE_URL'] = $productMap[$result['ID']]['DETAIL_PAGE_URL'];
             }
         }
 

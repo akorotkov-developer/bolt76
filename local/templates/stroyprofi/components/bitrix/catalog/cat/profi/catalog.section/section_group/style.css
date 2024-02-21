@@ -290,3 +290,11 @@
         width: 100% !important;
     }
 }
+.group-select {
+    min-width: 90%;
+    margin-bottom: 10px;
+}
+.b-group-props {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

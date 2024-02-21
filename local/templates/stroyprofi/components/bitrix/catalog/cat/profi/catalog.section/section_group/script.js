@@ -2,6 +2,7 @@ $( document ).ready(function() {
     /* View Mode */
     // Product List
     $('#list-view').on('click',function() {
+        console.log('list');
         $('#list-view').addClass('active');
         $('#grid-view').removeClass('active');
         $('.page_content .product-layout').attr('class', 'product-layout product-list col-xs-12');
@@ -15,6 +16,7 @@ $( document ).ready(function() {
     });
     // Product Grid
     $('#grid-view').on('click',function() {
+        console.log('grid');
         $('#grid-view').addClass('active');
         $('#list-view').removeClass('active');
 
@@ -130,4 +132,24 @@ $( document ).ready(function() {
             quantInput.val(val + ratio);
         }
     });
+
+    /**
+     * Событие выбора торгового предложения
+     */
+    $('body').on('change', '.group-select', function() {
+        var optionSelected = $("option:selected", this);
+        var groupCode = optionSelected.attr('data-group-code');
+        var elementId = optionSelected.attr('data-element');
+
+        $('.product-layout[data-group-code="' + groupCode + '"]').each(function(i, block) {
+            if ($(block).attr('id') === 'element_' + elementId) {
+                $(block).show();
+                $(block).find(".group-select").find('option[data-element="' + elementId +'"]').prop('selected', true);
+            } else {
+                $(block).hide();
+            }
+        });
+    });
+
+    var select = $(block).find(".group-select");
 });

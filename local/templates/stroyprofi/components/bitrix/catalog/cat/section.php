@@ -399,7 +399,7 @@ if ($ar_result = $db_list->GetNext()) {
                     $arParams["ELEMENT_SORT_ORDER2"] = $arParams["ELEMENT_SORT_ORDER"];
 
 
-                        if ($_GET['tst']) {
+                        if ($_GET['tst'] && false) {
                             $template = 'section_group';
                             $APPLICATION->IncludeComponent(
                                 "profi:catalog.section",
