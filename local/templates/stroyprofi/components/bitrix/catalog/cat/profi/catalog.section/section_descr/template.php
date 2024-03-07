@@ -109,8 +109,8 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                 }
                 ?>
 
-                <tr id="<?= $this->GetEditAreaId($arElement['ID']); ?>"
-                    class="<?= ((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
+                <tr id="<?= $this->GetEditAreaId($arElement['ID']); ?>" data-elementid="<?= $arElement['ID'] ?>"
+                    class="element_product_tr <?= ((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
 
                     <td class="art <?= $cell ?>">
                         <div class="name-holder">
@@ -398,8 +398,8 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                     }
                     ?>
 
-                    <tr id="<?= $this->GetEditAreaId($arElement['ID']); ?>"
-                        class="<?= ((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
+                    <tr id="<?= $this->GetEditAreaId($arElement['ID']); ?>" data-elementid="<?= $arElement['ID'] ?>"
+                        class="element_product_tr <?= ((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
                         <?php
 
                         if ($cell == 0) { ?>

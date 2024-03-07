@@ -21,4 +21,56 @@ if (CModule::IncludeModule("iblock")) {
     $APPLICATION->SetPageProperty('description', $arSEO['SECTION_META_DESCRIPTION']);
 }
 
+/** Отметка товаров, которые в корзине */
+// Получим все товары из корзины
+?>
+<script>
+    $( document ).ready(function() {
+        window.basketController = {
+            setLinks: function () {
+                $.ajax({
+                    url: '/local/ajax/setbasketlinks.php',
+                    method: 'get',
+                    data: {},
+                    success: function (data) {
+                        var products = JSON.parse(data);
+                        var elementId;
 
+                        $('.element_product_tr').each(function(i, obj) {
+                            elementId = $(obj).attr('data-elementid');
+
+                            if (products[elementId]) {
+                                if ($(obj).find('.buy').find('div.in_basket').length > 0) {
+                                    $(obj).find('.buy').find('div.in_basket').remove();
+                                }
+                                $(obj).find('.buy').append('<div class="in_basket">' + Number(products[elementId].QUANTITY) + ' в корзине <img class="in_basket_delete" data-element="' + elementId + '" src="/local/templates/stroyprofi/components/bitrix/catalog/cat/profi/catalog.section/section_descr/images/trash.png"></div>');
+                            }
+                        });
+                    }
+                });
+            }
+        };
+        window.basketController.setLinks();
+
+        $('body').on('click', '.in_basket_delete', function(e) {
+            var param = 'idBasketElement=' + $(this).attr('data-element');
+            var inBasketBlock = $(this).parent();
+            $.ajax({
+                url:     '/local/ajax/deletebasketelement.php', // URL отправки запроса
+                type:     'GET',
+                dataType: 'html',
+                data: param,
+                success: function(response) {
+                    if ($.trim(response) != '') {
+                        $('.cart_info_holder').html(response);
+                    }
+                    inBasketBlock.remove();
+                    window.basketController.setLinks();
+                },
+                error: function(jqXHR, textStatus, errorThrown){ // Ошибка
+                    console.log('Error: '+ errorThrown);
+                }
+            });
+        });
+    });
+</script>

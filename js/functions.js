@@ -170,6 +170,8 @@ $(function () {
                 }
                 $("#notification").css("top", "0");
                 $("#notification").animate({"top": "0"}, 400).delay(2000).animate({"top": "-100px"}, 400);
+
+                window.basketController.setLinks();
             }
         })
     });

@@ -46,3 +46,15 @@ td.buy {
     font-weight: bold;
     cursor: pointer;
 }
+.in_basket {
+    display: flex;
+    font-size: 9px;
+    justify-content: space-between;
+}
+.in_basket img {
+    width:  11px;
+    height: 11px;
+}
+.in_basket_delete {
+    cursor: pointer;
+}
