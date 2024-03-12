@@ -166,6 +166,10 @@ class Import
      */
     public function makeProducts()
     {
+        // Очищение таблицы с ценами перед началом операции
+        global $DB;
+        $DB->Query("DELETE FROM `b_catalog_price`");
+
         //2. Получаем все цены на сайте
         $dbRez = CPrice::GetList(
             [],
