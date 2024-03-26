@@ -41,36 +41,49 @@ h3 {
 }
 
 .top{
-    height:70px;
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 5px 0 0 0;
+    justify-content: space-between;
+    align-items: center;
+    /*height: 65px;*/
+}
+
+.top > div:first-child{
+    margin-left: 50px;
+}
+.top > div:last-child{
+    margin-right: 50px;
+    height: auto;
+}
+
+.top > * {
+    height: 65px;
 }
 
 .top a{
     color:#000;
 }
 
-
-.top .logo{
-    float: left;
-}
-
 .top .logo{
     width: 190px;
-    margin:5px 100px 0 30px;
+    height: auto;
+    /*float: left;*/
+    /*margin:5px 100px 0 30px;*/
 }
 
 .top .contacts, .top .address{
     padding: 5px 20px 10px;
     background: url('/img/semitrans.png');
-    height: 60px;
-    position: absolute;
-    top:5px;
+    /*height: 60px;*/
+    /*position: absolute;*/
+    /*top:5px;*/
 }
 
 .top .contacts{
     font-size: 14px;
     line-height: 18px;
-    left:27%;
+    /*left:27%;*/
 }
 
 
@@ -83,14 +96,14 @@ h3 {
 .top .address{
     font-size: 12px;
     line-height: 18px;
-    left: 45%;
+    /*left: 45%;*/
 }
 
 .top .cart{
     background: url('/img/semitrans.png');
     padding: 5px 20px 5px 10px;
-    float: right;
-    margin: 5px 30px 0 0;
+    /*float: right;*/
+    /*margin: 5px 30px 0 0;*/
     font-size: 12px;
     line-height: 15px;
 }
@@ -104,6 +117,17 @@ h3 {
 .top .cart .caption{
     font-size: 15px;
     font-weight: bold;
+}
+
+.top .b-header-favorite {
+    padding: 5px 20px 10px;
+    background: url(/img/semitrans.png);
+    /*height: 60px;*/
+    /*position: absolute;*/
+    /*top: 5px;*/
+    font-size: 12px;
+    line-height: 18px;
+    /*right: 285px;*/
 }
 
 
@@ -899,7 +923,7 @@ td .buy_helper_holder{
 
 .dark_line{
     background: #262525;
-    margin:20px -5px;
+    margin:10px -5px;
     padding: 0 5px;
 }
 

@@ -149,7 +149,7 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
                         );?>
                     </div>
                 </div>
-                <div class="clear"></div>
+<!--                <div class="clear"></div>-->
             </div>
 
 
@@ -300,7 +300,7 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
                                 ?>
                             </div>
 
-                            <div style="text-align: center;"><a href="http://orphus.ru" id="orphus" target="_blank"><img class="orphus" alt="Система Orphus" src="/images/orphus.gif" /></a></div>
+<!--                            <div style="text-align: center;"><a href="http://orphus.ru" id="orphus" target="_blank"><img class="orphus" alt="Система Orphus" src="/images/orphus.gif" /></a></div>-->
 
 	                        <?$APPLICATION->IncludeComponent(
 							"bitrix:news.list",
