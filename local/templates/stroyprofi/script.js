@@ -40,8 +40,10 @@ $(document).ready(function () {
      */
     var marqueeText = $.trim($('.marquee span').text());
     if (marqueeText == '') {
-        $('.marquee').css('height', '1px');
-        $('.header').css('height', '142px');
+        $('.marquee').css('display', 'none');
+        // $('.header').css('height', '142px');
+    }else{
+        $('.header').css('height', '160px');
     }
 
     /** Добавление/удаление товаров товаров в избранного */

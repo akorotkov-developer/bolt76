@@ -36,10 +36,10 @@ a{
     width: 100%;
 }
 
-.header{
-    height: 142px;
-    background: url('img/header.jpg') left top no-repeat;
-}
+/*.header{*/
+/*    height: 142px;*/
+/*    background: url('img/header.jpg') left top no-repeat;*/
+/*}*/
 
 .top{
     height: 70px;

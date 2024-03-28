@@ -65,7 +65,7 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
 						),
 						false
 					);?></div>
-					<?php
+                    <?php
                     global $USER;
                     $arGroups = [];
 
@@ -191,7 +191,7 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
                         false
                     );?>
                     <div class="search">
-                        <form action="/search/" method="get">
+                        <form class="search-flexbox" action="/search/" method="get">
                             <input type="text" class="search-input onblur <?=($_GET['q']?"":"blured");?>" rel="Поиск по наименованиям и артикулам" name="q" value="<?=($_GET['q']?htmlspecialchars($_GET['q']):"Поиск по наименованиям и артикулам");?>">
                             <input type="submit" value="" class="search-submit">
 							<?
@@ -201,7 +201,17 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
                             <div class="search_results"></div>
                         </form>
                     </div>
-                    <div class="clear"></div>
+<!--                    <div class="wrap">-->
+<!--                        <div class="search">-->
+<!--                            <input type="text" class="searchTerm" placeholder="What are you looking for?">-->
+<!--                            <button type="submit" class="searchButton">-->
+<!--                                <i class="fa fa-search"></i>-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <style>
+                    </style>
+<!--                    <div class="clear"></div>-->
                 </div>
             </div>
         </div>
