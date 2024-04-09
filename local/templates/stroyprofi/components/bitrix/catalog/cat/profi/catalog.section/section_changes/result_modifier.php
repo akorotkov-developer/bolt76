@@ -133,3 +133,25 @@ if ($arResult['ID'] == 5966) {
         }
     }
 }
+
+/** Получаем товары распродажи */
+$dbResult = CIBlockElement::GetList(
+    [],
+    [
+        'IBLOCK_ID' => 1,
+        'SECTION_CODE' => 'rasprodazha',
+        'ACTIVE' => 'Y'
+    ],
+    false,
+    false,
+    [
+        'ID'
+    ]
+);
+
+$arItemsSale = [];
+while($result = $dbResult->Fetch()){
+    $arItemsSale[] = $result['ID'];
+}
+
+$arResult['SALE_ITEMS'] = $arItemsSale;

@@ -32,6 +32,8 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                 $isSectionNameWrited = false;
                 foreach ($arResult["ITEMS"] as $cell => $arElement):
 
+                $saleClass = (in_array($arElement['ID'], $arResult['SALE_ITEMS'])) ? 'sale' : '';
+
                 if ($arResult['IS_FILTER']) {
                     $sCurSectionNameForFilter = $arElement['FILTER_SECTION_NAME'];
                 }
@@ -151,7 +153,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                         <? if ($arElement["DETAIL_TEXT"]) { ?><a href="#" class="">
                             <img src="/images/i.png" alt="Информация"/></a><? } ?>
                     </td>
-                    <td class="name t-name-relative" <?php if ($arResult['IS_FILTER']) {
+                    <td class="name t-name-relative <?= $saleClass?>" <?php if ($arResult['IS_FILTER']) {
                         echo 'style="width: 100%"';
                     } ?>>
                         <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
@@ -289,9 +291,13 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                             </div>
                         </a>
 
-                        <?php if ($arElement['PROPERTIES']['SALE']['VALUE'] != '') {?>
-                            <img class="i-sale-shildik" src="<?=SITE_TEMPLATE_PATH?>/images/sale.jpg">
-                        <?php }?>
+                        <?php
+
+                            if ($arElement['PROPERTIES']['SALE']['VALUE'] != '') {?>
+                                <img class="i-sale-shildik" src="<?=SITE_TEMPLATE_PATH?>/images/m_sale.png">
+                                <?php
+                            }
+                        ?>
                     </td>
                     <td class="opt">
                         <?php
@@ -459,7 +465,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                             <? if ($arElement["DETAIL_TEXT"]) { ?><a href="#" class="">
                                 <img src="/images/i.png" alt="Информация"/></a><? } ?>
                         </td>
-                        <td class="name" <?php if ($arResult['IS_FILTER']) {
+                        <td class="name <?= $saleClass?>" <?php if ($arResult['IS_FILTER']) {
                             echo 'style="width: 100%"';
                         } ?>>
                             <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
@@ -596,6 +602,14 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                     </div>
                                 </div>
                             </a>
+
+                            <?php
+
+                                if ($arElement['PROPERTIES']['SALE']['VALUE'] != '') {?>
+                                    <img class="i-sale-shildik" src="<?=SITE_TEMPLATE_PATH?>/images/m_sale.png">
+                                    <?php
+                                }
+                            ?>
                         </td>
                         <td class="opt">
                             <?php

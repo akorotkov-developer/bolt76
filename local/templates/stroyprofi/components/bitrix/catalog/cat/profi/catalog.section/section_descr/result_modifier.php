@@ -119,3 +119,25 @@ if ($priceGroup == 'OPT_2') {
 } elseif ($priceGroup == 'OPT_3') {
     $arResult['IS_OPT_3'] = true;
 }
+
+/** Получаем товары распродажи */
+$dbResult = CIBlockElement::GetList(
+    [],
+    [
+        'IBLOCK_ID' => 1,
+        'SECTION_CODE' => 'rasprodazha',
+        'ACTIVE' => 'Y'
+    ],
+    false,
+    false,
+    [
+        'ID'
+    ]
+);
+
+$arItemsSale = [];
+while($result = $dbResult->Fetch()){
+    $arItemsSale[] = $result['ID'];
+}
+
+$arResult['SALE_ITEMS'] = $arItemsSale;

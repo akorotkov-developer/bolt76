@@ -1139,3 +1139,11 @@ h1 {
 /*.carousel__button {*/
 /*	color: #fff!important;*/
 /*}*/
+.images-container-detail {
+	position: relative;
+}
+.images-container-detail .i-sale-shildik {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}

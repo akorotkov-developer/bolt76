@@ -58,3 +58,12 @@ td.buy {
 .in_basket_delete {
     cursor: pointer;
 }
+.element_table .name.sale {
+    position: relative;
+}
+.element_table .name.sale .i-sale-shildik {
+    position: absolute;
+    right: -3px;
+    width: 29px;
+    top: 1px;
+}

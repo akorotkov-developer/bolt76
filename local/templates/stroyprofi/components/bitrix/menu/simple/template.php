@@ -31,7 +31,7 @@
                         <?= $arItem["TEXT"]?>
                         <ul class="top-submenu">
                             <li class="top-submenu-item"><a href="/price/price.xlsx" download="">Excel</a></li>
-                            <li class="top-submenu-item"><a href="/price/price.pdf" download="">Pdf</a></li>
+                            <li class="top-submenu-item"><a href="/pricepdf/price.pdf" download="">Pdf</a></li>
                         </ul>
                     </span>
                 <?
@@ -69,7 +69,7 @@
                     if ($arItem["LINK"] == '/price') {?>
 
                         <li><a href="/price/price.xlsx" download="">Скачать Excel</a></li>
-                        <li><a href="/price/price.pdf" download="">Скачать Pdf</a></li>
+                        <li><a href="/pricepdf/price.pdf" download="">Скачать Pdf</a></li>
 
                         <?php
                     } else { ?>

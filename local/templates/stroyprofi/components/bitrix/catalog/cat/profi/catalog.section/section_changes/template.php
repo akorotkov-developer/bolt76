@@ -46,6 +46,13 @@
             ?>
             <div class="product-layout product-list col-xs-12" id="<?= $this->GetEditAreaId($arElement['ID']); ?>">
                 <div class="product-thumb">
+                    <?php
+
+                        if ($arElement['PROPERTIES']['SALE']['VALUE'] != '') {?>
+                            <img class="i-sale-shildik" src="<?=SITE_TEMPLATE_PATH?>/images/m_sale.png">
+                            <?php
+                        }
+                    ?>
                     <div class="b-favorite">
                         <svg data-product-id="<?= $arElement['ID']?>" class="favorite-svg-icon <?=$arElement['IS_FAVORITE'] ? 'active' : ''?>" title="Добавить в избранное" width="31" height="31" viewBox="0 0 24 24" fill="none" stroke="#8899a4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
@@ -66,6 +73,13 @@
                         </a>
                     </div>
                     <div class="image image-list">
+                        <?php
+
+                        if ($arElement['PROPERTIES']['SALE']['VALUE'] != '') {?>
+                            <img class="i-sale-shildik" src="<?=SITE_TEMPLATE_PATH?>/images/m_sale.png">
+                            <?php
+                        }
+                        ?>
                         <?php
                         $pictureId = ((int)$arElement['PREVIEW_PICTURE']['ID'] > 0) ? $arElement['PREVIEW_PICTURE']['ID'] : $arResult['PICTURE']['ID'];
                         $file = CFile::ResizeImageGet(

@@ -6,6 +6,7 @@
     position: absolute;
     top: 10px;
     left: 10px;
+    z-index: 1000;
 }
 .product-layout.product-grid .product-thumb img {
     max-width: 230px;
@@ -289,4 +290,25 @@
     .col-lg-9 {
         width: 100% !important;
     }
+}
+.i-sale-shildik {
+    display: none;
+}
+.product-layout.product-grid .i-sale-shildik {
+    display: block;
+    position: absolute;
+    width: 55px;
+    top: 5px;
+    left: 5px;
+}
+.product-layout.product-list .image-list {
+    position: relative;
+}
+.product-layout.product-list .image-list .i-sale-shildik {
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 0px;
+    width: 55px;
 }

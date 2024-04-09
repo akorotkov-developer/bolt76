@@ -221,8 +221,12 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                         }
                                     }
                                     ?>
-                                    <div data-entity="images-container" <?= (count($arResult['PHOTOS']) > 0) ? 'class="b-image-slider-main"' : ''?>>
+                                    <div data-entity="images-container images-container-detail" <?= (count($arResult['PHOTOS']) > 0) ? 'class="b-image-slider-main"' : ''?>>
                                         <?php
+                                        if ($arResult['PROPERTIES']['SALE']['VALUE'] != '') {?>
+                                            <img class="i-sale-shildik" src="<?=SITE_TEMPLATE_PATH?>/images/m_sale.png">
+                                        <?}
+
                                         if (count($arResult['PHOTOS']) == 0 && !empty($actualItem['MORE_PHOTO'])) {
                                             foreach ($actualItem['MORE_PHOTO'] as $key => $photo)
                                             {
