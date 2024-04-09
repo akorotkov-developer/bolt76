@@ -40,7 +40,7 @@ $(document).ready(function () {
      */
     var marqueeText = $.trim($('.marquee span').text());
     if (marqueeText == '') {
-        $('.marquee').css('display', 'none');
+        $('.marquee').addClass('marquee_hidden');
         // $('.header').css('height', '142px');
     }else{
         $('.header').css('height', '160px');
