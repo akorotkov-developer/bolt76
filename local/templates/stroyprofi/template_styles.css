@@ -1540,6 +1540,9 @@ body .btn-link {
 .section-pane-inner{
     max-width: 3440px;
 }
+.section-pane-inner table th{
+    text-align: center;
+}
 
 .section-pane-inner .large {
     width: 80%;
@@ -1573,7 +1576,7 @@ body .btn-link {
     max-width: 3440px;
 }
 
-.section-pane-inner img {
+.section-pane-inner > img {
     width: 100%;
 }
 .section-pane-inner td{
