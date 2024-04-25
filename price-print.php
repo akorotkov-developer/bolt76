@@ -1,7 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 
-require(__DIR__ . "/local/include/vendor/autoload.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/local/include/vendor/autoload.php");
 
 use Spatie\ArrayToXml\ArrayToXml;
 use Dompdf\Dompdf;
