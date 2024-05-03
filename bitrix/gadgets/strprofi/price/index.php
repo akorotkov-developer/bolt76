@@ -4,6 +4,9 @@
 
 
 ?>
+<script src="/local/templates/stroyprofi/js/jquery.shCircleLoader.js"></script>
+<script src="/local/templates/stroyprofi/js/jquery.shCircleLoader-min.js"></script>
+<link rel="stylesheet" href="/local/templates/stroyprofi/js/jquery.shCircleLoader.css">
 
 <style type="text/css">
     p a{
@@ -50,11 +53,17 @@
 </style>
 
 
-
+<div id="shclDefault"></div>
+<style>
+    #shclDefault {
+        position: absolute!important;
+        left: 200px!important;
+    }
+</style>
 
 <p><button class="edit_marquee">Бегущая строка</button></p>
-<p><button class="download_excel">Скачать прайс-лист (Excel)</button></p>
-<p><button class="download">Скачать прайс-лист</button></p>
+<p><button class="download_excel">Сгенерировать и скачать прайс-лист (Excel)</button></p>
+<p><button class="download">Сгенерировать и скачать прайс-лист (PDF)</button></p>
 <p><button class="start_import">Запустить импорт</button></p>
 <p><button class="auto_cache">Автокеширование</button></p>
 <p><a href="/import/logs/log_import.txt" class="download_log_import" download="">Скачать лог импорта</a></p>
@@ -71,17 +80,25 @@
     });
 
     $('.download').click(function() {
+        $('#shclDefault').show();
+        $('#shclDefault').shCircleLoader();
         $.ajax({
             url: "/bitrix/gadgets/strprofi/price/clear_cache.php",
             success: function(data){
             }
         });
 
-        function openPrintWindow() {
-            window.open("/price-print.php", '_blank');
+        function downloadFile() {
+            var link = document.createElement('a');
+            link.href = "/pricepdf/price.pdf";
+            link.download = "price.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            $('#shclDefault').hide();
         }
 
-        setTimeout(openPrintWindow, 1000);
+        setTimeout(downloadFile, 10000);
     });
 
     $('.download_excel').click(function() {

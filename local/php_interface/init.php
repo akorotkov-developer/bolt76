@@ -11,6 +11,7 @@ if (defined('ADMIN_SECTION') && ADMIN_SECTION === true) {
 require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/import/Import.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/import/importInCron.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/classes/MonitoringAgents.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/classes/GeneratePricePdf.php';
 
 /**Подключение PHP mailer*/
 require $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/phpmailer/Exception.php';

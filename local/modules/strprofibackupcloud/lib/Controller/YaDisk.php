@@ -103,6 +103,7 @@ class YaDisk extends BaseCloud
      */
     public function transferBackup(array $backUpFiles): void
     {
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$backUpFiles' => $backUpFiles], '', 'log.txt');
         if (count($backUpFiles) > 0) {
             $localBackup = new LocalBackup();
             $this->totalLinks = (count($backUpFiles));

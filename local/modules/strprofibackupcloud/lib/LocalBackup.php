@@ -83,6 +83,7 @@ class LocalBackup implements ILocalBackup
      */
     public function delete(array $localBackupFiles): bool
     {
+        \Bitrix\Main\Diag\Debug::dumpToFile(['$localBackupFiles' => $localBackupFiles], '', 'log.txt');
         foreach ($localBackupFiles as $file) {
             unlink($_SERVER['DOCUMENT_ROOT'] . $file);
         }

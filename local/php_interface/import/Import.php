@@ -119,18 +119,23 @@ class Import
             // Устанавливаем массив с продуктами
             $this->setArProducts();
             sleep(10);
+
             // Установить динамические свойства
             $this->checkDynamicProps();
             sleep(10);
+
             // Загрузить разделы и товары
             $this->setSections();
             sleep(10);
+
             // Установить символьные коды для товаров
             $this->setCodesForProducts();
             sleep(10);
+
             // Сделать из элементов инфоблока товары с ценами и параметрами
             $this->makeProducts();
             sleep(10);
+
             // Установить коэфициенты единицы измерения для всех продуктов
             $this->setRatio();
 
@@ -375,7 +380,9 @@ class Import
 
             // Обновляем доступные товары в переменных и хэшиmd5
             $this->arCatalogSections = $this->getCatalogSections();
+
             $this->arProductElements = $this->getProductElements();
+
             $this->arPicturesMapping = $this->getPictureMapping(true);
 
             // Обновление товаров
