@@ -9,11 +9,29 @@ $component = $this->getComponent();
 $arParams = $component->applyTemplateModifications();
 
 
-$ElementId = $arResult['ID'];
-$db_groups = CIBlockElement::GetElementGroups($ElementId, true);
+// Проверяем, не является ли раздел распродажей
+$dbResult = CIBlockSection::GetList(
+    [],
+    [
+        'IBLOCK_ID' => 1,
+        'CODE' => 'rasprodazha',
+    ],
+    false,
+    [
+        'ID', 'CODE'
+    ]
+);
+$saleSectionId = null;
+if ($result = $dbResult->fetch()) {
+    $saleSectionId = $result['ID'];
+}
+
+$dbGroups = CIBlockElement::GetElementGroups($arResult['ID'], true);
 $curSectionId = [];
-if($ar_group = $db_groups->Fetch()) {
-    $curSectionId = $ar_group["ID"];
+if($arGroup = $dbGroups->Fetch()) {
+    if ($arGroup['ID'] != $saleSectionId) {
+        $curSectionId = $arGroup['ID'];
+    }
 }
 
 /*$arFields = [
