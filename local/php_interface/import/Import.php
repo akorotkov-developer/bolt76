@@ -23,6 +23,8 @@ class Import
     public $arProductElements;
     public $sFileLogImportPath;
     public $arPicturesMapping;
+    public $processedMaterialMap;
+    public $processedMaterialEnumId;
 
     /**
      * Установка начальных параметров
@@ -824,6 +826,20 @@ class Import
         $el = new \CIBlockElement;
 
         if (!empty($this->arProductElements[$item['ID']])) {
+            if (!empty($item['PROCESSED_MATERIAL'])) {
+                $processedMaterial = [];
+                foreach ($item['PROCESSED_MATERIAL'] as $materialName) {
+                    $materialId = $this->processedMaterialMap[mb_strtolower(trim($materialName))];
+                    if (empty($materialId)) {
+                        $ibpEnum = new \CIBlockPropertyEnum;
+                        $materialId = $ibpEnum->Add(['PROPERTY_ID' => $this->processedMaterialEnumId, 'VALUE' => $materialName]);
+                        $this->processedMaterialMap[$materialName] = $materialId;
+                    }
+
+                    $processedMaterial[] = $materialId;
+                }
+            }
+
             $arUpdate = [
                 'NAME' => $sName,
                 'PREVIEW_TEXT' => trim(strval($item['Opisanie'])),
@@ -846,13 +862,16 @@ class Import
                     'SHOW_IN_PRICE' => ($item['show_in_price'] > 0) ? 1 : 0,
                     'SORT_IN_PRICE' => $item['show_in_price'],
                     'AVAILABLE' => ((int)$item['Ostatok'] > 0) ? $this->iAvailablePropId : '',
-                    'SALE' => $item['Rasprodaja']
+                    'SALE' => $item['Rasprodaja'],
                 ],
                 'IPROPERTY_TEMPLATES' => [
                     'ELEMENT_META_KEYWORDS'    =>  '{=this.Name} в Ярославле, {=this.Name}, опт, недорого, прайс-лист, каталог, доставка до транспортной компании.',
                     'ELEMENT_META_DESCRIPTION' =>  'Купить {=this.Name} в Ярославле оптом и в розницу, доставка до транспортной компании. Низкие цены, акции и скидки на {=this.Name} в интернет-магазине СтройПрофи.',
                 ]
             ];
+            if (!empty($processedMaterial)) {
+                $arUpdate['PROPERTY_VALUES']['PROCESSED_MATERIAL'] = $processedMaterial;
+            }
 
             // Если товар для распродажи, то добавить его дополнительно в раздел "Распродажа"
             if ($item['Rasprodaja'] != '') {
@@ -1046,6 +1065,12 @@ class Import
                 }
             }
 
+            if ($this->arProductElements[$item['ID']]['ID'] == 157772) {
+                \Bitrix\Main\Diag\Debug::dumpToFile(['$arUpdate' => $arUpdate], '', 'log2.txt');
+                \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => $item], '', 'log2.txt');
+                \Bitrix\Main\Diag\Debug::dumpToFile(['$this->processedMaterialMap' => $this->processedMaterialMap], '', 'log2.txt');
+                \Bitrix\Main\Diag\Debug::dumpToFile(['$processedMaterial' => $processedMaterial], '', 'log2.txt');
+            }
             if ($isUpdate) {
                 $isUpdated = $el->Update($this->arProductElements[$item['ID']]['ID'], $arUpdate);
                 if (!$isUpdated) {
@@ -1067,6 +1092,19 @@ class Import
 
             $ID = $this->arProductElements[$item['ID']]['ID'];
         } else {
+            if (!empty($item['PROCESSED_MATERIAL'])) {
+                $processedMaterial = [];
+                foreach ($item['PROCESSED_MATERIAL'] as $materialName) {
+                    $materialId = $this->processedMaterialMap[mb_strtolower(trim($materialName))];
+                    if (empty($materialId)) {
+                        $ibpEnum = new \CIBlockPropertyEnum;
+                        $materialId = $ibpEnum->Add(['PROPERTY_ID' => $this->processedMaterialEnumId, 'VALUE' => $materialName]);
+                        $this->processedMaterialMap[$materialName] = $materialId;
+                    }
+
+                    $processedMaterial[] = $materialId;
+                }
+            }
             $arLoad = [
                 'IBLOCK_ID' => $this->iblock,
                 'IBLOCK_SECTION_ID' => $siteCatID,
@@ -1092,13 +1130,17 @@ class Import
                     'SHOW_IN_PRICE' => ($item['show_in_price'] > 0) ? 1 : 0,
                     'SORT_IN_PRICE' => $item['show_in_price'],
                     'AVAILABLE' => ((int)$item['Ostatok'] > 0) ? $this->iAvailablePropId : '',
-                    'SALE' => $item['Rasprodaja']
+                    'SALE' => $item['Rasprodaja'],
+                    'PROCESSED_MATERIAL' => $processedMaterial
                 ],
                 'IPROPERTY_TEMPLATES' => [
                     'ELEMENT_META_KEYWORDS'    =>  '{=this.Name} в Ярославле, {=this.Name}, опт, недорого, прайс-лист, каталог, доставка до транспортной компании.',
                     'ELEMENT_META_DESCRIPTION' =>  'Купить {=this.Name} в Ярославле оптом и в розницу, доставка до транспортной компании. Низкие цены, акции и скидки на {=this.Name} в интернет-магазине СтройПрофи.',
                 ]
             ];
+            if (!empty($processedMaterial)) {
+                $arLoad['PROPERTY_VALUES']['PROCESSED_MATERIAL'] = $processedMaterial;
+            }
 
             // Если товар для распродажи, то добавить его дополнительно в раздел "Распродажа"
             if ($item['Rasprodaja'] != '') {
@@ -1247,6 +1289,11 @@ class Import
 
                 continue;
             }
+            if ($a[2] == 'PROCESSED_MATERIAL') {
+                $arTemp[$a[0]]['PROCESSED_MATERIAL'] = explode(',', trim($a[count($a) - 1]));
+
+                continue;
+            }
 
             $arTemp[$a[0]]['PorNomer'] = $key;
             $arTemp[$a[0]][$a[2]] = trim($a[count($a) - 1]);
@@ -1308,6 +1355,25 @@ class Import
                     );
                 }
             }
+        }
+
+        /**Получить маппинг множественного свойства типа список PROCESSED_MATERIAL */
+        $dbEnum = \CIBlockProperty::GetList(
+            [],
+            [
+                'CODE' => 'PROCESSED_MATERIAL'
+            ]
+        );
+        $this->processedMaterialEnumId = $dbEnum->Fetch()['ID'];
+
+        $propertyEnums = \CIBlockPropertyEnum::GetList(
+            ['SORT' => 'ASC'],
+            ['IBLOCK_ID' => 1, 'CODE' => 'PROCESSED_MATERIAL']
+        );
+        $this->processedMaterialMap = [];
+        while($enumFields = $propertyEnums->GetNext())
+        {
+            $this->processedMaterialMap[mb_strtolower(trim($enumFields['VALUE']))] = $enumFields['ID'];
         }
     }
 
