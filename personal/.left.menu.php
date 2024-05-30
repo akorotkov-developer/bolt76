@@ -7,7 +7,13 @@ $aMenuLinks = Array(
         Array(),
         ""
     ),
-
+    Array(
+        "История заказов",
+        "/personal/orders/?filter_history=Y",
+        Array(),
+        Array(),
+        ""
+    ),
     Array(
         "Личный счет",
         "/personal/account/",
@@ -24,39 +30,11 @@ $aMenuLinks = Array(
         ""
     ),
     Array(
-        "История заказов",
-        "/personal/orders/?filter_history=Y",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Профили заказов",
+        "Контрагенты",
         "/personal/profiles/",
         Array(),
         Array(),
         ""
-    ),
-    Array(
-        "Корзина",
-        "/personal/cart/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Подписки",
-        "/personal/subscribe/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Контакты",
-        "/about/contacts/",
-        Array(),
-        Array(),
-        ""
-    ),
+    )
 );
 ?>

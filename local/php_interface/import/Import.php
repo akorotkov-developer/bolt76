@@ -26,6 +26,9 @@ class Import
     public $processedMaterialMap;
     public $processedMaterialEnumId;
 
+    public $bitTypeMap;
+    public $bitTypeEnumId;
+
     /**
      * Установка начальных параметров
      */
@@ -839,6 +842,19 @@ class Import
                     $processedMaterial[] = $materialId;
                 }
             }
+            if (!empty($item['BIT_TYPE'])) {
+                $bitTypes = [];
+                foreach ($item['BIT_TYPE'] as $bitTypeName) {
+                    $bitTypeId = $this->bitTypeMap[mb_strtolower(trim($bitTypeName))];
+                    if (empty($bitTypeId)) {
+                        $ibpEnum = new \CIBlockPropertyEnum;
+                        $bitTypeId = $ibpEnum->Add(['PROPERTY_ID' => $this->bitTypeEnumId, 'VALUE' => $bitTypeName]);
+                        $this->bitTypeMap[$bitTypeName] = $bitTypeId;
+                    }
+
+                    $bitTypes[] = $bitTypeId;
+                }
+            }
 
             $arUpdate = [
                 'NAME' => $sName,
@@ -871,6 +887,9 @@ class Import
             ];
             if (!empty($processedMaterial)) {
                 $arUpdate['PROPERTY_VALUES']['PROCESSED_MATERIAL'] = $processedMaterial;
+            }
+            if (!empty($bitTypes)) {
+                $arUpdate['PROPERTY_VALUES']['BIT_TYPE'] = $bitTypes;
             }
 
             // Если товар для распродажи, то добавить его дополнительно в раздел "Распродажа"
@@ -1065,12 +1084,6 @@ class Import
                 }
             }
 
-            if ($this->arProductElements[$item['ID']]['ID'] == 157772) {
-                \Bitrix\Main\Diag\Debug::dumpToFile(['$arUpdate' => $arUpdate], '', 'log2.txt');
-                \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => $item], '', 'log2.txt');
-                \Bitrix\Main\Diag\Debug::dumpToFile(['$this->processedMaterialMap' => $this->processedMaterialMap], '', 'log2.txt');
-                \Bitrix\Main\Diag\Debug::dumpToFile(['$processedMaterial' => $processedMaterial], '', 'log2.txt');
-            }
             if ($isUpdate) {
                 $isUpdated = $el->Update($this->arProductElements[$item['ID']]['ID'], $arUpdate);
                 if (!$isUpdated) {
@@ -1105,6 +1118,19 @@ class Import
                     $processedMaterial[] = $materialId;
                 }
             }
+            if (!empty($item['BIT_TYPE'])) {
+                $bitTypes = [];
+                foreach ($item['BIT_TYPE'] as $bitTypeName) {
+                    $bitTypeId = $this->bitTypeMap[mb_strtolower(trim($bitTypeName))];
+                    if (empty($bitTypeId)) {
+                        $ibpEnum = new \CIBlockPropertyEnum;
+                        $bitTypeId = $ibpEnum->Add(['PROPERTY_ID' => $this->bitTypeEnumId, 'VALUE' => $bitTypeName]);
+                        $this->bitTypeMap[$bitTypeName] = $bitTypeId;
+                    }
+
+                    $bitTypes[] = $bitTypeId;
+                }
+            }
             $arLoad = [
                 'IBLOCK_ID' => $this->iblock,
                 'IBLOCK_SECTION_ID' => $siteCatID,
@@ -1131,7 +1157,8 @@ class Import
                     'SORT_IN_PRICE' => $item['show_in_price'],
                     'AVAILABLE' => ((int)$item['Ostatok'] > 0) ? $this->iAvailablePropId : '',
                     'SALE' => $item['Rasprodaja'],
-                    'PROCESSED_MATERIAL' => $processedMaterial
+                    'PROCESSED_MATERIAL' => $processedMaterial,
+                    'BIT_TYPE' => $bitTypes
                 ],
                 'IPROPERTY_TEMPLATES' => [
                     'ELEMENT_META_KEYWORDS'    =>  '{=this.Name} в Ярославле, {=this.Name}, опт, недорого, прайс-лист, каталог, доставка до транспортной компании.',
@@ -1140,6 +1167,9 @@ class Import
             ];
             if (!empty($processedMaterial)) {
                 $arLoad['PROPERTY_VALUES']['PROCESSED_MATERIAL'] = $processedMaterial;
+            }
+            if (!empty($processedMaterial)) {
+                $arLoad['PROPERTY_VALUES']['BIT_TYPE'] = $bitTypes;
             }
 
             // Если товар для распродажи, то добавить его дополнительно в раздел "Распродажа"
@@ -1294,6 +1324,11 @@ class Import
 
                 continue;
             }
+            if ($a[2] == 'BIT_TYPE') {
+                $arTemp[$a[0]]['BIT_TYPE'] = explode(',', trim($a[count($a) - 1]));
+
+                continue;
+            }
 
             $arTemp[$a[0]]['PorNomer'] = $key;
             $arTemp[$a[0]][$a[2]] = trim($a[count($a) - 1]);
@@ -1374,6 +1409,25 @@ class Import
         while($enumFields = $propertyEnums->GetNext())
         {
             $this->processedMaterialMap[mb_strtolower(trim($enumFields['VALUE']))] = $enumFields['ID'];
+        }
+
+        /**Получить маппинг множественного свойства типа список BIT_TYPE */
+        $dbEnum = \CIBlockProperty::GetList(
+            [],
+            [
+                'CODE' => 'BIT_TYPE'
+            ]
+        );
+        $this->bitTypeEnumId = $dbEnum->Fetch()['ID'];
+
+        $propertyEnums = \CIBlockPropertyEnum::GetList(
+            ['SORT' => 'ASC'],
+            ['IBLOCK_ID' => 1, 'CODE' => 'BIT_TYPE']
+        );
+        $this->bitTypeMap = [];
+        while($enumFields = $propertyEnums->GetNext())
+        {
+            $this->bitTypeMap[mb_strtolower(trim($enumFields['VALUE']))] = $enumFields['ID'];
         }
     }
 
