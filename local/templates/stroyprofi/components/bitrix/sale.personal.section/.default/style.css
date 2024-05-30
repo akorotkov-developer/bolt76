@@ -74,3 +74,23 @@
 .sale-order-list-title-container {
 	background-color: #f16500!important;
 }
+.profile-wrapper {
+	display: flex;
+}
+.page_content .profile-wrapper .left_block {
+	margin-right: 25px;
+}
+.profile-wrapper .root-item-selected a {
+	background-color: #ff9545;
+}
+.profile-wrapper .main_navigation {
+	margin-left: -32px;
+}
+.profile-wrapper .right_block {
+	width: 100%;
+}
+@media (max-width: 794px) {
+	.profile-wrapper .left_block {
+		display: none;
+	}
+}

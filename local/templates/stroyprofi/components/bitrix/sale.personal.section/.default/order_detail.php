@@ -38,12 +38,40 @@ foreach($arParams as $key => $val)
 {
 	if(mb_strpos($key, "PROP_") !== false)
 		$arDetParams[$key] = $val;
-}
+}?>
 
-$APPLICATION->IncludeComponent(
-	"bitrix:sale.personal.order.detail",
-	"",
-	$arDetParams,
-	$component
-);
-?>
+<div class="profile-wrapper">
+	<div class="left_block">
+		<div class="main_navigation">
+			<?php
+			$APPLICATION->IncludeComponent(
+				"bitrix:menu",
+				"left",
+				Array(
+					"ROOT_MENU_TYPE" => "left",
+					"MAX_LEVEL" => "3",
+					"CHILD_MENU_TYPE" => "left",
+					"USE_EXT" => "N",
+					"DELAY" => "N",
+					"ALLOW_MULTI_SELECT" => "Y",
+					"MENU_CACHE_TYPE" => "N",
+					"MENU_CACHE_TIME" => "3600",
+					"MENU_CACHE_USE_GROUPS" => "Y",
+					"MENU_CACHE_GET_VARS" => array()
+				),
+				false
+			);?>
+		</div>
+	</div>
+
+    <div class="right_block">
+		<?php
+		$APPLICATION->IncludeComponent(
+			"bitrix:sale.personal.order.detail",
+			"",
+			$arDetParams,
+			$component
+		);
+		?>
+    </div>
+</div>
