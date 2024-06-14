@@ -28,7 +28,7 @@ if ($result = $dbResult->fetch()) {
 
 $dbGroups = CIBlockElement::GetElementGroups($arResult['ID'], true);
 $curSectionId = [];
-if($arGroup = $dbGroups->Fetch()) {
+while($arGroup = $dbGroups->Fetch()) {
     if ($arGroup['ID'] != $saleSectionId) {
         $curSectionId = $arGroup['ID'];
     }
@@ -38,23 +38,25 @@ if($arGroup = $dbGroups->Fetch()) {
     'IBLOCK_ID' => $arResult['IBLOCK_ID'],
     'ID' => $arResult['ORIGINAL_PARAMETERS']['SECTION_ID']
 ];*/
-$arFields = [
-    'IBLOCK_ID' => $arResult['IBLOCK_ID'],
-    'ID' => $curSectionId
-];
-$obSections = CIBlockSection::GetList(
-    ['SORT' => 'ASC'],
-    $arFields,
-    false,
-    ['ID', 'PICTURE', 'DESCRIPTION']
-);
+if ((int) $curSectionId > 0) {
+    $arFields = [
+        'IBLOCK_ID' => $arResult['IBLOCK_ID'],
+        'ID' => $curSectionId
+    ];
+    $obSections = CIBlockSection::GetList(
+        ['SORT' => 'ASC'],
+        $arFields,
+        false,
+        ['ID', 'PICTURE', 'DESCRIPTION']
+    );
 
-$arSection = [];
-if ($arRez = $obSections->Fetch()) {
-    $arSection = $arRez;
+    $arSection = [];
+    if ($arRez = $obSections->Fetch()) {
+        $arSection = $arRez;
+    }
+
+    $arResult['SECTION_DESCRIPTION'] = $arSection['DESCRIPTION'];
 }
-
-$arResult['SECTION_DESCRIPTION'] = $arSection['DESCRIPTION'];
 
 if (!empty($arResult['PREVIEW_PICTURE']['SRC'])) {
     $arResult['MORE_PHOTO_PICTURE']['ID'] = (int) $arResult['PREVIEW_PICTURE']['ID'];

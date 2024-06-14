@@ -102,7 +102,7 @@ if ($arResult['ID'] == 5966) {
     $sectionMap = [];
     foreach ($arProductIds as $productId) {
         $db_groups = CIBlockElement::GetElementGroups($productId, true);
-        if ($ar_group = $db_groups->Fetch()) {
+        while ($ar_group = $db_groups->Fetch()) {
             if ($ar_group['ID'] != 5966) {
                 $sectionMap[$productId] = $ar_group['ID'];
             }

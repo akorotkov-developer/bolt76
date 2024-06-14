@@ -233,7 +233,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                                 ?>
                                                 <div class="<?=($key == 0 ? ' active' : '')?>" data-entity="image" data-id="<?=$photo['ID']?>">
                                                     <a href="<?=$photo['SRC']?>" data-fancybox>
-                                                        <img class="detail_image" src="<?=$photo['SRC']?>" alt="<?=$alt?>" title="<?=$title?>"<?=($key == 0 ? ' itemprop="image"' : '')?> >
+                                                        <img class="detail_image 1" src="<?=$photo['SRC']?>" alt="<?=$alt?>" title="<?=$title?>"<?=($key == 0 ? ' itemprop="image"' : '')?> >
                                                     </a>
                                                 </div>
                                                 <?
@@ -243,7 +243,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                         if (count($arResult['PHOTOS']) > 0) {
                                             foreach ($arResult['PHOTOS'] as $photoSrc) {?>
                                                 <a href="<?= $photoSrc?>" data-fancybox="gallery">
-                                                    <img class="detail_image" src="<?= $photoSrc?>" >
+                                                    <img class="detail_image 2" src="<?= $photoSrc?>" >
                                                 </a>
                                             <?php }
                                         }
@@ -263,14 +263,14 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                             if (count($arResult['PHOTOS']) == 0) {
                                                 foreach ($actualItem['MORE_PHOTO'] as $key => $photo) {?>
                                                     <div class="slider-image-item-nav 1">
-                                                        <img class="detail_image" src="<?= $photo['SRC']?>">
+                                                        <img class="detail_image 3" src="<?= $photo['SRC']?>">
                                                     </div>
                                                 <?php }
                                             }?>
 
                                             <?php foreach ($arResult['PHOTOS'] as $photoSrc) {?>
                                                 <div class="slider-image-item-nav 2">
-                                                    <img class="detail_image" src="<?= $photoSrc?>">
+                                                    <img class="detail_image 4" src="<?= $photoSrc?>">
                                                 </div>
                                             <?php }?>
                                         </div>
@@ -417,6 +417,9 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 
                                                     if ($arResult['DETAIL_TEXT'] != '')
                                                     {
+                                                        echo '<pre>';
+                                                        var_dump('Здесь 3');
+                                                        echo '</pre>';
                                                         echo $arResult['DETAIL_TEXT_TYPE'] === 'html' ? $arResult['DETAIL_TEXT'] : '<p>'.$arResult['DETAIL_TEXT'].'</p>';
                                                     }
                                                     ?>

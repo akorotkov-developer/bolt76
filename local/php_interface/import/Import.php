@@ -25,9 +25,13 @@ class Import
     public $arPicturesMapping;
     public $processedMaterialMap;
     public $processedMaterialEnumId;
-
     public $bitTypeMap;
     public $bitTypeEnumId;
+    public $multiProps = [];
+    public $enumsMultiPropsMap = [];
+
+    public $isStop = false;
+
 
     /**
      * Установка начальных параметров
@@ -829,31 +833,30 @@ class Import
         $el = new \CIBlockElement;
 
         if (!empty($this->arProductElements[$item['ID']])) {
-            if (!empty($item['PROCESSED_MATERIAL'])) {
-                $processedMaterial = [];
-                foreach ($item['PROCESSED_MATERIAL'] as $materialName) {
-                    $materialId = $this->processedMaterialMap[mb_strtolower(trim($materialName))];
-                    if (empty($materialId)) {
-                        $ibpEnum = new \CIBlockPropertyEnum;
-                        $materialId = $ibpEnum->Add(['PROPERTY_ID' => $this->processedMaterialEnumId, 'VALUE' => $materialName]);
-                        $this->processedMaterialMap[$materialName] = $materialId;
-                    }
+            $aMultiPropValues = [];
+            foreach ($this->multiProps as $multiPropCode => $multiPropParams) {
+                if (!empty($item[$multiPropCode])) {
+                    $arrayValues = explode(',', trim($item[$multiPropCode]));
 
-                    $processedMaterial[] = $materialId;
+                    foreach ($arrayValues as $multiPropName) {
+                        $multiPropId = $this->enumsMultiPropsMap[$multiPropCode][trim($multiPropName)];
+
+                        if (empty($multiPropId)) {
+                            if ($multiPropCode == 'MATERIAL_OF_BLADES') {
+                                \Bitrix\Main\Diag\Debug::dumpToFile(['$this->enumsMultiPropsMap' => $this->enumsMultiPropsMap], '', 'log.txt');
+                                \Bitrix\Main\Diag\Debug::dumpToFile(['$multiPropName' => $multiPropName], '', 'log.txt');
+                            }
+                            $ibpEnum = new \CIBlockPropertyEnum;
+                            $multiPropId = $ibpEnum->Add(['PROPERTY_ID' => $this->multiProps[$multiPropCode]['ID'], 'VALUE' => trim($multiPropName)]);
+                            $this->enumsMultiPropsMap[$multiPropCode][$multiPropName] = $multiPropId;
+                        }
+
+                        $aMultiPropValues[$multiPropCode][] = $multiPropId;
+                    }
                 }
             }
-            if (!empty($item['BIT_TYPE'])) {
-                $bitTypes = [];
-                foreach ($item['BIT_TYPE'] as $bitTypeName) {
-                    $bitTypeId = $this->bitTypeMap[mb_strtolower(trim($bitTypeName))];
-                    if (empty($bitTypeId)) {
-                        $ibpEnum = new \CIBlockPropertyEnum;
-                        $bitTypeId = $ibpEnum->Add(['PROPERTY_ID' => $this->bitTypeEnumId, 'VALUE' => $bitTypeName]);
-                        $this->bitTypeMap[$bitTypeName] = $bitTypeId;
-                    }
-
-                    $bitTypes[] = $bitTypeId;
-                }
+            if ($item['Artikul'] == '11019') {
+                \Bitrix\Main\Diag\Debug::dumpToFile(['$aMultiPropValues' => $aMultiPropValues], '', 'log.txt');
             }
 
             $arUpdate = [
@@ -885,11 +888,9 @@ class Import
                     'ELEMENT_META_DESCRIPTION' =>  'Купить {=this.Name} в Ярославле оптом и в розницу, доставка до транспортной компании. Низкие цены, акции и скидки на {=this.Name} в интернет-магазине СтройПрофи.',
                 ]
             ];
-            if (!empty($processedMaterial)) {
-                $arUpdate['PROPERTY_VALUES']['PROCESSED_MATERIAL'] = $processedMaterial;
-            }
-            if (!empty($bitTypes)) {
-                $arUpdate['PROPERTY_VALUES']['BIT_TYPE'] = $bitTypes;
+
+            foreach ($aMultiPropValues as $propCode => $propValues) {
+                $arUpdate['PROPERTY_VALUES'][$propCode] = $propValues;
             }
 
             // Если товар для распродажи, то добавить его дополнительно в раздел "Распродажа"
@@ -915,8 +916,8 @@ class Import
             $arDynamicPropsKeys = array_keys($this->arDynamicPropsMap);
 
             foreach ($arDynamicPropsKeys as $sPropCode) {
-                if ($item[$sPropCode] != '') {
-                    if ($item[$sPropCode] !== 0 && $item[$sPropCode] !== '0') {
+                if ($item[$sPropCode] != '' && empty($this->multiProps[$sPropCode])) {
+                    if ($item[$sPropCode] !== 0 && $item[$sPropCode] !== '0' && empty($this->multiProps[$sPropCode])) {
                         $arDinamicProps[$sPropCode] = $item[$sPropCode];
                     } else {
                         $arDinamicProps[$sPropCode] = '';
@@ -1105,32 +1106,23 @@ class Import
 
             $ID = $this->arProductElements[$item['ID']]['ID'];
         } else {
-            if (!empty($item['PROCESSED_MATERIAL'])) {
-                $processedMaterial = [];
-                foreach ($item['PROCESSED_MATERIAL'] as $materialName) {
-                    $materialId = $this->processedMaterialMap[mb_strtolower(trim($materialName))];
-                    if (empty($materialId)) {
-                        $ibpEnum = new \CIBlockPropertyEnum;
-                        $materialId = $ibpEnum->Add(['PROPERTY_ID' => $this->processedMaterialEnumId, 'VALUE' => $materialName]);
-                        $this->processedMaterialMap[$materialName] = $materialId;
-                    }
+            $aMultiPropValues = [];
+            foreach ($this->multiProps as $multiPropCode => $multiPropParams) {
+                if (!empty($item[$multiPropCode])) {
+                    $arrayValues = explode(',', trim($item[$multiPropCode]));
+                    foreach ($arrayValues as $multiPropName) {
+                        $multiPropId = $this->enumsMultiPropsMap[$multiPropCode][trim($multiPropName)];
+                        if (empty($multiPropId)) {
+                            $ibpEnum = new \CIBlockPropertyEnum;
+                            $multiPropId = $ibpEnum->Add(['PROPERTY_ID' => $this->multiProps[$multiPropCode]['ID'], 'VALUE' => trim($multiPropName)]);
+                            $this->enumsMultiPropsMap[$multiPropCode][$multiPropName] = $multiPropId;
+                        }
 
-                    $processedMaterial[] = $materialId;
+                        $aMultiPropValues[$multiPropCode][] = $multiPropId;
+                    }
                 }
             }
-            if (!empty($item['BIT_TYPE'])) {
-                $bitTypes = [];
-                foreach ($item['BIT_TYPE'] as $bitTypeName) {
-                    $bitTypeId = $this->bitTypeMap[mb_strtolower(trim($bitTypeName))];
-                    if (empty($bitTypeId)) {
-                        $ibpEnum = new \CIBlockPropertyEnum;
-                        $bitTypeId = $ibpEnum->Add(['PROPERTY_ID' => $this->bitTypeEnumId, 'VALUE' => $bitTypeName]);
-                        $this->bitTypeMap[$bitTypeName] = $bitTypeId;
-                    }
 
-                    $bitTypes[] = $bitTypeId;
-                }
-            }
             $arLoad = [
                 'IBLOCK_ID' => $this->iblock,
                 'IBLOCK_SECTION_ID' => $siteCatID,
@@ -1157,19 +1149,15 @@ class Import
                     'SORT_IN_PRICE' => $item['show_in_price'],
                     'AVAILABLE' => ((int)$item['Ostatok'] > 0) ? $this->iAvailablePropId : '',
                     'SALE' => $item['Rasprodaja'],
-                    'PROCESSED_MATERIAL' => $processedMaterial,
-                    'BIT_TYPE' => $bitTypes
                 ],
                 'IPROPERTY_TEMPLATES' => [
                     'ELEMENT_META_KEYWORDS'    =>  '{=this.Name} в Ярославле, {=this.Name}, опт, недорого, прайс-лист, каталог, доставка до транспортной компании.',
                     'ELEMENT_META_DESCRIPTION' =>  'Купить {=this.Name} в Ярославле оптом и в розницу, доставка до транспортной компании. Низкие цены, акции и скидки на {=this.Name} в интернет-магазине СтройПрофи.',
                 ]
             ];
-            if (!empty($processedMaterial)) {
-                $arLoad['PROPERTY_VALUES']['PROCESSED_MATERIAL'] = $processedMaterial;
-            }
-            if (!empty($processedMaterial)) {
-                $arLoad['PROPERTY_VALUES']['BIT_TYPE'] = $bitTypes;
+
+            foreach ($aMultiPropValues as $propCode => $propValues) {
+                $arLoad['PROPERTY_VALUES'][$propCode] = $propValues;
             }
 
             // Если товар для распродажи, то добавить его дополнительно в раздел "Распродажа"
@@ -1319,16 +1307,6 @@ class Import
 
                 continue;
             }
-            if ($a[2] == 'PROCESSED_MATERIAL') {
-                $arTemp[$a[0]]['PROCESSED_MATERIAL'] = explode(',', trim($a[count($a) - 1]));
-
-                continue;
-            }
-            if ($a[2] == 'BIT_TYPE') {
-                $arTemp[$a[0]]['BIT_TYPE'] = explode(',', trim($a[count($a) - 1]));
-
-                continue;
-            }
 
             $arTemp[$a[0]]['PorNomer'] = $key;
             $arTemp[$a[0]][$a[2]] = trim($a[count($a) - 1]);
@@ -1342,6 +1320,39 @@ class Import
         foreach ($arTemp as $i => $product) {
             $this->arProducts[$product['SECTION_ID']][$i] = $product;
         }
+
+        $this->checkMultiProps();
+    }
+
+    public function checkMultiProps()
+    {
+        $props = $this->arDynamicPropsMap;
+
+        $dbResult = CIBlockProperty::GetList(
+            [],
+            [
+                'IBLOCK_ID' => 1,
+            ]
+        );
+
+        while ($result = $dbResult->Fetch()) {
+            if (!empty($props[$result['CODE']]) && $result['MULTIPLE'] == 'Y') {
+                $this->multiProps[] = $result;
+
+                if ($result['PROPERTY_TYPE'] != 'L' || $result['LIST_TYPE'] != 'C') {
+                    $ibp = new CIBlockProperty;
+                    $ibp->Update(
+                        $result['ID'],
+                        [
+                            'PROPERTY_TYPE' => 'L',
+                            'LIST_TYPE' => 'C'
+                        ]
+                    );
+                }
+            }
+        }
+
+        $this->multiProps = array_column($this->multiProps, NULL, 'CODE');
     }
 
     /**
@@ -1392,42 +1403,13 @@ class Import
             }
         }
 
-        /**Получить маппинг множественного свойства типа список PROCESSED_MATERIAL */
-        $dbEnum = \CIBlockProperty::GetList(
-            [],
-            [
-                'CODE' => 'PROCESSED_MATERIAL'
-            ]
-        );
-        $this->processedMaterialEnumId = $dbEnum->Fetch()['ID'];
-
+        /**Получить маппинг множественного свойства типа список */
         $propertyEnums = \CIBlockPropertyEnum::GetList(
             ['SORT' => 'ASC'],
-            ['IBLOCK_ID' => 1, 'CODE' => 'PROCESSED_MATERIAL']
+            ['IBLOCK_ID' => 1, 'CODE' => array_keys($this->multiProps)]
         );
-        $this->processedMaterialMap = [];
-        while($enumFields = $propertyEnums->GetNext())
-        {
-            $this->processedMaterialMap[mb_strtolower(trim($enumFields['VALUE']))] = $enumFields['ID'];
-        }
-
-        /**Получить маппинг множественного свойства типа список BIT_TYPE */
-        $dbEnum = \CIBlockProperty::GetList(
-            [],
-            [
-                'CODE' => 'BIT_TYPE'
-            ]
-        );
-        $this->bitTypeEnumId = $dbEnum->Fetch()['ID'];
-
-        $propertyEnums = \CIBlockPropertyEnum::GetList(
-            ['SORT' => 'ASC'],
-            ['IBLOCK_ID' => 1, 'CODE' => 'BIT_TYPE']
-        );
-        $this->bitTypeMap = [];
-        while($enumFields = $propertyEnums->GetNext())
-        {
-            $this->bitTypeMap[mb_strtolower(trim($enumFields['VALUE']))] = $enumFields['ID'];
+        while($enumFields = $propertyEnums->GetNext()) {
+            $this->enumsMultiPropsMap[$enumFields['PROPERTY_CODE']][trim($enumFields['VALUE'])] = $enumFields['ID'];
         }
     }
 
