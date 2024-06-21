@@ -61,6 +61,20 @@ if ($_GET['tst'] == 'tst') {
     );
 }
 
+$sortOrient = $_GET['sort_orient'] == 'asc' ? 'desc' : 'asc';
+switch ($_GET['catalog_sort']) {
+    case 'price' :
+        $sSortField = 'catalog_PRICE_1';
+        break;
+    case 'name':
+        $sSortField = 'PROPERTY_Naimenovanie';
+        break;
+    default:
+        $sSortField = 'PROPERTY_Naimenovanie';
+        break;
+
+}
+
 $APPLICATION->IncludeComponent(
 	"bitrix:catalog",
     'cat',
@@ -100,8 +114,8 @@ $APPLICATION->IncludeComponent(
 		"SECTION_COUNT_ELEMENTS" => "N",
 		"PAGE_ELEMENT_COUNT" => "70",
 		"LINE_ELEMENT_COUNT" => "1",
-		"ELEMENT_SORT_FIELD" => "PROPERTY_Naimenovanie",
-		"ELEMENT_SORT_ORDER" => "asc",
+		"ELEMENT_SORT_FIELD" => $sSortField,
+		"ELEMENT_SORT_ORDER" => $sortOrient,
         "ELEMENT_SORT_FIELD2" => "NAME",
         "ELEMENT_SORT_ORDER2ELEMENT_SORT_ORDER2" => "asc",
         "LIST_PROPERTY_CODE" => $listPropertyCode,

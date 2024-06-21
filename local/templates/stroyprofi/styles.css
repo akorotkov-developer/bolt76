@@ -79,3 +79,26 @@ table {border-collapse: collapse;}
 .b-favorite {
     text-align: right;
 }
+.product-filter {
+    display: flex;
+}
+.b-sort-top {
+    display: flex;;
+    align-items: center;
+    margin-left: 25px;
+}
+.b-sort-top a {
+    margin-right: 10px;
+}
+.b-sort-top .sort-ass {
+    margin-right: 10px;
+}
+.sort_arrow.selected.desc {
+    transform: rotate(180deg);
+}
+.sort_arrow.selected {
+    display: inline-block;
+}
+.b-sort-top a.selected {
+    color: #FF7920;
+}

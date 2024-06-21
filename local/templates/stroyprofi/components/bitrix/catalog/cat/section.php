@@ -255,7 +255,7 @@ if ($ar_result = $db_list->GetNext()) {
 
 
                 <div class="catalog-block-header catalog-block-header-personal-recomended">
-                    <b>Распродажа: </b>
+                    <b>Специальные предложения: </b>
                 </div>
                 <?
 
@@ -396,7 +396,6 @@ if ($ar_result = $db_list->GetNext()) {
 
                 $arParams["ELEMENT_SORT_FIELD2"] = 'PROPERTY_Naimenovanie';
                 $arParams["ELEMENT_SORT_ORDER2"] = $arParams["ELEMENT_SORT_ORDER"];
-
 
                 $sCurPage = $APPLICATION->GetCurPage();
                 if (strpos($sCurPage, '/apply/') !== false) {

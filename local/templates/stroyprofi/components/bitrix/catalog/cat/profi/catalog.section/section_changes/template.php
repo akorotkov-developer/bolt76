@@ -1,12 +1,36 @@
 <?php if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <?php if(sizeof($arResult["ITEMS"])>0) {?>
-    <div class="product-filter 121231">
+    <div class="product-filter">
         <div class="display hidden-xs">
             <button type="button" id="list-view" class="btn-list active" data-toggle="tooltip" title="List"><i class="fa fa-th-list"></i>
             </button>
             <button type="button" id="grid-view" class="btn-grid" data-toggle="tooltip" title="Grid"><i class="fa fa-th-large"></i>
             </button>
         </div>
+
+        <div class="b-sort-top">
+            <span class="sort-ass"> Сортировать:</span>
+            <?php
+            $arrSortFields = [
+                'price' => 'По цене',
+                'name' => 'По названию',
+            ];
+            $sortOrient = $_GET['sort_orient'] == 'asc' ? 'desc' : 'asc';
+
+            foreach ($arrSortFields as $key => $item) {?>
+                <a
+                        href="<?=$APPLICATION->GetCurPageParam('catalog_sort=' . $key . '&sort_orient=' . $sortOrient, ['catalog_sort', 'sort_orient']);?>"
+                        class="<?= ($_GET['catalog_sort'] == $key) ? 'selected' : ''?>">
+
+                    <?= $item?>
+                    <span class="sort_arrow <?= ($_GET['catalog_sort'] == $key) ? 'selected' : ''?> <?= ($_GET['sort_orient'] == 'asc') ? 'asc' : 'desc'?>">
+                    <img src="<?=SITE_TEMPLATE_PATH?>/images/sort_arrow.webp">
+                </span>
+                </a>
+            <?php }?>
+        </div>
+        <?php
+        ?>
     </div>
 
     <div class="row row-100">

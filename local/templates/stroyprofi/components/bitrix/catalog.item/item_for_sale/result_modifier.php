@@ -32,6 +32,7 @@ $arResult['ITEM']['DETAIL_PAGE_URL'] = str_replace($arReplaces, $arValues, $deta
 // Определяем картинку и название для товара
 $dbGroups = \CIBlockElement::GetElementGroups($arResult['ITEM']['ID'], true);
 $sections = false;
+
 while($group = $dbGroups->Fetch()) {
     // TODO убрать строгое значение!
     if ($group['ID'] != 5966) {
@@ -55,7 +56,18 @@ if ($sectionId) {
         $sectionParams = $section;
     }
 
+    // TODO костыль для раздела пистолеты, П.С. разобраться почему именно для этого раздела не подтягивается картинка
+    if ($sectionParams['CODE'] == 'pistolet_termokleevoy') {
+        $arResult['ITEM']['PREVIEW_PICTURE'] = CFile::ResizeImageGet($sectionParams['PICTURE'], ['width' => 900, 'height' => 600], BX_RESIZE_IMAGE_PROPORTIONAL, true);
+        $arResult['ITEM']['PREVIEW_PICTURE']['SRC'] = $arResult['ITEM']['PREVIEW_PICTURE']['src'];
+    }
+
     if (!empty($sectionParams) && $sectionParams['UF_TEMPLATE'] == 1 && $sectionParams['PICTURE']) {
+        $arResult['ITEM']['PREVIEW_PICTURE'] = CFile::ResizeImageGet($sectionParams['PICTURE'], ['width' => 900, 'height' => 600], BX_RESIZE_IMAGE_PROPORTIONAL, true);
+        $arResult['ITEM']['PREVIEW_PICTURE']['SRC'] = $arResult['ITEM']['PREVIEW_PICTURE']['src'];
+    }
+
+    if (!$arResult['ITEM']['PREVIEW_PICTURE']) {
         $arResult['ITEM']['PREVIEW_PICTURE'] = CFile::ResizeImageGet($sectionParams['PICTURE'], ['width' => 900, 'height' => 600], BX_RESIZE_IMAGE_PROPORTIONAL, true);
         $arResult['ITEM']['PREVIEW_PICTURE']['SRC'] = $arResult['ITEM']['PREVIEW_PICTURE']['src'];
     }
