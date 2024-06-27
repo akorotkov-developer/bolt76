@@ -48,31 +48,32 @@ if ($priceGroup == 'OPT_2') {
     $sPriceCode = 'BASE';
 }
 
-if ($_GET['tst'] == 'tst') {
-    $listPropertyCode = array_merge($arAvailableProps, ['PRICE_OPT', 'PRICE_OPT2', 'PRICE']);
-} else {
-    $listPropertyCode = array(
-        0 => "ARTICUL",
-        1 => "UNITS",
-        2 => "PRICE_OPT",
-        3 => "PRICE_OPT2",
-        4 => "PRICE",
-        5 => "",
-    );
-}
+$listPropertyCode = array(
+    0 => "ARTICUL",
+    1 => "UNITS",
+    2 => "PRICE_OPT",
+    3 => "PRICE_OPT2",
+    4 => "PRICE",
+    5 => "",
+);
 
-$sortOrient = $_GET['sort_orient'] == 'asc' ? 'desc' : 'asc';
 switch ($_GET['catalog_sort']) {
-    case 'price' :
+    case 'price_asc' :
         $sSortField = 'catalog_PRICE_1';
+        $sortOrient = 'asc';
+        break;
+    case 'price_desc' :
+        $sSortField = 'catalog_PRICE_1';
+        $sortOrient = 'desc';
         break;
     case 'name':
         $sSortField = 'PROPERTY_Naimenovanie';
+        $sortOrient = 'asc';
         break;
     default:
         $sSortField = 'PROPERTY_Naimenovanie';
+        $sortOrient = 'asc';
         break;
-
 }
 
 $APPLICATION->IncludeComponent(

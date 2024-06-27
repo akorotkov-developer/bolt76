@@ -4,27 +4,14 @@
 <? endif; ?>
 <?
 if (sizeof($arResult["ITEMS"]) > 0) {?>
-    <div class="b-sort-top">
-        <span class="sort-ass"> Сортировать:</span>
-        <?php
-        $arrSortFields = [
-            'price' => 'По цене',
-            'name' => 'По названию',
-        ];
-        $sortOrient = $_GET['sort_orient'] == 'asc' ? 'desc' : 'asc';
-
-        foreach ($arrSortFields as $key => $item) {?>
-            <a
-                    href="<?=$APPLICATION->GetCurPageParam('catalog_sort=' . $key . '&sort_orient=' . $sortOrient, ['catalog_sort', 'sort_orient']);?>"
-                    class="<?= ($_GET['catalog_sort'] == $key) ? 'selected' : ''?>">
-
-                <?= $item?>
-                <span class="sort_arrow <?= ($_GET['catalog_sort'] == $key) ? 'selected' : ''?> <?= ($_GET['sort_orient'] == 'asc') ? 'asc' : 'desc'?>">
-                <img src="<?=SITE_TEMPLATE_PATH?>/images/sort_arrow.webp">
-            </span>
-            </a>
-        <?php }?>
-    </div>
+    <?php
+    $APPLICATION->IncludeComponent('bitrix:main.include','',
+        [
+            'AREA_FILE_SHOW' => 'file',
+            'PATH' => '/local/include_file/sort.php'
+        ]
+    );
+    ?>
 
     <div class="catalog_element">
         <form action="/cart/add_to_cart.php" method="post" class="order_form">
