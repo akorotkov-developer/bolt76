@@ -43,7 +43,6 @@ if (strpos($sCurPage, '/apply/') !== false) {
     }
 
     foreach ($arResult['ITEMS'] as $key => $arItem) {
-        $arResult['ITEMS'][$key]['NAME'] = $arItem['PROPERTY_' . $iNaimenovanieId];
         $arResult['ITEMS'][$key]['DETAIL_PAGE_URL'] = $arItemsProducts[$arItem['ID']]['DETAIL_PAGE_URL'];
     }
 

@@ -5,15 +5,11 @@
 <?
 if (sizeof($arResult["ITEMS"]) > 0) {?>
     <?php
-    $APPLICATION->IncludeComponent('bitrix:main.include','',
-        [
-            'AREA_FILE_SHOW' => 'file',
-            'PATH' => '/local/include_file/sort.php'
-        ]
-    );
+    /** Сортировка */
+    @require $_SERVER['DOCUMENT_ROOT'] . '/local/include_file/sort.php';
     ?>
 
-    <div class="catalog_element">
+    <div class="catalog_element 123">
         <form action="/cart/add_to_cart.php" method="post" class="order_form">
             <table class="full element_table">
                 <thead>

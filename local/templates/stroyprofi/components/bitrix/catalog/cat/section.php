@@ -390,9 +390,9 @@ if ($ar_result = $db_list->GetNext()) {
 
                 <?php
                 $sCurPage = $APPLICATION->GetCurPage();
-                if (strpos($sCurPage, '/apply/') !== false) {
+                /*if (strpos($sCurPage, '/apply/') !== false) {
                     $arParams["ELEMENT_SORT_FIELD"] = 'PROPERTY_ELEMENT_SECTION_NAME';
-                }
+                }*/
 
                 $arParams["ELEMENT_SORT_FIELD2"] = 'PROPERTY_Naimenovanie';
                 $arParams["ELEMENT_SORT_ORDER2"] = $arParams["ELEMENT_SORT_ORDER"];

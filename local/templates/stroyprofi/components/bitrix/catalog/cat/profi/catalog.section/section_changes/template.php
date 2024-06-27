@@ -13,14 +13,9 @@
         </div>
 
         <?php
-        $APPLICATION->IncludeComponent('bitrix:main.include','',
-            [
-                'AREA_FILE_SHOW' => 'file',
-                'PATH' => '/local/include_file/sort.php'
-            ]
-        );
+        /** Сортировка */
+        @require $_SERVER['DOCUMENT_ROOT'] . '/local/include_file/sort.php';
         ?>
-
     </div>
 
     <div class="row row-100">
