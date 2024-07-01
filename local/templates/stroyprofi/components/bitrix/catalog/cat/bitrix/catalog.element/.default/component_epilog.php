@@ -157,3 +157,49 @@ foreach($arFavorites as $k => $favoriteItem):
         });
     </script>
 <?php endforeach; ?>
+
+<script>
+    $( document ).ready(function() {
+        window.basketController = {
+            setLinks: function () {
+                $.ajax({
+                    url: '/local/ajax/setbasketlinks.php',
+                    method: 'get',
+                    data: {},
+                    success: function (data) {
+                        var productsInBasket = JSON.parse(data);
+                        var currentProductId = '<?= $arResult['ID']?>';
+
+                        for (var productId in productsInBasket) {
+                            if (productId == currentProductId) {
+                                $('.is-in-basket').html('<div class="in_basket">' + Number(productsInBasket[productId].QUANTITY) + ' в корзине <img class="in_basket_delete" data-element="' + productId + '" src="<?= SITE_TEMPLATE_PATH?>/components/bitrix/catalog/cat/profi/catalog.section/section_descr/images/trash.png"></div>');
+                            }
+                        }
+                    }
+                });
+            }
+        };
+        window.basketController.setLinks();
+
+        // Удаление товара из корзины
+        $('body').on('click', '.in_basket_delete', function(e) {
+            var param = 'idBasketElement=' + $(this).attr('data-element');
+            var inBasketBlock = $(this).parent();
+            $.ajax({
+                url:     '/local/ajax/deletebasketelement.php', // URL отправки запроса
+                type:     'GET',
+                dataType: 'html',
+                data: param,
+                success: function(response) {
+                    if ($.trim(response) != '') {
+                        $('.cart_info_holder').html(response);
+                    }
+                    inBasketBlock.remove();
+                },
+                error: function(jqXHR, textStatus, errorThrown){ // Ошибка
+                    console.log('Error: '+ errorThrown);
+                }
+            });
+        });
+    });
+</script>

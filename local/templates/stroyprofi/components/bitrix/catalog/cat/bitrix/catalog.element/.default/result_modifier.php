@@ -8,7 +8,6 @@
 $component = $this->getComponent();
 $arParams = $component->applyTemplateModifications();
 
-
 // Проверяем, не является ли раздел распродажей
 $dbResult = CIBlockSection::GetList(
     [],
