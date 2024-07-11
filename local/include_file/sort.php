@@ -26,7 +26,7 @@ $sortValues = [
             console.log($(this).val(), '$(this).val()');
 
             var baseUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
-            window.location.href = baseUrl + '?tst=tst&clear_cache=Y&catalog_sort=' + $(this).val();
+            window.location.href = baseUrl + '?catalog_sort=' + $(this).val();
         });
     </script>
 </div>

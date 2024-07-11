@@ -4,6 +4,8 @@ $( document ).ready(function() {
     $('#list-view').on('click',function() {
         $('#list-view').addClass('active');
         $('#grid-view').removeClass('active');
+        $('#table-view').removeClass('active');
+
         $('.page_content .product-layout').attr('class', 'product-layout product-list col-xs-12');
         localStorage.setItem('display', 'list');
 
@@ -12,11 +14,15 @@ $( document ).ready(function() {
             $(this).removeAttr('style');;
             $(this).children().removeAttr('style');;
         });
+
+        $('.b-grid-list-view').fadeIn();
+        $('.b-table-view').fadeOut();
     });
     // Product Grid
     $('#grid-view').on('click',function() {
         $('#grid-view').addClass('active');
         $('#list-view').removeClass('active');
+        $('#table-view').removeClass('active');
 
         // What a shame bootstrap does not take into account dynamically loaded columns
         cols = $('#column-right, #column-left').length;
@@ -31,6 +37,21 @@ $( document ).ready(function() {
 
         // Сделать блоки одной высоты
         setTimeout(setColumnHeight, 1000);
+
+        $('.b-grid-list-view').fadeIn();
+        $('.b-table-view').fadeOut();
+    });
+    // Table View
+    $('#table-view').on('click',function() {
+        console.log('Тут');
+        $('#grid-view').removeClass('active');
+        $('#list-view').removeClass('active');
+        $('#table-view').addClass('active');
+
+        $('.b-grid-list-view').fadeOut();
+        $('.b-table-view').fadeIn();
+
+        localStorage.setItem('display', 'table');
     });
 
     function setColumnHeight() {
@@ -51,6 +72,8 @@ $( document ).ready(function() {
 
     if (localStorage.getItem('display') == 'list') {
         $('#list-view').trigger('click');
+    } else if (localStorage.getItem('display') == 'table') {
+        $('#table-view').trigger('click');
     } else {
         $('#grid-view').trigger('click');
     }

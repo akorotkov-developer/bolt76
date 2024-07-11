@@ -100,7 +100,8 @@
     padding-top: 20px;
     width: 100%;
 }
-.product-filter .display .btn-list, .product-filter .display .btn-grid {
+.product-filter .display .btn-list, .product-filter .display .btn-grid,
+.product-filter .display .btn-table {
     background: transparent;
     outline: none;
     color: #000;
@@ -109,10 +110,12 @@
     text-align: center;
     line-height: 42px;
 }
-.product-filter .display .btn-list.active, .product-filter .display .btn-grid.active {
+.product-filter .display .btn-list.active, .product-filter .display .btn-grid.active,
+.product-filter .display .btn-table.active{
     color: #FF7920;
 }
-.product-filter .display .btn-list:hover, .product-filter .display .btn-grid:hover {
+.product-filter .display .btn-list:hover, .product-filter .display .btn-grid:hover,
+.product-filter .display .btn-table:hover {
     color: #FF7920;
 }
 .product-filter {
@@ -156,7 +159,7 @@
 .product-list .product-thumb h3 {
     margin-top: 0px;
 }
-.buy_helper:before {
+.product-layout .buy_helper:before {
     content: '-';
     position: absolute;
     left: 0px;
@@ -164,7 +167,7 @@
     font-weight: bold;
     cursor: pointer;
 }
-.buy_helper:after {
+.product-layout .buy_helper:after {
     content: '+';
     position: absolute;
     right: -20px;
@@ -173,7 +176,7 @@
     font-weight: bold;
     cursor: pointer;
 }
-.buy_helper {
+.product-layout .buy_helper {
     position: relative;
     width: 40px;
     padding-left: 10px;
@@ -311,4 +314,80 @@
     top: 5px;
     padding: 0px;
     width: 55px;
+}
+
+.b-table-view {
+    display: none;
+}
+
+
+
+.no_underline {
+    text-decoration: none;
+}
+.kratnostHelperHolder {
+    right: 100%;
+    top: 3px;
+    position: absolute;
+    display: none;
+    height: 25px;
+    padding-right: 6px;
+    background: url(/images/ar_right.png) no-repeat right center;
+}
+.kratnostHelper {
+    background: #ff7900;
+    line-height: 25px;
+    height: 25px;
+    color: #fff;
+    text-align: center;
+    padding: 0 10px;
+    white-space: nowrap;
+    border-radius: 3px;
+}
+.filter_section_title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px;
+    display: block;
+}
+td.buy {
+    position: relative;
+}
+.buy_helper:before {
+    content: '-';
+    position: absolute;
+    left: -10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.buy_helper:after {
+    content: '+';
+    position: absolute;
+    right: -10px;
+    top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.in_basket {
+    display: flex;
+    font-size: 9px;
+    justify-content: space-between;
+}
+.in_basket img {
+    width:  11px;
+    height: 11px;
+}
+.in_basket_delete {
+    cursor: pointer;
+}
+.element_table .name.sale {
+    position: relative;
+}
+.element_table .name.sale .i-sale-shildik {
+    position: absolute;
+    right: -3px;
+    width: 29px;
+    top: 1px;
 }

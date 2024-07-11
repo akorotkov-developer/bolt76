@@ -77,12 +77,12 @@ if (strpos($sCurPage, '/apply/') !== false) {
                 $groupSectionItems[$arItem['~IBLOCK_SECTION_ID']][] = $arItem;
             }
 
-            foreach ($groupSectionItems as $groupKey => $group) {
+            /*foreach ($groupSectionItems as $groupKey => $group) {
                 usort($group, function($a, $b) {
                     return trim($a['PROPERTIES']['Naimenovanie']['VALUE']) <=> trim($b['PROPERTIES']['Naimenovanie']['VALUE']);
                 });
                 $groupSectionItems[$groupKey] = $group;
-            }
+            }*/
 
             $arResult['ITEMS'] = [];
 

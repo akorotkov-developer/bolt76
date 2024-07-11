@@ -925,6 +925,9 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 															</span>
 															<span id="<?=$itemIds['PRICE_TOTAL']?>"></span>
 														</span>
+                                                        <span class="is-in-basket">
+
+                                                        </span>
 													</div>
 												</div>
 											</div>

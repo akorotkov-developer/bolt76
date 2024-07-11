@@ -103,3 +103,23 @@ table {border-collapse: collapse;}
 .b-sort-top a.selected {
     color: #FF7920;
 }
+body .wrapper .bx-filter.bx-blue .bx-ui-slider-pricebar-vd {background: #FF7920;}
+.b-favorite svg {
+    width: 18px;
+    height: 18px;
+}
+.b-grid-list-view {
+    width: 100%;
+}
+/*.b-sort-top #sort-select {
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    height: 38px;
+    margin: 0;
+    padding: 0 4px;
+    border: 1px solid #ccd5db;
+    border-radius: 2px;
+    background: #fff;
+    outline: none;
+}*/

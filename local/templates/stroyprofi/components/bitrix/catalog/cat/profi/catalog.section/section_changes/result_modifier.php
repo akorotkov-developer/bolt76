@@ -43,7 +43,6 @@ if (strpos($sCurPage, '/apply/') !== false) {
     }
 
     foreach ($arResult['ITEMS'] as $key => $arItem) {
-        $arResult['ITEMS'][$key]['NAME'] = $arItem['PROPERTY_' . $iNaimenovanieId];
         $arResult['ITEMS'][$key]['DETAIL_PAGE_URL'] = $arItemsProducts[$arItem['ID']]['DETAIL_PAGE_URL'];
     }
 
@@ -155,3 +154,14 @@ while($result = $dbResult->Fetch()){
 }
 
 $arResult['SALE_ITEMS'] = $arItemsSale;
+
+if ($_GET['tst']) {
+    $sCurPage = $APPLICATION->GetCurPage();
+    if (strpos($sCurPage, '/filter/') !== false) {
+        $list = \CIBlockSection::GetNavChain(false, $arResult['ID'], ['ID', 'NAME', 'DEPTH_LEVEL', 'CODE'], true);
+        $navChain = [];
+        foreach ($list as $v) {
+            $APPLICATION->AddChainItem($v['NAME'],  '/catalog/' . $v['ID'] . '-' . $v['CODE']);
+        }
+    }
+}
