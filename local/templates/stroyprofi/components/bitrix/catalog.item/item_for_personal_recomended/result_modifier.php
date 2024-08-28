@@ -1,6 +1,6 @@
 <?php
 // Подставим картинку, если таковой нет
-// Определи адрес детальной страницы
+// Определим адрес детальной страницы
 
 // Проверяем, не является ли раздел распродажей
 $dbResult = CIBlockSection::GetList(
@@ -26,22 +26,24 @@ while($arGroup = $dbGroups->Fetch()) {
         $curSectionId = $arGroup['ID'];
     }
 }
+
 if ((int) $curSectionId > 0) {
     $arFields = [
         'IBLOCK_ID' => 1,
-        'ID' => $curSectionId
+        '=ID' => $curSectionId
     ];
     $obSections = CIBlockSection::GetList(
         ['SORT' => 'ASC'],
         $arFields,
         false,
-        ['ID', 'PICTURE', 'DESCRIPTION']
+        ['ID', 'PICTURE', 'DESCRIPTION', 'CODE']
     );
 
     $arSection = [];
     if ($arRez = $obSections->Fetch()) {
         $arSection = $arRez;
     }
+    $sSectionCode = $arSection['CODE'];
 }
 
 if (empty($arResult['ITEM']['PREVIEW_PICTURE']['ID'])) {
@@ -61,6 +63,6 @@ if (empty($arResult['ITEM']['PREVIEW_PICTURE']['ID'])) {
 $detailPageUrlTemplate = '/catalog/#SECTION_ID#-#SECTION_CODE#/#ELEMENT_CODE#';
 
 $arReplaces = ["#SECTION_ID#", "#SECTION_CODE#", "#ELEMENT_CODE#"];
-$arValues   = [$iSectionId, $sSectionCode, $arResult['ITEM']['CODE']];
+$arValues   = [$curSectionId, $sSectionCode, $arResult['ITEM']['CODE']];
 
 $arResult['ITEM']['DETAIL_PAGE_URL'] = str_replace($arReplaces, $arValues, $detailPageUrlTemplate);
