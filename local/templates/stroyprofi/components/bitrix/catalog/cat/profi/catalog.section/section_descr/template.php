@@ -324,7 +324,6 @@ if (sizeof($arResult["ITEMS"]) > 0) {?>
                             <?= coolPrice($sPrice) ?>
                         </div>
                     </td>
-
                     <?php if (!$arResult['IS_OPT_2'] && !$arResult['IS_OPT_3']) { ?>
                         <td class="roz">
                             <div class="buy_helper_holder price">
@@ -665,12 +664,15 @@ if (sizeof($arResult["ITEMS"]) > 0) {?>
                         <td class="buy">
                             <div class="buy_helper_holder">
 
-                                <div class="buy_helper">
+                                <div class="buy_helper buy_helper-flex">
                                     <? if ($ves) { ?>
                                         <div class="vesHelperHolder">
                                         <div class="vesHelper" data-val='<?= $k_val; ?>' data-k="<?= $k; ?>"
                                              data-num="0">0 <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?></div>
-                                        </div><? } ?>
+                                        </div>
+                                    <? } ?>
+
+                                    <span class="product-item-amount-field-btn-minus no-select product-item-amount-count s-span-minus-button"></span>
                                     <div class="input_holder">
                                         <input type="text" class="quantity_input" name="ITEM[<?= $arElement["ID"] ?>]"
                                                data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
@@ -680,6 +682,9 @@ if (sizeof($arResult["ITEMS"]) > 0) {?>
                                             <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
                                         <?php } ?>
                                     </div>
+                                    <span class="product-item-amount-field-btn-plus no-select product-item-amount-count s-span-plus-button"></span>
+
+
                                     <? if (count($countTips)) { ?>
                                         <div class="help_values">
                                             <? foreach ($countTips as $c) { ?>
@@ -701,10 +706,19 @@ if (sizeof($arResult["ITEMS"]) > 0) {?>
                                 </div>
                             </div>
                         </td>
-                        <td class="mera"><?= $mera ?></td>
+
+                        <td class="t-measure">
+
+                        </td>
+
                         <td class="cart_td" <?php if ($arResult['IS_FILTER']) {
-                            echo 'colspan="2"';
-                        } ?>><a href="#" class="add_to_cart_one"><img src="/img/cart_buttton.png" alt=""></a>
+                                echo 'colspan="2"';
+                            } ?>>
+                            <?php if ($_GET['tst']) {?>
+                                <input class="btn btn-themes btn-list-add-to-cart" type="button" name="add_to_basket" value="В корзину" data-elementid="<?= $arElement['ID']?>">
+                            <?php } else {?>
+                                <a href="#" class="add_to_cart_one"><img src="/img/cart_buttton.png" alt=""></a>
+                            <?php }?>
                         </td>
 
                     </tr>

@@ -67,3 +67,61 @@ td.buy {
     width: 29px;
     top: 1px;
 }
+.buy_helper-flex {
+    display: flex;
+    justify-content: center;
+}
+.buy_helper-flex:before {
+    content: '';
+}
+.buy_helper-flex:after {
+    content: '';
+}
+.product-item-amount-count {
+    border: 1px solid;
+    border-color: #808080;
+    height: 23px!important;
+}
+.product-item-amount-field-btn-minus {
+    margin-right: 5px;
+}
+.product-item-amount-field-btn-plus {
+    margin-left: 5px;
+}
+.buy .buy_helper-flex .input_holder input {
+    width: 47px;
+}
+.buy .buy_helper.buy_helper-flex.hovered {
+    background: none;
+}
+@media (max-width: 615px) {
+    .btn-list-add-to-cart {
+        font-size: 8px;
+        padding: 5px;
+    }
+    .product-item-amount-field-btn-minus:after {
+        background-size: 5px;
+    }
+    .product-item-amount-field-btn-plus:after {
+        background-size: 5px;
+    }
+    .buy .buy_helper-flex .input_holder input {
+        width: 30px;
+    }
+}
+@media (max-width: 500px) {
+    .product-item-amount-field-btn-minus {
+        margin-right: 2px;
+    }
+    .buy .buy_helper-flex .input_holder input {
+        width: 23px;
+    }
+    .product-item-amount-count {
+        height: 20px!important;
+    }
+}
+@media (max-width: 1200px) {
+    .main_block .b-container-top {
+        display: block;
+    }
+}

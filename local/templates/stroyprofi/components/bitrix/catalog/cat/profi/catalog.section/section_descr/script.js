@@ -11,7 +11,10 @@ $( document ).ready(function() {
 
     // Обработчики событий для кнопок плюс и минус
     $('.buy_helper').bind("click", function(e) {
-        if(e.offsetX<0) {
+        console.log(e.offsetX, 'e.offsetX');
+        console.log($(this).attr('class'), 'this class');
+
+       /* if(e.offsetX<0) {
             var quantInput = $(this).find('.quantity_input');
             var dataRatio = $(this).find('.quantity_input').attr('data-ratio');
             var ratio = 1;
@@ -47,6 +50,101 @@ $( document ).ready(function() {
             }
 
             quantInput.val(val + ratio);
+        }*/
+    });
+
+    /** Добавление количества*/
+    $('.s-span-minus-button').bind('click', function(event) {
+        var quantInput = $(this).siblings('.input_holder').find('.quantity_input');
+        var dataRatio = $(this).siblings('.input_holder').find('.quantity_input').attr('data-ratio');
+        var ratio = 1;
+        var val = 0;
+
+        if (dataRatio != 'NaN') {
+            ratio = parseFloat(dataRatio);
         }
+
+        if (quantInput.val() == '') {
+            val = 0;
+        } else {
+            val = parseFloat(quantInput.val());
+        }
+
+        if (val > 0) {
+            quantInput.val(val - ratio);
+        }
+    });
+
+    /** Уменьшение количеств*/
+    $('.s-span-plus-button').bind('click', function(event) {
+        var quantInput = $(this).siblings('.input_holder').find('.quantity_input');
+        var dataRatio = $(this).siblings('.input_holder').find('.quantity_input').attr('data-ratio');
+        var ratio = 1;
+        var val = 0;
+
+        if (dataRatio != 'NaN') {
+            ratio = parseFloat(dataRatio);
+        }
+
+        if (quantInput.val() == '') {
+            val = 0;
+        } else {
+            val = parseFloat(quantInput.val());
+        }
+
+        quantInput.val(val + ratio);
+    });
+
+    /** Добавление товара в корзину */
+    $('.btn-list-add-to-cart').bind("click", function(e) {
+        e.preventDefault();
+        var el = $(this);
+        var inputval = $(el).parent().siblings('.buy').find('input');
+        var inputData = $(el).closest('tr').find('.buy .input_holder input').attr('data-ratio');
+
+        if (inputval.val() == '') {
+            var value = 0;
+            if (inputData == 'NaN') {
+                value = 1;
+            } else {
+                value = inputData;
+            }
+            inputval.val(value);
+        }
+
+        $.post("/cart/add_to_cart.php", $(el).closest('tr').find('.buy .input_holder input').serialize(), function (data) {
+            if ($.trim(data) != '') {
+                $('.cart_info_holder').html(data);
+                $(el).closest('tr').find('.buy .input_holder input').val('');
+                recountForm();
+                if ($(el).closest(".fancybox-overlay").length > 0) {
+                    $(".fancybox-close").click();
+                }
+                $("#notification").css("top", "0");
+                $("#notification").animate({"top": "0"}, 400).delay(2000).animate({"top": "-100px"}, 400);
+
+                window.basketController.setLinks();
+            }
+        });
+
+        /*var quantInput = $(this).parent().siblings('.buy').find('.quantity_input');
+        var dataRatio = $(this).find('.quantity_input').attr('data-ratio');
+        var ratio = 1;
+        var val = 0;
+        var buyAfter = $(this).parent().siblings('.buy').find('.buy_helper:after');
+
+        if (dataRatio != 'NaN') {
+            ratio = parseFloat(dataRatio);
+        }
+
+        if (quantInput.val() == '') {
+            val = 0;
+        } else {
+            val = parseFloat(quantInput.val());
+        }
+
+        if (val > 0) {
+            quantInput.val(val - ratio);
+        }*/
     });
 });
