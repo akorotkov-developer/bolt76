@@ -3,7 +3,7 @@ $( document ).ready(function() {
         var orderId = $(this).attr('data-orderid');
         var popup = new BX.CDialog({
             'title': 'Ссылка на оплату',
-            'content': '<span style="color: #FF7920; font-weight: bold; font-size: 18px;">https://strprofi.ru/sber_pay.php?order_id=' + orderId + '</span>',
+            'content': '<span style="color: #FF7920; font-weight: bold; font-size: 18px;">https://strprofi.ru/sber_pay.php?ORDER_ID=' + orderId + '&PAYMENT_ID=2</span>',
             'draggable': true,
             'resizable': true,
             'buttons': [BX.CDialog.btnClose]

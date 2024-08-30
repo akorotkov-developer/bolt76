@@ -1,24 +1,25 @@
-<?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/sberbank.ecom2/handler/handler.php");
+<?php
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
+$APPLICATION->SetTitle("Оплата заказа");
+?>
 
-use Bitrix\Sale;
+<?php
+// ?ORDER_ID=11111&PAYMENT_ID=2
+use Bitrix\Main\Application;
 
-$orderId = $_GET['order_id'];
-
-if (!empty($orderId)) {
-    $order = Sale\Order::load($orderId);
-    $paymentCollection = $order->getPaymentCollection();
-    foreach ($paymentCollection as $payment) {
-        $service = $payment->getPaySystem();
-        $paySystem = $payment;
+global $USER;
+if (!$USER->IsAuthorized()) {
+    $request = Application::getInstance()->getContext()->getRequest();
+    $orderId = $request->get('ORDER_ID');
+    if (!empty($orderId)) {
+        $_SESSION['SALE_ORDER_ID'] = [$orderId];
     }
+};
 
-    $obSberBank = new \Sale\Handlers\PaySystem\sberbank_ecom2Handler('CUSTOM', $service);
-    $params = $obSberBank->initiatePay($paySystem);
-}
-?>
+$APPLICATION->IncludeComponent(
+    "bitrix:sale.order.payment",
+    "",
+    array()
+); ?>
 
-<?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");
-?>
+<?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/epilog_after.php");

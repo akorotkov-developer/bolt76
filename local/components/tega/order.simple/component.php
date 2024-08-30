@@ -400,7 +400,8 @@ if (isset($form)) {
 
                         $result = $order->save();
                         if ($result->isSuccess()) {
-                            LocalRedirect("/sber_pay.php?order_id=" . $arResult["ORDER_ID"], true);
+                            $_SESSION['SALE_ORDER_ID'] = [$arResult["ORDER_ID"]];
+                            LocalRedirect("/sber_pay.php?ORDER_ID=" . $arResult["ORDER_ID"] . '&PAYMENT_ID=2', true);
                         }
                         else {
                             echo $result->getError();
