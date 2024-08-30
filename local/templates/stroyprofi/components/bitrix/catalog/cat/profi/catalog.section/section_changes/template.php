@@ -349,7 +349,7 @@
     if (sizeof($arResult["ITEMS"]) > 0) { ?>
         <div class="catalog_element">
             <form action="/cart/add_to_cart.php" method="post" class="order_form">
-                <table class="full element_table 222">
+                <table class="full element_table">
                     <thead>
                     <tr>
                         <td class="first-td"></td>
@@ -417,7 +417,7 @@
                     if ($arResult['IS_FILTER'] && !$isSectionNameWrited) { ?>
                     </tbody>
                 </table>
-                <table class="full element_table 111">
+                <table class="full element_table">
                     <tbody>
                     <tr>
                         <td colspan="12">
@@ -760,7 +760,7 @@
                                         <div class="clear"></div>
                                     </td>
                                 <?php } else {?>
-                                    <td rowspan="<?= (sizeof($arResult["ITEMS"]) + 1 + sizeof($arResult['SECTIONS_COUNT']) + 1) ?>"
+                                    <td rowspan="<?php /*echo (sizeof($arResult["ITEMS"]) + 1 + sizeof($arResult['SECTIONS_COUNT']) + 1)*/ ?>"
                                         class="section_description">
 
                                         <?
