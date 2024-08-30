@@ -1,5 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+$APPLICATION->SetPageProperty("description", "Магазин крепежа СтройПрофи, каталог");
+$APPLICATION->SetPageProperty("keywords", "Крепеж, инструмент, спецодежда, строительная химия, хомуты");
 $APPLICATION->SetTitle("Каталог");
 ?><?$APPLICATION->IncludeComponent("bitrix:catalog", "cat", array(
 	"IBLOCK_TYPE" => "content",
