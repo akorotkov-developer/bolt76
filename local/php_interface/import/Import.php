@@ -842,10 +842,6 @@ class Import
                         $multiPropId = $this->enumsMultiPropsMap[$multiPropCode][trim($multiPropName)];
 
                         if (empty($multiPropId)) {
-                            if ($multiPropCode == 'MATERIAL_OF_BLADES') {
-                                \Bitrix\Main\Diag\Debug::dumpToFile(['$this->enumsMultiPropsMap' => $this->enumsMultiPropsMap], '', 'log.txt');
-                                \Bitrix\Main\Diag\Debug::dumpToFile(['$multiPropName' => $multiPropName], '', 'log.txt');
-                            }
                             $ibpEnum = new \CIBlockPropertyEnum;
                             $multiPropId = $ibpEnum->Add(['PROPERTY_ID' => $this->multiProps[$multiPropCode]['ID'], 'VALUE' => trim($multiPropName)]);
                             $this->enumsMultiPropsMap[$multiPropCode][$multiPropName] = $multiPropId;
@@ -854,9 +850,6 @@ class Import
                         $aMultiPropValues[$multiPropCode][] = $multiPropId;
                     }
                 }
-            }
-            if ($item['Artikul'] == '11019') {
-                \Bitrix\Main\Diag\Debug::dumpToFile(['$aMultiPropValues' => $aMultiPropValues], '', 'log.txt');
             }
 
             $arUpdate = [
