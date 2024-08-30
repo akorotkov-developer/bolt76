@@ -46,6 +46,19 @@ if (CModule::IncludeModule("iblock")) {
                                 $(obj).find('.buy').append('<div class="in_basket">' + Number(products[elementId].QUANTITY) + ' в корзине <img class="in_basket_delete" data-element="' + elementId + '" src="/local/templates/stroyprofi/components/bitrix/catalog/cat/profi/catalog.section/section_descr/images/trash.png"></div>');
                             }
                         });
+                        $('.btn-list-add-to-cart').each(function(i, obj) {
+                            elementId = $(obj).attr('data-elementid');
+
+                            if (products[elementId]) {
+                                $(obj).val('В корзине (' + Number(products[elementId].QUANTITY) + ')');
+                                if (!$(obj).hasClass('basket-added')) {
+                                    $(obj).addClass('basket-added');
+                                }
+                            } else {
+                                $(obj).val('В корзину');
+                                $(obj).removeClass('basket-added');
+                            }
+                        });
                     }
                 });
             }
