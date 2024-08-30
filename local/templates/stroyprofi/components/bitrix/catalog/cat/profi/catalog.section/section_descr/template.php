@@ -707,9 +707,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {?>
                             </div>
                         </td>
 
-                        <td class="t-measure">
-
-                        </td>
+                        <td class="mera"><?= $mera ?></td>
 
                         <td class="cart_td" <?php if ($arResult['IS_FILTER']) {
                                 echo 'colspan="2"';

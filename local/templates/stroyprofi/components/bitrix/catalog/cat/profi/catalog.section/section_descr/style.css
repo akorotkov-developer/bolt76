@@ -125,3 +125,6 @@ td.buy {
         display: block;
     }
 }
+.main_block table.element_table tr td.mera {
+    text-align: center;
+}
