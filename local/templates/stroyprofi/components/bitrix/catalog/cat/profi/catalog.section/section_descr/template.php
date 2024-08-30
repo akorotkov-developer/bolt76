@@ -714,11 +714,8 @@ if (sizeof($arResult["ITEMS"]) > 0) {?>
                         <td class="cart_td" <?php if ($arResult['IS_FILTER']) {
                                 echo 'colspan="2"';
                             } ?>>
-                            <?php if ($_GET['tst']) {?>
-                                <input class="btn btn-themes btn-list-add-to-cart" type="button" name="add_to_basket" value="В корзину" data-elementid="<?= $arElement['ID']?>">
-                            <?php } else {?>
-                                <a href="#" class="add_to_cart_one"><img src="/img/cart_buttton.png" alt=""></a>
-                            <?php }?>
+
+                            <input class="btn btn-themes btn-list-add-to-cart" type="button" name="add_to_basket" value="В корзину" data-elementid="<?= $arElement['ID']?>">
                         </td>
 
                     </tr>
