@@ -485,3 +485,6 @@ td.buy {
     border-color: #FF9545;
     opacity: 0.8;
 }
+.b-product-items .product-filter {
+    width: 100%
+}
