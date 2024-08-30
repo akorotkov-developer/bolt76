@@ -123,3 +123,20 @@ body .wrapper .bx-filter.bx-blue .bx-ui-slider-pricebar-vd {background: #FF7920;
     background: #fff;
     outline: none;
 }*/
+.btn-list-add-to-cart {
+    background-color: #FF7920;
+    border-color: #FF7920;
+    color: #FFF;
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+.btn-list-add-to-cart:hover {
+    background-color: #FF9545;
+    border-color: #FF9545;
+    opacity: 0.8;
+}
+.btn-list-add-to-cart.basket-added {
+    background-color: #FF9545;
+    border-color: #FF9545;
+    opacity: 0.8;
+}
