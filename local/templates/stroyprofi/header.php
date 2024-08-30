@@ -40,10 +40,7 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick.css">
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/plugins/slick/slick-theme.css">
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/css_templates/products.css">
-    <link
-            rel="stylesheet"
-            href="/plugins/fancybox/fancybox.css"
-    />
+    <link rel="stylesheet" href="/plugins/fancybox/fancybox.css"/>
     <link rel="stylesheet" type="text/css" href="<?= SITE_TEMPLATE_PATH?>/css_templates/print_styles.css" media="print">
 </head>
 <body>
@@ -155,17 +152,17 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
 
        <!-- Бегущая строка -->
 
-<!--            <div class="marquee">-->
-<!--                <span>-->
-<!--                    --><?php
-//                    $APPLICATION->IncludeComponent("bitrix:main.include","",Array(
-//                            "AREA_FILE_SHOW" => "file",
-//                            "PATH" => "/local/include_file/top_marquee.php",
-//                        )
-//                    );
-//                    ?>
-<!--                </span>-->
-<!--            </div>-->
+            <div class="marquee">
+                <span>
+                    <?php
+                    $APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+                            "AREA_FILE_SHOW" => "file",
+                            "PATH" => "/local/include_file/top_marquee.php",
+                        )
+                    );
+                    ?>
+                </span>
+            </div>
 
             <div class="dark_line">
                 <div class="corners left"><div class="right"></div></div>
