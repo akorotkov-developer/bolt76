@@ -10,7 +10,6 @@ BX.ready(function() {
 
             $('.copy_progress').show();
 
-            console.log('Тут 1');
             BX.ajax({
                 url: '/local/modules/' + admin_module_name + '/tools/run_upload.php',
                 data: {

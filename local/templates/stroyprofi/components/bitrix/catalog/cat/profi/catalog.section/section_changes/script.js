@@ -43,7 +43,6 @@ $( document ).ready(function() {
     });
     // Table View
     $('#table-view').on('click',function() {
-        console.log('Тут');
         $('#grid-view').removeClass('active');
         $('#list-view').removeClass('active');
         $('#table-view').addClass('active');

@@ -9,50 +9,6 @@ $( document ).ready(function() {
         }
     });
 
-    // Обработчики событий для кнопок плюс и минус
-    $('.buy_helper').bind("click", function(e) {
-        console.log(e.offsetX, 'e.offsetX');
-        console.log($(this).attr('class'), 'this class');
-
-       /* if(e.offsetX<0) {
-            var quantInput = $(this).find('.quantity_input');
-            var dataRatio = $(this).find('.quantity_input').attr('data-ratio');
-            var ratio = 1;
-            var val = 0;
-
-            if (dataRatio != 'NaN') {
-                ratio = parseFloat(dataRatio);
-            }
-
-            if (quantInput.val() == '') {
-                val = 0;
-            } else {
-                val = parseFloat(quantInput.val());
-            }
-
-            if (val > 0) {
-                quantInput.val(val - ratio);
-            }
-        } else {
-            var quantInput = $(this).find('.quantity_input');
-            var dataRatio = $(this).find('.quantity_input').attr('data-ratio');
-            var ratio = 1;
-            var val = 0;
-
-            if (dataRatio != 'NaN') {
-                ratio = parseFloat(dataRatio);
-            }
-
-            if (quantInput.val() == '') {
-                val = 0;
-            } else {
-                val = parseFloat(quantInput.val());
-            }
-
-            quantInput.val(val + ratio);
-        }*/
-    });
-
     /** Добавление количества*/
     $('.s-span-minus-button').bind('click', function(event) {
         var quantInput = $(this).siblings('.input_holder').find('.quantity_input');
@@ -126,25 +82,5 @@ $( document ).ready(function() {
                 window.basketController.setLinks();
             }
         });
-
-        /*var quantInput = $(this).parent().siblings('.buy').find('.quantity_input');
-        var dataRatio = $(this).find('.quantity_input').attr('data-ratio');
-        var ratio = 1;
-        var val = 0;
-        var buyAfter = $(this).parent().siblings('.buy').find('.buy_helper:after');
-
-        if (dataRatio != 'NaN') {
-            ratio = parseFloat(dataRatio);
-        }
-
-        if (quantInput.val() == '') {
-            val = 0;
-        } else {
-            val = parseFloat(quantInput.val());
-        }
-
-        if (val > 0) {
-            quantInput.val(val - ratio);
-        }*/
     });
 });
