@@ -1003,7 +1003,7 @@ h2.basket-item-info-name {
 .basket-item-property-value,
 .basket-item-property-custom-value {
 	color: #4a4a4a;
-	font: bold 12px/16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font: bold 12px/16px "Verdana", sans-serif;
 }
 
 /*region Custom Column*/
