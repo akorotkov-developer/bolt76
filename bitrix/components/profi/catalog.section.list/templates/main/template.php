@@ -18,8 +18,8 @@ if(sizeof($arResult["SECTIONS"])>0){
             <a class="section"  href="<?=$section["SECTION_PAGE_URL"]?>"  id="<?=$this->GetEditAreaId($section['ID']);?>">
                 <span class="picture"><?
                 if($section["PICTURE"]["ID"]>0){
-                    //$file = CFile::ResizeImageGet($section["PICTURE"]["ID"], array('width' => 300, 'height' => 94), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                    $file = CFile::GetPath($section["PICTURE"]["ID"]);
+                    $file = CFile::ResizeImageGet($section["PICTURE"]["ID"], array('width' => 400, 'height' => 94), BX_RESIZE_IMAGE_PROPORTIONAL, true)['src'];
+                    // $file = CFile::GetPath($section["PICTURE"]["ID"]);
                 ?>
                 <img src="<?=$file?>" alt="" style="
                   max-width:230px;
