@@ -276,10 +276,6 @@ if (sizeof($arResult["ITEMS"]) > 0) {
                                     </div>
                                 </div>
                             </a>
-
-                            <?php if ($arElement['PROPERTIES']['SALE']['VALUE'] != '') {?>
-                                <img class="i-sale-shildik" src="<?=SITE_TEMPLATE_PATH?>/images/sale.png">
-                            <?php }?>
                         </td>
                         <td class="opt sfsdfsd">
                             <?php

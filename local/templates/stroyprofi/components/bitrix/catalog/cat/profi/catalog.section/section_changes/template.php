@@ -59,14 +59,7 @@
                 $rk = number_format(round($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] / $k, 2), 2, ', ', ' ');
                 ?>
                 <div class="product-layout product-list col-xs-12" id="<?= $this->GetEditAreaId($arElement['ID']); ?>" data-elementid="<?= $arElement['ID']?>">
-                    <div class="product-thumb">
-                        <?php
-
-                        if ($arElement['PROPERTIES']['SALE']['VALUE'] != '') { ?>
-                            <img class="i-sale-shildik" src="<?= SITE_TEMPLATE_PATH ?>/images/m_sale.png">
-                            <?php
-                        }
-                        ?>
+                    <div class="product-thumb <?= ProjectHelper::getShieldClass($arElement['PROPERTIES']['SALE']['VALUE']) ?>">
                         <div class="b-favorite">
                             <svg data-product-id="<?= $arElement['ID'] ?>"
                                  class="favorite-svg-icon <?= $arElement['IS_FAVORITE'] ? 'active' : '' ?>"
@@ -90,14 +83,8 @@
                                      title="<?= $arElement['NAME'] ?>" class="img-responsive"/>
                             </a>
                         </div>
-                        <div class="image image-list">
-                            <?php
 
-                            if ($arElement['PROPERTIES']['SALE']['VALUE'] != '') { ?>
-                                <img class="i-sale-shildik" src="<?= SITE_TEMPLATE_PATH ?>/images/m_sale.png">
-                                <?php
-                            }
-                            ?>
+                        <div class="image image-list <?= ProjectHelper::getShieldClass($arElement['PROPERTIES']['SALE']['VALUE'])?>">
                             <?php
                             $pictureId = ((int)$arElement['PREVIEW_PICTURE']['ID'] > 0) ? $arElement['PREVIEW_PICTURE']['ID'] : $arResult['PICTURE']['ID'];
                             $file = CFile::ResizeImageGet(
@@ -622,14 +609,6 @@
                                     </div>
                                 </div>
                             </a>
-
-                            <?php
-
-                            if ($arElement['PROPERTIES']['SALE']['VALUE'] != '') { ?>
-                                <img class="i-sale-shildik" src="<?= SITE_TEMPLATE_PATH ?>/images/m_sale.png">
-                                <?php
-                            }
-                            ?>
                         </td>
                         <td class="opt">
                             <?php
@@ -748,7 +727,7 @@
 
 
                                 if ($arElement['PREVIEW_PICTURE']['SRC'] != '') {?>
-                                    <td class="section_description section_description-image">
+                                    <td class="section_description section_description-image <?= ProjectHelper::getShieldClass($arElement['PROPERTIES']['SALE']['VALUE'])?>">
 
                                         <a href="<?= $arElement['PREVIEW_PICTURE']['SRC'] ?>" class="fancybox" data-fancybox>
                                             <img class="line-item-image"
@@ -960,14 +939,6 @@
                                         </div>
                                     </div>
                                 </a>
-
-                                <?php
-
-                                if ($arElement['PROPERTIES']['SALE']['VALUE'] != '') { ?>
-                                    <img class="i-sale-shildik" src="<?= SITE_TEMPLATE_PATH ?>/images/m_sale.png">
-                                    <?php
-                                }
-                                ?>
                             </td>
                             <td class="opt">
                                 <?php

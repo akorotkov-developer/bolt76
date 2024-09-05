@@ -488,3 +488,6 @@ td.buy {
 .b-product-items .product-filter {
     width: 100%
 }
+.catalog_element .element_table tbody td.section_description {
+    position: relative;
+}

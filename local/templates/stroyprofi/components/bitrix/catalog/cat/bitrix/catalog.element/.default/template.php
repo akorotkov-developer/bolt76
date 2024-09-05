@@ -167,6 +167,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 		$labelPositionClass .= isset($positionClassMap[$pos]) ? ' '.$positionClassMap[$pos] : '';
 	}
 }
+
 ?>
 
 <div class="bx-catalog-element bx-<?=$arParams['TEMPLATE_THEME']?>" id="<?=$itemIds['ID']?>"
@@ -178,7 +179,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-4">
-                            <div id="<?=$itemIds['BIG_SLIDER_ID']?>" class="b-slidercontainer">
+                            <div id="<?=$itemIds['BIG_SLIDER_ID']?>" class="b-slidercontainer <?= ProjectHelper::getShieldClass($arResult['PROPERTIES']['SALE']['VALUE'])?>">
 
                                     <div class="product-item-label-text <?=$labelPositionClass?>" id="<?=$itemIds['STICKER_ID']?>"
                                         <?=(!$arResult['LABEL'] ? 'style="display: none;"' : '' )?>>
@@ -223,10 +224,6 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                     ?>
                                     <div data-entity="images-container" <?= (count($arResult['PHOTOS']) > 0) ? 'class="b-image-slider-main"' : ''?>>
                                         <?php
-                                        if ($arResult['PROPERTIES']['SALE']['VALUE'] != '') {?>
-                                            <img class="i-sale-shildik" src="<?=SITE_TEMPLATE_PATH?>/images/m_sale.png">
-                                        <?}
-
                                         if (count($arResult['PHOTOS']) == 0 && !empty($actualItem['MORE_PHOTO'])) {
                                             foreach ($actualItem['MORE_PHOTO'] as $key => $photo)
                                             {

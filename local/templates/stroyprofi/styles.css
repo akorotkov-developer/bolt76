@@ -140,3 +140,56 @@ body .wrapper .bx-filter.bx-blue .bx-ui-slider-pricebar-vd {background: #FF7920;
     border-color: #FF9545;
     opacity: 0.8;
 }
+
+
+
+
+.bx-catalog-element .b-shield-sale::before {
+    background-image: url("/local/templates/stroyprofi/images/m_sale.png");
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+.bx-catalog-element .b-shield-new::before {
+    background-image: url("/local/templates/stroyprofi/images/m_new.png");
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.section-panes .b-shield-sale::before {
+    background-image: url("/local/templates/stroyprofi/images/m_sale.png");
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+.section-panes .b-shield-new::before {
+    background-image: url("/local/templates/stroyprofi/images/m_new.png");
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
