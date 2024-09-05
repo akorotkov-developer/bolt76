@@ -9,7 +9,7 @@ $( document ).ready(function() {
         }
     });
 
-    /** Добавление количества*/
+    /** Уменьшение количества*/
     $('.s-span-minus-button').bind('click', function(event) {
         var quantInput = $(this).siblings('.input_holder').find('.quantity_input');
         var dataRatio = $(this).siblings('.input_holder').find('.quantity_input').attr('data-ratio');
@@ -17,21 +17,21 @@ $( document ).ready(function() {
         var val = 0;
 
         if (dataRatio != 'NaN') {
-            ratio = parseFloat(dataRatio);
+            ratio = new Decimal(dataRatio);
         }
 
         if (quantInput.val() == '') {
-            val = 0;
+            val = new Decimal(0);
         } else {
-            val = parseFloat(quantInput.val());
+            val = new Decimal(quantInput.val());
         }
 
         if (val > 0) {
-            quantInput.val(val - ratio);
+            quantInput.val(val.minus(ratio));
         }
     });
 
-    /** Уменьшение количеств*/
+    /** Увеличение количеств*/
     $('.s-span-plus-button').bind('click', function(event) {
         var quantInput = $(this).siblings('.input_holder').find('.quantity_input');
         var dataRatio = $(this).siblings('.input_holder').find('.quantity_input').attr('data-ratio');
@@ -39,16 +39,16 @@ $( document ).ready(function() {
         var val = 0;
 
         if (dataRatio != 'NaN') {
-            ratio = parseFloat(dataRatio);
+            ratio = new Decimal(dataRatio);
         }
 
         if (quantInput.val() == '') {
-            val = 0;
+            val = new Decimal(0);
         } else {
-            val = parseFloat(quantInput.val());
+            val = new Decimal(quantInput.val());
         }
 
-        quantInput.val(val + ratio);
+        quantInput.val(val.plus(ratio));
     });
 
     /** Добавление товара в корзину */

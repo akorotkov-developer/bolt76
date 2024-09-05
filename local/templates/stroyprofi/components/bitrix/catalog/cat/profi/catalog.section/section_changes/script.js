@@ -115,7 +115,7 @@ $( document ).ready(function() {
     });
 
     // Обработчики событий для кнопок плюс и минус
-    /** Добавление количества*/
+    /** Уменьшение количества*/
     $('.s-span-minus-button').bind('click', function(event) {
         var quantInput = $(this).siblings('.input_holder').find('.quantity_input');
         var dataRatio = $(this).siblings('.input_holder').find('.quantity_input').attr('data-ratio');
@@ -123,21 +123,21 @@ $( document ).ready(function() {
         var val = 0;
 
         if (dataRatio != 'NaN') {
-            ratio = parseFloat(dataRatio);
+            ratio = Decimal(dataRatio);
         }
 
         if (quantInput.val() == '') {
-            val = 0;
+            val = Decimal(0);
         } else {
-            val = parseFloat(quantInput.val());
+            val = Decimal(quantInput.val());
         }
 
         if (val > 0) {
-            quantInput.val(val - ratio);
+            quantInput.val(val.minus(ratio));
         }
     });
 
-    /** Уменьшение количеств*/
+    /** Увеличение количеств*/
     $('.s-span-plus-button').bind('click', function(event) {
         var quantInput = $(this).siblings('.input_holder').find('.quantity_input');
         var dataRatio = $(this).siblings('.input_holder').find('.quantity_input').attr('data-ratio');
