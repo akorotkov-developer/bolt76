@@ -298,6 +298,7 @@
                                                    name="ITEM[<?= $arElement["ID"] ?>]"
                                                    data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
                                                    data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
+                                                   value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float) $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
                                             >
                                             <?= $arElement["DISPLAY_PROPERTIES"]["UNITS"]["VALUE"] ?>
                                             <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
@@ -516,6 +517,7 @@
                                                                            name="ITEM[<?= $arElement["ID"] ?>]"
                                                                            data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
                                                                            data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
+                                                                           value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float) $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
                                                                     >
                                                                     <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
                                                                         <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
@@ -672,6 +674,7 @@
                                                name="ITEM[<?= $arElement["ID"] ?>]"
                                                data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
                                                data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
+                                               value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float) $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
                                         >
                                         <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
                                             <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
@@ -846,6 +849,7 @@
                                                                                name="ITEM[<?= $arElement["ID"] ?>]"
                                                                                data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
                                                                                data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
+                                                                               value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float) $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
                                                                         >
                                                                         <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
                                                                             <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
@@ -1005,6 +1009,7 @@
                                                    name="ITEM[<?= $arElement["ID"] ?>]"
                                                    data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
                                                    data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
+                                                   value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float) $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
                                             >
                                             <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
                                                 <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
