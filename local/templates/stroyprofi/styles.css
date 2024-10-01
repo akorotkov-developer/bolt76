@@ -193,3 +193,31 @@ body .wrapper .bx-filter.bx-blue .bx-ui-slider-pricebar-vd {background: #FF7920;
     background-repeat: no-repeat;
     background-size: auto;
 }
+.section-panes .b-table-view .b-shield-sale::before {
+    height: 50px;
+    background-size: contain;
+}
+.section-panes .b-table-view .b-shield-new::before {
+    height: 50px;
+    background-size: contain;
+}
+@media (max-width: 1607px) {
+    .catalog_element .element_table tbody td.section_description.section_description-image {
+        width: 70px;
+        display: block;
+    }
+    td.section_description img {
+        max-width: 60px;
+    }
+    .catalog_element .element_table tbody td.section_description {
+        display: none;
+    }
+    .first-td-withoutimage {
+        display: none;
+    }
+}
+@media (max-width: 1480px) {
+    .catalog_element .element_table tbody td.section_description.section_description-image {
+        display: none;
+    }
+}

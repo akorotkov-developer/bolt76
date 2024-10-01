@@ -30,7 +30,7 @@
     background-color: #FF7920;
     border-color: #FF7920;
 }
-@media (max-width: 1360px) {
+@media (max-width: 1480px) {
     .element_table thead tr td.first-td {
         display: none;
     }
@@ -44,7 +44,7 @@
         display: none;
     }
 }
-@media (max-width: 1217px) {
+@media (max-width: 1240px) {
     .element_table thead tr td.avail {
         display: none;
     }

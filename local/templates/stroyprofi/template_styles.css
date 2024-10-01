@@ -520,8 +520,9 @@ hr.dashed{
 
 .section_description{
     width: 150px;
-    vertical-align: top !important;
-    padding-top: 20px !important;
+    /*vertical-align: top !important;*/
+    /*padding-top: 20px !important;*/
+    padding: 10px 0!important;
 }
 
 .section_description .picture{
@@ -648,6 +649,10 @@ hr.dashed{
 .element_table tbody tr.row1 td {
     background: #f0f0f0;
 }
+.element_table tbody tr.row1 td:first-child{
+    background: white;
+}
+
 .element_table tbody tr.hover td {
     background: #FFE5D4;
 }
@@ -1080,7 +1085,7 @@ td .buy_helper_holder{
     position: absolute;
     display: none;
     height: 25px;
-    padding-right: 22px;
+    padding-right: 6px;
     background: url("/images/ar_right.png") no-repeat right center;
 }
 .buy_helper_holder.price .vesHelperHolder{
@@ -1629,9 +1634,9 @@ body .btn-link {
     .col-xs-6 {
         width: 30%;
     }
-    .catalog_element .element_table thead td {
+    /*.catalog_element .element_table thead td {
         padding: 10px;
-    }
+    }*/
     .footer .menu a{
         font-size: 12px;
         margin: 5px 10px;

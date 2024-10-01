@@ -729,12 +729,19 @@
                             <?php
 
 
-                                if ($arElement['PREVIEW_PICTURE']['SRC'] != '') {?>
+                            $pictureId = ((int)$arElement['PREVIEW_PICTURE']['ID'] > 0) ? $arElement['PREVIEW_PICTURE']['ID'] : $arResult['PICTURE']['ID'];
+                            $file = CFile::ResizeImageGet(
+                                $pictureId,
+                                ['width' => 268, 'height' => 268],
+                                BX_RESIZE_IMAGE_PROPORTIONAL,
+                                true
+                            );
+                                if (!(empty($file))) {?>
                                     <td class="section_description section_description-image <?= ProjectHelper::getShieldClass($arElement['PROPERTIES']['SALE']['VALUE'])?>">
 
                                         <a href="<?= $arElement['PREVIEW_PICTURE']['SRC'] ?>" class="fancybox" data-fancybox>
                                             <img class="line-item-image"
-                                                    src="<?= $arElement['PREVIEW_PICTURE']['SRC'] ?>"
+                                                    src="<?= $file['src'] ?>"
                                                     alt="">
                                         </a>
 
@@ -743,7 +750,7 @@
                                     </td>
                                 <?php } else {?>
                                     <td rowspan="<?php /*echo (sizeof($arResult["ITEMS"]) + 1 + sizeof($arResult['SECTIONS_COUNT']) + 1)*/ ?>"
-                                        class="section_description">
+                                        class="section_description section_description-withoutimage">
 
                                         <?
                                         if ($arResult["PICTURE"]["ID"]) {

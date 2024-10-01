@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    $('.get_link_for_sber_pay').on('click', function() {
+    $(document).on('click', '.get_link_for_sber_pay' , function() {
         var orderId = $(this).attr('data-orderid');
         var popup = new BX.CDialog({
             'title': 'Ссылка на оплату',
@@ -11,7 +11,7 @@ $( document ).ready(function() {
         popup.Show();
     });
 
-    $('.send_changed_order').on('click', function() {
+    $(document).on('click', '.send_changed_order' , function() {
         var orderId = $(this).attr('data-orderid');
         console.log('orderId');
         console.log(orderId);

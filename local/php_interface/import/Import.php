@@ -903,6 +903,8 @@ class Import
                     $arUpdate['IBLOCK_SECTION'][] = $siteCatID;
                     $arUpdate['IBLOCK_SECTION'] = array_unique($arUpdate['IBLOCK_SECTION']);
                 }
+            } else {
+                $arUpdate['IBLOCK_SECTION'] = $siteCatID;
             }
 
             // Добавим значения динамических свойств в товар
