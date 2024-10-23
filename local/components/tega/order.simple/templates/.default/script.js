@@ -37,6 +37,7 @@ var objOrderForm = {
         $("input[id='simple_order_form_PHONE']").mask("+7(999) 999-9999");
         $("input[id='simple_order_form_RECIPIENT_PHONE']").mask("+7(999) 999-9999");
         $("input[id='simple_order_form_CONTACT_PHONE_RECIPIENT']").mask("+7(999) 999-9999");
+        $("input[id='simple_order_form_EMAIL']").inputmask("email");
 
         $('#simple_order_form_INN').bind("change keyup input click", function() {
             if (this.value.match(/[^0-9]/g)) {
@@ -70,8 +71,6 @@ var objOrderForm = {
                 $("input[name='simple_order_form[KPP]']").val(suggestion.data.kpp);
                 $("input[name='simple_order_form[COMPANY]']").val(suggestion.data.name.short_with_opf);
                 $("input[name='simple_order_form[COMPANY_ADR]']").val(suggestion.data.address.value);
-
-                console.log(suggestion.data);
             }
         });
     }

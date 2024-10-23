@@ -41,7 +41,7 @@ CJSCore::Init();
                 <input type="password" id="password-input" class="form-control" placeholder="Введите Пароль" name="USER_PASSWORD" maxlength="255" size="17" autocomplete="off"/>
                 <a href="#" class="password-control"></a>
             </div>
-            <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+
             <script>
                 $('body').on('click', '.password-control', function(){
                     if ($('#password-input').attr('type') == 'password'){

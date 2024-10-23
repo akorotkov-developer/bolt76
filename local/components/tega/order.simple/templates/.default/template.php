@@ -12,10 +12,10 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
 <link href="<?= $this->GetFolder(); ?>/suggestions.min.css" rel="stylesheet" />
 <script src="<?= $this->GetFolder(); ?>/jquery.suggestions.min.js"></script>
 <script src="<?= $this->GetFolder(); ?>/jquery.maskedinput.min.js" type="text/javascript"></script>
+<script src="<?= SITE_TEMPLATE_PATH?>/plugins/jquerymaskinput/jquery.inputmask.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-    function validateSubmitForm()
-    {
+    function validateSubmitForm() {
         var isValid = true;
         var curElement;
         var errors = [];
@@ -26,39 +26,73 @@ if ($arResult["ORDER_SUCCESSFULLY_CREATED"] == "Y") {
                 isValid = false;
                 if (!curElement.hasClass('error_input')) {
                     curElement.addClass('error_input');
-                    errors.push($(element).text());
+                    errors.push('Поле ' + $(element).text() + ' не должно быть пустым');
                 }
             }
         });
 
-        if (errors.length > 0) {
-            $('.b-error-info').html('Вы не заполнили обязательные поля:<br>' + errors.join('<br>'));
-
-            var destination = $('.b-error-info').offset().top;
-            if ($.browser.safari) {
-                $('body').animate({ scrollTop: destination }, 1100); //1100 - скорость
-            } else {
-                $('html').animate({ scrollTop: destination }, 1100);
+        // Валидация email адреса
+        let emailInput = document.querySelector('#simple_order_form_EMAIL');
+        const validateEmail = (email) => {
+            return String(email)
+                .toLowerCase()
+                .match(
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                );
+        };
+        if (!validateEmail(emailInput.value)) {
+            if (!emailInput.classList.contains('error_input')) {
+                emailInput.classList.add('error_input');
             }
+            errors.push('Неправильно введён email');
+            isValid = false;
+        }
+
+        // Валидация номера телефона
+        let phoneInput = document.querySelector('#simple_order_form_PHONE');
+        if (phoneInput.value.length < 16) {
+            if (!phoneInput.classList.contains('error_input')) {
+                phoneInput.classList.add('error_input');
+            }
+            errors.push('Номер телефона должен быть 11 цифр');
+            isValid = false;
+        }
+
+        if (errors.length > 0) {
+            $('.b-error-info').html(errors.join('<br>'));
+
+            scrollToTop();
         }
 
         return isValid;
     }
 
+    function scrollToTop() {
+        var destination = $('.b-error-info').offset().top - 100;
+        if ($.browser.safari) {
+            $('body').animate({ scrollTop: destination }, 1100); //1100 - скорость
+        } else {
+            $('html').animate({ scrollTop: destination }, 1100);
+        }
+    }
+
     function submitForm(val) {
         BX('<? echo $arParams["ENABLE_VALIDATION_INPUT_ID"]; ?>').value = (val !== 'Y') ? "N" : "Y";
         var orderForm = BX('<? echo $arParams["FORM_ID"]; ?>');
+        var isValid = false;
 
         // Если нужно просто перезагрузить страницу, то убираем все валидации
         if (val == 'NO_VALID') {
             $("input").each(function (index, el){
                 $(el).prop('required', false);
             });
+            isValid = true;
+        } else {
+            // Валидация формы оформления заказа
+            isValid = validateSubmitForm();
         }
 
-        // Валидация формы оформления заказа
-        var isValid = validateSubmitForm();
-
+        console.log(orderForm, 'orderForm');
         if (isValid) {
             BX.submit(orderForm);
         } else {
@@ -145,6 +179,9 @@ if (!$USER->IsAuthorized()) {?>
                             </div>
                         <? } ?>
                     </div>
+                    <script>
+                        scrollToTop();
+                    </script>
                 <? } ?>
 
                 <div class="b-error-info">
@@ -183,7 +220,8 @@ if (!$USER->IsAuthorized()) {?>
                     ?>
                 </div>
 
-                <? if (!empty($arResult["ORDER_PROPS"])) { ?>
+                <?php
+                if (!empty($arResult["ORDER_PROPS"])) { ?>
                     <div class="order-simple__block order-simple__block-width50 order-simple__block__noborder order-simple__block__marginminus15">
                         <div class="order-simple__block__title">1. <? echo GetMessage("ORDER_PROPS"); ?></div>
                         <div class="order-props-in-two-columns">
@@ -252,7 +290,8 @@ if (!$USER->IsAuthorized()) {?>
                                                 } else {
                                                     $value = $arResult['USER_DB_PERSONAL_PHONE'];
                                                 }
-                                            } else if ($arProp['CODE'] == 'EMAIL') {
+
+                                        } else if ($arProp['CODE'] == 'EMAIL') {
                                                 $value = $arResult['USER_DB_PERSONAL_EMAIL'];
                                             } else if ($arResult["CURRENT_VALUES"]["ORDER_PROPS"][$arProp["CODE"]] != '') {
                                                 $value = $_REQUEST['simple_order_form'][$arProp["CODE"]];
@@ -268,7 +307,8 @@ if (!$USER->IsAuthorized()) {?>
                                                 $value = '';
                                             }
                                             ?>
-                                            <input class="form-control" id="<? echo $arParams["FORM_NAME"] ?>_<?= $arProp["CODE"] ?>"
+                                            <input class="form-control <?= in_array($arProp['CODE'], $arResult['ERRORS_FIELDS']) ? 'error_input' : ''; ?>"
+                                                   id="<? echo $arParams["FORM_NAME"] ?>_<?= $arProp["CODE"] ?>"
                                                    value="<?= $value; ?>"
                                                    name="<? echo $arParams["FORM_NAME"] ?>[<?= $arProp["CODE"] ?>]"
                                                    type="text"
@@ -362,19 +402,30 @@ if (!$USER->IsAuthorized()) {?>
                             }
                         } ?>
                         <div <?= $sDisplay?> class="b-label-address">
-
                             <div class="order-props-in-two-columns">
                                 <div class="order-simple__field order-props-in-two-columns__item">
                                     <label for="simple_order_form_FIO_RECIPIENT">
                                         <span class="order-simple__field__title required-field">ФИО получателя</span>
-                                        <input class="form-control" id="simple_order_form_FIO_RECIPIENT" value="" name="simple_order_form[FIO_RECIPIENT]" type="text" >
+                                        <input class="form-control"
+                                               id="simple_order_form_FIO_RECIPIENT"
+                                               value=""
+                                               name="simple_order_form[FIO_RECIPIENT]"
+                                               type="text"
+                                        >
                                     </label>
                                 </div>
 
                                 <div class="order-simple__field order-props-in-two-columns__item">
                                     <label for="simple_order_form_CONTACT_PHONE_RECIPIENT">
-                                        <span class="order-simple__field__title required-field">Контанктый телефон получателя</span>
-                                        <input class="form-control" id="simple_order_form_CONTACT_PHONE_RECIPIENT" value="" name="simple_order_form[CONTACT_PHONE_RECIPIENT]" type="text" >
+                                        <span class="order-simple__field__title required-field">
+                                            Контанктый телефон получателя
+                                        </span>
+                                        <input class="form-control"
+                                               id="simple_order_form_CONTACT_PHONE_RECIPIENT"
+                                               value=""
+                                               name="simple_order_form[CONTACT_PHONE_RECIPIENT]"
+                                               type="text"
+                                        >
                                     </label>
                                 </div>
 
@@ -436,6 +487,12 @@ if (!$USER->IsAuthorized()) {?>
                                     <label for="vozovozov">
                                         <input type="radio" id="vozovozov" value="Возовоз" name="delivery_company_name" autocomplete="off">
                                         <b>Возовоз</b>
+                                    </label>
+                                </div>
+                                <div class="order-simple__field">
+                                    <label for="dpd">
+                                        <input type="radio" id="dpd" value="Возовоз" name="delivery_company_name" autocomplete="off">
+                                        <b>DPD</b>
                                     </label>
                                 </div>
                             </div>

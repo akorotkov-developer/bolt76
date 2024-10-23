@@ -294,6 +294,27 @@ if (isset($form)) {
     if ($selectedDelivery != $form["DELIVERY"]) {
         $arResult["ERRORS"][] = \Bitrix\Main\Localization\Loc::getMessage("DELIVERY_ERROR");
     }
+
+    // Валидация данных
+    if (!filter_var($form['EMAIL'], FILTER_VALIDATE_EMAIL)) {
+        $arResult["ERRORS"][] = 'Неправильно введён e-mail';
+        $arResult["ERRORS_FIELDS"][] = 'EMAIL';
+    }
+    if (strlen($form['PHONE']) < 16) {
+        $arResult["ERRORS"][] = 'Номер телефона должен быть 11 цифр';
+        $arResult["ERRORS_FIELDS"][] = 'PHONE';
+    }
+
+    if ($_REQUEST['validation'] != 'N') {
+        if (strlen($form['FIO']) == 0 && $_REQUEST['PERSON_TYPE'] == 1) {
+            $arResult["ERRORS"][] = 'Не заполнено Ф.И.О.';
+            $arResult["ERRORS_FIELDS"][] = 'FIO';
+        }
+        if (strlen($form['CONTACT_PERSON']) == 0 && $_REQUEST['PERSON_TYPE'] == 2) {
+            $arResult["ERRORS"][] = 'Не заполнено Ф.И.О.';
+            $arResult["ERRORS_FIELDS"][] = 'CONTACT_PERSON';
+        }
+    }
     /* / validation */
 
     if (empty($arResult["ERRORS"]) && $arResult["HIDE_ERRORS"] != "Y") {
