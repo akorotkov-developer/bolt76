@@ -102,6 +102,8 @@
     });
 
     $('.download_excel').click(function() {
+        $('#shclDefault').show();
+        $('#shclDefault').shCircleLoader();
         $.ajax({
             url: "/price/index.php",
             success: function(data){
@@ -109,10 +111,11 @@
         });
 
         function downloadPrice() {
+            $('#shclDefault').hide();
             window.open("/price/price.xlsx", '_blank');
         }
 
-        setTimeout(downloadPrice, 1000);
+        setTimeout(downloadPrice, 2000);
     });
 
     $('.clear').click(function (e) {

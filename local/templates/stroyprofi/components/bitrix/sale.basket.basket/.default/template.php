@@ -248,16 +248,22 @@ if (empty($arResult['ERROR_MESSAGE']))
 							</div>
 						</div>
 						<div class="basket-items-list-header-filter">
-							<a href="javascript:void(0)" class="basket-items-list-header-filter-item active"
-								data-entity="basket-items-count" data-filter="all" style="display: none;"></a>
-							<a href="javascript:void(0)" class="basket-items-list-header-filter-item"
-								data-entity="basket-items-count" data-filter="similar" style="display: none;"></a>
-							<a href="javascript:void(0)" class="basket-items-list-header-filter-item"
-								data-entity="basket-items-count" data-filter="warning" style="display: none;"></a>
-							<a href="javascript:void(0)" class="basket-items-list-header-filter-item"
-								data-entity="basket-items-count" data-filter="delayed" style="display: none;"></a>
-							<a href="javascript:void(0)" class="basket-items-list-header-filter-item"
-								data-entity="basket-items-count" data-filter="not-available" style="display: none;"></a>
+                            <div class="b-excel">
+                                <a class="a-excel-download-link download_order_excel"
+                                >Скачать заказ в EXCEL</a>
+                            </div>
+                            <div class="b-basket-links">
+                                <a href="javascript:void(0)" class="basket-items-list-header-filter-item active"
+                                    data-entity="basket-items-count" data-filter="all" style="display: none;"></a>
+                                <a href="javascript:void(0)" class="basket-items-list-header-filter-item"
+                                    data-entity="basket-items-count" data-filter="similar" style="display: none;"></a>
+                                <a href="javascript:void(0)" class="basket-items-list-header-filter-item"
+                                    data-entity="basket-items-count" data-filter="warning" style="display: none;"></a>
+                                <a href="javascript:void(0)" class="basket-items-list-header-filter-item"
+                                    data-entity="basket-items-count" data-filter="delayed" style="display: none;"></a>
+                                <a href="javascript:void(0)" class="basket-items-list-header-filter-item"
+                                    data-entity="basket-items-count" data-filter="not-available" style="display: none;"></a>
+                            </div>
 						</div>
 					</div>
 					<div class="basket-items-list-container" id="basket-items-list-container">

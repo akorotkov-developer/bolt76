@@ -317,3 +317,11 @@ form[name="simple_order_form"] {
     font-weight: bold;
     margin-bottom: 20px;
 }
+.a-excel-download-link {
+    color: #FF7920;
+    font-weight: bold;
+    font-size: 21px;
+}
+.a-excel-download-link:hover {
+    color: #000;
+}

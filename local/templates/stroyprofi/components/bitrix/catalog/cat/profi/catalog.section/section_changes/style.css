@@ -491,3 +491,6 @@ td.buy {
 .catalog_element .element_table tbody td.section_description {
     position: relative;
 }
+.section-pane.b-product-items .b-table-view {
+    width: 100%;
+}

@@ -128,3 +128,10 @@ td.buy {
 .main_block table.element_table tr td.mera {
     text-align: center;
 }
+.element_product_tr .section_description {
+    position: relative;
+}
+.element_product_tr .section_description a img {
+    position: absolute;
+    top: 0px;
+}

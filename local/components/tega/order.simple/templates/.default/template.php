@@ -356,7 +356,7 @@ if (!$USER->IsAuthorized()) {?>
 
                 <? if (!empty($arResult["DELIVERY"])) { ?>
                     <div class="order-simple__block">
-                        <div class="order-simple__block__title">2. <? echo GetMessage("DELIVERY"); ?></div>
+                        <div class="order-simple__block__title">2. <?= GetMessage("DELIVERY"); ?></div>
 
                         <div class="delivery_logos">
                             <?php
@@ -457,7 +457,7 @@ if (!$USER->IsAuthorized()) {?>
 
                         <div class="b-transport-info" <?= $sDisplayTransportData?>>
                             <h4><b>Данные доставки:</b></h4>
-
+                            <p style="font-size: 14px"><b>*услуги по доставке товара транспортной компанией оплачиваются отдельно </b></p>
                             <div class="delivery_company_name">
                                 <div class="order-simple__field">
                                     <label for="sdek">
@@ -624,7 +624,8 @@ if (!$USER->IsAuthorized()) {?>
                 </div>
                 <?php */ ?>
                 <div class="order-simple__block order-simple__block__noborder order-simple__block__marginbottom10">
-                    <span class="total-price">Итого: <b><? echo $arResult["PRICES"]["TOTAL_PRICE_FORMATTED"]; ?></b></span>
+                    <span class="total-price">Итого: <b><?= $arResult["PRICES"]["TOTAL_PRICE_FORMATTED"]; ?><b class="delivery-not-included">*</b></b></span>
+                    <p class="delivery-not-included">*не включает стоимость доставки</p>
                 </div>
 
                 <div class="order-simple__block order-simple__block__noborder">
@@ -663,7 +664,12 @@ if (!$USER->IsAuthorized()) {?>
                             <?php } ?>
                         </div>
                         <div class="gray-border-bottom margintop10"></div>
-                        <div class="left-total-title left-total-title-nomargin">Итого: <? echo $arResult["PRICES"]["TOTAL_PRICE_FORMATTED"]; ?></div>
+                        <div class="left-total-title left-total-title-nomargin">Итого: <? echo $arResult["PRICES"]["TOTAL_PRICE_FORMATTED"]; ?><b class="delivery-not-included">*</b></div>
+                        <p class="delivery-not-included">*не включает стоимость доставки</p>
+                        <div class="b-excel">
+                            <a class="a-excel-download-link download_order_excel"
+                            >Скачать заказ в EXCEL</a>
+                        </div>
                     </div>
                 </div>
             </div>

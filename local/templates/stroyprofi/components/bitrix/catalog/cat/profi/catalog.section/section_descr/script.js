@@ -84,3 +84,23 @@ $( document ).ready(function() {
         });
     });
 });
+
+$(document).ready(function() {
+    $(window).scroll(function() {
+        var tdOffset = $('.element_product_tr .section_description').offset().top;
+        var tdHeight = $('.element_product_tr .section_description').height();
+        var scrollTop = $(window).scrollTop();
+        var image = $('.section_description a img');
+        var windowHeight = $(window).height();
+
+        var isBottom = scrollTop > tdOffset + tdHeight - windowHeight;
+
+        if (scrollTop > tdOffset/* && !isBottom*/) {
+            image.css({'position': 'fixed', 'top': '0'});
+        } /*else if (isBottom) {
+            image.css({'position': 'absolute', 'bottom': '0', 'top': 'auto'});
+        }*/ else {
+            image.css({'position': 'absolute', 'top': '0px'});
+        }
+    });
+});

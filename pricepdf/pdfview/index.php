@@ -359,10 +359,10 @@ class pricePrint
             foreach ($sectionElements as $elementKey => $element) {
                 if (!$this->isDump && !(empty($sectionElements))) {
                     $this->isDump = true;
-                    \Bitrix\Main\Diag\Debug::dumpToFile(['filter' =>  array("PROPERTY_ROWID" => $element['ID'], "IBLOCK_ID" => 1)], '', 'log.txt');
+                    /*\Bitrix\Main\Diag\Debug::dumpToFile(['filter' =>  array("PROPERTY_ROWID" => $element['ID'], "IBLOCK_ID" => 1)], '', 'log.txt');
                     \Bitrix\Main\Diag\Debug::dumpToFile(['$elementInfo' => $elementInfo], '', 'log.txt');
                     \Bitrix\Main\Diag\Debug::dumpToFile(['fields' => $section], '', 'log.txt');
-                    \Bitrix\Main\Diag\Debug::dumpToFile(['$sectionElements' => $sectionElements], '', 'log.txt');
+                    \Bitrix\Main\Diag\Debug::dumpToFile(['$sectionElements' => $sectionElements], '', 'log.txt');*/
                 }
 
                 $elementName = $this->getElementName($element);
@@ -778,9 +778,7 @@ class pricePrint
 
         $this->elementsArray = $elementsArray;
         $this->elementsBySections = $elementsBySections;
-
-        \Bitrix\Main\Diag\Debug::dumpToFile(['$this->elementsBySections' => array_keys($this->elementsBySections)], '', 'log.txt');
-   }
+    }
 
     private function setElementsXMlObjects()
     {
@@ -1113,12 +1111,15 @@ class pricePrint
                 $countItems = 0;
                 foreach ($arItems as $item) {
                     if (!$item['PROPERTY_ARTICUL_VALUE']) {
+                        /*\Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'ЗДесь'], '', 'log.txt');*/
                         continue;
                     }
 
                     if ($item['IBLOCK_SECTION_ID'] != $sectionItem) {
+                        /*\Bitrix\Main\Diag\Debug::dumpToFile(['fields' => 'ЗДесь 2'], '', 'log.txt');*/
                         continue;
                     }
+                    // \Bitrix\Main\Diag\Debug::dumpToFile(['$item_ID' => $item['PREVIEW_PICTURE']], '', 'log.txt');
                     ?>
 
                     <item>
@@ -1151,7 +1152,8 @@ class pricePrint
 
             if ($countItems > 0) {
                 $filename = $_SERVER['DOCUMENT_ROOT'] . '/tmp/section-' . $keyRowId . '.xml';
-                file_put_contents($_SERVER['DOCUMENT_ROOT'] . $filename, $xmlContent);
+                $isPutContent = file_put_contents($filename, $xmlContent);
+                \Bitrix\Main\Diag\Debug::dumpToFile(['$isPutContent' => $isPutContent], '', 'log.txt');
             } else {
                 $arrEmptySections[] = $keyRowId;
             }

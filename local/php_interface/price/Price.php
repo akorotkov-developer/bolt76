@@ -133,7 +133,7 @@ class Price
         ]);
 
         // Информация о компании
-        $this->sheet->setCellValue('B1', 'Телефон: +7 (4852) 58-04-45 Email: mail@strprofi.ru');
+        $this->sheet->setCellValue('B1', 'Телефон: +7 (4852) 93-63-53 Email: mail@strprofi.ru');
         $this->sheet->setCellValue('B2', 'Дата генерация прайс-листа: ' . date('d.m.Y'));
     }
 

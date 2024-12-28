@@ -38,11 +38,14 @@ $(document).ready(function () {
     /**
      * Проверка бегущей строки если, в ней пусто, то нужно скрыть её и поменять стиль
      */
-    var marqueeText = $.trim($('.marquee span').text());
-    if (marqueeText == '') {
-        $('.marquee').css('height', '1px');
-        $('.header').css('height', '142px');
-    }
+    // var marqueeText = $.trim($('.marquee span').text());
+    // if (marqueeText !== '') {
+    //     $('.marquee').css('height', '1px');
+    //     $('.header').css('height', '142px');
+    //     $('.dark_line').css('margin', '20px -5px');
+    // }
+    // $("span.marquee:empty").text("ТЕСТ");
+
 
     /** Добавление/удаление товаров товаров в избранного */
     $('.favorite-svg-icon').on('click', function() {
@@ -85,4 +88,51 @@ $(document).ready(function () {
             }
         });
     }
+
+    /** Загрузка заказа в Excel формате*/
+    $('.download_order_excel').click(function() {
+        function makeAjaxRequest() {
+            return new Promise(function(resolve, reject) {
+                $('#shclDefault').show();
+                $('#shclDefault').shCircleLoader();
+                $.ajax({
+                    url: '/local/ajax/order_in_excel.php?session_id=' + BX.bitrix_sessid(),
+                    success: function(data){
+                        resolve(data);
+                    },
+                    error: function(error) {
+                        reject(error);
+                    }
+                });
+            });
+        }
+
+        makeAjaxRequest()
+            .then(function(data) {
+                if (data == 'true') {
+                    var link = document.createElement('a');
+                    link.href = '/upload/order_excel/price_order_' + BX.bitrix_sessid() + '.xlsx';
+                    link.download = 'Заказ на StrProfi.xlsx';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    $.ajax({
+                        url: '/local/ajax/order_in_excel.php?session_id=' + BX.bitrix_sessid() + '&delete=Y',
+                        success: function(data){},
+                        error: function(error) {}
+                    });
+                }
+                $('#shclDefault').hide();
+            })
+            .catch(function(error) {
+                $('#shclDefault').hide();
+            });
+
+        function downloadFile() {
+
+        }
+
+        //setTimeout(downloadFile, 10000);
+    });
 });

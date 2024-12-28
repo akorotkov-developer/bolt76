@@ -2263,3 +2263,11 @@ body .content_table td {
 .basket-items-list .avail_info {
 	color: #f16522;
 }
+.basket-items-list-header-filter {
+	display: flex;
+	justify-content: space-between;
+}
+.b-basket-links {
+	display: flex;
+	align-items: center;
+}

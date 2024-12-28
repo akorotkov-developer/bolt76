@@ -21,10 +21,9 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<meta name="mailru-domain" content="6EZGx3j1030Ofx7m" />
     <meta name="viewport" content="width=device-width,height=device-height,minimum-scale=1">
-    <title><?$APPLICATION->ShowTitle();?></title>
-	<?
+    <title><?php $APPLICATION->ShowTitle(); ?></title>
+	<?php
     $APPLICATION->ShowHead();
-
 	?>
     <link rel="stylesheet" href="/plugins/fancybox/jquery.fancybox.css">
     <script type="text/javascript" src="//yandex.st/jquery/1.8.2/jquery.min.js"></script>
@@ -43,8 +42,39 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
     <link rel="stylesheet" href="<?= SITE_TEMPLATE_PATH?>/css_templates/products.css">
     <link rel="stylesheet" href="/plugins/fancybox/fancybox.css"/>
     <link rel="stylesheet" type="text/css" href="<?= SITE_TEMPLATE_PATH?>/css_templates/print_styles.css" media="print">
+
+    <script src="/local/templates/stroyprofi/js/jquery.shCircleLoader.js"></script>
+    <script src="/local/templates/stroyprofi/js/jquery.shCircleLoader-min.js"></script>
+    <link rel="stylesheet" href="/local/templates/stroyprofi/js/jquery.shCircleLoader.css">
+
+    <link href="<?= SITE_TEMPLATE_PATH?>/plugins/snowFlakes/snow.min.css" rel="stylesheet">
 </head>
 <body>
+    <script src="<?= SITE_TEMPLATE_PATH?>/plugins/snowFlakes/Snow.js"></script>
+    <script>
+        new Snow ({
+            iconColor: '#f7941d',
+            showSnowBalls: true,
+            showSnowBallsIsMobile: true,
+            showSnowflakes: true,
+            countSnowflake: 100,
+            snowBallsLength: 10,
+            snowBallIterations: 40,
+            snowBallupNum: 1,
+            snowBallIterationsInterval: 1000,
+            clearSnowBalls: 20000,
+        });
+    </script>
+
+<div id="shclDefault"></div>
+<style>
+    #shclDefault {
+        position: absolute !important;
+        left: 50%;
+        top: 50%;
+        z-index: 10000;
+    }
+</style>
 <div class="notification" id="notification">Товар добавлен<br/>в <a href="/personal/cart/">корзину</a></div>
 <?$APPLICATION->ShowPanel();?>
 <div class="wrapper">
@@ -153,17 +183,17 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
 
        <!-- Бегущая строка -->
 
-            <div class="marquee">
-                <span>
-                    <?php
-                    $APPLICATION->IncludeComponent("bitrix:main.include","",Array(
-                            "AREA_FILE_SHOW" => "file",
-                            "PATH" => "/local/include_file/top_marquee.php",
-                        )
-                    );
-                    ?>
-                </span>
-            </div>
+<!--            <div class="marquee">-->
+<!--                <span>-->
+<!--                    --><?php
+//                    $APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+//                            "AREA_FILE_SHOW" => "file",
+//                            "PATH" => "/local/include_file/top_marquee.php",
+//                        )
+//                    );
+//                    ?>
+<!--                </span>-->
+<!--            </div>-->
 
             <div class="dark_line">
                 <div class="corners left"><div class="right"></div></div>

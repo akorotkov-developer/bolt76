@@ -162,8 +162,8 @@ body .wrapper .bx-filter.bx-blue .bx-ui-slider-pricebar-vd {background: #FF7920;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 80px;
+    height: 80px;
     z-index: 100;
     background-repeat: no-repeat;
     background-size: auto;
@@ -174,27 +174,31 @@ body .wrapper .bx-filter.bx-blue .bx-ui-slider-pricebar-vd {background: #FF7920;
     content: '';
     position: absolute;
     top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+    left: 0;
+    width: 80px;
+    height: 80px;
     z-index: 100;
     background-repeat: no-repeat;
     background-size: auto;
+}
+.section-panes .b-table-view .b-shield-sale::before {
+
 }
 .section-panes .b-shield-new::before {
     background-image: url("/local/templates/stroyprofi/images/m_new.png");
     content: '';
     position: absolute;
     top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+    left: 0;
+    width: 80px;
+    height: 80px;
     z-index: 100;
     background-repeat: no-repeat;
     background-size: auto;
 }
 .section-panes .b-table-view .b-shield-sale::before {
     height: 50px;
+    width: 50px;
     background-size: contain;
 }
 .section-panes .b-table-view .b-shield-new::before {
@@ -220,4 +224,15 @@ body .wrapper .bx-filter.bx-blue .bx-ui-slider-pricebar-vd {background: #FF7920;
     .catalog_element .element_table tbody td.section_description.section_description-image {
         display: none;
     }
+}
+body .a-excel-download-link {
+    cursor: pointer;
+}
+body .a-excel-download-link {
+    color: #FF7920!important;
+    font-weight: bold;
+    font-size: 21px;
+}
+body .a-excel-download-link:hover {
+    color: #000!important;
 }

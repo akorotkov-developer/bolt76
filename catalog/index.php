@@ -113,7 +113,7 @@ $APPLICATION->IncludeComponent(
 		"USE_PRODUCT_QUANTITY" => "Y",
 		"SHOW_TOP_ELEMENTS" => "N",
 		"SECTION_COUNT_ELEMENTS" => "N",
-		"PAGE_ELEMENT_COUNT" => "70",
+		"PAGE_ELEMENT_COUNT" => "35",
 		"LINE_ELEMENT_COUNT" => "1",
 		"ELEMENT_SORT_FIELD" => $sSortField,
 		"ELEMENT_SORT_ORDER" => $sortOrient,
