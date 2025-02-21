@@ -727,7 +727,7 @@ class pricePrint
             $html .= '<div class="tr">';
             $html .= '<div class="td header"><h1 data-level="">' . $this->pageTitle . '</h1></div>';
             $html .= '<div class="td w1 logo"><img class="logo" src="/img/logo.png" alt=""></div>';
-            $html .= '<div class="td w1 contacts">strprofi.ru<br/>(4852) 58-04-45</div>';
+            $html .= '<div class="td w1 contacts">strprofi.ru<br/>(4852) 93-63-53</div>';
             $html .= '</div>';
             $html .= '</div>';
             $html .= '</div>';
@@ -876,7 +876,7 @@ class pricePrint
             $height = $height + 5;
 
             $html .= '<div class="tbl" data-height="' . $height . '"><div class="tr"><div class="name td level-' . $i['DEPTH_LEVEL'] . '">' . $i['NAME'] . '</div><div class="td page">' . $i['PAGE'] . '</div></div></div>';
-            if ($height + 5 > 265) {
+            if ($height + 5 > 255) {
                 $height = 0;
                 $html .= '<div class="pageBreakAfter"></div>';
             }
@@ -1238,7 +1238,7 @@ $firstList = '<div id="first-list">
 <div class="logoBox"><img alt="" src="/img/big-logo.png" /></div>
 
 <div class="titleName">Прайс лист</div>
-<div class="titlePhones">+7 (4852) 58-04-45<br/>+7 (4852) 58-04-46</div>
+<div class="titlePhones">+7 (4852) 93-63-53</div>
 <div class="titleWeb">mail@strprofi.ru<br/>www.strprofi.ru</div>
 <div class="desc">
 <p>Уважаемые партнеры реализована возможность выполнять заказы
