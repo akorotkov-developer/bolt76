@@ -22,7 +22,7 @@
         ?>
     </div>
 
-    <div class="b-grid-list-view 123">
+    <div class="b-grid-list-view">
         <div class="row row-100">
             <?php foreach ($arResult["ITEMS"] as $cell => $arElement) {
                 $this->AddEditAction($arElement['ID'], $arElement['EDIT_LINK'], CIBlock::GetArrayByID($arParams['IBLOCK_ID'], 'ELEMENT_EDIT'));
@@ -60,14 +60,37 @@
                 ?>
                 <div class="product-layout product-list col-xs-12" id="<?= $this->GetEditAreaId($arElement['ID']); ?>" data-elementid="<?= $arElement['ID']?>">
                     <div class="product-thumb <?= ProjectHelper::getShieldClass($arElement['PROPERTIES']['SALE']['VALUE']) ?>">
-                        <div class="b-favorite">
-                            <svg data-product-id="<?= $arElement['ID'] ?>"
-                                 class="favorite-svg-icon <?= $arElement['IS_FAVORITE'] ? 'active' : '' ?>"
-                                 title="Добавить в избранное" width="31" height="31" viewBox="0 0 24 24" fill="none"
-                                 stroke="#8899a4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                        </div>
+                        <?php if ($_GET['tst'] == 'tst') { ?>
+                            <div class="b-control-elements-list">
+                                <div class="b-compare">
+                                    <svg data-product-id="<?= $arElement['ID'] ?>" id="compare-icon"
+                                         class="compare-svg-icon-element-detail compare-svg-icon-element-list" width="100%" height="100%" viewBox="0 0 18 16">
+                                        <path fill-rule="evenodd"
+                                              clip-rule="evenodd"
+                                              d="M13.4993 12.0003V11.125C13.4993 10.5036 14.0031 9.99985 14.6245 9.99985C15.2459 9.99985 15.7497 10.5036 15.7497 11.125V12.0003H17.0004C17.5525 12.0003 18 12.4478 18 12.9999C18 13.552 17.5525 13.9995 17.0004 13.9995H15.7497V14.8748C15.7497 15.4962 15.2459 16 14.6245 16C14.0031 16 13.4993 15.4962 13.4993 14.8748V13.9995H12.25C11.6979 13.9995 11.2503 13.552 11.2503 12.9999C11.2503 12.4478 11.6979 12.0003 12.25 12.0003H13.4993ZM0 12.9999C0 12.4478 0.447548 12.0003 0.999626 12.0003H8.00037C8.55245 12.0003 9 12.4478 9 12.9999C9 13.552 8.55245 13.9995 8.00037 13.9995H0.999626C0.447548 13.9995 0 13.552 0 12.9999ZM0 0.999625C0 0.447547 0.447548 0 0.999626 0H17.0004C17.5525 0 18 0.447547 18 0.999625C18 1.5517 17.5525 1.99925 17.0004 1.99925H0.999626C0.447548 1.99925 0 1.5517 0 0.999625ZM0 6.99977C0 6.4477 0.447548 6.00015 0.999626 6.00015H17.0004C17.5525 6.00015 18 6.4477 18 6.99977C18 7.55185 17.5525 7.9994 17.0004 7.9994H0.999626C0.447548 7.9994 0 7.55185 0 6.99977Z"
+                                        />
+                                    </svg>
+                                </div>
+
+                                <div class="b-favorite">
+                                    <svg data-product-id="<?= $arElement['ID'] ?>"
+                                         class="favorite-svg-icon <?= $arElement['IS_FAVORITE'] ? 'active' : '' ?>"
+                                         title="Добавить в избранное" width="31" height="31" viewBox="0 0 24 24" fill="none"
+                                         stroke="#8899a4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        <?php } else { ?>
+                            <div class="b-favorite">
+                                <svg data-product-id="<?= $arElement['ID'] ?>"
+                                     class="favorite-svg-icon <?= $arElement['IS_FAVORITE'] ? 'active' : '' ?>"
+                                     title="Добавить в избранное" width="31" height="31" viewBox="0 0 24 24" fill="none"
+                                     stroke="#8899a4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </div>
+                        <?php } ?>
                         <div class="image image-grid">
                             <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>">
                                 <?php

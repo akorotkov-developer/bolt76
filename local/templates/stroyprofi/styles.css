@@ -39,8 +39,79 @@ table {border-collapse: collapse;}
     line-height: 18px;
     right: 285px;
 }
-
-
+.top .b-header-compare {
+    padding: 5px 20px 10px;
+    background: url(/img/semitrans.png);
+    height: 60px;
+    position: absolute;
+    top: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    right: 398px;
+}
+.b-header-compare .compare-count {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    font-weight: bold;
+}
+.b-header-compare .compare-title {
+    display: block;
+    color: #FF7920;
+    font-weight: bold;
+}
+.b-header-compare .compare-title a {
+    color: #FF7920 !important;
+}
+.top .compare-svg-icon-header {
+    width: 31px;
+    height: 31px;
+    opacity: .7;
+}
+.compare-svg-icon-element-detail {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    opacity: .7;
+}
+.compare-svg-icon-element-detail:hover, .active .compare-svg-icon-element-detail{
+    stroke: #FF7920;
+    fill: #FF7920;
+    color: #FF7920;
+}
+.b-control-elements-detail {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.product-item-detail-compare-container {
+    display: none;
+}
+.b-compare .compare-checkbox {
+    display: none; /* Скрываем чекбокс */
+}
+.b-compare {
+    padding: 1px;
+}
+.b-compare .compare-svg-icon-element-detail {
+    cursor: pointer; /* Делаем курсор указателем при наведении */
+}
+.b-control-elements-list {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    position: absolute;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    z-index: 2000;
+}
+.product-layout.product-grid .b-control-elements-list .b-favorite {
+    position: initial;
+}
+.product-layout.product-list .b-control-elements-list .b-favorite {
+    position: initial;
+}
 
 
 .favorite-svg-icon:hover {
@@ -235,4 +306,7 @@ body .a-excel-download-link {
 }
 body .a-excel-download-link:hover {
     color: #000!important;
+}
+.catalog-compare-list {
+    display: none;
 }

@@ -189,4 +189,88 @@ $( document ).ready(function() {
             }
         });
     });
+
+    /** Добавление товара к сравнению */
+    $('.compare-svg-icon-element-list').bind("click", function(e) {
+        if ($(this).parent().hasClass('active')) {
+            console.log('Убрать из сравнения');
+            deleteCompare($(this).attr('data-product-id'));
+
+        } else {
+            addCompare($(this).attr('data-product-id'));
+            console.log('Добавить к сравнению');
+        }
+    });
+
+    function deleteCompare(productId) {
+        let currentUrl = window.location.href;
+        let separator = currentUrl.includes('?') ? '&' : '?';
+        let compareLink = currentUrl + separator + 'action=DELETE_FROM_COMPARE_LIST&id=' + productId + '&ajax_action=Y';
+
+        BX.ajax({
+            method: 'POST',
+            dataType: 'json',
+            url: compareLink,
+            onsuccess: function(response) {
+                console.log(response, 'response');
+            },
+            onfailure: function(error) {
+
+            }
+        });
+    }
+
+    function addCompare(productId) {
+        let currentUrl = window.location.href;
+        let separator = currentUrl.includes('?') ? '&' : '?';
+        let compareLink = currentUrl + separator + 'action=ADD_TO_COMPARE_LIST&id=' + productId + '&ajax_action=Y';
+
+        // Отправляем AJAX-запрос
+        BX.ajax({
+            method: 'POST',
+            dataType: 'json',
+            url: compareLink,
+            onsuccess: function(response) {
+                console.log(response, 'response');
+                // Проверяем статус ответа
+                if (response.STATUS === 'OK') {
+                    // Создаем модальное окно
+                    const popup = BX.PopupWindowManager.create('CatalogElementBasket_' + productId, null, {
+                        autoHide: false,
+                        offsetLeft: 0,
+                        offsetTop: 0,
+                        overlay: true,
+                        closeByEsc: true,
+                        titleBar: true,
+                        closeIcon: true,
+                        contentColor: 'white',
+                        className: 'bx-block-confirm'
+                    });
+
+                    // Устанавливаем заголовок окна
+                    popup.setTitleBar('Сравнение товаров');
+
+                    // Создаем контент для модального окна
+                    const content = `
+                    <div style="padding: 20px; text-align: center;">
+                        <p>Товар добавлен в список сравнения</p>
+                        <button class="btn btn-default btn-buy btn-sm" onclick="window.location.href='/catalog/compare/';" style="margin-top: 10px; padding: 10px 20px; cursor: pointer;">
+                            Перейти в список сравнения
+                        </button>
+                    </div>
+                `;
+
+                    // Устанавливаем контент в модальное окно
+                    popup.setContent(content);
+
+                    // Открываем модальное окно
+                    popup.show();
+                }
+            },
+            onfailure: function(error) {
+
+            }
+        });
+    }
+
 });

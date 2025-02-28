@@ -76,6 +76,16 @@ switch ($_GET['catalog_sort']) {
         break;
 }
 
+// Свойства для сравнения
+$properties = CIBlockProperty::GetList(
+    ["sort" => "asc", "name" => "asc"],
+    ["ACTIVE" => "Y", "IBLOCK_ID" => 1]
+);
+$propCodes = [];
+while ($result = $properties->GetNext()) {
+    $propCodes[] = $result['CODE'];
+}
+
 $APPLICATION->IncludeComponent(
 	"bitrix:catalog",
     'cat',
@@ -101,7 +111,8 @@ $APPLICATION->IncludeComponent(
 		"SET_STATUS_404" => "N",
 		"USE_FILTER" => "Y",
 		"FILTER_NAME" => "arrFilter",
-		"USE_COMPARE" => "N",
+		"USE_COMPARE" => "Y",
+        "COMPARE_PATH" => "/catalog/compare/",
 		"PRICE_CODE" => array(
 			0 => $sPriceCode,
 		),
@@ -215,14 +226,22 @@ $APPLICATION->IncludeComponent(
 			"sections" => "",
 			"section" => "#SECTION_ID#-#SECTION_CODE#/",
 			"element" => "#SECTION_ID#-#SECTION_CODE#/#ELEMENT_CODE#",
-			"compare" => "compare.php?action=#ACTION_CODE#",
+			// "compare" => "compare.php?action=#ACTION_CODE#",
+			"compare" => "compare/",
 			"smart_filter" => "#SECTION_ID#-#SECTION_CODE#/filter/#SMART_FILTER_PATH#/apply/",
 		),
 		"VARIABLE_ALIASES" => array(
 			"compare" => array(
 				"ACTION_CODE" => "action",
 			),
-		)
+		),
+        "COMPARE_PROPERTY_CODE" => $propCodes,
+        "COMPARE_OFFERS_FIELD_CODE" => array(
+            0 => "NAME",
+            1 => "PREVIEW_TEXT",
+            2 => "PREVIEW_PICTURE",
+            3 => "",
+        ),
 	),
 	false
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

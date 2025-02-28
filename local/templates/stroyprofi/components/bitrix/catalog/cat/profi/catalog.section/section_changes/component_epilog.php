@@ -48,6 +48,17 @@ foreach($arFavorites as $k => $favoriteItem):
     </script>
 <?php endforeach; ?>
 
+<?php
+/** Лист сравнения */
+$compareElements = [];
+foreach ($_SESSION['CATALOG_COMPARE_LIST'] as $compareListsElements) {
+    foreach ($compareListsElements['ITEMS'] as $element) {
+        $compareElements[] = $element['ID'];
+    }
+}
+$compareElements = json_encode($compareElements);
+?>
+
 <script>
     $( document ).ready(function() {
         window.basketController = {
@@ -126,6 +137,29 @@ foreach($arFavorites as $k => $favoriteItem):
                     console.log('Error: '+ errorThrown);
                 }
             });
+        });
+
+        // Исходная JSON-строка
+        let json = '<?= $compareElements ?>';
+        // Преобразуем JSON-строку в массив
+        let idArray = JSON.parse(json);
+
+        document.querySelectorAll('.b-compare .compare-svg-icon-element-list').forEach(element => {
+            // Получаем значение data-id
+            const dataId = element.getAttribute('data-product-id');
+
+            // Проверяем, есть ли dataId в массиве idArray
+            const parentCompare = element.closest('.b-compare');
+            if (idArray.includes(dataId)) {
+                // Находим родительский элемент .b-compare и добавляем класс active
+                if (parentCompare) {
+                    parentCompare.classList.add('active');
+                }
+            } else {
+                if (parentCompare) {
+                    parentCompare.classList.remove('active');
+                }
+            }
         });
     });
 </script>

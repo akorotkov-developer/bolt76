@@ -135,4 +135,26 @@ $(document).ready(function () {
 
         //setTimeout(downloadFile, 10000);
     });
+
+    // Обработчик клика на SVG
+    $('.compare-svg-icon-element-detail').on('click', function() {
+        // Находим связанный чекбокс
+        let checkbox = $(this).closest('label').find('.compare-checkbox');
+
+        checkbox.trigger('click');
+        checkbox.prop('checked', !checkbox.prop('checked'));
+
+        // Добавляем/удаляем класс active у родительского блока
+        let parentBlock = $(this).closest('.b-compare');
+        if (parentBlock.hasClass('active')) {
+            let compareCountElement = $('.b-header-compare .compare-count'); // Находим элемент с числом
+            let currentCount = parseInt(compareCountElement.text(), 10); // Получаем текущее число
+            compareCountElement.text(currentCount - 1); // Уменьшаем на 1 и обновляем текст
+        } else {
+            let compareCountElement = $('.b-header-compare .compare-count'); // Находим элемент с числом
+            let currentCount = parseInt(compareCountElement.text(), 10); // Получаем текущее число
+            compareCountElement.text(currentCount + 1); // Увеличиваем на 1 и обновляем текст
+        }
+        parentBlock.toggleClass('active');
+    });
 });

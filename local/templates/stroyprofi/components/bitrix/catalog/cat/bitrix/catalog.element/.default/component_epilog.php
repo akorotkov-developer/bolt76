@@ -158,6 +158,17 @@ foreach($arFavorites as $k => $favoriteItem):
     </script>
 <?php endforeach; ?>
 
+<?php
+/** Лист сравнения */
+$compareElements = [];
+foreach ($_SESSION['CATALOG_COMPARE_LIST'] as $compareListsElements) {
+    foreach ($compareListsElements['ITEMS'] as $element) {
+        $compareElements[] = $element['ID'];
+    }
+}
+$compareElements = json_encode($compareElements);
+?>
+
 <script>
     $( document ).ready(function() {
         window.basketController = {
@@ -201,5 +212,26 @@ foreach($arFavorites as $k => $favoriteItem):
                 }
             });
         });
+
+        // Исходная JSON-строка
+        let json = '<?= $compareElements ?>';
+        // Преобразуем JSON-строку в массив
+        let idArray = JSON.parse(json);
+        // Текущий ID для проверки
+        let currentId = '<?= $arResult['ID'] ?>'; // или let currentId = 172319; (если ID — число)
+
+        // Проверяем, существует ли currentId в массиве
+        if (idArray.includes(currentId.toString())) { // Преобразуем currentId в строку, если массив содержит строки
+            // Ищем элемент с классом compare-svg-icon-element-detail и атрибутом data-product-id=currentId
+            let targetElement = document.querySelector(`.compare-svg-icon-element-detail[data-product-id="${currentId}"]`);
+
+            // Если элемент найден
+            if (targetElement) {
+                // Добавляем класс active его родителю
+                targetElement.closest('.b-compare').classList.add('active');
+            }
+        } else {
+            targetElement.closest('.b-compare').classList.remove('active');
+        }
     });
 </script>
