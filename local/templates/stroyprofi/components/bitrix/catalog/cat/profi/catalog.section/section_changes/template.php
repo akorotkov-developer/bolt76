@@ -58,12 +58,14 @@
                 $ok = number_format(round($sPrice / $k, 2), 2, ', ', ' ');
                 $rk = number_format(round($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] / $k, 2), 2, ', ', ' ');
                 ?>
-                <div class="product-layout product-list col-xs-12" id="<?= $this->GetEditAreaId($arElement['ID']); ?>" data-elementid="<?= $arElement['ID']?>">
+                <div class="product-layout product-list col-xs-12" id="<?= $this->GetEditAreaId($arElement['ID']); ?>"
+                     data-elementid="<?= $arElement['ID'] ?>">
                     <div class="product-thumb <?= ProjectHelper::getShieldClass($arElement['PROPERTIES']['SALE']['VALUE']) ?>">
                         <div class="b-control-elements-list">
                             <div class="b-compare">
                                 <svg data-product-id="<?= $arElement['ID'] ?>" id="compare-icon"
-                                     class="compare-svg-icon-element-detail compare-svg-icon-element-list" width="100%" height="100%" viewBox="0 0 18 16">
+                                     class="compare-svg-icon-element-detail compare-svg-icon-element-list" width="100%"
+                                     height="100%" viewBox="0 0 18 16">
                                     <path fill-rule="evenodd"
                                           clip-rule="evenodd"
                                           d="M13.4993 12.0003V11.125C13.4993 10.5036 14.0031 9.99985 14.6245 9.99985C15.2459 9.99985 15.7497 10.5036 15.7497 11.125V12.0003H17.0004C17.5525 12.0003 18 12.4478 18 12.9999C18 13.552 17.5525 13.9995 17.0004 13.9995H15.7497V14.8748C15.7497 15.4962 15.2459 16 14.6245 16C14.0031 16 13.4993 15.4962 13.4993 14.8748V13.9995H12.25C11.6979 13.9995 11.2503 13.552 11.2503 12.9999C11.2503 12.4478 11.6979 12.0003 12.25 12.0003H13.4993ZM0 12.9999C0 12.4478 0.447548 12.0003 0.999626 12.0003H8.00037C8.55245 12.0003 9 12.4478 9 12.9999C9 13.552 8.55245 13.9995 8.00037 13.9995H0.999626C0.447548 13.9995 0 13.552 0 12.9999ZM0 0.999625C0 0.447547 0.447548 0 0.999626 0H17.0004C17.5525 0 18 0.447547 18 0.999625C18 1.5517 17.5525 1.99925 17.0004 1.99925H0.999626C0.447548 1.99925 0 1.5517 0 0.999625ZM0 6.99977C0 6.4477 0.447548 6.00015 0.999626 6.00015H17.0004C17.5525 6.00015 18 6.4477 18 6.99977C18 7.55185 17.5525 7.9994 17.0004 7.9994H0.999626C0.447548 7.9994 0 7.55185 0 6.99977Z"
@@ -89,7 +91,7 @@
                                     $pictureId,
                                     ['width' => 268, 'height' => 268],
                                     BX_RESIZE_IMAGE_PROPORTIONAL,
-                                    true
+                                    true,
                                 );
                                 ?>
                                 <img src="<?= $file['src'] ?>" alt="<?= $arElement['NAME'] ?>"
@@ -97,14 +99,14 @@
                             </a>
                         </div>
 
-                        <div class="image image-list <?= ProjectHelper::getShieldClass($arElement['PROPERTIES']['SALE']['VALUE'])?>">
+                        <div class="image image-list <?= ProjectHelper::getShieldClass($arElement['PROPERTIES']['SALE']['VALUE']) ?>">
                             <?php
                             $pictureId = ((int)$arElement['PREVIEW_PICTURE']['ID'] > 0) ? $arElement['PREVIEW_PICTURE']['ID'] : $arResult['PICTURE']['ID'];
                             $file = CFile::ResizeImageGet(
                                 $pictureId,
                                 ['width' => 268, 'height' => 268],
                                 BX_RESIZE_IMAGE_PROPORTIONAL,
-                                true
+                                true,
                             );
                             ?>
                             <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="image-item" style="
@@ -132,7 +134,7 @@
                                                 'VES1000PS', 'MaksZapas', 'MinZapas', 'Otobrajat_v_prayse',
                                                 'Svertka', 'SHOW_IN_PRICE', 'Otobrajat_na_sayte', 'SALE',
                                                 'Svobodno', 'Nomenklaturniy_nomer', 'Naimenovanie',
-                                                'TipSkladskogoZapasa', 'Kratnost', 'AVAILABLE', 'ADDITIONAL_PRODUCT_INFORMATION'
+                                                'TipSkladskogoZapasa', 'Kratnost', 'AVAILABLE', 'ADDITIONAL_PRODUCT_INFORMATION',
                                             ];
 
                                             // Отсортируем свойства в нужном порядке
@@ -265,7 +267,9 @@
                                 </div>
 
                                 <div class="button-group">
-                                    <button class="btn btn-cart" type="button" data-elementid="<?= $arElement['ID']?>">Добавить в корзину</button>
+                                    <button class="btn btn-cart" type="button" data-elementid="<?= $arElement['ID'] ?>">
+                                        Добавить в корзину
+                                    </button>
                                 </div>
                             </div>
                             <div class="button-group">
@@ -311,7 +315,7 @@
                                                    name="ITEM[<?= $arElement["ID"] ?>]"
                                                    data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
                                                    data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
-                                                   value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float) $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
+                                                   value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float)$arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
                                             >
                                             <?= $arElement["DISPLAY_PROPERTIES"]["UNITS"]["VALUE"] ?>
                                             <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
@@ -331,7 +335,9 @@
                                     </div>
                                     <span class="is-in-basket"></span>
 
-                                    <button class="btn btn-cart" type="button" data-elementid="<?= $arElement['ID']?>">В корзину</button>
+                                    <button class="btn btn-cart" type="button" data-elementid="<?= $arElement['ID'] ?>">
+                                        В корзину
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -346,7 +352,7 @@
 ?>
 
 <div class="b-table-view">
-    <?
+    <?php
     if (sizeof($arResult["ITEMS"]) > 0) { ?>
         <div class="catalog_element">
             <form action="/cart/add_to_cart.php" method="post" class="order_form">
@@ -368,6 +374,10 @@
                         <td class="buy">Купить</td>
                         <td class="mera">Ед</td>
                         <td></td>
+                        <td></td>
+                        <?php if ($arResult['IS_FILTER']) {?>
+                            <td></td>
+                        <?php } ?>
                     </tr>
                     </thead>
                     <tbody>
@@ -382,11 +392,11 @@
                     }
 
                     $this->AddEditAction($arElement['ID'], $arElement['EDIT_LINK'], CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "ELEMENT_EDIT"));
-                    $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BCS_ELEMENT_DELETE_CONFIRM')));
+                    $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "ELEMENT_DELETE"), ["CONFIRM" => GetMessage('CT_BCS_ELEMENT_DELETE_CONFIRM')]);
 
                     $up1 = (float)$arElement["PROPERTIES"]["UPAKOVKA"]["VALUE"];
                     $up2 = (float)$arElement["PROPERTIES"]["UPAKOVKA2"]["VALUE"];
-                    $countTips = array();
+                    $countTips = [];
                     if ($up1 && !$up2) {
                         $countTips[] = $up1;
                         $countTips[] = $up1 * 10;
@@ -414,316 +424,319 @@
                     <?php
                     if ($arResult['IS_FILTER'] && false) {
 
-                            // Поставим заголовок для товаров в случае фильтрации, если он еще не был записан
-                            if ($arResult['IS_FILTER'] && !$isSectionNameWrited) { ?>
-                            </tbody>
-                        </table>
-                        <table class="full element_table">
-                            <tbody>
-                            <tr>
-                                <td colspan="12">
-                                    <span class="filter_section_title"><?= $sCurSectionNameForFilter ?></span>
-                                </td>
-                            </tr>
-                            <?php
-                            $isSectionNameWrited = true;
-                            }
+                    // Поставим заголовок для товаров в случае фильтрации, если он еще не был записан
+                    if ($arResult['IS_FILTER'] && !$isSectionNameWrited) { ?>
+                    </tbody>
+                </table>
+                <table class="full element_table">
+                    <tbody>
+                    <tr>
+                        <td colspan="12">
+                            <span class="filter_section_title"><?= $sCurSectionNameForFilter ?></span>
+                        </td>
+                    </tr>
+                    <?php
+                    $isSectionNameWrited = true;
+                    }
 
-                        // Проверяем, если у следующего элемента отличается заголовок, то зададим переменной
-                        // заголовка новое значение
-                        if (!empty($arResult['ITEMS'][$cell + 1]) &&
-                            $arResult['ITEMS'][$cell + 1]['FILTER_SECTION_NAME'] != $sCurSectionNameForFilter &&
-                            $arResult['ITEMS'][$cell + 1]['FILTER_SECTION_NAME'] != '') {
+                    // Проверяем, если у следующего элемента отличается заголовок, то зададим переменной
+                    // заголовка новое значение
+                    if (!empty($arResult['ITEMS'][$cell + 1]) &&
+                        $arResult['ITEMS'][$cell + 1]['FILTER_SECTION_NAME'] != $sCurSectionNameForFilter &&
+                        $arResult['ITEMS'][$cell + 1]['FILTER_SECTION_NAME'] != '') {
 
-                            $sCurSectionNameForFilter = $arResult['ITEMS'][$cell + 1]['FILTER_SECTION_NAME'];
-                            $isSectionNameWrited = false;
+                        $sCurSectionNameForFilter = $arResult['ITEMS'][$cell + 1]['FILTER_SECTION_NAME'];
+                        $isSectionNameWrited = false;
+                    }
+                    ?>
+
+                    <tr id="<?= $this->GetEditAreaId($arElement['ID']); ?>" data-elementid="<?= $arElement['ID'] ?>"
+                        class="element_product_tr <?= ((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
+
+                        <td class="art <?= $cell ?>">
+                            <div class="name-holder">
+                                <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
+                                    <span><?= $arElement["DISPLAY_PROPERTIES"]["ARTICUL"]["VALUE"] ?></span>
+                                </a>
+                            </div>
+
+                        </td>
+                        <?
+                        $mera = $arElement["DISPLAY_PROPERTIES"]["UNITS"]["VALUE"];
+                        $ves = (float)$arElement["PROPERTIES"]["VES1000PS"]["VALUE"];
+                        if ($mera == "кг") {
+                            $k = round(1000 / $ves, 5);
+                            $k_val = "шт";
+                            $e = 'руб/шт';
+                        } elseif ($mera == "шт") {
+                            $k = round($ves / 1000, 5);
+                            $k_val = "кг";
+                            $e = 'руб/кг';
+                        } elseif ($mera == "тыс. шт") {
+                            $k = round($ves, 2);
+
+                            $k_val = "кг";
+                            $e = 'руб/кг';
                         }
+
+                        if ($arResult['IS_OPT_2']) {
+                            $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"];
+                        } elseif ($arResult['IS_OPT_3']) {
+                            $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT2"]["VALUE"];
+                        }
+
+                        $ok = number_format(round($sPrice / $k, 2), 2, ', ', ' ');
+                        $rk = number_format(round($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] / $k, 2), 2, ', ', ' ');
                         ?>
+                        <td class="nopadding-i">
+                            <? if ($arElement["DETAIL_TEXT"]) { ?><a href="#" class="">
+                                <img src="/images/i.png" alt="Информация"/></a><? } ?>
+                        </td>
+                        <td class="name t-name-relative <?= $saleClass ?>" <?php if ($arResult['IS_FILTER']) {
+                            echo 'style="width: 100%"';
+                        } ?>>
+                            <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
+                                <div class="name_wrapper">
 
-                        <tr id="<?= $this->GetEditAreaId($arElement['ID']); ?>" data-elementid="<?= $arElement['ID'] ?>"
-                            class="element_product_tr <?= ((float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] > 0 ? 'available' : 'not-available') ?> row<?= ($cell % 2); ?>">
+                                    <div class="name-holder">
+                                        <span><?= $arElement["NAME"] ?></span>
+                                    </div>
+                                    <div class="description_holder" id="detailed_<?= $arElement["ID"] ?>">
+                                        <h3><?= $arElement["PROPERTIES"]["NAIMENOVANIE"]["VALUE"] ?></h3>
+                                        <table class="full">
+                                            <tr>
+                                                <? if ($arElement["PREVIEW_PICTURE"] || $arResult["PICTURE"]) { ?>
+                                                    <td class="picture">
+                                                        <?
+                                                        if ($arElement["PREVIEW_PICTURE"]) {
+                                                            $file = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], ['width' => 250, 'height' => 250], BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                                            $file_big = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], ['width' => 900, 'height' => 600], BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                                        } else {
+                                                            $file = CFile::ResizeImageGet($arResult["PICTURE"], ['width' => 250, 'height' => 250], BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                                            $file_big = CFile::ResizeImageGet($arElement["PICTURE"], ['width' => 900, 'height' => 600], BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                                        }
 
-                            <td class="art <?= $cell ?>">
-                                <div class="name-holder">
-                                    <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
-                                        <span><?= $arElement["DISPLAY_PROPERTIES"]["ARTICUL"]["VALUE"] ?></span>
-                                    </a>
+                                                        ?>
+                                                        <a href="<?= $file_big["src"] ?>" class="fancybox"><img
+                                                                    src="<?= $file["src"] ?>"
+                                                                    alt="<?= $arElement['NAME']; ?>"></a>
+                                                    </td>
+                                                <? } ?>
+                                                <td class="properties">
+                                                    <div class="buy">
+
+                                                        <div class="buy_helper_holder">
+                                                            <div class="buy_helper buy_helper-flex">
+                                                                <? if ($ves) { ?>
+                                                                    <div class="vesHelperHolder">
+                                                                    <div class="vesHelper" data-val='<?= $k_val; ?>'
+                                                                         data-k="<?= $k; ?>">
+                                                                        0 <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?>
+                                                                    </div></div><? } ?>
+
+                                                                <span class="product-item-amount-field-btn-minus no-select product-item-amount-count s-span-minus-button"></span>
+                                                                <div class="input_holder">
+                                                                    <input type="text" class="quantity_input"
+                                                                           name="ITEM[<?= $arElement["ID"] ?>]"
+                                                                           data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
+                                                                           data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
+                                                                           value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float)$arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
+                                                                    >
+                                                                    <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
+                                                                        <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
+                                                                    <?php } ?>
+                                                                </div>
+                                                                <span class="product-item-amount-field-btn-plus no-select product-item-amount-count s-span-plus-button"></span>
+
+                                                                <? if (count($countTips)) { ?>
+                                                                    <div class="help_values">
+                                                                        <? foreach ($countTips as $c) { ?>
+                                                                            <a href="#"
+                                                                               data-val="<?= $c ?>">+<span><?= $c ?> <?= $mera; ?></span></a>
+                                                                        <? } ?>
+                                                                        <div class="clear"></div>
+                                                                    </div>
+                                                                <? } ?>
+
+                                                                <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
+                                                                    <div class="kratnostHelperHolder">
+                                                                        <div class="kratnostHelper">
+                                                                            Данная продукция отпускается
+                                                                            кртано <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?> <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?>
+                                                                        </div>
+                                                                    </div>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <a href="#" class="add_to_cart_one one"><img
+                                                                        src="/img/cart_buttton.png"
+                                                                        alt=""></a>
+                                                        </div>
+                                                    </div>
+
+                                                    <table class="full">
+                                                        <tr>
+                                                            <td class="prop_name">Артикул:</td>
+                                                            <td class="prop_value"><?= $arElement["PROPERTIES"]["ARTICUL"]["VALUE"] ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="prop_name">Единицы:</td>
+                                                            <td class="prop_value"><?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="prop_name">Наличие:</td>
+                                                            <td class="prop_value"><?= (float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="prop_name">Розничная цена:</td>
+                                                            <td class="prop_value"><?= $arElement["PROPERTIES"]["PRICE"]["VALUE"] ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="prop_name">Оптовая цена:</td>
+                                                            <td class="prop_value"><?= $arElement["PROPERTIES"]["PRICE_OPT"]["VALUE"] ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="prop_name">В упаковке:</td>
+                                                            <td class="prop_value"><?= $up1; ?><?= ($up2 ? '/' . $up2 : '') ?></td>
+                                                        </tr>
+                                                        <? if ($arElement["PROPERTIES"]["VES"]["VALUE"]) {
+                                                            ?>
+                                                            <tr>
+                                                                <td class="prop_name">Вес 1000 шт.:</td>
+                                                                <td class="prop_value"><?= $arElement["PROPERTIES"]["VES"]["VALUE"]; ?>
+                                                                    кг.
+                                                                </td>
+                                                            </tr>
+                                                        <? } ?>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div class="text">
+                                                        <? if ($arElement["PREVIEW_TEXT"] != '') { ?>
+                                                            <?= ($arElement["PREVIEW_TEXT"]) ?>
+                                                        <? } elseif ($arResult["DESCRIPTION"] != '') { ?>
+                                                            <!--noindex--> <?= ($arResult["DESCRIPTION"]) ?><!--/noindex-->
+                                                        <? } ?>
+                                                    </div>
+                                                    <? if ($arElement['DETAIL_TEXT']) { ?>
+                                                        <div class="detail_link"><a
+                                                                    href="<?= $arElement['DETAIL_PAGE_URL'] ?>">подробнее</a>
+                                                        </div>
+                                                        <div class="description_holder"
+                                                             id="detailed_text_<?= $arElement["ID"] ?>">
+                                                            <?= $arElement['DETAIL_TEXT']; ?>
+                                                        </div>
+                                                    <? } ?>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
-
-                            </td>
-                            <?
-                            $mera = $arElement["DISPLAY_PROPERTIES"]["UNITS"]["VALUE"];
-                            $ves = (float)$arElement["PROPERTIES"]["VES1000PS"]["VALUE"];
-                            if ($mera == "кг") {
-                                $k = round(1000 / $ves, 5);
-                                $k_val = "шт";
-                                $e = 'руб/шт';
-                            } elseif ($mera == "шт") {
-                                $k = round($ves / 1000, 5);
-                                $k_val = "кг";
-                                $e = 'руб/кг';
-                            } elseif ($mera == "тыс. шт") {
-                                $k = round($ves, 2);
-
-                                $k_val = "кг";
-                                $e = 'руб/кг';
-                            }
-
+                            </a>
+                        </td>
+                        <td class="opt">
+                            <?php
                             if ($arResult['IS_OPT_2']) {
                                 $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"];
                             } elseif ($arResult['IS_OPT_3']) {
                                 $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT2"]["VALUE"];
+                            } else {
+                                $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"];
                             }
-
-                            $ok = number_format(round($sPrice / $k, 2), 2, ', ', ' ');
-                            $rk = number_format(round($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] / $k, 2), 2, ', ', ' ');
                             ?>
-                            <td class="nopadding-i">
-                                <? if ($arElement["DETAIL_TEXT"]) { ?><a href="#" class="">
-                                    <img src="/images/i.png" alt="Информация"/></a><? } ?>
-                            </td>
-                            <td class="name t-name-relative <?= $saleClass ?>" <?php if ($arResult['IS_FILTER']) {
-                                echo 'style="width: 100%"';
-                            } ?>>
-                                <a href="<?= $arElement['DETAIL_PAGE_URL'] ?>" class="no_underline">
-                                    <div class="name_wrapper">
-
-                                        <div class="name-holder">
-                                            <span><?= $arElement["NAME"] ?></span>
-                                        </div>
-                                        <div class="description_holder" id="detailed_<?= $arElement["ID"] ?>">
-                                            <h3><?= $arElement["PROPERTIES"]["NAIMENOVANIE"]["VALUE"] ?></h3>
-                                            <table class="full">
-                                                <tr>
-                                                    <? if ($arElement["PREVIEW_PICTURE"] || $arResult["PICTURE"]) { ?>
-                                                        <td class="picture">
-                                                            <?
-                                                            if ($arElement["PREVIEW_PICTURE"]) {
-                                                                $file = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], array('width' => 250, 'height' => 250), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                                                                $file_big = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], array('width' => 900, 'height' => 600), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                                                            } else {
-                                                                $file = CFile::ResizeImageGet($arResult["PICTURE"], array('width' => 250, 'height' => 250), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                                                                $file_big = CFile::ResizeImageGet($arElement["PICTURE"], array('width' => 900, 'height' => 600), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                                                            }
-
-                                                            ?>
-                                                            <a href="<?= $file_big["src"] ?>" class="fancybox"><img
-                                                                        src="<?= $file["src"] ?>"
-                                                                        alt="<?= $arElement['NAME']; ?>"></a>
-                                                        </td>
-                                                    <? } ?>
-                                                    <td class="properties">
-                                                        <div class="buy">
-
-                                                            <div class="buy_helper_holder">
-                                                                <div class="buy_helper buy_helper-flex">
-                                                                    <? if ($ves) { ?>
-                                                                        <div class="vesHelperHolder">
-                                                                        <div class="vesHelper" data-val='<?= $k_val; ?>'
-                                                                             data-k="<?= $k; ?>">
-                                                                            0 <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?>
-                                                                        </div></div><? } ?>
-
-                                                                    <span class="product-item-amount-field-btn-minus no-select product-item-amount-count s-span-minus-button"></span>
-                                                                    <div class="input_holder">
-                                                                        <input type="text" class="quantity_input"
-                                                                               name="ITEM[<?= $arElement["ID"] ?>]"
-                                                                               data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
-                                                                               data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
-                                                                               value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float) $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
-                                                                        >
-                                                                        <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
-                                                                            <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
-                                                                        <?php } ?>
-                                                                    </div>
-                                                                    <span class="product-item-amount-field-btn-plus no-select product-item-amount-count s-span-plus-button"></span>
-
-                                                                    <? if (count($countTips)) { ?>
-                                                                        <div class="help_values">
-                                                                            <? foreach ($countTips as $c) { ?>
-                                                                                <a href="#"
-                                                                                   data-val="<?= $c ?>">+<span><?= $c ?> <?= $mera; ?></span></a>
-                                                                            <? } ?>
-                                                                            <div class="clear"></div>
-                                                                        </div>
-                                                                    <? } ?>
-
-                                                                    <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
-                                                                        <div class="kratnostHelperHolder">
-                                                                            <div class="kratnostHelper">
-                                                                                Данная продукция отпускается
-                                                                                кртано <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?> <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?>
-                                                                            </div>
-                                                                        </div>
-                                                                    <?php } ?>
-                                                                </div>
-                                                                <a href="#" class="add_to_cart_one one"><img
-                                                                            src="/img/cart_buttton.png"
-                                                                            alt=""></a>
-                                                            </div>
-                                                        </div>
-
-                                                        <table class="full">
-                                                            <tr>
-                                                                <td class="prop_name">Артикул:</td>
-                                                                <td class="prop_value"><?= $arElement["PROPERTIES"]["ARTICUL"]["VALUE"] ?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="prop_name">Единицы:</td>
-                                                                <td class="prop_value"><?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="prop_name">Наличие:</td>
-                                                                <td class="prop_value"><?= (float)$arElement["PROPERTIES"]["Ostatok"]["VALUE"] ?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="prop_name">Розничная цена:</td>
-                                                                <td class="prop_value"><?= $arElement["PROPERTIES"]["PRICE"]["VALUE"] ?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="prop_name">Оптовая цена:</td>
-                                                                <td class="prop_value"><?= $arElement["PROPERTIES"]["PRICE_OPT"]["VALUE"] ?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="prop_name">В упаковке:</td>
-                                                                <td class="prop_value"><?= $up1; ?><?= ($up2 ? '/' . $up2 : '') ?></td>
-                                                            </tr>
-                                                            <? if ($arElement["PROPERTIES"]["VES"]["VALUE"]) {
-                                                                ?>
-                                                                <tr>
-                                                                    <td class="prop_name">Вес 1000 шт.:</td>
-                                                                    <td class="prop_value"><?= $arElement["PROPERTIES"]["VES"]["VALUE"]; ?>
-                                                                        кг.
-                                                                    </td>
-                                                                </tr>
-                                                            <? } ?>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <div class="text">
-                                                            <? if ($arElement["PREVIEW_TEXT"] != '') { ?>
-                                                                <?= ($arElement["PREVIEW_TEXT"]) ?>
-                                                            <? } elseif ($arResult["DESCRIPTION"] != '') { ?>
-                                                                <!--noindex--> <?= ($arResult["DESCRIPTION"]) ?><!--/noindex-->
-                                                            <? } ?>
-                                                        </div>
-                                                        <? if ($arElement['DETAIL_TEXT']) { ?>
-                                                            <div class="detail_link"><a
-                                                                        href="<?= $arElement['DETAIL_PAGE_URL'] ?>">подробнее</a>
-                                                            </div>
-                                                            <div class="description_holder"
-                                                                 id="detailed_text_<?= $arElement["ID"] ?>">
-                                                                <?= $arElement['DETAIL_TEXT']; ?>
-                                                            </div>
-                                                        <? } ?>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
+                            <div class="buy_helper_holder price">
+                                <? if ($ves) { ?>
+                                    <div class="vesHelperHolder">
+                                        <div class="vesHelper"
+                                             data-price="<?= coolPrice($sPrice) ?>">
+                                            ~ <?= $ok ?> <?= $e ?></div>
                                     </div>
-                                </a>
-                            </td>
-                            <td class="opt">
-                                <?php
-                                if ($arResult['IS_OPT_2']) {
-                                    $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"];
-                                } elseif ($arResult['IS_OPT_3']) {
-                                    $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT2"]["VALUE"];
-                                } else {
-                                    $sPrice = $arElement["DISPLAY_PROPERTIES"]["PRICE_OPT"]["VALUE"];
-                                }
-                                ?>
+                                <? } ?>
+                                <?= coolPrice($sPrice) ?>
+                            </div>
+                        </td>
+
+                        <?php if (!$arResult['IS_OPT_2'] && !$arResult['IS_OPT_3']) { ?>
+                            <td class="roz">
                                 <div class="buy_helper_holder price">
                                     <? if ($ves) { ?>
                                         <div class="vesHelperHolder">
                                             <div class="vesHelper"
-                                                 data-price="<?= coolPrice($sPrice) ?>">
-                                                ~ <?= $ok ?> <?= $e ?></div>
+                                                 data-price="<?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]) ?>">
+                                                ~ <?= $rk ?> <?= $e ?></div>
                                         </div>
                                     <? } ?>
-                                    <?= coolPrice($sPrice) ?>
-                                </div>
+                                    <?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]) ?>
                             </td>
+                        <?php } ?>
 
-                            <?php if (!$arResult['IS_OPT_2'] && !$arResult['IS_OPT_3']) { ?>
-                                <td class="roz">
-                                    <div class="buy_helper_holder price">
-                                        <? if ($ves) { ?>
-                                            <div class="vesHelperHolder">
-                                                <div class="vesHelper"
-                                                     data-price="<?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]) ?>">
-                                                    ~ <?= $rk ?> <?= $e ?></div>
-                                            </div>
-                                        <? } ?>
-                                        <?= coolPrice($arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]) ?>
-                                </td>
-                            <?php } ?>
-
-                            <td class="upak"><?= $up1; ?><?= ($up2 ? '/' . $up2 : '') ?></td>
-                            <td class="avail"><? if ((float)$arElement["PROPERTIES"]["Svobodno"]["VALUE"] > 0) {
-                                    echo 'В наличии';
+                        <td class="upak"><?= $up1; ?><?= ($up2 ? '/' . $up2 : '') ?></td>
+                        <td class="avail"><? if ((float)$arElement["PROPERTIES"]["Svobodno"]["VALUE"] > 0) {
+                                echo 'В наличии';
+                            } else {
+                                if ($arElement["PROPERTIES"]["TipSkladskogoZapasa"]["VALUE"] == 'Обязательный ассортимент' &&
+                                    (float)$arElement["PROPERTIES"]["Svobodno"]["VALUE"] <= 0) {
+                                    echo 'Временно отсутствует';
                                 } else {
-                                    if ($arElement["PROPERTIES"]["TipSkladskogoZapasa"]["VALUE"] == 'Обязательный ассортимент' &&
-                                        (float)$arElement["PROPERTIES"]["Svobodno"]["VALUE"] <= 0) {
-                                        echo 'Временно отсутствует';
-                                    } else {
-                                        echo 'Под заказ';
-                                    }
-                                } ?></td>
-                            <td class="buy">
-                                <div class="buy_helper_holder">
-                                    <div class="buy_helper buy_helper-flex">
-                                        <? if ($ves) { ?>
-                                            <div class="vesHelperHolder">
-                                            <div class="vesHelper" data-val='<?= $k_val; ?>' data-k="<?= $k; ?>"
-                                                 data-num="0">0 <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?></div>
-                                            </div><? } ?>
+                                    echo 'Под заказ';
+                                }
+                            } ?></td>
+                        <td class="buy">
+                            <div class="buy_helper_holder">
+                                <div class="buy_helper buy_helper-flex">
+                                    <? if ($ves) { ?>
+                                        <div class="vesHelperHolder">
+                                        <div class="vesHelper" data-val='<?= $k_val; ?>' data-k="<?= $k; ?>"
+                                             data-num="0">0 <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?></div>
+                                        </div><? } ?>
 
-                                        <span class="product-item-amount-field-btn-minus no-select product-item-amount-count s-span-minus-button"></span>
-                                        <div class="input_holder">
-                                            <input type="text" class="quantity_input"
-                                                   name="ITEM[<?= $arElement["ID"] ?>]"
-                                                   data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
-                                                   data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
-                                                   value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float) $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
-                                            >
-                                            <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
-                                                <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
-                                            <?php } ?>
-                                        </div>
-                                        <span class="product-item-amount-field-btn-plus no-select product-item-amount-count s-span-plus-button"></span>
-
-                                        <? if (count($countTips)) { ?>
-                                            <div class="help_values">
-                                                <? foreach ($countTips as $c) { ?>
-                                                    <a href="#"
-                                                       data-val="<?= $c ?>">+<span><?= $c ?> <?= $mera; ?></span></a>
-                                                <? } ?>
-                                                <div class="clear"></div>
-                                            </div>
-                                        <? } ?>
-
+                                    <span class="product-item-amount-field-btn-minus no-select product-item-amount-count s-span-minus-button"></span>
+                                    <div class="input_holder">
+                                        <input type="text" class="quantity_input"
+                                               name="ITEM[<?= $arElement["ID"] ?>]"
+                                               data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
+                                               data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
+                                               value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float)$arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
+                                        >
                                         <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
-                                            <div class="kratnostHelperHolder">
-                                                <div class="kratnostHelper">
-                                                    Данная продукция отпускается
-                                                    кртано <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?> <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?>
-                                                </div>
-                                            </div>
+                                            <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
                                         <?php } ?>
                                     </div>
-                                </div>
-                                <span class="is-in-basket"></span>
-                            </td>
-                            <td class="mera"><?= $mera ?></td>
-                            <td class="cart_td" <?php if ($arResult['IS_FILTER']) {
-                                echo 'colspan="2"';
-                            } ?>><a href="#" class="add_to_cart_one"><img src="/img/cart_buttton.png" alt=""></a>
-                            </td>
+                                    <span class="product-item-amount-field-btn-plus no-select product-item-amount-count s-span-plus-button"></span>
 
-                        </tr>
+                                    <? if (count($countTips)) { ?>
+                                        <div class="help_values">
+                                            <? foreach ($countTips as $c) { ?>
+                                                <a href="#"
+                                                   data-val="<?= $c ?>">+<span><?= $c ?> <?= $mera; ?></span></a>
+                                            <? } ?>
+                                            <div class="clear"></div>
+                                        </div>
+                                    <? } ?>
+
+                                    <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
+                                        <div class="kratnostHelperHolder">
+                                            <div class="kratnostHelper">
+                                                Данная продукция отпускается
+                                                кртано <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?> <?= $arElement["PROPERTIES"]["UNITS"]["VALUE"] ?>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <span class="is-in-basket"></span>
+                        </td>
+                        <td class="mera"><?= $mera ?></td>
+                        <td class="cart_td" <?php if ($arResult['IS_FILTER']) {
+                            echo 'colspan="2"';
+                        } ?>><a href="#" class="add_to_cart_one"><img src="/img/cart_buttton.png" alt=""></a>
+                        </td>
+                        <td>
+                            <!-- Избранное и сравнение -->
+
+                        </td>
+                    </tr>
                     <?php } else { ?>
                         <?php
                         // Проверяем, если у следующего элемента отличается заголовок, то зададим переменной
@@ -747,39 +760,40 @@
                                 $pictureId,
                                 ['width' => 268, 'height' => 268],
                                 BX_RESIZE_IMAGE_PROPORTIONAL,
-                                true
+                                true,
                             );
-                                if (!(empty($file))) {?>
-                                    <td class="section_description section_description-image <?= ProjectHelper::getShieldClass($arElement['PROPERTIES']['SALE']['VALUE'])?>">
+                            if (!(empty($file))) { ?>
+                                <td class="section_description section_description-image <?= ProjectHelper::getShieldClass($arElement['PROPERTIES']['SALE']['VALUE']) ?>">
 
-                                        <a href="<?= $arElement['PREVIEW_PICTURE']['SRC'] ?>" class="fancybox" data-fancybox>
-                                            <img class="line-item-image"
-                                                    src="<?= $file['src'] ?>"
-                                                    alt="">
-                                        </a>
+                                    <a href="<?= $arElement['PREVIEW_PICTURE']['SRC'] ?>" class="fancybox"
+                                       data-fancybox>
+                                        <img class="line-item-image"
+                                             src="<?= $file['src'] ?>"
+                                             alt="">
+                                    </a>
 
-                                        <div class="description"><? /*= $arResult["DESCRIPTION"]*/ ?></div>
-                                        <div class="clear"></div>
-                                    </td>
-                                <?php } else {?>
-                                    <td rowspan="<?php /*echo (sizeof($arResult["ITEMS"]) + 1 + sizeof($arResult['SECTIONS_COUNT']) + 1)*/ ?>"
-                                        class="section_description section_description-withoutimage">
+                                    <div class="description"><? /*= $arResult["DESCRIPTION"]*/ ?></div>
+                                    <div class="clear"></div>
+                                </td>
+                            <?php } else { ?>
+                                <td rowspan="<?php /*echo (sizeof($arResult["ITEMS"]) + 1 + sizeof($arResult['SECTIONS_COUNT']) + 1)*/ ?>"
+                                    class="section_description section_description-withoutimage">
 
-                                        <?
-                                        if ($arResult["PICTURE"]["ID"]) {
-                                            $file = CFile::ResizeImageGet($arResult["PICTURE"]["ID"], array('width' => 128, 'height' => 130), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                                            $file_big = CFile::ResizeImageGet($arResult["PICTURE"]["ID"], array('width' => 900, 'height' => 600), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                                            ?>
+                                    <?
+                                    if ($arResult["PICTURE"]["ID"]) {
+                                        $file = CFile::ResizeImageGet($arResult["PICTURE"]["ID"], ['width' => 128, 'height' => 130], BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                        $file_big = CFile::ResizeImageGet($arResult["PICTURE"]["ID"], ['width' => 900, 'height' => 600], BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                        ?>
 
-                                            <a href="<?= $file["src"] ?>" class="fancybox" data-fancybox><img
-                                                        src="<?= $file["src"] ?>"
-                                                        alt=""></a>
+                                        <a href="<?= $file["src"] ?>" class="fancybox" data-fancybox><img
+                                                    src="<?= $file["src"] ?>"
+                                                    alt=""></a>
 
-                                        <? } ?>
-                                        <div class="description"><? /*= $arResult["DESCRIPTION"]*/ ?></div>
-                                        <div class="clear"></div>
-                                    </td>
-                                <?php } ?>
+                                    <? } ?>
+                                    <div class="description"><? /*= $arResult["DESCRIPTION"]*/ ?></div>
+                                    <div class="clear"></div>
+                                </td>
+                            <?php } ?>
 
                             <td class="art <?= $cell ?>">
                                 <div class="name-holder">
@@ -837,11 +851,11 @@
                                                         <td class="picture">
                                                             <?
                                                             if ($arElement["PREVIEW_PICTURE"]) {
-                                                                $file = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], array('width' => 250, 'height' => 250), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                                                                $file_big = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], array('width' => 900, 'height' => 600), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                                                $file = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], ['width' => 250, 'height' => 250], BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                                                $file_big = CFile::ResizeImageGet($arElement["PREVIEW_PICTURE"]["ID"], ['width' => 900, 'height' => 600], BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                                             } else {
-                                                                $file = CFile::ResizeImageGet($arResult["PICTURE"], array('width' => 250, 'height' => 250), BX_RESIZE_IMAGE_PROPORTIONAL, true);
-                                                                $file_big = CFile::ResizeImageGet($arElement["PICTURE"], array('width' => 900, 'height' => 600), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                                                $file = CFile::ResizeImageGet($arResult["PICTURE"], ['width' => 250, 'height' => 250], BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                                                                $file_big = CFile::ResizeImageGet($arElement["PICTURE"], ['width' => 900, 'height' => 600], BX_RESIZE_IMAGE_PROPORTIONAL, true);
                                                             }
 
                                                             ?>
@@ -869,7 +883,7 @@
                                                                                name="ITEM[<?= $arElement["ID"] ?>]"
                                                                                data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
                                                                                data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
-                                                                               value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float) $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
+                                                                               value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float)$arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
                                                                         >
                                                                         <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
                                                                             <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
@@ -1029,14 +1043,13 @@
                                                    name="ITEM[<?= $arElement["ID"] ?>]"
                                                    data-price="<?= $arElement["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"] ?>"
                                                    data-ratio="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 'NaN' ?>"
-                                                   value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float) $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
+                                                   value="<?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') ? (float)$arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?>"
                                             >
                                             <?php if ($arElement['PROPERTIES']['Kratnost']['VALUE'] != '') { ?>
                                                 <span class="hint_min">мин. <?= ($arElement['PROPERTIES']['Kratnost']['VALUE'] > 0) ? $arElement['PROPERTIES']['Kratnost']['VALUE'] : 1 ?></span>
                                             <?php } ?>
                                         </div>
                                         <span class="product-item-amount-field-btn-plus no-select product-item-amount-count s-span-plus-button"></span>
-
 
 
                                         <? if (count($countTips)) { ?>
@@ -1065,13 +1078,36 @@
                             <td class="cart_td" <?php if ($arResult['IS_FILTER']) {
                                 echo 'colspan="2"';
                             } ?>>
-                                <input class="btn btn-themes btn-list-add-to-cart" type="button" name="add_to_basket" value="В корзину" data-elementid="<?= $arElement['ID']?>">
+                                <input class="btn btn-themes btn-list-add-to-cart" type="button" name="add_to_basket"
+                                       value="В корзину" data-elementid="<?= $arElement['ID'] ?>">
                             </td>
+                            <td>
+                                <!-- Избранное и сравнение без фильтров и с фильтрами -->
 
+                                <div class="b-compare">
+                                    <svg data-product-id="<?= $arElement['ID'] ?>" id="compare-icon"
+                                         class="compare-svg-icon-element-detail compare-svg-icon-element-list" width="100%"
+                                         height="100%" viewBox="0 0 18 16">
+                                        <path fill-rule="evenodd"
+                                              clip-rule="evenodd"
+                                              d="M13.4993 12.0003V11.125C13.4993 10.5036 14.0031 9.99985 14.6245 9.99985C15.2459 9.99985 15.7497 10.5036 15.7497 11.125V12.0003H17.0004C17.5525 12.0003 18 12.4478 18 12.9999C18 13.552 17.5525 13.9995 17.0004 13.9995H15.7497V14.8748C15.7497 15.4962 15.2459 16 14.6245 16C14.0031 16 13.4993 15.4962 13.4993 14.8748V13.9995H12.25C11.6979 13.9995 11.2503 13.552 11.2503 12.9999C11.2503 12.4478 11.6979 12.0003 12.25 12.0003H13.4993ZM0 12.9999C0 12.4478 0.447548 12.0003 0.999626 12.0003H8.00037C8.55245 12.0003 9 12.4478 9 12.9999C9 13.552 8.55245 13.9995 8.00037 13.9995H0.999626C0.447548 13.9995 0 13.552 0 12.9999ZM0 0.999625C0 0.447547 0.447548 0 0.999626 0H17.0004C17.5525 0 18 0.447547 18 0.999625C18 1.5517 17.5525 1.99925 17.0004 1.99925H0.999626C0.447548 1.99925 0 1.5517 0 0.999625ZM0 6.99977C0 6.4477 0.447548 6.00015 0.999626 6.00015H17.0004C17.5525 6.00015 18 6.4477 18 6.99977C18 7.55185 17.5525 7.9994 17.0004 7.9994H0.999626C0.447548 7.9994 0 7.55185 0 6.99977Z"
+                                        />
+                                    </svg>
+                                </div>
+
+                                <div class="b-favorite">
+                                    <svg data-product-id="<?= $arElement['ID'] ?>"
+                                         class="favorite-svg-icon <?= $arElement['IS_FAVORITE'] ? 'active' : '' ?>"
+                                         title="Добавить в избранное" width="31" height="31" viewBox="0 0 24 24" fill="none"
+                                         stroke="#8899a4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </div>
+                            </td>
                         </tr>
                     <?php }
                     endforeach; // foreach($arResult["ITEMS"] as $arElement):?>
-                    <tr></tr>
+
                     </tbody>
                 </table>
 
@@ -1088,12 +1124,12 @@
         <?
         if (sizeof($arResult["UF_SEE_ALSO"]) > 0 && is_array($arResult["UF_SEE_ALSO"])) {
             global $arrFilter;
-            $arrFilter = array("!UF_PRODUCT" => false, "SECTION_ID" => $arResult["UF_SEE_ALSO"], "!PICTURE" => false);
+            $arrFilter = ["!UF_PRODUCT" => false, "SECTION_ID" => $arResult["UF_SEE_ALSO"], "!PICTURE" => false];
             ?>
             <? $APPLICATION->IncludeComponent(
                 "profi:catalog.section.list",
                 "see_also",
-                array(
+                [
                     "IBLOCK_TYPE" => "content",
                     "IBLOCK_ID" => "1",
                     "SECTION_ID" => "",
@@ -1101,8 +1137,8 @@
                     "SECTION_URL" => "",
                     "COUNT_ELEMENTS" => "N",
                     "TOP_DEPTH" => "5",
-                    "SECTION_FIELDS" => array("UF_PRICE_FROM", "PICTURE"),
-                    "SECTION_USER_FIELDS" => array("UF_PRODUCT", "UF_PRICE_FROM"),
+                    "SECTION_FIELDS" => ["UF_PRICE_FROM", "PICTURE"],
+                    "SECTION_USER_FIELDS" => ["UF_PRODUCT", "UF_PRICE_FROM"],
                     "ADD_SECTIONS_CHAIN" => "N",
                     "CACHE_TYPE" => "N",
                     "CACHE_TIME" => "0",
@@ -1110,9 +1146,9 @@
                     "FILTER_NAME" => "arrFilter",
                     "NAV_COUNT" => 4,
                     "SORT_BY" => "rand",
-                    "SORT_ORDER" => "desc"
-                ),
-                false
+                    "SORT_ORDER" => "desc",
+                ],
+                false,
             ); ?><?
         } ?>
         <div class="clear"></div>

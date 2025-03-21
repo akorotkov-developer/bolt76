@@ -24,6 +24,45 @@ if (CModule::IncludeModule("iblock")) {
 /** Отметка товаров, которые в корзине */
 // Получим все товары из корзины
 ?>
+
+<?php
+/** Дополнительно проставить избранное с помощью скрипта (нужно из-за того, что страницы кэшируются)*/
+global $USER;
+if(!$USER->IsAuthorized()) // Для неавторизованного
+{
+    global $APPLICATION;
+    $arFavorites = unserialize($_COOKIE["favorites"]);
+} else {
+    $idUser = $USER->GetID();
+    $rsUser = CUser::GetByID($idUser);
+    $arUser = $rsUser->Fetch();
+    $arFavorites = $arUser['UF_FAVORITES'];
+
+}
+
+/* Меняем отображение сердечка товара */
+foreach($arFavorites as $k => $favoriteItem) {
+    ?>
+    <script>
+        $( document ).ready(function() {
+            if($('.favorite-svg-icon[data-product-id="' + <?=$favoriteItem ?> + '"]').length > 0) {
+                $('.favorite-svg-icon[data-product-id="' + <?=$favoriteItem ?> + '"]').attr('class', 'favorite-svg-icon active');;
+            }
+        });
+    </script>
+<?php } ?>
+
+<?php
+/** Лист сравнения */
+$compareElements = [];
+foreach ($_SESSION['CATALOG_COMPARE_LIST'] as $compareListsElements) {
+    foreach ($compareListsElements['ITEMS'] as $element) {
+        $compareElements[] = $element['ID'];
+    }
+}
+$compareElements = json_encode($compareElements);
+?>
+
 <script>
     $( document ).ready(function() {
         window.basketController = {
@@ -84,6 +123,29 @@ if (CModule::IncludeModule("iblock")) {
                     console.log('Error: '+ errorThrown);
                 }
             });
+        });
+
+        // Исходная JSON-строка
+        let json = '<?= $compareElements ?>';
+        // Преобразуем JSON-строку в массив
+        let idArray = JSON.parse(json);
+
+        document.querySelectorAll('.b-compare .compare-svg-icon-element-list').forEach(element => {
+            // Получаем значение data-id
+            const dataId = element.getAttribute('data-product-id');
+
+            // Проверяем, есть ли dataId в массиве idArray
+            const parentCompare = element.closest('.b-compare');
+            if (idArray.includes(dataId)) {
+                // Находим родительский элемент .b-compare и добавляем класс active
+                if (parentCompare) {
+                    parentCompare.classList.add('active');
+                }
+            } else {
+                if (parentCompare) {
+                    parentCompare.classList.remove('active');
+                }
+            }
         });
     });
 </script>

@@ -1473,7 +1473,7 @@ BX.ready(function() {
 				link.setAttribute("download", 'Заказ киоск №' + data + '.xml');
 				link.click();
 				$('#check_order_number').html(data);
-				print();
+				window.print();
 				window.location.href = '/kiosk_auth';
 			}
 		});

@@ -1,6 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 /** @global array $arParams */
 use Bitrix\Main\Type\Collection;
+use Bitrix\Iblock\SectionTable;
 
 $arParams['TEMPLATE_THEME'] = (string)($arParams['TEMPLATE_THEME']);
 if ($arParams['TEMPLATE_THEME'] != '')
@@ -146,3 +147,17 @@ if ($existShow || $existDelete)
 	}
 	Collection::sortByColumn($arResult['ALL_OFFER_PROPERTIES'], array('SORT' => SORT_ASC, 'ID' => SORT_ASC));
 }
+
+/** Разделение товаров сравнения по категориям */
+$sectionsIds = array_column($arResult['ITEMS'], 'IBLOCK_SECTION_ID');
+$sectionsIds = array_unique($sectionsIds);
+
+$sections = SectionTable::getList([
+    'filter' => [
+        'IBLOCK_ID' => 1,
+        'ID' => $sectionsIds,
+    ],
+    'select' => ['ID', 'CODE', 'NAME'],
+])->fetchAll();
+
+$arResult['ALLOWED_SECTIONS'] = array_column($sections, NULL,'ID');

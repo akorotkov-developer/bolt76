@@ -103,4 +103,56 @@ $(document).ready(function() {
             image.css({'position': 'absolute', 'top': '0px'});
         }
     });
+
+    /** Добавление товара к сравнению */
+    $('.compare-svg-icon-element-list').bind("click", function(e) {
+        if ($(this).parent().hasClass('active')) {
+            console.log('Убрать из сравнения');
+            deleteCompare($(this).attr('data-product-id'));
+
+        } else {
+            addCompare($(this).attr('data-product-id'));
+            console.log('Добавить к сравнению');
+        }
+    });
+
+    function deleteCompare(productId) {
+        let currentUrl = window.location.href;
+        let separator = currentUrl.includes('?') ? '&' : '?';
+        let compareLink = currentUrl + separator + 'action=DELETE_FROM_COMPARE_LIST&id=' + productId + '&ajax_action=Y';
+
+        BX.ajax({
+            method: 'POST',
+            dataType: 'json',
+            url: compareLink,
+            onsuccess: function(response) {
+
+            },
+            onfailure: function(error) {
+
+            }
+        });
+    }
+
+    function addCompare(productId) {
+        let currentUrl = window.location.href;
+        let separator = currentUrl.includes('?') ? '&' : '?';
+        let compareLink = currentUrl + separator + 'action=ADD_TO_COMPARE_LIST&id=' + productId + '&ajax_action=Y';
+
+        // Отправляем AJAX-запрос
+        BX.ajax({
+            method: 'POST',
+            dataType: 'json',
+            url: compareLink,
+            onsuccess: function(response) {
+                // Проверяем статус ответа
+                if (response.STATUS === 'OK') {
+
+                }
+            },
+            onfailure: function(error) {
+
+            }
+        });
+    }
 });
