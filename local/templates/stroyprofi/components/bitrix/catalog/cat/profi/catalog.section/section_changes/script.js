@@ -212,7 +212,7 @@ $( document ).ready(function() {
             dataType: 'json',
             url: compareLink,
             onsuccess: function(response) {
-                console.log(response, 'response');
+
             },
             onfailure: function(error) {
 
@@ -231,10 +231,11 @@ $( document ).ready(function() {
             dataType: 'json',
             url: compareLink,
             onsuccess: function(response) {
-                console.log(response, 'response');
                 // Проверяем статус ответа
                 if (response.STATUS === 'OK') {
-                    // Создаем модальное окно
+
+
+                    /*// Создаем модальное окно
                     const popup = BX.PopupWindowManager.create('CatalogElementBasket_' + productId, null, {
                         autoHide: false,
                         offsetLeft: 0,
@@ -258,13 +259,13 @@ $( document ).ready(function() {
                             Перейти в список сравнения
                         </button>
                     </div>
-                `;
+                `;*/
 
-                    // Устанавливаем контент в модальное окно
+                    /*// Устанавливаем контент в модальное окно
                     popup.setContent(content);
 
                     // Открываем модальное окно
-                    popup.show();
+                    popup.show();*/
                 }
             },
             onfailure: function(error) {

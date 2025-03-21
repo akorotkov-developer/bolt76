@@ -85,6 +85,13 @@ $propCodes = [];
 while ($result = $properties->GetNext()) {
     $propCodes[] = $result['CODE'];
 }
+$excludedProps = [
+    'ROW_ID', 'ARTICUL', 'Ostatok', 'PHOTO_ID', 'FOTOHASH', 'NomenklaturaGeog', 'ROWID', 'VUpakovke2', 'UPAKOVKA2', 'MaksZapas',
+    'MinZapas', 'ELEMENT_SECTION_NAME', 'Naimenovanie', 'SORT_IN_PRICE', 'SHOW_IN_PRICE', 'Otobrajat_v_prayse', 'Otobrajat_na_sayte',
+    'PRICE_OPT2', 'PRICE_OPT', 'Opisanie', 'TipSkladskogoZapasa', 'Foto', 'PHOTOS', 'CZena1', 'CZena2', 'CZena3',
+    'ID_BOOKMARK', 'Rasprodaja', 'COLOR', 'Nomenklaturniy_nomer', 'ADDITIONAL_PRODUCT_INFORMATION', 'Svertka', 'Svobodno', 'UNITS', 'PRICE'
+];
+$propCodes = array_diff($propCodes, $excludedProps);
 
 $APPLICATION->IncludeComponent(
 	"bitrix:catalog",

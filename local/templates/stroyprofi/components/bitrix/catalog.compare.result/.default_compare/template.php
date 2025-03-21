@@ -149,6 +149,8 @@ if (!empty($arResult["SHOW_FIELDS"]))
                                 <?php } elseif(!empty($arResult["PRICES"]) || is_array($arElement["PRICE_MATRIX"])) {?>
                                     <?=GetMessage("CATALOG_NOT_AVAILABLE")?>
                                 <?php } ?>
+
+                                <a class="btn btn-cart" onclick="CatalogCompareObj.delete('<?=CUtil::JSEscape($arElement['~DELETE_URL'])?>');" href="javascript:void(0)"><?=GetMessage("CATALOG_REMOVE_PRODUCT")?></a>
                             </div>
                             <?php
 						break;
@@ -378,19 +380,6 @@ if (!empty($arResult["SHOW_OFFER_PROPERTIES"]))
 	}
 }
 	?>
-	<tr>
-		<td></td>
-		<?foreach($arResult["ITEMS"] as $arElement)
-		{
-		?>
-		<td>
-			<a class="btn btn-cart" onclick="CatalogCompareObj.delete('<?=CUtil::JSEscape($arElement['~DELETE_URL'])?>');" href="javascript:void(0)"><?=GetMessage("CATALOG_REMOVE_PRODUCT")?></a>
-		</td>
-		<?
-		}
-		unset($arElement);
-		?>
-	</tr>
 </table>
 </div>
 <?
