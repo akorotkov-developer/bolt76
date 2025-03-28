@@ -221,17 +221,18 @@ $compareElements = json_encode($compareElements);
         let currentId = '<?= $arResult['ID'] ?>'; // или let currentId = 172319; (если ID — число)
 
         // Проверяем, существует ли currentId в массиве
+        // Ищем элемент с классом compare-svg-icon-element-detail и атрибутом data-product-id=currentId
+        let targetElement = document.querySelector(`.compare-svg-icon-element-detail[data-product-id="${currentId}"]`);
         if (idArray.includes(currentId.toString())) { // Преобразуем currentId в строку, если массив содержит строки
-            // Ищем элемент с классом compare-svg-icon-element-detail и атрибутом data-product-id=currentId
-            let targetElement = document.querySelector(`.compare-svg-icon-element-detail[data-product-id="${currentId}"]`);
-
             // Если элемент найден
             if (targetElement) {
                 // Добавляем класс active его родителю
                 targetElement.closest('.b-compare').classList.add('active');
             }
         } else {
-            targetElement.closest('.b-compare').classList.remove('active');
+            if (targetElement) {
+                targetElement.closest('.b-compare').classList.remove('active');
+            }
         }
     });
 </script>

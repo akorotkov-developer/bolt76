@@ -179,7 +179,14 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-4">
-                            <div id="<?=$itemIds['BIG_SLIDER_ID']?>" class="b-slidercontainer <?= ProjectHelper::getShieldClass($arResult['PROPERTIES']['SALE']['VALUE'])?>">
+                            <?php
+                            $svobodno = (int) $arResult['PROPERTIES']['Svobodno']['VALUE'];
+
+                            if ($svobodno > 0 && mb_strtolower($arResult['PROPERTIES']['SALE']['VALUE']) != 'новинка') {
+                                $shield = ProjectHelper::getShieldClass($arResult['PROPERTIES']['SALE']['VALUE']);
+                            }
+                            ?>
+                            <div id="<?=$itemIds['BIG_SLIDER_ID']?>" class="b-slidercontainer <?= $shield?>">
 
                                     <div class="product-item-label-text <?=$labelPositionClass?>" id="<?=$itemIds['STICKER_ID']?>"
                                         <?=(!$arResult['LABEL'] ? 'style="display: none;"' : '' )?>>

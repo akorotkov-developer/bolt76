@@ -139,4 +139,12 @@ while($result = $dbResult->Fetch()){
     $arItemsSale[] = $result['ID'];
 }
 
+foreach ($arResult['ITEMS'] as $key => $arItem) {
+    if ((int) $arItem['PROPERTIES']['Svobodno']['VALUE'] <= 0
+        && in_array($arItem['ID'], $arItemsSale)) {
+        unset($arItemsSale[$arItem['ID']]);
+        unset($arResult['ITEMS'][$key]);
+    }
+}
+
 $arResult['SALE_ITEMS'] = $arItemsSale;
