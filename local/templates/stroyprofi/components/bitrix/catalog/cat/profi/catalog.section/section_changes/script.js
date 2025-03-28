@@ -193,12 +193,10 @@ $( document ).ready(function() {
     /** Добавление товара к сравнению */
     $('.compare-svg-icon-element-list').bind("click", function(e) {
         if ($(this).parent().hasClass('active')) {
-            console.log('Убрать из сравнения');
             deleteCompare($(this).attr('data-product-id'));
 
         } else {
             addCompare($(this).attr('data-product-id'));
-            console.log('Добавить к сравнению');
         }
     });
 

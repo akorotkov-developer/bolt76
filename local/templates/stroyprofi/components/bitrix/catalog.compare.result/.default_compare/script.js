@@ -80,6 +80,7 @@ BX.Iblock.Catalog.CompareClass = (function()
 		BX(this.wrapObjId).innerHTML = result;
 
 		this.refreshTabs();
+		this.clickActiveTab();
 	};
 
 	CompareClass.prototype.refreshTabs = function()
@@ -99,6 +100,32 @@ BX.Iblock.Catalog.CompareClass = (function()
 		// Клики по якорным ссылкам.
 		$('.tabs-target').click(function () {
 			$('#tabs .tabs-nav a[href=' + $(this).attr('href') + ']').click();
+		});
+
+		// Убрать пустые свойства:
+		const tables = document.querySelectorAll('.data-table');
+
+		tables.forEach(table => {
+			const rows = table.querySelectorAll('tr');
+
+			rows.forEach(row => {
+				// Получаем все ячейки в строке, кроме первой
+				const cells = Array.from(row.querySelectorAll('td')).slice(1);
+
+				// Проверяем, есть ли хотя бы одна непустая ячейка
+				const hasNonEmptyCell = cells.some(cell => {
+					const content = cell.textContent.trim();
+					const hasChildElements = cell.children.length > 0;
+					return content !== '' || hasChildElements;
+				});
+
+				// Если все ячейки пустые, скрываем строку, иначе показываем
+				if (!hasNonEmptyCell && cells.length > 0) {
+					row.style.display = 'none';
+				} else {
+					row.style.display = ''; // или 'table-row'
+				}
+			});
 		});
 	}
 

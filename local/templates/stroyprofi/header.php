@@ -49,24 +49,25 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
 
     <link href="<?= SITE_TEMPLATE_PATH?>/plugins/snowFlakes/snow.min.css" rel="stylesheet">
 </head>
+<?php CUtil::InitJSCore(['ajax'])?>
 <body>
-    <script src="<?= SITE_TEMPLATE_PATH?>/plugins/snowFlakes/Snow.js"></script>
-    <script>
-        new Snow ({
-            iconColor: '#f7941d',
-            showSnowBalls: true,
-            showSnowBallsIsMobile: true,
-            showSnowflakes: true,
-            countSnowflake: 100,
-            snowBallsLength: 10,
-            snowBallIterations: 40,
-            snowBallupNum: 1,
-            snowBallIterationsInterval: 1000,
-            clearSnowBalls: 20000,
-        });
-    </script>
-
-<div id="shclDefault"></div>
+<!--    <script src="--><?php //= SITE_TEMPLATE_PATH?><!--/plugins/snowFlakes/Snow.js"></script>-->
+<!--    <script>-->
+<!--        new Snow ({-->
+<!--            iconColor: '#f7941d',-->
+<!--            showSnowBalls: true,-->
+<!--            showSnowBallsIsMobile: true,-->
+<!--            showSnowflakes: true,-->
+<!--            countSnowflake: 100,-->
+<!--            snowBallsLength: 10,-->
+<!--            snowBallIterations: 40,-->
+<!--            snowBallupNum: 1,-->
+<!--            snowBallIterationsInterval: 1000,-->
+<!--            clearSnowBalls: 20000,-->
+<!--        });-->
+<!--    </script>-->
+<!---->
+<!--<div id="shclDefault"></div>-->
 <style>
     #shclDefault {
         position: absolute !important;
