@@ -148,3 +148,12 @@ foreach ($arResult['ITEMS'] as $key => $arItem) {
 }
 
 $arResult['SALE_ITEMS'] = $arItemsSale;
+
+$sCurPage = $APPLICATION->GetCurPage();
+if (strpos($sCurPage, '/filter/') !== false) {
+    $list = \CIBlockSection::GetNavChain(false, $arResult['ID'], ['ID', 'NAME', 'DEPTH_LEVEL', 'CODE'], true);
+    $navChain = [];
+    foreach ($list as $v) {
+        $APPLICATION->AddChainItem($v['NAME'],  '/catalog/' . $v['ID'] . '-' . $v['CODE'] . '/');
+    }
+}

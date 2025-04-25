@@ -169,7 +169,7 @@ if (strpos($sCurPage, '/filter/') !== false) {
     $list = \CIBlockSection::GetNavChain(false, $arResult['ID'], ['ID', 'NAME', 'DEPTH_LEVEL', 'CODE'], true);
     $navChain = [];
     foreach ($list as $v) {
-        $APPLICATION->AddChainItem($v['NAME'],  '/catalog/' . $v['ID'] . '-' . $v['CODE']);
+        $APPLICATION->AddChainItem($v['NAME'],  '/catalog/' . $v['ID'] . '-' . $v['CODE'] . '/');
     }
 }
 
