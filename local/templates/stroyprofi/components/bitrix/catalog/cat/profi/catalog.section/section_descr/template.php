@@ -24,12 +24,12 @@ if (sizeof($arResult["ITEMS"]) > 0) {?>
                         <td class="roz">Розница</td>
                     <?php } ?>
 
-                    <td class="upak">В упаковке</td>
+                    <td class="upak upak-head"><span>В упаковке</span></td>
                     <td class="avail">Наличие</td>
                     <td class="buy">Купить</td>
                     <td class="mera">Ед</td>
                     <td></td>
-                    <td></td>
+                    <td class="td-favorite"></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -397,7 +397,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {?>
                     } ?>><a href="#" class="add_to_cart_one"><img src="/img/cart_buttton.png" alt=""></a>
                     </td>
 
-                    <td>
+                    <td class="td-favorite">
                         <div class="b-control-elements-in-table">
                             <div class="b-compare">
                                 <svg data-product-id="<?= $arElement['ID'] ?>" id="compare-icon"
@@ -744,7 +744,7 @@ if (sizeof($arResult["ITEMS"]) > 0) {?>
                             <input class="btn btn-themes btn-list-add-to-cart" type="button" name="add_to_basket" value="В корзину" data-elementid="<?= $arElement['ID']?>">
                         </td>
 
-                        <td>
+                        <td class="td-favorite">
                             <div class="b-control-elements-in-table">
                                 <div class="b-compare">
                                     <svg data-product-id="<?= $arElement['ID'] ?>" id="compare-icon"

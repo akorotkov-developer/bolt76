@@ -90,9 +90,20 @@ if ($ar_result = $db_list->GetNext()) {
     </div>
 <?php } ?>
 
-<div class="b-container-top">
-    <div class="col-lg-3 b-product-filter <?= (isset($arParams['FILTER_HIDE_ON_MOBILE']) && $arParams['FILTER_HIDE_ON_MOBILE'] === 'Y' ? ' hidden-xs' : '') ?>">
+<!-- Оверлей (фон затемнения) -->
+<div class="filter-overlay"></div>
 
+<div class="b-container-top">
+
+        <div class="btn-filters">
+            <a class="btn btn-default btn-sm" id="btn-filters-action" rel="nofollow">
+                Фильтры
+            </a>
+        </div>
+
+
+    <div class="col-lg-3 b-product-filter <?= (isset($arParams['FILTER_HIDE_ON_MOBILE']) && $arParams['FILTER_HIDE_ON_MOBILE'] === 'Y' ? ' hidden-xs' : '') ?>">
+        <button class="close-filter-btn d-lg-none">× Закрыть</button>
         <div class="bx-sidebar-block">
             <?php $APPLICATION->IncludeComponent(
                 "bitrix:catalog.smart.filter",

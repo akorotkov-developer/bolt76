@@ -644,6 +644,10 @@ class Import
                 $this->echo('Обновление раздела ' . strval($name));
 
                 $ID = $this->arCatalogSections[$internal]["ID"];
+                if ($ID == 7238) {
+                    \Bitrix\Main\Diag\Debug::dumpToFile(['$internal' => $internal], '', 'log.txt');
+                }
+
                 $arUpdate = [
                     "NAME" => $newName,
                     "UF_ORIGINAL_NAME" => $name,

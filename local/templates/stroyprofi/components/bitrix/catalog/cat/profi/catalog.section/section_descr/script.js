@@ -87,20 +87,23 @@ $( document ).ready(function() {
 
 $(document).ready(function() {
     $(window).scroll(function() {
-        var tdOffset = $('.element_product_tr .section_description').offset().top;
-        var tdHeight = $('.element_product_tr .section_description').height();
-        var scrollTop = $(window).scrollTop();
-        var image = $('.section_description a img');
-        var windowHeight = $(window).height();
+        var $description = $('.element_product_tr .section_description');
+        var $image = $('.section_description a img');
 
-        var isBottom = scrollTop > tdOffset + tdHeight - windowHeight;
+        // Проверяем, существуют ли элементы на странице
+        if ($description.length && $image.length) {
+            var tdOffset = $description.offset().top;
+            var tdHeight = $description.height();
+            var scrollTop = $(window).scrollTop();
+            var windowHeight = $(window).height();
 
-        if (scrollTop > tdOffset/* && !isBottom*/) {
-            image.css({'position': 'fixed', 'top': '0'});
-        } /*else if (isBottom) {
-            image.css({'position': 'absolute', 'bottom': '0', 'top': 'auto'});
-        }*/ else {
-            image.css({'position': 'absolute', 'top': '0px'});
+            var isBottom = scrollTop > tdOffset + tdHeight - windowHeight;
+
+            if (scrollTop > tdOffset) {
+                $image.css({'position': 'fixed', 'top': '0'});
+            } else {
+                $image.css({'position': 'absolute', 'top': '0px'});
+            }
         }
     });
 

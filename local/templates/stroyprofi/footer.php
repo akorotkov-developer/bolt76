@@ -85,6 +85,58 @@ if ($isKioskBuyer) {
         </div>
     </div>
 </div>
+
+<?php
+global $APPLICATION;
+$curDir = $APPLICATION->GetCurDir();
+?>
+<div class="mobile-bottom-nav">
+    <nav class="mobile-navbar">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <a href="/"
+                   class="mobile-menu-link <?= $curDir == '/' ? 'is-active' : ''?>"
+                >
+                    <i class="mobile-menu-icon ion-md-home"></i>
+                    <span class="mobile-menu-name">Главная</span>
+                </a>
+            </li>
+            <li class="mobile-menu-item">
+                <a href="/catalog/"
+                   class="mobile-menu-link <?= $curDir == '/catalog/' ? 'is-active' : ''?>"
+                >
+                    <i class="mobile-menu-icon ion-md-search"></i>
+                    <span class="mobile-menu-name">Каталог</span>
+                </a>
+            </li>
+            <li class="mobile-menu-item">
+                <a href="/personal/cart/"
+                   class="mobile-menu-link  <?= $curDir == '/personal/cart/' ? 'is-active' : ''?>"
+                >
+                    <i class="mobile-menu-icon ion-md-cart"></i>
+                    <span class="mobile-menu-name">Корзина</span>
+                </a>
+            </li>
+            <li class="mobile-menu-item">
+                <a href="/personal/wishlist/"
+                   class="mobile-menu-link  <?= $curDir == '/personal/wishlist/' ? 'is-active' : ''?>"
+                >
+                    <i class="mobile-menu-icon ion-md-heart"></i>
+                    <span class="mobile-menu-name">Избранное</span>
+                </a>
+            </li>
+            <li class="mobile-menu-item">
+                <a href="/personal/private/"
+                   class="mobile-menu-link <?= $curDir == '/personal/private/' ? 'is-active' : ''?>"
+                >
+                    <i class="mobile-menu-icon ion-md-contact"></i>
+                    <span class="mobile-menu-name">Профиль</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
 <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter216594 = new Ya.Metrika({id:216594, webvisor:true, clickmap:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/216594" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
 </body>
 </html>

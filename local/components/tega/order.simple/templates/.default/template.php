@@ -187,6 +187,27 @@ if (!$USER->IsAuthorized()) {?>
                 <div class="b-error-info">
 
                 </div>
+
+                <?php if ($_GET['tst']) { ?>
+                    <div class="col-sm-3 width-etalon-mobile">
+                        <div class="left-total-title">Товары в заказе:</div>
+                        <div class="gray-border-bottom"></div>
+                        <div class="left-total-items">
+                            <?php foreach ($arResult['BASKET_ITEMS'] as $basketItem) {?>
+                                <div class="total-item">
+                                    <div class="left-total-item_title"><a href="<?= $basketItem['DETAIL_PAGE_URL']?>"><?= $basketItem['NAME']?></a></div>
+                                    <div class="left-total-item_description"><?= round((float) $basketItem['QUANTITY'] * (float) $basketItem['PRICE'])?> ₽ - <?= $basketItem['QUANTITY']?> <?= $basketItem['MEASURE_NAME']?></div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                        <div class="gray-border-bottom margintop10"></div>
+                        <div class="left-total-title left-total-title-nomargin">Итого: <? echo $arResult["PRICES"]["TOTAL_PRICE_FORMATTED"]; ?><b class="delivery-not-included">*</b></div>
+                        <p class="delivery-not-included">*не включает стоимость доставки</p>
+                        <hr>
+                    </div>
+                <?php } ?>
+
+
                 <div class="order-simple__block" style="display: none">
                     <div class="order-simple__block__title">1. <? echo GetMessage("PAYMANT_TYPES"); ?></div>
                     <?php

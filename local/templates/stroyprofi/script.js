@@ -158,3 +158,43 @@ $(document).ready(function () {
         parentBlock.toggleClass('active');
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const filterToggleBtn = document.querySelector('#btn-filters-action');
+    const closeFilterBtn = document.querySelector('.close-filter-btn');
+    const productFilter = document.querySelector('.b-product-filter');
+    const filterOverlay = document.querySelector('.filter-overlay');
+
+    // Открытие фильтра
+    if (filterToggleBtn) {
+        filterToggleBtn.addEventListener('click', function() {
+            productFilter.classList.add('active');
+            filterOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    // Закрытие фильтра (по кнопке)
+    if (closeFilterBtn) {
+        closeFilterBtn.addEventListener('click', closeFilter);
+    }
+
+    // Закрытие фильтра (по оверлею)
+    if (filterOverlay) {
+        filterOverlay.addEventListener('click', closeFilter);
+    }
+
+    // Функция закрытия
+    function closeFilter() {
+        productFilter.classList.remove('active');
+        filterOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Закрытие при нажатии Esc
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeFilter();
+        }
+    });
+});

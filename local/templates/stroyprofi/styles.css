@@ -310,3 +310,7 @@ body .a-excel-download-link:hover {
 .catalog-compare-list {
     display: none;
 }
+.b-container-recomended-products .row.product-item-list-col-4 {
+    display: flex;
+    justify-content: center;
+}

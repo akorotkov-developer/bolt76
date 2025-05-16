@@ -26,6 +26,8 @@ if (in_array('KIOSK_BUYER', $arGroups)) {
     $APPLICATION->ShowHead();
 	?>
     <link rel="stylesheet" href="/plugins/fancybox/jquery.fancybox.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/3.0.0/css/ionicons-core.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/3.0.0/css/ionicons.min.css">
     <script type="text/javascript" src="//yandex.st/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="/plugins/fancybox/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="/js/functions.js?123"></script>

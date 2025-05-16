@@ -369,12 +369,12 @@
                             <td class="roz">Розница</td>
                         <?php } ?>
 
-                        <td class="upak">В упаковке</td>
+                        <td class="upak upak-head"><span>В упаковке</span></td>
                         <td class="avail">Наличие</td>
                         <td class="buy">Купить</td>
                         <td class="mera">Ед</td>
                         <td></td>
-                        <td></td>
+                        <td class="td-compare-favorite"></td>
                         <?php if ($arResult['IS_FILTER']) {?>
                             <td></td>
                         <?php } ?>
@@ -732,7 +732,7 @@
                             echo 'colspan="2"';
                         } ?>><a href="#" class="add_to_cart_one"><img src="/img/cart_buttton.png" alt=""></a>
                         </td>
-                        <td>
+                        <td class="td-compare-favorite">
                             <!-- Избранное и сравнение -->
 
                         </td>
@@ -1081,7 +1081,7 @@
                                 <input class="btn btn-themes btn-list-add-to-cart" type="button" name="add_to_basket"
                                        value="В корзину" data-elementid="<?= $arElement['ID'] ?>">
                             </td>
-                            <td>
+                            <td class="td-compare-favorite">
                                 <!-- Избранное и сравнение без фильтров и с фильтрами -->
 
                                 <div class="b-compare">
