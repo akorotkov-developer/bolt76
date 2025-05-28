@@ -46,6 +46,17 @@ $(document).ready(function () {
     // }
     // $("span.marquee:empty").text("ТЕСТ");
 
+    // Автоматическое появление бегущей строки при наличии в ней текста
+    $(document).ready(function() {
+        var marqueeContent = $('.marquee').text().trim();
+        if (marqueeContent !== '') { // Если есть текст
+            $('.dark_line').css('margin', '0px -5px'); // Меняем margin
+            $('.marquee').css('display', 'block');
+        } else {
+            $('.marquee').css('display', 'none'); // Скрываем .marquee
+        }
+    });
+
 
     /** Добавление/удаление товаров товаров в избранного */
     $('.favorite-svg-icon').on('click', function() {
@@ -198,3 +209,80 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const filterToggleBtn = document.querySelector('#btn-filters-action');
+    const closeFilterBtn = document.querySelector('.close-filter-btn');
+    const productFilter = document.querySelector('.b-product-filter');
+    const filterOverlay = document.querySelector('.filter-overlay');
+
+    // Открытие фильтра
+    if (filterToggleBtn) {
+        filterToggleBtn.addEventListener('click', function() {
+            productFilter.classList.add('active');
+            filterOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    // Закрытие фильтра (по кнопке)
+    if (closeFilterBtn) {
+        closeFilterBtn.addEventListener('click', closeFilter);
+    }
+
+    // Закрытие фильтра (по оверлею)
+    if (filterOverlay) {
+        filterOverlay.addEventListener('click', closeFilter);
+    }
+
+    // Функция закрытия
+    function closeFilter() {
+        productFilter.classList.remove('active');
+        filterOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Закрытие при нажатии Esc
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeFilter();
+        }
+    });
+});
+
+// Куки
+
+window.onload = function() {
+    if (!localStorage.getItem('cookieConsent')) {
+        document.getElementById('cookieBanner').style.display = 'block';
+    }
+    if (localStorage.getItem('analyticsCookies') === 'true') {
+        loadAnalytics();
+    }
+};
+
+function acceptCookies() {
+    localStorage.setItem('cookieConsent', 'true');
+    localStorage.setItem('analyticsCookies', 'true');
+    document.getElementById('cookieBanner').style.display = 'none';
+    loadAnalytics();
+}
+
+function showCookieSettings() {
+    document.getElementById('cookieSettings').style.display = 'flex';
+}
+
+function saveCookieSettings() {
+    const analyticsCookies = document.getElementById('analyticsCookies').checked;
+    localStorage.setItem('cookieConsent', 'true');
+    localStorage.setItem('analyticsCookies', analyticsCookies);
+    document.getElementById('cookieSettings').style.display = 'none';
+    document.getElementById('cookieBanner').style.display = 'none';
+    if (analyticsCookies) {
+        loadAnalytics();
+    }
+}
+
+function closeCookieSettings() {
+    document.getElementById('cookieSettings').style.display = 'none';
+}

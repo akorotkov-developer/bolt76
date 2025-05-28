@@ -352,6 +352,13 @@ if (!$USER->IsAuthorized()) {?>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="consent-checkbox">
+                                    <label>
+                                        <input type="checkbox" name="PERSONAL_DATA_CONSENT" id="PERSONAL_DATA_CONSENT" value="Y" class="required">
+                                        Я согласен с <a href="/politika-obrabotki-personalnykh-dannykh.php" >Политикой обработки персональных данных</a>
+                                    </label>
+                                    <span class="error" style="color:red; display:none;">Необходимо согласие на обработку данных</span>
+                                </div>
                                 <div class="order-props-in-two-columns">
                             <?php } ?>
                             <? } ?>
