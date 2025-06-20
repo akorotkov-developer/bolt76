@@ -314,3 +314,14 @@ body .a-excel-download-link:hover {
     display: flex;
     justify-content: center;
 }
+.profile-wrapper {
+    display: flex;
+}
+.profile-wrapper .right_block {
+    width: 100%;
+}
+@media (max-width: 768px) {
+    body .profile-wrapper {
+        display: block;
+    }
+}

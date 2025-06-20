@@ -46,6 +46,17 @@ $(document).ready(function () {
     // }
     // $("span.marquee:empty").text("ТЕСТ");
 
+    // Автоматическое появление бегущей строки при наличии в ней текста
+    $(document).ready(function() {
+        var marqueeContent = $('.marquee').text().trim();
+        if (marqueeContent !== '') { // Если есть текст
+            $('.dark_line').css('margin', '0px -5px'); // Меняем margin
+            $('.marquee').css('display', 'block');
+        } else {
+            $('.marquee').css('display', 'none'); // Скрываем .marquee
+        }
+    });
+
 
     /** Добавление/удаление товаров товаров в избранного */
     $('.favorite-svg-icon').on('click', function() {
@@ -197,4 +208,68 @@ document.addEventListener('DOMContentLoaded', function() {
             closeFilter();
         }
     });
+});
+
+// Куки
+
+window.onload = function() {
+    if (!localStorage.getItem('cookieConsent')) {
+        document.getElementById('cookieBanner').style.display = 'block';
+    }
+    if (localStorage.getItem('analyticsCookies') === 'true') {
+        loadAnalytics();
+    }
+};
+
+function acceptCookies() {
+    localStorage.setItem('cookieConsent', 'true');
+    localStorage.setItem('analyticsCookies', 'true');
+    document.getElementById('cookieBanner').style.display = 'none';
+    loadAnalytics();
+}
+
+function showCookieSettings() {
+    document.getElementById('cookieSettings').style.display = 'flex';
+}
+
+function saveCookieSettings() {
+    const analyticsCookies = document.getElementById('analyticsCookies').checked;
+    localStorage.setItem('cookieConsent', 'true');
+    localStorage.setItem('analyticsCookies', analyticsCookies);
+    document.getElementById('cookieSettings').style.display = 'none';
+    document.getElementById('cookieBanner').style.display = 'none';
+    if (analyticsCookies) {
+        loadAnalytics();
+    }
+}
+
+function closeCookieSettings() {
+    document.getElementById('cookieSettings').style.display = 'none';
+}
+
+$(document).ready(function() {
+    // Обработчик для корневых элементов
+    $('.root-item-selected > a').click(function(e) {
+        e.preventDefault();
+        var $subMenu = $(this).siblings('ul.root-item');
+        toggleMenu($subMenu);
+    });
+
+    // Обработчик для вложенных элементов
+    $('.parent.item-selected > a').click(function(e) {
+        e.preventDefault();
+        var $subMenu = $(this).siblings('ul');
+        toggleMenu($subMenu);
+    });
+
+    // Общая функция для переключения меню
+    function toggleMenu($menu) {
+        $menu.toggleClass('menu-collapsed');
+
+        if ($menu.hasClass('menu-collapsed')) {
+            $menu.slideUp(300);
+        } else {
+            $menu.slideDown(300);
+        }
+    }
 });
